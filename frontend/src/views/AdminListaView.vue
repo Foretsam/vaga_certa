@@ -1,16 +1,23 @@
 <script setup>
-import { ref, computed } from 'vue'
+import { ref, computed, onMounted } from 'vue'
 import { useRouter } from 'vue-router'
 import {
   estabelecimentos,
   iniciarNovoFormulario,
-  carregarFormularioEdicao
+  carregarFormularioEdicao,
+  carregarDadosDoBanco,
+  alternarInativoNoBanco,
+  removerEstabelecimentoNoBanco
 } from '../store/estacionamentoStore'
 
 const router = useRouter()
 const termoPesquisaAdmin = ref('')
 const paginaAtualAdmin = ref(1)
 const itensPorPagina = 5
+
+onMounted(() => {
+  carregarDadosDoBanco()
+})
 
 const estabelecimentosFiltrados = computed(() => {
   const termo = termoPesquisaAdmin.value.trim().toLowerCase()
@@ -39,13 +46,21 @@ function editarEstabelecimento(est) {
   router.push({ name: 'admin-info-gerais' })
 }
 
-function alternarInativoEstabelecimento(est) {
-  est.inativo = !est.inativo
+async function alternarInativoEstabelecimento(est) {
+  try {
+    await alternarInativoNoBanco(est)
+  } catch (err) {
+    alert(err.message)
+  }
 }
 
-function removerEstabelecimento(est) {
-  if (confirm(`Tem certeza que deseja REMOVER permanentemente "${est.nome}" e todos os seus andares e vagas?`)) {
-    estabelecimentos.value = estabelecimentos.value.filter(item => item.id !== est.id)
+async function removerEstabelecimento(est) {
+  if (confirm(`Tem certeza que deseja REMOVER permanentemente "${est.nome}" e todos os seus andares e vagas do banco de dados?`)) {
+    try {
+      await removerEstabelecimentoNoBanco(est)
+    } catch (err) {
+      alert(err.message)
+    }
   }
 }
 </script>

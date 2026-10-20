@@ -5,9 +5,8 @@ import {
   paletaSetores,
   escurecerCorHex,
   criarMatrizVazia,
-  estabelecimentos,
-  modoEdicaoId,
-  formEstabelecimento
+  formEstabelecimento,
+  salvarEstacionamentoNoBanco
 } from '../store/estacionamentoStore'
 
 const router = useRouter()
@@ -23,6 +22,7 @@ const andarEditorAtual = computed(() => formEstabelecimento.value.andares[andarE
 const menuTopoMobileAberto = ref(false)
 const menuAdicionarMobileAberto = ref(false)
 const mostrarPainelAvisos = ref(false)
+const salvandoNoBanco = ref(false)
 
 function alternarMenuEngrenagem() {
   menuTopoMobileAberto.value = !menuTopoMobileAberto.value
@@ -125,7 +125,6 @@ function aoFinalizarToqueGrid(e) {
     pinchInicial = null
   }
   if (e.touches.length === 0 && toqueUnico) {
-    // Se foi um toque curto (Tap) sem arrastar a tela, seleciona o quadrado ou aplica o carimbo
     if (!toqueUnico.moveu) {
       const el = document.elementFromPoint(toqueUnico.lastX, toqueUnico.lastY)
       const celulaEl = el?.closest('[data-coord]')
@@ -740,30 +739,26 @@ function confirmarVinculoEquipamento() {
   ferramentaCarimbo.value = null
 }
 
-function finalizarSalvarEstacionamento() {
+// =========================================================
+// SALVAR ESTACIONAMENTO NO MYSQL VIA FASTAPI
+// =========================================================
+async function finalizarSalvarEstacionamento() {
   if (!podeSalvarEstacionamento.value) {
     mostrarPainelAvisos.value = true
     return
   }
+  if (salvandoNoBanco.value) return
 
-  if (modoEdicaoId.value) {
-    const idx = estabelecimentos.value.findIndex(e => e.id === modoEdicaoId.value)
-    if (idx !== -1) {
-      estabelecimentos.value[idx] = JSON.parse(JSON.stringify(formEstabelecimento.value))
-    }
-  } else {
-    const novoId = estabelecimentos.value.length > 0
-      ? Math.max(...estabelecimentos.value.map(e => e.id)) + 1
-      : 1
-    estabelecimentos.value.push({
-      ...JSON.parse(JSON.stringify(formEstabelecimento.value)),
-      id: novoId,
-      inativo: false
-    })
+  salvandoNoBanco.value = true
+  try {
+    await salvarEstacionamentoNoBanco()
+    alert('✅ Planta 2d Salva com Sucesso!')
+    router.push({ name: 'admin-lista' })
+  } catch (err) {
+    alert(`❌ Erro ao salvar: ${err.message}`)
+  } finally {
+    salvandoNoBanco.value = false
   }
-
-  alert('✅ Estacionamento salvo com sucesso!')
-  router.push({ name: 'admin-lista' })
 }
 
 function tratarTeclaGlobal(event) {
@@ -792,11 +787,6 @@ onUnmounted(() => {
 
 <template>
   <div v-if="andarEditorAtual" class="editor-layout">
-    <!-- =======================================================
-         HUD FLUTUANTE MOBILE/TABLET MENOR (<= 1024px)
-         Esquerda: ☰ (no App.vue) e ⚠️ abaixo dele
-         Direita: 💾 no topo, ⚙️ abaixo, ➕ abaixo
-         ======================================================= -->
     <button
       class="hud-btn-flutuante hud-esquerda-alertas"
       :class="{ 'caution-ok': podeSalvarEstacionamento, 'caution-pendente': !podeSalvarEstacionamento }"
@@ -810,14 +800,13 @@ onUnmounted(() => {
     <div class="hud-coluna-direita-mobile">
       <button
         class="hud-btn-flutuante hud-btn-salvar"
-        :disabled="!podeSalvarEstacionamento"
+        :disabled="!podeSalvarEstacionamento || salvandoNoBanco"
         title="Finalizar e Salvar"
         @click="finalizarSalvarEstacionamento"
       >
         💾
       </button>
 
-      <!-- Apenas o ícone de engrenagem sem texto -->
       <button
         class="hud-btn-flutuante"
         :class="{ 'hud-ativo': menuTopoMobileAberto }"
@@ -827,7 +816,6 @@ onUnmounted(() => {
         ⚙️
       </button>
 
-      <!-- Menu de Adicionar (Grupo 1 e Grupo 2) embaixo da engrenagem -->
       <button
         class="hud-btn-flutuante hud-btn-add"
         :class="{ 'hud-ativo': menuAdicionarMobileAberto }"
@@ -838,7 +826,6 @@ onUnmounted(() => {
       </button>
     </div>
 
-    <!-- BARRA SUPERIOR DO EDITOR (Visível no Desktop; Popover quando ⚙️ é clicado no Mobile) -->
     <header
       class="editor-topbar"
       :class="{ 'topbar-mobile-aberta': menuTopoMobileAberto }"
@@ -900,18 +887,17 @@ onUnmounted(() => {
 
         <button
           class="btn-salvar-final btn-duas-linhas"
-          :disabled="!podeSalvarEstacionamento"
+          :disabled="!podeSalvarEstacionamento || salvandoNoBanco"
           @click="finalizarSalvarEstacionamento"
         >
-          💾 Finalizar e<br /><span>Salvar no Banco</span>
+          💾 {{ salvandoNoBanco ? 'Salvando...' : 'Finalizar e' }}<br />
+          <span v-if="!salvandoNoBanco">Salvar no Banco</span>
         </button>
       </div>
     </header>
 
-    <!-- WORKSPACE PRINCIPAL -->
     <div class="editor-workspace">
       <div class="area-grid-container">
-        <!-- 1. OVERLAY DE AVISOS -->
         <Transition name="fade-pop">
           <div v-if="mostrarPainelAvisos" class="overlay-flutuante painel-avisos-overlay">
             <div class="overlay-header">
@@ -927,7 +913,6 @@ onUnmounted(() => {
           </div>
         </Transition>
 
-        <!-- 2. OVERLAY DE CARIMBO ATIVO -->
         <Transition name="fade-pop">
           <div v-if="ferramentaCarimbo" class="overlay-flutuante banner-carimbo-overlay">
             <span>
@@ -937,7 +922,6 @@ onUnmounted(() => {
           </div>
         </Transition>
 
-        <!-- 3. OVERLAY DE SELEÇÃO DE QUADRADOS (COM LIXEIRA 🗑️) -->
         <Transition name="fade-pop">
           <div v-if="mostrarMenuFlutuante && selecionados.size > 0" class="overlay-flutuante menu-selecao-overlay">
             <span class="contagem-sel">{{ selecionados.size }} sel.:</span>
@@ -978,7 +962,6 @@ onUnmounted(() => {
           </div>
         </Transition>
 
-        <!-- 4. OVERLAY DE HOVER DO SETOR -->
         <Transition name="fade-pop">
           <div v-if="infoSetorHover" class="overlay-flutuante badge-hover-setor">
             <span class="bolinha-cor-setor" :style="{ backgroundColor: infoSetorHover.cor }"></span>
@@ -987,7 +970,6 @@ onUnmounted(() => {
           </div>
         </Transition>
 
-        <!-- TABULEIRO 2D COM SUPORTE A PAN E PINCH-TO-ZOOM -->
         <div
           class="area-grid-principal"
           @mouseleave="hoverCoord = null"
@@ -1067,7 +1049,6 @@ onUnmounted(() => {
         </div>
       </div>
 
-      <!-- SIDEBAR DIREITA (Fixa em Desktop; Abre no botão ➕ em Mobile/Tablet <= 1024px) -->
       <aside
         class="sidebar-direita-editor"
         :class="{ 'sidebar-mobile-aberta': menuAdicionarMobileAberto }"
@@ -1134,9 +1115,6 @@ onUnmounted(() => {
       </aside>
     </div>
 
-    <!-- =======================================================
-         MODAIS POP-UP MAIS COMPACTOS E PROPORCIONAIS
-         ======================================================= -->
     <Transition name="fade-pop">
       <div v-if="modalSetorAberto" class="modal-backdrop">
         <div class="modal-box">

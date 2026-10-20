@@ -1,0 +1,4469 @@
+=================================================================
+1. MAPA DO DIRETÓRIO (Ignorando arquivos/pastas bloqueados)
+=================================================================
+
+📂 vaga_certa/
+    📄 compiler.py
+    📄 vagacerta_db.sql
+    📂 .git/
+        📄 COMMIT_EDITMSG
+        📄 FETCH_HEAD
+        📄 HEAD
+        📄 config
+        📄 description
+        📄 index
+        📂 hooks/
+            📄 applypatch-msg.sample
+            📄 commit-msg.sample
+            📄 fsmonitor-watchman.sample
+            📄 post-update.sample
+            📄 pre-applypatch.sample
+            📄 pre-commit.sample
+            📄 pre-merge-commit.sample
+            📄 pre-push.sample
+            📄 pre-rebase.sample
+            📄 pre-receive.sample
+            📄 prepare-commit-msg.sample
+            📄 push-to-checkout.sample
+            📄 sendemail-validate.sample
+            📄 update.sample
+        📂 info/
+            📄 exclude
+        📂 logs/
+            📄 HEAD
+                📂 heads/
+                    📄 main
+                    📂 origin/
+                        📄 HEAD
+                        📄 main
+            📂 02/
+                📄 251f4b956c55af2d76fd0788124d7eee2b45eb
+                📄 eb319f10f70b460c2eb756b71d84bd67c7682f
+            📂 04/
+                📄 a3e54bf68335107a348259e4770142ac1d2536
+            📂 08/
+                📄 42bb15a29bf37fe1ca11a032720e172b638bfa
+            📂 0a/
+                📄 0e9c468eb3d070db112f0933919df7e9a40acf
+            📂 0b/
+                📄 6cc631d8807752b63ca2526c0184eb16b8240a
+            📂 0c/
+                📄 065b924bb5fa4111890dc78b76d68cc1d6d403
+            📂 0f/
+                📄 31f13bb51a13228a9ed32a6d5279c6b2829e0f
+                📄 60ab414f2d1566bbaf1e8aaa3f678e08516ba5
+            📂 13/
+                📄 192dc85d99e97969d044c67626a5fe7e592041
+                📄 a1041253d5de22bd3e5a2c97ed72da149509df
+            📂 15/
+                📄 11959c22b74118c06679739cf9abe2ceeea48c
+            📂 1c/
+                📄 d3dce331ed297aa5844968417c0480889df175
+            📂 20/
+                📄 2f46834747412676a527044aeab9c6cc87cb9f
+                📄 71b8108e134958d9259328245aee36555919b9
+            📂 24/
+                📄 25c0f745bef4d009cb6661b62fd9dfd62960b0
+            📂 31/
+                📄 d938528fbbe876e356e5b1cd20b76539e58845
+            📂 33/
+                📄 ff4fa50e6727ab2280e3ae5f1cad4348157958
+            📂 3c/
+                📄 901970659696a80eef38d5754a0678dad3f069
+            📂 41/
+                📄 3ee08af5482774c19b1ac740c2248a96b568b8
+            📂 44/
+                📄 4a0a3145deabaef81cef8bfce5d7cf0874d11f
+            📂 46/
+                📄 75b651a13942e3b5b231ecf9088a10295e8e6a
+                📄 bfa20bbd6887892dafc2882419b0b682ca0d7f
+            📂 49/
+                📄 5d8b7070ffbd8693ebba820a12535b06494bff
+            📂 4d/
+                📄 df9122c5ca0d4bb4aad3dfdca88c9d11c5b45d
+            📂 51/
+                📄 01b674df391399da71c767aa5c976426c9dc7a
+            📂 52/
+                📄 7d4fba5579d5e4e9d260051974927071f2b4a1
+            📂 57/
+                📄 434022187e0bdf3707b401cb8ae756d870bc60
+            📂 5a/
+                📄 cd2f23c2a1b7370a4dee3ab097708137435dfe
+            📂 5b/
+                📄 2c408d1c9873a919513089538c157cc01eed46
+                📄 440c088acad92aba91032270758b0814456731
+                📄 c76810926bc986c8016355a804189357a2082d
+            📂 5e/
+                📄 83bcbf57907010602a73f562ba52c711a83e40
+            📂 63/
+                📄 8657cf01ca80ab9297f146b5ea732aa37b918a
+            📂 68/
+                📄 93eb13237060adc0c968a690149a49faa2d7d3
+            📂 6f/
+                📄 9509c88bed7080d496fc5e1d87a9315e30549d
+            📂 77/
+                📄 0e9d333ee70e75fe7c0bad7fb13e4f6ed4627a
+            📂 7b/
+                📄 a572c6911878fe2c8d89f2b0d2d5b85a7ac413
+            📂 80/
+                📄 2a72eebf2a92805122eca302ed50f176e81fd4
+            📂 85/
+                📄 005aa2449ac4845e7f81bbf6da5c3744927e59
+            📂 86/
+                📄 3ecc701b10b636160463d44a354b13d394f00d
+            📂 89/
+                📄 c32490f1dc26802d9fdd47da61545b918e5532
+            📂 8b/
+                📄 bb5ee6c07004e372ddd3fd49ee75964c2c9e75
+            📂 a1/
+                📄 8cc39e43c8ed3391834d138ce8eaeb48256312
+            📂 a4/
+                📄 17a1c66ca2653bf76e3afa8479c426b3c891c3
+            📂 a5/
+                📄 47bf36d8d11a4f89c59c144f24795749086dd1
+            📂 a6/
+                📄 885ac88553305473ebff9e245634435beaa1a5
+            📂 a7/
+                📄 cea0b0678120a1b590d1b6592c7318039b9179
+            📂 a8/
+                📄 2df1f6e65643f6f8ae9c14d3a87980478ea296
+            📂 ad/
+                📄 8e92422fefe066cfa8777105304af2adf94d28
+            📂 b2/
+                📄 9e339b0b60cf70dd7163098f447049f4ec9f59
+            📂 bf/
+                📄 8b3334cc16cc54a3ae5f6cc1aea732bd139482
+            📂 c7/
+                📄 159ad4a5c4e571eb75970a17e2bb53a94aa80d
+                📄 2ccf3f8be741a4d8412ea1260be954b8a9f94d
+            📂 ca/
+                📄 2c6289571f2271ec419141ad2b5ba7aca238b4
+            📂 ce/
+                📄 9c48d9c1876034a21000926a121d232c1a7b75
+            📂 d1/
+                📄 5c1653d372bdc1ce078bb7ac75cc34cb9b4e9f
+            📂 d2/
+                📄 a1c7b375d7c7ea7abee475eacd13660dcfc973
+            📂 db/
+                📄 ffaf738c89560886aaae551e259463a0cd53f6
+            📂 df/
+                📄 e0770424b2a19faf507a501ebfc23be8f54e7b
+            📂 e4/
+                📄 ca0349653db5381d190350ab1dce315e95c6a5
+            📂 e6/
+                📄 9de29bb2d1d6434b8b29ae775ad8c2e48c5391
+            📂 e7/
+                📄 70ce191495395b7ffb47939c6d1f0fd1c2435e
+            📂 e9/
+                📄 522193d9f796a9748e9ad8c952a5df73c87db9
+            📂 f0/
+                📄 a2483fb9f531f5cdbef870c76c6e0321080046
+            📂 f2/
+                📄 ee6a2970a9a4e9746aa53322b4a035b0b2d357
+            📂 f4/
+                📄 84dfd1c52a8fe5733470b587374ffa8f651f25
+            📂 f6/
+                📄 da34fbef1679c29692ec8c4d58847fefeaad01
+            📂 f8/
+                📄 56cca4a6623495f0204b51ccceef4958e99fc1
+            📂 fa/
+                📄 bc7adf919638c0c7a5b0151021da9a894805fb
+            📂 heads/
+                📄 main
+                📂 origin/
+                    📄 HEAD
+                    📄 main
+    📂 __pycache__/
+        📄 database.cpython-311.pyc
+        📄 main.cpython-311.pyc
+    📂 backend/
+        📄 database.py
+        📄 main.py
+        📂 __pycache__/
+            📄 database.cpython-311.pyc
+            📄 main.cpython-311.pyc
+    📂 frontend/
+        📄 index.html
+        📄 vite.config.js
+        📂 src/
+            📄 App.vue
+            📄 main.js
+            📂 assets/
+                📄 main.css
+            📂 router/
+                📄 index.js
+            📂 store/
+                📄 estacionamentoStore.js
+            📂 views/
+                📄 AdminEditor2DView.vue
+                📄 AdminInfoGeraisView.vue
+                📄 AdminListaView.vue
+                📄 MotoristaHomeView.vue
+                📄 MotoristaMapaView.vue
+
+
+=================================================================
+2. CONTEÚDO DOS ARQUIVOS
+=================================================================
+
+// ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: compiler.py
+// ==================================================================
+
+// [Arquivo binário ignorado pelo leitor de segurança]
+
+
+// 🏁 FIM DO ARQUIVO: compiler.py
+// ------------------------------------------------------------------
+
+
+// ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: vagacerta_db.sql
+// ==================================================================
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+START TRANSACTION;
+SET time_zone = "+00:00";
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+
+
+CREATE TABLE `andares` (
+  `id_andar` int(11) NOT NULL,
+  `id_estabelecimento` int(11) NOT NULL,
+  `nome_andar` varchar(25) NOT NULL,
+  `grid_x` int(11) NOT NULL DEFAULT 30,
+  `grid_y` int(11) NOT NULL DEFAULT 20,
+  `inativo` tinyint(1) DEFAULT 0,
+  `data_cadastro` datetime DEFAULT current_timestamp(),
+  `data_ultima_modificacao` datetime DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `data_inativacao` datetime DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+CREATE TABLE `elementos_mapa` (
+  `id_elemento` int(11) NOT NULL,
+  `id_andar` int(11) NOT NULL,
+  `id_setor` int(11) DEFAULT NULL,
+  `tipo` enum('ESTRADA','ENTRADA','SAIDA','ACESSO','FUNDO_SETOR') NOT NULL,
+  `orientacao` enum('H','V','NENHUMA') NOT NULL DEFAULT 'NENHUMA',
+  `coord_x` int(11) NOT NULL,
+  `coord_y` int(11) NOT NULL,
+  `data_cadastro` datetime DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+CREATE TABLE `equipamentos` (
+  `id_equipamento` int(11) NOT NULL,
+  `id_setor` int(11) NOT NULL,
+  `codigo_mac` varchar(17) NOT NULL,
+  `inativo` tinyint(1) DEFAULT 0,
+  `data_cadastro` datetime DEFAULT current_timestamp(),
+  `data_ultima_modificacao` datetime DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `data_inativacao` datetime DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+CREATE TABLE `estabelecimentos` (
+  `id_estabelecimento` int(11) NOT NULL,
+  `nome` varchar(50) NOT NULL,
+  `inativo` tinyint(1) DEFAULT 0,
+  `data_cadastro` datetime DEFAULT current_timestamp(),
+  `data_ultima_modificacao` datetime DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `data_inativacao` datetime DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+CREATE TABLE `historico_ocupacao` (
+  `id_historico` int(11) NOT NULL,
+  `id_vaga` int(11) NOT NULL,
+  `data_entrada` datetime NOT NULL DEFAULT current_timestamp(),
+  `data_saida` datetime DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+CREATE TABLE `setores` (
+  `id_setor` int(11) NOT NULL,
+  `id_andar` int(11) NOT NULL,
+  `nome_setor` varchar(25) NOT NULL,
+  `prefixo` varchar(3) NOT NULL DEFAULT 'A',
+  `cor_hex` varchar(7) NOT NULL DEFAULT '#bae6fd',
+  `inativo` tinyint(1) DEFAULT 0,
+  `data_cadastro` datetime DEFAULT current_timestamp(),
+  `data_ultima_modificacao` datetime DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `data_inativacao` datetime DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+CREATE TABLE `usuarios` (
+  `id_usuario` int(11) NOT NULL,
+  `nome` varchar(100) NOT NULL,
+  `email` varchar(150) NOT NULL,
+  `senha_hash` varchar(255) NOT NULL,
+  `nivel_acesso` enum('admin_dev','admin_estabelecimento') NOT NULL,
+  `inativo` tinyint(1) DEFAULT 0,
+  `data_cadastro` datetime DEFAULT current_timestamp(),
+  `data_ultima_modificacao` datetime DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `data_inativacao` datetime DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+CREATE TABLE `usuario_estabelecimento` (
+  `id_usuario` int(11) NOT NULL,
+  `id_estabelecimento` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+CREATE TABLE `vagas` (
+  `id_vaga` int(11) NOT NULL,
+  `id_equipamento` int(11) NOT NULL,
+  `identificador` varchar(10) NOT NULL,
+  `coord_x` int(11) NOT NULL,
+  `coord_y` int(11) NOT NULL,
+  `livre_para_estacionar` tinyint(1) DEFAULT 1,
+  `inativo` tinyint(1) DEFAULT 0,
+  `data_cadastro` datetime DEFAULT current_timestamp(),
+  `data_ultima_modificacao` datetime DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `data_inativacao` datetime DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+
+ALTER TABLE `andares`
+  ADD PRIMARY KEY (`id_andar`),
+  ADD KEY `id_estabelecimento` (`id_estabelecimento`);
+
+ALTER TABLE `elementos_mapa`
+  ADD PRIMARY KEY (`id_elemento`),
+  ADD UNIQUE KEY `uk_andar_coordenada_elemento` (`id_andar`,`coord_x`,`coord_y`),
+  ADD KEY `fk_elementos_setor` (`id_setor`);
+
+ALTER TABLE `equipamentos`
+  ADD PRIMARY KEY (`id_equipamento`),
+  ADD UNIQUE KEY `uk_setor_mac` (`id_setor`,`codigo_mac`);
+
+ALTER TABLE `estabelecimentos`
+  ADD PRIMARY KEY (`id_estabelecimento`),
+  ADD UNIQUE KEY `nome` (`nome`);
+
+ALTER TABLE `historico_ocupacao`
+  ADD PRIMARY KEY (`id_historico`),
+  ADD KEY `id_vaga` (`id_vaga`);
+
+ALTER TABLE `setores`
+  ADD PRIMARY KEY (`id_setor`),
+  ADD KEY `fk_setores_andares` (`id_andar`);
+
+ALTER TABLE `usuarios`
+  ADD PRIMARY KEY (`id_usuario`),
+  ADD UNIQUE KEY `email` (`email`);
+
+ALTER TABLE `usuario_estabelecimento`
+  ADD PRIMARY KEY (`id_usuario`,`id_estabelecimento`),
+  ADD KEY `id_estabelecimento` (`id_estabelecimento`);
+
+ALTER TABLE `vagas`
+  ADD PRIMARY KEY (`id_vaga`),
+  ADD KEY `id_equipamento` (`id_equipamento`);
+
+
+ALTER TABLE `andares`
+  MODIFY `id_andar` int(11) NOT NULL AUTO_INCREMENT;
+
+ALTER TABLE `elementos_mapa`
+  MODIFY `id_elemento` int(11) NOT NULL AUTO_INCREMENT;
+
+ALTER TABLE `equipamentos`
+  MODIFY `id_equipamento` int(11) NOT NULL AUTO_INCREMENT;
+
+ALTER TABLE `estabelecimentos`
+  MODIFY `id_estabelecimento` int(11) NOT NULL AUTO_INCREMENT;
+
+ALTER TABLE `historico_ocupacao`
+  MODIFY `id_historico` int(11) NOT NULL AUTO_INCREMENT;
+
+ALTER TABLE `setores`
+  MODIFY `id_setor` int(11) NOT NULL AUTO_INCREMENT;
+
+ALTER TABLE `usuarios`
+  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT;
+
+ALTER TABLE `vagas`
+  MODIFY `id_vaga` int(11) NOT NULL AUTO_INCREMENT;
+
+
+ALTER TABLE `andares`
+  ADD CONSTRAINT `andares_ibfk_1` FOREIGN KEY (`id_estabelecimento`) REFERENCES `estabelecimentos` (`id_estabelecimento`) ON DELETE CASCADE;
+
+ALTER TABLE `elementos_mapa`
+  ADD CONSTRAINT `fk_elementos_andar` FOREIGN KEY (`id_andar`) REFERENCES `andares` (`id_andar`) ON DELETE CASCADE,
+  ADD CONSTRAINT `fk_elementos_setor` FOREIGN KEY (`id_setor`) REFERENCES `setores` (`id_setor`) ON DELETE SET NULL;
+
+ALTER TABLE `equipamentos`
+  ADD CONSTRAINT `equipamentos_ibfk_1` FOREIGN KEY (`id_setor`) REFERENCES `setores` (`id_setor`) ON DELETE CASCADE;
+
+ALTER TABLE `historico_ocupacao`
+  ADD CONSTRAINT `historico_ocupacao_ibfk_1` FOREIGN KEY (`id_vaga`) REFERENCES `vagas` (`id_vaga`) ON DELETE CASCADE;
+
+ALTER TABLE `setores`
+  ADD CONSTRAINT `fk_setores_andares` FOREIGN KEY (`id_andar`) REFERENCES `andares` (`id_andar`) ON DELETE CASCADE;
+
+ALTER TABLE `usuario_estabelecimento`
+  ADD CONSTRAINT `usuario_estabelecimento_ibfk_1` FOREIGN KEY (`id_usuario`) REFERENCES `usuarios` (`id_usuario`) ON DELETE CASCADE,
+  ADD CONSTRAINT `usuario_estabelecimento_ibfk_2` FOREIGN KEY (`id_estabelecimento`) REFERENCES `estabelecimentos` (`id_estabelecimento`) ON DELETE CASCADE;
+
+ALTER TABLE `vagas`
+  ADD CONSTRAINT `vagas_ibfk_1` FOREIGN KEY (`id_equipamento`) REFERENCES `equipamentos` (`id_equipamento`) ON DELETE CASCADE;
+COMMIT;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+
+
+// 🏁 FIM DO ARQUIVO: vagacerta_db.sql
+// ------------------------------------------------------------------
+
+
+// ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: .git\COMMIT_EDITMSG
+// ==================================================================
+
+aperfeiçoamento css e responsividade
+
+
+// 🏁 FIM DO ARQUIVO: .git\COMMIT_EDITMSG
+// ------------------------------------------------------------------
+
+
+// ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: .git\FETCH_HEAD
+// ==================================================================
+
+04a3e54bf68335107a348259e4770142ac1d2536		branch 'main' of https://github.com/Foretsam/vaga_certa
+
+
+// 🏁 FIM DO ARQUIVO: .git\FETCH_HEAD
+// ------------------------------------------------------------------
+
+
+// ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: .git\HEAD
+// ==================================================================
+
+ref: refs/heads/main
+
+
+// 🏁 FIM DO ARQUIVO: .git\HEAD
+// ------------------------------------------------------------------
+
+
+// ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: .git\config
+// ==================================================================
+
+[core]
+	repositoryformatversion = 0
+	filemode = false
+	bare = false
+	logallrefupdates = true
+	symlinks = false
+	ignorecase = true
+[lfs]
+	repositoryformatversion = 0
+[remote "origin"]
+	url = https://github.com/Foretsam/vaga_certa.git
+	fetch = +refs/heads/*:refs/remotes/origin/*
+[branch "main"]
+	remote = origin
+	merge = refs/heads/main
+	vscode-merge-base = origin/main
+
+
+// 🏁 FIM DO ARQUIVO: .git\config
+// ------------------------------------------------------------------
+
+
+// ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: .git\description
+// ==================================================================
+
+Unnamed repository; edit this file 'description' to name the repository.
+
+
+// 🏁 FIM DO ARQUIVO: .git\description
+// ------------------------------------------------------------------
+
+
+// ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: .git\index
+// ==================================================================
+
+// [Arquivo binário ignorado pelo leitor de segurança]
+
+
+// 🏁 FIM DO ARQUIVO: .git\index
+// ------------------------------------------------------------------
+
+
+// ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: .git\hooks\applypatch-msg.sample
+// ==================================================================
+
+#!/bin/sh
+#
+# An example hook script to check the commit log message taken by
+# applypatch from an e-mail message.
+#
+# The hook should exit with non-zero status after issuing an
+# appropriate message if it wants to stop the commit.  The hook is
+# allowed to edit the commit message file.
+#
+# To enable this hook, rename this file to "applypatch-msg".
+
+. git-sh-setup
+commitmsg="$(git rev-parse --git-path hooks/commit-msg)"
+test -x "$commitmsg" && exec "$commitmsg" ${1+"$@"}
+:
+
+
+// 🏁 FIM DO ARQUIVO: .git\hooks\applypatch-msg.sample
+// ------------------------------------------------------------------
+
+
+// ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: .git\hooks\commit-msg.sample
+// ==================================================================
+
+#!/bin/sh
+#
+# An example hook script to check the commit log message.
+# Called by "git commit" with one argument, the name of the file
+# that has the commit message.  The hook should exit with non-zero
+# status after issuing an appropriate message if it wants to stop the
+# commit.  The hook is allowed to edit the commit message file.
+#
+# To enable this hook, rename this file to "commit-msg".
+
+# Uncomment the below to add a Signed-off-by line to the message.
+# Doing this in a hook is a bad idea in general, but the prepare-commit-msg
+# hook is more suited to it.
+#
+# SOB=$(git var GIT_AUTHOR_IDENT | sed -n 's/^\(.*>\).*$/Signed-off-by: \1/p')
+# grep -qs "^$SOB" "$1" || echo "$SOB" >> "$1"
+
+# This example catches duplicate Signed-off-by lines.
+
+test "" = "$(grep '^Signed-off-by: ' "$1" |
+	 sort | uniq -c | sed -e '/^[ 	]*1[ 	]/d')" || {
+	echo >&2 Duplicate Signed-off-by lines.
+	exit 1
+}
+
+
+// 🏁 FIM DO ARQUIVO: .git\hooks\commit-msg.sample
+// ------------------------------------------------------------------
+
+
+// ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: .git\hooks\fsmonitor-watchman.sample
+// ==================================================================
+
+#!/usr/bin/perl
+
+use strict;
+use warnings;
+use IPC::Open2;
+
+# An example hook script to integrate Watchman
+# (https://facebook.github.io/watchman/) with git to speed up detecting
+# new and modified files.
+#
+# The hook is passed a version (currently 2) and last update token
+# formatted as a string and outputs to stdout a new update token and
+# all files that have been modified since the update token. Paths must
+# be relative to the root of the working tree and separated by a single NUL.
+#
+# To enable this hook, rename this file to "query-watchman" and set
+# 'git config core.fsmonitor .git/hooks/query-watchman'
+#
+my ($version, $last_update_token) = @ARGV;
+
+# Uncomment for debugging
+# print STDERR "$0 $version $last_update_token\n";
+
+# Check the hook interface version
+if ($version ne 2) {
+	die "Unsupported query-fsmonitor hook version '$version'.\n" .
+	    "Falling back to scanning...\n";
+}
+
+my $git_work_tree = get_working_dir();
+
+my $retry = 1;
+
+my $json_pkg;
+eval {
+	require JSON::XS;
+	$json_pkg = "JSON::XS";
+	1;
+} or do {
+	require JSON::PP;
+	$json_pkg = "JSON::PP";
+};
+
+launch_watchman();
+
+sub launch_watchman {
+	my $o = watchman_query();
+	if (is_work_tree_watched($o)) {
+		output_result($o->{clock}, @{$o->{files}});
+	}
+}
+
+sub output_result {
+	my ($clockid, @files) = @_;
+
+	# Uncomment for debugging watchman output
+	# open (my $fh, ">", ".git/watchman-output.out");
+	# binmode $fh, ":utf8";
+	# print $fh "$clockid\n@files\n";
+	# close $fh;
+
+	binmode STDOUT, ":utf8";
+	print $clockid;
+	print "\0";
+	local $, = "\0";
+	print @files;
+}
+
+sub watchman_clock {
+	my $response = qx/watchman clock "$git_work_tree"/;
+	die "Failed to get clock id on '$git_work_tree'.\n" .
+		"Falling back to scanning...\n" if $? != 0;
+
+	return $json_pkg->new->utf8->decode($response);
+}
+
+sub watchman_query {
+	my $pid = open2(\*CHLD_OUT, \*CHLD_IN, 'watchman -j --no-pretty')
+	or die "open2() failed: $!\n" .
+	"Falling back to scanning...\n";
+
+	# In the query expression below we're asking for names of files that
+	# changed since $last_update_token but not from the .git folder.
+	#
+	# To accomplish this, we're using the "since" generator to use the
+	# recency index to select candidate nodes and "fields" to limit the
+	# output to file names only. Then we're using the "expression" term to
+	# further constrain the results.
+	my $last_update_line = "";
+	if (substr($last_update_token, 0, 1) eq "c") {
+		$last_update_token = "\"$last_update_token\"";
+		$last_update_line = qq[\n"since": $last_update_token,];
+	}
+	my $query = <<"	END";
+		["query", "$git_work_tree", {$last_update_line
+			"fields": ["name"],
+			"expression": ["not", ["dirname", ".git"]]
+		}]
+	END
+
+	# Uncomment for debugging the watchman query
+	# open (my $fh, ">", ".git/watchman-query.json");
+	# print $fh $query;
+	# close $fh;
+
+	print CHLD_IN $query;
+	close CHLD_IN;
+	my $response = do {local $/; <CHLD_OUT>};
+
+	# Uncomment for debugging the watch response
+	# open ($fh, ">", ".git/watchman-response.json");
+	# print $fh $response;
+	# close $fh;
+
+	die "Watchman: command returned no output.\n" .
+	"Falling back to scanning...\n" if $response eq "";
+	die "Watchman: command returned invalid output: $response\n" .
+	"Falling back to scanning...\n" unless $response =~ /^\{/;
+
+	return $json_pkg->new->utf8->decode($response);
+}
+
+sub is_work_tree_watched {
+	my ($output) = @_;
+	my $error = $output->{error};
+	if ($retry > 0 and $error and $error =~ m/unable to resolve root .* directory (.*) is not watched/) {
+		$retry--;
+		my $response = qx/watchman watch "$git_work_tree"/;
+		die "Failed to make watchman watch '$git_work_tree'.\n" .
+		    "Falling back to scanning...\n" if $? != 0;
+		$output = $json_pkg->new->utf8->decode($response);
+		$error = $output->{error};
+		die "Watchman: $error.\n" .
+		"Falling back to scanning...\n" if $error;
+
+		# Uncomment for debugging watchman output
+		# open (my $fh, ">", ".git/watchman-output.out");
+		# close $fh;
+
+		# Watchman will always return all files on the first query so
+		# return the fast "everything is dirty" flag to git and do the
+		# Watchman query just to get it over with now so we won't pay
+		# the cost in git to look up each individual file.
+		my $o = watchman_clock();
+		$error = $output->{error};
+
+		die "Watchman: $error.\n" .
+		"Falling back to scanning...\n" if $error;
+
+		output_result($o->{clock}, ("/"));
+		$last_update_token = $o->{clock};
+
+		eval { launch_watchman() };
+		return 0;
+	}
+
+	die "Watchman: $error.\n" .
+	"Falling back to scanning...\n" if $error;
+
+	return 1;
+}
+
+sub get_working_dir {
+	my $working_dir;
+	if ($^O =~ 'msys' || $^O =~ 'cygwin') {
+		$working_dir = Win32::GetCwd();
+		$working_dir =~ tr/\\/\//;
+	} else {
+		require Cwd;
+		$working_dir = Cwd::cwd();
+	}
+
+	return $working_dir;
+}
+
+
+// 🏁 FIM DO ARQUIVO: .git\hooks\fsmonitor-watchman.sample
+// ------------------------------------------------------------------
+
+
+// ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: .git\hooks\post-update.sample
+// ==================================================================
+
+#!/bin/sh
+#
+# An example hook script to prepare a packed repository for use over
+# dumb transports.
+#
+# To enable this hook, rename this file to "post-update".
+
+exec git update-server-info
+
+
+// 🏁 FIM DO ARQUIVO: .git\hooks\post-update.sample
+// ------------------------------------------------------------------
+
+
+// ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: .git\hooks\pre-applypatch.sample
+// ==================================================================
+
+#!/bin/sh
+#
+# An example hook script to verify what is about to be committed
+# by applypatch from an e-mail message.
+#
+# The hook should exit with non-zero status after issuing an
+# appropriate message if it wants to stop the commit.
+#
+# To enable this hook, rename this file to "pre-applypatch".
+
+. git-sh-setup
+precommit="$(git rev-parse --git-path hooks/pre-commit)"
+test -x "$precommit" && exec "$precommit" ${1+"$@"}
+:
+
+
+// 🏁 FIM DO ARQUIVO: .git\hooks\pre-applypatch.sample
+// ------------------------------------------------------------------
+
+
+// ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: .git\hooks\pre-commit.sample
+// ==================================================================
+
+#!/bin/sh
+#
+# An example hook script to verify what is about to be committed.
+# Called by "git commit" with no arguments.  The hook should
+# exit with non-zero status after issuing an appropriate message if
+# it wants to stop the commit.
+#
+# To enable this hook, rename this file to "pre-commit".
+
+if git rev-parse --verify HEAD >/dev/null 2>&1
+then
+	against=HEAD
+else
+	# Initial commit: diff against an empty tree object
+	against=$(git hash-object -t tree /dev/null)
+fi
+
+# If you want to allow non-ASCII filenames set this variable to true.
+allownonascii=$(git config --type=bool hooks.allownonascii)
+
+# Redirect output to stderr.
+exec 1>&2
+
+# Cross platform projects tend to avoid non-ASCII filenames; prevent
+# them from being added to the repository. We exploit the fact that the
+# printable range starts at the space character and ends with tilde.
+if [ "$allownonascii" != "true" ] &&
+	# Note that the use of brackets around a tr range is ok here, (it's
+	# even required, for portability to Solaris 10's /usr/bin/tr), since
+	# the square bracket bytes happen to fall in the designated range.
+	test $(git diff-index --cached --name-only --diff-filter=A -z $against |
+	  LC_ALL=C tr -d '[ -~]\0' | wc -c) != 0
+then
+	cat <<\EOF
+Error: Attempt to add a non-ASCII file name.
+
+This can cause problems if you want to work with people on other platforms.
+
+To be portable it is advisable to rename the file.
+
+If you know what you are doing you can disable this check using:
+
+  git config hooks.allownonascii true
+EOF
+	exit 1
+fi
+
+# If there are whitespace errors, print the offending file names and fail.
+exec git diff-index --check --cached $against --
+
+
+// 🏁 FIM DO ARQUIVO: .git\hooks\pre-commit.sample
+// ------------------------------------------------------------------
+
+
+// ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: .git\hooks\pre-merge-commit.sample
+// ==================================================================
+
+#!/bin/sh
+#
+# An example hook script to verify what is about to be committed.
+# Called by "git merge" with no arguments.  The hook should
+# exit with non-zero status after issuing an appropriate message to
+# stderr if it wants to stop the merge commit.
+#
+# To enable this hook, rename this file to "pre-merge-commit".
+
+. git-sh-setup
+test -x "$GIT_DIR/hooks/pre-commit" &&
+        exec "$GIT_DIR/hooks/pre-commit"
+:
+
+
+// 🏁 FIM DO ARQUIVO: .git\hooks\pre-merge-commit.sample
+// ------------------------------------------------------------------
+
+
+// ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: .git\hooks\pre-push.sample
+// ==================================================================
+
+#!/bin/sh
+
+# An example hook script to verify what is about to be pushed.  Called by "git
+# push" after it has checked the remote status, but before anything has been
+# pushed.  If this script exits with a non-zero status nothing will be pushed.
+#
+# This hook is called with the following parameters:
+#
+# $1 -- Name of the remote to which the push is being done
+# $2 -- URL to which the push is being done
+#
+# If pushing without using a named remote those arguments will be equal.
+#
+# Information about the commits which are being pushed is supplied as lines to
+# the standard input in the form:
+#
+#   <local ref> <local oid> <remote ref> <remote oid>
+#
+# This sample shows how to prevent push of commits where the log message starts
+# with "WIP" (work in progress).
+
+remote="$1"
+url="$2"
+
+zero=$(git hash-object --stdin </dev/null | tr '[0-9a-f]' '0')
+
+while read local_ref local_oid remote_ref remote_oid
+do
+	if test "$local_oid" = "$zero"
+	then
+		# Handle delete
+		:
+	else
+		if test "$remote_oid" = "$zero"
+		then
+			# New branch, examine all commits
+			range="$local_oid"
+		else
+			# Update to existing branch, examine new commits
+			range="$remote_oid..$local_oid"
+		fi
+
+		# Check for WIP commit
+		commit=$(git rev-list -n 1 --grep '^WIP' "$range")
+		if test -n "$commit"
+		then
+			echo >&2 "Found WIP commit in $local_ref, not pushing"
+			exit 1
+		fi
+	fi
+done
+
+exit 0
+
+
+// 🏁 FIM DO ARQUIVO: .git\hooks\pre-push.sample
+// ------------------------------------------------------------------
+
+
+// ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: .git\hooks\pre-rebase.sample
+// ==================================================================
+
+#!/bin/sh
+#
+# Copyright (c) 2006, 2008 Junio C Hamano
+#
+# The "pre-rebase" hook is run just before "git rebase" starts doing
+# its job, and can prevent the command from running by exiting with
+# non-zero status.
+#
+# The hook is called with the following parameters:
+#
+# $1 -- the upstream the series was forked from.
+# $2 -- the branch being rebased (or empty when rebasing the current branch).
+#
+# This sample shows how to prevent topic branches that are already
+# merged to 'next' branch from getting rebased, because allowing it
+# would result in rebasing already published history.
+
+publish=next
+basebranch="$1"
+if test "$#" = 2
+then
+	topic="refs/heads/$2"
+else
+	topic=`git symbolic-ref HEAD` ||
+	exit 0 ;# we do not interrupt rebasing detached HEAD
+fi
+
+case "$topic" in
+refs/heads/??/*)
+	;;
+*)
+	exit 0 ;# we do not interrupt others.
+	;;
+esac
+
+# Now we are dealing with a topic branch being rebased
+# on top of master.  Is it OK to rebase it?
+
+# Does the topic really exist?
+git show-ref -q "$topic" || {
+	echo >&2 "No such branch $topic"
+	exit 1
+}
+
+# Is topic fully merged to master?
+not_in_master=`git rev-list --pretty=oneline ^master "$topic"`
+if test -z "$not_in_master"
+then
+	echo >&2 "$topic is fully merged to master; better remove it."
+	exit 1 ;# we could allow it, but there is no point.
+fi
+
+# Is topic ever merged to next?  If so you should not be rebasing it.
+only_next_1=`git rev-list ^master "^$topic" ${publish} | sort`
+only_next_2=`git rev-list ^master           ${publish} | sort`
+if test "$only_next_1" = "$only_next_2"
+then
+	not_in_topic=`git rev-list "^$topic" master`
+	if test -z "$not_in_topic"
+	then
+		echo >&2 "$topic is already up to date with master"
+		exit 1 ;# we could allow it, but there is no point.
+	else
+		exit 0
+	fi
+else
+	not_in_next=`git rev-list --pretty=oneline ^${publish} "$topic"`
+	/usr/bin/perl -e '
+		my $topic = $ARGV[0];
+		my $msg = "* $topic has commits already merged to public branch:\n";
+		my (%not_in_next) = map {
+			/^([0-9a-f]+) /;
+			($1 => 1);
+		} split(/\n/, $ARGV[1]);
+		for my $elem (map {
+				/^([0-9a-f]+) (.*)$/;
+				[$1 => $2];
+			} split(/\n/, $ARGV[2])) {
+			if (!exists $not_in_next{$elem->[0]}) {
+				if ($msg) {
+					print STDERR $msg;
+					undef $msg;
+				}
+				print STDERR " $elem->[1]\n";
+			}
+		}
+	' "$topic" "$not_in_next" "$not_in_master"
+	exit 1
+fi
+
+<<\DOC_END
+
+This sample hook safeguards topic branches that have been
+published from being rewound.
+
+The workflow assumed here is:
+
+ * Once a topic branch forks from "master", "master" is never
+   merged into it again (either directly or indirectly).
+
+ * Once a topic branch is fully cooked and merged into "master",
+   it is deleted.  If you need to build on top of it to correct
+   earlier mistakes, a new topic branch is created by forking at
+   the tip of the "master".  This is not strictly necessary, but
+   it makes it easier to keep your history simple.
+
+ * Whenever you need to test or publish your changes to topic
+   branches, merge them into "next" branch.
+
+The script, being an example, hardcodes the publish branch name
+to be "next", but it is trivial to make it configurable via
+$GIT_DIR/config mechanism.
+
+With this workflow, you would want to know:
+
+(1) ... if a topic branch has ever been merged to "next".  Young
+    topic branches can have stupid mistakes you would rather
+    clean up before publishing, and things that have not been
+    merged into other branches can be easily rebased without
+    affecting other people.  But once it is published, you would
+    not want to rewind it.
+
+(2) ... if a topic branch has been fully merged to "master".
+    Then you can delete it.  More importantly, you should not
+    build on top of it -- other people may already want to
+    change things related to the topic as patches against your
+    "master", so if you need further changes, it is better to
+    fork the topic (perhaps with the same name) afresh from the
+    tip of "master".
+
+Let's look at this example:
+
+		   o---o---o---o---o---o---o---o---o---o "next"
+		  /       /           /           /
+		 /   a---a---b A     /           /
+		/   /               /           /
+	       /   /   c---c---c---c B         /
+	      /   /   /             \         /
+	     /   /   /   b---b C     \       /
+	    /   /   /   /             \     /
+    ---o---o---o---o---o---o---o---o---o---o---o "master"
+
+
+A, B and C are topic branches.
+
+ * A has one fix since it was merged up to "next".
+
+ * B has finished.  It has been fully merged up to "master" and "next",
+   and is ready to be deleted.
+
+ * C has not merged to "next" at all.
+
+We would want to allow C to be rebased, refuse A, and encourage
+B to be deleted.
+
+To compute (1):
+
+	git rev-list ^master ^topic next
+	git rev-list ^master        next
+
+	if these match, topic has not merged in next at all.
+
+To compute (2):
+
+	git rev-list master..topic
+
+	if this is empty, it is fully merged to "master".
+
+DOC_END
+
+
+// 🏁 FIM DO ARQUIVO: .git\hooks\pre-rebase.sample
+// ------------------------------------------------------------------
+
+
+// ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: .git\hooks\pre-receive.sample
+// ==================================================================
+
+#!/bin/sh
+#
+# An example hook script to make use of push options.
+# The example simply echoes all push options that start with 'echoback='
+# and rejects all pushes when the "reject" push option is used.
+#
+# To enable this hook, rename this file to "pre-receive".
+
+if test -n "$GIT_PUSH_OPTION_COUNT"
+then
+	i=0
+	while test "$i" -lt "$GIT_PUSH_OPTION_COUNT"
+	do
+		eval "value=\$GIT_PUSH_OPTION_$i"
+		case "$value" in
+		echoback=*)
+			echo "echo from the pre-receive-hook: ${value#*=}" >&2
+			;;
+		reject)
+			exit 1
+		esac
+		i=$((i + 1))
+	done
+fi
+
+
+// 🏁 FIM DO ARQUIVO: .git\hooks\pre-receive.sample
+// ------------------------------------------------------------------
+
+
+// ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: .git\hooks\prepare-commit-msg.sample
+// ==================================================================
+
+#!/bin/sh
+#
+# An example hook script to prepare the commit log message.
+# Called by "git commit" with the name of the file that has the
+# commit message, followed by the description of the commit
+# message's source.  The hook's purpose is to edit the commit
+# message file.  If the hook fails with a non-zero status,
+# the commit is aborted.
+#
+# To enable this hook, rename this file to "prepare-commit-msg".
+
+# This hook includes three examples. The first one removes the
+# "# Please enter the commit message..." help message.
+#
+# The second includes the output of "git diff --name-status -r"
+# into the message, just before the "git status" output.  It is
+# commented because it doesn't cope with --amend or with squashed
+# commits.
+#
+# The third example adds a Signed-off-by line to the message, that can
+# still be edited.  This is rarely a good idea.
+
+COMMIT_MSG_FILE=$1
+COMMIT_SOURCE=$2
+SHA1=$3
+
+/usr/bin/perl -i.bak -ne 'print unless(m/^. Please enter the commit message/..m/^#$/)' "$COMMIT_MSG_FILE"
+
+# case "$COMMIT_SOURCE,$SHA1" in
+#  ,|template,)
+#    /usr/bin/perl -i.bak -pe '
+#       print "\n" . `git diff --cached --name-status -r`
+# 	 if /^#/ && $first++ == 0' "$COMMIT_MSG_FILE" ;;
+#  *) ;;
+# esac
+
+# SOB=$(git var GIT_COMMITTER_IDENT | sed -n 's/^\(.*>\).*$/Signed-off-by: \1/p')
+# git interpret-trailers --in-place --trailer "$SOB" "$COMMIT_MSG_FILE"
+# if test -z "$COMMIT_SOURCE"
+# then
+#   /usr/bin/perl -i.bak -pe 'print "\n" if !$first_line++' "$COMMIT_MSG_FILE"
+# fi
+
+
+// 🏁 FIM DO ARQUIVO: .git\hooks\prepare-commit-msg.sample
+// ------------------------------------------------------------------
+
+
+// ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: .git\hooks\push-to-checkout.sample
+// ==================================================================
+
+#!/bin/sh
+
+# An example hook script to update a checked-out tree on a git push.
+#
+# This hook is invoked by git-receive-pack(1) when it reacts to git
+# push and updates reference(s) in its repository, and when the push
+# tries to update the branch that is currently checked out and the
+# receive.denyCurrentBranch configuration variable is set to
+# updateInstead.
+#
+# By default, such a push is refused if the working tree and the index
+# of the remote repository has any difference from the currently
+# checked out commit; when both the working tree and the index match
+# the current commit, they are updated to match the newly pushed tip
+# of the branch. This hook is to be used to override the default
+# behaviour; however the code below reimplements the default behaviour
+# as a starting point for convenient modification.
+#
+# The hook receives the commit with which the tip of the current
+# branch is going to be updated:
+commit=$1
+
+# It can exit with a non-zero status to refuse the push (when it does
+# so, it must not modify the index or the working tree).
+die () {
+	echo >&2 "$*"
+	exit 1
+}
+
+# Or it can make any necessary changes to the working tree and to the
+# index to bring them to the desired state when the tip of the current
+# branch is updated to the new commit, and exit with a zero status.
+#
+# For example, the hook can simply run git read-tree -u -m HEAD "$1"
+# in order to emulate git fetch that is run in the reverse direction
+# with git push, as the two-tree form of git read-tree -u -m is
+# essentially the same as git switch or git checkout that switches
+# branches while keeping the local changes in the working tree that do
+# not interfere with the difference between the branches.
+
+# The below is a more-or-less exact translation to shell of the C code
+# for the default behaviour for git's push-to-checkout hook defined in
+# the push_to_deploy() function in builtin/receive-pack.c.
+#
+# Note that the hook will be executed from the repository directory,
+# not from the working tree, so if you want to perform operations on
+# the working tree, you will have to adapt your code accordingly, e.g.
+# by adding "cd .." or using relative paths.
+
+if ! git update-index -q --ignore-submodules --refresh
+then
+	die "Up-to-date check failed"
+fi
+
+if ! git diff-files --quiet --ignore-submodules --
+then
+	die "Working directory has unstaged changes"
+fi
+
+# This is a rough translation of:
+#
+#   head_has_history() ? "HEAD" : EMPTY_TREE_SHA1_HEX
+if git cat-file -e HEAD 2>/dev/null
+then
+	head=HEAD
+else
+	head=$(git hash-object -t tree --stdin </dev/null)
+fi
+
+if ! git diff-index --quiet --cached --ignore-submodules $head --
+then
+	die "Working directory has staged changes"
+fi
+
+if ! git read-tree -u -m "$commit"
+then
+	die "Could not update working tree to new HEAD"
+fi
+
+
+// 🏁 FIM DO ARQUIVO: .git\hooks\push-to-checkout.sample
+// ------------------------------------------------------------------
+
+
+// ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: .git\hooks\sendemail-validate.sample
+// ==================================================================
+
+#!/bin/sh
+
+# An example hook script to validate a patch (and/or patch series) before
+# sending it via email.
+#
+# The hook should exit with non-zero status after issuing an appropriate
+# message if it wants to prevent the email(s) from being sent.
+#
+# To enable this hook, rename this file to "sendemail-validate".
+#
+# By default, it will only check that the patch(es) can be applied on top of
+# the default upstream branch without conflicts in a secondary worktree. After
+# validation (successful or not) of the last patch of a series, the worktree
+# will be deleted.
+#
+# The following config variables can be set to change the default remote and
+# remote ref that are used to apply the patches against:
+#
+#   sendemail.validateRemote (default: origin)
+#   sendemail.validateRemoteRef (default: HEAD)
+#
+# Replace the TODO placeholders with appropriate checks according to your
+# needs.
+
+validate_cover_letter () {
+	file="$1"
+	# TODO: Replace with appropriate checks (e.g. spell checking).
+	true
+}
+
+validate_patch () {
+	file="$1"
+	# Ensure that the patch applies without conflicts.
+	git am -3 "$file" || return
+	# TODO: Replace with appropriate checks for this patch
+	# (e.g. checkpatch.pl).
+	true
+}
+
+validate_series () {
+	# TODO: Replace with appropriate checks for the whole series
+	# (e.g. quick build, coding style checks, etc.).
+	true
+}
+
+# main -------------------------------------------------------------------------
+
+if test "$GIT_SENDEMAIL_FILE_COUNTER" = 1
+then
+	remote=$(git config --default origin --get sendemail.validateRemote) &&
+	ref=$(git config --default HEAD --get sendemail.validateRemoteRef) &&
+	worktree=$(mktemp --tmpdir -d sendemail-validate.XXXXXXX) &&
+	git worktree add -fd --checkout "$worktree" "refs/remotes/$remote/$ref" &&
+	git config --replace-all sendemail.validateWorktree "$worktree"
+else
+	worktree=$(git config --get sendemail.validateWorktree)
+fi || {
+	echo "sendemail-validate: error: failed to prepare worktree" >&2
+	exit 1
+}
+
+unset GIT_DIR GIT_WORK_TREE
+cd "$worktree" &&
+
+if grep -q "^diff --git " "$1"
+then
+	validate_patch "$1"
+else
+	validate_cover_letter "$1"
+fi &&
+
+if test "$GIT_SENDEMAIL_FILE_COUNTER" = "$GIT_SENDEMAIL_FILE_TOTAL"
+then
+	git config --unset-all sendemail.validateWorktree &&
+	trap 'git worktree remove -ff "$worktree"' EXIT &&
+	validate_series
+fi
+
+
+// 🏁 FIM DO ARQUIVO: .git\hooks\sendemail-validate.sample
+// ------------------------------------------------------------------
+
+
+// ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: .git\hooks\update.sample
+// ==================================================================
+
+#!/bin/sh
+#
+# An example hook script to block unannotated tags from entering.
+# Called by "git receive-pack" with arguments: refname sha1-old sha1-new
+#
+# To enable this hook, rename this file to "update".
+#
+# Config
+# ------
+# hooks.allowunannotated
+#   This boolean sets whether unannotated tags will be allowed into the
+#   repository.  By default they won't be.
+# hooks.allowdeletetag
+#   This boolean sets whether deleting tags will be allowed in the
+#   repository.  By default they won't be.
+# hooks.allowmodifytag
+#   This boolean sets whether a tag may be modified after creation. By default
+#   it won't be.
+# hooks.allowdeletebranch
+#   This boolean sets whether deleting branches will be allowed in the
+#   repository.  By default they won't be.
+# hooks.denycreatebranch
+#   This boolean sets whether remotely creating branches will be denied
+#   in the repository.  By default this is allowed.
+#
+
+# --- Command line
+refname="$1"
+oldrev="$2"
+newrev="$3"
+
+# --- Safety check
+if [ -z "$GIT_DIR" ]; then
+	echo "Don't run this script from the command line." >&2
+	echo " (if you want, you could supply GIT_DIR then run" >&2
+	echo "  $0 <ref> <oldrev> <newrev>)" >&2
+	exit 1
+fi
+
+if [ -z "$refname" -o -z "$oldrev" -o -z "$newrev" ]; then
+	echo "usage: $0 <ref> <oldrev> <newrev>" >&2
+	exit 1
+fi
+
+# --- Config
+allowunannotated=$(git config --type=bool hooks.allowunannotated)
+allowdeletebranch=$(git config --type=bool hooks.allowdeletebranch)
+denycreatebranch=$(git config --type=bool hooks.denycreatebranch)
+allowdeletetag=$(git config --type=bool hooks.allowdeletetag)
+allowmodifytag=$(git config --type=bool hooks.allowmodifytag)
+
+# check for no description
+projectdesc=$(sed -e '1q' "$GIT_DIR/description")
+case "$projectdesc" in
+"Unnamed repository"* | "")
+	echo "*** Project description file hasn't been set" >&2
+	exit 1
+	;;
+esac
+
+# --- Check types
+# if $newrev is 0000...0000, it's a commit to delete a ref.
+zero=$(git hash-object --stdin </dev/null | tr '[0-9a-f]' '0')
+if [ "$newrev" = "$zero" ]; then
+	newrev_type=delete
+else
+	newrev_type=$(git cat-file -t $newrev)
+fi
+
+case "$refname","$newrev_type" in
+	refs/tags/*,commit)
+		# un-annotated tag
+		short_refname=${refname##refs/tags/}
+		if [ "$allowunannotated" != "true" ]; then
+			echo "*** The un-annotated tag, $short_refname, is not allowed in this repository" >&2
+			echo "*** Use 'git tag [ -a | -s ]' for tags you want to propagate." >&2
+			exit 1
+		fi
+		;;
+	refs/tags/*,delete)
+		# delete tag
+		if [ "$allowdeletetag" != "true" ]; then
+			echo "*** Deleting a tag is not allowed in this repository" >&2
+			exit 1
+		fi
+		;;
+	refs/tags/*,tag)
+		# annotated tag
+		if [ "$allowmodifytag" != "true" ] && git rev-parse $refname > /dev/null 2>&1
+		then
+			echo "*** Tag '$refname' already exists." >&2
+			echo "*** Modifying a tag is not allowed in this repository." >&2
+			exit 1
+		fi
+		;;
+	refs/heads/*,commit)
+		# branch
+		if [ "$oldrev" = "$zero" -a "$denycreatebranch" = "true" ]; then
+			echo "*** Creating a branch is not allowed in this repository" >&2
+			exit 1
+		fi
+		;;
+	refs/heads/*,delete)
+		# delete branch
+		if [ "$allowdeletebranch" != "true" ]; then
+			echo "*** Deleting a branch is not allowed in this repository" >&2
+			exit 1
+		fi
+		;;
+	refs/remotes/*,commit)
+		# tracking branch
+		;;
+	refs/remotes/*,delete)
+		# delete tracking branch
+		if [ "$allowdeletebranch" != "true" ]; then
+			echo "*** Deleting a tracking branch is not allowed in this repository" >&2
+			exit 1
+		fi
+		;;
+	*)
+		# Anything else (is there anything else?)
+		echo "*** Update hook: unknown type of update to ref $refname of type $newrev_type" >&2
+		exit 1
+		;;
+esac
+
+# --- Finished
+exit 0
+
+
+// 🏁 FIM DO ARQUIVO: .git\hooks\update.sample
+// ------------------------------------------------------------------
+
+
+// ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: .git\info\exclude
+// ==================================================================
+
+# git ls-files --others --exclude-from=.git/info/exclude
+# Lines that start with '#' are comments.
+# For a project mostly in C, the following would be a good set of
+# exclude patterns (uncomment them if you want to use them):
+# *.[oa]
+# *~
+
+
+// 🏁 FIM DO ARQUIVO: .git\info\exclude
+// ------------------------------------------------------------------
+
+
+// ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: .git\logs\HEAD
+// ==================================================================
+
+0000000000000000000000000000000000000000 3c901970659696a80eef38d5754a0678dad3f069 Lucas Schuab <lucaschuab2015@outlook.com> 1791983640 -0300	commit (initial): Initial commit
+3c901970659696a80eef38d5754a0678dad3f069 f0a2483fb9f531f5cdbef870c76c6e0321080046 Lucas Schuab <lucaschuab2015@outlook.com> 1791983677 -0300	commit: feito localmente
+f0a2483fb9f531f5cdbef870c76c6e0321080046 dbffaf738c89560886aaae551e259463a0cd53f6 Lucas Schuab <lucaschuab2015@outlook.com> 1791983880 -0300	commit: atualização da db
+dbffaf738c89560886aaae551e259463a0cd53f6 13a1041253d5de22bd3e5a2c97ed72da149509df Lucas Schuab <lucaschuab2015@outlook.com> 1792383870 -0300	commit: inicio da criação das funcionalidades de criação dev
+13a1041253d5de22bd3e5a2c97ed72da149509df 5b440c088acad92aba91032270758b0814456731 Lucas Schuab <lucaschuab2015@outlook.com> 1792422071 -0300	commit: aperfeiçaomento da edição 2d e modularização completa do projeto
+5b440c088acad92aba91032270758b0814456731 04a3e54bf68335107a348259e4770142ac1d2536 Lucas Schuab <lucaschuab2015@outlook.com> 1792460800 -0300	commit: aperfeiçoamento css e responsividade
+
+
+// 🏁 FIM DO ARQUIVO: .git\logs\HEAD
+// ------------------------------------------------------------------
+
+
+// ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: .git\logs\refs\heads\main
+// ==================================================================
+
+0000000000000000000000000000000000000000 3c901970659696a80eef38d5754a0678dad3f069 Lucas Schuab <lucaschuab2015@outlook.com> 1791983640 -0300	commit (initial): Initial commit
+3c901970659696a80eef38d5754a0678dad3f069 f0a2483fb9f531f5cdbef870c76c6e0321080046 Lucas Schuab <lucaschuab2015@outlook.com> 1791983677 -0300	commit: feito localmente
+f0a2483fb9f531f5cdbef870c76c6e0321080046 dbffaf738c89560886aaae551e259463a0cd53f6 Lucas Schuab <lucaschuab2015@outlook.com> 1791983880 -0300	commit: atualização da db
+dbffaf738c89560886aaae551e259463a0cd53f6 13a1041253d5de22bd3e5a2c97ed72da149509df Lucas Schuab <lucaschuab2015@outlook.com> 1792383870 -0300	commit: inicio da criação das funcionalidades de criação dev
+13a1041253d5de22bd3e5a2c97ed72da149509df 5b440c088acad92aba91032270758b0814456731 Lucas Schuab <lucaschuab2015@outlook.com> 1792422071 -0300	commit: aperfeiçaomento da edição 2d e modularização completa do projeto
+5b440c088acad92aba91032270758b0814456731 04a3e54bf68335107a348259e4770142ac1d2536 Lucas Schuab <lucaschuab2015@outlook.com> 1792460800 -0300	commit: aperfeiçoamento css e responsividade
+
+
+// 🏁 FIM DO ARQUIVO: .git\logs\refs\heads\main
+// ------------------------------------------------------------------
+
+
+// ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: .git\logs\refs\remotes\origin\HEAD
+// ==================================================================
+
+0000000000000000000000000000000000000000 3c901970659696a80eef38d5754a0678dad3f069 Lucas Schuab <lucaschuab2015@outlook.com> 1791983650 -0300	fetch
+3c901970659696a80eef38d5754a0678dad3f069 3c901970659696a80eef38d5754a0678dad3f069 Lucas Oliveira Schuab <lucas@LAPTOP-SKE6HI0S.(none)> 1791983651 -0300	remote set-head
+f0a2483fb9f531f5cdbef870c76c6e0321080046 f0a2483fb9f531f5cdbef870c76c6e0321080046 Lucas Oliveira Schuab <lucas@LAPTOP-SKE6HI0S.(none)> 1791983688 -0300	remote set-head
+dbffaf738c89560886aaae551e259463a0cd53f6 dbffaf738c89560886aaae551e259463a0cd53f6 Lucas Oliveira Schuab <lucas@LAPTOP-SKE6HI0S.(none)> 1791983885 -0300	remote set-head
+13a1041253d5de22bd3e5a2c97ed72da149509df 13a1041253d5de22bd3e5a2c97ed72da149509df Lucas Oliveira Schuab <lucas@LAPTOP-SKE6HI0S.(none)> 1792383875 -0300	remote set-head
+5b440c088acad92aba91032270758b0814456731 5b440c088acad92aba91032270758b0814456731 Lucas Oliveira Schuab <lucas@LAPTOP-SKE6HI0S.(none)> 1792422076 -0300	remote set-head
+5b440c088acad92aba91032270758b0814456731 5b440c088acad92aba91032270758b0814456731 Lucas Oliveira Schuab <lucas@LAPTOP-SKE6HI0S.(none)> 1792460796 -0300	remote set-head
+04a3e54bf68335107a348259e4770142ac1d2536 04a3e54bf68335107a348259e4770142ac1d2536 Lucas Oliveira Schuab <lucas@LAPTOP-SKE6HI0S.(none)> 1792460805 -0300	remote set-head
+
+
+// 🏁 FIM DO ARQUIVO: .git\logs\refs\remotes\origin\HEAD
+// ------------------------------------------------------------------
+
+
+// ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: .git\logs\refs\remotes\origin\main
+// ==================================================================
+
+0000000000000000000000000000000000000000 3c901970659696a80eef38d5754a0678dad3f069 Lucas Schuab <lucaschuab2015@outlook.com> 1791983650 -0300	update by push
+3c901970659696a80eef38d5754a0678dad3f069 f0a2483fb9f531f5cdbef870c76c6e0321080046 Lucas Schuab <lucaschuab2015@outlook.com> 1791983687 -0300	update by push
+f0a2483fb9f531f5cdbef870c76c6e0321080046 dbffaf738c89560886aaae551e259463a0cd53f6 Lucas Schuab <lucaschuab2015@outlook.com> 1791983884 -0300	update by push
+dbffaf738c89560886aaae551e259463a0cd53f6 13a1041253d5de22bd3e5a2c97ed72da149509df Lucas Schuab <lucaschuab2015@outlook.com> 1792383873 -0300	update by push
+13a1041253d5de22bd3e5a2c97ed72da149509df 5b440c088acad92aba91032270758b0814456731 Lucas Schuab <lucaschuab2015@outlook.com> 1792422075 -0300	update by push
+5b440c088acad92aba91032270758b0814456731 04a3e54bf68335107a348259e4770142ac1d2536 Lucas Schuab <lucaschuab2015@outlook.com> 1792460804 -0300	update by push
+
+
+// 🏁 FIM DO ARQUIVO: .git\logs\refs\remotes\origin\main
+// ------------------------------------------------------------------
+
+
+// ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: .git\objects\02\251f4b956c55af2d76fd0788124d7eee2b45eb
+// ==================================================================
+
+// [Arquivo binário ignorado pelo leitor de segurança]
+
+
+// 🏁 FIM DO ARQUIVO: .git\objects\02\251f4b956c55af2d76fd0788124d7eee2b45eb
+// ------------------------------------------------------------------
+
+
+// ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: .git\objects\02\eb319f10f70b460c2eb756b71d84bd67c7682f
+// ==================================================================
+
+// [Arquivo binário ignorado pelo leitor de segurança]
+
+
+// 🏁 FIM DO ARQUIVO: .git\objects\02\eb319f10f70b460c2eb756b71d84bd67c7682f
+// ------------------------------------------------------------------
+
+
+// ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: .git\objects\04\a3e54bf68335107a348259e4770142ac1d2536
+// ==================================================================
+
+// [Arquivo binário ignorado pelo leitor de segurança]
+
+
+// 🏁 FIM DO ARQUIVO: .git\objects\04\a3e54bf68335107a348259e4770142ac1d2536
+// ------------------------------------------------------------------
+
+
+// ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: .git\objects\08\42bb15a29bf37fe1ca11a032720e172b638bfa
+// ==================================================================
+
+// [Arquivo binário ignorado pelo leitor de segurança]
+
+
+// 🏁 FIM DO ARQUIVO: .git\objects\08\42bb15a29bf37fe1ca11a032720e172b638bfa
+// ------------------------------------------------------------------
+
+
+// ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: .git\objects\0a\0e9c468eb3d070db112f0933919df7e9a40acf
+// ==================================================================
+
+// [Arquivo binário ignorado pelo leitor de segurança]
+
+
+// 🏁 FIM DO ARQUIVO: .git\objects\0a\0e9c468eb3d070db112f0933919df7e9a40acf
+// ------------------------------------------------------------------
+
+
+// ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: .git\objects\0b\6cc631d8807752b63ca2526c0184eb16b8240a
+// ==================================================================
+
+// [Arquivo binário ignorado pelo leitor de segurança]
+
+
+// 🏁 FIM DO ARQUIVO: .git\objects\0b\6cc631d8807752b63ca2526c0184eb16b8240a
+// ------------------------------------------------------------------
+
+
+// ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: .git\objects\0c\065b924bb5fa4111890dc78b76d68cc1d6d403
+// ==================================================================
+
+x+)JMU01f040031QH�(I�+���+��*��cX~n���F��['\��S,�<{b% Ȝ�
+
+// 🏁 FIM DO ARQUIVO: .git\objects\0c\065b924bb5fa4111890dc78b76d68cc1d6d403
+// ------------------------------------------------------------------
+
+
+// ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: .git\objects\0f\31f13bb51a13228a9ed32a6d5279c6b2829e0f
+// ==================================================================
+
+// [Arquivo binário ignorado pelo leitor de segurança]
+
+
+// 🏁 FIM DO ARQUIVO: .git\objects\0f\31f13bb51a13228a9ed32a6d5279c6b2829e0f
+// ------------------------------------------------------------------
+
+
+// ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: .git\objects\0f\60ab414f2d1566bbaf1e8aaa3f678e08516ba5
+// ==================================================================
+
+// [Arquivo binário ignorado pelo leitor de segurança]
+
+
+// 🏁 FIM DO ARQUIVO: .git\objects\0f\60ab414f2d1566bbaf1e8aaa3f678e08516ba5
+// ------------------------------------------------------------------
+
+
+// ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: .git\objects\13\192dc85d99e97969d044c67626a5fe7e592041
+// ==================================================================
+
+// [Arquivo binário ignorado pelo leitor de segurança]
+
+
+// 🏁 FIM DO ARQUIVO: .git\objects\13\192dc85d99e97969d044c67626a5fe7e592041
+// ------------------------------------------------------------------
+
+
+// ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: .git\objects\13\a1041253d5de22bd3e5a2c97ed72da149509df
+// ==================================================================
+
+// [Arquivo binário ignorado pelo leitor de segurança]
+
+
+// 🏁 FIM DO ARQUIVO: .git\objects\13\a1041253d5de22bd3e5a2c97ed72da149509df
+// ------------------------------------------------------------------
+
+
+// ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: .git\objects\15\11959c22b74118c06679739cf9abe2ceeea48c
+// ==================================================================
+
+// [Arquivo binário ignorado pelo leitor de segurança]
+
+
+// 🏁 FIM DO ARQUIVO: .git\objects\15\11959c22b74118c06679739cf9abe2ceeea48c
+// ------------------------------------------------------------------
+
+
+// ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: .git\objects\1c\d3dce331ed297aa5844968417c0480889df175
+// ==================================================================
+
+// [Arquivo binário ignorado pelo leitor de segurança]
+
+
+// 🏁 FIM DO ARQUIVO: .git\objects\1c\d3dce331ed297aa5844968417c0480889df175
+// ------------------------------------------------------------------
+
+
+// ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: .git\objects\20\2f46834747412676a527044aeab9c6cc87cb9f
+// ==================================================================
+
+// [Arquivo binário ignorado pelo leitor de segurança]
+
+
+// 🏁 FIM DO ARQUIVO: .git\objects\20\2f46834747412676a527044aeab9c6cc87cb9f
+// ------------------------------------------------------------------
+
+
+// ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: .git\objects\20\71b8108e134958d9259328245aee36555919b9
+// ==================================================================
+
+// [Arquivo binário ignorado pelo leitor de segurança]
+
+
+// 🏁 FIM DO ARQUIVO: .git\objects\20\71b8108e134958d9259328245aee36555919b9
+// ------------------------------------------------------------------
+
+
+// ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: .git\objects\24\25c0f745bef4d009cb6661b62fd9dfd62960b0
+// ==================================================================
+
+// [Arquivo binário ignorado pelo leitor de segurança]
+
+
+// 🏁 FIM DO ARQUIVO: .git\objects\24\25c0f745bef4d009cb6661b62fd9dfd62960b0
+// ------------------------------------------------------------------
+
+
+// ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: .git\objects\31\d938528fbbe876e356e5b1cd20b76539e58845
+// ==================================================================
+
+// [Arquivo binário ignorado pelo leitor de segurança]
+
+
+// 🏁 FIM DO ARQUIVO: .git\objects\31\d938528fbbe876e356e5b1cd20b76539e58845
+// ------------------------------------------------------------------
+
+
+// ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: .git\objects\33\ff4fa50e6727ab2280e3ae5f1cad4348157958
+// ==================================================================
+
+// [Arquivo binário ignorado pelo leitor de segurança]
+
+
+// 🏁 FIM DO ARQUIVO: .git\objects\33\ff4fa50e6727ab2280e3ae5f1cad4348157958
+// ------------------------------------------------------------------
+
+
+// ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: .git\objects\3c\901970659696a80eef38d5754a0678dad3f069
+// ==================================================================
+
+// [Arquivo binário ignorado pelo leitor de segurança]
+
+
+// 🏁 FIM DO ARQUIVO: .git\objects\3c\901970659696a80eef38d5754a0678dad3f069
+// ------------------------------------------------------------------
+
+
+// ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: .git\objects\41\3ee08af5482774c19b1ac740c2248a96b568b8
+// ==================================================================
+
+// [Arquivo binário ignorado pelo leitor de segurança]
+
+
+// 🏁 FIM DO ARQUIVO: .git\objects\41\3ee08af5482774c19b1ac740c2248a96b568b8
+// ------------------------------------------------------------------
+
+
+// ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: .git\objects\44\4a0a3145deabaef81cef8bfce5d7cf0874d11f
+// ==================================================================
+
+// [Arquivo binário ignorado pelo leitor de segurança]
+
+
+// 🏁 FIM DO ARQUIVO: .git\objects\44\4a0a3145deabaef81cef8bfce5d7cf0874d11f
+// ------------------------------------------------------------------
+
+
+// ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: .git\objects\46\75b651a13942e3b5b231ecf9088a10295e8e6a
+// ==================================================================
+
+// [Arquivo binário ignorado pelo leitor de segurança]
+
+
+// 🏁 FIM DO ARQUIVO: .git\objects\46\75b651a13942e3b5b231ecf9088a10295e8e6a
+// ------------------------------------------------------------------
+
+
+// ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: .git\objects\46\bfa20bbd6887892dafc2882419b0b682ca0d7f
+// ==================================================================
+
+// [Arquivo binário ignorado pelo leitor de segurança]
+
+
+// 🏁 FIM DO ARQUIVO: .git\objects\46\bfa20bbd6887892dafc2882419b0b682ca0d7f
+// ------------------------------------------------------------------
+
+
+// ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: .git\objects\49\5d8b7070ffbd8693ebba820a12535b06494bff
+// ==================================================================
+
+// [Arquivo binário ignorado pelo leitor de segurança]
+
+
+// 🏁 FIM DO ARQUIVO: .git\objects\49\5d8b7070ffbd8693ebba820a12535b06494bff
+// ------------------------------------------------------------------
+
+
+// ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: .git\objects\4d\df9122c5ca0d4bb4aad3dfdca88c9d11c5b45d
+// ==================================================================
+
+// [Arquivo binário ignorado pelo leitor de segurança]
+
+
+// 🏁 FIM DO ARQUIVO: .git\objects\4d\df9122c5ca0d4bb4aad3dfdca88c9d11c5b45d
+// ------------------------------------------------------------------
+
+
+// ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: .git\objects\51\01b674df391399da71c767aa5c976426c9dc7a
+// ==================================================================
+
+// [Arquivo binário ignorado pelo leitor de segurança]
+
+
+// 🏁 FIM DO ARQUIVO: .git\objects\51\01b674df391399da71c767aa5c976426c9dc7a
+// ------------------------------------------------------------------
+
+
+// ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: .git\objects\52\7d4fba5579d5e4e9d260051974927071f2b4a1
+// ==================================================================
+
+// [Arquivo binário ignorado pelo leitor de segurança]
+
+
+// 🏁 FIM DO ARQUIVO: .git\objects\52\7d4fba5579d5e4e9d260051974927071f2b4a1
+// ------------------------------------------------------------------
+
+
+// ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: .git\objects\57\434022187e0bdf3707b401cb8ae756d870bc60
+// ==================================================================
+
+// [Arquivo binário ignorado pelo leitor de segurança]
+
+
+// 🏁 FIM DO ARQUIVO: .git\objects\57\434022187e0bdf3707b401cb8ae756d870bc60
+// ------------------------------------------------------------------
+
+
+// ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: .git\objects\5a\cd2f23c2a1b7370a4dee3ab097708137435dfe
+// ==================================================================
+
+// [Arquivo binário ignorado pelo leitor de segurança]
+
+
+// 🏁 FIM DO ARQUIVO: .git\objects\5a\cd2f23c2a1b7370a4dee3ab097708137435dfe
+// ------------------------------------------------------------------
+
+
+// ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: .git\objects\5b\2c408d1c9873a919513089538c157cc01eed46
+// ==================================================================
+
+// [Arquivo binário ignorado pelo leitor de segurança]
+
+
+// 🏁 FIM DO ARQUIVO: .git\objects\5b\2c408d1c9873a919513089538c157cc01eed46
+// ------------------------------------------------------------------
+
+
+// ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: .git\objects\5b\440c088acad92aba91032270758b0814456731
+// ==================================================================
+
+// [Arquivo binário ignorado pelo leitor de segurança]
+
+
+// 🏁 FIM DO ARQUIVO: .git\objects\5b\440c088acad92aba91032270758b0814456731
+// ------------------------------------------------------------------
+
+
+// ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: .git\objects\5b\c76810926bc986c8016355a804189357a2082d
+// ==================================================================
+
+// [Arquivo binário ignorado pelo leitor de segurança]
+
+
+// 🏁 FIM DO ARQUIVO: .git\objects\5b\c76810926bc986c8016355a804189357a2082d
+// ------------------------------------------------------------------
+
+
+// ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: .git\objects\5e\83bcbf57907010602a73f562ba52c711a83e40
+// ==================================================================
+
+// [Arquivo binário ignorado pelo leitor de segurança]
+
+
+// 🏁 FIM DO ARQUIVO: .git\objects\5e\83bcbf57907010602a73f562ba52c711a83e40
+// ------------------------------------------------------------------
+
+
+// ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: .git\objects\63\8657cf01ca80ab9297f146b5ea732aa37b918a
+// ==================================================================
+
+// [Arquivo binário ignorado pelo leitor de segurança]
+
+
+// 🏁 FIM DO ARQUIVO: .git\objects\63\8657cf01ca80ab9297f146b5ea732aa37b918a
+// ------------------------------------------------------------------
+
+
+// ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: .git\objects\68\93eb13237060adc0c968a690149a49faa2d7d3
+// ==================================================================
+
+// [Arquivo binário ignorado pelo leitor de segurança]
+
+
+// 🏁 FIM DO ARQUIVO: .git\objects\68\93eb13237060adc0c968a690149a49faa2d7d3
+// ------------------------------------------------------------------
+
+
+// ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: .git\objects\6f\9509c88bed7080d496fc5e1d87a9315e30549d
+// ==================================================================
+
+x+)JMU01b040031Q�K�,I,))�L*-I-f����Ee��������~�կ ��
+
+// 🏁 FIM DO ARQUIVO: .git\objects\6f\9509c88bed7080d496fc5e1d87a9315e30549d
+// ------------------------------------------------------------------
+
+
+// ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: .git\objects\77\0e9d333ee70e75fe7c0bad7fb13e4f6ed4627a
+// ==================================================================
+
+// [Arquivo binário ignorado pelo leitor de segurança]
+
+
+// 🏁 FIM DO ARQUIVO: .git\objects\77\0e9d333ee70e75fe7c0bad7fb13e4f6ed4627a
+// ------------------------------------------------------------------
+
+
+// ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: .git\objects\7b\a572c6911878fe2c8d89f2b0d2d5b85a7ac413
+// ==================================================================
+
+xK��OR045e��-�/*Q(+MUH+��UPw(�,I�*�/�)M���J�sAU+���e�:��e�+�Bu�4�sq��+d��[��D�RR����*��R+�� �'�攠�Qͥ� ���J!h��f�W�& C�7�
+
+// 🏁 FIM DO ARQUIVO: .git\objects\7b\a572c6911878fe2c8d89f2b0d2d5b85a7ac413
+// ------------------------------------------------------------------
+
+
+// ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: .git\objects\80\2a72eebf2a92805122eca302ed50f176e81fd4
+// ==================================================================
+
+// [Arquivo binário ignorado pelo leitor de segurança]
+
+
+// 🏁 FIM DO ARQUIVO: .git\objects\80\2a72eebf2a92805122eca302ed50f176e81fd4
+// ------------------------------------------------------------------
+
+
+// ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: .git\objects\85\005aa2449ac4845e7f81bbf6da5c3744927e59
+// ==================================================================
+
+// [Arquivo binário ignorado pelo leitor de segurança]
+
+
+// 🏁 FIM DO ARQUIVO: .git\objects\85\005aa2449ac4845e7f81bbf6da5c3744927e59
+// ------------------------------------------------------------------
+
+
+// ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: .git\objects\86\3ecc701b10b636160463d44a354b13d394f00d
+// ==================================================================
+
+// [Arquivo binário ignorado pelo leitor de segurança]
+
+
+// 🏁 FIM DO ARQUIVO: .git\objects\86\3ecc701b10b636160463d44a354b13d394f00d
+// ------------------------------------------------------------------
+
+
+// ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: .git\objects\89\c32490f1dc26802d9fdd47da61545b918e5532
+// ==================================================================
+
+// [Arquivo binário ignorado pelo leitor de segurança]
+
+
+// 🏁 FIM DO ARQUIVO: .git\objects\89\c32490f1dc26802d9fdd47da61545b918e5532
+// ------------------------------------------------------------------
+
+
+// ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: .git\objects\8b\bb5ee6c07004e372ddd3fd49ee75964c2c9e75
+// ==================================================================
+
+// [Arquivo binário ignorado pelo leitor de segurança]
+
+
+// 🏁 FIM DO ARQUIVO: .git\objects\8b\bb5ee6c07004e372ddd3fd49ee75964c2c9e75
+// ------------------------------------------------------------------
+
+
+// ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: .git\objects\a1\8cc39e43c8ed3391834d138ce8eaeb48256312
+// ==================================================================
+
+x+)JMU05`040031QH-.IL���K�M�+�.�/J��*f���.(���m��]M\B��l���E��
+
+// 🏁 FIM DO ARQUIVO: .git\objects\a1\8cc39e43c8ed3391834d138ce8eaeb48256312
+// ------------------------------------------------------------------
+
+
+// ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: .git\objects\a4\17a1c66ca2653bf76e3afa8479c426b3c891c3
+// ==================================================================
+
+// [Arquivo binário ignorado pelo leitor de segurança]
+
+
+// 🏁 FIM DO ARQUIVO: .git\objects\a4\17a1c66ca2653bf76e3afa8479c426b3c891c3
+// ------------------------------------------------------------------
+
+
+// ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: .git\objects\a5\47bf36d8d11a4f89c59c144f24795749086dd1
+// ==================================================================
+
+// [Arquivo binário ignorado pelo leitor de segurança]
+
+
+// 🏁 FIM DO ARQUIVO: .git\objects\a5\47bf36d8d11a4f89c59c144f24795749086dd1
+// ------------------------------------------------------------------
+
+
+// ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: .git\objects\a6\885ac88553305473ebff9e245634435beaa1a5
+// ==================================================================
+
+// [Arquivo binário ignorado pelo leitor de segurança]
+
+
+// 🏁 FIM DO ARQUIVO: .git\objects\a6\885ac88553305473ebff9e245634435beaa1a5
+// ------------------------------------------------------------------
+
+
+// ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: .git\objects\a7\cea0b0678120a1b590d1b6592c7318039b9179
+// ==================================================================
+
+xK��OR0�d��RPP*JM���M�KI,���+V�R�V
++M�+��I,R��� bQ�
+
+// 🏁 FIM DO ARQUIVO: .git\objects\a7\cea0b0678120a1b590d1b6592c7318039b9179
+// ------------------------------------------------------------------
+
+
+// ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: .git\objects\a8\2df1f6e65643f6f8ae9c14d3a87980478ea296
+// ==================================================================
+
+// [Arquivo binário ignorado pelo leitor de segurança]
+
+
+// 🏁 FIM DO ARQUIVO: .git\objects\a8\2df1f6e65643f6f8ae9c14d3a87980478ea296
+// ------------------------------------------------------------------
+
+
+// ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: .git\objects\ad\8e92422fefe066cfa8777105304af2adf94d28
+// ==================================================================
+
+// [Arquivo binário ignorado pelo leitor de segurança]
+
+
+// 🏁 FIM DO ARQUIVO: .git\objects\ad\8e92422fefe066cfa8777105304af2adf94d28
+// ------------------------------------------------------------------
+
+
+// ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: .git\objects\b2\9e339b0b60cf70dd7163098f447049f4ec9f59
+// ==================================================================
+
+// [Arquivo binário ignorado pelo leitor de segurança]
+
+
+// 🏁 FIM DO ARQUIVO: .git\objects\b2\9e339b0b60cf70dd7163098f447049f4ec9f59
+// ------------------------------------------------------------------
+
+
+// ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: .git\objects\bf\8b3334cc16cc54a3ae5f6cc1aea732bd139482
+// ==================================================================
+
+// [Arquivo binário ignorado pelo leitor de segurança]
+
+
+// 🏁 FIM DO ARQUIVO: .git\objects\bf\8b3334cc16cc54a3ae5f6cc1aea732bd139482
+// ------------------------------------------------------------------
+
+
+// ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: .git\objects\c7\159ad4a5c4e571eb75970a17e2bb53a94aa80d
+// ==================================================================
+
+// [Arquivo binário ignorado pelo leitor de segurança]
+
+
+// 🏁 FIM DO ARQUIVO: .git\objects\c7\159ad4a5c4e571eb75970a17e2bb53a94aa80d
+// ------------------------------------------------------------------
+
+
+// ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: .git\objects\c7\2ccf3f8be741a4d8412ea1260be954b8a9f94d
+// ==================================================================
+
+// [Arquivo binário ignorado pelo leitor de segurança]
+
+
+// 🏁 FIM DO ARQUIVO: .git\objects\c7\2ccf3f8be741a4d8412ea1260be954b8a9f94d
+// ------------------------------------------------------------------
+
+
+// ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: .git\objects\ca\2c6289571f2271ec419141ad2b5ba7aca238b4
+// ==================================================================
+
+// [Arquivo binário ignorado pelo leitor de segurança]
+
+
+// 🏁 FIM DO ARQUIVO: .git\objects\ca\2c6289571f2271ec419141ad2b5ba7aca238b4
+// ------------------------------------------------------------------
+
+
+// ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: .git\objects\ce\9c48d9c1876034a21000926a121d232c1a7b75
+// ==================================================================
+
+// [Arquivo binário ignorado pelo leitor de segurança]
+
+
+// 🏁 FIM DO ARQUIVO: .git\objects\ce\9c48d9c1876034a21000926a121d232c1a7b75
+// ------------------------------------------------------------------
+
+
+// ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: .git\objects\d1\5c1653d372bdc1ce078bb7ac75cc34cb9b4e9f
+// ==================================================================
+
+// [Arquivo binário ignorado pelo leitor de segurança]
+
+
+// 🏁 FIM DO ARQUIVO: .git\objects\d1\5c1653d372bdc1ce078bb7ac75cc34cb9b4e9f
+// ------------------------------------------------------------------
+
+
+// ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: .git\objects\d2\a1c7b375d7c7ea7abee475eacd13660dcfc973
+// ==================================================================
+
+// [Arquivo binário ignorado pelo leitor de segurança]
+
+
+// 🏁 FIM DO ARQUIVO: .git\objects\d2\a1c7b375d7c7ea7abee475eacd13660dcfc973
+// ------------------------------------------------------------------
+
+
+// ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: .git\objects\db\ffaf738c89560886aaae551e259463a0cd53f6
+// ==================================================================
+
+// [Arquivo binário ignorado pelo leitor de segurança]
+
+
+// 🏁 FIM DO ARQUIVO: .git\objects\db\ffaf738c89560886aaae551e259463a0cd53f6
+// ------------------------------------------------------------------
+
+
+// ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: .git\objects\df\e0770424b2a19faf507a501ebfc23be8f54e7b
+// ==================================================================
+
+xK��OR03cPVp,-�WHI-IM.Q(I�(QH��I-VH�KQ(H-J�/�U�qS�҉9�U�%��y\Z`���@�\ ��
+
+// 🏁 FIM DO ARQUIVO: .git\objects\df\e0770424b2a19faf507a501ebfc23be8f54e7b
+// ------------------------------------------------------------------
+
+
+// ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: .git\objects\e4\ca0349653db5381d190350ab1dce315e95c6a5
+// ==================================================================
+
+// [Arquivo binário ignorado pelo leitor de segurança]
+
+
+// 🏁 FIM DO ARQUIVO: .git\objects\e4\ca0349653db5381d190350ab1dce315e95c6a5
+// ------------------------------------------------------------------
+
+
+// ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: .git\objects\e6\9de29bb2d1d6434b8b29ae775ad8c2e48c5391
+// ==================================================================
+
+xK��OR0`  	��
+
+// 🏁 FIM DO ARQUIVO: .git\objects\e6\9de29bb2d1d6434b8b29ae775ad8c2e48c5391
+// ------------------------------------------------------------------
+
+
+// ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: .git\objects\e7\70ce191495395b7ffb47939c6d1f0fd1c2435e
+// ==================================================================
+
+// [Arquivo binário ignorado pelo leitor de segurança]
+
+
+// 🏁 FIM DO ARQUIVO: .git\objects\e7\70ce191495395b7ffb47939c6d1f0fd1c2435e
+// ------------------------------------------------------------------
+
+
+// ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: .git\objects\e9\522193d9f796a9748e9ad8c952a5df73c87db9
+// ==================================================================
+
+// [Arquivo binário ignorado pelo leitor de segurança]
+
+
+// 🏁 FIM DO ARQUIVO: .git\objects\e9\522193d9f796a9748e9ad8c952a5df73c87db9
+// ------------------------------------------------------------------
+
+
+// ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: .git\objects\f0\a2483fb9f531f5cdbef870c76c6e0321080046
+// ==================================================================
+
+// [Arquivo binário ignorado pelo leitor de segurança]
+
+
+// 🏁 FIM DO ARQUIVO: .git\objects\f0\a2483fb9f531f5cdbef870c76c6e0321080046
+// ------------------------------------------------------------------
+
+
+// ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: .git\objects\f2\ee6a2970a9a4e9746aa53322b4a035b0b2d357
+// ==================================================================
+
+// [Arquivo binário ignorado pelo leitor de segurança]
+
+
+// 🏁 FIM DO ARQUIVO: .git\objects\f2\ee6a2970a9a4e9746aa53322b4a035b0b2d357
+// ------------------------------------------------------------------
+
+
+// ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: .git\objects\f4\84dfd1c52a8fe5733470b587374ffa8f651f25
+// ==================================================================
+
+// [Arquivo binário ignorado pelo leitor de segurança]
+
+
+// 🏁 FIM DO ARQUIVO: .git\objects\f4\84dfd1c52a8fe5733470b587374ffa8f651f25
+// ------------------------------------------------------------------
+
+
+// ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: .git\objects\f6\da34fbef1679c29692ec8c4d58847fefeaad01
+// ==================================================================
+
+// [Arquivo binário ignorado pelo leitor de segurança]
+
+
+// 🏁 FIM DO ARQUIVO: .git\objects\f6\da34fbef1679c29692ec8c4d58847fefeaad01
+// ------------------------------------------------------------------
+
+
+// ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: .git\objects\f8\56cca4a6623495f0204b51ccceef4958e99fc1
+// ==================================================================
+
+// [Arquivo binário ignorado pelo leitor de segurança]
+
+
+// 🏁 FIM DO ARQUIVO: .git\objects\f8\56cca4a6623495f0204b51ccceef4958e99fc1
+// ------------------------------------------------------------------
+
+
+// ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: .git\objects\fa\bc7adf919638c0c7a5b0151021da9a894805fb
+// ==================================================================
+
+// [Arquivo binário ignorado pelo leitor de segurança]
+
+
+// 🏁 FIM DO ARQUIVO: .git\objects\fa\bc7adf919638c0c7a5b0151021da9a894805fb
+// ------------------------------------------------------------------
+
+
+// ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: .git\refs\heads\main
+// ==================================================================
+
+04a3e54bf68335107a348259e4770142ac1d2536
+
+
+// 🏁 FIM DO ARQUIVO: .git\refs\heads\main
+// ------------------------------------------------------------------
+
+
+// ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: .git\refs\remotes\origin\HEAD
+// ==================================================================
+
+ref: refs/remotes/origin/main
+
+
+// 🏁 FIM DO ARQUIVO: .git\refs\remotes\origin\HEAD
+// ------------------------------------------------------------------
+
+
+// ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: .git\refs\remotes\origin\main
+// ==================================================================
+
+04a3e54bf68335107a348259e4770142ac1d2536
+
+
+// 🏁 FIM DO ARQUIVO: .git\refs\remotes\origin\main
+// ------------------------------------------------------------------
+
+
+// ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: __pycache__\database.cpython-311.pyc
+// ==================================================================
+
+// [Arquivo binário ignorado pelo leitor de segurança]
+
+
+// 🏁 FIM DO ARQUIVO: __pycache__\database.cpython-311.pyc
+// ------------------------------------------------------------------
+
+
+// ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: __pycache__\main.cpython-311.pyc
+// ==================================================================
+
+// [Arquivo binário ignorado pelo leitor de segurança]
+
+
+// 🏁 FIM DO ARQUIVO: __pycache__\main.cpython-311.pyc
+// ------------------------------------------------------------------
+
+
+// ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: backend\database.py
+// ==================================================================
+
+import aiomysql
+
+
+class Database:
+    def __init__(self):
+        self.pool: aiomysql.Pool | None = None
+
+    async def connect(self):
+        if self.pool is not None:
+            return
+        self.pool = await aiomysql.create_pool(
+            minsize=1,
+            maxsize=10,
+            host="127.0.0.1",
+            port=3306,
+            user="root",
+            password="",
+            db="vagacerta_db",
+            autocommit=True,
+            cursorclass=aiomysql.DictCursor,
+        )
+        print("[DB] ✅ Conectado ao MySQL (vagacerta_db) com sucesso.")
+
+    async def close(self):
+        if self.pool is not None:
+            self.pool.close()
+            await self.pool.wait_closed()
+            self.pool = None
+
+    async def execute(self, query: str, params: tuple = ()) -> int:
+        async with self.pool.acquire() as conn:
+            async with conn.cursor() as cursor:
+                await cursor.execute(query, params)
+                return cursor.lastrowid or cursor.rowcount
+
+    async def fetch(self, query: str, params: tuple = (), one: bool = False):
+        async with self.pool.acquire() as conn:
+            async with conn.cursor() as cursor:
+                await cursor.execute(query, params)
+                if one:
+                    return await cursor.fetchone()
+                return await cursor.fetchall()
+
+
+db = Database()
+
+
+// 🏁 FIM DO ARQUIVO: backend\database.py
+// ------------------------------------------------------------------
+
+
+// ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: backend\main.py
+// ==================================================================
+
+from contextlib import asynccontextmanager
+from typing import List, Optional
+from fastapi import FastAPI, HTTPException, status
+from fastapi.middleware.cors import CORSMiddleware
+from pydantic import BaseModel
+from database import db
+
+
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+    await db.connect()
+    yield
+    await db.close()
+
+
+app = FastAPI(title="API Vaga Certa", lifespan=lifespan)
+
+# Libera o CORS para que o Vue (Vite) consiga fazer requisições ao FastAPI
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
+
+# =========================================================
+# MODELOS PYDANTIC (VALIDAÇÃO DO PAYLOAD DO EDITOR 2D)
+# =========================================================
+class SetorPayload(BaseModel):
+    id_temp: int
+    nome_setor: str
+    prefixo: str
+    cor_hex: str
+
+
+class CelulaPreenchidaPayload(BaseModel):
+    x: int
+    y: int
+    tipo: str  # 'ESTRADA' | 'ENTRADA' | 'SAIDA' | 'ACESSO' | 'FUNDO_SETOR' | 'VAGA'
+    orientacao: str = "NENHUMA"
+    setor_id_temp: Optional[int] = None
+    identificador: Optional[str] = None
+    livre: Optional[bool] = True
+    mac_esp: Optional[str] = None
+
+
+class AndarPayload(BaseModel):
+    nome_andar: str
+    grid_x: int
+    grid_y: int
+    setores: List[SetorPayload]
+    celulas_preenchidas: List[CelulaPreenchidaPayload]
+
+
+class EstabelecimentoSavePayload(BaseModel):
+    nome: str
+    id_usuario: int
+    andares: List[AndarPayload]
+
+
+# =========================================================
+# FUNÇÃO AUXILIAR DE PERSISTÊNCIA DO MAPA 2D EM TRANSAÇÃO
+# =========================================================
+async def gravar_andares_e_mapa(
+    cursor, id_estabelecimento: int, andares: List[AndarPayload]
+):
+    for andar in andares:
+        # 1. Insere o Andar
+        await cursor.execute(
+            """
+            INSERT INTO andares (id_estabelecimento, nome_andar, grid_x, grid_y)
+            VALUES (%s, %s, %s, %s)
+            """,
+            (id_estabelecimento, andar.nome_andar.strip(), andar.grid_x, andar.grid_y),
+        )
+        id_andar_banco = cursor.lastrowid
+
+        # 2. Insere os Setores do andar e guarda o mapa { id_temp_do_vue : id_setor_do_mysql }
+        mapa_setores_id = {}
+        for setor in andar.setores:
+            await cursor.execute(
+                """
+                INSERT INTO setores (id_andar, nome_setor, prefixo, cor_hex)
+                VALUES (%s, %s, %s, %s)
+                """,
+                (
+                    id_andar_banco,
+                    setor.nome_setor.strip(),
+                    setor.prefixo.strip().upper(),
+                    setor.cor_hex,
+                ),
+            )
+            mapa_setores_id[setor.id_temp] = cursor.lastrowid
+
+        # 3. Cache local para não recriar o mesmo equipamento (id_setor + codigo_mac) várias vezes
+        mapa_equipamentos_id = {}
+
+        # 4. Percorre apenas os quadrados não-vazios enviados pelo Editor 2D
+        for cel in andar.celulas_preenchidas:
+            id_setor_real = (
+                mapa_setores_id.get(cel.setor_id_temp) if cel.setor_id_temp else None
+            )
+
+            if cel.tipo == "VAGA":
+                if not id_setor_real or not cel.mac_esp:
+                    raise HTTPException(
+                        status_code=400,
+                        detail=f"A vaga na coordenada ({cel.x},{cel.y}) está sem setor ou sem MAC de equipamento.",
+                    )
+                chave_eq = (id_setor_real, cel.mac_esp.strip().upper())
+                if chave_eq not in mapa_equipamentos_id:
+                    await cursor.execute(
+                        """
+                        INSERT INTO equipamentos (id_setor, codigo_mac)
+                        VALUES (%s, %s)
+                        """,
+                        (id_setor_real, cel.mac_esp.strip().upper()),
+                    )
+                    mapa_equipamentos_id[chave_eq] = cursor.lastrowid
+
+                id_equip_real = mapa_equipamentos_id[chave_eq]
+
+                await cursor.execute(
+                    """
+                    INSERT INTO vagas (id_equipamento, identificador, coord_x, coord_y, livre_para_estacionar)
+                    VALUES (%s, %s, %s, %s, %s)
+                    """,
+                    (
+                        id_equip_real,
+                        (cel.identificador or "V1").strip().upper(),
+                        cel.x,
+                        cel.y,
+                        1 if cel.livre else 0,
+                    ),
+                )
+            else:
+                # Elementos estruturais: ESTRADA, ENTRADA, SAIDA, ACESSO ou FUNDO_SETOR
+                orientacao = (
+                    cel.orientacao
+                    if cel.orientacao in ("H", "V", "NENHUMA")
+                    else "NENHUMA"
+                )
+                await cursor.execute(
+                    """
+                    INSERT INTO elementos_mapa (id_andar, id_setor, tipo, orientacao, coord_x, coord_y)
+                    VALUES (%s, %s, %s, %s, %s, %s)
+                    """,
+                    (id_andar_banco, id_setor_real, cel.tipo, orientacao, cel.x, cel.y),
+                )
+
+
+# =========================================================
+# ROTAS DA API
+# =========================================================
+
+
+@app.get("/usuarios")
+async def listar_usuarios():
+    usuarios = await db.fetch(
+        "SELECT id_usuario, nome, email, nivel_acesso FROM usuarios WHERE inativo = 0 ORDER BY id_usuario"
+    )
+    return usuarios
+
+
+@app.get("/estabelecimentos")
+async def listar_estabelecimentos_completos():
+    """Retorna todos os estabelecimentos com seus andares, setores, vagas e elementos do mapa."""
+    estabelecimentos_rows = await db.fetch("""
+        SELECT e.id_estabelecimento AS id, e.nome, e.inativo,
+               COALESCE(ue.id_usuario, 1) AS id_usuario
+        FROM estabelecimentos e
+        LEFT JOIN usuario_estabelecimento ue ON e.id_estabelecimento = ue.id_estabelecimento
+        ORDER BY e.id_estabelecimento ASC
+        """)
+
+    resultado = []
+    for est in estabelecimentos_rows:
+        id_est = est["id"]
+        andares_rows = await db.fetch(
+            """
+            SELECT id_andar, nome_andar, grid_x, grid_y
+            FROM andares
+            WHERE id_estabelecimento = %s AND inativo = 0
+            ORDER BY id_andar ASC
+            """,
+            (id_est,),
+        )
+
+        andares_formatados = []
+        for andar in andares_rows:
+            id_andar = andar["id_andar"]
+
+            setores_rows = await db.fetch(
+                """
+                SELECT id_setor, nome_setor, prefixo, cor_hex, inativo AS inativo_offline
+                FROM setores
+                WHERE id_andar = %s
+                ORDER BY id_setor ASC
+                """,
+                (id_andar,),
+            )
+
+            elementos_rows = await db.fetch(
+                """
+                SELECT id_elemento, id_setor, tipo, orientacao, coord_x, coord_y
+                FROM elementos_mapa
+                WHERE id_andar = %s
+                """,
+                (id_andar,),
+            )
+
+            vagas_rows = await db.fetch(
+                """
+                SELECT v.id_vaga, v.identificador, v.coord_x, v.coord_y, v.livre_para_estacionar,
+                       eq.id_equipamento, eq.codigo_mac,
+                       s.id_setor, s.nome_setor, s.prefixo, s.cor_hex
+                FROM vagas v
+                JOIN equipamentos eq ON v.id_equipamento = eq.id_equipamento
+                JOIN setores s ON eq.id_setor = s.id_setor
+                WHERE s.id_andar = %s AND v.inativo = 0
+                """,
+                (id_andar,),
+            )
+
+            andares_formatados.append(
+                {
+                    "id_andar": id_andar,
+                    "nome_andar": andar["nome_andar"],
+                    "grid_x": andar["grid_x"],
+                    "grid_y": andar["grid_y"],
+                    "setores": [
+                        {
+                            "id_setor": s["id_setor"],
+                            "nome_setor": s["nome_setor"],
+                            "prefixo": s["prefixo"],
+                            "cor_hex": s["cor_hex"],
+                            "inativo_offline": bool(s["inativo_offline"]),
+                        }
+                        for s in setores_rows
+                    ],
+                    "elementos_mapa": elementos_rows,
+                    "vagas": [
+                        {
+                            "id_vaga": v["id_vaga"],
+                            "identificador": v["identificador"],
+                            "coord_x": v["coord_x"],
+                            "coord_y": v["coord_y"],
+                            "livre": bool(v["livre_para_estacionar"]),
+                            "mac_esp": v["codigo_mac"],
+                            "id_setor": v["id_setor"],
+                            "nome_setor": v["nome_setor"],
+                            "prefixo": v["prefixo"],
+                            "cor_hex": v["cor_hex"],
+                        }
+                        for v in vagas_rows
+                    ],
+                }
+            )
+
+        resultado.append(
+            {
+                "id": id_est,
+                "nome": est["nome"],
+                "id_usuario": est["id_usuario"],
+                "inativo": bool(est["inativo"]),
+                "andares": andares_formatados,
+            }
+        )
+
+    return resultado
+
+
+@app.post("/estabelecimentos", status_code=status.HTTP_201_CREATED)
+async def criar_estabelecimento(payload: EstabelecimentoSavePayload):
+    async with db.pool.acquire() as conn:
+        async with conn.cursor() as cursor:
+            try:
+                await conn.begin()
+
+                await cursor.execute(
+                    "INSERT INTO estabelecimentos (nome) VALUES (%s)",
+                    (payload.nome.strip(),),
+                )
+                id_est = cursor.lastrowid
+
+                await cursor.execute(
+                    "INSERT INTO usuario_estabelecimento (id_usuario, id_estabelecimento) VALUES (%s, %s)",
+                    (payload.id_usuario, id_est),
+                )
+
+                await gravar_andares_e_mapa(cursor, id_est, payload.andares)
+
+                await conn.commit()
+                return {"status": "sucesso", "id_estabelecimento": id_est}
+            except Exception as e:
+                await conn.rollback()
+                raise HTTPException(
+                    status_code=400, detail=f"Erro ao salvar no banco: {str(e)}"
+                )
+
+
+@app.put("/estabelecimentos/{id_estabelecimento}")
+async def atualizar_estabelecimento(
+    id_estabelecimento: int, payload: EstabelecimentoSavePayload
+):
+    async with db.pool.acquire() as conn:
+        async with conn.cursor() as cursor:
+            try:
+                await conn.begin()
+
+                await cursor.execute(
+                    "UPDATE estabelecimentos SET nome = %s WHERE id_estabelecimento = %s",
+                    (payload.nome.strip(), id_estabelecimento),
+                )
+
+                await cursor.execute(
+                    "DELETE FROM usuario_estabelecimento WHERE id_estabelecimento = %s",
+                    (id_estabelecimento,),
+                )
+                await cursor.execute(
+                    "INSERT INTO usuario_estabelecimento (id_usuario, id_estabelecimento) VALUES (%s, %s)",
+                    (payload.id_usuario, id_estabelecimento),
+                )
+
+                # Remove a estrutura anterior de andares (ON DELETE CASCADE limpa setores, vagas e elementos_mapa)
+                # e grava a nova planta desenhada no Editor 2D
+                await cursor.execute(
+                    "DELETE FROM andares WHERE id_estabelecimento = %s",
+                    (id_estabelecimento,),
+                )
+
+                await gravar_andares_e_mapa(cursor, id_estabelecimento, payload.andares)
+
+                await conn.commit()
+                return {"status": "sucesso", "id_estabelecimento": id_estabelecimento}
+            except Exception as e:
+                await conn.rollback()
+                raise HTTPException(
+                    status_code=400, detail=f"Erro ao atualizar no banco: {str(e)}"
+                )
+
+
+@app.patch("/estabelecimentos/{id_estabelecimento}/status")
+async def alternar_inativo_estabelecimento(id_estabelecimento: int):
+    est = await db.fetch(
+        "SELECT inativo FROM estabelecimentos WHERE id_estabelecimento = %s",
+        (id_estabelecimento,),
+        one=True,
+    )
+    if not est:
+        raise HTTPException(status_code=404, detail="Estabelecimento não encontrado.")
+
+    novo_status = 0 if est["inativo"] else 1
+    await db.execute(
+        """
+        UPDATE estabelecimentos
+        SET inativo = %s,
+            data_inativacao = IF(%s = 1, CURRENT_TIMESTAMP(), NULL)
+        WHERE id_estabelecimento = %s
+        """,
+        (novo_status, novo_status, id_estabelecimento),
+    )
+    return {"status": "sucesso", "inativo": bool(novo_status)}
+
+
+@app.delete("/estabelecimentos/{id_estabelecimento}")
+async def deletar_estabelecimento(id_estabelecimento: int):
+    linhas = await db.execute(
+        "DELETE FROM estabelecimentos WHERE id_estabelecimento = %s",
+        (id_estabelecimento,),
+    )
+    if linhas == 0:
+        raise HTTPException(status_code=404, detail="Estabelecimento não encontrado.")
+    return {"status": "sucesso"}
+
+
+// 🏁 FIM DO ARQUIVO: backend\main.py
+// ------------------------------------------------------------------
+
+
+// ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: backend\__pycache__\database.cpython-311.pyc
+// ==================================================================
+
+// [Arquivo binário ignorado pelo leitor de segurança]
+
+
+// 🏁 FIM DO ARQUIVO: backend\__pycache__\database.cpython-311.pyc
+// ------------------------------------------------------------------
+
+
+// ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: backend\__pycache__\main.cpython-311.pyc
+// ==================================================================
+
+// [Arquivo binário ignorado pelo leitor de segurança]
+
+
+// 🏁 FIM DO ARQUIVO: backend\__pycache__\main.cpython-311.pyc
+// ------------------------------------------------------------------
+
+
+// ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: frontend\index.html
+// ==================================================================
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>vaga-certa-front</title>
+  </head>
+  <body>
+    <div id="app"></div>
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
+
+
+// 🏁 FIM DO ARQUIVO: frontend\index.html
+// ------------------------------------------------------------------
+
+
+// ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: frontend\vite.config.js
+// ==================================================================
+
+import vue from '@vitejs/plugin-vue'
+import { defineConfig } from 'vite'
+
+// https://vite.dev/config/
+export default defineConfig({
+  plugins: [vue()],
+})
+
+
+// 🏁 FIM DO ARQUIVO: frontend\vite.config.js
+// ------------------------------------------------------------------
+
+
+// ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: frontend\src\App.vue
+// ==================================================================
+
+// [Arquivo binário ignorado pelo leitor de segurança]
+
+
+// 🏁 FIM DO ARQUIVO: frontend\src\App.vue
+// ------------------------------------------------------------------
+
+
+// ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: frontend\src\main.js
+// ==================================================================
+
+import { createApp } from 'vue'
+import App from './App.vue'
+import router from './router'
+import './assets/main.css'
+
+const app = createApp(App)
+app.use(router)
+app.mount('#app')
+
+// 🏁 FIM DO ARQUIVO: frontend\src\main.js
+// ------------------------------------------------------------------
+
+
+// ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: frontend\src\assets\main.css
+// ==================================================================
+
+// [Arquivo binário ignorado pelo leitor de segurança]
+
+
+// 🏁 FIM DO ARQUIVO: frontend\src\assets\main.css
+// ------------------------------------------------------------------
+
+
+// ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: frontend\src\router\index.js
+// ==================================================================
+
+import { createRouter, createWebHistory } from 'vue-router'
+import MotoristaHomeView from '../views/MotoristaHomeView.vue'
+import MotoristaMapaView from '../views/MotoristaMapaView.vue'
+import AdminListaView from '../views/AdminListaView.vue'
+import AdminInfoGeraisView from '../views/AdminInfoGeraisView.vue'
+import AdminEditor2DView from '../views/AdminEditor2DView.vue'
+
+const routes = [
+  {
+    path: '/',
+    name: 'motorista-home',
+    component: MotoristaHomeView
+  },
+  {
+    path: '/vagas/:id',
+    name: 'motorista-mapa',
+    component: MotoristaMapaView
+  },
+  {
+    path: '/admin',
+    name: 'admin-lista',
+    component: AdminListaView
+  },
+  {
+    path: '/admin/informacoes-gerais',
+    name: 'admin-info-gerais',
+    component: AdminInfoGeraisView
+  },
+  {
+    path: '/admin/editor-2d',
+    name: 'admin-editor-2d',
+    component: AdminEditor2DView
+  }
+]
+
+const router = createRouter({
+  history: createWebHistory(),
+  routes
+})
+
+// Se alguém ler um QR Code externo no formato antigo "/?id=1", redireciona direto para "/vagas/1"
+router.beforeEach((to, from, next) => {
+  if (to.path === '/' && to.query.id) {
+    next({ name: 'motorista-mapa', params: { id: to.query.id } })
+  } else {
+    next()
+  }
+})
+
+export default router
+
+// 🏁 FIM DO ARQUIVO: frontend\src\router\index.js
+// ------------------------------------------------------------------
+
+
+// ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: frontend\src\store\estacionamentoStore.js
+// ==================================================================
+
+// [Arquivo binário ignorado pelo leitor de segurança]
+
+
+// 🏁 FIM DO ARQUIVO: frontend\src\store\estacionamentoStore.js
+// ------------------------------------------------------------------
+
+
+// ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: frontend\src\views\AdminEditor2DView.vue
+// ==================================================================
+
+<script setup>
+import { ref, computed, onMounted, onUnmounted } from 'vue'
+import { useRouter } from 'vue-router'
+import {
+  paletaSetores,
+  escurecerCorHex,
+  criarMatrizVazia,
+  formEstabelecimento,
+  salvarEstacionamentoNoBanco
+} from '../store/estacionamentoStore'
+
+const router = useRouter()
+
+if (!formEstabelecimento.value.andares || !formEstabelecimento.value.andares[0]?.celulas) {
+  router.replace({ name: 'admin-info-gerais' })
+}
+
+const andarEditorIndex = ref(0)
+const andarEditorAtual = computed(() => formEstabelecimento.value.andares[andarEditorIndex.value])
+
+// Menus flutuantes (Mobile/Tablet <= 1024px)
+const menuTopoMobileAberto = ref(false)
+const menuAdicionarMobileAberto = ref(false)
+const mostrarPainelAvisos = ref(false)
+const salvandoNoBanco = ref(false)
+
+function alternarMenuEngrenagem() {
+  menuTopoMobileAberto.value = !menuTopoMobileAberto.value
+  if (menuTopoMobileAberto.value) {
+    menuAdicionarMobileAberto.value = false
+    mostrarPainelAvisos.value = false
+  }
+}
+
+function alternarMenuAdicionar() {
+  menuAdicionarMobileAberto.value = !menuAdicionarMobileAberto.value
+  if (menuAdicionarMobileAberto.value) {
+    menuTopoMobileAberto.value = false
+    mostrarPainelAvisos.value = false
+  }
+}
+
+function alternarPainelAvisos() {
+  mostrarPainelAvisos.value = !mostrarPainelAvisos.value
+  if (mostrarPainelAvisos.value) {
+    menuTopoMobileAberto.value = false
+    menuAdicionarMobileAberto.value = false
+  }
+}
+
+// =========================================================
+// TOUCH PAN (ARRASTAR DEDO) E PINCH-TO-ZOOM (MOVIMENTO PINÇA)
+// =========================================================
+const panX = ref(0)
+const panY = ref(0)
+const zoomEscala = ref(1)
+
+let toqueUnico = null
+let pinchInicial = null
+
+function distanciaEntreToques(t1, t2) {
+  return Math.hypot(t2.clientX - t1.clientX, t2.clientY - t1.clientY)
+}
+
+function pontoMedioToques(t1, t2) {
+  return {
+    x: (t1.clientX + t2.clientX) / 2,
+    y: (t1.clientY + t2.clientY) / 2
+  }
+}
+
+function aoIniciarToqueGrid(e) {
+  if (e.touches.length === 2) {
+    toqueUnico = null
+    const dist = distanciaEntreToques(e.touches[0], e.touches[1])
+    const meio = pontoMedioToques(e.touches[0], e.touches[1])
+    pinchInicial = {
+      dist,
+      escala: zoomEscala.value,
+      panX: panX.value,
+      panY: panY.value,
+      meioX: meio.x,
+      meioY: meio.y
+    }
+  } else if (e.touches.length === 1) {
+    pinchInicial = null
+    const t = e.touches[0]
+    toqueUnico = {
+      startX: t.clientX,
+      startY: t.clientY,
+      lastX: t.clientX,
+      lastY: t.clientY,
+      panXInicial: panX.value,
+      panYInicial: panY.value,
+      moveu: false
+    }
+  }
+}
+
+function aoMoverToqueGrid(e) {
+  if (e.touches.length === 2 && pinchInicial) {
+    const novaDist = distanciaEntreToques(e.touches[0], e.touches[1])
+    const novoMeio = pontoMedioToques(e.touches[0], e.touches[1])
+    const fator = novaDist / pinchInicial.dist
+    zoomEscala.value = Math.min(2.5, Math.max(0.45, pinchInicial.escala * fator))
+    panX.value = pinchInicial.panX + (novoMeio.x - pinchInicial.meioX)
+    panY.value = pinchInicial.panY + (novoMeio.y - pinchInicial.meioY)
+  } else if (e.touches.length === 1 && toqueUnico) {
+    const t = e.touches[0]
+    toqueUnico.lastX = t.clientX
+    toqueUnico.lastY = t.clientY
+    const dx = t.clientX - toqueUnico.startX
+    const dy = t.clientY - toqueUnico.startY
+
+    if (Math.hypot(dx, dy) > 7) {
+      toqueUnico.moveu = true
+      panX.value = toqueUnico.panXInicial + dx
+      panY.value = toqueUnico.panYInicial + dy
+    }
+  }
+}
+
+function aoFinalizarToqueGrid(e) {
+  if (e.touches.length < 2) {
+    pinchInicial = null
+  }
+  if (e.touches.length === 0 && toqueUnico) {
+    if (!toqueUnico.moveu) {
+      const el = document.elementFromPoint(toqueUnico.lastX, toqueUnico.lastY)
+      const celulaEl = el?.closest('[data-coord]')
+      if (celulaEl) {
+        const [cx, cy] = celulaEl.getAttribute('data-coord').split(',').map(Number)
+        if (ferramentaCarimbo.value) {
+          aplicarCarimboNoGrid(cx, cy)
+        } else {
+          const chave = `${cx},${cy}`
+          const nova = new Set(selecionados.value)
+          if (nova.has(chave)) {
+            nova.delete(chave)
+          } else {
+            nova.add(chave)
+          }
+          selecionados.value = nova
+          mostrarMenuFlutuante.value = nova.size > 0
+        }
+      }
+    }
+    toqueUnico = null
+  }
+}
+
+function resetarCameraGrid() {
+  panX.value = 0
+  panY.value = 0
+  zoomEscala.value = 1
+}
+
+// =========================================================
+// PILHAS DE DESFAZER / REFAZER
+// =========================================================
+const historicoUndo = ref([])
+const historicoRedo = ref([])
+
+function salvarSnapshot() {
+  if (!andarEditorAtual.value) return
+  historicoUndo.value.push(JSON.stringify({
+    grid_x: andarEditorAtual.value.grid_x,
+    grid_y: andarEditorAtual.value.grid_y,
+    setores: andarEditorAtual.value.setores,
+    equipamentos: andarEditorAtual.value.equipamentos,
+    celulas: andarEditorAtual.value.celulas
+  }))
+  if (historicoUndo.value.length > 30) historicoUndo.value.shift()
+  historicoRedo.value = []
+}
+
+function desfazer() {
+  if (historicoUndo.value.length === 0) return
+  historicoRedo.value.push(JSON.stringify({
+    grid_x: andarEditorAtual.value.grid_x,
+    grid_y: andarEditorAtual.value.grid_y,
+    setores: andarEditorAtual.value.setores,
+    equipamentos: andarEditorAtual.value.equipamentos,
+    celulas: andarEditorAtual.value.celulas
+  }))
+  const estadoAnterior = JSON.parse(historicoUndo.value.pop())
+  Object.assign(andarEditorAtual.value, estadoAnterior)
+  selecionados.value.clear()
+}
+
+function refazer() {
+  if (historicoRedo.value.length === 0) return
+  historicoUndo.value.push(JSON.stringify({
+    grid_x: andarEditorAtual.value.grid_x,
+    grid_y: andarEditorAtual.value.grid_y,
+    setores: andarEditorAtual.value.setores,
+    equipamentos: andarEditorAtual.value.equipamentos,
+    celulas: andarEditorAtual.value.celulas
+  }))
+  const estadoFuturo = JSON.parse(historicoRedo.value.pop())
+  Object.assign(andarEditorAtual.value, estadoFuturo)
+  selecionados.value.clear()
+}
+
+function limparSetoresOrfaosNoAndar(andar) {
+  if (!andar || !andar.celulas || !andar.setores) return
+  const idsPresentesNoGrid = new Set(
+    Object.values(andar.celulas)
+      .map(c => c.setorId)
+      .filter(Boolean)
+  )
+  andar.setores = andar.setores.filter(s => idsPresentesNoGrid.has(s.id_setor))
+}
+
+// =========================================================
+// SISTEMA DE VALIDAÇÃO EM TEMPO REAL
+// =========================================================
+const listaAvisosValidacao = computed(() => {
+  const avisos = []
+  if (!formEstabelecimento.value?.andares) return avisos
+
+  let temEntradaGlobal = false
+  let temSaidaGlobal = false
+
+  formEstabelecimento.value.andares.forEach((andar) => {
+    const celulas = Object.values(andar.celulas || {})
+
+    const vagasAndar = celulas.filter(c => c.tipo === 'VAGA')
+    const semEquip = vagasAndar.some(c => !c.macEsp)
+    const semSetor = vagasAndar.some(c => !c.setorId)
+    const temEntrada = celulas.some(c => c.tipo === 'ENTRADA')
+    const temSaida = celulas.some(c => c.tipo === 'SAIDA')
+    const temAcesso = celulas.some(c => c.tipo === 'ACESSO')
+
+    if (temEntrada) temEntradaGlobal = true
+    if (temSaida) temSaidaGlobal = true
+
+    if (vagasAndar.length === 0) {
+      avisos.push(`[${andar.nome_andar}] Precisa ter ao menos 1 vaga cadastrada.`)
+    }
+    if (semEquip) {
+      avisos.push(`[${andar.nome_andar}] Há vagas amarelas sem equipamento.`)
+    }
+    if (semSetor) {
+      avisos.push(`[${andar.nome_andar}] Há vagas fora de um setor.`)
+    }
+    if (!temEntrada && !temSaida && !temAcesso) {
+      avisos.push(`[${andar.nome_andar}] Precisa ter Entrada, Saída ou Acesso.`)
+    }
+
+    ;(andar.setores || []).forEach((setor) => {
+      const vagasNoSetor = vagasAndar.filter(v => v.setorId === setor.id_setor).length
+      if (vagasNoSetor === 0) {
+        avisos.push(`[${andar.nome_andar}] Setor "${setor.nome_setor}" (${setor.prefixo}) precisa de 1 vaga.`)
+      }
+    })
+  })
+
+  if (!temEntradaGlobal) {
+    avisos.push('[Geral] Obrigatório ter 1 ENTRADA em algum andar.')
+  }
+  if (!temSaidaGlobal) {
+    avisos.push('[Geral] Obrigatório ter 1 SAÍDA em algum andar.')
+  }
+
+  return avisos
+})
+
+const podeSalvarEstacionamento = computed(() => listaAvisosValidacao.value.length === 0)
+
+// =========================================================
+// HOVER DO SETOR E SELEÇÃO POR RATO (DESKTOP)
+// =========================================================
+const hoverCoord = ref(null)
+
+function contarVagasDoSetorNoAndar(setorId) {
+  if (!andarEditorAtual.value?.celulas || !setorId) return 0
+  return Object.values(andarEditorAtual.value.celulas).filter(
+    c => c.setorId === setorId && c.tipo === 'VAGA'
+  ).length
+}
+
+const infoSetorHover = computed(() => {
+  if (!hoverCoord.value || !andarEditorAtual.value?.celulas) return null
+  const celula = andarEditorAtual.value.celulas[`${hoverCoord.value.x},${hoverCoord.value.y}`]
+  if (!celula || !celula.setorId) return null
+
+  return {
+    nome: celula.nomeSetor,
+    prefixo: celula.prefixoSetor,
+    cor: celula.corSetor,
+    qtdVagas: contarVagasDoSetorNoAndar(celula.setorId)
+  }
+})
+
+function obterTituloCelula(x, y) {
+  const c = andarEditorAtual.value?.celulas[`${x},${y}`]
+  if (!c) return `(${x}, ${y})`
+  let base = `(${x}, ${y}) ${c.identificador || c.tipo}`
+  if (c.setorId) {
+    const totalVagasSetor = contarVagasDoSetorNoAndar(c.setorId)
+    base += ` | Setor: ${c.nomeSetor} (${totalVagasSetor} vaga${totalVagasSetor === 1 ? '' : 's'})`
+  }
+  return base
+}
+
+const selecionados = ref(new Set())
+const arrastando = ref(false)
+const pontoInicialArrasto = ref(null)
+const baseSelecionadosCtrl = ref(new Set())
+const mostrarMenuFlutuante = ref(false)
+
+function iniciarSelecaoCelula(x, y, event) {
+  if (ferramentaCarimbo.value) {
+    aplicarCarimboNoGrid(x, y)
+    return
+  }
+
+  arrastando.value = true
+  mostrarMenuFlutuante.value = false
+  pontoInicialArrasto.value = { x, y }
+  const chave = `${x},${y}`
+
+  if (event.ctrlKey || event.metaKey) {
+    baseSelecionadosCtrl.value = new Set(selecionados.value)
+    if (baseSelecionadosCtrl.value.has(chave)) {
+      baseSelecionadosCtrl.value.delete(chave)
+    } else {
+      baseSelecionadosCtrl.value.add(chave)
+    }
+    selecionados.value = new Set(baseSelecionadosCtrl.value)
+  } else {
+    baseSelecionadosCtrl.value = new Set()
+    selecionados.value = new Set([chave])
+  }
+}
+
+function moverMouseCelula(x, y) {
+  hoverCoord.value = { x, y }
+  if (!arrastando.value || !pontoInicialArrasto.value) return
+
+  const xMin = Math.min(pontoInicialArrasto.value.x, x)
+  const xMax = Math.max(pontoInicialArrasto.value.x, x)
+  const yMin = Math.min(pontoInicialArrasto.value.y, y)
+  const yMax = Math.max(pontoInicialArrasto.value.y, y)
+
+  const novaSelecao = new Set(baseSelecionadosCtrl.value)
+  for (let cy = yMin; cy <= yMax; cy++) {
+    for (let cx = xMin; cx <= xMax; cx++) {
+      novaSelecao.add(`${cx},${cy}`)
+    }
+  }
+  selecionados.value = novaSelecao
+}
+
+function finalizarSelecaoMouse() {
+  if (arrastando.value) {
+    arrastando.value = false
+    if (selecionados.value.size > 0) {
+      mostrarMenuFlutuante.value = true
+    }
+  }
+}
+
+// =========================================================
+// AÇÕES DE SETOR, ESTRADAS, VAGAS E LIXEIRA 🗑️
+// =========================================================
+function obterProximoNumeroSetor(celulas, setorId, prefixo) {
+  let maior = 0
+  const regex = new RegExp(`^${prefixo}(\\d+)$`, 'i')
+  Object.values(celulas).forEach((c) => {
+    if (c.setorId === setorId && c.tipo === 'VAGA' && c.identificador) {
+      const match = c.identificador.match(regex)
+      if (match) {
+        const num = parseInt(match[1], 10)
+        if (num > maior) maior = num
+      }
+    }
+  })
+  return maior + 1
+}
+
+function numerarVagasDoSetor(celulas, setorId, prefixo) {
+  const vagasDoSetor = Object.values(celulas)
+    .filter(c => c.setorId === setorId && c.tipo === 'VAGA')
+    .sort((a, b) => (a.y - b.y) || (a.x - b.x))
+
+  vagasDoSetor.forEach((vaga, idx) => {
+    vaga.identificador = `${prefixo}${idx + 1}`
+  })
+}
+
+function aplicarTipoSelecao(novoTipo) {
+  const celulas = andarEditorAtual.value.celulas
+  const chaves = Array.from(selecionados.value)
+
+  const temConflito = chaves.some((k) => {
+    const atual = celulas[k]?.tipo
+    return (novoTipo === 'ESTRADA' && atual === 'VAGA') || (novoTipo === 'VAGA' && atual === 'ESTRADA')
+  })
+
+  if (temConflito) {
+    const msg = novoTipo === 'ESTRADA'
+      ? 'Existem VAGAS na seleção. Deseja substituí-las por ESTRADAS?'
+      : 'Existem ESTRADAS na seleção. Deseja substituí-las por VAGAS?'
+    if (!confirm(msg)) return
+  }
+
+  salvarSnapshot()
+
+  const chavesOrdenadas = chaves.sort((a, b) => {
+    const [ax, ay] = a.split(',').map(Number)
+    const [bx, by] = b.split(',').map(Number)
+    return (ay - by) || (ax - bx)
+  })
+
+  chavesOrdenadas.forEach((k) => {
+    const c = celulas[k]
+    if (!c) return
+    const jaEraVaga = c.tipo === 'VAGA'
+    c.tipo = novoTipo
+    c.orientacao = 'NENHUMA'
+
+    if (novoTipo === 'VAGA') {
+      c.macEsp = null
+      c.livre = true
+      if (c.setorId && c.prefixoSetor) {
+        if (!jaEraVaga || !c.identificador) {
+          const prox = obterProximoNumeroSetor(celulas, c.setorId, c.prefixoSetor)
+          c.identificador = `${c.prefixoSetor}${prox}`
+        }
+      } else {
+        c.identificador = ''
+      }
+    } else {
+      c.macEsp = null
+      c.identificador = ''
+    }
+  })
+
+  mostrarMenuFlutuante.value = false
+  selecionados.value.clear()
+}
+
+function removerTipoSelecao(tipoAlvo) {
+  salvarSnapshot()
+  const celulas = andarEditorAtual.value.celulas
+  selecionados.value.forEach((k) => {
+    const c = celulas[k]
+    if (!c) return
+    if (tipoAlvo === 'SETOR') {
+      c.setorId = null
+      c.corSetor = null
+      c.nomeSetor = null
+      c.prefixoSetor = null
+      if (c.tipo === 'VAGA') c.identificador = ''
+    } else if (c.tipo === tipoAlvo) {
+      c.tipo = 'VAZIO'
+      c.macEsp = null
+      c.identificador = ''
+    }
+  })
+  limparSetoresOrfaosNoAndar(andarEditorAtual.value)
+  mostrarMenuFlutuante.value = false
+  selecionados.value.clear()
+}
+
+function limparTudoNaSelecao() {
+  salvarSnapshot()
+  const celulas = andarEditorAtual.value.celulas
+  selecionados.value.forEach((k) => {
+    const c = celulas[k]
+    if (!c) return
+    c.tipo = 'VAZIO'
+    c.orientacao = 'NENHUMA'
+    c.setorId = null
+    c.corSetor = null
+    c.nomeSetor = null
+    c.prefixoSetor = null
+    c.vagaId = null
+    c.identificador = ''
+    c.livre = true
+    c.macEsp = null
+  })
+  limparSetoresOrfaosNoAndar(andarEditorAtual.value)
+  mostrarMenuFlutuante.value = false
+  selecionados.value.clear()
+}
+
+// =========================================================
+// MODAIS COMPACTOS (SETOR, TAMANHO DO GRID, ACESSOS E MAC)
+// =========================================================
+const modalSetorAberto = ref(false)
+const novoSetorNome = ref('')
+const novoSetorPrefixo = ref('A')
+const novoSetorCor = ref(paletaSetores[0].hex)
+
+function abrirModalSetor() {
+  novoSetorNome.value = ''
+  novoSetorPrefixo.value = 'A'
+  novoSetorCor.value = paletaSetores[0].hex
+  modalSetorAberto.value = true
+}
+
+function sanitizarPrefixoSetor() {
+  novoSetorPrefixo.value = novoSetorPrefixo.value.replace(/[^a-zA-Z]/g, '').slice(0, 3).toUpperCase()
+}
+
+function confirmarSetorSelecao() {
+  const nomeLimpo = novoSetorNome.value.trim()
+  const prefixoFinal = novoSetorPrefixo.value.trim().slice(0, 3).toUpperCase()
+
+  if (!nomeLimpo) {
+    alert('Digite um nome para o setor!')
+    return
+  }
+  if (!prefixoFinal) {
+    alert('Digite um prefixo (1 a 3 letras) para o setor!')
+    return
+  }
+
+  for (const andar of formEstabelecimento.value.andares) {
+    limparSetoresOrfaosNoAndar(andar)
+    for (const s of andar.setores || []) {
+      if (s.nome_setor.toLowerCase() === nomeLimpo.toLowerCase()) {
+        alert(`O nome de setor "${nomeLimpo}" já está em uso no andar "${andar.nome_andar}".`)
+        return
+      }
+      if ((s.prefixo || '').toUpperCase() === prefixoFinal) {
+        alert(`O prefixo "${prefixoFinal}" já está em uso pelo setor "${s.nome_setor}".`)
+        return
+      }
+    }
+  }
+
+  salvarSnapshot()
+  const idSetor = Date.now()
+  andarEditorAtual.value.setores.push({
+    id_setor: idSetor,
+    nome_setor: nomeLimpo,
+    prefixo: prefixoFinal,
+    cor_hex: novoSetorCor.value,
+    inativo_offline: false
+  })
+
+  const celulas = andarEditorAtual.value.celulas
+  selecionados.value.forEach((k) => {
+    const c = celulas[k]
+    if (c) {
+      c.setorId = idSetor
+      c.nomeSetor = nomeLimpo
+      c.prefixoSetor = prefixoFinal
+      c.corSetor = novoSetorCor.value
+    }
+  })
+
+  limparSetoresOrfaosNoAndar(andarEditorAtual.value)
+  numerarVagasDoSetor(celulas, idSetor, prefixoFinal)
+
+  modalSetorAberto.value = false
+  mostrarMenuFlutuante.value = false
+  selecionados.value.clear()
+}
+
+const modalGridAberto = ref(false)
+const inputGridX = ref(30)
+const inputGridY = ref(20)
+
+function clonarLimiteGridX() {
+  const v = parseInt(inputGridX.value, 10)
+  if (!isNaN(v)) {
+    if (v > 100) inputGridX.value = 100
+    if (v < 5) inputGridX.value = 5
+  }
+}
+
+function clonarLimiteGridY() {
+  const v = parseInt(inputGridY.value, 10)
+  if (!isNaN(v)) {
+    if (v > 100) inputGridY.value = 100
+    if (v < 5) inputGridY.value = 5
+  }
+}
+
+function abrirModalTamanhoGrid() {
+  inputGridX.value = andarEditorAtual.value.grid_x
+  inputGridY.value = andarEditorAtual.value.grid_y
+  menuTopoMobileAberto.value = false
+  modalGridAberto.value = true
+}
+
+function confirmarTamanhoGrid() {
+  const nx = Math.min(100, Math.max(5, parseInt(inputGridX.value, 10) || 30))
+  const ny = Math.min(100, Math.max(5, parseInt(inputGridY.value, 10) || 20))
+  inputGridX.value = nx
+  inputGridY.value = ny
+  salvarSnapshot()
+
+  const novasCelulas = criarMatrizVazia(nx, ny)
+  Object.values(andarEditorAtual.value.celulas).forEach((antiga) => {
+    if (antiga.x <= nx && antiga.y <= ny) {
+      novasCelulas[`${antiga.x},${antiga.y}`] = antiga
+    }
+  })
+
+  andarEditorAtual.value.grid_x = nx
+  andarEditorAtual.value.grid_y = ny
+  andarEditorAtual.value.celulas = novasCelulas
+  limparSetoresOrfaosNoAndar(andarEditorAtual.value)
+  modalGridAberto.value = false
+}
+
+const ferramentaCarimbo = ref(null)
+const modalAcessoAberto = ref(false)
+const configAcessoTemp = ref({ tipo: 'ENTRADA', orientacao: 'H', tamanho: 2 })
+
+function prepararAcesso(tipo, orientacao) {
+  selecionados.value.clear()
+  mostrarMenuFlutuante.value = false
+  menuAdicionarMobileAberto.value = false
+  configAcessoTemp.value = { tipo, orientacao, tamanho: 2 }
+  modalAcessoAberto.value = true
+}
+
+function ajustarLimiteAcesso() {
+  const val = parseInt(configAcessoTemp.value.tamanho, 10)
+  if (isNaN(val)) return
+  if (val > 20) configAcessoTemp.value.tamanho = 20
+  if (val < 1) configAcessoTemp.value.tamanho = 1
+}
+
+function ativarCarimboAcesso() {
+  const tam = Math.max(1, Math.min(20, parseInt(configAcessoTemp.value.tamanho, 10) || 1))
+  configAcessoTemp.value.tamanho = tam
+  ferramentaCarimbo.value = {
+    categoria: 'ACESSO',
+    tipo: configAcessoTemp.value.tipo,
+    orientacao: configAcessoTemp.value.orientacao,
+    w: configAcessoTemp.value.orientacao === 'H' ? tam : 1,
+    h: configAcessoTemp.value.orientacao === 'V' ? tam : 1
+  }
+  modalAcessoAberto.value = false
+}
+
+const linhasEquipamentos = [
+  [{ w: 1, h: 2 }, { w: 1, h: 3 }, { w: 1, h: 4 }],
+  [{ w: 2, h: 3 }, { w: 2, h: 4 }],
+  [{ w: 1, h: 1 }, { w: 2, h: 2 }],
+  [{ w: 2, h: 1 }, { w: 3, h: 1 }, { w: 4, h: 1 }],
+  [{ w: 3, h: 2 }, { w: 4, h: 2 }]
+]
+
+function ativarCarimboEquipamento(w, h) {
+  selecionados.value.clear()
+  mostrarMenuFlutuante.value = false
+  menuAdicionarMobileAberto.value = false
+  ferramentaCarimbo.value = { categoria: 'EQUIPAMENTO', tipo: 'ESP32', w, h }
+}
+
+function estaNaSombraCarimbo(x, y) {
+  if (!ferramentaCarimbo.value || !hoverCoord.value) return false
+  const { w, h } = ferramentaCarimbo.value
+  return (
+    x >= hoverCoord.value.x &&
+    x < hoverCoord.value.x + w &&
+    y >= hoverCoord.value.y &&
+    y < hoverCoord.value.y + h
+  )
+}
+
+const modalMacAberto = ref(false)
+const inputMacEsp = ref('AA:BB:CC:DD:EE:01')
+const coordenadasCarimboPendente = ref([])
+
+function aplicarCarimboNoGrid(startX, startY) {
+  const carimbo = ferramentaCarimbo.value
+  if (!carimbo) return
+
+  const coordsAfetadas = []
+  for (let cy = startY; cy < startY + carimbo.h; cy++) {
+    for (let cx = startX; cx < startX + carimbo.w; cx++) {
+      if (cx <= andarEditorAtual.value.grid_x && cy <= andarEditorAtual.value.grid_y) {
+        coordsAfetadas.push(`${cx},${cy}`)
+      }
+    }
+  }
+
+  const celulas = andarEditorAtual.value.celulas
+
+  if (carimbo.categoria === 'ACESSO') {
+    const temVagaOuEstrada = coordsAfetadas.some(
+      k => celulas[k].tipo === 'VAGA' || celulas[k].tipo === 'ESTRADA'
+    )
+    if (temVagaOuEstrada) {
+      if (!confirm('Ao clicar em Ok, as vagas e as estradas da seleção serão removidas')) {
+        return
+      }
+    }
+    salvarSnapshot()
+    coordsAfetadas.forEach((k) => {
+      celulas[k].tipo = carimbo.tipo
+      celulas[k].orientacao = carimbo.orientacao
+      celulas[k].macEsp = null
+      celulas[k].identificador = ''
+    })
+    ferramentaCarimbo.value = null
+    return
+  }
+
+  if (carimbo.categoria === 'EQUIPAMENTO') {
+    const vagasDebaixo = coordsAfetadas.filter(k => celulas[k].tipo === 'VAGA')
+    if (vagasDebaixo.length === 0) {
+      alert('Nenhuma VAGA encontrada sob este carimbo de equipamento! Crie as vagas primeiro.')
+      return
+    }
+    coordenadasCarimboPendente.value = vagasDebaixo
+    modalMacAberto.value = true
+  }
+}
+
+function confirmarVinculoEquipamento() {
+  if (!inputMacEsp.value.trim()) {
+    alert('Informe o código MAC ou identificador do ESP32.')
+    return
+  }
+  salvarSnapshot()
+  const celulas = andarEditorAtual.value.celulas
+
+  coordenadasCarimboPendente.value.forEach((k) => {
+    const c = celulas[k]
+    c.macEsp = inputMacEsp.value.trim().toUpperCase()
+    if (c.setorId && c.prefixoSetor && !c.identificador) {
+      const prox = obterProximoNumeroSetor(celulas, c.setorId, c.prefixoSetor)
+      c.identificador = `${c.prefixoSetor}${prox}`
+    }
+  })
+
+  modalMacAberto.value = false
+  ferramentaCarimbo.value = null
+}
+
+// =========================================================
+// SALVAR ESTACIONAMENTO NO MYSQL VIA FASTAPI
+// =========================================================
+async function finalizarSalvarEstacionamento() {
+  if (!podeSalvarEstacionamento.value) {
+    mostrarPainelAvisos.value = true
+    return
+  }
+  if (salvandoNoBanco.value) return
+
+  salvandoNoBanco.value = true
+  try {
+    await salvarEstacionamentoNoBanco()
+    alert('✅ Planta 2d Salva com Sucesso!')
+    router.push({ name: 'admin-lista' })
+  } catch (err) {
+    alert(`❌ Erro ao salvar: ${err.message}`)
+  } finally {
+    salvandoNoBanco.value = false
+  }
+}
+
+function tratarTeclaGlobal(event) {
+  if (event.key === 'Escape') {
+    if (ferramentaCarimbo.value) ferramentaCarimbo.value = null
+    if (mostrarMenuFlutuante.value) {
+      mostrarMenuFlutuante.value = false
+      selecionados.value.clear()
+    }
+    mostrarPainelAvisos.value = false
+    menuTopoMobileAberto.value = false
+    menuAdicionarMobileAberto.value = false
+  }
+}
+
+onMounted(() => {
+  window.addEventListener('mouseup', finalizarSelecaoMouse)
+  window.addEventListener('keydown', tratarTeclaGlobal)
+})
+
+onUnmounted(() => {
+  window.removeEventListener('mouseup', finalizarSelecaoMouse)
+  window.removeEventListener('keydown', tratarTeclaGlobal)
+})
+</script>
+
+<template>
+  <div v-if="andarEditorAtual" class="editor-layout">
+    <button
+      class="hud-btn-flutuante hud-esquerda-alertas"
+      :class="{ 'caution-ok': podeSalvarEstacionamento, 'caution-pendente': !podeSalvarEstacionamento }"
+      title="Avisos de validação"
+      @click="alternarPainelAvisos"
+    >
+      ⚠️
+      <span class="hud-mini-badge">{{ listaAvisosValidacao.length }}</span>
+    </button>
+
+    <div class="hud-coluna-direita-mobile">
+      <button
+        class="hud-btn-flutuante hud-btn-salvar"
+        :disabled="!podeSalvarEstacionamento || salvandoNoBanco"
+        title="Finalizar e Salvar"
+        @click="finalizarSalvarEstacionamento"
+      >
+        💾
+      </button>
+
+      <button
+        class="hud-btn-flutuante"
+        :class="{ 'hud-ativo': menuTopoMobileAberto }"
+        title="Opções do Editor"
+        @click="alternarMenuEngrenagem"
+      >
+        ⚙️
+      </button>
+
+      <button
+        class="hud-btn-flutuante hud-btn-add"
+        :class="{ 'hud-ativo': menuAdicionarMobileAberto }"
+        title="Adicionar Acessos e Equipamentos"
+        @click="alternarMenuAdicionar"
+      >
+        ➕
+      </button>
+    </div>
+
+    <header
+      class="editor-topbar"
+      :class="{ 'topbar-mobile-aberta': menuTopoMobileAberto }"
+    >
+      <div class="topbar-esquerda">
+        <button class="btn-secundario btn-duas-linhas" @click="router.push({ name: 'admin-info-gerais' })">
+          ⬅️ Editar estacionamento<br /><span>Informações Gerais</span>
+        </button>
+
+        <div class="seletor-andar-box">
+          <span>Andar:</span>
+          <select
+            v-if="formEstabelecimento.andares.length > 1"
+            v-model="andarEditorIndex"
+            class="select-andar-editor"
+            @change="selecionados.clear(); historicoUndo = []; historicoRedo = []; resetarCameraGrid(); menuTopoMobileAberto = false"
+          >
+            <option
+              v-for="(a, idx) in formEstabelecimento.andares"
+              :key="a.id_andar"
+              :value="idx"
+            >
+              {{ a.nome_andar }} ({{ a.grid_x }}x{{ a.grid_y }})
+            </option>
+          </select>
+          <strong v-else>{{ andarEditorAtual.nome_andar }}</strong>
+        </div>
+
+        <button class="btn-secundario btn-duas-linhas" @click="abrirModalTamanhoGrid">
+          📐 Tamanho do Grid<br /><span>({{ andarEditorAtual.grid_x }}x{{ andarEditorAtual.grid_y }})</span>
+        </button>
+
+        <button class="btn-secundario" :disabled="historicoUndo.length === 0" @click="desfazer">
+          ↩️ Desfazer
+        </button>
+        <button class="btn-secundario" :disabled="historicoRedo.length === 0" @click="refazer">
+          ↪️ Refazer
+        </button>
+        <button
+          v-if="panX !== 0 || panY !== 0 || zoomEscala !== 1"
+          class="btn-secundario"
+          title="Centralizar Zoom"
+          @click="resetarCameraGrid"
+        >
+          🔍 {{ Math.round(zoomEscala * 100) }}%
+        </button>
+      </div>
+
+      <div class="topbar-direita">
+        <button
+          class="btn-caution-avisos"
+          :class="{ 'caution-ok': podeSalvarEstacionamento, 'caution-pendente': !podeSalvarEstacionamento }"
+          title="Clique para mostrar/ocultar avisos de validação"
+          @click="alternarPainelAvisos"
+        >
+          ⚠️
+          <span class="caution-badge">{{ listaAvisosValidacao.length }}</span>
+        </button>
+
+        <button
+          class="btn-salvar-final btn-duas-linhas"
+          :disabled="!podeSalvarEstacionamento || salvandoNoBanco"
+          @click="finalizarSalvarEstacionamento"
+        >
+          💾 {{ salvandoNoBanco ? 'Salvando...' : 'Finalizar e' }}<br />
+          <span v-if="!salvandoNoBanco">Salvar no Banco</span>
+        </button>
+      </div>
+    </header>
+
+    <div class="editor-workspace">
+      <div class="area-grid-container">
+        <Transition name="fade-pop">
+          <div v-if="mostrarPainelAvisos" class="overlay-flutuante painel-avisos-overlay">
+            <div class="overlay-header">
+              <strong>⚠️ Validação ({{ listaAvisosValidacao.length }})</strong>
+              <button class="btn-fechar-mini" @click="mostrarPainelAvisos = false">✖</button>
+            </div>
+            <ul v-if="listaAvisosValidacao.length > 0" class="lista-avisos-ul">
+              <li v-for="(aviso, i) in listaAvisosValidacao" :key="i">{{ aviso }}</li>
+            </ul>
+            <p v-else class="aviso-tudo-ok">
+              ✅ Tudo certo! Todos os andares, setores, vagas e acessos estão validados.
+            </p>
+          </div>
+        </Transition>
+
+        <Transition name="fade-pop">
+          <div v-if="ferramentaCarimbo" class="overlay-flutuante banner-carimbo-overlay">
+            <span>
+              🎯 <strong>{{ ferramentaCarimbo.tipo }} ({{ ferramentaCarimbo.w }}x{{ ferramentaCarimbo.h }})</strong> — Toque no Grid
+            </span>
+            <button class="btn-cancelar-carimbo" @click="ferramentaCarimbo = null">✖</button>
+          </div>
+        </Transition>
+
+        <Transition name="fade-pop">
+          <div v-if="mostrarMenuFlutuante && selecionados.size > 0" class="overlay-flutuante menu-selecao-overlay">
+            <span class="contagem-sel">{{ selecionados.size }} sel.:</span>
+
+            <div class="grupo-acao-item">
+              <span>🛣️</span>
+              <button class="btn-mini add" title="Adicionar Estrada" @click="aplicarTipoSelecao('ESTRADA')">➕</button>
+              <button class="btn-mini rem" title="Remover Estrada" @click="removerTipoSelecao('ESTRADA')">➖</button>
+            </div>
+
+            <div class="grupo-acao-item">
+              <span>🎨</span>
+              <button class="btn-mini add" title="Definir Setor" @click="abrirModalSetor">➕</button>
+              <button class="btn-mini rem" title="Remover Setor" @click="removerTipoSelecao('SETOR')">➖</button>
+            </div>
+
+            <div class="grupo-acao-item">
+              <span>🅿️</span>
+              <button class="btn-mini add" title="Adicionar Vagas" @click="aplicarTipoSelecao('VAGA')">➕</button>
+              <button class="btn-mini rem" title="Remover Vagas" @click="removerTipoSelecao('VAGA')">➖</button>
+            </div>
+
+            <button
+              class="btn-mini lixeira-tudo"
+              title="Remover TUDO na seleção"
+              @click="limparTudoNaSelecao"
+            >
+              🗑️
+            </button>
+
+            <button
+              class="btn-mini limpar"
+              title="Desselecionar"
+              @click="selecionados.clear(); mostrarMenuFlutuante = false"
+            >
+              ✖
+            </button>
+          </div>
+        </Transition>
+
+        <Transition name="fade-pop">
+          <div v-if="infoSetorHover" class="overlay-flutuante badge-hover-setor">
+            <span class="bolinha-cor-setor" :style="{ backgroundColor: infoSetorHover.cor }"></span>
+            <strong>{{ infoSetorHover.nome }} ({{ infoSetorHover.prefixo }})</strong>
+            <span>— {{ infoSetorHover.qtdVagas }} vaga(s)</span>
+          </div>
+        </Transition>
+
+        <div
+          class="area-grid-principal"
+          @mouseleave="hoverCoord = null"
+          @touchstart.passive="aoIniciarToqueGrid"
+          @touchmove.prevent="aoMoverToqueGrid"
+          @touchend="aoFinalizarToqueGrid"
+        >
+          <div
+            class="viewport-touch-canvas"
+            :style="{
+              transform: `translate(${panX}px, ${panY}px) scale(${zoomEscala})`,
+              transformOrigin: '0 0'
+            }"
+          >
+            <div class="matriz-com-coordenadas">
+              <div
+                class="linha-coordenadas-x"
+                :style="{ gridTemplateColumns: `36px repeat(${andarEditorAtual.grid_x}, 36px)` }"
+              >
+                <div class="canto-xy">Y\X</div>
+                <div v-for="x in andarEditorAtual.grid_x" :key="`coord-x-${x}`" class="rotulo-coord">
+                  {{ x }}
+                </div>
+              </div>
+
+              <div
+                v-for="y in andarEditorAtual.grid_y"
+                :key="`row-${y}`"
+                class="linha-grid-y"
+                :style="{ gridTemplateColumns: `36px repeat(${andarEditorAtual.grid_x}, 36px)` }"
+              >
+                <div class="rotulo-coord">{{ y }}</div>
+
+                <div
+                  v-for="x in andarEditorAtual.grid_x"
+                  :key="`cell-${x}-${y}`"
+                  :data-coord="`${x},${y}`"
+                  class="celula-editor-fundo"
+                  :style="{
+                    backgroundColor: andarEditorAtual.celulas[`${x},${y}`]?.corSetor || 'transparent'
+                  }"
+                  @mousedown.prevent="iniciarSelecaoCelula(x, y, $event)"
+                  @mouseenter="moverMouseCelula(x, y)"
+                >
+                  <div
+                    class="quadrado-editor"
+                    :class="{
+                      'qe-vazio': andarEditorAtual.celulas[`${x},${y}`]?.tipo === 'VAZIO',
+                      'qe-estrada': andarEditorAtual.celulas[`${x},${y}`]?.tipo === 'ESTRADA',
+                      'qe-vaga-amarela': andarEditorAtual.celulas[`${x},${y}`]?.tipo === 'VAGA' && !andarEditorAtual.celulas[`${x},${y}`]?.macEsp,
+                      'qe-entrada': andarEditorAtual.celulas[`${x},${y}`]?.tipo === 'ENTRADA',
+                      'qe-saida': andarEditorAtual.celulas[`${x},${y}`]?.tipo === 'SAIDA',
+                      'qe-acesso': andarEditorAtual.celulas[`${x},${y}`]?.tipo === 'ACESSO',
+                      'qe-selecionado-roxo': selecionados.has(`${x},${y}`),
+                      'qe-sombra-verde': estaNaSombraCarimbo(x, y)
+                    }"
+                    :style="
+                      andarEditorAtual.celulas[`${x},${y}`]?.tipo === 'VAGA' &&
+                      andarEditorAtual.celulas[`${x},${y}`]?.macEsp &&
+                      !selecionados.has(`${x},${y}`)
+                        ? { backgroundColor: escurecerCorHex(andarEditorAtual.celulas[`${x},${y}`]?.corSetor) }
+                        : {}
+                    "
+                    :title="obterTituloCelula(x, y)"
+                  >
+                    <span v-if="andarEditorAtual.celulas[`${x},${y}`]?.tipo === 'VAGA'">
+                      {{ andarEditorAtual.celulas[`${x},${y}`]?.identificador || 'V' }}
+                    </span>
+                    <span v-else-if="andarEditorAtual.celulas[`${x},${y}`]?.tipo === 'ENTRADA'">E</span>
+                    <span v-else-if="andarEditorAtual.celulas[`${x},${y}`]?.tipo === 'SAIDA'">S</span>
+                    <span v-else-if="andarEditorAtual.celulas[`${x},${y}`]?.tipo === 'ACESSO'">A</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <aside
+        class="sidebar-direita-editor"
+        :class="{ 'sidebar-mobile-aberta': menuAdicionarMobileAberto }"
+      >
+        <div class="painel-ferramentas">
+          <h4>🚪 Entradas / Saídas / Acessos</h4>
+          <p class="dica-painel">Clique para definir o tamanho e posicionar</p>
+
+          <div class="linha-botoes-dupla">
+            <button class="btn-ferramenta cor-entrada" @click="prepararAcesso('ENTRADA', 'H')">
+              ➡️ Entrada (H)
+            </button>
+            <button class="btn-ferramenta cor-entrada" @click="prepararAcesso('ENTRADA', 'V')">
+              ⬇️ Entrada (V)
+            </button>
+          </div>
+
+          <div class="linha-botoes-dupla">
+            <button class="btn-ferramenta cor-saida" @click="prepararAcesso('SAIDA', 'H')">
+              ➡️ Saída (H)
+            </button>
+            <button class="btn-ferramenta cor-saida" @click="prepararAcesso('SAIDA', 'V')">
+              ⬇️ Saída (V)
+            </button>
+          </div>
+
+          <div class="linha-botoes-dupla">
+            <button class="btn-ferramenta cor-acesso" @click="prepararAcesso('ACESSO', 'H')">
+              🚶 Acesso (H)
+            </button>
+            <button class="btn-ferramenta cor-acesso" @click="prepararAcesso('ACESSO', 'V')">
+              🚶 Acesso (V)
+            </button>
+          </div>
+        </div>
+
+        <div class="painel-ferramentas">
+          <h4>📡 Equipamentos (ESP32)</h4>
+          <p class="dica-painel">Escolha o formato (X por Y) e clique nas vagas</p>
+
+          <div
+            v-for="(linha, rIdx) in linhasEquipamentos"
+            :key="`eq-row-${rIdx}`"
+            class="linha-equipamentos"
+          >
+            <button
+              v-for="item in linha"
+              :key="`${item.w}x${item.h}`"
+              class="btn-equipamento"
+              @click="ativarCarimboEquipamento(item.w, item.h)"
+            >
+              🔌 {{ item.w }}x{{ item.h }}
+            </button>
+          </div>
+        </div>
+
+        <div class="painel-ferramentas legenda-editor">
+          <h4>📌 Cores do Editor</h4>
+          <div><span class="amostra" style="background:#cbd5e1"></span> Cinza Claro: Vazio</div>
+          <div><span class="amostra amostra-asfalto"></span> Asfalto Escuro: Estrada</div>
+          <div><span class="amostra" style="background:#eab308"></span> Amarelo: Vaga sem ESP32</div>
+          <div><span class="amostra" style="background:#005066"></span> Cor Escura: Vaga Vinculada</div>
+        </div>
+      </aside>
+    </div>
+
+    <Transition name="fade-pop">
+      <div v-if="modalSetorAberto" class="modal-backdrop">
+        <div class="modal-box">
+          <h3>🎨 Definir Setor</h3>
+          <div class="campo-grupo" style="margin-top:10px">
+            <label>Nome do Setor (único)</label>
+            <input v-model="novoSetorNome" type="text" maxlength="25" placeholder="Ex: Setor A" />
+          </div>
+          <div class="campo-grupo">
+            <label>Prefixo das Vagas (máx. 3 letras)</label>
+            <input
+              v-model="novoSetorPrefixo"
+              type="text"
+              maxlength="3"
+              class="input-curto-prefixo"
+              placeholder="A"
+              @input="sanitizarPrefixoSetor"
+            />
+          </div>
+          <div class="campo-grupo">
+            <label>Cor viva do setor:</label>
+            <div class="grade-cores-setor">
+              <button
+                v-for="cor in paletaSetores"
+                :key="cor.hex"
+                class="botao-cor-setor"
+                :class="{ 'cor-selecionada': novoSetorCor === cor.hex }"
+                :style="{ backgroundColor: cor.hex }"
+                @click="novoSetorCor = cor.hex"
+              >
+                {{ cor.nome }}
+              </button>
+            </div>
+          </div>
+          <div class="modal-acoes">
+            <button class="btn-secundario" @click="modalSetorAberto = false">Cancelar</button>
+            <button class="btn-primario" @click="confirmarSetorSelecao">OK</button>
+          </div>
+        </div>
+      </div>
+    </Transition>
+
+    <Transition name="fade-pop">
+      <div v-if="modalGridAberto" class="modal-backdrop">
+        <div class="modal-box modal-compacto">
+          <h3>📐 Tamanho do Grid</h3>
+          <p class="subtitulo">Mín. 5 | Máx. 100</p>
+          <div class="linha-inputs-compactos">
+            <div class="campo-compacto">
+              <label>Largura (X)</label>
+              <input
+                v-model="inputGridX"
+                type="number"
+                min="5"
+                max="100"
+                class="input-numero-compacto"
+                @input="clonarLimiteGridX"
+                @change="clonarLimiteGridX"
+              />
+            </div>
+            <span class="separador-x">×</span>
+            <div class="campo-compacto">
+              <label>Altura (Y)</label>
+              <input
+                v-model="inputGridY"
+                type="number"
+                min="5"
+                max="100"
+                class="input-numero-compacto"
+                @input="clonarLimiteGridY"
+                @change="clonarLimiteGridY"
+              />
+            </div>
+          </div>
+          <div class="modal-acoes">
+            <button class="btn-secundario" @click="modalGridAberto = false">Cancelar</button>
+            <button class="btn-primario" @click="confirmarTamanhoGrid">Aplicar</button>
+          </div>
+        </div>
+      </div>
+    </Transition>
+
+    <Transition name="fade-pop">
+      <div v-if="modalAcessoAberto" class="modal-backdrop">
+        <div class="modal-box modal-compacto">
+          <h3>
+            🚪 {{ configAcessoTemp.tipo }}
+            ({{ configAcessoTemp.orientacao === 'H' ? 'Horiz.' : 'Vert.' }})
+          </h3>
+          <div class="campo-compacto" style="margin-top:10px">
+            <label v-if="configAcessoTemp.orientacao === 'H'">Largura X (1 a 20):</label>
+            <label v-else>Altura Y (1 a 20):</label>
+            <input
+              v-model="configAcessoTemp.tamanho"
+              type="number"
+              min="1"
+              max="20"
+              class="input-numero-compacto"
+              @input="ajustarLimiteAcesso"
+              @change="ajustarLimiteAcesso"
+            />
+          </div>
+          <div class="modal-acoes">
+            <button class="btn-secundario" @click="modalAcessoAberto = false">Cancelar</button>
+            <button class="btn-primario" @click="ativarCarimboAcesso">OK</button>
+          </div>
+        </div>
+      </div>
+    </Transition>
+
+    <Transition name="fade-pop">
+      <div v-if="modalMacAberto" class="modal-backdrop">
+        <div class="modal-box modal-compacto">
+          <h3>📡 Vincular ESP32</h3>
+          <p class="subtitulo">
+            {{ coordenadasCarimboPendente.length }} vaga(s) selecionada(s)
+          </p>
+          <div class="campo-grupo" style="margin-top:10px">
+            <label>Código MAC do ESP32</label>
+            <input v-model="inputMacEsp" type="text" maxlength="17" placeholder="AA:BB:CC:DD:EE:FF" />
+          </div>
+          <div class="modal-acoes">
+            <button class="btn-secundario" @click="modalMacAberto = false">Cancelar</button>
+            <button class="btn-primario" @click="confirmarVinculoEquipamento">Vincular</button>
+          </div>
+        </div>
+      </div>
+    </Transition>
+  </div>
+</template>
+
+// 🏁 FIM DO ARQUIVO: frontend\src\views\AdminEditor2DView.vue
+// ------------------------------------------------------------------
+
+
+// ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: frontend\src\views\AdminInfoGeraisView.vue
+// ==================================================================
+
+// [Arquivo binário ignorado pelo leitor de segurança]
+
+
+// 🏁 FIM DO ARQUIVO: frontend\src\views\AdminInfoGeraisView.vue
+// ------------------------------------------------------------------
+
+
+// ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: frontend\src\views\AdminListaView.vue
+// ==================================================================
+
+// [Arquivo binário ignorado pelo leitor de segurança]
+
+
+// 🏁 FIM DO ARQUIVO: frontend\src\views\AdminListaView.vue
+// ------------------------------------------------------------------
+
+
+// ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: frontend\src\views\MotoristaHomeView.vue
+// ==================================================================
+
+// [Arquivo binário ignorado pelo leitor de segurança]
+
+
+// 🏁 FIM DO ARQUIVO: frontend\src\views\MotoristaHomeView.vue
+// ------------------------------------------------------------------
+
+
+// ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: frontend\src\views\MotoristaMapaView.vue
+// ==================================================================
+
+<script setup>
+import { ref, computed, watch } from 'vue'
+import { useRoute, useRouter } from 'vue-router'
+import { estabelecimentos } from '../store/estacionamentoStore'
+
+const route = useRoute()
+const router = useRouter()
+
+const vagaFavorita = ref(null)
+const filtrarOcupadas = ref(false)
+const modoSimuladorSensor = ref(false)
+const andarSelecionadoId = ref(null)
+
+const estacionamentoAtual = computed(() => {
+  const id = parseInt(route.params.id, 10)
+  return estabelecimentos.value.find(e => e.id === id && !e.inativo) || null
+})
+
+const andarMotorista = computed(() => {
+  if (!estacionamentoAtual.value) return null
+  return (
+    estacionamentoAtual.value.andares.find(a => a.id_andar === andarSelecionadoId.value) ||
+    estacionamentoAtual.value.andares[0]
+  )
+})
+
+watch(
+  estacionamentoAtual,
+  (novo) => {
+    if (novo && novo.andares.length > 0) {
+      andarSelecionadoId.value = novo.andares[0].id_andar
+      vagaFavorita.value = null
+    }
+  },
+  { immediate: true }
+)
+
+function clicarCelulaMotorista(celula) {
+  if (!celula || celula.tipo !== 'VAGA') return
+  if (modoSimuladorSensor.value) {
+    celula.livre = !celula.livre
+    if (!celula.livre && vagaFavorita.value === `${celula.x},${celula.y}`) {
+      vagaFavorita.value = null
+    }
+    return
+  }
+  if (!celula.livre) return
+  const chave = `${celula.x},${celula.y}`
+  vagaFavorita.value = vagaFavorita.value === chave ? null : chave
+}
+</script>
+
+<template>
+  <div v-if="estacionamentoAtual && andarMotorista" class="painel-estacionamento">
+    <header class="painel-header">
+      <div>
+        <h1>{{ estacionamentoAtual.nome }}</h1>
+        <p class="subtitulo">Toque em uma vaga livre (verde) para marcá-la em roxo</p>
+      </div>
+      <button class="btn-secundario" @click="router.push({ name: 'motorista-home' })">
+        📷 Ler outro QR Code
+      </button>
+    </header>
+
+    <div class="abas-andares">
+      <button
+        v-for="andar in estacionamentoAtual.andares"
+        :key="andar.id_andar"
+        class="aba-btn"
+        :class="{ 'aba-ativa': andarMotorista.id_andar === andar.id_andar }"
+        @click="andarSelecionadoId = andar.id_andar"
+      >
+        {{ andar.nome_andar }}
+      </button>
+    </div>
+
+    <div class="barra-controles">
+      <div class="controles-esquerda">
+        <label class="filtro-toggle">
+          <input type="checkbox" v-model="filtrarOcupadas" />
+          Deixar vagas ocupadas cinzas
+        </label>
+        <label class="filtro-toggle">
+          <input type="checkbox" v-model="modoSimuladorSensor" />
+          🔄 Clique simula Sensor HC-SR04 (Carro Entrando/Saindo)
+        </label>
+      </div>
+
+      <div class="legenda">
+        <span class="badge" style="background:#2563eb">Entrada</span>
+        <span class="badge" style="background:#ea580c">Saída</span>
+        <span class="badge" style="background:#16a34a">Vaga Livre</span>
+        <span class="badge" style="background:#9333ea">Sua Vaga</span>
+        <span class="badge" style="background:#dc2626">Ocupada</span>
+      </div>
+    </div>
+
+    <div class="grid-scroll-wrapper">
+      <div
+        class="grid-tabuleiro"
+        :style="{ gridTemplateColumns: `repeat(${andarMotorista.grid_x}, 42px)` }"
+      >
+        <template v-for="y in andarMotorista.grid_y" :key="`mot-row-${y}`">
+          <div
+            v-for="x in andarMotorista.grid_x"
+            :key="`mot-cell-${x}-${y}`"
+            class="celula-fundo-setor"
+            :style="{
+              backgroundColor: andarMotorista.celulas[`${x},${y}`]?.corSetor || 'transparent'
+            }"
+            @click="clicarCelulaMotorista(andarMotorista.celulas[`${x},${y}`])"
+          >
+            <div
+              class="quadrado-interno"
+              :class="{
+                'q-invisivel': andarMotorista.celulas[`${x},${y}`]?.tipo === 'VAZIO',
+                'q-estrada': andarMotorista.celulas[`${x},${y}`]?.tipo === 'ESTRADA',
+                'q-entrada': andarMotorista.celulas[`${x},${y}`]?.tipo === 'ENTRADA',
+                'q-saida': andarMotorista.celulas[`${x},${y}`]?.tipo === 'SAIDA',
+                'q-acesso': andarMotorista.celulas[`${x},${y}`]?.tipo === 'ACESSO',
+                'q-vaga-livre': andarMotorista.celulas[`${x},${y}`]?.tipo === 'VAGA' && andarMotorista.celulas[`${x},${y}`]?.livre && vagaFavorita !== `${x},${y}`,
+                'q-vaga-roxa': andarMotorista.celulas[`${x},${y}`]?.tipo === 'VAGA' && andarMotorista.celulas[`${x},${y}`]?.livre && vagaFavorita === `${x},${y}`,
+                'q-vaga-ocupada': andarMotorista.celulas[`${x},${y}`]?.tipo === 'VAGA' && !andarMotorista.celulas[`${x},${y}`]?.livre && !filtrarOcupadas,
+                'q-vaga-cinza': andarMotorista.celulas[`${x},${y}`]?.tipo === 'VAGA' && !andarMotorista.celulas[`${x},${y}`]?.livre && filtrarOcupadas
+              }"
+            >
+              <span v-if="andarMotorista.celulas[`${x},${y}`]?.tipo === 'VAGA'">
+                {{ andarMotorista.celulas[`${x},${y}`]?.identificador }}
+              </span>
+              <span v-else-if="andarMotorista.celulas[`${x},${y}`]?.tipo === 'ENTRADA'">ENT</span>
+              <span v-else-if="andarMotorista.celulas[`${x},${y}`]?.tipo === 'SAIDA'">SAI</span>
+              <span v-else-if="andarMotorista.celulas[`${x},${y}`]?.tipo === 'ACESSO'">🚶</span>
+            </div>
+          </div>
+        </template>
+      </div>
+    </div>
+  </div>
+
+  <div v-else class="admin-container">
+    <div class="lista-card" style="text-align: center">
+      <h2>Estacionamento não encontrado ou inativo</h2>
+      <button class="btn-primario" style="margin-top: 16px" @click="router.push({ name: 'motorista-home' })">
+        Voltar ao Início
+      </button>
+    </div>
+  </div>
+</template>
+
+// 🏁 FIM DO ARQUIVO: frontend\src\views\MotoristaMapaView.vue
+// ------------------------------------------------------------------
+
+

@@ -1,10 +1,18 @@
 <script setup>
-import { ref } from 'vue'
+import { ref, onMounted } from 'vue'
 import { useRouter } from 'vue-router'
-import { estabelecimentos, iniciarNovoFormulario } from './store/estacionamentoStore'
+import {
+  estabelecimentos,
+  iniciarNovoFormulario,
+  carregarDadosDoBanco
+} from './store/estacionamentoStore'
 
 const menuAberto = ref(false)
 const router = useRouter()
+
+onMounted(() => {
+  carregarDadosDoBanco()
+})
 
 function irPara(rota) {
   menuAberto.value = false
@@ -55,7 +63,6 @@ function irParaNovoEstacionamento() {
       </aside>
     </Transition>
 
-    <!-- Renderiza a página correspondente à rota atual -->
     <router-view />
   </div>
 </template>
