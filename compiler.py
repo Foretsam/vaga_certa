@@ -15,7 +15,7 @@ EXTENSOES_INVALIDAS = {
 }
 
 # Estas pastas (e tudo dentro delas) serão IGNORADAS
-PASTAS_INVALIDAS = {".vscode", "node_modules", "public"}
+PASTAS_INVALIDAS = {".vscode", "node_modules", "public", "__pycache__"}
 # ==========================================================
 
 

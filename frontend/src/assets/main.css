@@ -1302,6 +1302,221 @@ button:disabled {
 }
 
 /* =========================================================
+   NOVOS ESTILOS: BORRACHA, TOOLTIPS, HUD E MODAL DE SETORES
+   ========================================================= */
+
+/* Botão de Borracha no Menu Flutuante de Seleção */
+.btn-mini.borracha-tudo {
+  background: #f43f5e;
+  color: #ffffff;
+  border: 1px solid #fda4af;
+}
+.btn-mini.borracha-tudo:hover {
+  background: #e11d48;
+}
+
+/* Tooltip simples ao passar o mouse sobre os ícones de Estrada, Setores e Vagas */
+.icone-com-tooltip {
+  position: relative;
+  cursor: help;
+  display: inline-flex;
+  align-items: center;
+}
+.icone-com-tooltip:hover::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: 135%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #0f172a;
+  color: #f8fafc;
+  padding: 4px 8px;
+  border-radius: 5px;
+  font-size: 11.5px;
+  font-weight: 600;
+  white-space: nowrap;
+  border: 1px solid #475569;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.35);
+  z-index: 100;
+  pointer-events: none;
+}
+
+/* Destaque para a informação de setor entre colchetes [] no HUD inferior */
+.texto-colchetes-setor {
+  color: #38bdf8;
+  font-weight: 600;
+}
+
+/* Botão Alterar Setores abaixo de Equipamentos */
+.btn-alterar-setores-menu {
+  width: 100%;
+  margin-top: 6px;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid var(--destaque-azul);
+  background: rgba(37, 99, 235, 0.12);
+  color: var(--texto-principal);
+  font-weight: 700;
+  font-size: 13.5px;
+  cursor: pointer;
+  transition: background 0.15s, transform 0.1s;
+}
+.btn-alterar-setores-menu:hover {
+  background: var(--destaque-azul);
+  color: #ffffff;
+}
+
+/* Modal Alterar Setores e Combobox Filtrável */
+.modal-box.modal-alterar-setor {
+  max-width: 400px;
+}
+
+.combobox-setor-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+.combobox-setor-wrapper input {
+  width: 100%;
+  padding-right: 34px;
+}
+.btn-seta-combobox {
+  position: absolute;
+  right: 8px;
+  background: transparent;
+  border: none;
+  color: var(--texto-secundario);
+  cursor: pointer;
+  font-size: 12px;
+  padding: 4px;
+}
+
+.lista-dropdown-setores {
+  position: absolute;
+  top: calc(100% + 4px);
+  left: 0;
+  right: 0;
+  max-height: 160px;
+  overflow-y: auto;
+  background: var(--bg-card);
+  border: 1px solid var(--borda);
+  border-radius: 8px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.35);
+  z-index: 80;
+}
+.item-dropdown-setor {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 9px 12px;
+  font-size: 13.5px;
+  cursor: pointer;
+  border-bottom: 1px solid var(--borda);
+}
+.item-dropdown-setor:last-child {
+  border-bottom: none;
+}
+.item-dropdown-setor:hover {
+  background: var(--bg-painel);
+}
+.item-dropdown-vazio {
+  padding: 12px;
+  text-align: center;
+  font-size: 12.5px;
+  color: var(--texto-secundario);
+}
+
+/* Estado cinzado/bloqueado antes de selecionar um setor */
+.area-edicao-setor-campos {
+  transition: opacity 0.2s ease;
+}
+.area-edicao-setor-campos.campos-desabilitados {
+  opacity: 0.42;
+  pointer-events: none;
+  filter: grayscale(85%);
+}
+
+.msg-preencha-setor {
+  color: #f59e0b;
+  font-size: 13px;
+  font-weight: 600;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+/* Botões Excluir (Cinza -> Vermelho) e Confirmar (Cinza -> Verde) */
+.botoes-empilhados-setor {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.btn-excluir-setor {
+  width: 100%;
+  padding: 10px;
+  border-radius: 8px;
+  border: none;
+  font-weight: 700;
+  font-size: 14px;
+  background: #dc2626;
+  color: #ffffff;
+  cursor: pointer;
+  transition: background 0.2s, opacity 0.2s;
+}
+.btn-excluir-setor:disabled {
+  background: #64748b;
+  color: #cbd5e1;
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+.btn-confirmar-setor {
+  width: 100%;
+  padding: 10px;
+  border-radius: 8px;
+  border: none;
+  font-weight: 700;
+  font-size: 14px;
+  background: #16a34a;
+  color: #ffffff;
+  cursor: pointer;
+  transition: background 0.2s, opacity 0.2s;
+}
+.btn-confirmar-setor:disabled {
+  background: #64748b;
+  color: #cbd5e1;
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+/* Modal Centralizado de Sucesso ao Salvar */
+.modal-box.modal-sucesso-salvar {
+  text-align: center;
+  max-width: 340px;
+  padding: 24px 20px;
+}
+.icone-sucesso-modal {
+  font-size: 44px;
+  margin-bottom: 10px;
+}
+.btn-confirmar-sucesso {
+  margin-top: 18px;
+  width: 100%;
+  padding: 11px;
+  border-radius: 8px;
+  border: none;
+  background: #16a34a;
+  color: #ffffff;
+  font-weight: 700;
+  font-size: 15px;
+  cursor: pointer;
+}
+.btn-confirmar-sucesso:hover {
+  background: #15803d;
+}
+
+/* =========================================================
    TABLETS MENORES E CELULARES (<= 1024px)
    Editor em tela cheia com HUD flutuante.
    As posições do HUD vêm das variáveis --hud-* (topo do arquivo).

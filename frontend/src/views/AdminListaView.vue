@@ -3,6 +3,7 @@ import { ref, computed, onMounted } from 'vue'
 import { useRouter } from 'vue-router'
 import {
   estabelecimentos,
+  usuariosCadastrados,
   iniciarNovoFormulario,
   carregarFormularioEdicao,
   carregarDadosDoBanco,
@@ -18,6 +19,14 @@ const itensPorPagina = 5
 onMounted(() => {
   carregarDadosDoBanco()
 })
+
+function obterNomeEmailUsuario(idUsuario) {
+  const usuario = usuariosCadastrados.value.find(u => u.id_usuario === idUsuario)
+  if (usuario) {
+    return `${usuario.nome} - ${usuario.email}`
+  }
+  return `Usuário #${idUsuario}`
+}
 
 const estabelecimentosFiltrados = computed(() => {
   const termo = termoPesquisaAdmin.value.trim().toLowerCase()
@@ -67,7 +76,6 @@ async function removerEstabelecimento(est) {
 
 <template>
   <div class="admin-container">
-    <!-- Cabeçalho no topo, centralizado à direita do menu hambúrguer -->
     <header class="topbar-titulo-central">
       <h1>Gerenciamento de Estacionamentos</h1>
       <p class="subtitulo">Pesquise, adicione, edite, inative ou remova estabelecimentos</p>
@@ -101,12 +109,11 @@ async function removerEstabelecimento(est) {
               <span v-if="est.inativo" class="tag-inativo">INATIVO</span>
             </h3>
             <p class="meta-est">
-              Andares: {{ est.andares.length }} | Resp. ID: #{{ est.id_usuario }}
+              {{ obterNomeEmailUsuario(est.id_usuario) }}
             </p>
           </div>
         </div>
 
-        <!-- Apenas Editar, Inativar e Remover alinhados à direita -->
         <div class="acoes-direita">
           <button class="btn-icone editar" title="Editar Estacionamento" @click="editarEstabelecimento(est)">
             ✏️

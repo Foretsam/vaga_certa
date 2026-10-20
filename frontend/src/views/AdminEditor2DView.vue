@@ -23,6 +23,7 @@ const menuTopoMobileAberto = ref(false)
 const menuAdicionarMobileAberto = ref(false)
 const mostrarPainelAvisos = ref(false)
 const salvandoNoBanco = ref(false)
+const modalSucessoSalvarAberto = ref(false)
 
 function alternarMenuEngrenagem() {
   menuTopoMobileAberto.value = !menuTopoMobileAberto.value
@@ -269,7 +270,7 @@ const listaAvisosValidacao = computed(() => {
 const podeSalvarEstacionamento = computed(() => listaAvisosValidacao.value.length === 0)
 
 // =========================================================
-// HOVER DO SETOR E SELEÇÃO POR RATO (DESKTOP)
+// HUD INFERIOR DE HOVER PARA QUALQUER QUADRADO DO GRID
 // =========================================================
 const hoverCoord = ref(null)
 
@@ -280,29 +281,43 @@ function contarVagasDoSetorNoAndar(setorId) {
   ).length
 }
 
-const infoSetorHover = computed(() => {
+const infoCelulaHover = computed(() => {
   if (!hoverCoord.value || !andarEditorAtual.value?.celulas) return null
-  const celula = andarEditorAtual.value.celulas[`${hoverCoord.value.x},${hoverCoord.value.y}`]
-  if (!celula || !celula.setorId) return null
+  const c = andarEditorAtual.value.celulas[`${hoverCoord.value.x},${hoverCoord.value.y}`]
+  if (!c) return null
+
+  const coordTexto = `(${c.x}, ${c.y})`
+
+  let tipoTexto = ''
+  if (c.tipo === 'VAZIO') {
+    tipoTexto = 'vazio'
+  } else if (c.tipo === 'ESTRADA') {
+    tipoTexto = 'estrada'
+  } else if (c.tipo === 'ENTRADA') {
+    tipoTexto = 'entrada'
+  } else if (c.tipo === 'SAIDA') {
+    tipoTexto = 'saída'
+  } else if (c.tipo === 'ACESSO') {
+    tipoTexto = 'acesso'
+  } else if (c.tipo === 'VAGA') {
+    const espInfo = c.macEsp ? c.macEsp : 'não vinculado'
+    const idVaga = c.identificador ? ` ${c.identificador}` : ''
+    tipoTexto = `vaga${idVaga} (${espInfo})`
+  }
+
+  let setorTexto = '[setor não vinculado]'
+  if (c.setorId) {
+    const qtdVagas = contarVagasDoSetorNoAndar(c.setorId)
+    setorTexto = `[${c.nomeSetor} - ${qtdVagas} vaga(s)]`
+  }
 
   return {
-    nome: celula.nomeSetor,
-    prefixo: celula.prefixoSetor,
-    cor: celula.corSetor,
-    qtdVagas: contarVagasDoSetorNoAndar(celula.setorId)
+    cor: c.corSetor || '#64748b',
+    temSetor: Boolean(c.setorId),
+    textoQuadrado: `${coordTexto} - ${tipoTexto}`,
+    textoSetor: setorTexto
   }
 })
-
-function obterTituloCelula(x, y) {
-  const c = andarEditorAtual.value?.celulas[`${x},${y}`]
-  if (!c) return `(${x}, ${y})`
-  let base = `(${x}, ${y}) ${c.identificador || c.tipo}`
-  if (c.setorId) {
-    const totalVagasSetor = contarVagasDoSetorNoAndar(c.setorId)
-    base += ` | Setor: ${c.nomeSetor} (${totalVagasSetor} vaga${totalVagasSetor === 1 ? '' : 's'})`
-  }
-  return base
-}
 
 const selecionados = ref(new Set())
 const arrastando = ref(false)
@@ -363,7 +378,7 @@ function finalizarSelecaoMouse() {
 }
 
 // =========================================================
-// AÇÕES DE SETOR, ESTRADAS, VAGAS E LIXEIRA 🗑️
+// AÇÕES DE SETOR, ESTRADAS, VAGAS E BORRACHA
 // =========================================================
 function obterProximoNumeroSetor(celulas, setorId, prefixo) {
   let maior = 0
@@ -488,7 +503,7 @@ function limparTudoNaSelecao() {
 }
 
 // =========================================================
-// MODAIS COMPACTOS (SETOR, TAMANHO DO GRID, ACESSOS E MAC)
+// MODAL DE CRIAR SETOR (NA SELEÇÃO)
 // =========================================================
 const modalSetorAberto = ref(false)
 const novoSetorNome = ref('')
@@ -562,6 +577,154 @@ function confirmarSetorSelecao() {
   selecionados.value.clear()
 }
 
+// =========================================================
+// NOVO MODAL: ALTERAR SETORES (COM BUSCA/FILTRO E EXCLUSÃO)
+// =========================================================
+const modalAlterarSetoresAberto = ref(false)
+const filtroBuscaSetor = ref('')
+const dropdownSetoresAberto = ref(false)
+const setorSelecionadoParaEditar = ref(null)
+
+const editSetorNome = ref('')
+const editSetorPrefixo = ref('')
+const editSetorCor = ref(paletaSetores[0].hex)
+
+const setoresFiltradosParaEdicao = computed(() => {
+  const lista = andarEditorAtual.value?.setores || []
+  const termo = filtroBuscaSetor.value.trim().toLowerCase()
+  if (!termo) return lista
+  return lista.filter(
+    s =>
+      s.nome_setor.toLowerCase().includes(termo) ||
+      (s.prefixo || '').toLowerCase().includes(termo)
+  )
+})
+
+const dadosEdicaoSetorPreenchidos = computed(() => {
+  if (!setorSelecionadoParaEditar.value) return false
+  return Boolean(
+    editSetorNome.value.trim() &&
+    editSetorPrefixo.value.trim() &&
+    editSetorCor.value
+  )
+})
+
+function abrirModalAlterarSetores() {
+  limparSetoresOrfaosNoAndar(andarEditorAtual.value)
+  filtroBuscaSetor.value = ''
+  dropdownSetoresAberto.value = false
+  setorSelecionadoParaEditar.value = null
+  editSetorNome.value = ''
+  editSetorPrefixo.value = ''
+  editSetorCor.value = paletaSetores[0].hex
+  menuAdicionarMobileAberto.value = false
+  modalAlterarSetoresAberto.value = true
+}
+
+function escolherSetorParaEditar(setor) {
+  setorSelecionadoParaEditar.value = setor
+  filtroBuscaSetor.value = `${setor.nome_setor} (${setor.prefixo})`
+  dropdownSetoresAberto.value = false
+  editSetorNome.value = setor.nome_setor
+  editSetorPrefixo.value = setor.prefixo
+  editSetorCor.value = setor.cor_hex
+}
+
+function aoDigitarFiltroSetor() {
+  dropdownSetoresAberto.value = true
+  // Se o usuário apagar ou alterar o texto de busca, desmarca o setor até que escolha um da lista
+  if (
+    setorSelecionadoParaEditar.value &&
+    filtroBuscaSetor.value !== `${setorSelecionadoParaEditar.value.nome_setor} (${setorSelecionadoParaEditar.value.prefixo})`
+  ) {
+    setorSelecionadoParaEditar.value = null
+    editSetorNome.value = ''
+    editSetorPrefixo.value = ''
+  }
+}
+
+function sanitizarEditPrefixoSetor() {
+  editSetorPrefixo.value = editSetorPrefixo.value.replace(/[^a-zA-Z]/g, '').slice(0, 3).toUpperCase()
+}
+
+function excluirSetorSelecionado() {
+  if (!setorSelecionadoParaEditar.value) return
+  const idAlvo = setorSelecionadoParaEditar.value.id_setor
+
+  salvarSnapshot()
+  const celulas = andarEditorAtual.value.celulas
+  Object.values(celulas).forEach((c) => {
+    if (c.setorId === idAlvo) {
+      c.setorId = null
+      c.corSetor = null
+      c.nomeSetor = null
+      c.prefixoSetor = null
+      if (c.tipo === 'VAGA') {
+        c.identificador = ''
+      }
+    }
+  })
+
+  andarEditorAtual.value.setores = andarEditorAtual.value.setores.filter(
+    s => s.id_setor !== idAlvo
+  )
+
+  setorSelecionadoParaEditar.value = null
+  filtroBuscaSetor.value = ''
+  editSetorNome.value = ''
+  editSetorPrefixo.value = ''
+}
+
+function confirmarAlteracaoSetor() {
+  if (!setorSelecionadoParaEditar.value || !dadosEdicaoSetorPreenchidos.value) return
+
+  const idAlvo = setorSelecionadoParaEditar.value.id_setor
+  const novoNome = editSetorNome.value.trim()
+  const novoPref = editSetorPrefixo.value.trim().slice(0, 3).toUpperCase()
+  const novaCor = editSetorCor.value
+
+  // Valida se outro setor já usa o mesmo nome ou prefixo no estacionamento
+  for (const andar of formEstabelecimento.value.andares) {
+    for (const s of andar.setores || []) {
+      if (s.id_setor === idAlvo) continue
+      if (s.nome_setor.toLowerCase() === novoNome.toLowerCase()) {
+        alert(`O nome de setor "${novoNome}" já está em uso no andar "${andar.nome_andar}".`)
+        return
+      }
+      if ((s.prefixo || '').toUpperCase() === novoPref) {
+        alert(`O prefixo "${novoPref}" já está em uso pelo setor "${s.nome_setor}".`)
+        return
+      }
+    }
+  }
+
+  salvarSnapshot()
+
+  // Atualiza objeto do setor no andar
+  const setorObj = andarEditorAtual.value.setores.find(s => s.id_setor === idAlvo)
+  if (setorObj) {
+    setorObj.nome_setor = novoNome
+    setorObj.prefixo = novoPref
+    setorObj.cor_hex = novaCor
+  }
+
+  // Atualiza todas as células vinculadas a este setor e renumera as vagas
+  const celulas = andarEditorAtual.value.celulas
+  Object.values(celulas).forEach((c) => {
+    if (c.setorId === idAlvo) {
+      c.nomeSetor = novoNome
+      c.prefixoSetor = novoPref
+      c.corSetor = novaCor
+    }
+  })
+
+  numerarVagasDoSetor(celulas, idAlvo, novoPref)
+  modalAlterarSetoresAberto.value = false
+}
+
+// =========================================================
+// TAMANHO DO GRID, ACESSOS E EQUIPAMENTOS
+// =========================================================
 const modalGridAberto = ref(false)
 const inputGridX = ref(30)
 const inputGridY = ref(20)
@@ -740,7 +903,7 @@ function confirmarVinculoEquipamento() {
 }
 
 // =========================================================
-// SALVAR ESTACIONAMENTO NO MYSQL VIA FASTAPI
+// SALVAR ESTACIONAMENTO NO MYSQL (COM MODAL DE SUCESSO ANIMADO)
 // =========================================================
 async function finalizarSalvarEstacionamento() {
   if (!podeSalvarEstacionamento.value) {
@@ -752,13 +915,17 @@ async function finalizarSalvarEstacionamento() {
   salvandoNoBanco.value = true
   try {
     await salvarEstacionamentoNoBanco()
-    alert('✅ Planta 2d Salva com Sucesso!')
-    router.push({ name: 'admin-lista' })
+    modalSucessoSalvarAberto.value = true
   } catch (err) {
     alert(`❌ Erro ao salvar: ${err.message}`)
   } finally {
     salvandoNoBanco.value = false
   }
+}
+
+function confirmarModalSucessoSalvar() {
+  modalSucessoSalvarAberto.value = false
+  router.push({ name: 'admin-lista' })
 }
 
 function tratarTeclaGlobal(event) {
@@ -771,6 +938,7 @@ function tratarTeclaGlobal(event) {
     mostrarPainelAvisos.value = false
     menuTopoMobileAberto.value = false
     menuAdicionarMobileAberto.value = false
+    dropdownSetoresAberto.value = false
   }
 }
 
@@ -922,34 +1090,40 @@ onUnmounted(() => {
           </div>
         </Transition>
 
+        <!-- OVERLAY DE SELEÇÃO COM TOOLTIPS NOS ÍCONES E BORRACHA -->
         <Transition name="fade-pop">
           <div v-if="mostrarMenuFlutuante && selecionados.size > 0" class="overlay-flutuante menu-selecao-overlay">
             <span class="contagem-sel">{{ selecionados.size }} sel.:</span>
 
             <div class="grupo-acao-item">
-              <span>🛣️</span>
+              <span class="icone-com-tooltip" data-tooltip="Estrada" title="Estrada">🛣️</span>
               <button class="btn-mini add" title="Adicionar Estrada" @click="aplicarTipoSelecao('ESTRADA')">➕</button>
               <button class="btn-mini rem" title="Remover Estrada" @click="removerTipoSelecao('ESTRADA')">➖</button>
             </div>
 
             <div class="grupo-acao-item">
-              <span>🎨</span>
+              <span class="icone-com-tooltip" data-tooltip="Setores" title="Setores">🎨</span>
               <button class="btn-mini add" title="Definir Setor" @click="abrirModalSetor">➕</button>
               <button class="btn-mini rem" title="Remover Setor" @click="removerTipoSelecao('SETOR')">➖</button>
             </div>
 
             <div class="grupo-acao-item">
-              <span>🅿️</span>
+              <span class="icone-com-tooltip" data-tooltip="Vagas" title="Vagas">🅿️</span>
               <button class="btn-mini add" title="Adicionar Vagas" @click="aplicarTipoSelecao('VAGA')">➕</button>
               <button class="btn-mini rem" title="Remover Vagas" @click="removerTipoSelecao('VAGA')">➖</button>
             </div>
 
+            <!-- Ícone de Borracha para apagar tudo na seleção -->
             <button
-              class="btn-mini lixeira-tudo"
-              title="Remover TUDO na seleção"
+              class="btn-mini borracha-tudo"
+              title="Borracha: remover tudo na seleção"
               @click="limparTudoNaSelecao"
             >
-              🗑️
+              <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="m7 21-4.3-4.3c-1-1-1-2.5 0-3.4l9.6-9.6c1-1 2.5-1 3.4 0l5.6 5.6c1 1 1 2.5 0 3.4L13 21" />
+                <path d="M22 21H7" />
+                <path d="m5 11 9 9" />
+              </svg>
             </button>
 
             <button
@@ -962,11 +1136,15 @@ onUnmounted(() => {
           </div>
         </Transition>
 
+        <!-- HUD INFERIOR PARA QUALQUER QUADRADO DO GRID -->
         <Transition name="fade-pop">
-          <div v-if="infoSetorHover" class="overlay-flutuante badge-hover-setor">
-            <span class="bolinha-cor-setor" :style="{ backgroundColor: infoSetorHover.cor }"></span>
-            <strong>{{ infoSetorHover.nome }} ({{ infoSetorHover.prefixo }})</strong>
-            <span>— {{ infoSetorHover.qtdVagas }} vaga(s)</span>
+          <div v-if="infoCelulaHover" class="overlay-flutuante badge-hover-setor">
+            <span
+              class="bolinha-cor-setor"
+              :style="{ backgroundColor: infoCelulaHover.cor }"
+            ></span>
+            <strong>{{ infoCelulaHover.textoQuadrado }}</strong>
+            <span class="texto-colchetes-setor">{{ infoCelulaHover.textoSetor }}</span>
           </div>
         </Transition>
 
@@ -1033,7 +1211,6 @@ onUnmounted(() => {
                         ? { backgroundColor: escurecerCorHex(andarEditorAtual.celulas[`${x},${y}`]?.corSetor) }
                         : {}
                     "
-                    :title="obterTituloCelula(x, y)"
                   >
                     <span v-if="andarEditorAtual.celulas[`${x},${y}`]?.tipo === 'VAGA'">
                       {{ andarEditorAtual.celulas[`${x},${y}`]?.identificador || 'V' }}
@@ -1103,18 +1280,26 @@ onUnmounted(() => {
               🔌 {{ item.w }}x{{ item.h }}
             </button>
           </div>
+
+          <!-- Botão Alterar Setores abaixo do menu de equipamentos -->
+          <button class="btn-alterar-setores-menu" @click="abrirModalAlterarSetores">
+            🎨 Alterar Setores
+          </button>
         </div>
 
         <div class="painel-ferramentas legenda-editor">
           <h4>📌 Cores do Editor</h4>
           <div><span class="amostra" style="background:#cbd5e1"></span> Cinza Claro: Vazio</div>
           <div><span class="amostra amostra-asfalto"></span> Asfalto Escuro: Estrada</div>
-          <div><span class="amostra" style="background:#eab308"></span> Amarelo: Vaga sem ESP32</div>
-          <div><span class="amostra" style="background:#005066"></span> Cor Escura: Vaga Vinculada</div>
+          <div><span class="amostra" style="background:#eab308"></span> Amarelo: Vaga não Vinculada a um ESP32</div>
+          <div><span class="amostra" style="background:#005066"></span> Cor Escura: Vaga Vinculada a um Setor</div>
         </div>
       </aside>
     </div>
 
+    <!-- =======================================================
+         MODAIS POP-UP DO EDITOR GAMIFICADO
+         ======================================================= -->
     <Transition name="fade-pop">
       <div v-if="modalSetorAberto" class="modal-backdrop">
         <div class="modal-box">
@@ -1152,6 +1337,130 @@ onUnmounted(() => {
           <div class="modal-acoes">
             <button class="btn-secundario" @click="modalSetorAberto = false">Cancelar</button>
             <button class="btn-primario" @click="confirmarSetorSelecao">OK</button>
+          </div>
+        </div>
+      </div>
+    </Transition>
+
+    <!-- NOVO MODAL: ALTERAR SETORES -->
+    <Transition name="fade-pop">
+      <div v-if="modalAlterarSetoresAberto" class="modal-backdrop">
+        <div class="modal-box modal-alterar-setor">
+          <div class="overlay-header">
+            <h3>🎨 Alterar Setores ({{ andarEditorAtual.nome_andar }})</h3>
+            <button class="btn-fechar-mini" @click="modalAlterarSetoresAberto = false">✖</button>
+          </div>
+
+          <!-- Caixa de seleção com filtro ao digitar -->
+          <div class="campo-grupo" style="margin-top:8px">
+            <label>Selecionar Setor (digite para filtrar)</label>
+            <div class="combobox-setor-wrapper">
+              <input
+                v-model="filtroBuscaSetor"
+                type="text"
+                placeholder="Pesquisar ou selecionar setor..."
+                @focus="dropdownSetoresAberto = true"
+                @input="aoDigitarFiltroSetor"
+              />
+              <button
+                type="button"
+                class="btn-seta-combobox"
+                @click="dropdownSetoresAberto = !dropdownSetoresAberto"
+              >
+                ▼
+              </button>
+
+              <div v-if="dropdownSetoresAberto" class="lista-dropdown-setores">
+                <div
+                  v-for="s in setoresFiltradosParaEdicao"
+                  :key="s.id_setor"
+                  class="item-dropdown-setor"
+                  @click="escolherSetorParaEditar(s)"
+                >
+                  <span class="bolinha-cor-setor" :style="{ backgroundColor: s.cor_hex }"></span>
+                  <span>{{ s.nome_setor }} ({{ s.prefixo }})</span>
+                </div>
+                <div v-if="setoresFiltradosParaEdicao.length === 0" class="item-dropdown-vazio">
+                  Nenhum setor encontrado neste andar.
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Campos de Edição (Cinzados e bloqueados até selecionar um setor) -->
+          <div
+            class="area-edicao-setor-campos"
+            :class="{ 'campos-desabilitados': !setorSelecionadoParaEditar }"
+          >
+            <div class="campo-grupo">
+              <label>Nome do Setor</label>
+              <input
+                v-model="editSetorNome"
+                type="text"
+                maxlength="25"
+                :disabled="!setorSelecionadoParaEditar"
+                placeholder="Selecione um setor acima"
+              />
+            </div>
+
+            <div class="campo-grupo">
+              <label>Prefixo das Vagas (máx. 3 letras)</label>
+              <input
+                v-model="editSetorPrefixo"
+                type="text"
+                maxlength="3"
+                class="input-curto-prefixo"
+                :disabled="!setorSelecionadoParaEditar"
+                @input="sanitizarEditPrefixoSetor"
+              />
+            </div>
+
+            <div class="campo-grupo">
+              <label>Cor do Setor</label>
+              <div class="grade-cores-setor">
+                <button
+                  v-for="cor in paletaSetores"
+                  :key="cor.hex"
+                  type="button"
+                  class="botao-cor-setor"
+                  :class="{ 'cor-selecionada': setorSelecionadoParaEditar && editSetorCor === cor.hex }"
+                  :style="{ backgroundColor: cor.hex }"
+                  :disabled="!setorSelecionadoParaEditar"
+                  @click="editSetorCor = cor.hex"
+                >
+                  {{ cor.nome }}
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Aviso caso falte preencher algum dado com o setor selecionado -->
+          <p
+            v-if="setorSelecionadoParaEditar && !dadosEdicaoSetorPreenchidos"
+            class="msg-preencha-setor"
+          >
+            ⚠️ Preencha os dados antes de confirmar
+          </p>
+
+          <!-- Botões Excluir (Cinza -> Vermelho) e Confirmar (Cinza -> Verde) -->
+          <div class="botoes-empilhados-setor">
+            <button
+              type="button"
+              class="btn-excluir-setor"
+              :disabled="!setorSelecionadoParaEditar"
+              @click="excluirSetorSelecionado"
+            >
+              Excluir Setor
+            </button>
+
+            <button
+              type="button"
+              class="btn-confirmar-setor"
+              :disabled="!setorSelecionadoParaEditar || !dadosEdicaoSetorPreenchidos"
+              @click="confirmarAlteracaoSetor"
+            >
+              Confirmar Alterações
+            </button>
           </div>
         </div>
       </div>
@@ -1240,6 +1549,22 @@ onUnmounted(() => {
             <button class="btn-secundario" @click="modalMacAberto = false">Cancelar</button>
             <button class="btn-primario" @click="confirmarVinculoEquipamento">Vincular</button>
           </div>
+        </div>
+      </div>
+    </Transition>
+
+    <!-- MODAL PERSONALIZADO DE SUCESSO AO SALVAR -->
+    <Transition name="fade-pop">
+      <div v-if="modalSucessoSalvarAberto" class="modal-backdrop">
+        <div class="modal-box modal-sucesso-salvar">
+          <div class="icone-sucesso-modal">✅</div>
+          <h3>Planta 2D Salva com Sucesso!</h3>
+          <p class="subtitulo">
+            Todos os andares, setores, equipamentos e vagas foram gravados no banco de dados.
+          </p>
+          <button class="btn-confirmar-sucesso" @click="confirmarModalSucessoSalvar">
+            Confirmar
+          </button>
         </div>
       </div>
     </Transition>
