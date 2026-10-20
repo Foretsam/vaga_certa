@@ -36,10 +36,9 @@ function avancarParaEditorP2() {
     return
   }
 
-  // Regra: Nomes de andares não podem repetir-se no mesmo estacionamento
   const nomesUnicos = new Set(nomesAndares)
   if (nomesUnicos.size !== nomesAndares.length) {
-    alert('Os nomes dos andares não se podem repetir no mesmo estacionamento!')
+    alert('Os nomes dos andares não podem se repetir no mesmo estacionamento!')
     return
   }
 
@@ -59,12 +58,14 @@ function avancarParaEditorP2() {
 
 <template>
   <div class="admin-container">
-    <header class="painel-header">
-      <div>
+    <header class="topbar-titulo-central com-botao-direita">
+      <div class="bloco-titulo-centro">
         <h1>Editar estacionamento - Informações Gerais</h1>
-        <p class="subtitulo">Defina os dados gerais e a lista de andares sem nomes repetidos (máx. 10 andares)</p>
+        <p class="subtitulo">Defina os dados gerais e a lista de andares sem nomes repetidos (máx. 10)</p>
       </div>
-      <button class="btn-secundario" @click="router.push({ name: 'admin-lista' })">⬅️ Voltar à Lista</button>
+      <button class="btn-secundario btn-voltar-topo" @click="router.push({ name: 'admin-lista' })">
+        ⬅️ Voltar
+      </button>
     </header>
 
     <div class="form-card">
@@ -79,7 +80,7 @@ function avancarParaEditorP2() {
       </div>
 
       <div class="campo-grupo">
-        <label>Vincular Utilizador Responsável (Dono do Estacionamento)</label>
+        <label>Vincular Usuário Responsável (Dono do Estacionamento)</label>
         <select v-model="formEstabelecimento.id_usuario" class="select-padrao">
           <option v-for="u in usuariosCadastrados" :key="u.id_usuario" :value="u.id_usuario">
             #{{ u.id_usuario }} - {{ u.nome }} ({{ u.email }})

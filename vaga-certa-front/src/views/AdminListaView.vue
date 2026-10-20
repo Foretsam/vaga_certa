@@ -44,7 +44,7 @@ function alternarInativoEstabelecimento(est) {
 }
 
 function removerEstabelecimento(est) {
-  if (confirm(`Tem a certeza de que deseja REMOVER permanentemente "${est.nome}" e todos os seus andares e vagas?`)) {
+  if (confirm(`Tem certeza que deseja REMOVER permanentemente "${est.nome}" e todos os seus andares e vagas?`)) {
     estabelecimentos.value = estabelecimentos.value.filter(item => item.id !== est.id)
   }
 }
@@ -52,11 +52,10 @@ function removerEstabelecimento(est) {
 
 <template>
   <div class="admin-container">
-    <header class="painel-header">
-      <div>
-        <h1>Gerenciamento de Estacionamentos</h1>
-        <p class="subtitulo">Pesquise, adicione, edite, inative ou remova estabelecimentos</p>
-      </div>
+    <!-- Cabeçalho no topo, centralizado à direita do menu hambúrguer -->
+    <header class="topbar-titulo-central">
+      <h1>Gerenciamento de Estacionamentos</h1>
+      <p class="subtitulo">Pesquise, adicione, edite, inative ou remova estabelecimentos</p>
     </header>
 
     <div class="barra-pesquisa-admin">
@@ -67,7 +66,7 @@ function removerEstabelecimento(est) {
         class="input-pesquisa-grande"
         @input="paginaAtualAdmin = 1"
       />
-      <button class="btn-primario" @click="criarNovo">
+      <button class="btn-primario btn-add-est" @click="criarNovo">
         ➕ Adicionar Estacionamento
       </button>
     </div>
@@ -81,25 +80,19 @@ function removerEstabelecimento(est) {
       >
         <div class="info-est">
           <span class="id-badge">#{{ est.id }}</span>
-          <div>
+          <div class="textos-est">
             <h3>
               {{ est.nome }}
               <span v-if="est.inativo" class="tag-inativo">INATIVO</span>
             </h3>
             <p class="meta-est">
-              Andares: {{ est.andares.length }} | Responsável ID: #{{ est.id_usuario }}
+              Andares: {{ est.andares.length }} | Resp. ID: #{{ est.id_usuario }}
             </p>
           </div>
         </div>
 
+        <!-- Apenas Editar, Inativar e Remover alinhados à direita -->
         <div class="acoes-direita">
-          <button
-            class="btn-icone"
-            title="Visualizar como Motorista"
-            @click="router.push({ name: 'motorista-mapa', params: { id: est.id } })"
-          >
-            👁️
-          </button>
           <button class="btn-icone editar" title="Editar Estacionamento" @click="editarEstabelecimento(est)">
             ✏️
           </button>

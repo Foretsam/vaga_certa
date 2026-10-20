@@ -12,7 +12,6 @@ import {
 
 const router = useRouter()
 
-// Se o utilizador recarregar a página direto no editor sem dados, volta para Informações Gerais
 if (!formEstabelecimento.value.andares || !formEstabelecimento.value.andares[0]?.celulas) {
   router.replace({ name: 'admin-info-gerais' })
 }
@@ -20,11 +19,146 @@ if (!formEstabelecimento.value.andares || !formEstabelecimento.value.andares[0]?
 const andarEditorIndex = ref(0)
 const andarEditorAtual = computed(() => formEstabelecimento.value.andares[andarEditorIndex.value])
 
-// Controla o menu superior recolhível em tablets e telemóveis (<= 1024px)
+// Menus flutuantes (Mobile/Tablet <= 1024px)
 const menuTopoMobileAberto = ref(false)
+const menuAdicionarMobileAberto = ref(false)
 const mostrarPainelAvisos = ref(false)
 
-// Pilhas de Desfazer / Refazer
+function alternarMenuEngrenagem() {
+  menuTopoMobileAberto.value = !menuTopoMobileAberto.value
+  if (menuTopoMobileAberto.value) {
+    menuAdicionarMobileAberto.value = false
+    mostrarPainelAvisos.value = false
+  }
+}
+
+function alternarMenuAdicionar() {
+  menuAdicionarMobileAberto.value = !menuAdicionarMobileAberto.value
+  if (menuAdicionarMobileAberto.value) {
+    menuTopoMobileAberto.value = false
+    mostrarPainelAvisos.value = false
+  }
+}
+
+function alternarPainelAvisos() {
+  mostrarPainelAvisos.value = !mostrarPainelAvisos.value
+  if (mostrarPainelAvisos.value) {
+    menuTopoMobileAberto.value = false
+    menuAdicionarMobileAberto.value = false
+  }
+}
+
+// =========================================================
+// TOUCH PAN (ARRASTAR DEDO) E PINCH-TO-ZOOM (MOVIMENTO PINÇA)
+// =========================================================
+const panX = ref(0)
+const panY = ref(0)
+const zoomEscala = ref(1)
+
+let toqueUnico = null
+let pinchInicial = null
+
+function distanciaEntreToques(t1, t2) {
+  return Math.hypot(t2.clientX - t1.clientX, t2.clientY - t1.clientY)
+}
+
+function pontoMedioToques(t1, t2) {
+  return {
+    x: (t1.clientX + t2.clientX) / 2,
+    y: (t1.clientY + t2.clientY) / 2
+  }
+}
+
+function aoIniciarToqueGrid(e) {
+  if (e.touches.length === 2) {
+    toqueUnico = null
+    const dist = distanciaEntreToques(e.touches[0], e.touches[1])
+    const meio = pontoMedioToques(e.touches[0], e.touches[1])
+    pinchInicial = {
+      dist,
+      escala: zoomEscala.value,
+      panX: panX.value,
+      panY: panY.value,
+      meioX: meio.x,
+      meioY: meio.y
+    }
+  } else if (e.touches.length === 1) {
+    pinchInicial = null
+    const t = e.touches[0]
+    toqueUnico = {
+      startX: t.clientX,
+      startY: t.clientY,
+      lastX: t.clientX,
+      lastY: t.clientY,
+      panXInicial: panX.value,
+      panYInicial: panY.value,
+      moveu: false
+    }
+  }
+}
+
+function aoMoverToqueGrid(e) {
+  if (e.touches.length === 2 && pinchInicial) {
+    const novaDist = distanciaEntreToques(e.touches[0], e.touches[1])
+    const novoMeio = pontoMedioToques(e.touches[0], e.touches[1])
+    const fator = novaDist / pinchInicial.dist
+    zoomEscala.value = Math.min(2.5, Math.max(0.45, pinchInicial.escala * fator))
+    panX.value = pinchInicial.panX + (novoMeio.x - pinchInicial.meioX)
+    panY.value = pinchInicial.panY + (novoMeio.y - pinchInicial.meioY)
+  } else if (e.touches.length === 1 && toqueUnico) {
+    const t = e.touches[0]
+    toqueUnico.lastX = t.clientX
+    toqueUnico.lastY = t.clientY
+    const dx = t.clientX - toqueUnico.startX
+    const dy = t.clientY - toqueUnico.startY
+
+    if (Math.hypot(dx, dy) > 7) {
+      toqueUnico.moveu = true
+      panX.value = toqueUnico.panXInicial + dx
+      panY.value = toqueUnico.panYInicial + dy
+    }
+  }
+}
+
+function aoFinalizarToqueGrid(e) {
+  if (e.touches.length < 2) {
+    pinchInicial = null
+  }
+  if (e.touches.length === 0 && toqueUnico) {
+    // Se foi um toque curto (Tap) sem arrastar a tela, seleciona o quadrado ou aplica o carimbo
+    if (!toqueUnico.moveu) {
+      const el = document.elementFromPoint(toqueUnico.lastX, toqueUnico.lastY)
+      const celulaEl = el?.closest('[data-coord]')
+      if (celulaEl) {
+        const [cx, cy] = celulaEl.getAttribute('data-coord').split(',').map(Number)
+        if (ferramentaCarimbo.value) {
+          aplicarCarimboNoGrid(cx, cy)
+        } else {
+          const chave = `${cx},${cy}`
+          const nova = new Set(selecionados.value)
+          if (nova.has(chave)) {
+            nova.delete(chave)
+          } else {
+            nova.add(chave)
+          }
+          selecionados.value = nova
+          mostrarMenuFlutuante.value = nova.size > 0
+        }
+      }
+    }
+    toqueUnico = null
+  }
+}
+
+function resetarCameraGrid() {
+  panX.value = 0
+  panY.value = 0
+  zoomEscala.value = 1
+}
+
+// =========================================================
+// PILHAS DE DESFAZER / REFAZER
+// =========================================================
 const historicoUndo = ref([])
 const historicoRedo = ref([])
 
@@ -69,7 +203,6 @@ function refazer() {
   selecionados.value.clear()
 }
 
-// Remove da lista `andar.setores` qualquer setor cujos quadrados tenham sido 100% apagados do grid
 function limparSetoresOrfaosNoAndar(andar) {
   if (!andar || !andar.celulas || !andar.setores) return
   const idsPresentesNoGrid = new Set(
@@ -81,7 +214,7 @@ function limparSetoresOrfaosNoAndar(andar) {
 }
 
 // =========================================================
-// SISTEMA DE VALIDAÇÃO EM TEMPO REAL (TODOS OS ALERTAS)
+// SISTEMA DE VALIDAÇÃO EM TEMPO REAL
 // =========================================================
 const listaAvisosValidacao = computed(() => {
   const avisos = []
@@ -103,34 +236,32 @@ const listaAvisosValidacao = computed(() => {
     if (temEntrada) temEntradaGlobal = true
     if (temSaida) temSaidaGlobal = true
 
-    // Regra: Cada andar obrigatoriamente precisa ter ao menos uma vaga
     if (vagasAndar.length === 0) {
-      avisos.push(`[${andar.nome_andar}] O andar precisa ter ao menos 1 vaga cadastrada.`)
+      avisos.push(`[${andar.nome_andar}] Precisa ter ao menos 1 vaga cadastrada.`)
     }
     if (semEquip) {
-      avisos.push(`[${andar.nome_andar}] Há vagas amarelas não linkadas a equipamentos.`)
+      avisos.push(`[${andar.nome_andar}] Há vagas amarelas sem equipamento.`)
     }
     if (semSetor) {
-      avisos.push(`[${andar.nome_andar}] Há vagas que não estão linkadas a um setor.`)
+      avisos.push(`[${andar.nome_andar}] Há vagas fora de um setor.`)
     }
     if (!temEntrada && !temSaida && !temAcesso) {
-      avisos.push(`[${andar.nome_andar}] O andar precisa ter ao menos uma Entrada, Saída ou Acesso.`)
+      avisos.push(`[${andar.nome_andar}] Precisa ter Entrada, Saída ou Acesso.`)
     }
 
-    // Regra: Cada setor criado precisa ter ao menos uma vaga dentro dele
     ;(andar.setores || []).forEach((setor) => {
       const vagasNoSetor = vagasAndar.filter(v => v.setorId === setor.id_setor).length
       if (vagasNoSetor === 0) {
-        avisos.push(`[${andar.nome_andar}] O setor "${setor.nome_setor}" (${setor.prefixo}) precisa ter ao menos 1 vaga.`)
+        avisos.push(`[${andar.nome_andar}] Setor "${setor.nome_setor}" (${setor.prefixo}) precisa de 1 vaga.`)
       }
     })
   })
 
   if (!temEntradaGlobal) {
-    avisos.push('[Estacionamento] É obrigatório ter ao menos 1 ENTRADA em algum dos andares.')
+    avisos.push('[Geral] Obrigatório ter 1 ENTRADA em algum andar.')
   }
   if (!temSaidaGlobal) {
-    avisos.push('[Estacionamento] É obrigatório ter ao menos 1 SAÍDA em algum dos andares.')
+    avisos.push('[Geral] Obrigatório ter 1 SAÍDA em algum andar.')
   }
 
   return avisos
@@ -139,7 +270,7 @@ const listaAvisosValidacao = computed(() => {
 const podeSalvarEstacionamento = computed(() => listaAvisosValidacao.value.length === 0)
 
 // =========================================================
-// HOVER EM CIMA DE UM SETOR (MOSTRA NOME E QTD DE VAGAS ATUAL)
+// HOVER DO SETOR E SELEÇÃO POR RATO (DESKTOP)
 // =========================================================
 const hoverCoord = ref(null)
 
@@ -174,9 +305,6 @@ function obterTituloCelula(x, y) {
   return base
 }
 
-// =========================================================
-// SELEÇÃO DE QUADRADOS E AÇÕES DO MENU FLUTUANTE (COM LIXEIRA 🗑️)
-// =========================================================
 const selecionados = ref(new Set())
 const arrastando = ref(false)
 const pontoInicialArrasto = ref(null)
@@ -235,6 +363,9 @@ function finalizarSelecaoMouse() {
   }
 }
 
+// =========================================================
+// AÇÕES DE SETOR, ESTRADAS, VAGAS E LIXEIRA 🗑️
+// =========================================================
 function obterProximoNumeroSetor(celulas, setorId, prefixo) {
   let maior = 0
   const regex = new RegExp(`^${prefixo}(\\d+)$`, 'i')
@@ -335,7 +466,6 @@ function removerTipoSelecao(tipoAlvo) {
   selecionados.value.clear()
 }
 
-// NOVA FUNÇÃO DA LIXEIRA 🗑️: Remove absolutamente tudo nos quadrados selecionados
 function limparTudoNaSelecao() {
   salvarSnapshot()
   const celulas = andarEditorAtual.value.celulas
@@ -359,7 +489,7 @@ function limparTudoNaSelecao() {
 }
 
 // =========================================================
-// MODAL DE SETOR (BLOQUEIA NOMES E PREFIXOS REPETIDOS NO ESTACIONAMENTO)
+// MODAIS COMPACTOS (SETOR, TAMANHO DO GRID, ACESSOS E MAC)
 // =========================================================
 const modalSetorAberto = ref(false)
 const novoSetorNome = ref('')
@@ -390,16 +520,15 @@ function confirmarSetorSelecao() {
     return
   }
 
-  // Verifica em TODOS os andares do estacionamento se o Nome ou o Prefixo já existem
   for (const andar of formEstabelecimento.value.andares) {
     limparSetoresOrfaosNoAndar(andar)
     for (const s of andar.setores || []) {
       if (s.nome_setor.toLowerCase() === nomeLimpo.toLowerCase()) {
-        alert(`O nome de setor "${nomeLimpo}" já está em uso no andar "${andar.nome_andar}". Escolha outro nome!`)
+        alert(`O nome de setor "${nomeLimpo}" já está em uso no andar "${andar.nome_andar}".`)
         return
       }
       if ((s.prefixo || '').toUpperCase() === prefixoFinal) {
-        alert(`O prefixo "${prefixoFinal}" já está em uso pelo setor "${s.nome_setor}" (${andar.nome_andar}). Escolha outro prefixo!`)
+        alert(`O prefixo "${prefixoFinal}" já está em uso pelo setor "${s.nome_setor}".`)
         return
       }
     }
@@ -434,9 +563,6 @@ function confirmarSetorSelecao() {
   selecionados.value.clear()
 }
 
-// =========================================================
-// TAMANHO DO GRID E CARIMBOS DE ACESSO / EQUIPAMENTO
-// =========================================================
 const modalGridAberto = ref(false)
 const inputGridX = ref(30)
 const inputGridY = ref(20)
@@ -492,6 +618,7 @@ const configAcessoTemp = ref({ tipo: 'ENTRADA', orientacao: 'H', tamanho: 2 })
 function prepararAcesso(tipo, orientacao) {
   selecionados.value.clear()
   mostrarMenuFlutuante.value = false
+  menuAdicionarMobileAberto.value = false
   configAcessoTemp.value = { tipo, orientacao, tamanho: 2 }
   modalAcessoAberto.value = true
 }
@@ -527,6 +654,7 @@ const linhasEquipamentos = [
 function ativarCarimboEquipamento(w, h) {
   selecionados.value.clear()
   mostrarMenuFlutuante.value = false
+  menuAdicionarMobileAberto.value = false
   ferramentaCarimbo.value = { categoria: 'EQUIPAMENTO', tipo: 'ESP32', w, h }
 }
 
@@ -647,6 +775,7 @@ function tratarTeclaGlobal(event) {
     }
     mostrarPainelAvisos.value = false
     menuTopoMobileAberto.value = false
+    menuAdicionarMobileAberto.value = false
   }
 }
 
@@ -663,40 +792,60 @@ onUnmounted(() => {
 
 <template>
   <div v-if="andarEditorAtual" class="editor-layout">
-    <!-- BOTÃO COMPACTO PARA TELAS MENORES (<= 1024px: TABLETS E TELEMÓVEIS) -->
-    <!-- Não empurra o editor para baixo; abre o menu superior como sobreposição! -->
-    <div class="barra-gatilho-mobile">
-      <button class="btn-gatilho-topbar" @click="menuTopoMobileAberto = !menuTopoMobileAberto">
-        ⚙️ Opções do Editor ({{ andarEditorAtual.nome_andar }})
+    <!-- =======================================================
+         HUD FLUTUANTE MOBILE/TABLET MENOR (<= 1024px)
+         Esquerda: ☰ (no App.vue) e ⚠️ abaixo dele
+         Direita: 💾 no topo, ⚙️ abaixo, ➕ abaixo
+         ======================================================= -->
+    <button
+      class="hud-btn-flutuante hud-esquerda-alertas"
+      :class="{ 'caution-ok': podeSalvarEstacionamento, 'caution-pendente': !podeSalvarEstacionamento }"
+      title="Avisos de validação"
+      @click="alternarPainelAvisos"
+    >
+      ⚠️
+      <span class="hud-mini-badge">{{ listaAvisosValidacao.length }}</span>
+    </button>
+
+    <div class="hud-coluna-direita-mobile">
+      <button
+        class="hud-btn-flutuante hud-btn-salvar"
+        :disabled="!podeSalvarEstacionamento"
+        title="Finalizar e Salvar"
+        @click="finalizarSalvarEstacionamento"
+      >
+        💾
       </button>
 
-      <div class="acoes-rapidas-mobile">
-        <button
-          class="btn-caution-avisos"
-          :class="{ 'caution-ok': podeSalvarEstacionamento, 'caution-pendente': !podeSalvarEstacionamento }"
-          @click="mostrarPainelAvisos = !mostrarPainelAvisos"
-        >
-          ⚠️ <span class="caution-badge">{{ listaAvisosValidacao.length }}</span>
-        </button>
+      <!-- Apenas o ícone de engrenagem sem texto -->
+      <button
+        class="hud-btn-flutuante"
+        :class="{ 'hud-ativo': menuTopoMobileAberto }"
+        title="Opções do Editor"
+        @click="alternarMenuEngrenagem"
+      >
+        ⚙️
+      </button>
 
-        <button
-          class="btn-salvar-final"
-          :disabled="!podeSalvarEstacionamento"
-          @click="finalizarSalvarEstacionamento"
-        >
-          💾 Salvar
-        </button>
-      </div>
+      <!-- Menu de Adicionar (Grupo 1 e Grupo 2) embaixo da engrenagem -->
+      <button
+        class="hud-btn-flutuante hud-btn-add"
+        :class="{ 'hud-ativo': menuAdicionarMobileAberto }"
+        title="Adicionar Acessos e Equipamentos"
+        @click="alternarMenuAdicionar"
+      >
+        ➕
+      </button>
     </div>
 
-    <!-- BARRA SUPERIOR DO EDITOR (Fixa em Desktop, Sobreposição Flutuante em Tablets/Mobile) -->
+    <!-- BARRA SUPERIOR DO EDITOR (Visível no Desktop; Popover quando ⚙️ é clicado no Mobile) -->
     <header
       class="editor-topbar"
       :class="{ 'topbar-mobile-aberta': menuTopoMobileAberto }"
     >
       <div class="topbar-esquerda">
-        <button class="btn-secundario" @click="router.push({ name: 'admin-info-gerais' })">
-          ⬅️ Editar estacionamento - Informações Gerais
+        <button class="btn-secundario btn-duas-linhas" @click="router.push({ name: 'admin-info-gerais' })">
+          ⬅️ Editar estacionamento<br /><span>Informações Gerais</span>
         </button>
 
         <div class="seletor-andar-box">
@@ -705,7 +854,7 @@ onUnmounted(() => {
             v-if="formEstabelecimento.andares.length > 1"
             v-model="andarEditorIndex"
             class="select-andar-editor"
-            @change="selecionados.clear(); historicoUndo = []; historicoRedo = []; menuTopoMobileAberto = false"
+            @change="selecionados.clear(); historicoUndo = []; historicoRedo = []; resetarCameraGrid(); menuTopoMobileAberto = false"
           >
             <option
               v-for="(a, idx) in formEstabelecimento.andares"
@@ -718,8 +867,8 @@ onUnmounted(() => {
           <strong v-else>{{ andarEditorAtual.nome_andar }}</strong>
         </div>
 
-        <button class="btn-secundario" @click="abrirModalTamanhoGrid">
-          📐 Tamanho do Grid ({{ andarEditorAtual.grid_x }}x{{ andarEditorAtual.grid_y }})
+        <button class="btn-secundario btn-duas-linhas" @click="abrirModalTamanhoGrid">
+          📐 Tamanho do Grid<br /><span>({{ andarEditorAtual.grid_x }}x{{ andarEditorAtual.grid_y }})</span>
         </button>
 
         <button class="btn-secundario" :disabled="historicoUndo.length === 0" @click="desfazer">
@@ -728,6 +877,14 @@ onUnmounted(() => {
         <button class="btn-secundario" :disabled="historicoRedo.length === 0" @click="refazer">
           ↪️ Refazer
         </button>
+        <button
+          v-if="panX !== 0 || panY !== 0 || zoomEscala !== 1"
+          class="btn-secundario"
+          title="Centralizar Zoom"
+          @click="resetarCameraGrid"
+        >
+          🔍 {{ Math.round(zoomEscala * 100) }}%
+        </button>
       </div>
 
       <div class="topbar-direita">
@@ -735,18 +892,18 @@ onUnmounted(() => {
           class="btn-caution-avisos"
           :class="{ 'caution-ok': podeSalvarEstacionamento, 'caution-pendente': !podeSalvarEstacionamento }"
           title="Clique para mostrar/ocultar avisos de validação"
-          @click="mostrarPainelAvisos = !mostrarPainelAvisos"
+          @click="alternarPainelAvisos"
         >
           ⚠️
           <span class="caution-badge">{{ listaAvisosValidacao.length }}</span>
         </button>
 
         <button
-          class="btn-salvar-final"
+          class="btn-salvar-final btn-duas-linhas"
           :disabled="!podeSalvarEstacionamento"
           @click="finalizarSalvarEstacionamento"
         >
-          💾 Finalizar e Salvar no Banco
+          💾 Finalizar e<br /><span>Salvar no Banco</span>
         </button>
       </div>
     </header>
@@ -754,11 +911,11 @@ onUnmounted(() => {
     <!-- WORKSPACE PRINCIPAL -->
     <div class="editor-workspace">
       <div class="area-grid-container">
-        <!-- 1. OVERLAY DE AVISOS (BOTÃO CAUTION) -->
+        <!-- 1. OVERLAY DE AVISOS -->
         <Transition name="fade-pop">
           <div v-if="mostrarPainelAvisos" class="overlay-flutuante painel-avisos-overlay">
             <div class="overlay-header">
-              <strong>⚠️ Status de Validação ({{ listaAvisosValidacao.length }})</strong>
+              <strong>⚠️ Validação ({{ listaAvisosValidacao.length }})</strong>
               <button class="btn-fechar-mini" @click="mostrarPainelAvisos = false">✖</button>
             </div>
             <ul v-if="listaAvisosValidacao.length > 0" class="lista-avisos-ul">
@@ -774,39 +931,38 @@ onUnmounted(() => {
         <Transition name="fade-pop">
           <div v-if="ferramentaCarimbo" class="overlay-flutuante banner-carimbo-overlay">
             <span>
-              🎯 Carimbo: <strong>{{ ferramentaCarimbo.tipo }} ({{ ferramentaCarimbo.w }}x{{ ferramentaCarimbo.h }})</strong> — Clique no Grid ou pressione <kbd>ESC</kbd>
+              🎯 <strong>{{ ferramentaCarimbo.tipo }} ({{ ferramentaCarimbo.w }}x{{ ferramentaCarimbo.h }})</strong> — Toque no Grid
             </span>
-            <button class="btn-cancelar-carimbo" @click="ferramentaCarimbo = null">✖ Cancelar</button>
+            <button class="btn-cancelar-carimbo" @click="ferramentaCarimbo = null">✖</button>
           </div>
         </Transition>
 
-        <!-- 3. OVERLAY DE SELEÇÃO DE QUADRADOS (COM NOVO BOTÃO DE LIXEIRA 🗑️) -->
+        <!-- 3. OVERLAY DE SELEÇÃO DE QUADRADOS (COM LIXEIRA 🗑️) -->
         <Transition name="fade-pop">
           <div v-if="mostrarMenuFlutuante && selecionados.size > 0" class="overlay-flutuante menu-selecao-overlay">
             <span class="contagem-sel">{{ selecionados.size }} sel.:</span>
 
             <div class="grupo-acao-item">
-              <span>🛣️ Estrada</span>
+              <span>🛣️</span>
               <button class="btn-mini add" title="Adicionar Estrada" @click="aplicarTipoSelecao('ESTRADA')">➕</button>
               <button class="btn-mini rem" title="Remover Estrada" @click="removerTipoSelecao('ESTRADA')">➖</button>
             </div>
 
             <div class="grupo-acao-item">
-              <span>🎨 Setor</span>
-              <button class="btn-mini add" title="Definir Setor, Prefixo e Cor" @click="abrirModalSetor">➕</button>
+              <span>🎨</span>
+              <button class="btn-mini add" title="Definir Setor" @click="abrirModalSetor">➕</button>
               <button class="btn-mini rem" title="Remover Setor" @click="removerTipoSelecao('SETOR')">➖</button>
             </div>
 
             <div class="grupo-acao-item">
-              <span>🅿️ Vagas</span>
+              <span>🅿️</span>
               <button class="btn-mini add" title="Adicionar Vagas" @click="aplicarTipoSelecao('VAGA')">➕</button>
               <button class="btn-mini rem" title="Remover Vagas" @click="removerTipoSelecao('VAGA')">➖</button>
             </div>
 
-            <!-- NOVA OPÇÃO COM ÍCONE DE LIXEIRA: Remove tudo na seleção -->
             <button
               class="btn-mini lixeira-tudo"
-              title="Remover TUDO na seleção (Vagas, Estradas, Entradas, Saídas, Acessos e Setores)"
+              title="Remover TUDO na seleção"
               @click="limparTudoNaSelecao"
             >
               🗑️
@@ -814,7 +970,7 @@ onUnmounted(() => {
 
             <button
               class="btn-mini limpar"
-              title="Desselecionar quadrados (ESC)"
+              title="Desselecionar"
               @click="selecionados.clear(); mostrarMenuFlutuante = false"
             >
               ✖
@@ -822,73 +978,88 @@ onUnmounted(() => {
           </div>
         </Transition>
 
-        <!-- 4. OVERLAY DE HOVER DO SETOR (MOSTRA NOME DO SETOR E QUANTIDADE DE VAGAS ATUAL) -->
+        <!-- 4. OVERLAY DE HOVER DO SETOR -->
         <Transition name="fade-pop">
           <div v-if="infoSetorHover" class="overlay-flutuante badge-hover-setor">
             <span class="bolinha-cor-setor" :style="{ backgroundColor: infoSetorHover.cor }"></span>
             <strong>{{ infoSetorHover.nome }} ({{ infoSetorHover.prefixo }})</strong>
-            <span>— {{ infoSetorHover.qtdVagas }} vaga(s) atual(is)</span>
+            <span>— {{ infoSetorHover.qtdVagas }} vaga(s)</span>
           </div>
         </Transition>
 
-        <!-- TABULEIRO 2D -->
-        <div class="area-grid-principal" @mouseleave="hoverCoord = null">
-          <div class="matriz-com-coordenadas">
-            <div
-              class="linha-coordenadas-x"
-              :style="{ gridTemplateColumns: `36px repeat(${andarEditorAtual.grid_x}, 36px)` }"
-            >
-              <div class="canto-xy">Y\X</div>
-              <div v-for="x in andarEditorAtual.grid_x" :key="`coord-x-${x}`" class="rotulo-coord">
-                {{ x }}
+        <!-- TABULEIRO 2D COM SUPORTE A PAN E PINCH-TO-ZOOM -->
+        <div
+          class="area-grid-principal"
+          @mouseleave="hoverCoord = null"
+          @touchstart.passive="aoIniciarToqueGrid"
+          @touchmove.prevent="aoMoverToqueGrid"
+          @touchend="aoFinalizarToqueGrid"
+        >
+          <div
+            class="viewport-touch-canvas"
+            :style="{
+              transform: `translate(${panX}px, ${panY}px) scale(${zoomEscala})`,
+              transformOrigin: '0 0'
+            }"
+          >
+            <div class="matriz-com-coordenadas">
+              <div
+                class="linha-coordenadas-x"
+                :style="{ gridTemplateColumns: `36px repeat(${andarEditorAtual.grid_x}, 36px)` }"
+              >
+                <div class="canto-xy">Y\X</div>
+                <div v-for="x in andarEditorAtual.grid_x" :key="`coord-x-${x}`" class="rotulo-coord">
+                  {{ x }}
+                </div>
               </div>
-            </div>
-
-            <div
-              v-for="y in andarEditorAtual.grid_y"
-              :key="`row-${y}`"
-              class="linha-grid-y"
-              :style="{ gridTemplateColumns: `36px repeat(${andarEditorAtual.grid_x}, 36px)` }"
-            >
-              <div class="rotulo-coord">{{ y }}</div>
 
               <div
-                v-for="x in andarEditorAtual.grid_x"
-                :key="`cell-${x}-${y}`"
-                class="celula-editor-fundo"
-                :style="{
-                  backgroundColor: andarEditorAtual.celulas[`${x},${y}`]?.corSetor || 'transparent'
-                }"
-                @mousedown.prevent="iniciarSelecaoCelula(x, y, $event)"
-                @mouseenter="moverMouseCelula(x, y)"
+                v-for="y in andarEditorAtual.grid_y"
+                :key="`row-${y}`"
+                class="linha-grid-y"
+                :style="{ gridTemplateColumns: `36px repeat(${andarEditorAtual.grid_x}, 36px)` }"
               >
+                <div class="rotulo-coord">{{ y }}</div>
+
                 <div
-                  class="quadrado-editor"
-                  :class="{
-                    'qe-vazio': andarEditorAtual.celulas[`${x},${y}`]?.tipo === 'VAZIO',
-                    'qe-estrada': andarEditorAtual.celulas[`${x},${y}`]?.tipo === 'ESTRADA',
-                    'qe-vaga-amarela': andarEditorAtual.celulas[`${x},${y}`]?.tipo === 'VAGA' && !andarEditorAtual.celulas[`${x},${y}`]?.macEsp,
-                    'qe-entrada': andarEditorAtual.celulas[`${x},${y}`]?.tipo === 'ENTRADA',
-                    'qe-saida': andarEditorAtual.celulas[`${x},${y}`]?.tipo === 'SAIDA',
-                    'qe-acesso': andarEditorAtual.celulas[`${x},${y}`]?.tipo === 'ACESSO',
-                    'qe-selecionado-roxo': selecionados.has(`${x},${y}`),
-                    'qe-sombra-verde': estaNaSombraCarimbo(x, y)
+                  v-for="x in andarEditorAtual.grid_x"
+                  :key="`cell-${x}-${y}`"
+                  :data-coord="`${x},${y}`"
+                  class="celula-editor-fundo"
+                  :style="{
+                    backgroundColor: andarEditorAtual.celulas[`${x},${y}`]?.corSetor || 'transparent'
                   }"
-                  :style="
-                    andarEditorAtual.celulas[`${x},${y}`]?.tipo === 'VAGA' &&
-                    andarEditorAtual.celulas[`${x},${y}`]?.macEsp &&
-                    !selecionados.has(`${x},${y}`)
-                      ? { backgroundColor: escurecerCorHex(andarEditorAtual.celulas[`${x},${y}`]?.corSetor) }
-                      : {}
-                  "
-                  :title="obterTituloCelula(x, y)"
+                  @mousedown.prevent="iniciarSelecaoCelula(x, y, $event)"
+                  @mouseenter="moverMouseCelula(x, y)"
                 >
-                  <span v-if="andarEditorAtual.celulas[`${x},${y}`]?.tipo === 'VAGA'">
-                    {{ andarEditorAtual.celulas[`${x},${y}`]?.identificador || 'V' }}
-                  </span>
-                  <span v-else-if="andarEditorAtual.celulas[`${x},${y}`]?.tipo === 'ENTRADA'">E</span>
-                  <span v-else-if="andarEditorAtual.celulas[`${x},${y}`]?.tipo === 'SAIDA'">S</span>
-                  <span v-else-if="andarEditorAtual.celulas[`${x},${y}`]?.tipo === 'ACESSO'">A</span>
+                  <div
+                    class="quadrado-editor"
+                    :class="{
+                      'qe-vazio': andarEditorAtual.celulas[`${x},${y}`]?.tipo === 'VAZIO',
+                      'qe-estrada': andarEditorAtual.celulas[`${x},${y}`]?.tipo === 'ESTRADA',
+                      'qe-vaga-amarela': andarEditorAtual.celulas[`${x},${y}`]?.tipo === 'VAGA' && !andarEditorAtual.celulas[`${x},${y}`]?.macEsp,
+                      'qe-entrada': andarEditorAtual.celulas[`${x},${y}`]?.tipo === 'ENTRADA',
+                      'qe-saida': andarEditorAtual.celulas[`${x},${y}`]?.tipo === 'SAIDA',
+                      'qe-acesso': andarEditorAtual.celulas[`${x},${y}`]?.tipo === 'ACESSO',
+                      'qe-selecionado-roxo': selecionados.has(`${x},${y}`),
+                      'qe-sombra-verde': estaNaSombraCarimbo(x, y)
+                    }"
+                    :style="
+                      andarEditorAtual.celulas[`${x},${y}`]?.tipo === 'VAGA' &&
+                      andarEditorAtual.celulas[`${x},${y}`]?.macEsp &&
+                      !selecionados.has(`${x},${y}`)
+                        ? { backgroundColor: escurecerCorHex(andarEditorAtual.celulas[`${x},${y}`]?.corSetor) }
+                        : {}
+                    "
+                    :title="obterTituloCelula(x, y)"
+                  >
+                    <span v-if="andarEditorAtual.celulas[`${x},${y}`]?.tipo === 'VAGA'">
+                      {{ andarEditorAtual.celulas[`${x},${y}`]?.identificador || 'V' }}
+                    </span>
+                    <span v-else-if="andarEditorAtual.celulas[`${x},${y}`]?.tipo === 'ENTRADA'">E</span>
+                    <span v-else-if="andarEditorAtual.celulas[`${x},${y}`]?.tipo === 'SAIDA'">S</span>
+                    <span v-else-if="andarEditorAtual.celulas[`${x},${y}`]?.tipo === 'ACESSO'">A</span>
+                  </div>
                 </div>
               </div>
             </div>
@@ -896,43 +1067,46 @@ onUnmounted(() => {
         </div>
       </div>
 
-      <!-- SIDEBAR DIREITA -->
-      <aside class="sidebar-direita-editor">
+      <!-- SIDEBAR DIREITA (Fixa em Desktop; Abre no botão ➕ em Mobile/Tablet <= 1024px) -->
+      <aside
+        class="sidebar-direita-editor"
+        :class="{ 'sidebar-mobile-aberta': menuAdicionarMobileAberto }"
+      >
         <div class="painel-ferramentas">
-          <h4>🚪 Grupo 1: Entradas / Saídas / Acessos</h4>
-          <p class="dica-painel">Clique para definir o tamanho e posicionar no Grid</p>
+          <h4>🚪 Entradas / Saídas / Acessos</h4>
+          <p class="dica-painel">Clique para definir o tamanho e posicionar</p>
 
           <div class="linha-botoes-dupla">
             <button class="btn-ferramenta cor-entrada" @click="prepararAcesso('ENTRADA', 'H')">
-              ➡️ Entrada (Horiz.)
+              ➡️ Entrada (H)
             </button>
             <button class="btn-ferramenta cor-entrada" @click="prepararAcesso('ENTRADA', 'V')">
-              ⬇️ Entrada (Vert.)
+              ⬇️ Entrada (V)
             </button>
           </div>
 
           <div class="linha-botoes-dupla">
             <button class="btn-ferramenta cor-saida" @click="prepararAcesso('SAIDA', 'H')">
-              ➡️ Saída (Horiz.)
+              ➡️ Saída (H)
             </button>
             <button class="btn-ferramenta cor-saida" @click="prepararAcesso('SAIDA', 'V')">
-              ⬇️ Saída (Vert.)
+              ⬇️ Saída (V)
             </button>
           </div>
 
           <div class="linha-botoes-dupla">
             <button class="btn-ferramenta cor-acesso" @click="prepararAcesso('ACESSO', 'H')">
-              🚶 Acesso (Horiz.)
+              🚶 Acesso (H)
             </button>
             <button class="btn-ferramenta cor-acesso" @click="prepararAcesso('ACESSO', 'V')">
-              🚶 Acesso (Vert.)
+              🚶 Acesso (V)
             </button>
           </div>
         </div>
 
         <div class="painel-ferramentas">
-          <h4>📡 Grupo 2: Equipamentos (ESP32)</h4>
-          <p class="dica-painel">Escolha o formato (X por Y) e clique sobre as vagas amarelas</p>
+          <h4>📡 Equipamentos (ESP32)</h4>
+          <p class="dica-painel">Escolha o formato (X por Y) e clique nas vagas</p>
 
           <div
             v-for="(linha, rIdx) in linhasEquipamentos"
@@ -952,29 +1126,27 @@ onUnmounted(() => {
 
         <div class="painel-ferramentas legenda-editor">
           <h4>📌 Cores do Editor</h4>
-          <div><span class="amostra" style="background:#cbd5e1"></span> Cinza Claro: Vazio (Ignorado no BD)</div>
+          <div><span class="amostra" style="background:#cbd5e1"></span> Cinza Claro: Vazio</div>
           <div><span class="amostra amostra-asfalto"></span> Asfalto Escuro: Estrada</div>
           <div><span class="amostra" style="background:#eab308"></span> Amarelo: Vaga sem ESP32</div>
-          <div><span class="amostra" style="background:#005066"></span> Cor Escura do Setor: Vaga Vinculada</div>
+          <div><span class="amostra" style="background:#005066"></span> Cor Escura: Vaga Vinculada</div>
         </div>
       </aside>
     </div>
 
     <!-- =======================================================
-         MODAIS POP-UP DO EDITOR GAMIFICADO (INPUTS COMPACTOS)
+         MODAIS POP-UP MAIS COMPACTOS E PROPORCIONAIS
          ======================================================= -->
-
-    <!-- Modal 1: Criar Setor -->
     <Transition name="fade-pop">
       <div v-if="modalSetorAberto" class="modal-backdrop">
         <div class="modal-box">
-          <h3>🎨 Definir Setor para a Seleção</h3>
-          <div class="campo-grupo" style="margin-top:12px">
-            <label>Nome do Setor (único no estacionamento)</label>
-            <input v-model="novoSetorNome" type="text" maxlength="25" placeholder="Ex: Setor A - Subsolo" />
+          <h3>🎨 Definir Setor</h3>
+          <div class="campo-grupo" style="margin-top:10px">
+            <label>Nome do Setor (único)</label>
+            <input v-model="novoSetorNome" type="text" maxlength="25" placeholder="Ex: Setor A" />
           </div>
           <div class="campo-grupo">
-            <label>Prefixo das Vagas (máx. 3 letras, único)</label>
+            <label>Prefixo das Vagas (máx. 3 letras)</label>
             <input
               v-model="novoSetorPrefixo"
               type="text"
@@ -985,7 +1157,7 @@ onUnmounted(() => {
             />
           </div>
           <div class="campo-grupo">
-            <label>Escolha uma das 6 cores vivas do setor:</label>
+            <label>Cor viva do setor:</label>
             <div class="grade-cores-setor">
               <button
                 v-for="cor in paletaSetores"
@@ -1007,12 +1179,11 @@ onUnmounted(() => {
       </div>
     </Transition>
 
-    <!-- Modal 2: Tamanho do Grid (Inputs Compactos para até 3 dígitos: 100) -->
     <Transition name="fade-pop">
       <div v-if="modalGridAberto" class="modal-backdrop">
         <div class="modal-box modal-compacto">
-          <h3>📐 Alterar Tamanho do Grid</h3>
-          <p class="subtitulo">Mínimo 5 | Máximo 100</p>
+          <h3>📐 Tamanho do Grid</h3>
+          <p class="subtitulo">Mín. 5 | Máx. 100</p>
           <div class="linha-inputs-compactos">
             <div class="campo-compacto">
               <label>Largura (X)</label>
@@ -1048,21 +1219,16 @@ onUnmounted(() => {
       </div>
     </Transition>
 
-    <!-- Modal 3: Configurar Entrada / Saída / Acesso (Input Compacto) -->
     <Transition name="fade-pop">
       <div v-if="modalAcessoAberto" class="modal-backdrop">
         <div class="modal-box modal-compacto">
           <h3>
             🚪 {{ configAcessoTemp.tipo }}
-            ({{ configAcessoTemp.orientacao === 'H' ? 'Horizontal' : 'Vertical' }})
+            ({{ configAcessoTemp.orientacao === 'H' ? 'Horiz.' : 'Vert.' }})
           </h3>
-          <div class="campo-compacto" style="margin-top:14px">
-            <label v-if="configAcessoTemp.orientacao === 'H'">
-              Largura X (1 a 20):
-            </label>
-            <label v-else>
-              Altura Y (1 a 20):
-            </label>
+          <div class="campo-compacto" style="margin-top:10px">
+            <label v-if="configAcessoTemp.orientacao === 'H'">Largura X (1 a 20):</label>
+            <label v-else>Altura Y (1 a 20):</label>
             <input
               v-model="configAcessoTemp.tamanho"
               type="number"
@@ -1081,21 +1247,20 @@ onUnmounted(() => {
       </div>
     </Transition>
 
-    <!-- Modal 4: Vincular Equipamento ESP32 -->
     <Transition name="fade-pop">
       <div v-if="modalMacAberto" class="modal-backdrop">
-        <div class="modal-box">
-          <h3>📡 Vincular Equipamento ESP32</h3>
+        <div class="modal-box modal-compacto">
+          <h3>📡 Vincular ESP32</h3>
           <p class="subtitulo">
-            Vinculando {{ coordenadasCarimboPendente.length }} vaga(s) selecionadas ao microcontrolador.
+            {{ coordenadasCarimboPendente.length }} vaga(s) selecionada(s)
           </p>
-          <div class="campo-grupo" style="margin-top:14px">
+          <div class="campo-grupo" style="margin-top:10px">
             <label>Código MAC do ESP32</label>
             <input v-model="inputMacEsp" type="text" maxlength="17" placeholder="AA:BB:CC:DD:EE:FF" />
           </div>
           <div class="modal-acoes">
             <button class="btn-secundario" @click="modalMacAberto = false">Cancelar</button>
-            <button class="btn-primario" @click="confirmarVinculoEquipamento">Vincular Vagas</button>
+            <button class="btn-primario" @click="confirmarVinculoEquipamento">Vincular</button>
           </div>
         </div>
       </div>
