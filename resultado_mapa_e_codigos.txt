@@ -40,8 +40,12 @@
                 📄 251f4b956c55af2d76fd0788124d7eee2b45eb
                 📄 eb319f10f70b460c2eb756b71d84bd67c7682f
             📂 04/
+                📄 28107b13a890a96e2983ac5ac365ec97e4c470
                 📄 a3e54bf68335107a348259e4770142ac1d2536
+            📂 06/
+                📄 a06d0be0368a6cceb76d421ce1c920b1f9846c
             📂 08/
+                📄 29c58940a7eb8d2009ab86987aa2a49a3bddd8
                 📄 42bb15a29bf37fe1ca11a032720e172b638bfa
             📂 0a/
                 📄 0e9c468eb3d070db112f0933919df7e9a40acf
@@ -66,6 +70,8 @@
                 📄 b1ed6fe01ee58f98b2d9260cb2ad6e6b2df857
             📂 1c/
                 📄 d3dce331ed297aa5844968417c0480889df175
+            📂 1f/
+                📄 e8fb659a48698a9be51fec9ac7aa2d65b0d67f
             📂 20/
                 📄 2f46834747412676a527044aeab9c6cc87cb9f
                 📄 71b8108e134958d9259328245aee36555919b9
@@ -76,12 +82,18 @@
                 📄 d938528fbbe876e356e5b1cd20b76539e58845
             📂 33/
                 📄 ff4fa50e6727ab2280e3ae5f1cad4348157958
+            📂 35/
+                📄 473514eb506590f5daccd7c5fe9ef41d3dd2ba
             📂 3b/
                 📄 86e677af9e2f191f4eac80ac4a2a676e90f6c9
             📂 3c/
                 📄 901970659696a80eef38d5754a0678dad3f069
+            📂 3e/
+                📄 82379dab3fe93d9ee22251949604ed63ddea39
             📂 41/
                 📄 3ee08af5482774c19b1ac740c2248a96b568b8
+            📂 43/
+                📄 7cc0150c5863f6099f32561a173bf9d0c575dd
             📂 44/
                 📄 4a0a3145deabaef81cef8bfce5d7cf0874d11f
             📂 46/
@@ -97,8 +109,11 @@
                 📄 01b674df391399da71c767aa5c976426c9dc7a
             📂 52/
                 📄 7d4fba5579d5e4e9d260051974927071f2b4a1
+            📂 53/
+                📄 3f3844723ab8694c64850a0cdf36ceb15c3174
             📂 57/
                 📄 434022187e0bdf3707b401cb8ae756d870bc60
+                📄 ffcde289691ca090d761e5ec7b99bc3f8d0e02
             📂 5a/
                 📄 cd2f23c2a1b7370a4dee3ab097708137435dfe
             📂 5b/
@@ -119,14 +134,20 @@
                 📄 93eb13237060adc0c968a690149a49faa2d7d3
             📂 6f/
                 📄 9509c88bed7080d496fc5e1d87a9315e30549d
+            📂 70/
+                📄 0e1cd3fba8e9ecd5710c66153a219043090f76
             📂 76/
                 📄 4129682cad74137e25bb36abd2a3472d937a9a
             📂 77/
                 📄 0e9d333ee70e75fe7c0bad7fb13e4f6ed4627a
             📂 7b/
                 📄 a572c6911878fe2c8d89f2b0d2d5b85a7ac413
+            📂 7f/
+                📄 6df57bc71a7c9b73eb2d464582e082333a82db
             📂 80/
                 📄 2a72eebf2a92805122eca302ed50f176e81fd4
+            📂 81/
+                📄 98ab9d4d4711cfcdad090e39ad6af9c0fefa5e
             📂 85/
                 📄 005aa2449ac4845e7f81bbf6da5c3744927e59
             📂 86/
@@ -165,8 +186,11 @@
             📂 b2/
                 📄 259e5d54488208f00f514aec8329184535bd4b
                 📄 9e339b0b60cf70dd7163098f447049f4ec9f59
+            📂 bc/
+                📄 170d7b964e72b84edbac5cfece6d29622cb0d5
             📂 bf/
                 📄 8b3334cc16cc54a3ae5f6cc1aea732bd139482
+                📄 8db3d079fd68b707e5f0c56c019df10990dcae
             📂 c5/
                 📄 3225b8239a1b2425e5e996ca32fb978d612306
             📂 c7/
@@ -174,14 +198,20 @@
                 📄 2ccf3f8be741a4d8412ea1260be954b8a9f94d
             📂 ca/
                 📄 2c6289571f2271ec419141ad2b5ba7aca238b4
+            📂 cb/
+                📄 a576915494073d55140abc61e826a0ecfb57e1
             📂 ce/
                 📄 9c48d9c1876034a21000926a121d232c1a7b75
             📂 d1/
                 📄 5c1653d372bdc1ce078bb7ac75cc34cb9b4e9f
+                📄 7b5e59bf6b3924828e1401513566df2ce7feb3
+                📄 dd9c89df02be67775a39cdb5427dc818505011
             📂 d2/
                 📄 a1c7b375d7c7ea7abee475eacd13660dcfc973
             📂 d9/
                 📄 955b8a7909493eb328c3741aedfc6562d3d922
+            📂 da/
+                📄 9f7eeaa1292d58f4464107793bf7fb9f843158
             📂 db/
                 📄 ffaf738c89560886aaae551e259463a0cd53f6
                 📄 fff6c35387496556422b6bb42eda58d8159134
@@ -205,6 +235,7 @@
             📂 f2/
                 📄 ee6a2970a9a4e9746aa53322b4a035b0b2d357
             📂 f4/
+                📄 25c98826efcee71afc0f0740f4c3a5316c0749
                 📄 84dfd1c52a8fe5733470b587374ffa8f651f25
                 📄 c4666b2ade7287f781969d4c64e0480f59f795
             📂 f6/
@@ -471,7 +502,7 @@ COMMIT;
 // 🚀 INÍCIO DO ARQUIVO: .git\COMMIT_EDITMSG
 // ==================================================================
 
-melhorias no frontend
+implementação de iconografia usando tablericons do mit
 
 
 // 🏁 FIM DO ARQUIVO: .git\COMMIT_EDITMSG
@@ -482,7 +513,7 @@ melhorias no frontend
 // 🚀 INÍCIO DO ARQUIVO: .git\FETCH_HEAD
 // ==================================================================
 
-10b789cea22d2254ed54dd4a6754849a9099f8b0		branch 'main' of https://github.com/Foretsam/vaga_certa
+d1dd9c89df02be67775a39cdb5427dc818505011		branch 'main' of https://github.com/Foretsam/vaga_certa
 
 
 // 🏁 FIM DO ARQUIVO: .git\FETCH_HEAD
@@ -1584,6 +1615,7 @@ dbffaf738c89560886aaae551e259463a0cd53f6 13a1041253d5de22bd3e5a2c97ed72da149509d
 5b440c088acad92aba91032270758b0814456731 04a3e54bf68335107a348259e4770142ac1d2536 Lucas Schuab <lucaschuab2015@outlook.com> 1792460800 -0300	commit: aperfeiçoamento css e responsividade
 04a3e54bf68335107a348259e4770142ac1d2536 f73a57bca719d82ee92f5712f1a4e8d02a0c5778 Lucas Schuab <lucaschuab2015@outlook.com> 1792504087 -0300	commit: remoção do exemplo hardcoded e implementação da conexão com o banco de dados
 f73a57bca719d82ee92f5712f1a4e8d02a0c5778 10b789cea22d2254ed54dd4a6754849a9099f8b0 Lucas Schuab <lucaschuab2015@outlook.com> 1792505903 -0300	commit: melhorias no frontend
+10b789cea22d2254ed54dd4a6754849a9099f8b0 d1dd9c89df02be67775a39cdb5427dc818505011 Lucas Schuab <lucaschuab2015@outlook.com> 1792542363 -0300	commit: implementação de iconografia usando tablericons do mit
 
 
 // 🏁 FIM DO ARQUIVO: .git\logs\HEAD
@@ -1602,6 +1634,7 @@ dbffaf738c89560886aaae551e259463a0cd53f6 13a1041253d5de22bd3e5a2c97ed72da149509d
 5b440c088acad92aba91032270758b0814456731 04a3e54bf68335107a348259e4770142ac1d2536 Lucas Schuab <lucaschuab2015@outlook.com> 1792460800 -0300	commit: aperfeiçoamento css e responsividade
 04a3e54bf68335107a348259e4770142ac1d2536 f73a57bca719d82ee92f5712f1a4e8d02a0c5778 Lucas Schuab <lucaschuab2015@outlook.com> 1792504087 -0300	commit: remoção do exemplo hardcoded e implementação da conexão com o banco de dados
 f73a57bca719d82ee92f5712f1a4e8d02a0c5778 10b789cea22d2254ed54dd4a6754849a9099f8b0 Lucas Schuab <lucaschuab2015@outlook.com> 1792505903 -0300	commit: melhorias no frontend
+10b789cea22d2254ed54dd4a6754849a9099f8b0 d1dd9c89df02be67775a39cdb5427dc818505011 Lucas Schuab <lucaschuab2015@outlook.com> 1792542363 -0300	commit: implementação de iconografia usando tablericons do mit
 
 
 // 🏁 FIM DO ARQUIVO: .git\logs\refs\heads\main
@@ -1623,6 +1656,10 @@ dbffaf738c89560886aaae551e259463a0cd53f6 dbffaf738c89560886aaae551e259463a0cd53f
 04a3e54bf68335107a348259e4770142ac1d2536 04a3e54bf68335107a348259e4770142ac1d2536 Lucas Oliveira Schuab <lucas@LAPTOP-SKE6HI0S.(none)> 1792504061 -0300	remote set-head
 f73a57bca719d82ee92f5712f1a4e8d02a0c5778 f73a57bca719d82ee92f5712f1a4e8d02a0c5778 Lucas Oliveira Schuab <lucas@LAPTOP-SKE6HI0S.(none)> 1792504092 -0300	remote set-head
 10b789cea22d2254ed54dd4a6754849a9099f8b0 10b789cea22d2254ed54dd4a6754849a9099f8b0 Lucas Oliveira Schuab <lucas@LAPTOP-SKE6HI0S.(none)> 1792505907 -0300	remote set-head
+10b789cea22d2254ed54dd4a6754849a9099f8b0 10b789cea22d2254ed54dd4a6754849a9099f8b0 Lucas Oliveira Schuab <lucas@LAPTOP-SKE6HI0S.(none)> 1792542347 -0300	remote set-head
+d1dd9c89df02be67775a39cdb5427dc818505011 d1dd9c89df02be67775a39cdb5427dc818505011 Lucas Oliveira Schuab <lucas@LAPTOP-SKE6HI0S.(none)> 1792542368 -0300	remote set-head
+d1dd9c89df02be67775a39cdb5427dc818505011 d1dd9c89df02be67775a39cdb5427dc818505011 Lucas Oliveira Schuab <lucas@LAPTOP-SKE6HI0S.(none)> 1792544306 -0300	remote set-head
+d1dd9c89df02be67775a39cdb5427dc818505011 d1dd9c89df02be67775a39cdb5427dc818505011 Lucas Oliveira Schuab <lucas@LAPTOP-SKE6HI0S.(none)> 1792548262 -0300	remote set-head
 
 
 // 🏁 FIM DO ARQUIVO: .git\logs\refs\remotes\origin\HEAD
@@ -1641,6 +1678,7 @@ dbffaf738c89560886aaae551e259463a0cd53f6 13a1041253d5de22bd3e5a2c97ed72da149509d
 5b440c088acad92aba91032270758b0814456731 04a3e54bf68335107a348259e4770142ac1d2536 Lucas Schuab <lucaschuab2015@outlook.com> 1792460804 -0300	update by push
 04a3e54bf68335107a348259e4770142ac1d2536 f73a57bca719d82ee92f5712f1a4e8d02a0c5778 Lucas Schuab <lucaschuab2015@outlook.com> 1792504090 -0300	update by push
 f73a57bca719d82ee92f5712f1a4e8d02a0c5778 10b789cea22d2254ed54dd4a6754849a9099f8b0 Lucas Schuab <lucaschuab2015@outlook.com> 1792505906 -0300	update by push
+10b789cea22d2254ed54dd4a6754849a9099f8b0 d1dd9c89df02be67775a39cdb5427dc818505011 Lucas Schuab <lucaschuab2015@outlook.com> 1792542367 -0300	update by push
 
 
 // 🏁 FIM DO ARQUIVO: .git\logs\refs\remotes\origin\main
@@ -1670,6 +1708,17 @@ f73a57bca719d82ee92f5712f1a4e8d02a0c5778 10b789cea22d2254ed54dd4a6754849a9099f8b
 
 
 // ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: .git\objects\04\28107b13a890a96e2983ac5ac365ec97e4c470
+// ==================================================================
+
+// [Arquivo binário ignorado pelo leitor de segurança]
+
+
+// 🏁 FIM DO ARQUIVO: .git\objects\04\28107b13a890a96e2983ac5ac365ec97e4c470
+// ------------------------------------------------------------------
+
+
+// ==================================================================
 // 🚀 INÍCIO DO ARQUIVO: .git\objects\04\a3e54bf68335107a348259e4770142ac1d2536
 // ==================================================================
 
@@ -1677,6 +1726,28 @@ f73a57bca719d82ee92f5712f1a4e8d02a0c5778 10b789cea22d2254ed54dd4a6754849a9099f8b
 
 
 // 🏁 FIM DO ARQUIVO: .git\objects\04\a3e54bf68335107a348259e4770142ac1d2536
+// ------------------------------------------------------------------
+
+
+// ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: .git\objects\06\a06d0be0368a6cceb76d421ce1c920b1f9846c
+// ==================================================================
+
+// [Arquivo binário ignorado pelo leitor de segurança]
+
+
+// 🏁 FIM DO ARQUIVO: .git\objects\06\a06d0be0368a6cceb76d421ce1c920b1f9846c
+// ------------------------------------------------------------------
+
+
+// ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: .git\objects\08\29c58940a7eb8d2009ab86987aa2a49a3bddd8
+// ==================================================================
+
+// [Arquivo binário ignorado pelo leitor de segurança]
+
+
+// 🏁 FIM DO ARQUIVO: .git\objects\08\29c58940a7eb8d2009ab86987aa2a49a3bddd8
 // ------------------------------------------------------------------
 
 
@@ -1833,6 +1904,17 @@ x+)JMU05`040031QH-.IL���K�M�+�.�/J��*f8j��Cy����
 
 
 // ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: .git\objects\1f\e8fb659a48698a9be51fec9ac7aa2d65b0d67f
+// ==================================================================
+
+// [Arquivo binário ignorado pelo leitor de segurança]
+
+
+// 🏁 FIM DO ARQUIVO: .git\objects\1f\e8fb659a48698a9be51fec9ac7aa2d65b0d67f
+// ------------------------------------------------------------------
+
+
+// ==================================================================
 // 🚀 INÍCIO DO ARQUIVO: .git\objects\20\2f46834747412676a527044aeab9c6cc87cb9f
 // ==================================================================
 
@@ -1899,6 +1981,17 @@ x+)JMU05`040031QH-.IL���K�M�+�.�/J��*f8j��Cy����
 
 
 // ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: .git\objects\35\473514eb506590f5daccd7c5fe9ef41d3dd2ba
+// ==================================================================
+
+// [Arquivo binário ignorado pelo leitor de segurança]
+
+
+// 🏁 FIM DO ARQUIVO: .git\objects\35\473514eb506590f5daccd7c5fe9ef41d3dd2ba
+// ------------------------------------------------------------------
+
+
+// ==================================================================
 // 🚀 INÍCIO DO ARQUIVO: .git\objects\3b\86e677af9e2f191f4eac80ac4a2a676e90f6c9
 // ==================================================================
 
@@ -1921,6 +2014,17 @@ x+)JMU05`040031QH-.IL���K�M�+�.�/J��*f8j��Cy����
 
 
 // ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: .git\objects\3e\82379dab3fe93d9ee22251949604ed63ddea39
+// ==================================================================
+
+// [Arquivo binário ignorado pelo leitor de segurança]
+
+
+// 🏁 FIM DO ARQUIVO: .git\objects\3e\82379dab3fe93d9ee22251949604ed63ddea39
+// ------------------------------------------------------------------
+
+
+// ==================================================================
 // 🚀 INÍCIO DO ARQUIVO: .git\objects\41\3ee08af5482774c19b1ac740c2248a96b568b8
 // ==================================================================
 
@@ -1928,6 +2032,17 @@ x+)JMU05`040031QH-.IL���K�M�+�.�/J��*f8j��Cy����
 
 
 // 🏁 FIM DO ARQUIVO: .git\objects\41\3ee08af5482774c19b1ac740c2248a96b568b8
+// ------------------------------------------------------------------
+
+
+// ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: .git\objects\43\7cc0150c5863f6099f32561a173bf9d0c575dd
+// ==================================================================
+
+// [Arquivo binário ignorado pelo leitor de segurança]
+
+
+// 🏁 FIM DO ARQUIVO: .git\objects\43\7cc0150c5863f6099f32561a173bf9d0c575dd
 // ------------------------------------------------------------------
 
 
@@ -2020,6 +2135,17 @@ x+)JMU05`040031QH-.IL���K�M�+�.�/J��*f8j��Cy����
 
 
 // ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: .git\objects\53\3f3844723ab8694c64850a0cdf36ceb15c3174
+// ==================================================================
+
+// [Arquivo binário ignorado pelo leitor de segurança]
+
+
+// 🏁 FIM DO ARQUIVO: .git\objects\53\3f3844723ab8694c64850a0cdf36ceb15c3174
+// ------------------------------------------------------------------
+
+
+// ==================================================================
 // 🚀 INÍCIO DO ARQUIVO: .git\objects\57\434022187e0bdf3707b401cb8ae756d870bc60
 // ==================================================================
 
@@ -2027,6 +2153,17 @@ x+)JMU05`040031QH-.IL���K�M�+�.�/J��*f8j��Cy����
 
 
 // 🏁 FIM DO ARQUIVO: .git\objects\57\434022187e0bdf3707b401cb8ae756d870bc60
+// ------------------------------------------------------------------
+
+
+// ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: .git\objects\57\ffcde289691ca090d761e5ec7b99bc3f8d0e02
+// ==================================================================
+
+// [Arquivo binário ignorado pelo leitor de segurança]
+
+
+// 🏁 FIM DO ARQUIVO: .git\objects\57\ffcde289691ca090d761e5ec7b99bc3f8d0e02
 // ------------------------------------------------------------------
 
 
@@ -2151,6 +2288,17 @@ x+)JMU01b040031Q�K�,I,))�L*-I-f����Ee��������~
 
 
 // ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: .git\objects\70\0e1cd3fba8e9ecd5710c66153a219043090f76
+// ==================================================================
+
+// [Arquivo binário ignorado pelo leitor de segurança]
+
+
+// 🏁 FIM DO ARQUIVO: .git\objects\70\0e1cd3fba8e9ecd5710c66153a219043090f76
+// ------------------------------------------------------------------
+
+
+// ==================================================================
 // 🚀 INÍCIO DO ARQUIVO: .git\objects\76\4129682cad74137e25bb36abd2a3472d937a9a
 // ==================================================================
 
@@ -2183,6 +2331,17 @@ xK��OR045e��-�/*Q(+MUH+��UPw(�,I�*�/�)M���J�sAU
 
 
 // ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: .git\objects\7f\6df57bc71a7c9b73eb2d464582e082333a82db
+// ==================================================================
+
+// [Arquivo binário ignorado pelo leitor de segurança]
+
+
+// 🏁 FIM DO ARQUIVO: .git\objects\7f\6df57bc71a7c9b73eb2d464582e082333a82db
+// ------------------------------------------------------------------
+
+
+// ==================================================================
 // 🚀 INÍCIO DO ARQUIVO: .git\objects\80\2a72eebf2a92805122eca302ed50f176e81fd4
 // ==================================================================
 
@@ -2190,6 +2349,17 @@ xK��OR045e��-�/*Q(+MUH+��UPw(�,I�*�/�)M���J�sAU
 
 
 // 🏁 FIM DO ARQUIVO: .git\objects\80\2a72eebf2a92805122eca302ed50f176e81fd4
+// ------------------------------------------------------------------
+
+
+// ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: .git\objects\81\98ab9d4d4711cfcdad090e39ad6af9c0fefa5e
+// ==================================================================
+
+// [Arquivo binário ignorado pelo leitor de segurança]
+
+
+// 🏁 FIM DO ARQUIVO: .git\objects\81\98ab9d4d4711cfcdad090e39ad6af9c0fefa5e
 // ------------------------------------------------------------------
 
 
@@ -2424,6 +2594,17 @@ xK��OR0�d��RPP*JM���M�KI,���+V�R�V
 
 
 // ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: .git\objects\bc\170d7b964e72b84edbac5cfece6d29622cb0d5
+// ==================================================================
+
+// [Arquivo binário ignorado pelo leitor de segurança]
+
+
+// 🏁 FIM DO ARQUIVO: .git\objects\bc\170d7b964e72b84edbac5cfece6d29622cb0d5
+// ------------------------------------------------------------------
+
+
+// ==================================================================
 // 🚀 INÍCIO DO ARQUIVO: .git\objects\bf\8b3334cc16cc54a3ae5f6cc1aea732bd139482
 // ==================================================================
 
@@ -2431,6 +2612,17 @@ xK��OR0�d��RPP*JM���M�KI,���+V�R�V
 
 
 // 🏁 FIM DO ARQUIVO: .git\objects\bf\8b3334cc16cc54a3ae5f6cc1aea732bd139482
+// ------------------------------------------------------------------
+
+
+// ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: .git\objects\bf\8db3d079fd68b707e5f0c56c019df10990dcae
+// ==================================================================
+
+// [Arquivo binário ignorado pelo leitor de segurança]
+
+
+// 🏁 FIM DO ARQUIVO: .git\objects\bf\8db3d079fd68b707e5f0c56c019df10990dcae
 // ------------------------------------------------------------------
 
 
@@ -2479,6 +2671,17 @@ xK��OR0�d��RPP*JM���M�KI,���+V�R�V
 
 
 // ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: .git\objects\cb\a576915494073d55140abc61e826a0ecfb57e1
+// ==================================================================
+
+// [Arquivo binário ignorado pelo leitor de segurança]
+
+
+// 🏁 FIM DO ARQUIVO: .git\objects\cb\a576915494073d55140abc61e826a0ecfb57e1
+// ------------------------------------------------------------------
+
+
+// ==================================================================
 // 🚀 INÍCIO DO ARQUIVO: .git\objects\ce\9c48d9c1876034a21000926a121d232c1a7b75
 // ==================================================================
 
@@ -2501,6 +2704,28 @@ xK��OR0�d��RPP*JM���M�KI,���+V�R�V
 
 
 // ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: .git\objects\d1\7b5e59bf6b3924828e1401513566df2ce7feb3
+// ==================================================================
+
+// [Arquivo binário ignorado pelo leitor de segurança]
+
+
+// 🏁 FIM DO ARQUIVO: .git\objects\d1\7b5e59bf6b3924828e1401513566df2ce7feb3
+// ------------------------------------------------------------------
+
+
+// ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: .git\objects\d1\dd9c89df02be67775a39cdb5427dc818505011
+// ==================================================================
+
+// [Arquivo binário ignorado pelo leitor de segurança]
+
+
+// 🏁 FIM DO ARQUIVO: .git\objects\d1\dd9c89df02be67775a39cdb5427dc818505011
+// ------------------------------------------------------------------
+
+
+// ==================================================================
 // 🚀 INÍCIO DO ARQUIVO: .git\objects\d2\a1c7b375d7c7ea7abee475eacd13660dcfc973
 // ==================================================================
 
@@ -2519,6 +2744,17 @@ xK��OR0�d��RPP*JM���M�KI,���+V�R�V
 
 
 // 🏁 FIM DO ARQUIVO: .git\objects\d9\955b8a7909493eb328c3741aedfc6562d3d922
+// ------------------------------------------------------------------
+
+
+// ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: .git\objects\da\9f7eeaa1292d58f4464107793bf7fb9f843158
+// ==================================================================
+
+// [Arquivo binário ignorado pelo leitor de segurança]
+
+
+// 🏁 FIM DO ARQUIVO: .git\objects\da\9f7eeaa1292d58f4464107793bf7fb9f843158
 // ------------------------------------------------------------------
 
 
@@ -2653,6 +2889,17 @@ xK��OR0`  	��
 
 
 // ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: .git\objects\f4\25c98826efcee71afc0f0740f4c3a5316c0749
+// ==================================================================
+
+// [Arquivo binário ignorado pelo leitor de segurança]
+
+
+// 🏁 FIM DO ARQUIVO: .git\objects\f4\25c98826efcee71afc0f0740f4c3a5316c0749
+// ------------------------------------------------------------------
+
+
+// ==================================================================
 // 🚀 INÍCIO DO ARQUIVO: .git\objects\f4\84dfd1c52a8fe5733470b587374ffa8f651f25
 // ==================================================================
 
@@ -2766,7 +3013,7 @@ xK��OR0`  	��
 // 🚀 INÍCIO DO ARQUIVO: .git\refs\heads\main
 // ==================================================================
 
-10b789cea22d2254ed54dd4a6754849a9099f8b0
+d1dd9c89df02be67775a39cdb5427dc818505011
 
 
 // 🏁 FIM DO ARQUIVO: .git\refs\heads\main
@@ -2788,7 +3035,7 @@ ref: refs/remotes/origin/main
 // 🚀 INÍCIO DO ARQUIVO: .git\refs\remotes\origin\main
 // ==================================================================
 
-10b789cea22d2254ed54dd4a6754849a9099f8b0
+d1dd9c89df02be67775a39cdb5427dc818505011
 
 
 // 🏁 FIM DO ARQUIVO: .git\refs\remotes\origin\main
@@ -4783,17 +5030,6 @@ onUnmounted(() => {
             <IconLayoutBoard :size="18" />
             <span>Alterar Setores</span>
           </button>
-        </div>
-
-        <div class="painel-ferramentas legenda-editor">
-          <h4 class="item-icone-texto">
-            <IconPin :size="18" />
-            <span>Cores do Editor</span>
-          </h4>
-          <div><span class="amostra" style="background:#cbd5e1"></span> Cinza Claro: Vazio</div>
-          <div><span class="amostra amostra-asfalto"></span> Asfalto Escuro: Estrada</div>
-          <div><span class="amostra" style="background:#eab308"></span> Amarelo: Vaga não Vinculada a um ESP32</div>
-          <div><span class="amostra" style="background:#005066"></span> Cor Escura: Vaga Vinculada a um Setor</div>
         </div>
       </aside>
     </div>
