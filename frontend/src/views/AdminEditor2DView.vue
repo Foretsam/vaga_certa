@@ -8,6 +8,32 @@ import {
   formEstabelecimento,
   salvarEstacionamentoNoBanco
 } from '../store/estacionamentoStore'
+import {
+  IconSquareRoundedPlus,
+  IconSquareRoundedMinus,
+  IconTrash,
+  IconSquareRoundedArrowLeft,
+  IconPin,
+  IconDeviceFloppy,
+  IconAlertSquareRounded,
+  IconArrowBackUp,
+  IconArrowForwardUp,
+  IconLayoutGrid,
+  IconSquareRoundedCheck,
+  IconSquareRoundedX,
+  IconStack2,
+  IconDoorEnter,
+  IconDoorExit,
+  IconArrowBarRight,
+  IconCpu,
+  IconLayoutBoard,
+  IconEraser,
+  IconSearch,
+  IconSettings,
+  IconRoad,
+  IconParking,
+  IconSquareRoundedChevronDown
+} from '../icons'
 
 const router = useRouter()
 
@@ -578,7 +604,7 @@ function confirmarSetorSelecao() {
 }
 
 // =========================================================
-// NOVO MODAL: ALTERAR SETORES (COM BUSCA/FILTRO E EXCLUSÃO)
+// MODAL: ALTERAR SETORES (COM BUSCA/FILTRO E EXCLUSÃO)
 // =========================================================
 const modalAlterarSetoresAberto = ref(false)
 const filtroBuscaSetor = ref('')
@@ -632,7 +658,6 @@ function escolherSetorParaEditar(setor) {
 
 function aoDigitarFiltroSetor() {
   dropdownSetoresAberto.value = true
-  // Se o usuário apagar ou alterar o texto de busca, desmarca o setor até que escolha um da lista
   if (
     setorSelecionadoParaEditar.value &&
     filtroBuscaSetor.value !== `${setorSelecionadoParaEditar.value.nome_setor} (${setorSelecionadoParaEditar.value.prefixo})`
@@ -683,7 +708,6 @@ function confirmarAlteracaoSetor() {
   const novoPref = editSetorPrefixo.value.trim().slice(0, 3).toUpperCase()
   const novaCor = editSetorCor.value
 
-  // Valida se outro setor já usa o mesmo nome ou prefixo no estacionamento
   for (const andar of formEstabelecimento.value.andares) {
     for (const s of andar.setores || []) {
       if (s.id_setor === idAlvo) continue
@@ -700,7 +724,6 @@ function confirmarAlteracaoSetor() {
 
   salvarSnapshot()
 
-  // Atualiza objeto do setor no andar
   const setorObj = andarEditorAtual.value.setores.find(s => s.id_setor === idAlvo)
   if (setorObj) {
     setorObj.nome_setor = novoNome
@@ -708,7 +731,6 @@ function confirmarAlteracaoSetor() {
     setorObj.cor_hex = novaCor
   }
 
-  // Atualiza todas as células vinculadas a este setor e renumera as vagas
   const celulas = andarEditorAtual.value.celulas
   Object.values(celulas).forEach((c) => {
     if (c.setorId === idAlvo) {
@@ -917,7 +939,7 @@ async function finalizarSalvarEstacionamento() {
     await salvarEstacionamentoNoBanco()
     modalSucessoSalvarAberto.value = true
   } catch (err) {
-    alert(`❌ Erro ao salvar: ${err.message}`)
+    alert(`Erro ao salvar: ${err.message}`)
   } finally {
     salvandoNoBanco.value = false
   }
@@ -961,7 +983,7 @@ onUnmounted(() => {
       title="Avisos de validação"
       @click="alternarPainelAvisos"
     >
-      ⚠️
+      <IconAlertSquareRounded :size="20" />
       <span class="hud-mini-badge">{{ listaAvisosValidacao.length }}</span>
     </button>
 
@@ -972,7 +994,7 @@ onUnmounted(() => {
         title="Finalizar e Salvar"
         @click="finalizarSalvarEstacionamento"
       >
-        💾
+        <IconDeviceFloppy :size="20" />
       </button>
 
       <button
@@ -981,7 +1003,7 @@ onUnmounted(() => {
         title="Opções do Editor"
         @click="alternarMenuEngrenagem"
       >
-        ⚙️
+        <IconSettings :size="20" />
       </button>
 
       <button
@@ -990,7 +1012,7 @@ onUnmounted(() => {
         title="Adicionar Acessos e Equipamentos"
         @click="alternarMenuAdicionar"
       >
-        ➕
+        <IconSquareRoundedPlus :size="20" />
       </button>
     </div>
 
@@ -999,11 +1021,13 @@ onUnmounted(() => {
       :class="{ 'topbar-mobile-aberta': menuTopoMobileAberto }"
     >
       <div class="topbar-esquerda">
-        <button class="btn-secundario btn-duas-linhas" @click="router.push({ name: 'admin-info-gerais' })">
-          ⬅️ Editar estacionamento<br /><span>Informações Gerais</span>
+        <button class="btn-secundario btn-duas-linhas item-icone-texto" @click="router.push({ name: 'admin-info-gerais' })">
+          <IconSquareRoundedArrowLeft :size="18" />
+          <div>Editar estacionamento<br /><span>Informações Gerais</span></div>
         </button>
 
         <div class="seletor-andar-box">
+          <IconStack2 :size="18" />
           <span>Andar:</span>
           <select
             v-if="formEstabelecimento.andares.length > 1"
@@ -1022,23 +1046,27 @@ onUnmounted(() => {
           <strong v-else>{{ andarEditorAtual.nome_andar }}</strong>
         </div>
 
-        <button class="btn-secundario btn-duas-linhas" @click="abrirModalTamanhoGrid">
-          📐 Tamanho do Grid<br /><span>({{ andarEditorAtual.grid_x }}x{{ andarEditorAtual.grid_y }})</span>
+        <button class="btn-secundario btn-duas-linhas item-icone-texto" @click="abrirModalTamanhoGrid">
+          <IconLayoutGrid :size="18" />
+          <div>Tamanho do Grid<br /><span>({{ andarEditorAtual.grid_x }}x{{ andarEditorAtual.grid_y }})</span></div>
         </button>
 
-        <button class="btn-secundario" :disabled="historicoUndo.length === 0" @click="desfazer">
-          ↩️ Desfazer
+        <button class="btn-secundario item-icone-texto" :disabled="historicoUndo.length === 0" @click="desfazer">
+          <IconArrowBackUp :size="18" />
+          <span>Desfazer</span>
         </button>
-        <button class="btn-secundario" :disabled="historicoRedo.length === 0" @click="refazer">
-          ↪️ Refazer
+        <button class="btn-secundario item-icone-texto" :disabled="historicoRedo.length === 0" @click="refazer">
+          <IconArrowForwardUp :size="18" />
+          <span>Refazer</span>
         </button>
         <button
           v-if="panX !== 0 || panY !== 0 || zoomEscala !== 1"
-          class="btn-secundario"
+          class="btn-secundario item-icone-texto"
           title="Centralizar Zoom"
           @click="resetarCameraGrid"
         >
-          🔍 {{ Math.round(zoomEscala * 100) }}%
+          <IconSearch :size="16" />
+          <span>{{ Math.round(zoomEscala * 100) }}%</span>
         </button>
       </div>
 
@@ -1049,17 +1077,20 @@ onUnmounted(() => {
           title="Clique para mostrar/ocultar avisos de validação"
           @click="alternarPainelAvisos"
         >
-          ⚠️
+          <IconAlertSquareRounded :size="20" />
           <span class="caution-badge">{{ listaAvisosValidacao.length }}</span>
         </button>
 
         <button
-          class="btn-salvar-final btn-duas-linhas"
+          class="btn-salvar-final btn-duas-linhas item-icone-texto"
           :disabled="!podeSalvarEstacionamento || salvandoNoBanco"
           @click="finalizarSalvarEstacionamento"
         >
-          💾 {{ salvandoNoBanco ? 'Salvando...' : 'Finalizar e' }}<br />
-          <span v-if="!salvandoNoBanco">Salvar no Banco</span>
+          <IconDeviceFloppy :size="18" />
+          <div>
+            {{ salvandoNoBanco ? 'Salvando...' : 'Finalizar e' }}<br />
+            <span v-if="!salvandoNoBanco">Salvar</span>
+          </div>
         </button>
       </div>
     </header>
@@ -1069,24 +1100,33 @@ onUnmounted(() => {
         <Transition name="fade-pop">
           <div v-if="mostrarPainelAvisos" class="overlay-flutuante painel-avisos-overlay">
             <div class="overlay-header">
-              <strong>⚠️ Validação ({{ listaAvisosValidacao.length }})</strong>
-              <button class="btn-fechar-mini" @click="mostrarPainelAvisos = false">✖</button>
+              <strong class="item-icone-texto">
+                <IconAlertSquareRounded :size="18" />
+                <span>Validação ({{ listaAvisosValidacao.length }})</span>
+              </strong>
+              <button class="btn-fechar-mini" @click="mostrarPainelAvisos = false">
+                <IconSquareRoundedX :size="18" />
+              </button>
             </div>
             <ul v-if="listaAvisosValidacao.length > 0" class="lista-avisos-ul">
               <li v-for="(aviso, i) in listaAvisosValidacao" :key="i">{{ aviso }}</li>
             </ul>
-            <p v-else class="aviso-tudo-ok">
-              ✅ Tudo certo! Todos os andares, setores, vagas e acessos estão validados.
+            <p v-else class="aviso-tudo-ok item-icone-texto">
+              <IconSquareRoundedCheck :size="18" />
+              <span>Tudo certo! Todos os andares, setores, vagas e acessos estão validados.</span>
             </p>
           </div>
         </Transition>
 
         <Transition name="fade-pop">
           <div v-if="ferramentaCarimbo" class="overlay-flutuante banner-carimbo-overlay">
-            <span>
-              🎯 <strong>{{ ferramentaCarimbo.tipo }} ({{ ferramentaCarimbo.w }}x{{ ferramentaCarimbo.h }})</strong> — Toque no Grid
+            <span class="item-icone-texto">
+              <IconPin :size="18" />
+              <strong>{{ ferramentaCarimbo.tipo }} ({{ ferramentaCarimbo.w }}x{{ ferramentaCarimbo.h }})</strong> — Toque no Grid
             </span>
-            <button class="btn-cancelar-carimbo" @click="ferramentaCarimbo = null">✖</button>
+            <button class="btn-cancelar-carimbo" @click="ferramentaCarimbo = null">
+              <IconSquareRoundedX :size="16" />
+            </button>
           </div>
         </Transition>
 
@@ -1096,34 +1136,47 @@ onUnmounted(() => {
             <span class="contagem-sel">{{ selecionados.size }} sel.:</span>
 
             <div class="grupo-acao-item">
-              <span class="icone-com-tooltip" data-tooltip="Estrada" title="Estrada">🛣️</span>
-              <button class="btn-mini add" title="Adicionar Estrada" @click="aplicarTipoSelecao('ESTRADA')">➕</button>
-              <button class="btn-mini rem" title="Remover Estrada" @click="removerTipoSelecao('ESTRADA')">➖</button>
+              <span class="icone-com-tooltip" data-tooltip="Estrada" title="Estrada">
+                <IconRoad :size="18" />
+              </span>
+              <button class="btn-mini add" title="Adicionar Estrada" @click="aplicarTipoSelecao('ESTRADA')">
+                <IconSquareRoundedPlus :size="16" />
+              </button>
+              <button class="btn-mini rem" title="Remover Estrada" @click="removerTipoSelecao('ESTRADA')">
+                <IconSquareRoundedMinus :size="16" />
+              </button>
             </div>
 
             <div class="grupo-acao-item">
-              <span class="icone-com-tooltip" data-tooltip="Setores" title="Setores">🎨</span>
-              <button class="btn-mini add" title="Definir Setor" @click="abrirModalSetor">➕</button>
-              <button class="btn-mini rem" title="Remover Setor" @click="removerTipoSelecao('SETOR')">➖</button>
+              <span class="icone-com-tooltip" data-tooltip="Setores" title="Setores">
+                <IconLayoutBoard :size="18" />
+              </span>
+              <button class="btn-mini add" title="Definir Setor" @click="abrirModalSetor">
+                <IconSquareRoundedPlus :size="16" />
+              </button>
+              <button class="btn-mini rem" title="Remover Setor" @click="removerTipoSelecao('SETOR')">
+                <IconSquareRoundedMinus :size="16" />
+              </button>
             </div>
 
             <div class="grupo-acao-item">
-              <span class="icone-com-tooltip" data-tooltip="Vagas" title="Vagas">🅿️</span>
-              <button class="btn-mini add" title="Adicionar Vagas" @click="aplicarTipoSelecao('VAGA')">➕</button>
-              <button class="btn-mini rem" title="Remover Vagas" @click="removerTipoSelecao('VAGA')">➖</button>
+              <span class="icone-com-tooltip" data-tooltip="Vagas" title="Vagas">
+                <IconParking :size="18" />
+              </span>
+              <button class="btn-mini add" title="Adicionar Vagas" @click="aplicarTipoSelecao('VAGA')">
+                <IconSquareRoundedPlus :size="16" />
+              </button>
+              <button class="btn-mini rem" title="Remover Vagas" @click="removerTipoSelecao('VAGA')">
+                <IconSquareRoundedMinus :size="16" />
+              </button>
             </div>
 
-            <!-- Ícone de Borracha para apagar tudo na seleção -->
             <button
               class="btn-mini borracha-tudo"
               title="Borracha: remover tudo na seleção"
               @click="limparTudoNaSelecao"
             >
-              <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="m7 21-4.3-4.3c-1-1-1-2.5 0-3.4l9.6-9.6c1-1 2.5-1 3.4 0l5.6 5.6c1 1 1 2.5 0 3.4L13 21" />
-                <path d="M22 21H7" />
-                <path d="m5 11 9 9" />
-              </svg>
+              <IconEraser :size="16" />
             </button>
 
             <button
@@ -1131,7 +1184,7 @@ onUnmounted(() => {
               title="Desselecionar"
               @click="selecionados.clear(); mostrarMenuFlutuante = false"
             >
-              ✖
+              <IconSquareRoundedX :size="16" />
             </button>
           </div>
         </Transition>
@@ -1215,9 +1268,9 @@ onUnmounted(() => {
                     <span v-if="andarEditorAtual.celulas[`${x},${y}`]?.tipo === 'VAGA'">
                       {{ andarEditorAtual.celulas[`${x},${y}`]?.identificador || 'V' }}
                     </span>
-                    <span v-else-if="andarEditorAtual.celulas[`${x},${y}`]?.tipo === 'ENTRADA'">E</span>
-                    <span v-else-if="andarEditorAtual.celulas[`${x},${y}`]?.tipo === 'SAIDA'">S</span>
-                    <span v-else-if="andarEditorAtual.celulas[`${x},${y}`]?.tipo === 'ACESSO'">A</span>
+                    <IconDoorEnter v-else-if="andarEditorAtual.celulas[`${x},${y}`]?.tipo === 'ENTRADA'" :size="16" />
+                    <IconDoorExit v-else-if="andarEditorAtual.celulas[`${x},${y}`]?.tipo === 'SAIDA'" :size="16" />
+                    <IconArrowBarRight v-else-if="andarEditorAtual.celulas[`${x},${y}`]?.tipo === 'ACESSO'" :size="16" />
                   </div>
                 </div>
               </div>
@@ -1231,39 +1284,51 @@ onUnmounted(() => {
         :class="{ 'sidebar-mobile-aberta': menuAdicionarMobileAberto }"
       >
         <div class="painel-ferramentas">
-          <h4>🚪 Entradas / Saídas / Acessos</h4>
+          <h4 class="item-icone-texto">
+            <IconDoorEnter :size="18" />
+            <span>Entradas / Saídas / Acessos</span>
+          </h4>
           <p class="dica-painel">Clique para definir o tamanho e posicionar</p>
 
           <div class="linha-botoes-dupla">
-            <button class="btn-ferramenta cor-entrada" @click="prepararAcesso('ENTRADA', 'H')">
-              ➡️ Entrada (H)
+            <button class="btn-ferramenta cor-entrada item-icone-texto" @click="prepararAcesso('ENTRADA', 'H')">
+              <IconDoorEnter :size="16" />
+              <span>Entrada (H)</span>
             </button>
-            <button class="btn-ferramenta cor-entrada" @click="prepararAcesso('ENTRADA', 'V')">
-              ⬇️ Entrada (V)
-            </button>
-          </div>
-
-          <div class="linha-botoes-dupla">
-            <button class="btn-ferramenta cor-saida" @click="prepararAcesso('SAIDA', 'H')">
-              ➡️ Saída (H)
-            </button>
-            <button class="btn-ferramenta cor-saida" @click="prepararAcesso('SAIDA', 'V')">
-              ⬇️ Saída (V)
+            <button class="btn-ferramenta cor-entrada item-icone-texto" @click="prepararAcesso('ENTRADA', 'V')">
+              <IconDoorEnter :size="16" />
+              <span>Entrada (V)</span>
             </button>
           </div>
 
           <div class="linha-botoes-dupla">
-            <button class="btn-ferramenta cor-acesso" @click="prepararAcesso('ACESSO', 'H')">
-              🚶 Acesso (H)
+            <button class="btn-ferramenta cor-saida item-icone-texto" @click="prepararAcesso('SAIDA', 'H')">
+              <IconDoorExit :size="16" />
+              <span>Saída (H)</span>
             </button>
-            <button class="btn-ferramenta cor-acesso" @click="prepararAcesso('ACESSO', 'V')">
-              🚶 Acesso (V)
+            <button class="btn-ferramenta cor-saida item-icone-texto" @click="prepararAcesso('SAIDA', 'V')">
+              <IconDoorExit :size="16" />
+              <span>Saída (V)</span>
+            </button>
+          </div>
+
+          <div class="linha-botoes-dupla">
+            <button class="btn-ferramenta cor-acesso item-icone-texto" @click="prepararAcesso('ACESSO', 'H')">
+              <IconArrowBarRight :size="16" />
+              <span>Acesso (H)</span>
+            </button>
+            <button class="btn-ferramenta cor-acesso item-icone-texto" @click="prepararAcesso('ACESSO', 'V')">
+              <IconArrowBarRight :size="16" />
+              <span>Acesso (V)</span>
             </button>
           </div>
         </div>
 
         <div class="painel-ferramentas">
-          <h4>📡 Equipamentos (ESP32)</h4>
+          <h4 class="item-icone-texto">
+            <IconCpu :size="18" />
+            <span>Equipamentos (ESP32)</span>
+          </h4>
           <p class="dica-painel">Escolha o formato (X por Y) e clique nas vagas</p>
 
           <div
@@ -1274,25 +1339,18 @@ onUnmounted(() => {
             <button
               v-for="item in linha"
               :key="`${item.w}x${item.h}`"
-              class="btn-equipamento"
+              class="btn-equipamento item-icone-texto"
               @click="ativarCarimboEquipamento(item.w, item.h)"
             >
-              🔌 {{ item.w }}x{{ item.h }}
+              <IconCpu :size="15" />
+              <span>{{ item.w }}x{{ item.h }}</span>
             </button>
           </div>
 
-          <!-- Botão Alterar Setores abaixo do menu de equipamentos -->
-          <button class="btn-alterar-setores-menu" @click="abrirModalAlterarSetores">
-            🎨 Alterar Setores
+          <button class="btn-alterar-setores-menu item-icone-texto" @click="abrirModalAlterarSetores">
+            <IconLayoutBoard :size="18" />
+            <span>Alterar Setores</span>
           </button>
-        </div>
-
-        <div class="painel-ferramentas legenda-editor">
-          <h4>📌 Cores do Editor</h4>
-          <div><span class="amostra" style="background:#cbd5e1"></span> Cinza Claro: Vazio</div>
-          <div><span class="amostra amostra-asfalto"></span> Asfalto Escuro: Estrada</div>
-          <div><span class="amostra" style="background:#eab308"></span> Amarelo: Vaga não Vinculada a um ESP32</div>
-          <div><span class="amostra" style="background:#005066"></span> Cor Escura: Vaga Vinculada a um Setor</div>
         </div>
       </aside>
     </div>
@@ -1303,7 +1361,10 @@ onUnmounted(() => {
     <Transition name="fade-pop">
       <div v-if="modalSetorAberto" class="modal-backdrop">
         <div class="modal-box">
-          <h3>🎨 Definir Setor</h3>
+          <h3 class="item-icone-texto">
+            <IconLayoutBoard :size="20" />
+            <span>Definir Setor</span>
+          </h3>
           <div class="campo-grupo" style="margin-top:10px">
             <label>Nome do Setor (único)</label>
             <input v-model="novoSetorNome" type="text" maxlength="25" placeholder="Ex: Setor A" />
@@ -1335,23 +1396,33 @@ onUnmounted(() => {
             </div>
           </div>
           <div class="modal-acoes">
-            <button class="btn-secundario" @click="modalSetorAberto = false">Cancelar</button>
-            <button class="btn-primario" @click="confirmarSetorSelecao">OK</button>
+            <button class="btn-secundario item-icone-texto" @click="modalSetorAberto = false">
+              <IconSquareRoundedX :size="18" />
+              <span>Cancelar</span>
+            </button>
+            <button class="btn-primario item-icone-texto" @click="confirmarSetorSelecao">
+              <IconSquareRoundedCheck :size="18" />
+              <span>OK</span>
+            </button>
           </div>
         </div>
       </div>
     </Transition>
 
-    <!-- NOVO MODAL: ALTERAR SETORES -->
+    <!-- MODAL: ALTERAR SETORES -->
     <Transition name="fade-pop">
       <div v-if="modalAlterarSetoresAberto" class="modal-backdrop">
         <div class="modal-box modal-alterar-setor">
           <div class="overlay-header">
-            <h3>🎨 Alterar Setores ({{ andarEditorAtual.nome_andar }})</h3>
-            <button class="btn-fechar-mini" @click="modalAlterarSetoresAberto = false">✖</button>
+            <h3 class="item-icone-texto">
+              <IconLayoutBoard :size="20" />
+              <span>Alterar Setores ({{ andarEditorAtual.nome_andar }})</span>
+            </h3>
+            <button class="btn-fechar-mini" @click="modalAlterarSetoresAberto = false">
+              <IconSquareRoundedX :size="20" />
+            </button>
           </div>
 
-          <!-- Caixa de seleção com filtro ao digitar -->
           <div class="campo-grupo" style="margin-top:8px">
             <label>Selecionar Setor (digite para filtrar)</label>
             <div class="combobox-setor-wrapper">
@@ -1367,7 +1438,7 @@ onUnmounted(() => {
                 class="btn-seta-combobox"
                 @click="dropdownSetoresAberto = !dropdownSetoresAberto"
               >
-                ▼
+                <IconSquareRoundedChevronDown :size="18" />
               </button>
 
               <div v-if="dropdownSetoresAberto" class="lista-dropdown-setores">
@@ -1387,7 +1458,6 @@ onUnmounted(() => {
             </div>
           </div>
 
-          <!-- Campos de Edição (Cinzados e bloqueados até selecionar um setor) -->
           <div
             class="area-edicao-setor-campos"
             :class="{ 'campos-desabilitados': !setorSelecionadoParaEditar }"
@@ -1434,32 +1504,34 @@ onUnmounted(() => {
             </div>
           </div>
 
-          <!-- Aviso caso falte preencher algum dado com o setor selecionado -->
           <p
             v-if="setorSelecionadoParaEditar && !dadosEdicaoSetorPreenchidos"
-            class="msg-preencha-setor"
+            class="msg-preencha-setor item-icone-texto"
+            style="justify-content: center"
           >
-            ⚠️ Preencha os dados antes de confirmar
+            <IconAlertSquareRounded :size="18" />
+            <span>Preencha os dados antes de confirmar</span>
           </p>
 
-          <!-- Botões Excluir (Cinza -> Vermelho) e Confirmar (Cinza -> Verde) -->
           <div class="botoes-empilhados-setor">
             <button
               type="button"
-              class="btn-excluir-setor"
+              class="btn-excluir-setor item-icone-texto"
               :disabled="!setorSelecionadoParaEditar"
               @click="excluirSetorSelecionado"
             >
-              Excluir Setor
+              <IconTrash :size="18" />
+              <span>Excluir Setor</span>
             </button>
 
             <button
               type="button"
-              class="btn-confirmar-setor"
+              class="btn-confirmar-setor item-icone-texto"
               :disabled="!setorSelecionadoParaEditar || !dadosEdicaoSetorPreenchidos"
               @click="confirmarAlteracaoSetor"
             >
-              Confirmar Alterações
+              <IconSquareRoundedCheck :size="18" />
+              <span>Confirmar Alterações</span>
             </button>
           </div>
         </div>
@@ -1469,7 +1541,10 @@ onUnmounted(() => {
     <Transition name="fade-pop">
       <div v-if="modalGridAberto" class="modal-backdrop">
         <div class="modal-box modal-compacto">
-          <h3>📐 Tamanho do Grid</h3>
+          <h3 class="item-icone-texto">
+            <IconLayoutGrid :size="20" />
+            <span>Tamanho do Grid</span>
+          </h3>
           <p class="subtitulo">Mín. 5 | Máx. 100</p>
           <div class="linha-inputs-compactos">
             <div class="campo-compacto">
@@ -1499,8 +1574,14 @@ onUnmounted(() => {
             </div>
           </div>
           <div class="modal-acoes">
-            <button class="btn-secundario" @click="modalGridAberto = false">Cancelar</button>
-            <button class="btn-primario" @click="confirmarTamanhoGrid">Aplicar</button>
+            <button class="btn-secundario item-icone-texto" @click="modalGridAberto = false">
+              <IconSquareRoundedX :size="18" />
+              <span>Cancelar</span>
+            </button>
+            <button class="btn-primario item-icone-texto" @click="confirmarTamanhoGrid">
+              <IconSquareRoundedCheck :size="18" />
+              <span>Aplicar</span>
+            </button>
           </div>
         </div>
       </div>
@@ -1509,9 +1590,14 @@ onUnmounted(() => {
     <Transition name="fade-pop">
       <div v-if="modalAcessoAberto" class="modal-backdrop">
         <div class="modal-box modal-compacto">
-          <h3>
-            🚪 {{ configAcessoTemp.tipo }}
-            ({{ configAcessoTemp.orientacao === 'H' ? 'Horiz.' : 'Vert.' }})
+          <h3 class="item-icone-texto">
+            <IconDoorEnter v-if="configAcessoTemp.tipo === 'ENTRADA'" :size="20" />
+            <IconDoorExit v-else-if="configAcessoTemp.tipo === 'SAIDA'" :size="20" />
+            <IconArrowBarRight v-else :size="20" />
+            <span>
+              {{ configAcessoTemp.tipo }}
+              ({{ configAcessoTemp.orientacao === 'H' ? 'Horiz.' : 'Vert.' }})
+            </span>
           </h3>
           <div class="campo-compacto" style="margin-top:10px">
             <label v-if="configAcessoTemp.orientacao === 'H'">Largura X (1 a 20):</label>
@@ -1527,8 +1613,14 @@ onUnmounted(() => {
             />
           </div>
           <div class="modal-acoes">
-            <button class="btn-secundario" @click="modalAcessoAberto = false">Cancelar</button>
-            <button class="btn-primario" @click="ativarCarimboAcesso">OK</button>
+            <button class="btn-secundario item-icone-texto" @click="modalAcessoAberto = false">
+              <IconSquareRoundedX :size="18" />
+              <span>Cancelar</span>
+            </button>
+            <button class="btn-primario item-icone-texto" @click="ativarCarimboAcesso">
+              <IconSquareRoundedCheck :size="18" />
+              <span>OK</span>
+            </button>
           </div>
         </div>
       </div>
@@ -1537,7 +1629,10 @@ onUnmounted(() => {
     <Transition name="fade-pop">
       <div v-if="modalMacAberto" class="modal-backdrop">
         <div class="modal-box modal-compacto">
-          <h3>📡 Vincular ESP32</h3>
+          <h3 class="item-icone-texto">
+            <IconCpu :size="20" />
+            <span>Vincular ESP32</span>
+          </h3>
           <p class="subtitulo">
             {{ coordenadasCarimboPendente.length }} vaga(s) selecionada(s)
           </p>
@@ -1546,8 +1641,14 @@ onUnmounted(() => {
             <input v-model="inputMacEsp" type="text" maxlength="17" placeholder="AA:BB:CC:DD:EE:FF" />
           </div>
           <div class="modal-acoes">
-            <button class="btn-secundario" @click="modalMacAberto = false">Cancelar</button>
-            <button class="btn-primario" @click="confirmarVinculoEquipamento">Vincular</button>
+            <button class="btn-secundario item-icone-texto" @click="modalMacAberto = false">
+              <IconSquareRoundedX :size="18" />
+              <span>Cancelar</span>
+            </button>
+            <button class="btn-primario item-icone-texto" @click="confirmarVinculoEquipamento">
+              <IconSquareRoundedCheck :size="18" />
+              <span>Vincular</span>
+            </button>
           </div>
         </div>
       </div>
@@ -1557,13 +1658,16 @@ onUnmounted(() => {
     <Transition name="fade-pop">
       <div v-if="modalSucessoSalvarAberto" class="modal-backdrop">
         <div class="modal-box modal-sucesso-salvar">
-          <div class="icone-sucesso-modal">✅</div>
+          <div class="icone-sucesso-modal" style="color: #16a34a">
+            <IconSquareRoundedCheck :size="48" />
+          </div>
           <h3>Planta 2D Salva com Sucesso!</h3>
           <p class="subtitulo">
             Todos os andares, setores, equipamentos e vagas foram gravados no banco de dados.
           </p>
-          <button class="btn-confirmar-sucesso" @click="confirmarModalSucessoSalvar">
-            Confirmar
+          <button class="btn-confirmar-sucesso item-icone-texto" @click="confirmarModalSucessoSalvar">
+            <IconSquareRoundedCheck :size="20" />
+            <span>Confirmar</span>
           </button>
         </div>
       </div>

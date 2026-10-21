@@ -49,14 +49,21 @@
                 📄 6cc631d8807752b63ca2526c0184eb16b8240a
             📂 0c/
                 📄 065b924bb5fa4111890dc78b76d68cc1d6d403
+            📂 0e/
+                📄 643ce9b8a54f0ed9f2f6d02c27e60bd4b65f4e
             📂 0f/
                 📄 31f13bb51a13228a9ed32a6d5279c6b2829e0f
                 📄 60ab414f2d1566bbaf1e8aaa3f678e08516ba5
+            📂 10/
+                📄 b789cea22d2254ed54dd4a6754849a9099f8b0
             📂 13/
                 📄 192dc85d99e97969d044c67626a5fe7e592041
                 📄 a1041253d5de22bd3e5a2c97ed72da149509df
             📂 15/
                 📄 11959c22b74118c06679739cf9abe2ceeea48c
+            📂 1b/
+                📄 7916a3174de590007a7dd21916cb7fae95fb85
+                📄 b1ed6fe01ee58f98b2d9260cb2ad6e6b2df857
             📂 1c/
                 📄 d3dce331ed297aa5844968417c0480889df175
             📂 20/
@@ -64,10 +71,13 @@
                 📄 71b8108e134958d9259328245aee36555919b9
             📂 24/
                 📄 25c0f745bef4d009cb6661b62fd9dfd62960b0
+                📄 640ec99045a9a5b700312ab45f1b5e2d807a98
             📂 31/
                 📄 d938528fbbe876e356e5b1cd20b76539e58845
             📂 33/
                 📄 ff4fa50e6727ab2280e3ae5f1cad4348157958
+            📂 3b/
+                📄 86e677af9e2f191f4eac80ac4a2a676e90f6c9
             📂 3c/
                 📄 901970659696a80eef38d5754a0678dad3f069
             📂 41/
@@ -79,6 +89,8 @@
                 📄 bfa20bbd6887892dafc2882419b0b682ca0d7f
             📂 49/
                 📄 5d8b7070ffbd8693ebba820a12535b06494bff
+            📂 4a/
+                📄 1aea1ad35b0b9eadecd0d92ce991948bc5bd63
             📂 4d/
                 📄 df9122c5ca0d4bb4aad3dfdca88c9d11c5b45d
             📂 51/
@@ -93,14 +105,22 @@
                 📄 2c408d1c9873a919513089538c157cc01eed46
                 📄 440c088acad92aba91032270758b0814456731
                 📄 c76810926bc986c8016355a804189357a2082d
+            📂 5c/
+                📄 eb06667da36f8ae69cfe43a97527953acf9a4f
+            📂 5d/
+                📄 da71f1e9803069344a88f9cf8fea367a278ae1
             📂 5e/
                 📄 83bcbf57907010602a73f562ba52c711a83e40
             📂 63/
                 📄 8657cf01ca80ab9297f146b5ea732aa37b918a
+            📂 67/
+                📄 d6ab8beadb3976786a9d56c873727941352583
             📂 68/
                 📄 93eb13237060adc0c968a690149a49faa2d7d3
             📂 6f/
                 📄 9509c88bed7080d496fc5e1d87a9315e30549d
+            📂 76/
+                📄 4129682cad74137e25bb36abd2a3472d937a9a
             📂 77/
                 📄 0e9d333ee70e75fe7c0bad7fb13e4f6ed4627a
             📂 7b/
@@ -111,16 +131,26 @@
                 📄 005aa2449ac4845e7f81bbf6da5c3744927e59
             📂 86/
                 📄 3ecc701b10b636160463d44a354b13d394f00d
+            📂 88/
+                📄 415edcba9ac9f24b4b6017425c5f679d12ee6e
             📂 89/
                 📄 c32490f1dc26802d9fdd47da61545b918e5532
             📂 8b/
                 📄 bb5ee6c07004e372ddd3fd49ee75964c2c9e75
+            📂 95/
+                📄 511b63968465a1985a4a1d0e760e91f48cd1b1
+            📂 9c/
+                📄 342b0da2115997d027cdc9a85d2b13c7578845
+            📂 a0/
+                📄 5046d03264ddef72f19a9e8ff20a4dc974a321
             📂 a1/
                 📄 8cc39e43c8ed3391834d138ce8eaeb48256312
             📂 a4/
                 📄 17a1c66ca2653bf76e3afa8479c426b3c891c3
             📂 a5/
+                📄 26e2aca3e1c93d2654ce534924529b6cbd09a3
                 📄 47bf36d8d11a4f89c59c144f24795749086dd1
+                📄 49c60477bd094db72173686dac78231592b881
             📂 a6/
                 📄 885ac88553305473ebff9e245634435beaa1a5
             📂 a7/
@@ -129,10 +159,16 @@
                 📄 2df1f6e65643f6f8ae9c14d3a87980478ea296
             📂 ad/
                 📄 8e92422fefe066cfa8777105304af2adf94d28
+            📂 b0/
+                📄 7d0254cd44f3625e970631c27e440b05bdcb5d
+                📄 a3509be3f006e7b96bceaab9bd98ca91b7b25e
             📂 b2/
+                📄 259e5d54488208f00f514aec8329184535bd4b
                 📄 9e339b0b60cf70dd7163098f447049f4ec9f59
             📂 bf/
                 📄 8b3334cc16cc54a3ae5f6cc1aea732bd139482
+            📂 c5/
+                📄 3225b8239a1b2425e5e996ca32fb978d612306
             📂 c7/
                 📄 159ad4a5c4e571eb75970a17e2bb53a94aa80d
                 📄 2ccf3f8be741a4d8412ea1260be954b8a9f94d
@@ -144,8 +180,13 @@
                 📄 5c1653d372bdc1ce078bb7ac75cc34cb9b4e9f
             📂 d2/
                 📄 a1c7b375d7c7ea7abee475eacd13660dcfc973
+            📂 d9/
+                📄 955b8a7909493eb328c3741aedfc6562d3d922
             📂 db/
                 📄 ffaf738c89560886aaae551e259463a0cd53f6
+                📄 fff6c35387496556422b6bb42eda58d8159134
+            📂 dc/
+                📄 e2c9348cba750718fc555fa23daa5ca96737fe
             📂 df/
                 📄 e0770424b2a19faf507a501ebfc23be8f54e7b
             📂 e4/
@@ -153,40 +194,47 @@
             📂 e6/
                 📄 9de29bb2d1d6434b8b29ae775ad8c2e48c5391
             📂 e7/
+                📄 48d96eb7227a56a68a1be32c844862123311b5
                 📄 70ce191495395b7ffb47939c6d1f0fd1c2435e
             📂 e9/
                 📄 522193d9f796a9748e9ad8c952a5df73c87db9
+            📂 ef/
+                📄 153556ae299e777fe4d5a8499195dce391cb97
             📂 f0/
                 📄 a2483fb9f531f5cdbef870c76c6e0321080046
             📂 f2/
                 📄 ee6a2970a9a4e9746aa53322b4a035b0b2d357
             📂 f4/
                 📄 84dfd1c52a8fe5733470b587374ffa8f651f25
+                📄 c4666b2ade7287f781969d4c64e0480f59f795
             📂 f6/
                 📄 da34fbef1679c29692ec8c4d58847fefeaad01
+            📂 f7/
+                📄 3a57bca719d82ee92f5712f1a4e8d02a0c5778
             📂 f8/
+                📄 55a06394919cbc9a9e310829400fd985736cdb
                 📄 56cca4a6623495f0204b51ccceef4958e99fc1
+                📄 8bcc67650517fa4d4311e3df82eaf81afa67f4
+            📂 f9/
+                📄 44d62d5eb45841f842d41574492f3fd4f66a64
             📂 fa/
                 📄 bc7adf919638c0c7a5b0151021da9a894805fb
+            📂 fb/
+                📄 f37db7a78a5323420f0e3fd779b9d570fa11d3
             📂 heads/
                 📄 main
                 📂 origin/
                     📄 HEAD
                     📄 main
-    📂 __pycache__/
-        📄 database.cpython-311.pyc
-        📄 main.cpython-311.pyc
     📂 backend/
         📄 database.py
         📄 main.py
-        📂 __pycache__/
-            📄 database.cpython-311.pyc
-            📄 main.cpython-311.pyc
     📂 frontend/
         📄 index.html
         📄 vite.config.js
         📂 src/
             📄 App.vue
+            📄 icons.js
             📄 main.js
             📂 assets/
                 📄 main.css
@@ -423,7 +471,7 @@ COMMIT;
 // 🚀 INÍCIO DO ARQUIVO: .git\COMMIT_EDITMSG
 // ==================================================================
 
-aperfeiçoamento css e responsividade
+melhorias no frontend
 
 
 // 🏁 FIM DO ARQUIVO: .git\COMMIT_EDITMSG
@@ -434,7 +482,7 @@ aperfeiçoamento css e responsividade
 // 🚀 INÍCIO DO ARQUIVO: .git\FETCH_HEAD
 // ==================================================================
 
-04a3e54bf68335107a348259e4770142ac1d2536		branch 'main' of https://github.com/Foretsam/vaga_certa
+10b789cea22d2254ed54dd4a6754849a9099f8b0		branch 'main' of https://github.com/Foretsam/vaga_certa
 
 
 // 🏁 FIM DO ARQUIVO: .git\FETCH_HEAD
@@ -1534,6 +1582,8 @@ f0a2483fb9f531f5cdbef870c76c6e0321080046 dbffaf738c89560886aaae551e259463a0cd53f
 dbffaf738c89560886aaae551e259463a0cd53f6 13a1041253d5de22bd3e5a2c97ed72da149509df Lucas Schuab <lucaschuab2015@outlook.com> 1792383870 -0300	commit: inicio da criação das funcionalidades de criação dev
 13a1041253d5de22bd3e5a2c97ed72da149509df 5b440c088acad92aba91032270758b0814456731 Lucas Schuab <lucaschuab2015@outlook.com> 1792422071 -0300	commit: aperfeiçaomento da edição 2d e modularização completa do projeto
 5b440c088acad92aba91032270758b0814456731 04a3e54bf68335107a348259e4770142ac1d2536 Lucas Schuab <lucaschuab2015@outlook.com> 1792460800 -0300	commit: aperfeiçoamento css e responsividade
+04a3e54bf68335107a348259e4770142ac1d2536 f73a57bca719d82ee92f5712f1a4e8d02a0c5778 Lucas Schuab <lucaschuab2015@outlook.com> 1792504087 -0300	commit: remoção do exemplo hardcoded e implementação da conexão com o banco de dados
+f73a57bca719d82ee92f5712f1a4e8d02a0c5778 10b789cea22d2254ed54dd4a6754849a9099f8b0 Lucas Schuab <lucaschuab2015@outlook.com> 1792505903 -0300	commit: melhorias no frontend
 
 
 // 🏁 FIM DO ARQUIVO: .git\logs\HEAD
@@ -1550,6 +1600,8 @@ f0a2483fb9f531f5cdbef870c76c6e0321080046 dbffaf738c89560886aaae551e259463a0cd53f
 dbffaf738c89560886aaae551e259463a0cd53f6 13a1041253d5de22bd3e5a2c97ed72da149509df Lucas Schuab <lucaschuab2015@outlook.com> 1792383870 -0300	commit: inicio da criação das funcionalidades de criação dev
 13a1041253d5de22bd3e5a2c97ed72da149509df 5b440c088acad92aba91032270758b0814456731 Lucas Schuab <lucaschuab2015@outlook.com> 1792422071 -0300	commit: aperfeiçaomento da edição 2d e modularização completa do projeto
 5b440c088acad92aba91032270758b0814456731 04a3e54bf68335107a348259e4770142ac1d2536 Lucas Schuab <lucaschuab2015@outlook.com> 1792460800 -0300	commit: aperfeiçoamento css e responsividade
+04a3e54bf68335107a348259e4770142ac1d2536 f73a57bca719d82ee92f5712f1a4e8d02a0c5778 Lucas Schuab <lucaschuab2015@outlook.com> 1792504087 -0300	commit: remoção do exemplo hardcoded e implementação da conexão com o banco de dados
+f73a57bca719d82ee92f5712f1a4e8d02a0c5778 10b789cea22d2254ed54dd4a6754849a9099f8b0 Lucas Schuab <lucaschuab2015@outlook.com> 1792505903 -0300	commit: melhorias no frontend
 
 
 // 🏁 FIM DO ARQUIVO: .git\logs\refs\heads\main
@@ -1568,6 +1620,9 @@ dbffaf738c89560886aaae551e259463a0cd53f6 dbffaf738c89560886aaae551e259463a0cd53f
 5b440c088acad92aba91032270758b0814456731 5b440c088acad92aba91032270758b0814456731 Lucas Oliveira Schuab <lucas@LAPTOP-SKE6HI0S.(none)> 1792422076 -0300	remote set-head
 5b440c088acad92aba91032270758b0814456731 5b440c088acad92aba91032270758b0814456731 Lucas Oliveira Schuab <lucas@LAPTOP-SKE6HI0S.(none)> 1792460796 -0300	remote set-head
 04a3e54bf68335107a348259e4770142ac1d2536 04a3e54bf68335107a348259e4770142ac1d2536 Lucas Oliveira Schuab <lucas@LAPTOP-SKE6HI0S.(none)> 1792460805 -0300	remote set-head
+04a3e54bf68335107a348259e4770142ac1d2536 04a3e54bf68335107a348259e4770142ac1d2536 Lucas Oliveira Schuab <lucas@LAPTOP-SKE6HI0S.(none)> 1792504061 -0300	remote set-head
+f73a57bca719d82ee92f5712f1a4e8d02a0c5778 f73a57bca719d82ee92f5712f1a4e8d02a0c5778 Lucas Oliveira Schuab <lucas@LAPTOP-SKE6HI0S.(none)> 1792504092 -0300	remote set-head
+10b789cea22d2254ed54dd4a6754849a9099f8b0 10b789cea22d2254ed54dd4a6754849a9099f8b0 Lucas Oliveira Schuab <lucas@LAPTOP-SKE6HI0S.(none)> 1792505907 -0300	remote set-head
 
 
 // 🏁 FIM DO ARQUIVO: .git\logs\refs\remotes\origin\HEAD
@@ -1584,6 +1639,8 @@ f0a2483fb9f531f5cdbef870c76c6e0321080046 dbffaf738c89560886aaae551e259463a0cd53f
 dbffaf738c89560886aaae551e259463a0cd53f6 13a1041253d5de22bd3e5a2c97ed72da149509df Lucas Schuab <lucaschuab2015@outlook.com> 1792383873 -0300	update by push
 13a1041253d5de22bd3e5a2c97ed72da149509df 5b440c088acad92aba91032270758b0814456731 Lucas Schuab <lucaschuab2015@outlook.com> 1792422075 -0300	update by push
 5b440c088acad92aba91032270758b0814456731 04a3e54bf68335107a348259e4770142ac1d2536 Lucas Schuab <lucaschuab2015@outlook.com> 1792460804 -0300	update by push
+04a3e54bf68335107a348259e4770142ac1d2536 f73a57bca719d82ee92f5712f1a4e8d02a0c5778 Lucas Schuab <lucaschuab2015@outlook.com> 1792504090 -0300	update by push
+f73a57bca719d82ee92f5712f1a4e8d02a0c5778 10b789cea22d2254ed54dd4a6754849a9099f8b0 Lucas Schuab <lucaschuab2015@outlook.com> 1792505906 -0300	update by push
 
 
 // 🏁 FIM DO ARQUIVO: .git\logs\refs\remotes\origin\main
@@ -1667,6 +1724,16 @@ x+)JMU01f040031QH�(I�+���+��*��cX~n���F��['\��
 
 
 // ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: .git\objects\0e\643ce9b8a54f0ed9f2f6d02c27e60bd4b65f4e
+// ==================================================================
+
+x+)JMU05`040031QH-.IL���K�M�+�.�/J��*f8j��Cy����ӗ�N��ޛ�� ;�u
+
+// 🏁 FIM DO ARQUIVO: .git\objects\0e\643ce9b8a54f0ed9f2f6d02c27e60bd4b65f4e
+// ------------------------------------------------------------------
+
+
+// ==================================================================
 // 🚀 INÍCIO DO ARQUIVO: .git\objects\0f\31f13bb51a13228a9ed32a6d5279c6b2829e0f
 // ==================================================================
 
@@ -1685,6 +1752,17 @@ x+)JMU01f040031QH�(I�+���+��*��cX~n���F��['\��
 
 
 // 🏁 FIM DO ARQUIVO: .git\objects\0f\60ab414f2d1566bbaf1e8aaa3f678e08516ba5
+// ------------------------------------------------------------------
+
+
+// ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: .git\objects\10\b789cea22d2254ed54dd4a6754849a9099f8b0
+// ==================================================================
+
+// [Arquivo binário ignorado pelo leitor de segurança]
+
+
+// 🏁 FIM DO ARQUIVO: .git\objects\10\b789cea22d2254ed54dd4a6754849a9099f8b0
 // ------------------------------------------------------------------
 
 
@@ -1718,6 +1796,28 @@ x+)JMU01f040031QH�(I�+���+��*��cX~n���F��['\��
 
 
 // 🏁 FIM DO ARQUIVO: .git\objects\15\11959c22b74118c06679739cf9abe2ceeea48c
+// ------------------------------------------------------------------
+
+
+// ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: .git\objects\1b\7916a3174de590007a7dd21916cb7fae95fb85
+// ==================================================================
+
+// [Arquivo binário ignorado pelo leitor de segurança]
+
+
+// 🏁 FIM DO ARQUIVO: .git\objects\1b\7916a3174de590007a7dd21916cb7fae95fb85
+// ------------------------------------------------------------------
+
+
+// ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: .git\objects\1b\b1ed6fe01ee58f98b2d9260cb2ad6e6b2df857
+// ==================================================================
+
+// [Arquivo binário ignorado pelo leitor de segurança]
+
+
+// 🏁 FIM DO ARQUIVO: .git\objects\1b\b1ed6fe01ee58f98b2d9260cb2ad6e6b2df857
 // ------------------------------------------------------------------
 
 
@@ -1766,6 +1866,17 @@ x+)JMU01f040031QH�(I�+���+��*��cX~n���F��['\��
 
 
 // ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: .git\objects\24\640ec99045a9a5b700312ab45f1b5e2d807a98
+// ==================================================================
+
+// [Arquivo binário ignorado pelo leitor de segurança]
+
+
+// 🏁 FIM DO ARQUIVO: .git\objects\24\640ec99045a9a5b700312ab45f1b5e2d807a98
+// ------------------------------------------------------------------
+
+
+// ==================================================================
 // 🚀 INÍCIO DO ARQUIVO: .git\objects\31\d938528fbbe876e356e5b1cd20b76539e58845
 // ==================================================================
 
@@ -1784,6 +1895,17 @@ x+)JMU01f040031QH�(I�+���+��*��cX~n���F��['\��
 
 
 // 🏁 FIM DO ARQUIVO: .git\objects\33\ff4fa50e6727ab2280e3ae5f1cad4348157958
+// ------------------------------------------------------------------
+
+
+// ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: .git\objects\3b\86e677af9e2f191f4eac80ac4a2a676e90f6c9
+// ==================================================================
+
+// [Arquivo binário ignorado pelo leitor de segurança]
+
+
+// 🏁 FIM DO ARQUIVO: .git\objects\3b\86e677af9e2f191f4eac80ac4a2a676e90f6c9
 // ------------------------------------------------------------------
 
 
@@ -1850,6 +1972,17 @@ x+)JMU01f040031QH�(I�+���+��*��cX~n���F��['\��
 
 
 // 🏁 FIM DO ARQUIVO: .git\objects\49\5d8b7070ffbd8693ebba820a12535b06494bff
+// ------------------------------------------------------------------
+
+
+// ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: .git\objects\4a\1aea1ad35b0b9eadecd0d92ce991948bc5bd63
+// ==================================================================
+
+// [Arquivo binário ignorado pelo leitor de segurança]
+
+
+// 🏁 FIM DO ARQUIVO: .git\objects\4a\1aea1ad35b0b9eadecd0d92ce991948bc5bd63
 // ------------------------------------------------------------------
 
 
@@ -1942,6 +2075,28 @@ x+)JMU01f040031QH�(I�+���+��*��cX~n���F��['\��
 
 
 // ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: .git\objects\5c\eb06667da36f8ae69cfe43a97527953acf9a4f
+// ==================================================================
+
+// [Arquivo binário ignorado pelo leitor de segurança]
+
+
+// 🏁 FIM DO ARQUIVO: .git\objects\5c\eb06667da36f8ae69cfe43a97527953acf9a4f
+// ------------------------------------------------------------------
+
+
+// ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: .git\objects\5d\da71f1e9803069344a88f9cf8fea367a278ae1
+// ==================================================================
+
+// [Arquivo binário ignorado pelo leitor de segurança]
+
+
+// 🏁 FIM DO ARQUIVO: .git\objects\5d\da71f1e9803069344a88f9cf8fea367a278ae1
+// ------------------------------------------------------------------
+
+
+// ==================================================================
 // 🚀 INÍCIO DO ARQUIVO: .git\objects\5e\83bcbf57907010602a73f562ba52c711a83e40
 // ==================================================================
 
@@ -1964,6 +2119,17 @@ x+)JMU01f040031QH�(I�+���+��*��cX~n���F��['\��
 
 
 // ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: .git\objects\67\d6ab8beadb3976786a9d56c873727941352583
+// ==================================================================
+
+// [Arquivo binário ignorado pelo leitor de segurança]
+
+
+// 🏁 FIM DO ARQUIVO: .git\objects\67\d6ab8beadb3976786a9d56c873727941352583
+// ------------------------------------------------------------------
+
+
+// ==================================================================
 // 🚀 INÍCIO DO ARQUIVO: .git\objects\68\93eb13237060adc0c968a690149a49faa2d7d3
 // ==================================================================
 
@@ -1981,6 +2147,17 @@ x+)JMU01f040031QH�(I�+���+��*��cX~n���F��['\��
 x+)JMU01b040031Q�K�,I,))�L*-I-f����Ee��������~�կ ��
 
 // 🏁 FIM DO ARQUIVO: .git\objects\6f\9509c88bed7080d496fc5e1d87a9315e30549d
+// ------------------------------------------------------------------
+
+
+// ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: .git\objects\76\4129682cad74137e25bb36abd2a3472d937a9a
+// ==================================================================
+
+// [Arquivo binário ignorado pelo leitor de segurança]
+
+
+// 🏁 FIM DO ARQUIVO: .git\objects\76\4129682cad74137e25bb36abd2a3472d937a9a
 // ------------------------------------------------------------------
 
 
@@ -2039,6 +2216,17 @@ xK��OR045e��-�/*Q(+MUH+��UPw(�,I�*�/�)M���J�sAU
 
 
 // ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: .git\objects\88\415edcba9ac9f24b4b6017425c5f679d12ee6e
+// ==================================================================
+
+// [Arquivo binário ignorado pelo leitor de segurança]
+
+
+// 🏁 FIM DO ARQUIVO: .git\objects\88\415edcba9ac9f24b4b6017425c5f679d12ee6e
+// ------------------------------------------------------------------
+
+
+// ==================================================================
 // 🚀 INÍCIO DO ARQUIVO: .git\objects\89\c32490f1dc26802d9fdd47da61545b918e5532
 // ==================================================================
 
@@ -2057,6 +2245,39 @@ xK��OR045e��-�/*Q(+MUH+��UPw(�,I�*�/�)M���J�sAU
 
 
 // 🏁 FIM DO ARQUIVO: .git\objects\8b\bb5ee6c07004e372ddd3fd49ee75964c2c9e75
+// ------------------------------------------------------------------
+
+
+// ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: .git\objects\95\511b63968465a1985a4a1d0e760e91f48cd1b1
+// ==================================================================
+
+// [Arquivo binário ignorado pelo leitor de segurança]
+
+
+// 🏁 FIM DO ARQUIVO: .git\objects\95\511b63968465a1985a4a1d0e760e91f48cd1b1
+// ------------------------------------------------------------------
+
+
+// ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: .git\objects\9c\342b0da2115997d027cdc9a85d2b13c7578845
+// ==================================================================
+
+// [Arquivo binário ignorado pelo leitor de segurança]
+
+
+// 🏁 FIM DO ARQUIVO: .git\objects\9c\342b0da2115997d027cdc9a85d2b13c7578845
+// ------------------------------------------------------------------
+
+
+// ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: .git\objects\a0\5046d03264ddef72f19a9e8ff20a4dc974a321
+// ==================================================================
+
+// [Arquivo binário ignorado pelo leitor de segurança]
+
+
+// 🏁 FIM DO ARQUIVO: .git\objects\a0\5046d03264ddef72f19a9e8ff20a4dc974a321
 // ------------------------------------------------------------------
 
 
@@ -2082,6 +2303,17 @@ x+)JMU05`040031QH-.IL���K�M�+�.�/J��*f���.(���m�
 
 
 // ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: .git\objects\a5\26e2aca3e1c93d2654ce534924529b6cbd09a3
+// ==================================================================
+
+// [Arquivo binário ignorado pelo leitor de segurança]
+
+
+// 🏁 FIM DO ARQUIVO: .git\objects\a5\26e2aca3e1c93d2654ce534924529b6cbd09a3
+// ------------------------------------------------------------------
+
+
+// ==================================================================
 // 🚀 INÍCIO DO ARQUIVO: .git\objects\a5\47bf36d8d11a4f89c59c144f24795749086dd1
 // ==================================================================
 
@@ -2089,6 +2321,17 @@ x+)JMU05`040031QH-.IL���K�M�+�.�/J��*f���.(���m�
 
 
 // 🏁 FIM DO ARQUIVO: .git\objects\a5\47bf36d8d11a4f89c59c144f24795749086dd1
+// ------------------------------------------------------------------
+
+
+// ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: .git\objects\a5\49c60477bd094db72173686dac78231592b881
+// ==================================================================
+
+// [Arquivo binário ignorado pelo leitor de segurança]
+
+
+// 🏁 FIM DO ARQUIVO: .git\objects\a5\49c60477bd094db72173686dac78231592b881
 // ------------------------------------------------------------------
 
 
@@ -2137,6 +2380,39 @@ xK��OR0�d��RPP*JM���M�KI,���+V�R�V
 
 
 // ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: .git\objects\b0\7d0254cd44f3625e970631c27e440b05bdcb5d
+// ==================================================================
+
+// [Arquivo binário ignorado pelo leitor de segurança]
+
+
+// 🏁 FIM DO ARQUIVO: .git\objects\b0\7d0254cd44f3625e970631c27e440b05bdcb5d
+// ------------------------------------------------------------------
+
+
+// ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: .git\objects\b0\a3509be3f006e7b96bceaab9bd98ca91b7b25e
+// ==================================================================
+
+// [Arquivo binário ignorado pelo leitor de segurança]
+
+
+// 🏁 FIM DO ARQUIVO: .git\objects\b0\a3509be3f006e7b96bceaab9bd98ca91b7b25e
+// ------------------------------------------------------------------
+
+
+// ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: .git\objects\b2\259e5d54488208f00f514aec8329184535bd4b
+// ==================================================================
+
+// [Arquivo binário ignorado pelo leitor de segurança]
+
+
+// 🏁 FIM DO ARQUIVO: .git\objects\b2\259e5d54488208f00f514aec8329184535bd4b
+// ------------------------------------------------------------------
+
+
+// ==================================================================
 // 🚀 INÍCIO DO ARQUIVO: .git\objects\b2\9e339b0b60cf70dd7163098f447049f4ec9f59
 // ==================================================================
 
@@ -2155,6 +2431,17 @@ xK��OR0�d��RPP*JM���M�KI,���+V�R�V
 
 
 // 🏁 FIM DO ARQUIVO: .git\objects\bf\8b3334cc16cc54a3ae5f6cc1aea732bd139482
+// ------------------------------------------------------------------
+
+
+// ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: .git\objects\c5\3225b8239a1b2425e5e996ca32fb978d612306
+// ==================================================================
+
+// [Arquivo binário ignorado pelo leitor de segurança]
+
+
+// 🏁 FIM DO ARQUIVO: .git\objects\c5\3225b8239a1b2425e5e996ca32fb978d612306
 // ------------------------------------------------------------------
 
 
@@ -2225,6 +2512,17 @@ xK��OR0�d��RPP*JM���M�KI,���+V�R�V
 
 
 // ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: .git\objects\d9\955b8a7909493eb328c3741aedfc6562d3d922
+// ==================================================================
+
+// [Arquivo binário ignorado pelo leitor de segurança]
+
+
+// 🏁 FIM DO ARQUIVO: .git\objects\d9\955b8a7909493eb328c3741aedfc6562d3d922
+// ------------------------------------------------------------------
+
+
+// ==================================================================
 // 🚀 INÍCIO DO ARQUIVO: .git\objects\db\ffaf738c89560886aaae551e259463a0cd53f6
 // ==================================================================
 
@@ -2232,6 +2530,28 @@ xK��OR0�d��RPP*JM���M�KI,���+V�R�V
 
 
 // 🏁 FIM DO ARQUIVO: .git\objects\db\ffaf738c89560886aaae551e259463a0cd53f6
+// ------------------------------------------------------------------
+
+
+// ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: .git\objects\db\fff6c35387496556422b6bb42eda58d8159134
+// ==================================================================
+
+// [Arquivo binário ignorado pelo leitor de segurança]
+
+
+// 🏁 FIM DO ARQUIVO: .git\objects\db\fff6c35387496556422b6bb42eda58d8159134
+// ------------------------------------------------------------------
+
+
+// ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: .git\objects\dc\e2c9348cba750718fc555fa23daa5ca96737fe
+// ==================================================================
+
+// [Arquivo binário ignorado pelo leitor de segurança]
+
+
+// 🏁 FIM DO ARQUIVO: .git\objects\dc\e2c9348cba750718fc555fa23daa5ca96737fe
 // ------------------------------------------------------------------
 
 
@@ -2267,6 +2587,17 @@ xK��OR0`  	��
 
 
 // ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: .git\objects\e7\48d96eb7227a56a68a1be32c844862123311b5
+// ==================================================================
+
+// [Arquivo binário ignorado pelo leitor de segurança]
+
+
+// 🏁 FIM DO ARQUIVO: .git\objects\e7\48d96eb7227a56a68a1be32c844862123311b5
+// ------------------------------------------------------------------
+
+
+// ==================================================================
 // 🚀 INÍCIO DO ARQUIVO: .git\objects\e7\70ce191495395b7ffb47939c6d1f0fd1c2435e
 // ==================================================================
 
@@ -2285,6 +2616,17 @@ xK��OR0`  	��
 
 
 // 🏁 FIM DO ARQUIVO: .git\objects\e9\522193d9f796a9748e9ad8c952a5df73c87db9
+// ------------------------------------------------------------------
+
+
+// ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: .git\objects\ef\153556ae299e777fe4d5a8499195dce391cb97
+// ==================================================================
+
+// [Arquivo binário ignorado pelo leitor de segurança]
+
+
+// 🏁 FIM DO ARQUIVO: .git\objects\ef\153556ae299e777fe4d5a8499195dce391cb97
 // ------------------------------------------------------------------
 
 
@@ -2322,6 +2664,17 @@ xK��OR0`  	��
 
 
 // ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: .git\objects\f4\c4666b2ade7287f781969d4c64e0480f59f795
+// ==================================================================
+
+// [Arquivo binário ignorado pelo leitor de segurança]
+
+
+// 🏁 FIM DO ARQUIVO: .git\objects\f4\c4666b2ade7287f781969d4c64e0480f59f795
+// ------------------------------------------------------------------
+
+
+// ==================================================================
 // 🚀 INÍCIO DO ARQUIVO: .git\objects\f6\da34fbef1679c29692ec8c4d58847fefeaad01
 // ==================================================================
 
@@ -2329,6 +2682,28 @@ xK��OR0`  	��
 
 
 // 🏁 FIM DO ARQUIVO: .git\objects\f6\da34fbef1679c29692ec8c4d58847fefeaad01
+// ------------------------------------------------------------------
+
+
+// ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: .git\objects\f7\3a57bca719d82ee92f5712f1a4e8d02a0c5778
+// ==================================================================
+
+// [Arquivo binário ignorado pelo leitor de segurança]
+
+
+// 🏁 FIM DO ARQUIVO: .git\objects\f7\3a57bca719d82ee92f5712f1a4e8d02a0c5778
+// ------------------------------------------------------------------
+
+
+// ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: .git\objects\f8\55a06394919cbc9a9e310829400fd985736cdb
+// ==================================================================
+
+// [Arquivo binário ignorado pelo leitor de segurança]
+
+
+// 🏁 FIM DO ARQUIVO: .git\objects\f8\55a06394919cbc9a9e310829400fd985736cdb
 // ------------------------------------------------------------------
 
 
@@ -2344,6 +2719,28 @@ xK��OR0`  	��
 
 
 // ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: .git\objects\f8\8bcc67650517fa4d4311e3df82eaf81afa67f4
+// ==================================================================
+
+// [Arquivo binário ignorado pelo leitor de segurança]
+
+
+// 🏁 FIM DO ARQUIVO: .git\objects\f8\8bcc67650517fa4d4311e3df82eaf81afa67f4
+// ------------------------------------------------------------------
+
+
+// ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: .git\objects\f9\44d62d5eb45841f842d41574492f3fd4f66a64
+// ==================================================================
+
+// [Arquivo binário ignorado pelo leitor de segurança]
+
+
+// 🏁 FIM DO ARQUIVO: .git\objects\f9\44d62d5eb45841f842d41574492f3fd4f66a64
+// ------------------------------------------------------------------
+
+
+// ==================================================================
 // 🚀 INÍCIO DO ARQUIVO: .git\objects\fa\bc7adf919638c0c7a5b0151021da9a894805fb
 // ==================================================================
 
@@ -2355,10 +2752,21 @@ xK��OR0`  	��
 
 
 // ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: .git\objects\fb\f37db7a78a5323420f0e3fd779b9d570fa11d3
+// ==================================================================
+
+// [Arquivo binário ignorado pelo leitor de segurança]
+
+
+// 🏁 FIM DO ARQUIVO: .git\objects\fb\f37db7a78a5323420f0e3fd779b9d570fa11d3
+// ------------------------------------------------------------------
+
+
+// ==================================================================
 // 🚀 INÍCIO DO ARQUIVO: .git\refs\heads\main
 // ==================================================================
 
-04a3e54bf68335107a348259e4770142ac1d2536
+10b789cea22d2254ed54dd4a6754849a9099f8b0
 
 
 // 🏁 FIM DO ARQUIVO: .git\refs\heads\main
@@ -2380,32 +2788,10 @@ ref: refs/remotes/origin/main
 // 🚀 INÍCIO DO ARQUIVO: .git\refs\remotes\origin\main
 // ==================================================================
 
-04a3e54bf68335107a348259e4770142ac1d2536
+10b789cea22d2254ed54dd4a6754849a9099f8b0
 
 
 // 🏁 FIM DO ARQUIVO: .git\refs\remotes\origin\main
-// ------------------------------------------------------------------
-
-
-// ==================================================================
-// 🚀 INÍCIO DO ARQUIVO: __pycache__\database.cpython-311.pyc
-// ==================================================================
-
-// [Arquivo binário ignorado pelo leitor de segurança]
-
-
-// 🏁 FIM DO ARQUIVO: __pycache__\database.cpython-311.pyc
-// ------------------------------------------------------------------
-
-
-// ==================================================================
-// 🚀 INÍCIO DO ARQUIVO: __pycache__\main.cpython-311.pyc
-// ==================================================================
-
-// [Arquivo binário ignorado pelo leitor de segurança]
-
-
-// 🏁 FIM DO ARQUIVO: __pycache__\main.cpython-311.pyc
 // ------------------------------------------------------------------
 
 
@@ -2851,28 +3237,6 @@ async def deletar_estabelecimento(id_estabelecimento: int):
 
 
 // ==================================================================
-// 🚀 INÍCIO DO ARQUIVO: backend\__pycache__\database.cpython-311.pyc
-// ==================================================================
-
-// [Arquivo binário ignorado pelo leitor de segurança]
-
-
-// 🏁 FIM DO ARQUIVO: backend\__pycache__\database.cpython-311.pyc
-// ------------------------------------------------------------------
-
-
-// ==================================================================
-// 🚀 INÍCIO DO ARQUIVO: backend\__pycache__\main.cpython-311.pyc
-// ==================================================================
-
-// [Arquivo binário ignorado pelo leitor de segurança]
-
-
-// 🏁 FIM DO ARQUIVO: backend\__pycache__\main.cpython-311.pyc
-// ------------------------------------------------------------------
-
-
-// ==================================================================
 // 🚀 INÍCIO DO ARQUIVO: frontend\index.html
 // ==================================================================
 
@@ -2920,6 +3284,47 @@ export default defineConfig({
 
 
 // 🏁 FIM DO ARQUIVO: frontend\src\App.vue
+// ------------------------------------------------------------------
+
+
+// ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: frontend\src\icons.js
+// ==================================================================
+
+export {
+  IconSquareRoundedPlus,
+  IconSquareRoundedMinus,
+  IconPencil,
+  IconBan,
+  IconTrash,
+  IconSquareRoundedChevronLeft,
+  IconSquareRoundedChevronRight,
+  IconSquareRoundedArrowLeft,
+  IconSquareRoundedArrowRight,
+  IconPin,
+  IconDeviceFloppy,
+  IconAlertSquareRounded,
+  IconArrowBackUp,
+  IconArrowForwardUp,
+  IconLayoutGrid,
+  IconSquareRoundedCheck,
+  IconSquareRoundedX,
+  IconStack2,
+  IconDoorEnter,
+  IconDoorExit,
+  IconArrowBarRight,
+  IconCpu,
+  IconLayoutBoard,
+  IconEraser,
+  IconMenu2,
+  IconSearch,
+  IconSettings,
+  IconRoad,
+  IconParking,
+  IconSquareRoundedChevronDown
+} from '@tabler/icons-vue'
+
+// 🏁 FIM DO ARQUIVO: frontend\src\icons.js
 // ------------------------------------------------------------------
 
 
@@ -3035,6 +3440,32 @@ import {
   formEstabelecimento,
   salvarEstacionamentoNoBanco
 } from '../store/estacionamentoStore'
+import {
+  IconSquareRoundedPlus,
+  IconSquareRoundedMinus,
+  IconTrash,
+  IconSquareRoundedArrowLeft,
+  IconPin,
+  IconDeviceFloppy,
+  IconAlertSquareRounded,
+  IconArrowBackUp,
+  IconArrowForwardUp,
+  IconLayoutGrid,
+  IconSquareRoundedCheck,
+  IconSquareRoundedX,
+  IconStack2,
+  IconDoorEnter,
+  IconDoorExit,
+  IconArrowBarRight,
+  IconCpu,
+  IconLayoutBoard,
+  IconEraser,
+  IconSearch,
+  IconSettings,
+  IconRoad,
+  IconParking,
+  IconSquareRoundedChevronDown
+} from '../icons'
 
 const router = useRouter()
 
@@ -3050,6 +3481,7 @@ const menuTopoMobileAberto = ref(false)
 const menuAdicionarMobileAberto = ref(false)
 const mostrarPainelAvisos = ref(false)
 const salvandoNoBanco = ref(false)
+const modalSucessoSalvarAberto = ref(false)
 
 function alternarMenuEngrenagem() {
   menuTopoMobileAberto.value = !menuTopoMobileAberto.value
@@ -3296,7 +3728,7 @@ const listaAvisosValidacao = computed(() => {
 const podeSalvarEstacionamento = computed(() => listaAvisosValidacao.value.length === 0)
 
 // =========================================================
-// HOVER DO SETOR E SELEÇÃO POR RATO (DESKTOP)
+// HUD INFERIOR DE HOVER PARA QUALQUER QUADRADO DO GRID
 // =========================================================
 const hoverCoord = ref(null)
 
@@ -3307,29 +3739,43 @@ function contarVagasDoSetorNoAndar(setorId) {
   ).length
 }
 
-const infoSetorHover = computed(() => {
+const infoCelulaHover = computed(() => {
   if (!hoverCoord.value || !andarEditorAtual.value?.celulas) return null
-  const celula = andarEditorAtual.value.celulas[`${hoverCoord.value.x},${hoverCoord.value.y}`]
-  if (!celula || !celula.setorId) return null
+  const c = andarEditorAtual.value.celulas[`${hoverCoord.value.x},${hoverCoord.value.y}`]
+  if (!c) return null
+
+  const coordTexto = `(${c.x}, ${c.y})`
+
+  let tipoTexto = ''
+  if (c.tipo === 'VAZIO') {
+    tipoTexto = 'vazio'
+  } else if (c.tipo === 'ESTRADA') {
+    tipoTexto = 'estrada'
+  } else if (c.tipo === 'ENTRADA') {
+    tipoTexto = 'entrada'
+  } else if (c.tipo === 'SAIDA') {
+    tipoTexto = 'saída'
+  } else if (c.tipo === 'ACESSO') {
+    tipoTexto = 'acesso'
+  } else if (c.tipo === 'VAGA') {
+    const espInfo = c.macEsp ? c.macEsp : 'não vinculado'
+    const idVaga = c.identificador ? ` ${c.identificador}` : ''
+    tipoTexto = `vaga${idVaga} (${espInfo})`
+  }
+
+  let setorTexto = '[setor não vinculado]'
+  if (c.setorId) {
+    const qtdVagas = contarVagasDoSetorNoAndar(c.setorId)
+    setorTexto = `[${c.nomeSetor} - ${qtdVagas} vaga(s)]`
+  }
 
   return {
-    nome: celula.nomeSetor,
-    prefixo: celula.prefixoSetor,
-    cor: celula.corSetor,
-    qtdVagas: contarVagasDoSetorNoAndar(celula.setorId)
+    cor: c.corSetor || '#64748b',
+    temSetor: Boolean(c.setorId),
+    textoQuadrado: `${coordTexto} - ${tipoTexto}`,
+    textoSetor: setorTexto
   }
 })
-
-function obterTituloCelula(x, y) {
-  const c = andarEditorAtual.value?.celulas[`${x},${y}`]
-  if (!c) return `(${x}, ${y})`
-  let base = `(${x}, ${y}) ${c.identificador || c.tipo}`
-  if (c.setorId) {
-    const totalVagasSetor = contarVagasDoSetorNoAndar(c.setorId)
-    base += ` | Setor: ${c.nomeSetor} (${totalVagasSetor} vaga${totalVagasSetor === 1 ? '' : 's'})`
-  }
-  return base
-}
 
 const selecionados = ref(new Set())
 const arrastando = ref(false)
@@ -3390,7 +3836,7 @@ function finalizarSelecaoMouse() {
 }
 
 // =========================================================
-// AÇÕES DE SETOR, ESTRADAS, VAGAS E LIXEIRA 🗑️
+// AÇÕES DE SETOR, ESTRADAS, VAGAS E BORRACHA
 // =========================================================
 function obterProximoNumeroSetor(celulas, setorId, prefixo) {
   let maior = 0
@@ -3515,7 +3961,7 @@ function limparTudoNaSelecao() {
 }
 
 // =========================================================
-// MODAIS COMPACTOS (SETOR, TAMANHO DO GRID, ACESSOS E MAC)
+// MODAL DE CRIAR SETOR (NA SELEÇÃO)
 // =========================================================
 const modalSetorAberto = ref(false)
 const novoSetorNome = ref('')
@@ -3589,6 +4035,150 @@ function confirmarSetorSelecao() {
   selecionados.value.clear()
 }
 
+// =========================================================
+// MODAL: ALTERAR SETORES (COM BUSCA/FILTRO E EXCLUSÃO)
+// =========================================================
+const modalAlterarSetoresAberto = ref(false)
+const filtroBuscaSetor = ref('')
+const dropdownSetoresAberto = ref(false)
+const setorSelecionadoParaEditar = ref(null)
+
+const editSetorNome = ref('')
+const editSetorPrefixo = ref('')
+const editSetorCor = ref(paletaSetores[0].hex)
+
+const setoresFiltradosParaEdicao = computed(() => {
+  const lista = andarEditorAtual.value?.setores || []
+  const termo = filtroBuscaSetor.value.trim().toLowerCase()
+  if (!termo) return lista
+  return lista.filter(
+    s =>
+      s.nome_setor.toLowerCase().includes(termo) ||
+      (s.prefixo || '').toLowerCase().includes(termo)
+  )
+})
+
+const dadosEdicaoSetorPreenchidos = computed(() => {
+  if (!setorSelecionadoParaEditar.value) return false
+  return Boolean(
+    editSetorNome.value.trim() &&
+    editSetorPrefixo.value.trim() &&
+    editSetorCor.value
+  )
+})
+
+function abrirModalAlterarSetores() {
+  limparSetoresOrfaosNoAndar(andarEditorAtual.value)
+  filtroBuscaSetor.value = ''
+  dropdownSetoresAberto.value = false
+  setorSelecionadoParaEditar.value = null
+  editSetorNome.value = ''
+  editSetorPrefixo.value = ''
+  editSetorCor.value = paletaSetores[0].hex
+  menuAdicionarMobileAberto.value = false
+  modalAlterarSetoresAberto.value = true
+}
+
+function escolherSetorParaEditar(setor) {
+  setorSelecionadoParaEditar.value = setor
+  filtroBuscaSetor.value = `${setor.nome_setor} (${setor.prefixo})`
+  dropdownSetoresAberto.value = false
+  editSetorNome.value = setor.nome_setor
+  editSetorPrefixo.value = setor.prefixo
+  editSetorCor.value = setor.cor_hex
+}
+
+function aoDigitarFiltroSetor() {
+  dropdownSetoresAberto.value = true
+  if (
+    setorSelecionadoParaEditar.value &&
+    filtroBuscaSetor.value !== `${setorSelecionadoParaEditar.value.nome_setor} (${setorSelecionadoParaEditar.value.prefixo})`
+  ) {
+    setorSelecionadoParaEditar.value = null
+    editSetorNome.value = ''
+    editSetorPrefixo.value = ''
+  }
+}
+
+function sanitizarEditPrefixoSetor() {
+  editSetorPrefixo.value = editSetorPrefixo.value.replace(/[^a-zA-Z]/g, '').slice(0, 3).toUpperCase()
+}
+
+function excluirSetorSelecionado() {
+  if (!setorSelecionadoParaEditar.value) return
+  const idAlvo = setorSelecionadoParaEditar.value.id_setor
+
+  salvarSnapshot()
+  const celulas = andarEditorAtual.value.celulas
+  Object.values(celulas).forEach((c) => {
+    if (c.setorId === idAlvo) {
+      c.setorId = null
+      c.corSetor = null
+      c.nomeSetor = null
+      c.prefixoSetor = null
+      if (c.tipo === 'VAGA') {
+        c.identificador = ''
+      }
+    }
+  })
+
+  andarEditorAtual.value.setores = andarEditorAtual.value.setores.filter(
+    s => s.id_setor !== idAlvo
+  )
+
+  setorSelecionadoParaEditar.value = null
+  filtroBuscaSetor.value = ''
+  editSetorNome.value = ''
+  editSetorPrefixo.value = ''
+}
+
+function confirmarAlteracaoSetor() {
+  if (!setorSelecionadoParaEditar.value || !dadosEdicaoSetorPreenchidos.value) return
+
+  const idAlvo = setorSelecionadoParaEditar.value.id_setor
+  const novoNome = editSetorNome.value.trim()
+  const novoPref = editSetorPrefixo.value.trim().slice(0, 3).toUpperCase()
+  const novaCor = editSetorCor.value
+
+  for (const andar of formEstabelecimento.value.andares) {
+    for (const s of andar.setores || []) {
+      if (s.id_setor === idAlvo) continue
+      if (s.nome_setor.toLowerCase() === novoNome.toLowerCase()) {
+        alert(`O nome de setor "${novoNome}" já está em uso no andar "${andar.nome_andar}".`)
+        return
+      }
+      if ((s.prefixo || '').toUpperCase() === novoPref) {
+        alert(`O prefixo "${novoPref}" já está em uso pelo setor "${s.nome_setor}".`)
+        return
+      }
+    }
+  }
+
+  salvarSnapshot()
+
+  const setorObj = andarEditorAtual.value.setores.find(s => s.id_setor === idAlvo)
+  if (setorObj) {
+    setorObj.nome_setor = novoNome
+    setorObj.prefixo = novoPref
+    setorObj.cor_hex = novaCor
+  }
+
+  const celulas = andarEditorAtual.value.celulas
+  Object.values(celulas).forEach((c) => {
+    if (c.setorId === idAlvo) {
+      c.nomeSetor = novoNome
+      c.prefixoSetor = novoPref
+      c.corSetor = novaCor
+    }
+  })
+
+  numerarVagasDoSetor(celulas, idAlvo, novoPref)
+  modalAlterarSetoresAberto.value = false
+}
+
+// =========================================================
+// TAMANHO DO GRID, ACESSOS E EQUIPAMENTOS
+// =========================================================
 const modalGridAberto = ref(false)
 const inputGridX = ref(30)
 const inputGridY = ref(20)
@@ -3767,7 +4357,7 @@ function confirmarVinculoEquipamento() {
 }
 
 // =========================================================
-// SALVAR ESTACIONAMENTO NO MYSQL VIA FASTAPI
+// SALVAR ESTACIONAMENTO NO MYSQL (COM MODAL DE SUCESSO ANIMADO)
 // =========================================================
 async function finalizarSalvarEstacionamento() {
   if (!podeSalvarEstacionamento.value) {
@@ -3779,13 +4369,17 @@ async function finalizarSalvarEstacionamento() {
   salvandoNoBanco.value = true
   try {
     await salvarEstacionamentoNoBanco()
-    alert('✅ Planta 2d Salva com Sucesso!')
-    router.push({ name: 'admin-lista' })
+    modalSucessoSalvarAberto.value = true
   } catch (err) {
-    alert(`❌ Erro ao salvar: ${err.message}`)
+    alert(`Erro ao salvar: ${err.message}`)
   } finally {
     salvandoNoBanco.value = false
   }
+}
+
+function confirmarModalSucessoSalvar() {
+  modalSucessoSalvarAberto.value = false
+  router.push({ name: 'admin-lista' })
 }
 
 function tratarTeclaGlobal(event) {
@@ -3798,6 +4392,7 @@ function tratarTeclaGlobal(event) {
     mostrarPainelAvisos.value = false
     menuTopoMobileAberto.value = false
     menuAdicionarMobileAberto.value = false
+    dropdownSetoresAberto.value = false
   }
 }
 
@@ -3820,7 +4415,7 @@ onUnmounted(() => {
       title="Avisos de validação"
       @click="alternarPainelAvisos"
     >
-      ⚠️
+      <IconAlertSquareRounded :size="20" />
       <span class="hud-mini-badge">{{ listaAvisosValidacao.length }}</span>
     </button>
 
@@ -3831,7 +4426,7 @@ onUnmounted(() => {
         title="Finalizar e Salvar"
         @click="finalizarSalvarEstacionamento"
       >
-        💾
+        <IconDeviceFloppy :size="20" />
       </button>
 
       <button
@@ -3840,7 +4435,7 @@ onUnmounted(() => {
         title="Opções do Editor"
         @click="alternarMenuEngrenagem"
       >
-        ⚙️
+        <IconSettings :size="20" />
       </button>
 
       <button
@@ -3849,7 +4444,7 @@ onUnmounted(() => {
         title="Adicionar Acessos e Equipamentos"
         @click="alternarMenuAdicionar"
       >
-        ➕
+        <IconSquareRoundedPlus :size="20" />
       </button>
     </div>
 
@@ -3858,11 +4453,13 @@ onUnmounted(() => {
       :class="{ 'topbar-mobile-aberta': menuTopoMobileAberto }"
     >
       <div class="topbar-esquerda">
-        <button class="btn-secundario btn-duas-linhas" @click="router.push({ name: 'admin-info-gerais' })">
-          ⬅️ Editar estacionamento<br /><span>Informações Gerais</span>
+        <button class="btn-secundario btn-duas-linhas item-icone-texto" @click="router.push({ name: 'admin-info-gerais' })">
+          <IconSquareRoundedArrowLeft :size="18" />
+          <div>Editar estacionamento<br /><span>Informações Gerais</span></div>
         </button>
 
         <div class="seletor-andar-box">
+          <IconStack2 :size="18" />
           <span>Andar:</span>
           <select
             v-if="formEstabelecimento.andares.length > 1"
@@ -3881,23 +4478,27 @@ onUnmounted(() => {
           <strong v-else>{{ andarEditorAtual.nome_andar }}</strong>
         </div>
 
-        <button class="btn-secundario btn-duas-linhas" @click="abrirModalTamanhoGrid">
-          📐 Tamanho do Grid<br /><span>({{ andarEditorAtual.grid_x }}x{{ andarEditorAtual.grid_y }})</span>
+        <button class="btn-secundario btn-duas-linhas item-icone-texto" @click="abrirModalTamanhoGrid">
+          <IconLayoutGrid :size="18" />
+          <div>Tamanho do Grid<br /><span>({{ andarEditorAtual.grid_x }}x{{ andarEditorAtual.grid_y }})</span></div>
         </button>
 
-        <button class="btn-secundario" :disabled="historicoUndo.length === 0" @click="desfazer">
-          ↩️ Desfazer
+        <button class="btn-secundario item-icone-texto" :disabled="historicoUndo.length === 0" @click="desfazer">
+          <IconArrowBackUp :size="18" />
+          <span>Desfazer</span>
         </button>
-        <button class="btn-secundario" :disabled="historicoRedo.length === 0" @click="refazer">
-          ↪️ Refazer
+        <button class="btn-secundario item-icone-texto" :disabled="historicoRedo.length === 0" @click="refazer">
+          <IconArrowForwardUp :size="18" />
+          <span>Refazer</span>
         </button>
         <button
           v-if="panX !== 0 || panY !== 0 || zoomEscala !== 1"
-          class="btn-secundario"
+          class="btn-secundario item-icone-texto"
           title="Centralizar Zoom"
           @click="resetarCameraGrid"
         >
-          🔍 {{ Math.round(zoomEscala * 100) }}%
+          <IconSearch :size="16" />
+          <span>{{ Math.round(zoomEscala * 100) }}%</span>
         </button>
       </div>
 
@@ -3908,17 +4509,20 @@ onUnmounted(() => {
           title="Clique para mostrar/ocultar avisos de validação"
           @click="alternarPainelAvisos"
         >
-          ⚠️
+          <IconAlertSquareRounded :size="20" />
           <span class="caution-badge">{{ listaAvisosValidacao.length }}</span>
         </button>
 
         <button
-          class="btn-salvar-final btn-duas-linhas"
+          class="btn-salvar-final btn-duas-linhas item-icone-texto"
           :disabled="!podeSalvarEstacionamento || salvandoNoBanco"
           @click="finalizarSalvarEstacionamento"
         >
-          💾 {{ salvandoNoBanco ? 'Salvando...' : 'Finalizar e' }}<br />
-          <span v-if="!salvandoNoBanco">Salvar no Banco</span>
+          <IconDeviceFloppy :size="18" />
+          <div>
+            {{ salvandoNoBanco ? 'Salvando...' : 'Finalizar e' }}<br />
+            <span v-if="!salvandoNoBanco">Salvar</span>
+          </div>
         </button>
       </div>
     </header>
@@ -3928,55 +4532,83 @@ onUnmounted(() => {
         <Transition name="fade-pop">
           <div v-if="mostrarPainelAvisos" class="overlay-flutuante painel-avisos-overlay">
             <div class="overlay-header">
-              <strong>⚠️ Validação ({{ listaAvisosValidacao.length }})</strong>
-              <button class="btn-fechar-mini" @click="mostrarPainelAvisos = false">✖</button>
+              <strong class="item-icone-texto">
+                <IconAlertSquareRounded :size="18" />
+                <span>Validação ({{ listaAvisosValidacao.length }})</span>
+              </strong>
+              <button class="btn-fechar-mini" @click="mostrarPainelAvisos = false">
+                <IconSquareRoundedX :size="18" />
+              </button>
             </div>
             <ul v-if="listaAvisosValidacao.length > 0" class="lista-avisos-ul">
               <li v-for="(aviso, i) in listaAvisosValidacao" :key="i">{{ aviso }}</li>
             </ul>
-            <p v-else class="aviso-tudo-ok">
-              ✅ Tudo certo! Todos os andares, setores, vagas e acessos estão validados.
+            <p v-else class="aviso-tudo-ok item-icone-texto">
+              <IconSquareRoundedCheck :size="18" />
+              <span>Tudo certo! Todos os andares, setores, vagas e acessos estão validados.</span>
             </p>
           </div>
         </Transition>
 
         <Transition name="fade-pop">
           <div v-if="ferramentaCarimbo" class="overlay-flutuante banner-carimbo-overlay">
-            <span>
-              🎯 <strong>{{ ferramentaCarimbo.tipo }} ({{ ferramentaCarimbo.w }}x{{ ferramentaCarimbo.h }})</strong> — Toque no Grid
+            <span class="item-icone-texto">
+              <IconPin :size="18" />
+              <strong>{{ ferramentaCarimbo.tipo }} ({{ ferramentaCarimbo.w }}x{{ ferramentaCarimbo.h }})</strong> — Toque no Grid
             </span>
-            <button class="btn-cancelar-carimbo" @click="ferramentaCarimbo = null">✖</button>
+            <button class="btn-cancelar-carimbo" @click="ferramentaCarimbo = null">
+              <IconSquareRoundedX :size="16" />
+            </button>
           </div>
         </Transition>
 
+        <!-- OVERLAY DE SELEÇÃO COM TOOLTIPS NOS ÍCONES E BORRACHA -->
         <Transition name="fade-pop">
           <div v-if="mostrarMenuFlutuante && selecionados.size > 0" class="overlay-flutuante menu-selecao-overlay">
             <span class="contagem-sel">{{ selecionados.size }} sel.:</span>
 
             <div class="grupo-acao-item">
-              <span>🛣️</span>
-              <button class="btn-mini add" title="Adicionar Estrada" @click="aplicarTipoSelecao('ESTRADA')">➕</button>
-              <button class="btn-mini rem" title="Remover Estrada" @click="removerTipoSelecao('ESTRADA')">➖</button>
+              <span class="icone-com-tooltip" data-tooltip="Estrada" title="Estrada">
+                <IconRoad :size="18" />
+              </span>
+              <button class="btn-mini add" title="Adicionar Estrada" @click="aplicarTipoSelecao('ESTRADA')">
+                <IconSquareRoundedPlus :size="16" />
+              </button>
+              <button class="btn-mini rem" title="Remover Estrada" @click="removerTipoSelecao('ESTRADA')">
+                <IconSquareRoundedMinus :size="16" />
+              </button>
             </div>
 
             <div class="grupo-acao-item">
-              <span>🎨</span>
-              <button class="btn-mini add" title="Definir Setor" @click="abrirModalSetor">➕</button>
-              <button class="btn-mini rem" title="Remover Setor" @click="removerTipoSelecao('SETOR')">➖</button>
+              <span class="icone-com-tooltip" data-tooltip="Setores" title="Setores">
+                <IconLayoutBoard :size="18" />
+              </span>
+              <button class="btn-mini add" title="Definir Setor" @click="abrirModalSetor">
+                <IconSquareRoundedPlus :size="16" />
+              </button>
+              <button class="btn-mini rem" title="Remover Setor" @click="removerTipoSelecao('SETOR')">
+                <IconSquareRoundedMinus :size="16" />
+              </button>
             </div>
 
             <div class="grupo-acao-item">
-              <span>🅿️</span>
-              <button class="btn-mini add" title="Adicionar Vagas" @click="aplicarTipoSelecao('VAGA')">➕</button>
-              <button class="btn-mini rem" title="Remover Vagas" @click="removerTipoSelecao('VAGA')">➖</button>
+              <span class="icone-com-tooltip" data-tooltip="Vagas" title="Vagas">
+                <IconParking :size="18" />
+              </span>
+              <button class="btn-mini add" title="Adicionar Vagas" @click="aplicarTipoSelecao('VAGA')">
+                <IconSquareRoundedPlus :size="16" />
+              </button>
+              <button class="btn-mini rem" title="Remover Vagas" @click="removerTipoSelecao('VAGA')">
+                <IconSquareRoundedMinus :size="16" />
+              </button>
             </div>
 
             <button
-              class="btn-mini lixeira-tudo"
-              title="Remover TUDO na seleção"
+              class="btn-mini borracha-tudo"
+              title="Borracha: remover tudo na seleção"
               @click="limparTudoNaSelecao"
             >
-              🗑️
+              <IconEraser :size="16" />
             </button>
 
             <button
@@ -3984,16 +4616,20 @@ onUnmounted(() => {
               title="Desselecionar"
               @click="selecionados.clear(); mostrarMenuFlutuante = false"
             >
-              ✖
+              <IconSquareRoundedX :size="16" />
             </button>
           </div>
         </Transition>
 
+        <!-- HUD INFERIOR PARA QUALQUER QUADRADO DO GRID -->
         <Transition name="fade-pop">
-          <div v-if="infoSetorHover" class="overlay-flutuante badge-hover-setor">
-            <span class="bolinha-cor-setor" :style="{ backgroundColor: infoSetorHover.cor }"></span>
-            <strong>{{ infoSetorHover.nome }} ({{ infoSetorHover.prefixo }})</strong>
-            <span>— {{ infoSetorHover.qtdVagas }} vaga(s)</span>
+          <div v-if="infoCelulaHover" class="overlay-flutuante badge-hover-setor">
+            <span
+              class="bolinha-cor-setor"
+              :style="{ backgroundColor: infoCelulaHover.cor }"
+            ></span>
+            <strong>{{ infoCelulaHover.textoQuadrado }}</strong>
+            <span class="texto-colchetes-setor">{{ infoCelulaHover.textoSetor }}</span>
           </div>
         </Transition>
 
@@ -4060,14 +4696,13 @@ onUnmounted(() => {
                         ? { backgroundColor: escurecerCorHex(andarEditorAtual.celulas[`${x},${y}`]?.corSetor) }
                         : {}
                     "
-                    :title="obterTituloCelula(x, y)"
                   >
                     <span v-if="andarEditorAtual.celulas[`${x},${y}`]?.tipo === 'VAGA'">
                       {{ andarEditorAtual.celulas[`${x},${y}`]?.identificador || 'V' }}
                     </span>
-                    <span v-else-if="andarEditorAtual.celulas[`${x},${y}`]?.tipo === 'ENTRADA'">E</span>
-                    <span v-else-if="andarEditorAtual.celulas[`${x},${y}`]?.tipo === 'SAIDA'">S</span>
-                    <span v-else-if="andarEditorAtual.celulas[`${x},${y}`]?.tipo === 'ACESSO'">A</span>
+                    <IconDoorEnter v-else-if="andarEditorAtual.celulas[`${x},${y}`]?.tipo === 'ENTRADA'" :size="16" />
+                    <IconDoorExit v-else-if="andarEditorAtual.celulas[`${x},${y}`]?.tipo === 'SAIDA'" :size="16" />
+                    <IconArrowBarRight v-else-if="andarEditorAtual.celulas[`${x},${y}`]?.tipo === 'ACESSO'" :size="16" />
                   </div>
                 </div>
               </div>
@@ -4081,39 +4716,51 @@ onUnmounted(() => {
         :class="{ 'sidebar-mobile-aberta': menuAdicionarMobileAberto }"
       >
         <div class="painel-ferramentas">
-          <h4>🚪 Entradas / Saídas / Acessos</h4>
+          <h4 class="item-icone-texto">
+            <IconDoorEnter :size="18" />
+            <span>Entradas / Saídas / Acessos</span>
+          </h4>
           <p class="dica-painel">Clique para definir o tamanho e posicionar</p>
 
           <div class="linha-botoes-dupla">
-            <button class="btn-ferramenta cor-entrada" @click="prepararAcesso('ENTRADA', 'H')">
-              ➡️ Entrada (H)
+            <button class="btn-ferramenta cor-entrada item-icone-texto" @click="prepararAcesso('ENTRADA', 'H')">
+              <IconDoorEnter :size="16" />
+              <span>Entrada (H)</span>
             </button>
-            <button class="btn-ferramenta cor-entrada" @click="prepararAcesso('ENTRADA', 'V')">
-              ⬇️ Entrada (V)
-            </button>
-          </div>
-
-          <div class="linha-botoes-dupla">
-            <button class="btn-ferramenta cor-saida" @click="prepararAcesso('SAIDA', 'H')">
-              ➡️ Saída (H)
-            </button>
-            <button class="btn-ferramenta cor-saida" @click="prepararAcesso('SAIDA', 'V')">
-              ⬇️ Saída (V)
+            <button class="btn-ferramenta cor-entrada item-icone-texto" @click="prepararAcesso('ENTRADA', 'V')">
+              <IconDoorEnter :size="16" />
+              <span>Entrada (V)</span>
             </button>
           </div>
 
           <div class="linha-botoes-dupla">
-            <button class="btn-ferramenta cor-acesso" @click="prepararAcesso('ACESSO', 'H')">
-              🚶 Acesso (H)
+            <button class="btn-ferramenta cor-saida item-icone-texto" @click="prepararAcesso('SAIDA', 'H')">
+              <IconDoorExit :size="16" />
+              <span>Saída (H)</span>
             </button>
-            <button class="btn-ferramenta cor-acesso" @click="prepararAcesso('ACESSO', 'V')">
-              🚶 Acesso (V)
+            <button class="btn-ferramenta cor-saida item-icone-texto" @click="prepararAcesso('SAIDA', 'V')">
+              <IconDoorExit :size="16" />
+              <span>Saída (V)</span>
+            </button>
+          </div>
+
+          <div class="linha-botoes-dupla">
+            <button class="btn-ferramenta cor-acesso item-icone-texto" @click="prepararAcesso('ACESSO', 'H')">
+              <IconArrowBarRight :size="16" />
+              <span>Acesso (H)</span>
+            </button>
+            <button class="btn-ferramenta cor-acesso item-icone-texto" @click="prepararAcesso('ACESSO', 'V')">
+              <IconArrowBarRight :size="16" />
+              <span>Acesso (V)</span>
             </button>
           </div>
         </div>
 
         <div class="painel-ferramentas">
-          <h4>📡 Equipamentos (ESP32)</h4>
+          <h4 class="item-icone-texto">
+            <IconCpu :size="18" />
+            <span>Equipamentos (ESP32)</span>
+          </h4>
           <p class="dica-painel">Escolha o formato (X por Y) e clique nas vagas</p>
 
           <div
@@ -4124,28 +4771,43 @@ onUnmounted(() => {
             <button
               v-for="item in linha"
               :key="`${item.w}x${item.h}`"
-              class="btn-equipamento"
+              class="btn-equipamento item-icone-texto"
               @click="ativarCarimboEquipamento(item.w, item.h)"
             >
-              🔌 {{ item.w }}x{{ item.h }}
+              <IconCpu :size="15" />
+              <span>{{ item.w }}x{{ item.h }}</span>
             </button>
           </div>
+
+          <button class="btn-alterar-setores-menu item-icone-texto" @click="abrirModalAlterarSetores">
+            <IconLayoutBoard :size="18" />
+            <span>Alterar Setores</span>
+          </button>
         </div>
 
         <div class="painel-ferramentas legenda-editor">
-          <h4>📌 Cores do Editor</h4>
+          <h4 class="item-icone-texto">
+            <IconPin :size="18" />
+            <span>Cores do Editor</span>
+          </h4>
           <div><span class="amostra" style="background:#cbd5e1"></span> Cinza Claro: Vazio</div>
           <div><span class="amostra amostra-asfalto"></span> Asfalto Escuro: Estrada</div>
-          <div><span class="amostra" style="background:#eab308"></span> Amarelo: Vaga sem ESP32</div>
-          <div><span class="amostra" style="background:#005066"></span> Cor Escura: Vaga Vinculada</div>
+          <div><span class="amostra" style="background:#eab308"></span> Amarelo: Vaga não Vinculada a um ESP32</div>
+          <div><span class="amostra" style="background:#005066"></span> Cor Escura: Vaga Vinculada a um Setor</div>
         </div>
       </aside>
     </div>
 
+    <!-- =======================================================
+         MODAIS POP-UP DO EDITOR GAMIFICADO
+         ======================================================= -->
     <Transition name="fade-pop">
       <div v-if="modalSetorAberto" class="modal-backdrop">
         <div class="modal-box">
-          <h3>🎨 Definir Setor</h3>
+          <h3 class="item-icone-texto">
+            <IconLayoutBoard :size="20" />
+            <span>Definir Setor</span>
+          </h3>
           <div class="campo-grupo" style="margin-top:10px">
             <label>Nome do Setor (único)</label>
             <input v-model="novoSetorNome" type="text" maxlength="25" placeholder="Ex: Setor A" />
@@ -4177,8 +4839,143 @@ onUnmounted(() => {
             </div>
           </div>
           <div class="modal-acoes">
-            <button class="btn-secundario" @click="modalSetorAberto = false">Cancelar</button>
-            <button class="btn-primario" @click="confirmarSetorSelecao">OK</button>
+            <button class="btn-secundario item-icone-texto" @click="modalSetorAberto = false">
+              <IconSquareRoundedX :size="18" />
+              <span>Cancelar</span>
+            </button>
+            <button class="btn-primario item-icone-texto" @click="confirmarSetorSelecao">
+              <IconSquareRoundedCheck :size="18" />
+              <span>OK</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </Transition>
+
+    <!-- MODAL: ALTERAR SETORES -->
+    <Transition name="fade-pop">
+      <div v-if="modalAlterarSetoresAberto" class="modal-backdrop">
+        <div class="modal-box modal-alterar-setor">
+          <div class="overlay-header">
+            <h3 class="item-icone-texto">
+              <IconLayoutBoard :size="20" />
+              <span>Alterar Setores ({{ andarEditorAtual.nome_andar }})</span>
+            </h3>
+            <button class="btn-fechar-mini" @click="modalAlterarSetoresAberto = false">
+              <IconSquareRoundedX :size="20" />
+            </button>
+          </div>
+
+          <div class="campo-grupo" style="margin-top:8px">
+            <label>Selecionar Setor (digite para filtrar)</label>
+            <div class="combobox-setor-wrapper">
+              <input
+                v-model="filtroBuscaSetor"
+                type="text"
+                placeholder="Pesquisar ou selecionar setor..."
+                @focus="dropdownSetoresAberto = true"
+                @input="aoDigitarFiltroSetor"
+              />
+              <button
+                type="button"
+                class="btn-seta-combobox"
+                @click="dropdownSetoresAberto = !dropdownSetoresAberto"
+              >
+                <IconSquareRoundedChevronDown :size="18" />
+              </button>
+
+              <div v-if="dropdownSetoresAberto" class="lista-dropdown-setores">
+                <div
+                  v-for="s in setoresFiltradosParaEdicao"
+                  :key="s.id_setor"
+                  class="item-dropdown-setor"
+                  @click="escolherSetorParaEditar(s)"
+                >
+                  <span class="bolinha-cor-setor" :style="{ backgroundColor: s.cor_hex }"></span>
+                  <span>{{ s.nome_setor }} ({{ s.prefixo }})</span>
+                </div>
+                <div v-if="setoresFiltradosParaEdicao.length === 0" class="item-dropdown-vazio">
+                  Nenhum setor encontrado neste andar.
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div
+            class="area-edicao-setor-campos"
+            :class="{ 'campos-desabilitados': !setorSelecionadoParaEditar }"
+          >
+            <div class="campo-grupo">
+              <label>Nome do Setor</label>
+              <input
+                v-model="editSetorNome"
+                type="text"
+                maxlength="25"
+                :disabled="!setorSelecionadoParaEditar"
+                placeholder="Selecione um setor acima"
+              />
+            </div>
+
+            <div class="campo-grupo">
+              <label>Prefixo das Vagas (máx. 3 letras)</label>
+              <input
+                v-model="editSetorPrefixo"
+                type="text"
+                maxlength="3"
+                class="input-curto-prefixo"
+                :disabled="!setorSelecionadoParaEditar"
+                @input="sanitizarEditPrefixoSetor"
+              />
+            </div>
+
+            <div class="campo-grupo">
+              <label>Cor do Setor</label>
+              <div class="grade-cores-setor">
+                <button
+                  v-for="cor in paletaSetores"
+                  :key="cor.hex"
+                  type="button"
+                  class="botao-cor-setor"
+                  :class="{ 'cor-selecionada': setorSelecionadoParaEditar && editSetorCor === cor.hex }"
+                  :style="{ backgroundColor: cor.hex }"
+                  :disabled="!setorSelecionadoParaEditar"
+                  @click="editSetorCor = cor.hex"
+                >
+                  {{ cor.nome }}
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <p
+            v-if="setorSelecionadoParaEditar && !dadosEdicaoSetorPreenchidos"
+            class="msg-preencha-setor item-icone-texto"
+            style="justify-content: center"
+          >
+            <IconAlertSquareRounded :size="18" />
+            <span>Preencha os dados antes de confirmar</span>
+          </p>
+
+          <div class="botoes-empilhados-setor">
+            <button
+              type="button"
+              class="btn-excluir-setor item-icone-texto"
+              :disabled="!setorSelecionadoParaEditar"
+              @click="excluirSetorSelecionado"
+            >
+              <IconTrash :size="18" />
+              <span>Excluir Setor</span>
+            </button>
+
+            <button
+              type="button"
+              class="btn-confirmar-setor item-icone-texto"
+              :disabled="!setorSelecionadoParaEditar || !dadosEdicaoSetorPreenchidos"
+              @click="confirmarAlteracaoSetor"
+            >
+              <IconSquareRoundedCheck :size="18" />
+              <span>Confirmar Alterações</span>
+            </button>
           </div>
         </div>
       </div>
@@ -4187,7 +4984,10 @@ onUnmounted(() => {
     <Transition name="fade-pop">
       <div v-if="modalGridAberto" class="modal-backdrop">
         <div class="modal-box modal-compacto">
-          <h3>📐 Tamanho do Grid</h3>
+          <h3 class="item-icone-texto">
+            <IconLayoutGrid :size="20" />
+            <span>Tamanho do Grid</span>
+          </h3>
           <p class="subtitulo">Mín. 5 | Máx. 100</p>
           <div class="linha-inputs-compactos">
             <div class="campo-compacto">
@@ -4217,8 +5017,14 @@ onUnmounted(() => {
             </div>
           </div>
           <div class="modal-acoes">
-            <button class="btn-secundario" @click="modalGridAberto = false">Cancelar</button>
-            <button class="btn-primario" @click="confirmarTamanhoGrid">Aplicar</button>
+            <button class="btn-secundario item-icone-texto" @click="modalGridAberto = false">
+              <IconSquareRoundedX :size="18" />
+              <span>Cancelar</span>
+            </button>
+            <button class="btn-primario item-icone-texto" @click="confirmarTamanhoGrid">
+              <IconSquareRoundedCheck :size="18" />
+              <span>Aplicar</span>
+            </button>
           </div>
         </div>
       </div>
@@ -4227,9 +5033,14 @@ onUnmounted(() => {
     <Transition name="fade-pop">
       <div v-if="modalAcessoAberto" class="modal-backdrop">
         <div class="modal-box modal-compacto">
-          <h3>
-            🚪 {{ configAcessoTemp.tipo }}
-            ({{ configAcessoTemp.orientacao === 'H' ? 'Horiz.' : 'Vert.' }})
+          <h3 class="item-icone-texto">
+            <IconDoorEnter v-if="configAcessoTemp.tipo === 'ENTRADA'" :size="20" />
+            <IconDoorExit v-else-if="configAcessoTemp.tipo === 'SAIDA'" :size="20" />
+            <IconArrowBarRight v-else :size="20" />
+            <span>
+              {{ configAcessoTemp.tipo }}
+              ({{ configAcessoTemp.orientacao === 'H' ? 'Horiz.' : 'Vert.' }})
+            </span>
           </h3>
           <div class="campo-compacto" style="margin-top:10px">
             <label v-if="configAcessoTemp.orientacao === 'H'">Largura X (1 a 20):</label>
@@ -4245,8 +5056,14 @@ onUnmounted(() => {
             />
           </div>
           <div class="modal-acoes">
-            <button class="btn-secundario" @click="modalAcessoAberto = false">Cancelar</button>
-            <button class="btn-primario" @click="ativarCarimboAcesso">OK</button>
+            <button class="btn-secundario item-icone-texto" @click="modalAcessoAberto = false">
+              <IconSquareRoundedX :size="18" />
+              <span>Cancelar</span>
+            </button>
+            <button class="btn-primario item-icone-texto" @click="ativarCarimboAcesso">
+              <IconSquareRoundedCheck :size="18" />
+              <span>OK</span>
+            </button>
           </div>
         </div>
       </div>
@@ -4255,7 +5072,10 @@ onUnmounted(() => {
     <Transition name="fade-pop">
       <div v-if="modalMacAberto" class="modal-backdrop">
         <div class="modal-box modal-compacto">
-          <h3>📡 Vincular ESP32</h3>
+          <h3 class="item-icone-texto">
+            <IconCpu :size="20" />
+            <span>Vincular ESP32</span>
+          </h3>
           <p class="subtitulo">
             {{ coordenadasCarimboPendente.length }} vaga(s) selecionada(s)
           </p>
@@ -4264,9 +5084,34 @@ onUnmounted(() => {
             <input v-model="inputMacEsp" type="text" maxlength="17" placeholder="AA:BB:CC:DD:EE:FF" />
           </div>
           <div class="modal-acoes">
-            <button class="btn-secundario" @click="modalMacAberto = false">Cancelar</button>
-            <button class="btn-primario" @click="confirmarVinculoEquipamento">Vincular</button>
+            <button class="btn-secundario item-icone-texto" @click="modalMacAberto = false">
+              <IconSquareRoundedX :size="18" />
+              <span>Cancelar</span>
+            </button>
+            <button class="btn-primario item-icone-texto" @click="confirmarVinculoEquipamento">
+              <IconSquareRoundedCheck :size="18" />
+              <span>Vincular</span>
+            </button>
           </div>
+        </div>
+      </div>
+    </Transition>
+
+    <!-- MODAL PERSONALIZADO DE SUCESSO AO SALVAR -->
+    <Transition name="fade-pop">
+      <div v-if="modalSucessoSalvarAberto" class="modal-backdrop">
+        <div class="modal-box modal-sucesso-salvar">
+          <div class="icone-sucesso-modal" style="color: #16a34a">
+            <IconSquareRoundedCheck :size="48" />
+          </div>
+          <h3>Planta 2D Salva com Sucesso!</h3>
+          <p class="subtitulo">
+            Todos os andares, setores, equipamentos e vagas foram gravados no banco de dados.
+          </p>
+          <button class="btn-confirmar-sucesso item-icone-texto" @click="confirmarModalSucessoSalvar">
+            <IconSquareRoundedCheck :size="20" />
+            <span>Confirmar</span>
+          </button>
         </div>
       </div>
     </Transition>
@@ -4281,8 +5126,148 @@ onUnmounted(() => {
 // 🚀 INÍCIO DO ARQUIVO: frontend\src\views\AdminInfoGeraisView.vue
 // ==================================================================
 
-// [Arquivo binário ignorado pelo leitor de segurança]
+<script setup>
+import { useRouter } from 'vue-router'
+import {
+  usuariosCadastrados,
+  formEstabelecimento,
+  criarMatrizVazia
+} from '../store/estacionamentoStore'
+import {
+  IconSquareRoundedArrowLeft,
+  IconSquareRoundedArrowRight,
+  IconSquareRoundedPlus,
+  IconSquareRoundedMinus,
+  IconLayoutGrid
+} from '../icons'
 
+const router = useRouter()
+
+function adicionarAndarForm() {
+  if (formEstabelecimento.value.andares.length >= 10) return
+  const numero = formEstabelecimento.value.andares.length + 1
+  formEstabelecimento.value.andares.push({
+    id_andar: Date.now() + numero,
+    nome_andar: `Andar ${numero}`,
+    grid_x: 30,
+    grid_y: 20
+  })
+}
+
+function removerAndarForm(index) {
+  if (index === 0) return
+  formEstabelecimento.value.andares.splice(index, 1)
+}
+
+function avancarParaEditorP2() {
+  if (!formEstabelecimento.value.nome.trim()) {
+    alert('Digite o nome do estabelecimento antes de continuar.')
+    return
+  }
+
+  const nomesAndares = formEstabelecimento.value.andares.map(a => a.nome_andar.trim().toLowerCase())
+  if (nomesAndares.some(n => !n)) {
+    alert('Preencha o nome de todos os andares.')
+    return
+  }
+
+  const nomesUnicos = new Set(nomesAndares)
+  if (nomesUnicos.size !== nomesAndares.length) {
+    alert('Os nomes dos andares não podem se repetir no mesmo estacionamento!')
+    return
+  }
+
+  formEstabelecimento.value.andares.forEach((andar) => {
+    if (!andar.celulas) {
+      andar.grid_x = andar.grid_x || 30
+      andar.grid_y = andar.grid_y || 20
+      andar.setores = andar.setores || []
+      andar.equipamentos = andar.equipamentos || []
+      andar.celulas = criarMatrizVazia(andar.grid_x, andar.grid_y)
+    }
+  })
+
+  router.push({ name: 'admin-editor-2d' })
+}
+</script>
+
+<template>
+  <div class="admin-container">
+    <header class="topbar-titulo-central com-botao-direita">
+      <div class="bloco-titulo-centro">
+        <h1>Editar estacionamento - Informações Gerais</h1>
+        <p class="subtitulo">Defina os dados gerais e a lista de andares sem nomes repetidos (máx. 10)</p>
+      </div>
+      <button class="btn-secundario btn-voltar-topo item-icone-texto" @click="router.push({ name: 'admin-lista' })">
+        <IconSquareRoundedArrowLeft :size="18" />
+        <span>Voltar</span>
+      </button>
+    </header>
+
+    <div class="form-card">
+      <div class="campo-grupo">
+        <label>Nome do Estabelecimento (máx. 50 caracteres)</label>
+        <input
+          v-model="formEstabelecimento.nome"
+          type="text"
+          maxlength="50"
+          placeholder="Ex: Shopping Sorocaba Center"
+        />
+      </div>
+
+      <div class="campo-grupo">
+        <label>Vincular Usuário Responsável (Dono do Estacionamento)</label>
+        <select v-model="formEstabelecimento.id_usuario" class="select-padrao">
+          <option v-for="u in usuariosCadastrados" :key="u.id_usuario" :value="u.id_usuario">
+            #{{ u.id_usuario }} - {{ u.nome }} ({{ u.email }})
+          </option>
+        </select>
+      </div>
+
+      <div class="campo-grupo">
+        <label>Andares do Estacionamento ({{ formEstabelecimento.andares.length }}/10)</label>
+        <div
+          v-for="(andar, idx) in formEstabelecimento.andares"
+          :key="andar.id_andar"
+          class="linha-andar-dinamica"
+        >
+          <input
+            v-model="andar.nome_andar"
+            type="text"
+            maxlength="25"
+            :placeholder="`Nome do Andar ${idx + 1}`"
+          />
+
+          <button
+            v-if="idx >= 1"
+            class="btn-mais-menos btn-menos"
+            title="Remover este andar"
+            @click="removerAndarForm(idx)"
+          >
+            <IconSquareRoundedMinus :size="20" />
+          </button>
+
+          <button
+            v-if="idx === formEstabelecimento.andares.length - 1 && formEstabelecimento.andares.length < 10"
+            class="btn-mais-menos btn-mais"
+            title="Adicionar novo andar abaixo"
+            @click="adicionarAndarForm"
+          >
+            <IconSquareRoundedPlus :size="20" />
+          </button>
+        </div>
+      </div>
+
+      <div class="rodape-form">
+        <button class="btn-primario btn-grande item-icone-texto" @click="avancarParaEditorP2">
+          <IconLayoutGrid :size="20" />
+          <span>Avançar para o Editor de Mapa 2D</span>
+          <IconSquareRoundedArrowRight :size="20" />
+        </button>
+      </div>
+    </div>
+  </div>
+</template>
 
 // 🏁 FIM DO ARQUIVO: frontend\src\views\AdminInfoGeraisView.vue
 // ------------------------------------------------------------------
@@ -4292,8 +5277,172 @@ onUnmounted(() => {
 // 🚀 INÍCIO DO ARQUIVO: frontend\src\views\AdminListaView.vue
 // ==================================================================
 
-// [Arquivo binário ignorado pelo leitor de segurança]
+<script setup>
+import { ref, computed, onMounted } from 'vue'
+import { useRouter } from 'vue-router'
+import {
+  estabelecimentos,
+  usuariosCadastrados,
+  iniciarNovoFormulario,
+  carregarFormularioEdicao,
+  carregarDadosDoBanco,
+  alternarInativoNoBanco,
+  removerEstabelecimentoNoBanco
+} from '../store/estacionamentoStore'
+import {
+  IconSearch,
+  IconSquareRoundedPlus,
+  IconPencil,
+  IconBan,
+  IconSquareRoundedCheck,
+  IconTrash,
+  IconSquareRoundedChevronLeft,
+  IconSquareRoundedChevronRight
+} from '../icons'
 
+const router = useRouter()
+const termoPesquisaAdmin = ref('')
+const paginaAtualAdmin = ref(1)
+const itensPorPagina = 5
+
+onMounted(() => {
+  carregarDadosDoBanco()
+})
+
+function obterNomeEmailUsuario(idUsuario) {
+  const usuario = usuariosCadastrados.value.find(u => u.id_usuario === idUsuario)
+  if (usuario) {
+    return `${usuario.nome} - ${usuario.email}`
+  }
+  return `Usuário #${idUsuario}`
+}
+
+const estabelecimentosFiltrados = computed(() => {
+  const termo = termoPesquisaAdmin.value.trim().toLowerCase()
+  if (!termo) return estabelecimentos.value
+  return estabelecimentos.value.filter(
+    e => e.nome.toLowerCase().includes(termo) || String(e.id) === termo
+  )
+})
+
+const totalPaginasAdmin = computed(() =>
+  Math.max(1, Math.ceil(estabelecimentosFiltrados.value.length / itensPorPagina))
+)
+
+const estabelecimentosPaginados = computed(() => {
+  const inicio = (paginaAtualAdmin.value - 1) * itensPorPagina
+  return estabelecimentosFiltrados.value.slice(inicio, inicio + itensPorPagina)
+})
+
+function criarNovo() {
+  iniciarNovoFormulario()
+  router.push({ name: 'admin-info-gerais' })
+}
+
+function editarEstabelecimento(est) {
+  carregarFormularioEdicao(est)
+  router.push({ name: 'admin-info-gerais' })
+}
+
+async function alternarInativoEstabelecimento(est) {
+  try {
+    await alternarInativoNoBanco(est)
+  } catch (err) {
+    alert(err.message)
+  }
+}
+
+async function removerEstabelecimento(est) {
+  if (confirm(`Tem certeza que deseja REMOVER permanentemente "${est.nome}" e todos os seus andares e vagas do banco de dados?`)) {
+    try {
+      await removerEstabelecimentoNoBanco(est)
+    } catch (err) {
+      alert(err.message)
+    }
+  }
+}
+</script>
+
+<template>
+  <div class="admin-container">
+    <header class="topbar-titulo-central">
+      <h1>Gerenciamento de Estacionamentos</h1>
+      <p class="subtitulo">Pesquise, adicione, edite, inative ou remova estabelecimentos</p>
+    </header>
+
+    <div class="barra-pesquisa-admin">
+      <div class="input-pesquisa-icone-wrapper">
+        <IconSearch :size="18" class="icone-input-pesquisa" />
+        <input
+          v-model="termoPesquisaAdmin"
+          type="text"
+          placeholder="Pesquisar por nome ou ID..."
+          class="input-pesquisa-grande com-icone"
+          @input="paginaAtualAdmin = 1"
+        />
+      </div>
+      <button class="btn-primario btn-add-est item-icone-texto" @click="criarNovo">
+        <IconSquareRoundedPlus :size="20" />
+        <span>Adicionar Estacionamento</span>
+      </button>
+    </div>
+
+    <div class="lista-card">
+      <div
+        v-for="est in estabelecimentosPaginados"
+        :key="est.id"
+        class="linha-estabelecimento"
+        :class="{ 'linha-inativa': est.inativo }"
+      >
+        <div class="info-est">
+          <span class="id-badge">#{{ est.id }}</span>
+          <div class="textos-est">
+            <h3>
+              {{ est.nome }}
+              <span v-if="est.inativo" class="tag-inativo">INATIVO</span>
+            </h3>
+            <p class="meta-est">
+              {{ obterNomeEmailUsuario(est.id_usuario) }}
+            </p>
+          </div>
+        </div>
+
+        <div class="acoes-direita">
+          <button class="btn-icone editar" title="Editar Estacionamento" @click="editarEstabelecimento(est)">
+            <IconPencil :size="18" />
+          </button>
+          <button
+            class="btn-icone inativar"
+            :title="est.inativo ? 'Reativar' : 'Inativar'"
+            @click="alternarInativoEstabelecimento(est)"
+          >
+            <IconSquareRoundedCheck v-if="est.inativo" :size="18" style="color: #16a34a" />
+            <IconBan v-else :size="18" style="color: #dc2626" />
+          </button>
+          <button class="btn-icone remover" title="Remover Permanentemente" @click="removerEstabelecimento(est)">
+            <IconTrash :size="18" />
+          </button>
+        </div>
+      </div>
+
+      <div v-if="estabelecimentosPaginados.length === 0" class="lista-vazia">
+        Nenhum estacionamento encontrado.
+      </div>
+    </div>
+
+    <div class="paginacao-admin">
+      <button class="item-icone-texto" :disabled="paginaAtualAdmin <= 1" @click="paginaAtualAdmin--">
+        <IconSquareRoundedChevronLeft :size="18" />
+        <span>Anterior</span>
+      </button>
+      <span>Página {{ paginaAtualAdmin }} de {{ totalPaginasAdmin }}</span>
+      <button class="item-icone-texto" :disabled="paginaAtualAdmin >= totalPaginasAdmin" @click="paginaAtualAdmin++">
+        <span>Próxima</span>
+        <IconSquareRoundedChevronRight :size="18" />
+      </button>
+    </div>
+  </div>
+</template>
 
 // 🏁 FIM DO ARQUIVO: frontend\src\views\AdminListaView.vue
 // ------------------------------------------------------------------
@@ -4303,8 +5452,122 @@ onUnmounted(() => {
 // 🚀 INÍCIO DO ARQUIVO: frontend\src\views\MotoristaHomeView.vue
 // ==================================================================
 
-// [Arquivo binário ignorado pelo leitor de segurança]
+<script setup>
+import { ref, onUnmounted, nextTick } from 'vue'
+import { useRouter } from 'vue-router'
+import { Html5Qrcode } from 'html5-qrcode'
+import { estabelecimentos } from '../store/estacionamentoStore'
+import {
+  IconParking,
+  IconSearch,
+  IconSquareRoundedX,
+  IconSquareRoundedArrowRight,
+  IconSettings
+} from '../icons'
 
+const router = useRouter()
+const cameraAtiva = ref(false)
+const erroCamera = ref('')
+let leitorQrCode = null
+
+function abrirEstacionamento(id) {
+  pararCamera()
+  router.push({ name: 'motorista-mapa', params: { id } })
+}
+
+async function iniciarCamera() {
+  erroCamera.value = ''
+  cameraAtiva.value = true
+  await nextTick()
+  try {
+    leitorQrCode = new Html5Qrcode('leitor-qr')
+    await leitorQrCode.start(
+      { facingMode: 'environment' },
+      { fps: 10, qrbox: { width: 240, height: 240 } },
+      (textoLido) => {
+        try {
+          const url = new URL(textoLido)
+          const idUrl = url.searchParams.get('id')
+          if (idUrl) return abrirEstacionamento(idUrl)
+          const partes = url.pathname.split('/')
+          const ultimo = partes[partes.length - 1]
+          if (ultimo && !isNaN(ultimo)) return abrirEstacionamento(ultimo)
+        } catch {
+          abrirEstacionamento(textoLido)
+        }
+      },
+      () => {}
+    )
+  } catch {
+    erroCamera.value = 'Câmera indisponível neste dispositivo. Utilize os botões de acesso rápido abaixo.'
+    cameraAtiva.value = false
+  }
+}
+
+async function pararCamera() {
+  if (leitorQrCode && cameraAtiva.value) {
+    try {
+      await leitorQrCode.stop()
+      leitorQrCode.clear()
+    } catch {}
+  }
+  cameraAtiva.value = false
+}
+
+onUnmounted(() => {
+  pararCamera()
+})
+</script>
+
+<template>
+  <main class="tela-inicial">
+    <div class="hero-card">
+      <div class="icone-destaque" style="color: var(--destaque-azul)">
+        <IconParking :size="56" />
+      </div>
+      <h1 class="titulo-principal">Encontre sua vaga em segundos</h1>
+      <p class="descricao-principal">
+        Aponte a câmera para o <strong>QR Code</strong> localizado na entrada do estacionamento para abrir o mapa de vagas em tempo real.
+      </p>
+
+      <div v-if="cameraAtiva" class="camera-wrapper">
+        <div id="leitor-qr"></div>
+        <button class="btn-cancelar-camera item-icone-texto" @click="pararCamera">
+          <IconSquareRoundedX :size="18" />
+          <span>Fechar Câmera</span>
+        </button>
+      </div>
+
+      <button v-else class="btn-ler-qr item-icone-texto" @click="iniciarCamera">
+        <IconSearch :size="20" />
+        <span>Ler QR Code do Estacionamento</span>
+      </button>
+
+      <p v-if="erroCamera" class="msg-erro">{{ erroCamera }}</p>
+
+      <div class="area-teste-dev">
+        <span>Acesso Rápido de Demonstração:</span>
+        <button
+          v-for="est in estabelecimentos.filter(e => !e.inativo)"
+          :key="est.id"
+          class="btn-teste-dev item-icone-texto"
+          @click="abrirEstacionamento(est.id)"
+        >
+          <IconParking :size="18" />
+          <span>Abrir {{ est.nome }} (ID: {{ est.id }})</span>
+          <IconSquareRoundedArrowRight :size="18" />
+        </button>
+        <button
+          class="btn-teste-dev destaque-admin item-icone-texto"
+          @click="router.push({ name: 'admin-lista' })"
+        >
+          <IconSettings :size="18" />
+          <span>Ir para Painel Admin Dev (Criar / Editar Mapas 2D)</span>
+        </button>
+      </div>
+    </div>
+  </main>
+</template>
 
 // 🏁 FIM DO ARQUIVO: frontend\src\views\MotoristaHomeView.vue
 // ------------------------------------------------------------------
@@ -4318,6 +5581,13 @@ onUnmounted(() => {
 import { ref, computed, watch } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import { estabelecimentos } from '../store/estacionamentoStore'
+import {
+  IconSquareRoundedArrowLeft,
+  IconCpu,
+  IconDoorEnter,
+  IconDoorExit,
+  IconArrowBarRight
+} from '../icons'
 
 const route = useRoute()
 const router = useRouter()
@@ -4373,8 +5643,9 @@ function clicarCelulaMotorista(celula) {
         <h1>{{ estacionamentoAtual.nome }}</h1>
         <p class="subtitulo">Toque em uma vaga livre (verde) para marcá-la em roxo</p>
       </div>
-      <button class="btn-secundario" @click="router.push({ name: 'motorista-home' })">
-        📷 Ler outro QR Code
+      <button class="btn-secundario item-icone-texto" @click="router.push({ name: 'motorista-home' })">
+        <IconSquareRoundedArrowLeft :size="18" />
+        <span>Ler outro QR Code</span>
       </button>
     </header>
 
@@ -4396,9 +5667,10 @@ function clicarCelulaMotorista(celula) {
           <input type="checkbox" v-model="filtrarOcupadas" />
           Deixar vagas ocupadas cinzas
         </label>
-        <label class="filtro-toggle">
+        <label class="filtro-toggle item-icone-texto">
           <input type="checkbox" v-model="modoSimuladorSensor" />
-          🔄 Clique simula Sensor HC-SR04 (Carro Entrando/Saindo)
+          <IconCpu :size="16" />
+          <span>Clique simula Sensor HC-SR04 (Carro Entrando/Saindo)</span>
         </label>
       </div>
 
@@ -4443,9 +5715,9 @@ function clicarCelulaMotorista(celula) {
               <span v-if="andarMotorista.celulas[`${x},${y}`]?.tipo === 'VAGA'">
                 {{ andarMotorista.celulas[`${x},${y}`]?.identificador }}
               </span>
-              <span v-else-if="andarMotorista.celulas[`${x},${y}`]?.tipo === 'ENTRADA'">ENT</span>
-              <span v-else-if="andarMotorista.celulas[`${x},${y}`]?.tipo === 'SAIDA'">SAI</span>
-              <span v-else-if="andarMotorista.celulas[`${x},${y}`]?.tipo === 'ACESSO'">🚶</span>
+              <IconDoorEnter v-else-if="andarMotorista.celulas[`${x},${y}`]?.tipo === 'ENTRADA'" :size="18" />
+              <IconDoorExit v-else-if="andarMotorista.celulas[`${x},${y}`]?.tipo === 'SAIDA'" :size="18" />
+              <IconArrowBarRight v-else-if="andarMotorista.celulas[`${x},${y}`]?.tipo === 'ACESSO'" :size="18" />
             </div>
           </div>
         </template>
@@ -4456,8 +5728,9 @@ function clicarCelulaMotorista(celula) {
   <div v-else class="admin-container">
     <div class="lista-card" style="text-align: center">
       <h2>Estacionamento não encontrado ou inativo</h2>
-      <button class="btn-primario" style="margin-top: 16px" @click="router.push({ name: 'motorista-home' })">
-        Voltar ao Início
+      <button class="btn-primario item-icone-texto" style="margin: 16px auto 0" @click="router.push({ name: 'motorista-home' })">
+        <IconSquareRoundedArrowLeft :size="18" />
+        <span>Voltar ao Início</span>
       </button>
     </div>
   </div>

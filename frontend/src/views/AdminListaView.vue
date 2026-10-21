@@ -10,6 +10,16 @@ import {
   alternarInativoNoBanco,
   removerEstabelecimentoNoBanco
 } from '../store/estacionamentoStore'
+import {
+  IconSearch,
+  IconSquareRoundedPlus,
+  IconPencil,
+  IconBan,
+  IconSquareRoundedCheck,
+  IconTrash,
+  IconSquareRoundedChevronLeft,
+  IconSquareRoundedChevronRight
+} from '../icons'
 
 const router = useRouter()
 const termoPesquisaAdmin = ref('')
@@ -82,15 +92,19 @@ async function removerEstabelecimento(est) {
     </header>
 
     <div class="barra-pesquisa-admin">
-      <input
-        v-model="termoPesquisaAdmin"
-        type="text"
-        placeholder="🔍 Pesquisar por nome ou ID..."
-        class="input-pesquisa-grande"
-        @input="paginaAtualAdmin = 1"
-      />
-      <button class="btn-primario btn-add-est" @click="criarNovo">
-        ➕ Adicionar Estacionamento
+      <div class="input-pesquisa-icone-wrapper">
+        <IconSearch :size="18" class="icone-input-pesquisa" />
+        <input
+          v-model="termoPesquisaAdmin"
+          type="text"
+          placeholder="Pesquisar por nome ou ID..."
+          class="input-pesquisa-grande com-icone"
+          @input="paginaAtualAdmin = 1"
+        />
+      </div>
+      <button class="btn-primario btn-add-est item-icone-texto" @click="criarNovo">
+        <IconSquareRoundedPlus :size="20" />
+        <span>Adicionar Estacionamento</span>
       </button>
     </div>
 
@@ -116,17 +130,18 @@ async function removerEstabelecimento(est) {
 
         <div class="acoes-direita">
           <button class="btn-icone editar" title="Editar Estacionamento" @click="editarEstabelecimento(est)">
-            ✏️
+            <IconPencil :size="18" />
           </button>
           <button
             class="btn-icone inativar"
             :title="est.inativo ? 'Reativar' : 'Inativar'"
             @click="alternarInativoEstabelecimento(est)"
           >
-            {{ est.inativo ? '✅' : '🚫' }}
+            <IconSquareRoundedCheck v-if="est.inativo" :size="18" style="color: #16a34a" />
+            <IconBan v-else :size="18" style="color: #dc2626" />
           </button>
           <button class="btn-icone remover" title="Remover Permanentemente" @click="removerEstabelecimento(est)">
-            🗑️
+            <IconTrash :size="18" />
           </button>
         </div>
       </div>
@@ -137,9 +152,15 @@ async function removerEstabelecimento(est) {
     </div>
 
     <div class="paginacao-admin">
-      <button :disabled="paginaAtualAdmin <= 1" @click="paginaAtualAdmin--">⬅️ Anterior</button>
+      <button class="item-icone-texto" :disabled="paginaAtualAdmin <= 1" @click="paginaAtualAdmin--">
+        <IconSquareRoundedChevronLeft :size="18" />
+        <span>Anterior</span>
+      </button>
       <span>Página {{ paginaAtualAdmin }} de {{ totalPaginasAdmin }}</span>
-      <button :disabled="paginaAtualAdmin >= totalPaginasAdmin" @click="paginaAtualAdmin++">Próxima ➡️</button>
+      <button class="item-icone-texto" :disabled="paginaAtualAdmin >= totalPaginasAdmin" @click="paginaAtualAdmin++">
+        <span>Próxima</span>
+        <IconSquareRoundedChevronRight :size="18" />
+      </button>
     </div>
   </div>
 </template>

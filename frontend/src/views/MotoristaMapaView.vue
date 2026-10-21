@@ -2,6 +2,13 @@
 import { ref, computed, watch } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import { estabelecimentos } from '../store/estacionamentoStore'
+import {
+  IconSquareRoundedArrowLeft,
+  IconCpu,
+  IconDoorEnter,
+  IconDoorExit,
+  IconArrowBarRight
+} from '../icons'
 
 const route = useRoute()
 const router = useRouter()
@@ -57,8 +64,9 @@ function clicarCelulaMotorista(celula) {
         <h1>{{ estacionamentoAtual.nome }}</h1>
         <p class="subtitulo">Toque em uma vaga livre (verde) para marcá-la em roxo</p>
       </div>
-      <button class="btn-secundario" @click="router.push({ name: 'motorista-home' })">
-        📷 Ler outro QR Code
+      <button class="btn-secundario item-icone-texto" @click="router.push({ name: 'motorista-home' })">
+        <IconSquareRoundedArrowLeft :size="18" />
+        <span>Ler outro QR Code</span>
       </button>
     </header>
 
@@ -80,9 +88,10 @@ function clicarCelulaMotorista(celula) {
           <input type="checkbox" v-model="filtrarOcupadas" />
           Deixar vagas ocupadas cinzas
         </label>
-        <label class="filtro-toggle">
+        <label class="filtro-toggle item-icone-texto">
           <input type="checkbox" v-model="modoSimuladorSensor" />
-          🔄 Clique simula Sensor HC-SR04 (Carro Entrando/Saindo)
+          <IconCpu :size="16" />
+          <span>Clique simula Sensor HC-SR04 (Carro Entrando/Saindo)</span>
         </label>
       </div>
 
@@ -127,9 +136,9 @@ function clicarCelulaMotorista(celula) {
               <span v-if="andarMotorista.celulas[`${x},${y}`]?.tipo === 'VAGA'">
                 {{ andarMotorista.celulas[`${x},${y}`]?.identificador }}
               </span>
-              <span v-else-if="andarMotorista.celulas[`${x},${y}`]?.tipo === 'ENTRADA'">ENT</span>
-              <span v-else-if="andarMotorista.celulas[`${x},${y}`]?.tipo === 'SAIDA'">SAI</span>
-              <span v-else-if="andarMotorista.celulas[`${x},${y}`]?.tipo === 'ACESSO'">🚶</span>
+              <IconDoorEnter v-else-if="andarMotorista.celulas[`${x},${y}`]?.tipo === 'ENTRADA'" :size="18" />
+              <IconDoorExit v-else-if="andarMotorista.celulas[`${x},${y}`]?.tipo === 'SAIDA'" :size="18" />
+              <IconArrowBarRight v-else-if="andarMotorista.celulas[`${x},${y}`]?.tipo === 'ACESSO'" :size="18" />
             </div>
           </div>
         </template>
@@ -140,8 +149,9 @@ function clicarCelulaMotorista(celula) {
   <div v-else class="admin-container">
     <div class="lista-card" style="text-align: center">
       <h2>Estacionamento não encontrado ou inativo</h2>
-      <button class="btn-primario" style="margin-top: 16px" @click="router.push({ name: 'motorista-home' })">
-        Voltar ao Início
+      <button class="btn-primario item-icone-texto" style="margin: 16px auto 0" @click="router.push({ name: 'motorista-home' })">
+        <IconSquareRoundedArrowLeft :size="18" />
+        <span>Voltar ao Início</span>
       </button>
     </div>
   </div>

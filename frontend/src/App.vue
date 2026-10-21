@@ -6,6 +6,14 @@ import {
   iniciarNovoFormulario,
   carregarDadosDoBanco
 } from './store/estacionamentoStore'
+import {
+  IconMenu2,
+  IconSquareRoundedX,
+  IconSearch,
+  IconParking,
+  IconSquareRoundedPlus,
+  IconSettings
+} from './icons'
 
 const menuAberto = ref(false)
 const router = useRouter()
@@ -28,7 +36,9 @@ function irParaNovoEstacionamento() {
 
 <template>
   <div class="app-container">
-    <button class="btn-hamburguer" @click="menuAberto = !menuAberto">☰</button>
+    <button class="btn-hamburguer" @click="menuAberto = !menuAberto">
+      <IconMenu2 :size="22" />
+    </button>
 
     <Transition name="fade-backdrop">
       <div v-if="menuAberto" class="menu-backdrop" @click="menuAberto = false"></div>
@@ -38,31 +48,45 @@ function irParaNovoEstacionamento() {
       <aside v-if="menuAberto" class="menu-lateral">
         <div class="menu-header">
           <h2>Vaga Certa</h2>
-          <button class="btn-fechar" @click="menuAberto = false">✖</button>
+          <button class="btn-fechar" @click="menuAberto = false">
+            <IconSquareRoundedX :size="22" />
+          </button>
         </div>
         <nav class="menu-links">
-          <span class="menu-secao">📱 NÍVEL 1 (MOTORISTA)</span>
-          <a href="#" @click.prevent="irPara({ name: 'motorista-home' })">📷 Leitor de QR Code</a>
+          <span class="menu-secao">NÍVEL 1 (MOTORISTA)</span>
+          <a href="#" class="item-icone-texto" @click.prevent="irPara({ name: 'motorista-home' })">
+            <IconSearch :size="18" />
+            <span>Leitor de QR Code</span>
+          </a>
           <a
             v-for="est in estabelecimentos.filter(e => !e.inativo)"
             :key="est.id"
             href="#"
+            class="item-icone-texto"
             @click.prevent="irPara({ name: 'motorista-mapa', params: { id: est.id } })"
           >
-            🅿️ {{ est.nome }}
+            <IconParking :size="18" />
+            <span>{{ est.nome }}</span>
           </a>
 
-          <span class="menu-secao">🛠️ NÍVEL 3 (ADMIN DEV)</span>
-          <a href="#" @click.prevent="irPara({ name: 'admin-lista' })">
-            📋 Gerenciar Estacionamentos
+          <span class="menu-secao">NÍVEL 3 (ADMIN DEV)</span>
+          <a href="#" class="item-icone-texto" @click.prevent="irPara({ name: 'admin-lista' })">
+            <IconSettings :size="18" />
+            <span>Gerenciar Estacionamentos</span>
           </a>
-          <a href="#" @click.prevent="irParaNovoEstacionamento">
-            ➕ Novo Estacionamento (Editor 2D)
+          <a href="#" class="item-icone-texto" @click.prevent="irParaNovoEstacionamento">
+            <IconSquareRoundedPlus :size="18" />
+            <span>Novo Estacionamento (Editor 2D)</span>
           </a>
         </nav>
       </aside>
     </Transition>
 
-    <router-view />
+    <!-- Animação leve, sutil e rápida ao alternar entre as views -->
+    <router-view v-slot="{ Component }">
+      <Transition name="fade-view" mode="out-in">
+        <component :is="Component" />
+      </Transition>
+    </router-view>
   </div>
 </template>

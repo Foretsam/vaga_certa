@@ -5,6 +5,13 @@ import {
   formEstabelecimento,
   criarMatrizVazia
 } from '../store/estacionamentoStore'
+import {
+  IconSquareRoundedArrowLeft,
+  IconSquareRoundedArrowRight,
+  IconSquareRoundedPlus,
+  IconSquareRoundedMinus,
+  IconLayoutGrid
+} from '../icons'
 
 const router = useRouter()
 
@@ -63,8 +70,9 @@ function avancarParaEditorP2() {
         <h1>Editar estacionamento - Informações Gerais</h1>
         <p class="subtitulo">Defina os dados gerais e a lista de andares sem nomes repetidos (máx. 10)</p>
       </div>
-      <button class="btn-secundario btn-voltar-topo" @click="router.push({ name: 'admin-lista' })">
-        ⬅️ Voltar
+      <button class="btn-secundario btn-voltar-topo item-icone-texto" @click="router.push({ name: 'admin-lista' })">
+        <IconSquareRoundedArrowLeft :size="18" />
+        <span>Voltar</span>
       </button>
     </header>
 
@@ -108,7 +116,7 @@ function avancarParaEditorP2() {
             title="Remover este andar"
             @click="removerAndarForm(idx)"
           >
-            −
+            <IconSquareRoundedMinus :size="20" />
           </button>
 
           <button
@@ -117,14 +125,16 @@ function avancarParaEditorP2() {
             title="Adicionar novo andar abaixo"
             @click="adicionarAndarForm"
           >
-            +
+            <IconSquareRoundedPlus :size="20" />
           </button>
         </div>
       </div>
 
       <div class="rodape-form">
-        <button class="btn-primario btn-grande" @click="avancarParaEditorP2">
-          🎮 Avançar para o Editor de Mapa 2D ➡️
+        <button class="btn-primario btn-grande item-icone-texto" @click="avancarParaEditorP2">
+          <IconLayoutGrid :size="20" />
+          <span>Avançar para o Editor de Mapa 2D</span>
+          <IconSquareRoundedArrowRight :size="20" />
         </button>
       </div>
     </div>

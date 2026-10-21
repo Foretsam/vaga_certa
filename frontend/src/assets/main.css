@@ -1,54 +1,12 @@
-/* =========================================================
-   VARIÁVEIS DE TEMA
-   Todas as cores repetidas do projeto vivem aqui.
-   ========================================================= */
 :root {
-  /* Interface */
   --bg-painel: #f1f5f9;
   --bg-card: #ffffff;
   --texto-principal: #0f172a;
   --texto-secundario: #475569;
   --borda: #cbd5e1;
   --destaque-azul: #2563eb;
-
-  /* Semânticas */
-  --cor-sucesso: #16a34a;
-  --cor-sucesso-escuro: #15803d;
-  --cor-sucesso-claro: #22c55e;
-  --cor-perigo: #dc2626;
-  --cor-perigo-claro: #ef4444;
-  --cor-aviso: #f59e0b;
-  --cor-roxo: #9333ea;
-
-  /* Texto colorido sobre cards (ajustado por tema para manter contraste) */
-  --cor-sucesso-texto: #15803d;
-  --cor-perigo-texto: #b91c1c;
-  --cor-roxo-texto: #7e22ce;
-
-  /* Tipos de célula do mapa */
-  --cor-entrada: #2563eb;
-  --cor-saida: #ea580c;
-  --cor-acesso: #16a34a;
-  --cor-vaga-amarela: #eab308;
-  --cor-vaga-amarela-borda: #a16207;
-  --cor-vaga-cinza: #64748b;
-  --cor-vazio: #cbd5e1;
   --cor-asfalto: #1e293b;
   --borda-asfalto: #475569;
-
-  /* Grid: fica claro nos dois temas DE PROPÓSITO, para as cores
-     dos setores e das vagas manterem o mesmo contraste */
-  --bg-grid: #ffffff;
-  --grid-rotulo-bg: #f1f5f9;
-  --grid-rotulo-texto: #334155;
-  --grid-rotulo-borda: #cbd5e1;
-  --grid-borda-celula: #94a3b8;
-
-  /* HUD flutuante (mobile/tablet) */
-  --hud-tam: 44px;
-  --hud-margem: 10px;
-  --hud-gap: 8px;
-  --hud-slot2: calc(var(--hud-margem) + var(--hud-tam) + var(--hud-gap));
 }
 
 @media (prefers-color-scheme: dark) {
@@ -61,40 +19,18 @@
     --destaque-azul: #3b82f6;
     --cor-asfalto: #090d16;
     --borda-asfalto: #64748b;
-    --cor-sucesso-texto: #22c55e;
-    --cor-perigo-texto: #f87171;
-    --cor-roxo-texto: #a855f7;
   }
 }
 
-/* =========================================================
-   RESET E BASE
-   ========================================================= */
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-}
-
-body {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, sans-serif;
 }
 
-/* Controles de formulário não herdam a fonte por padrão */
-button,
-input,
-select,
-textarea {
-  font-family: inherit;
-}
-
-/* O !important aqui existe só para anular o style.css padrão do Vite
-   (#app com max-width/padding e body com display:flex).
-   Se você remover o import desse arquivo no main.js, pode tirá-lo. */
-html,
-body,
-#app {
-  width: 100%;
+html, body, #app {
+  width: 100% !important;
   max-width: 100% !important;
   margin: 0 !important;
   padding: 0 !important;
@@ -107,29 +43,26 @@ body,
 .app-container {
   width: 100%;
   min-height: 100vh;
-  min-height: 100dvh;
   background: var(--bg-painel);
   color: var(--texto-principal);
 }
 
-/* Indicador de foco para navegação por teclado */
-:focus-visible {
-  outline: 3px solid var(--destaque-azul);
-  outline-offset: 2px;
-}
-input:focus-visible,
-select:focus-visible {
-  outline-offset: 0;
-}
-
-button:disabled {
-  cursor: not-allowed;
-  opacity: 0.5;
-}
-
 /* =========================================================
-   ANIMAÇÕES (classes das <Transition> do Vue)
+   ANIMAÇÕES SUTIS PROFISSIONAIS (MENU, MODAIS E VIEWS)
    ========================================================= */
+.fade-view-enter-active,
+.fade-view-leave-active {
+  transition: opacity 0.14s ease, transform 0.14s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.fade-view-enter-from {
+  opacity: 0;
+  transform: translateY(4px);
+}
+.fade-view-leave-to {
+  opacity: 0;
+  transform: translateY(-4px);
+}
+
 .slide-menu-enter-active,
 .slide-menu-leave-active {
   transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.2s ease;
@@ -149,53 +82,36 @@ button:disabled {
   opacity: 0;
 }
 
-/* Também usada nos overlays do editor e nos modais.
-   Não define transform próprio no estado final, então não conflita
-   com os overlays centralizados via translateX(-50%). */
 .fade-pop-enter-active,
 .fade-pop-leave-active {
-  transition: opacity 0.16s ease;
+  transition: opacity 0.16s ease, transform 0.16s cubic-bezier(0.16, 1, 0.3, 1);
 }
 .fade-pop-enter-from,
 .fade-pop-leave-to {
   opacity: 0;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .slide-menu-enter-active,
-  .slide-menu-leave-active,
-  .fade-backdrop-enter-active,
-  .fade-backdrop-leave-active,
-  .fade-pop-enter-active,
-  .fade-pop-leave-active {
-    transition-duration: 0.01ms;
-  }
+  transform: translateY(-4px) scale(0.98);
 }
 
 /* =========================================================
-   MENU HAMBÚRGUER E LATERAL (o markup fica no App.vue)
+   MENU HAMBÚRGUER E LATERAL
    ========================================================= */
-.btn-hamburguer,
-.hud-btn-flutuante {
+.btn-hamburguer {
+  position: fixed;
+  top: 10px;
+  left: 10px;
+  z-index: 1000;
   background: var(--bg-card);
   color: var(--texto-principal);
   border: 1px solid var(--borda);
+  width: 46px;
+  height: 46px;
+  border-radius: 11px;
+  font-size: 22px;
   display: flex;
   justify-content: center;
   align-items: center;
   cursor: pointer;
-  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
-}
-
-.btn-hamburguer {
-  position: fixed;
-  top: var(--hud-margem);
-  left: var(--hud-margem);
-  z-index: 1000;
-  width: 50px;
-  height: 50px;
-  border-radius: 11px;
-  font-size: 30px;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.2);
 }
 
 .menu-backdrop {
@@ -216,8 +132,7 @@ button:disabled {
   color: var(--texto-principal);
   z-index: 1001;
   padding: 20px;
-  box-shadow: 4px 0 20px rgba(0, 0, 0, 0.35);
-  overflow-y: auto;
+  box-shadow: 4px 0 20px rgba(0,0,0,0.35);
 }
 
 .menu-header {
@@ -234,9 +149,9 @@ button:disabled {
   border: none;
   color: var(--texto-principal);
   font-size: 20px;
-  min-width: 40px;
-  min-height: 40px;
   cursor: pointer;
+  display: inline-flex;
+  align-items: center;
 }
 
 .menu-links {
@@ -261,15 +176,15 @@ button:disabled {
   padding: 10px 12px;
   border-radius: 8px;
   transition: background 0.15s;
+  justify-content: flex-start;
 }
 .menu-links a:hover { background: var(--borda); }
 
 /* =========================================================
-   TELA INICIAL DO MOTORISTA (MotoristaHomeView)
+   TELA INICIAL (NÍVEL 1)
    ========================================================= */
 .tela-inicial {
   min-height: 100vh;
-  min-height: 100dvh;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -278,24 +193,18 @@ button:disabled {
 
 .hero-card {
   background: var(--bg-card);
-  color: var(--texto-principal);
   border: 1px solid var(--borda);
   border-radius: 18px;
   padding: 32px 28px;
   max-width: 520px;
   width: 100%;
   text-align: center;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
 }
 
 .icone-destaque { font-size: 54px; margin-bottom: 12px; }
 .titulo-principal { font-size: 27px; margin-bottom: 12px; }
-.descricao-principal {
-  color: var(--texto-secundario);
-  font-size: 16px;
-  margin-bottom: 22px;
-  line-height: 1.5;
-}
+.descricao-principal { color: var(--texto-secundario); font-size: 16px; margin-bottom: 22px; line-height: 1.5; }
 
 .btn-ler-qr {
   width: 100%;
@@ -319,7 +228,7 @@ button:disabled {
 
 .btn-cancelar-camera {
   width: 100%;
-  background: var(--cor-perigo);
+  background: #dc2626;
   color: #fff;
   border: none;
   padding: 12px;
@@ -328,12 +237,7 @@ button:disabled {
   cursor: pointer;
 }
 
-.msg-erro {
-  color: var(--cor-perigo-texto);
-  margin-top: 12px;
-  font-size: 14px;
-  line-height: 1.4;
-}
+.msg-erro { color: #ef4444; margin-top: 12px; font-size: 14px; }
 
 .area-teste-dev {
   margin-top: 22px;
@@ -355,29 +259,27 @@ button:disabled {
   cursor: pointer;
   font-weight: 600;
   font-size: 14.5px;
-  text-align: center;
 }
 .btn-teste-dev.destaque-admin {
-  border-color: var(--cor-roxo);
-  color: var(--cor-roxo-texto);
+  border-color: #9333ea;
+  color: #a855f7;
 }
 
 /* =========================================================
-   CABEÇALHOS DAS TELAS (admin e motorista)
+   CABEÇALHO CENTRALIZADO NO TOPO
    ========================================================= */
-.painel-estacionamento,
-.admin-container {
+.painel-estacionamento, .admin-container {
   padding: 20px 24px 28px 24px;
   width: 100%;
   max-width: 1400px;
   margin: 0 auto;
 }
 
-/* Título centralizado à direita do hambúrguer.
-   Com .com-botao-direita reserva espaço para o botão "Voltar". */
 .topbar-titulo-central {
   min-height: 46px;
-  padding: 20px 60px 0 60px;
+  padding-top: 6px;
+  padding-left: 60px;
+  padding-right: 60px;
   margin-bottom: 22px;
   display: flex;
   flex-direction: column;
@@ -391,14 +293,8 @@ button:disabled {
   padding-right: 130px;
 }
 
-/* Wrapper do título em AdminInfoGeraisView */
-.bloco-titulo-centro {
-  min-width: 0;
-  text-align: center;
-}
-
 .topbar-titulo-central h1 {
-  font-size: 32px;
+  font-size: 28px;
   font-weight: 700;
   line-height: 1.25;
 }
@@ -409,7 +305,15 @@ button:disabled {
   margin-top: 4px;
 }
 
-/* Cabeçalho da tela do mapa (MotoristaMapaView) */
+.btn-voltar-topo {
+  position: absolute;
+  right: 0;
+  top: 55%;
+  transform: translateY(-50%);
+  padding: 10px 18px !important;
+  font-size: 15.5px !important;
+}
+
 .painel-header {
   padding-left: 60px;
   display: flex;
@@ -421,50 +325,30 @@ button:disabled {
 }
 .painel-header h1 { font-size: 26px; }
 
-/* =========================================================
-   BOTÕES BASE
-   Primário e secundário compartilham a mesma altura
-   (importante nos modais, onde aparecem lado a lado).
-   ========================================================= */
-.btn-primario,
-.btn-secundario {
-  padding: 11px 18px;
-  border-radius: 8px;
-  font-weight: 600;
-  font-size: 15px;
-  line-height: 1.2;
-  cursor: pointer;
-}
-
 .btn-primario {
   background: var(--destaque-azul);
   color: #fff;
-  border: 1px solid var(--destaque-azul);
+  border: none;
+  padding: 11px 20px;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 15.5px;
+  cursor: pointer;
 }
 
 .btn-secundario {
   background: var(--bg-card);
   color: var(--texto-principal);
   border: 1px solid var(--borda);
-}
-
-.btn-grande {
-  padding: 14px 24px;
-  font-size: 16px;
-}
-
-/* Botão "Voltar" absoluto no topo (seletor composto vence .btn-secundario sem !important) */
-.topbar-titulo-central .btn-voltar-topo {
-  position: absolute;
-  right: 0;
-  top: 55%;
-  transform: translateY(-50%);
-  padding: 10px 18px;
-  font-size: 18px;
+  padding: 10px 16px;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 15px;
+  cursor: pointer;
 }
 
 /* =========================================================
-   LISTA DE ESTACIONAMENTOS (AdminListaView)
+   LISTA DE ESTACIONAMENTOS (ÍCONES CLAROS NO MODO DARK)
    ========================================================= */
 .barra-pesquisa-admin {
   display: flex;
@@ -474,7 +358,6 @@ button:disabled {
 
 .input-pesquisa-grande {
   flex: 1;
-  min-width: 0;
   padding: 12px 16px;
   border-radius: 8px;
   border: 1px solid var(--borda);
@@ -483,14 +366,8 @@ button:disabled {
   font-size: 16px;
 }
 
-.btn-add-est {
-  white-space: nowrap;
-  font-size: 15.5px;
-}
-
 .lista-card {
   background: var(--bg-card);
-  color: var(--texto-principal);
   border: 1px solid var(--borda);
   border-radius: 10px;
   padding: 10px 16px;
@@ -498,7 +375,6 @@ button:disabled {
 
 .form-card {
   background: var(--bg-card);
-  color: var(--texto-principal);
   border: 1px solid var(--borda);
   border-radius: 12px;
   padding: 24px;
@@ -547,14 +423,12 @@ button:disabled {
 }
 
 .tag-inativo {
-  display: inline-block;
-  background: var(--cor-perigo);
+  background: #dc2626;
   color: #fff;
   font-size: 11.5px;
   padding: 2px 7px;
   border-radius: 4px;
   margin-left: 8px;
-  vertical-align: middle;
 }
 
 .meta-est {
@@ -569,8 +443,10 @@ button:disabled {
   flex-shrink: 0;
 }
 
+/* Cor explícita var(--texto-principal) para os ícones Editar e Remover ficarem nítidos no Modo Dark */
 .btn-icone {
   background: var(--bg-painel);
+  color: var(--texto-principal);
   border: 1px solid var(--borda);
   width: 40px;
   height: 40px;
@@ -580,10 +456,16 @@ button:disabled {
   justify-content: center;
   align-items: center;
   cursor: pointer;
+  transition: border-color 0.15s, color 0.15s, background 0.15s;
 }
-.btn-icone.editar:hover { border-color: var(--destaque-azul); }
-.btn-icone.inativar:hover { border-color: var(--cor-aviso); }
-.btn-icone.remover:hover { border-color: var(--cor-perigo); }
+.btn-icone.editar:hover {
+  border-color: var(--destaque-azul);
+  color: var(--destaque-azul);
+}
+.btn-icone.remover:hover {
+  border-color: #ef4444;
+  color: #ef4444;
+}
 
 .lista-vazia {
   padding: 24px;
@@ -610,9 +492,7 @@ button:disabled {
   cursor: pointer;
 }
 
-/* =========================================================
-   FORMULÁRIOS (AdminInfoGeraisView e modais)
-   ========================================================= */
+/* Formulários */
 .campo-grupo {
   display: flex;
   flex-direction: column;
@@ -620,8 +500,7 @@ button:disabled {
   margin-bottom: 18px;
 }
 .campo-grupo label { font-weight: 600; font-size: 15.5px; }
-.campo-grupo input,
-.select-padrao {
+.campo-grupo input, .select-padrao {
   padding: 11px 14px;
   border-radius: 8px;
   border: 1px solid var(--borda);
@@ -634,18 +513,12 @@ button:disabled {
   color: var(--texto-principal);
 }
 
-/* Linha de andar: input + (−) + (+).
-   Em grid, o − fica sempre na coluna 2 e o + na coluna 3, então os inputs
-   de todas as linhas têm a mesma largura, com ou sem botões. */
 .linha-andar-dinamica {
-  display: grid;
-  grid-template-columns: 1fr 44px 44px;
+  display: flex;
   gap: 8px;
   margin-bottom: 8px;
 }
-.linha-andar-dinamica input { min-width: 0; }
-.linha-andar-dinamica .btn-menos { grid-column: 2; }
-.linha-andar-dinamica .btn-mais { grid-column: 3; }
+.linha-andar-dinamica input { flex: 1; }
 
 .btn-mais-menos {
   width: 44px;
@@ -655,57 +528,48 @@ button:disabled {
   font-size: 22px;
   font-weight: bold;
   color: #fff;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
   cursor: pointer;
 }
-.btn-mais { background: var(--cor-sucesso); }
-.btn-menos { background: var(--cor-perigo); }
-
-.rodape-form {
-  display: flex;
-  justify-content: flex-end;
-  margin-top: 24px;
-  padding-top: 18px;
-  border-top: 1px solid var(--borda);
-}
+.btn-mais { background: #16a34a; }
+.btn-menos { background: #dc2626; }
 
 /* =========================================================
-   EDITOR 2D (AdminEditor2DView) — LAYOUT E BARRA SUPERIOR
+   EDITOR GAMIFICADO 2D (DESKTOP)
    ========================================================= */
 .editor-layout {
   position: relative;
   padding: 8px 12px 12px 12px;
   width: 100%;
   height: 100vh;
-  height: 100dvh;
   display: flex;
   flex-direction: column;
   gap: 10px;
   overflow: hidden;
 }
 
-/* HUD flutuante só existe em tablet/mobile (<= 1024px) */
+/* Ocultos em Desktop (> 1024px) e exibidos em <= 1024px */
 .hud-btn-flutuante,
 .hud-coluna-direita-mobile {
   display: none;
 }
 
-/* margin-left maior que o hambúrguer de 60px (10px + 60px - 12px de padding) */
 .editor-topbar {
-  margin-left: 64px;
+  margin-left: 54px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   flex-wrap: nowrap;
   gap: 10px;
   background: var(--bg-card);
-  color: var(--texto-principal);
   padding: 8px 14px;
   border-radius: 10px;
   border: 1px solid var(--borda);
 }
 
-.topbar-esquerda,
-.topbar-direita {
+.topbar-esquerda, .topbar-direita {
   display: flex;
   align-items: center;
   gap: 8px;
@@ -717,15 +581,19 @@ button:disabled {
   font-size: 14.5px;
 }
 
-/* Botões com <br>: uma linha por padrão; duas linhas só na faixa 1025–1291px */
-.btn-duas-linhas br { display: none; }
-.btn-duas-linhas span { margin-left: 4px; }
+.btn-duas-linhas br {
+  display: none;
+}
+.btn-duas-linhas span {
+  margin-left: 4px;
+}
 
 .seletor-andar-box {
   display: flex;
   align-items: center;
   gap: 6px;
   background: var(--bg-painel);
+  color: var(--texto-principal);
   padding: 6px 12px;
   border-radius: 8px;
   border: 1px solid var(--borda);
@@ -761,23 +629,23 @@ button:disabled {
   gap: 6px;
 }
 .btn-caution-avisos.caution-pendente {
-  border-color: var(--cor-aviso);
+  border-color: #f59e0b;
   background: rgba(245, 158, 11, 0.15);
 }
-.btn-caution-avisos.caution-ok { border-color: var(--cor-sucesso); }
+.btn-caution-avisos.caution-ok { border-color: #16a34a; }
 
 .caution-badge {
-  background: var(--cor-perigo);
+  background: #dc2626;
   color: #fff;
   font-size: 12.5px;
   font-weight: 800;
   padding: 2px 7px;
   border-radius: 999px;
 }
-.caution-ok .caution-badge { background: var(--cor-sucesso); }
+.caution-ok .caution-badge { background: #16a34a; }
 
 .btn-salvar-final {
-  background: var(--cor-sucesso);
+  background: #16a34a;
   color: #fff;
   border: none;
   padding: 10px 18px;
@@ -787,35 +655,35 @@ button:disabled {
   cursor: pointer;
 }
 .btn-salvar-final:disabled {
-  background: var(--cor-vaga-cinza);
+  background: #64748b;
   opacity: 0.45;
   cursor: not-allowed;
 }
 
-/* Faixa 1025px–1291px: botões em duas linhas compactas.
-   Vem depois de ".editor-topbar .btn-secundario" para vencer sem !important. */
+/* =========================================================
+   INTERVALO 1025px A 1291px: BOTÕES EM DUAS LINHAS COMPACTAS
+   ========================================================= */
 @media (min-width: 1025px) and (max-width: 1291px) {
-  .editor-topbar .btn-secundario {
-    font-size: 13px;
-    padding: 6px 10px;
-  }
-  .editor-topbar .btn-duas-linhas {
+  .btn-duas-linhas {
     line-height: 1.15;
     text-align: center;
-    padding: 5px 10px;
-    font-size: 12.5px;
+    padding: 5px 10px !important;
+    font-size: 12.5px !important;
   }
-  .btn-duas-linhas br { display: inline; }
+  .btn-duas-linhas br {
+    display: inline;
+  }
   .btn-duas-linhas span {
     margin-left: 0;
     font-size: 11.5px;
     opacity: 0.92;
   }
+  .editor-topbar .btn-secundario {
+    font-size: 13px;
+    padding: 6px 10px;
+  }
 }
 
-/* =========================================================
-   EDITOR 2D — WORKSPACE, OVERLAYS E GRID
-   ========================================================= */
 .editor-workspace {
   flex: 1;
   display: flex;
@@ -832,6 +700,7 @@ button:disabled {
   display: flex;
 }
 
+/* Overlays Flutuantes */
 .overlay-flutuante {
   position: absolute;
   z-index: 60;
@@ -843,11 +712,9 @@ button:disabled {
   right: 10px;
   width: 360px;
   max-width: calc(100% - 20px);
-  max-height: calc(100% - 20px);
-  overflow-y: auto;
   background: var(--bg-card);
   color: var(--texto-principal);
-  border: 2px solid var(--cor-aviso);
+  border: 2px solid #f59e0b;
   border-radius: 10px;
   padding: 14px;
 }
@@ -865,15 +732,15 @@ button:disabled {
   border: none;
   color: var(--texto-principal);
   font-size: 16px;
-  min-width: 32px;
-  min-height: 32px;
   cursor: pointer;
+  display: inline-flex;
+  align-items: center;
 }
 
 .lista-avisos-ul {
   padding-left: 18px;
   font-size: 13.5px;
-  color: var(--cor-perigo-texto);
+  color: #f87171;
   display: flex;
   flex-direction: column;
   gap: 5px;
@@ -881,16 +748,14 @@ button:disabled {
 
 .aviso-tudo-ok {
   font-size: 13.5px;
-  color: var(--cor-sucesso-texto);
+  color: #22c55e;
   font-weight: 600;
 }
 
-/* Os três overlays a seguir são escuros nos dois temas, de propósito */
 .banner-carimbo-overlay {
   top: 10px;
   left: 50%;
   transform: translateX(-50%);
-  max-width: calc(100% - 20px);
   background: #065f46;
   color: #ecfdf5;
   border: 1px solid #10b981;
@@ -903,20 +768,20 @@ button:disabled {
   white-space: nowrap;
 }
 .btn-cancelar-carimbo {
-  background: var(--cor-perigo);
+  background: #dc2626;
   color: #fff;
   border: none;
-  padding: 3px 8px;
+  padding: 4px 6px;
   border-radius: 4px;
   cursor: pointer;
-  font-weight: bold;
+  display: inline-flex;
+  align-items: center;
 }
 
 .menu-selecao-overlay {
   bottom: 14px;
   left: 50%;
   transform: translateX(-50%);
-  max-width: calc(100% - 20px);
   background: #1e1b4b;
   color: #fff;
   padding: 8px 14px;
@@ -940,14 +805,9 @@ button:disabled {
   justify-content: center;
   align-items: center;
 }
-.btn-mini.add { background: var(--cor-sucesso-claro); color: #fff; }
-.btn-mini.rem { background: var(--cor-perigo-claro); color: #fff; }
-.btn-mini.lixeira-tudo {
-  background: var(--cor-perigo);
-  color: #fff;
-  border: 1px solid #fca5a5;
-}
-.btn-mini.limpar { background: var(--borda-asfalto); color: #fff; }
+.btn-mini.add { background: #22c55e; color: #fff; }
+.btn-mini.rem { background: #ef4444; color: #fff; }
+.btn-mini.limpar { background: #475569; color: #fff; }
 
 .badge-hover-setor {
   bottom: 14px;
@@ -968,15 +828,14 @@ button:disabled {
   height: 12px;
   border-radius: 50%;
   border: 1px solid #fff;
-  flex-shrink: 0;
 }
 
-/* Área do grid com suporte a pan e pinch-zoom por toque */
+/* Área do Grid Principal */
 .area-grid-principal {
   flex: 1;
   width: 100%;
   height: 100%;
-  background: var(--bg-grid);
+  background: #ffffff;
   border: 2px solid var(--borda);
   border-radius: 12px;
   overflow: auto;
@@ -991,19 +850,17 @@ button:disabled {
 }
 
 .matriz-com-coordenadas { display: inline-block; }
-.linha-coordenadas-x,
-.linha-grid-y { display: grid; }
+.linha-coordenadas-x, .linha-grid-y { display: grid; }
 
-.canto-xy,
-.rotulo-coord {
+.canto-xy, .rotulo-coord {
   display: flex;
   justify-content: center;
   align-items: center;
   font-size: 11.5px;
   font-weight: bold;
-  color: var(--grid-rotulo-texto);
-  background: var(--grid-rotulo-bg);
-  border: 1px solid var(--grid-rotulo-borda);
+  color: #334155;
+  background: #f1f5f9;
+  border: 1px solid #cbd5e1;
 }
 
 .celula-editor-fundo {
@@ -1016,7 +873,7 @@ button:disabled {
   width: 100%;
   height: 100%;
   border-radius: 4px;
-  border: 1px solid var(--grid-borda-celula);
+  border: 1px solid #94a3b8;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -1026,21 +883,14 @@ button:disabled {
   cursor: pointer;
 }
 
-.qe-vazio { background-color: var(--cor-vazio); color: transparent; }
-.qe-estrada { background-color: var(--cor-asfalto); border: 1px solid var(--borda-asfalto); }
-.qe-vaga-amarela {
-  background-color: var(--cor-vaga-amarela);
-  color: #0f172a;
-  border-color: var(--cor-vaga-amarela-borda);
-}
-.qe-entrada { background-color: var(--cor-entrada); }
-.qe-saida { background-color: var(--cor-saida); }
-.qe-acesso { background-color: var(--cor-acesso); }
-
-/* !important necessário: vagas com ESP32 recebem background inline do Vue
-   (escurecerCorHex) e estes dois estados precisam sobrepor esse estilo. */
+.qe-vazio { background-color: #cbd5e1; color: transparent; }
+.qe-estrada { background-color: #1e293b; border: 1px solid #64748b; }
+.qe-vaga-amarela { background-color: #eab308; color: #0f172a; border-color: #a16207; }
+.qe-entrada { background-color: #2563eb; }
+.qe-saida { background-color: #ea580c; }
+.qe-acesso { background-color: #16a34a; }
 .qe-selecionado-roxo {
-  background-color: var(--cor-roxo) !important;
+  background-color: #9333ea !important;
   border: 2px solid #ffffff !important;
   color: #fff !important;
 }
@@ -1050,7 +900,7 @@ button:disabled {
 }
 
 /* =========================================================
-   EDITOR 2D — SIDEBAR DIREITA (DESKTOP)
+   MENU DO LADO DIREITO
    ========================================================= */
 .sidebar-direita-editor {
   width: 310px;
@@ -1063,7 +913,6 @@ button:disabled {
 
 .painel-ferramentas {
   background: var(--bg-card);
-  color: var(--texto-principal);
   border: 1px solid var(--borda);
   border-radius: 12px;
   padding: 15px;
@@ -1071,6 +920,7 @@ button:disabled {
 .painel-ferramentas h4 {
   font-size: 16px;
   margin-bottom: 6px;
+  justify-content: flex-start;
 }
 .dica-painel {
   font-size: 13.5px;
@@ -1095,9 +945,9 @@ button:disabled {
   font-size: 13.5px;
   cursor: pointer;
 }
-.cor-entrada { background: var(--cor-entrada); }
-.cor-saida { background: var(--cor-saida); }
-.cor-acesso { background: var(--cor-acesso); }
+.cor-entrada { background: #2563eb; }
+.cor-saida { background: #ea580c; }
+.cor-acesso { background: #16a34a; }
 
 .linha-equipamentos {
   display: flex;
@@ -1120,29 +970,7 @@ button:disabled {
   color: var(--destaque-azul);
 }
 
-.legenda-editor {
-  font-size: 14px;
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
-.amostra {
-  display: inline-block;
-  width: 16px;
-  height: 16px;
-  border-radius: 4px;
-  margin-right: 8px;
-  vertical-align: middle;
-  border: 1px solid var(--borda);
-}
-.amostra-asfalto {
-  background-color: var(--cor-asfalto);
-  border: 1.5px solid var(--borda-asfalto);
-}
-
-/* =========================================================
-   MAPA DO MOTORISTA (MotoristaMapaView)
-   ========================================================= */
+/* Grid do Motorista */
 .abas-andares { display: flex; gap: 10px; margin-bottom: 14px; flex-wrap: wrap; }
 .aba-btn {
   background: var(--bg-card);
@@ -1154,7 +982,7 @@ button:disabled {
   font-size: 14.5px;
   cursor: pointer;
 }
-.aba-ativa { background: var(--destaque-azul); border-color: var(--destaque-azul); color: #fff; }
+.aba-ativa { background: var(--destaque-azul); color: #fff; }
 
 .barra-controles {
   display: flex;
@@ -1163,7 +991,6 @@ button:disabled {
   flex-wrap: wrap;
   gap: 12px;
   background: var(--bg-card);
-  color: var(--texto-principal);
   padding: 12px 16px;
   border-radius: 10px;
   margin-bottom: 16px;
@@ -1171,18 +998,15 @@ button:disabled {
 }
 .controles-esquerda { display: flex; gap: 16px; flex-wrap: wrap; }
 .filtro-toggle { display: flex; align-items: center; gap: 6px; font-size: 14.5px; cursor: pointer; }
-.filtro-toggle input { accent-color: var(--destaque-azul); width: 18px; height: 18px; flex-shrink: 0; }
 .legenda { display: flex; gap: 8px; flex-wrap: wrap; }
 .badge { padding: 4px 10px; border-radius: 6px; font-size: 12.5px; font-weight: bold; color: #fff; }
 
 .grid-scroll-wrapper {
-  background: var(--bg-grid);
+  background: #ffffff;
   border: 2px solid var(--borda);
   border-radius: 12px;
   padding: 16px;
-  max-width: 100%;
   overflow: auto;
-  -webkit-overflow-scrolling: touch;
 }
 .grid-tabuleiro { display: grid; }
 .celula-fundo-setor { width: 42px; height: 42px; padding: 3px; }
@@ -1198,22 +1022,22 @@ button:disabled {
   color: #fff;
 }
 .q-invisivel { background: transparent; }
-.q-estrada { background: var(--cor-asfalto); border: 1px solid var(--borda-asfalto); }
-.q-entrada { background: var(--cor-entrada); }
-.q-saida { background: var(--cor-saida); }
-.q-acesso { background: var(--cor-acesso); }
-.q-vaga-livre { background: var(--cor-sucesso); cursor: pointer; border: 2px dashed rgba(255, 255, 255, 0.65); }
-.q-vaga-roxa { background: var(--cor-roxo); cursor: pointer; outline: 2px solid #fff; }
-.q-vaga-ocupada { background: var(--cor-perigo); cursor: not-allowed; }
-.q-vaga-cinza { background: var(--cor-vaga-cinza); opacity: 0.4; cursor: not-allowed; }
+.q-estrada { background: #1e293b; border: 1px solid #475569; }
+.q-entrada { background: #2563eb; }
+.q-saida { background: #ea580c; }
+.q-acesso { background: #16a34a; }
+.q-vaga-livre { background: #16a34a; cursor: pointer; border: 2px dashed rgba(255,255,255,0.65); }
+.q-vaga-roxa { background: #9333ea; cursor: pointer; outline: 2px solid #fff; }
+.q-vaga-ocupada { background: #dc2626; cursor: not-allowed; }
+.q-vaga-cinza { background: #64748b; opacity: 0.4; cursor: not-allowed; }
 
 /* =========================================================
-   MODAIS (setor, grid, acesso, ESP32)
+   MODAIS COMPACTOS E PROPORCIONAIS
    ========================================================= */
 .modal-backdrop {
   position: fixed;
   inset: 0;
-  background: rgba(0, 0, 0, 0.6);
+  background: rgba(0,0,0,0.6);
   z-index: 2000;
   display: flex;
   justify-content: center;
@@ -1227,10 +1051,7 @@ button:disabled {
   padding: 18px;
   max-width: 360px;
   width: 100%;
-  max-height: calc(100vh - 28px);
-  max-height: calc(100dvh - 28px);
-  overflow-y: auto;
-  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 12px 28px rgba(0,0,0,0.4);
   border: 1px solid var(--borda);
 }
 .modal-box h3 { font-size: 17px; }
@@ -1251,10 +1072,10 @@ button:disabled {
 }
 .campo-compacto label { font-size: 13.5px; font-weight: 600; }
 .input-numero-compacto {
-  width: 72px;
-  padding: 7px 6px;
+  width: 72px !important;
+  padding: 7px 6px !important;
   text-align: center;
-  font-size: 15px;
+  font-size: 15px !important;
   font-weight: bold;
   border-radius: 7px;
   border: 1px solid var(--borda);
@@ -1262,7 +1083,7 @@ button:disabled {
   color: var(--texto-principal);
 }
 .input-curto-prefixo {
-  width: 82px;
+  width: 82px !important;
   text-align: center;
   font-weight: bold;
   text-transform: uppercase;
@@ -1285,7 +1106,7 @@ button:disabled {
   border-radius: 7px;
   border: 2px solid transparent;
   color: #ffffff;
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+  text-shadow: 0 1px 2px rgba(0,0,0,0.5);
   font-weight: bold;
   font-size: 13px;
   cursor: pointer;
@@ -1302,10 +1123,8 @@ button:disabled {
 }
 
 /* =========================================================
-   NOVOS ESTILOS: BORRACHA, TOOLTIPS, HUD E MODAL DE SETORES
+   BORRACHA, TOOLTIPS, HUD E MODAL DE SETORES
    ========================================================= */
-
-/* Botão de Borracha no Menu Flutuante de Seleção */
 .btn-mini.borracha-tudo {
   background: #f43f5e;
   color: #ffffff;
@@ -1315,7 +1134,6 @@ button:disabled {
   background: #e11d48;
 }
 
-/* Tooltip simples ao passar o mouse sobre os ícones de Estrada, Setores e Vagas */
 .icone-com-tooltip {
   position: relative;
   cursor: help;
@@ -1341,13 +1159,11 @@ button:disabled {
   pointer-events: none;
 }
 
-/* Destaque para a informação de setor entre colchetes [] no HUD inferior */
 .texto-colchetes-setor {
   color: #38bdf8;
   font-weight: 600;
 }
 
-/* Botão Alterar Setores abaixo de Equipamentos */
 .btn-alterar-setores-menu {
   width: 100%;
   margin-top: 6px;
@@ -1366,7 +1182,6 @@ button:disabled {
   color: #ffffff;
 }
 
-/* Modal Alterar Setores e Combobox Filtrável */
 .modal-box.modal-alterar-setor {
   max-width: 400px;
 }
@@ -1385,10 +1200,12 @@ button:disabled {
   right: 8px;
   background: transparent;
   border: none;
-  color: var(--texto-secundario);
+  color: var(--texto-principal);
   cursor: pointer;
   font-size: 12px;
   padding: 4px;
+  display: inline-flex;
+  align-items: center;
 }
 
 .lista-dropdown-setores {
@@ -1426,7 +1243,6 @@ button:disabled {
   color: var(--texto-secundario);
 }
 
-/* Estado cinzado/bloqueado antes de selecionar um setor */
 .area-edicao-setor-campos {
   transition: opacity 0.2s ease;
 }
@@ -1444,7 +1260,6 @@ button:disabled {
   margin-bottom: 10px;
 }
 
-/* Botões Excluir (Cinza -> Vermelho) e Confirmar (Cinza -> Verde) */
 .botoes-empilhados-setor {
   display: flex;
   flex-direction: column;
@@ -1490,7 +1305,6 @@ button:disabled {
   cursor: not-allowed;
 }
 
-/* Modal Centralizado de Sucesso ao Salvar */
 .modal-box.modal-sucesso-salvar {
   text-align: center;
   max-width: 340px;
@@ -1516,44 +1330,48 @@ button:disabled {
   background: #15803d;
 }
 
+.item-icone-texto {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+}
+
+.input-pesquisa-icone-wrapper {
+  position: relative;
+  flex: 1;
+  display: flex;
+  align-items: center;
+}
+
+.icone-input-pesquisa {
+  position: absolute;
+  left: 12px;
+  color: var(--texto-secundario);
+  pointer-events: none;
+}
+
+.input-pesquisa-grande.com-icone {
+  width: 100%;
+  padding-left: 38px;
+}
+
 /* =========================================================
-   TABLETS MENORES E CELULARES (<= 1024px)
-   Editor em tela cheia com HUD flutuante.
-   As posições do HUD vêm das variáveis --hud-* (topo do arquivo).
+   TABLETS MENORES E CELULARES (<= 1024px):
+   MENUS FLUTUANTES VISÍVEIS E RESPONSIVOS SOBRE O GRID
    ========================================================= */
 @media (max-width: 1024px) {
   .btn-hamburguer {
-    width: var(--hud-tam);
-    height: var(--hud-tam);
-    font-size: 20px;
-    border-radius: 10px;
+    width: 38px;
+    height: 38px;
+    font-size: 18px;
+    border-radius: 9px;
   }
 
-  .painel-estacionamento,
-  .admin-container {
-    padding: 18px 16px 24px 16px;
-  }
-
-  .topbar-titulo-central {
-    min-height: 38px;
-    padding: 5px 48px 0 48px;
-  }
-  .topbar-titulo-central.com-botao-direita { padding-right: 95px; }
-  .topbar-titulo-central h1 { font-size: 20px; }
-  .subtitulo { font-size: 12.5px; }
-  .topbar-titulo-central .btn-voltar-topo {
-    padding: 7px 12px;
-    font-size: 13px;
-  }
-
-  .painel-header { padding-left: 44px; }
-
-  /* ---- Editor ---- */
   .editor-layout {
     padding: 0;
     width: 100vw;
     height: 100vh;
-    height: 100dvh;
     overflow: hidden;
   }
 
@@ -1566,17 +1384,25 @@ button:disabled {
   .area-grid-principal {
     border: none;
     border-radius: 0;
-    padding: var(--hud-slot2) 12px 48px 12px;
+    padding: 56px 12px 48px 12px;
     overflow: hidden;
   }
 
+  /* Ativa obrigatoriamente os botões flutuantes em telas <= 1024px */
   .hud-btn-flutuante {
-    position: relative;
-    width: var(--hud-tam);
-    height: var(--hud-tam);
-    border-radius: 10px;
-    font-size: 18px;
+    display: flex !important;
+    justify-content: center;
+    align-items: center;
+    width: 38px;
+    height: 38px;
+    border-radius: 9px;
+    background: var(--bg-card);
+    color: var(--texto-principal);
+    border: 1px solid var(--borda);
+    font-size: 16px;
+    cursor: pointer;
     box-shadow: 0 3px 10px rgba(0, 0, 0, 0.28);
+    position: relative;
   }
 
   .hud-btn-flutuante.hud-ativo {
@@ -1585,53 +1411,57 @@ button:disabled {
     color: #fff;
   }
 
-  /* Alertas logo abaixo do hambúrguer */
+  /* Botão de Alertas embaixo do Menu Hambúrguer (Esquerda) */
   .hud-esquerda-alertas {
-    position: fixed;
-    top: var(--hud-slot2);
-    left: var(--hud-margem);
+    position: fixed !important;
+    top: 56px;
+    left: 10px;
     z-index: 950;
   }
-  .hud-esquerda-alertas.caution-pendente { border-color: var(--cor-aviso); }
-  .hud-esquerda-alertas.caution-ok { border-color: var(--cor-sucesso); }
+  .hud-esquerda-alertas.caution-pendente {
+    border-color: #f59e0b;
+  }
+  .hud-esquerda-alertas.caution-ok {
+    border-color: #16a34a;
+  }
 
   .hud-mini-badge {
     position: absolute;
     top: -4px;
     right: -4px;
-    background: var(--cor-perigo);
+    background: #dc2626;
     color: #fff;
-    font-size: 10px;
+    font-size: 9px;
     font-weight: 800;
-    min-width: 17px;
-    height: 17px;
+    min-width: 16px;
+    height: 16px;
     padding: 0 3px;
     border-radius: 999px;
     display: flex;
     justify-content: center;
     align-items: center;
   }
-  .caution-ok .hud-mini-badge { background: var(--cor-sucesso); }
+  .caution-ok .hud-mini-badge { background: #16a34a; }
 
-  /* Coluna direita: Salvar, Engrenagem, Adicionar */
+  /* Coluna Direita: Salvar no topo, Engrenagem embaixo, Adicionar (+) embaixo */
   .hud-coluna-direita-mobile {
-    display: flex;
+    display: flex !important;
     flex-direction: column;
-    gap: var(--hud-gap);
+    gap: 8px;
     position: fixed;
-    top: var(--hud-margem);
-    right: var(--hud-margem);
+    top: 10px;
+    right: 10px;
     z-index: 950;
   }
 
   .hud-btn-salvar {
-    background: var(--cor-sucesso);
-    border-color: var(--cor-sucesso-escuro);
+    background: #16a34a;
+    border-color: #15803d;
     color: #fff;
   }
   .hud-btn-salvar:disabled {
-    background: var(--borda-asfalto);
-    border-color: var(--borda-asfalto);
+    background: #475569;
+    border-color: #334155;
     opacity: 0.5;
   }
 
@@ -1641,17 +1471,14 @@ button:disabled {
     color: #fff;
   }
 
-  /* Menu da engrenagem (popover) */
+  /* Menu da Engrenagem (Opções do Editor) flutuando por cima do Grid */
   .editor-topbar {
     display: none;
     position: fixed;
-    top: var(--hud-slot2);
-    right: var(--hud-slot2);
+    top: 56px;
+    right: 54px;
     left: auto;
-    width: 240px;
-    max-height: calc(100vh - var(--hud-slot2) - 12px);
-    max-height: calc(100dvh - var(--hud-slot2) - 12px);
-    overflow-y: auto;
+    width: 245px;
     margin-left: 0;
     z-index: 960;
     flex-direction: column;
@@ -1659,22 +1486,25 @@ button:disabled {
     padding: 10px;
     box-shadow: 0 10px 28px rgba(0, 0, 0, 0.45);
   }
-  .editor-topbar.topbar-mobile-aberta { display: flex; }
+  .editor-topbar.topbar-mobile-aberta {
+    display: flex !important;
+  }
   .topbar-esquerda {
     flex-direction: column;
     align-items: stretch;
   }
-  .topbar-direita { display: none; }
+  .topbar-direita {
+    display: none;
+  }
 
-  /* Menu "+" (popover) */
+  /* Menu Adicionar (+) com Grupo 1 e Grupo 2 flutuando por cima do Grid */
   .sidebar-direita-editor {
     display: none;
     position: fixed;
-    top: var(--hud-slot2);
-    right: var(--hud-slot2);
-    width: 245px;
-    max-height: calc(100vh - var(--hud-slot2) - 12px);
-    max-height: calc(100dvh - var(--hud-slot2) - 12px);
+    top: 56px;
+    right: 54px;
+    width: 255px;
+    max-height: calc(100vh - 70px);
     z-index: 960;
     background: var(--bg-painel);
     padding: 8px;
@@ -1682,74 +1512,85 @@ button:disabled {
     border: 1px solid var(--borda);
     box-shadow: 0 10px 28px rgba(0, 0, 0, 0.45);
   }
-  .sidebar-direita-editor.sidebar-mobile-aberta { display: flex; }
+  .sidebar-direita-editor.sidebar-mobile-aberta {
+    display: flex !important;
+  }
 
+  .painel-estacionamento, .admin-container {
+    padding: 18px 16px 24px 16px;
+  }
+  .topbar-titulo-central {
+    min-height: 38px;
+    padding-top: 5px;
+    padding-left: 48px;
+    padding-right: 48px;
+  }
+  .topbar-titulo-central.com-botao-direita {
+    padding-right: 95px;
+  }
+  .topbar-titulo-central h1 {
+    font-size: 20px;
+  }
+  .subtitulo {
+    font-size: 12.5px;
+  }
+  .btn-voltar-topo {
+    padding: 7px 12px !important;
+    font-size: 13px !important;
+  }
   .sidebar-direita-editor .painel-ferramentas { padding: 10px; }
-  .sidebar-direita-editor .painel-ferramentas h4 { font-size: 13px; }
-  .sidebar-direita-editor .dica-painel { font-size: 12px; }
-  .sidebar-direita-editor .btn-ferramenta,
-  .sidebar-direita-editor .btn-equipamento { font-size: 12px; padding: 8px 4px; }
-  .sidebar-direita-editor .legenda-editor { font-size: 12px; }
-  .sidebar-direita-editor .amostra { width: 12px; height: 12px; }
+  .sidebar-direita-editor .painel-ferramentas h4 { font-size: 12.5px; }
+  .sidebar-direita-editor .dica-painel { font-size: 11px; }
+  .sidebar-direita-editor .btn-ferramenta { font-size: 11px; padding: 6px 4px; }
+  .sidebar-direita-editor .btn-equipamento { font-size: 11px; padding: 6px 4px; }
 
-  /* Overlays: respeitam as colunas do HUD (esquerda e direita) */
   .painel-avisos-overlay {
-    top: var(--hud-slot2);
-    left: var(--hud-slot2);
+    top: 56px;
+    left: 54px;
     right: auto;
     width: 270px;
-    max-width: calc(100% - var(--hud-slot2) - var(--hud-slot2));
   }
-  .banner-carimbo-overlay {
-    max-width: calc(100% - 2 * var(--hud-slot2));
-    white-space: normal;
-  }
-  /* Evita colidir com o menu de seleção, também na base da tela */
-  .badge-hover-setor { bottom: 64px; }
 }
 
 /* =========================================================
-   CELULARES (<= 768px)
+   CELULARES (<= 768px): TIPOGRAFIA PADRÃO APP E CARDS ULTRA COMPACTOS
    ========================================================= */
 @media (max-width: 768px) {
-  .painel-estacionamento,
-  .admin-container {
+  .painel-estacionamento, .admin-container {
     padding: 16px 12px 20px 12px;
   }
 
   .topbar-titulo-central {
-    padding: 6px 8px 0 48px;
+    padding-top: 6px;
+    padding-left: 44px;
+    padding-right: 8px;
     margin-bottom: 14px;
     min-height: 38px;
   }
-  .topbar-titulo-central.com-botao-direita { padding-right: 78px; }
-  .topbar-titulo-central h1 { font-size: 16.5px; }
-  .subtitulo { font-size: 11.5px; }
-  .topbar-titulo-central .btn-voltar-topo {
-    padding: 6px 9px;
-    font-size: 12px;
+  .topbar-titulo-central.com-botao-direita {
+    padding-right: 72px;
+  }
+  .topbar-titulo-central h1 {
+    font-size: 16.5px;
+  }
+  .subtitulo {
+    font-size: 11.5px;
   }
 
-  .painel-header { padding-left: 46px; }
-  .painel-header h1 { font-size: 20px; }
+  .btn-voltar-topo {
+    padding: 5px 8px !important;
+    font-size: 11.5px !important;
+  }
 
   .campo-grupo label { font-size: 13px; }
-  .campo-grupo input,
-  .select-padrao {
+  .campo-grupo input, .select-padrao {
     padding: 8px 10px;
     font-size: 13.5px;
   }
-  .btn-primario,
-  .btn-secundario {
+  .btn-primario {
     padding: 9px 14px;
     font-size: 13.5px;
   }
-  .btn-grande {
-    width: 100%;
-    padding: 12px 16px;
-    font-size: 14.5px;
-  }
-  .rodape-form { justify-content: stretch; }
 
   .barra-pesquisa-admin {
     flex-direction: column;
@@ -1764,55 +1605,33 @@ button:disabled {
     font-size: 13px;
   }
 
-  /* Card compacto: texto à esquerda, ícones à direita */
-  .lista-card { padding: 4px 8px; }
+  .lista-card {
+    padding: 4px 8px;
+  }
   .linha-estabelecimento {
     padding: 7px 2px;
     gap: 6px;
   }
-  .info-est { gap: 7px; }
+  .info-est {
+    gap: 7px;
+  }
   .id-badge {
     padding: 3px 6px;
     font-size: 11px;
   }
-  .textos-est h3 { font-size: 13px; }
-  .meta-est { font-size: 11.5px; }
-  .acoes-direita { gap: 4px; }
+  .textos-est h3 {
+    font-size: 13px;
+  }
+  .meta-est {
+    font-size: 10.5px;
+  }
+  .acoes-direita {
+    gap: 4px;
+  }
   .btn-icone {
-    width: 36px;
-    height: 36px;
-    font-size: 14px;
+    width: 28px;
+    height: 28px;
+    font-size: 12px;
     border-radius: 6px;
   }
-
-  .paginacao-admin {
-    gap: 8px;
-    font-size: 13px;
-  }
-  .paginacao-admin button {
-    padding: 8px 10px;
-    font-size: 13px;
-  }
-
-  /* Mapa do motorista */
-  .barra-controles { padding: 10px 12px; }
-  .filtro-toggle { font-size: 13px; }
-  .grid-scroll-wrapper { padding: 10px; }
-  .aba-btn { padding: 9px 14px; font-size: 13.5px; }
-
-  /* O menu de seleção tem muitos botões: quebra em linhas no celular
-     em vez de estourar a largura da tela */
-  .menu-selecao-overlay {
-    flex-wrap: wrap;
-    justify-content: center;
-    row-gap: 6px;
-    width: max-content;
-  }
-  .btn-mini {
-    width: 32px;
-    height: 32px;
-  }
-
-  .hero-card { padding: 26px 20px; }
-  .titulo-principal { font-size: 22px; }
 }
