@@ -1,5 +1,9 @@
 from contextlib import asynccontextmanager
 from typing import List, Optional
+import hashlib
+import hmac
+import re
+import secrets
 from fastapi import FastAPI, HTTPException, status
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
@@ -374,3 +378,155 @@ async def deletar_estabelecimento(id_estabelecimento: int):
     if linhas == 0:
         raise HTTPException(status_code=404, detail="Estabelecimento não encontrado.")
     return {"status": "sucesso"}
+
+
+class CadastroUsuarioPayload(BaseModel):
+    nome: str
+    email: str
+    senha: str
+
+
+class LoginUsuarioPayload(BaseModel):
+    email: str
+    senha: str
+
+
+def gerar_hash_senha(senha: str) -> str:
+    salt = secrets.token_hex(16)
+    derivado = hashlib.pbkdf2_hmac(
+        "sha256", senha.encode("utf-8"), salt.encode("utf-8"), 100_000
+    ).hex()
+    return f"pbkdf2_sha256${salt}${derivado}"
+
+
+def verificar_hash_senha(senha_digitada: str, hash_salvo: str) -> bool:
+    if not hash_salvo or "$" not in hash_salvo:
+        return False
+    try:
+        algoritmo, salt, derivado_salvo = hash_salvo.split("$", 2)
+        if algoritmo != "pbkdf2_sha256":
+            return False
+        derivado_teste = hashlib.pbkdf2_hmac(
+            "sha256", senha_digitada.encode("utf-8"), salt.encode("utf-8"), 100_000
+        ).hex()
+        return hmac.compare_digest(derivado_teste, derivado_salvo)
+    except Exception:
+        return False
+
+
+def validar_regras_senha(senha: str, email: str):
+    if len(senha) < 8:
+        raise HTTPException(
+            status_code=400, detail="A senha deve ter ao menos 8 caracteres."
+        )
+    if " " in senha:
+        raise HTTPException(
+            status_code=400, detail="A senha não pode conter espaços em branco."
+        )
+    if not re.search(r"[A-Z]", senha):
+        raise HTTPException(
+            status_code=400, detail="A senha deve conter ao menos uma letra maiúscula."
+        )
+    if not re.search(r"[a-z]", senha):
+        raise HTTPException(
+            status_code=400, detail="A senha deve conter ao menos uma letra minúscula."
+        )
+    if not re.search(r"\d", senha):
+        raise HTTPException(
+            status_code=400, detail="A senha deve conter ao menos um número."
+        )
+    if not re.search(r"[^A-Za-z0-9]", senha):
+        raise HTTPException(
+            status_code=400, detail="A senha deve conter ao menos um símbolo."
+        )
+
+    email_limpo = email.strip().lower()
+    usuario_email = email_limpo.split("@")[0] if "@" in email_limpo else email_limpo
+    senha_lower = senha.lower()
+
+    if senha_lower == email_limpo or (
+        len(usuario_email) >= 3 and usuario_email in senha_lower
+    ):
+        raise HTTPException(
+            status_code=400,
+            detail="A senha não pode conter nem ser parecida com o seu endereço de e-mail.",
+        )
+
+
+@app.post("/auth/cadastro", status_code=status.HTTP_201_CREATED)
+async def cadastrar_usuario(payload: CadastroUsuarioPayload):
+    nome = payload.nome.strip()
+    email = payload.email.strip().lower()
+    senha = payload.senha
+
+    if len(nome) < 3:
+        raise HTTPException(
+            status_code=400, detail="Informe seu nome completo (mínimo 3 caracteres)."
+        )
+    if not re.match(r"^[^@\s]+@[^@\s]+\.[^@\s]+$", email):
+        raise HTTPException(
+            status_code=400, detail="Informe um endereço de e-mail válido."
+        )
+
+    validar_regras_senha(senha, email)
+
+    existente = await db.fetch(
+        "SELECT id_usuario FROM usuarios WHERE email = %s",
+        (email,),
+        one=True,
+    )
+    if existente:
+        raise HTTPException(
+            status_code=409, detail="Este e-mail já está cadastrado no sistema."
+        )
+
+    senha_hash = gerar_hash_senha(senha)
+    novo_id = await db.execute(
+        """
+        INSERT INTO usuarios (nome, email, senha_hash, nivel_acesso)
+        VALUES (%s, %s, %s, 'usuario')
+        """,
+        (nome, email, senha_hash),
+    )
+
+    return {
+        "status": "sucesso",
+        "usuario": {
+            "id_usuario": novo_id,
+            "nome": nome,
+            "email": email,
+            "nivel_acesso": "usuario",
+        },
+    }
+
+
+@app.post("/auth/login")
+async def login_usuario(payload: LoginUsuarioPayload):
+    email = payload.email.strip().lower()
+    usuario = await db.fetch(
+        """
+        SELECT id_usuario, nome, email, senha_hash, nivel_acesso, inativo
+        FROM usuarios
+        WHERE email = %s
+        """,
+        (email,),
+        one=True,
+    )
+
+    if not usuario or not verificar_hash_senha(payload.senha, usuario["senha_hash"]):
+        raise HTTPException(status_code=401, detail="E-mail ou senha incorretos.")
+
+    if usuario["inativo"]:
+        raise HTTPException(
+            status_code=403, detail="Esta conta está inativa. Contate o suporte."
+        )
+
+    return {
+        "status": "sucesso",
+        "usuario": {
+            "id_usuario": usuario["id_usuario"],
+            "nome": usuario["nome"],
+            "email": usuario["email"],
+            "nivel_acesso": usuario["nivel_acesso"],
+        },
+    }

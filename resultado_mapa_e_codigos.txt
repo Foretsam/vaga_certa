@@ -59,6 +59,7 @@
                 📄 31f13bb51a13228a9ed32a6d5279c6b2829e0f
                 📄 60ab414f2d1566bbaf1e8aaa3f678e08516ba5
             📂 10/
+                📄 b0fb3e9f779aa97cbda3b8f53d412138a4a2fc
                 📄 b789cea22d2254ed54dd4a6754849a9099f8b0
             📂 13/
                 📄 192dc85d99e97969d044c67626a5fe7e592041
@@ -93,6 +94,7 @@
             📂 41/
                 📄 3ee08af5482774c19b1ac740c2248a96b568b8
             📂 43/
+                📄 18a5fe40b0e0d887fce6906bbd10b90494d4fb
                 📄 7cc0150c5863f6099f32561a173bf9d0c575dd
             📂 44/
                 📄 4a0a3145deabaef81cef8bfce5d7cf0874d11f
@@ -128,6 +130,8 @@
                 📄 83bcbf57907010602a73f562ba52c711a83e40
             📂 63/
                 📄 8657cf01ca80ab9297f146b5ea732aa37b918a
+            📂 65/
+                📄 eec32460a588a40809591502531f2bce997e56
             📂 67/
                 📄 d6ab8beadb3976786a9d56c873727941352583
             📂 68/
@@ -141,6 +145,7 @@
             📂 77/
                 📄 0e9d333ee70e75fe7c0bad7fb13e4f6ed4627a
             📂 7b/
+                📄 5a0224a47d194b3fe9d768e7a1123924e9c4c0
                 📄 a572c6911878fe2c8d89f2b0d2d5b85a7ac413
             📂 7f/
                 📄 6df57bc71a7c9b73eb2d464582e082333a82db
@@ -155,9 +160,12 @@
             📂 88/
                 📄 415edcba9ac9f24b4b6017425c5f679d12ee6e
             📂 89/
+                📄 418094024a29d8b272a212c5424f520115e2ac
                 📄 c32490f1dc26802d9fdd47da61545b918e5532
             📂 8b/
                 📄 bb5ee6c07004e372ddd3fd49ee75964c2c9e75
+            📂 92/
+                📄 e86ff355f7a54278a9608b1cac188c202b0d02
             📂 95/
                 📄 511b63968465a1985a4a1d0e760e91f48cd1b1
             📂 9c/
@@ -245,6 +253,7 @@
             📂 f8/
                 📄 55a06394919cbc9a9e310829400fd985736cdb
                 📄 56cca4a6623495f0204b51ccceef4958e99fc1
+                📄 71b4f3568eafd9c4962a2d4d87398700171778
                 📄 8bcc67650517fa4d4311e3df82eaf81afa67f4
             📂 f9/
                 📄 44d62d5eb45841f842d41574492f3fd4f66a64
@@ -277,8 +286,11 @@
                 📄 AdminEditor2DView.vue
                 📄 AdminInfoGeraisView.vue
                 📄 AdminListaView.vue
+                📄 CadastroView.vue
+                📄 LoginView.vue
                 📄 MotoristaHomeView.vue
                 📄 MotoristaMapaView.vue
+                📄 SobreView.vue
 
 
 =================================================================
@@ -502,7 +514,7 @@ COMMIT;
 // 🚀 INÍCIO DO ARQUIVO: .git\COMMIT_EDITMSG
 // ==================================================================
 
-implementação de iconografia usando tablericons do mit
+aperfeiçoamento do css
 
 
 // 🏁 FIM DO ARQUIVO: .git\COMMIT_EDITMSG
@@ -513,7 +525,7 @@ implementação de iconografia usando tablericons do mit
 // 🚀 INÍCIO DO ARQUIVO: .git\FETCH_HEAD
 // ==================================================================
 
-d1dd9c89df02be67775a39cdb5427dc818505011		branch 'main' of https://github.com/Foretsam/vaga_certa
+10b0fb3e9f779aa97cbda3b8f53d412138a4a2fc		branch 'main' of https://github.com/Foretsam/vaga_certa
 
 
 // 🏁 FIM DO ARQUIVO: .git\FETCH_HEAD
@@ -1616,6 +1628,7 @@ dbffaf738c89560886aaae551e259463a0cd53f6 13a1041253d5de22bd3e5a2c97ed72da149509d
 04a3e54bf68335107a348259e4770142ac1d2536 f73a57bca719d82ee92f5712f1a4e8d02a0c5778 Lucas Schuab <lucaschuab2015@outlook.com> 1792504087 -0300	commit: remoção do exemplo hardcoded e implementação da conexão com o banco de dados
 f73a57bca719d82ee92f5712f1a4e8d02a0c5778 10b789cea22d2254ed54dd4a6754849a9099f8b0 Lucas Schuab <lucaschuab2015@outlook.com> 1792505903 -0300	commit: melhorias no frontend
 10b789cea22d2254ed54dd4a6754849a9099f8b0 d1dd9c89df02be67775a39cdb5427dc818505011 Lucas Schuab <lucaschuab2015@outlook.com> 1792542363 -0300	commit: implementação de iconografia usando tablericons do mit
+d1dd9c89df02be67775a39cdb5427dc818505011 10b0fb3e9f779aa97cbda3b8f53d412138a4a2fc Lucas Schuab <lucaschuab2015@outlook.com> 1792549367 -0300	commit: aperfeiçoamento do css
 
 
 // 🏁 FIM DO ARQUIVO: .git\logs\HEAD
@@ -1635,6 +1648,7 @@ dbffaf738c89560886aaae551e259463a0cd53f6 13a1041253d5de22bd3e5a2c97ed72da149509d
 04a3e54bf68335107a348259e4770142ac1d2536 f73a57bca719d82ee92f5712f1a4e8d02a0c5778 Lucas Schuab <lucaschuab2015@outlook.com> 1792504087 -0300	commit: remoção do exemplo hardcoded e implementação da conexão com o banco de dados
 f73a57bca719d82ee92f5712f1a4e8d02a0c5778 10b789cea22d2254ed54dd4a6754849a9099f8b0 Lucas Schuab <lucaschuab2015@outlook.com> 1792505903 -0300	commit: melhorias no frontend
 10b789cea22d2254ed54dd4a6754849a9099f8b0 d1dd9c89df02be67775a39cdb5427dc818505011 Lucas Schuab <lucaschuab2015@outlook.com> 1792542363 -0300	commit: implementação de iconografia usando tablericons do mit
+d1dd9c89df02be67775a39cdb5427dc818505011 10b0fb3e9f779aa97cbda3b8f53d412138a4a2fc Lucas Schuab <lucaschuab2015@outlook.com> 1792549367 -0300	commit: aperfeiçoamento do css
 
 
 // 🏁 FIM DO ARQUIVO: .git\logs\refs\heads\main
@@ -1660,6 +1674,7 @@ f73a57bca719d82ee92f5712f1a4e8d02a0c5778 f73a57bca719d82ee92f5712f1a4e8d02a0c577
 d1dd9c89df02be67775a39cdb5427dc818505011 d1dd9c89df02be67775a39cdb5427dc818505011 Lucas Oliveira Schuab <lucas@LAPTOP-SKE6HI0S.(none)> 1792542368 -0300	remote set-head
 d1dd9c89df02be67775a39cdb5427dc818505011 d1dd9c89df02be67775a39cdb5427dc818505011 Lucas Oliveira Schuab <lucas@LAPTOP-SKE6HI0S.(none)> 1792544306 -0300	remote set-head
 d1dd9c89df02be67775a39cdb5427dc818505011 d1dd9c89df02be67775a39cdb5427dc818505011 Lucas Oliveira Schuab <lucas@LAPTOP-SKE6HI0S.(none)> 1792548262 -0300	remote set-head
+10b0fb3e9f779aa97cbda3b8f53d412138a4a2fc 10b0fb3e9f779aa97cbda3b8f53d412138a4a2fc Lucas Oliveira Schuab <lucas@LAPTOP-SKE6HI0S.(none)> 1792549371 -0300	remote set-head
 
 
 // 🏁 FIM DO ARQUIVO: .git\logs\refs\remotes\origin\HEAD
@@ -1679,6 +1694,7 @@ dbffaf738c89560886aaae551e259463a0cd53f6 13a1041253d5de22bd3e5a2c97ed72da149509d
 04a3e54bf68335107a348259e4770142ac1d2536 f73a57bca719d82ee92f5712f1a4e8d02a0c5778 Lucas Schuab <lucaschuab2015@outlook.com> 1792504090 -0300	update by push
 f73a57bca719d82ee92f5712f1a4e8d02a0c5778 10b789cea22d2254ed54dd4a6754849a9099f8b0 Lucas Schuab <lucaschuab2015@outlook.com> 1792505906 -0300	update by push
 10b789cea22d2254ed54dd4a6754849a9099f8b0 d1dd9c89df02be67775a39cdb5427dc818505011 Lucas Schuab <lucaschuab2015@outlook.com> 1792542367 -0300	update by push
+d1dd9c89df02be67775a39cdb5427dc818505011 10b0fb3e9f779aa97cbda3b8f53d412138a4a2fc Lucas Schuab <lucaschuab2015@outlook.com> 1792549370 -0300	update by push
 
 
 // 🏁 FIM DO ARQUIVO: .git\logs\refs\remotes\origin\main
@@ -1823,6 +1839,17 @@ x+)JMU05`040031QH-.IL���K�M�+�.�/J��*f8j��Cy����
 
 
 // 🏁 FIM DO ARQUIVO: .git\objects\0f\60ab414f2d1566bbaf1e8aaa3f678e08516ba5
+// ------------------------------------------------------------------
+
+
+// ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: .git\objects\10\b0fb3e9f779aa97cbda3b8f53d412138a4a2fc
+// ==================================================================
+
+// [Arquivo binário ignorado pelo leitor de segurança]
+
+
+// 🏁 FIM DO ARQUIVO: .git\objects\10\b0fb3e9f779aa97cbda3b8f53d412138a4a2fc
 // ------------------------------------------------------------------
 
 
@@ -2032,6 +2059,17 @@ x+)JMU05`040031QH-.IL���K�M�+�.�/J��*f8j��Cy����
 
 
 // 🏁 FIM DO ARQUIVO: .git\objects\41\3ee08af5482774c19b1ac740c2248a96b568b8
+// ------------------------------------------------------------------
+
+
+// ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: .git\objects\43\18a5fe40b0e0d887fce6906bbd10b90494d4fb
+// ==================================================================
+
+// [Arquivo binário ignorado pelo leitor de segurança]
+
+
+// 🏁 FIM DO ARQUIVO: .git\objects\43\18a5fe40b0e0d887fce6906bbd10b90494d4fb
 // ------------------------------------------------------------------
 
 
@@ -2256,6 +2294,17 @@ x+)JMU05`040031QH-.IL���K�M�+�.�/J��*f8j��Cy����
 
 
 // ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: .git\objects\65\eec32460a588a40809591502531f2bce997e56
+// ==================================================================
+
+// [Arquivo binário ignorado pelo leitor de segurança]
+
+
+// 🏁 FIM DO ARQUIVO: .git\objects\65\eec32460a588a40809591502531f2bce997e56
+// ------------------------------------------------------------------
+
+
+// ==================================================================
 // 🚀 INÍCIO DO ARQUIVO: .git\objects\67\d6ab8beadb3976786a9d56c873727941352583
 // ==================================================================
 
@@ -2317,6 +2366,17 @@ x+)JMU01b040031Q�K�,I,))�L*-I-f����Ee��������~
 
 
 // 🏁 FIM DO ARQUIVO: .git\objects\77\0e9d333ee70e75fe7c0bad7fb13e4f6ed4627a
+// ------------------------------------------------------------------
+
+
+// ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: .git\objects\7b\5a0224a47d194b3fe9d768e7a1123924e9c4c0
+// ==================================================================
+
+// [Arquivo binário ignorado pelo leitor de segurança]
+
+
+// 🏁 FIM DO ARQUIVO: .git\objects\7b\5a0224a47d194b3fe9d768e7a1123924e9c4c0
 // ------------------------------------------------------------------
 
 
@@ -2397,6 +2457,17 @@ xK��OR045e��-�/*Q(+MUH+��UPw(�,I�*�/�)M���J�sAU
 
 
 // ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: .git\objects\89\418094024a29d8b272a212c5424f520115e2ac
+// ==================================================================
+
+// [Arquivo binário ignorado pelo leitor de segurança]
+
+
+// 🏁 FIM DO ARQUIVO: .git\objects\89\418094024a29d8b272a212c5424f520115e2ac
+// ------------------------------------------------------------------
+
+
+// ==================================================================
 // 🚀 INÍCIO DO ARQUIVO: .git\objects\89\c32490f1dc26802d9fdd47da61545b918e5532
 // ==================================================================
 
@@ -2415,6 +2486,17 @@ xK��OR045e��-�/*Q(+MUH+��UPw(�,I�*�/�)M���J�sAU
 
 
 // 🏁 FIM DO ARQUIVO: .git\objects\8b\bb5ee6c07004e372ddd3fd49ee75964c2c9e75
+// ------------------------------------------------------------------
+
+
+// ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: .git\objects\92\e86ff355f7a54278a9608b1cac188c202b0d02
+// ==================================================================
+
+// [Arquivo binário ignorado pelo leitor de segurança]
+
+
+// 🏁 FIM DO ARQUIVO: .git\objects\92\e86ff355f7a54278a9608b1cac188c202b0d02
 // ------------------------------------------------------------------
 
 
@@ -2966,6 +3048,17 @@ xK��OR0`  	��
 
 
 // ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: .git\objects\f8\71b4f3568eafd9c4962a2d4d87398700171778
+// ==================================================================
+
+// [Arquivo binário ignorado pelo leitor de segurança]
+
+
+// 🏁 FIM DO ARQUIVO: .git\objects\f8\71b4f3568eafd9c4962a2d4d87398700171778
+// ------------------------------------------------------------------
+
+
+// ==================================================================
 // 🚀 INÍCIO DO ARQUIVO: .git\objects\f8\8bcc67650517fa4d4311e3df82eaf81afa67f4
 // ==================================================================
 
@@ -3013,7 +3106,7 @@ xK��OR0`  	��
 // 🚀 INÍCIO DO ARQUIVO: .git\refs\heads\main
 // ==================================================================
 
-d1dd9c89df02be67775a39cdb5427dc818505011
+10b0fb3e9f779aa97cbda3b8f53d412138a4a2fc
 
 
 // 🏁 FIM DO ARQUIVO: .git\refs\heads\main
@@ -3035,7 +3128,7 @@ ref: refs/remotes/origin/main
 // 🚀 INÍCIO DO ARQUIVO: .git\refs\remotes\origin\main
 // ==================================================================
 
-d1dd9c89df02be67775a39cdb5427dc818505011
+10b0fb3e9f779aa97cbda3b8f53d412138a4a2fc
 
 
 // 🏁 FIM DO ARQUIVO: .git\refs\remotes\origin\main
@@ -3103,6 +3196,10 @@ db = Database()
 
 from contextlib import asynccontextmanager
 from typing import List, Optional
+import hashlib
+import hmac
+import re
+import secrets
 from fastapi import FastAPI, HTTPException, status
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
@@ -3479,6 +3576,158 @@ async def deletar_estabelecimento(id_estabelecimento: int):
     return {"status": "sucesso"}
 
 
+class CadastroUsuarioPayload(BaseModel):
+    nome: str
+    email: str
+    senha: str
+
+
+class LoginUsuarioPayload(BaseModel):
+    email: str
+    senha: str
+
+
+def gerar_hash_senha(senha: str) -> str:
+    salt = secrets.token_hex(16)
+    derivado = hashlib.pbkdf2_hmac(
+        "sha256", senha.encode("utf-8"), salt.encode("utf-8"), 100_000
+    ).hex()
+    return f"pbkdf2_sha256${salt}${derivado}"
+
+
+def verificar_hash_senha(senha_digitada: str, hash_salvo: str) -> bool:
+    if not hash_salvo or "$" not in hash_salvo:
+        return False
+    try:
+        algoritmo, salt, derivado_salvo = hash_salvo.split("$", 2)
+        if algoritmo != "pbkdf2_sha256":
+            return False
+        derivado_teste = hashlib.pbkdf2_hmac(
+            "sha256", senha_digitada.encode("utf-8"), salt.encode("utf-8"), 100_000
+        ).hex()
+        return hmac.compare_digest(derivado_teste, derivado_salvo)
+    except Exception:
+        return False
+
+
+def validar_regras_senha(senha: str, email: str):
+    if len(senha) < 8:
+        raise HTTPException(
+            status_code=400, detail="A senha deve ter ao menos 8 caracteres."
+        )
+    if " " in senha:
+        raise HTTPException(
+            status_code=400, detail="A senha não pode conter espaços em branco."
+        )
+    if not re.search(r"[A-Z]", senha):
+        raise HTTPException(
+            status_code=400, detail="A senha deve conter ao menos uma letra maiúscula."
+        )
+    if not re.search(r"[a-z]", senha):
+        raise HTTPException(
+            status_code=400, detail="A senha deve conter ao menos uma letra minúscula."
+        )
+    if not re.search(r"\d", senha):
+        raise HTTPException(
+            status_code=400, detail="A senha deve conter ao menos um número."
+        )
+    if not re.search(r"[^A-Za-z0-9]", senha):
+        raise HTTPException(
+            status_code=400, detail="A senha deve conter ao menos um símbolo."
+        )
+
+    email_limpo = email.strip().lower()
+    usuario_email = email_limpo.split("@")[0] if "@" in email_limpo else email_limpo
+    senha_lower = senha.lower()
+
+    if senha_lower == email_limpo or (
+        len(usuario_email) >= 3 and usuario_email in senha_lower
+    ):
+        raise HTTPException(
+            status_code=400,
+            detail="A senha não pode conter nem ser parecida com o seu endereço de e-mail.",
+        )
+
+
+@app.post("/auth/cadastro", status_code=status.HTTP_201_CREATED)
+async def cadastrar_usuario(payload: CadastroUsuarioPayload):
+    nome = payload.nome.strip()
+    email = payload.email.strip().lower()
+    senha = payload.senha
+
+    if len(nome) < 3:
+        raise HTTPException(
+            status_code=400, detail="Informe seu nome completo (mínimo 3 caracteres)."
+        )
+    if not re.match(r"^[^@\s]+@[^@\s]+\.[^@\s]+$", email):
+        raise HTTPException(
+            status_code=400, detail="Informe um endereço de e-mail válido."
+        )
+
+    validar_regras_senha(senha, email)
+
+    existente = await db.fetch(
+        "SELECT id_usuario FROM usuarios WHERE email = %s",
+        (email,),
+        one=True,
+    )
+    if existente:
+        raise HTTPException(
+            status_code=409, detail="Este e-mail já está cadastrado no sistema."
+        )
+
+    senha_hash = gerar_hash_senha(senha)
+    novo_id = await db.execute(
+        """
+        INSERT INTO usuarios (nome, email, senha_hash, nivel_acesso)
+        VALUES (%s, %s, %s, 'admin_estabelecimento')
+        """,
+        (nome, email, senha_hash),
+    )
+
+    return {
+        "status": "sucesso",
+        "usuario": {
+            "id_usuario": novo_id,
+            "nome": nome,
+            "email": email,
+            "nivel_acesso": "admin_estabelecimento",
+        },
+    }
+
+
+@app.post("/auth/login")
+async def login_usuario(payload: LoginUsuarioPayload):
+    email = payload.email.strip().lower()
+    usuario = await db.fetch(
+        """
+        SELECT id_usuario, nome, email, senha_hash, nivel_acesso, inativo
+        FROM usuarios
+        WHERE email = %s
+        """,
+        (email,),
+        one=True,
+    )
+
+    if not usuario or not verificar_hash_senha(payload.senha, usuario["senha_hash"]):
+        raise HTTPException(status_code=401, detail="E-mail ou senha incorretos.")
+
+    if usuario["inativo"]:
+        raise HTTPException(
+            status_code=403, detail="Esta conta está inativa. Contate o suporte."
+        )
+
+    return {
+        "status": "sucesso",
+        "usuario": {
+            "id_usuario": usuario["id_usuario"],
+            "nome": usuario["nome"],
+            "email": usuario["email"],
+            "nivel_acesso": usuario["nivel_acesso"],
+        },
+    }
+
+
 // 🏁 FIM DO ARQUIVO: backend\main.py
 // ------------------------------------------------------------------
 
@@ -3527,8 +3776,78 @@ export default defineConfig({
 // 🚀 INÍCIO DO ARQUIVO: frontend\src\App.vue
 // ==================================================================
 
-// [Arquivo binário ignorado pelo leitor de segurança]
+<script setup>
+import { ref, onMounted } from 'vue'
+import { useRouter } from 'vue-router'
+import { carregarDadosDoBanco } from './store/estacionamentoStore'
+import {
+  IconMenu2,
+  IconSquareRoundedX,
+  IconQrcode,
+  IconLogin,
+  IconUserPlus,
+  IconInfoCircle
+} from './icons'
 
+const menuAberto = ref(false)
+const router = useRouter()
+
+onMounted(() => {
+  carregarDadosDoBanco()
+})
+
+function irPara(rota) {
+  menuAberto.value = false
+  router.push(rota)
+}
+</script>
+
+<template>
+  <div class="app-container">
+    <button class="btn-hamburguer" @click="menuAberto = !menuAberto">
+      <IconMenu2 :size="22" />
+    </button>
+
+    <Transition name="fade-backdrop">
+      <div v-if="menuAberto" class="menu-backdrop" @click="menuAberto = false"></div>
+    </Transition>
+
+    <Transition name="slide-menu">
+      <aside v-if="menuAberto" class="menu-lateral">
+        <div class="menu-header">
+          <h2>Vaga Certa</h2>
+          <button class="btn-fechar" @click="menuAberto = false">
+            <IconSquareRoundedX :size="22" />
+          </button>
+        </div>
+        <nav class="menu-links">
+          <a href="#" class="item-icone-texto" @click.prevent="irPara({ name: 'motorista-home' })">
+            <IconQrcode :size="19" />
+            <span>Escanear Estacionamento</span>
+          </a>
+          <a href="#" class="item-icone-texto" @click.prevent="irPara({ name: 'login' })">
+            <IconLogin :size="19" />
+            <span>Login</span>
+          </a>
+          <a href="#" class="item-icone-texto" @click.prevent="irPara({ name: 'cadastro' })">
+            <IconUserPlus :size="19" />
+            <span>Cadastro</span>
+          </a>
+          <a href="#" class="item-icone-texto" @click.prevent="irPara({ name: 'sobre' })">
+            <IconInfoCircle :size="19" />
+            <span>Sobre</span>
+          </a>
+        </nav>
+      </aside>
+    </Transition>
+
+    <router-view v-slot="{ Component }">
+      <Transition name="fade-view" mode="out-in">
+        <component :is="Component" />
+      </Transition>
+    </router-view>
+  </div>
+</template>
 
 // 🏁 FIM DO ARQUIVO: frontend\src\App.vue
 // ------------------------------------------------------------------
@@ -3568,7 +3887,16 @@ export {
   IconSettings,
   IconRoad,
   IconParking,
-  IconSquareRoundedChevronDown
+  IconSquareRoundedChevronDown,
+  IconEye,
+  IconEyeOff,
+  IconLogin,
+  IconUserPlus,
+  IconInfoCircle,
+  IconQrcode,
+  IconLock,
+  IconMail,
+  IconUser
 } from '@tabler/icons-vue'
 
 // 🏁 FIM DO ARQUIVO: frontend\src\icons.js
@@ -3613,12 +3941,30 @@ import MotoristaMapaView from '../views/MotoristaMapaView.vue'
 import AdminListaView from '../views/AdminListaView.vue'
 import AdminInfoGeraisView from '../views/AdminInfoGeraisView.vue'
 import AdminEditor2DView from '../views/AdminEditor2DView.vue'
+import LoginView from '../views/LoginView.vue'
+import CadastroView from '../views/CadastroView.vue'
+import SobreView from '../views/SobreView.vue'
 
 const routes = [
   {
     path: '/',
     name: 'motorista-home',
     component: MotoristaHomeView
+  },
+  {
+    path: '/login',
+    name: 'login',
+    component: LoginView
+  },
+  {
+    path: '/cadastro',
+    name: 'cadastro',
+    component: CadastroView
+  },
+  {
+    path: '/sobre',
+    name: 'sobre',
+    component: SobreView
   },
   {
     path: '/vagas/:id',
@@ -3647,7 +3993,6 @@ const router = createRouter({
   routes
 })
 
-// Se alguém ler um QR Code externo no formato antigo "/?id=1", redireciona direto para "/vagas/1"
 router.beforeEach((to, from, next) => {
   if (to.path === '/' && to.query.id) {
     next({ name: 'motorista-mapa', params: { id: to.query.id } })
@@ -5685,122 +6030,474 @@ async function removerEstabelecimento(est) {
 
 
 // ==================================================================
-// 🚀 INÍCIO DO ARQUIVO: frontend\src\views\MotoristaHomeView.vue
+// 🚀 INÍCIO DO ARQUIVO: frontend\src\views\CadastroView.vue
 // ==================================================================
 
 <script setup>
-import { ref, onUnmounted, nextTick } from 'vue'
+import { ref, computed } from 'vue'
 import { useRouter } from 'vue-router'
-import { Html5Qrcode } from 'html5-qrcode'
-import { estabelecimentos } from '../store/estacionamentoStore'
+import { carregarDadosDoBanco } from '../store/estacionamentoStore'
 import {
-  IconParking,
-  IconSearch,
+  IconUserPlus,
+  IconUser,
+  IconMail,
+  IconLock,
+  IconEye,
+  IconEyeOff,
+  IconSquareRoundedCheck,
   IconSquareRoundedX,
-  IconSquareRoundedArrowRight,
-  IconSettings
+  IconAlertSquareRounded
 } from '../icons'
 
+const API_URL = 'http://127.0.0.1:8000'
 const router = useRouter()
-const cameraAtiva = ref(false)
-const erroCamera = ref('')
-let leitorQrCode = null
 
-function abrirEstacionamento(id) {
-  pararCamera()
-  router.push({ name: 'motorista-mapa', params: { id } })
-}
+const nome = ref('')
+const email = ref('')
+const senha = ref('')
+const confirmarSenha = ref('')
 
-async function iniciarCamera() {
-  erroCamera.value = ''
-  cameraAtiva.value = true
-  await nextTick()
-  try {
-    leitorQrCode = new Html5Qrcode('leitor-qr')
-    await leitorQrCode.start(
-      { facingMode: 'environment' },
-      { fps: 10, qrbox: { width: 240, height: 240 } },
-      (textoLido) => {
-        try {
-          const url = new URL(textoLido)
-          const idUrl = url.searchParams.get('id')
-          if (idUrl) return abrirEstacionamento(idUrl)
-          const partes = url.pathname.split('/')
-          const ultimo = partes[partes.length - 1]
-          if (ultimo && !isNaN(ultimo)) return abrirEstacionamento(ultimo)
-        } catch {
-          abrirEstacionamento(textoLido)
-        }
-      },
-      () => {}
-    )
-  } catch {
-    erroCamera.value = 'Câmera indisponível neste dispositivo. Utilize os botões de acesso rápido abaixo.'
-    cameraAtiva.value = false
+const mostrarSenha = ref(false)
+const mostrarConfirmarSenha = ref(false)
+const carregando = ref(false)
+const erroMensagem = ref('')
+const cadastroConcluido = ref(false)
+
+// Validações reativas das regras de segurança da senha
+const regrasSenha = computed(() => {
+  const s = senha.value
+  const e = email.value.trim().toLowerCase()
+  const prefixoEmail = e.includes('@') ? e.split('@')[0] : e
+
+  const tamanhoMinimo = s.length >= 8
+  const temMaiuscula = /[A-Z]/.test(s)
+  const temMinuscula = /[a-z]/.test(s)
+  const temNumero = /\d/.test(s)
+  const temSimbolo = /[^A-Za-z0-9\s]/.test(s)
+  const semEspacos = s.length > 0 && !/\s/.test(s)
+
+  // Verifica se a senha não contém o nome de usuário do e-mail nem é igual ao e-mail
+  let diferenteDoEmail = s.length > 0
+  if (s.length > 0 && e.length >= 3) {
+    const sLower = s.toLowerCase()
+    if (sLower === e || (prefixoEmail.length >= 3 && sLower.includes(prefixoEmail))) {
+      diferenteDoEmail = false
+    }
   }
-}
 
-async function pararCamera() {
-  if (leitorQrCode && cameraAtiva.value) {
-    try {
-      await leitorQrCode.stop()
-      leitorQrCode.clear()
-    } catch {}
+  const senhasCoincidem = s.length > 0 && s === confirmarSenha.value
+
+  return {
+    tamanhoMinimo,
+    temMaiuscula,
+    temMinuscula,
+    temNumero,
+    temSimbolo,
+    semEspacos,
+    diferenteDoEmail,
+    senhasCoincidem
   }
-  cameraAtiva.value = false
-}
-
-onUnmounted(() => {
-  pararCamera()
 })
+
+const formularioValido = computed(() => {
+  const r = regrasSenha.value
+  return (
+    nome.value.trim().length >= 3 &&
+    /^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email.value.trim()) &&
+    r.tamanhoMinimo &&
+    r.temMaiuscula &&
+    r.temMinuscula &&
+    r.temNumero &&
+    r.temSimbolo &&
+    r.semEspacos &&
+    r.diferenteDoEmail &&
+    r.senhasCoincidem
+  )
+})
+
+async function realizarCadastro() {
+  if (carregando.value || !formularioValido.value) return
+  erroMensagem.value = ''
+  carregando.value = true
+
+  try {
+    const resposta = await fetch(`${API_URL}/auth/cadastro`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        nome: nome.value.trim(),
+        email: email.value.trim(),
+        senha: senha.value
+      })
+    })
+
+    const dados = await resposta.json().catch(() => ({}))
+    if (!resposta.ok) {
+      throw new Error(dados.detail || 'Não foi possível concluir o cadastro.')
+    }
+
+    await carregarDadosDoBanco()
+    cadastroConcluido.value = true
+  } catch (err) {
+    erroMensagem.value = err.message
+  } finally {
+    carregando.value = false
+  }
+}
 </script>
 
 <template>
   <main class="tela-inicial">
-    <div class="hero-card">
+    <div class="auth-card auth-card-cadastro">
+      <div class="auth-cabecalho">
+        <div class="auth-icone-topo">
+          <IconUserPlus :size="32" />
+        </div>
+        <h1>Criar nova conta</h1>
+        <p class="subtitulo">Preencha seus dados para acessar o sistema Vaga Certa</p>
+      </div>
+
+      <Transition name="fade-pop">
+        <div v-if="erroMensagem" class="alerta-auth erro item-icone-texto">
+          <IconAlertSquareRounded :size="18" />
+          <span>{{ erroMensagem }}</span>
+        </div>
+      </Transition>
+
+      <div v-if="cadastroConcluido" class="sucesso-cadastro-box">
+        <div class="icone-sucesso-modal" style="color: #16a34a">
+          <IconSquareRoundedCheck :size="48" />
+        </div>
+        <h3>Conta criada com sucesso!</h3>
+        <p class="subtitulo">Seu cadastro foi registrado com segurança no banco de dados.</p>
+        <button
+          type="button"
+          class="btn-primario btn-auth-submit item-icone-texto"
+          style="margin-top: 16px"
+          @click="router.push({ name: 'login' })"
+        >
+          <IconSquareRoundedCheck :size="20" />
+          <span>Ir para o Login</span>
+        </button>
+      </div>
+
+      <form v-else class="auth-form" @submit.prevent="realizarCadastro">
+        <div class="campo-grupo">
+          <label for="cad-nome">Nome completo</label>
+          <div class="input-icone-container">
+            <IconUser :size="18" class="icone-interno-esquerda" />
+            <input
+              id="cad-nome"
+              v-model="nome"
+              type="text"
+              maxlength="100"
+              placeholder="Ex: Lucas Oliveira"
+              autocomplete="name"
+              :disabled="carregando"
+              required
+            />
+          </div>
+        </div>
+
+        <div class="campo-grupo">
+          <label for="cad-email">E-mail</label>
+          <div class="input-icone-container">
+            <IconMail :size="18" class="icone-interno-esquerda" />
+            <input
+              id="cad-email"
+              v-model="email"
+              type="email"
+              maxlength="150"
+              placeholder="seu@email.com"
+              autocomplete="email"
+              :disabled="carregando"
+              required
+            />
+          </div>
+        </div>
+
+        <div class="campo-grupo">
+          <label for="cad-senha">Senha</label>
+          <div class="input-icone-container">
+            <IconLock :size="18" class="icone-interno-esquerda" />
+            <input
+              id="cad-senha"
+              v-model="senha"
+              :type="mostrarSenha ? 'text' : 'password'"
+              placeholder="Crie uma senha forte"
+              autocomplete="new-password"
+              :disabled="carregando"
+              required
+            />
+            <button
+              type="button"
+              class="btn-toggle-senha"
+              :title="mostrarSenha ? 'Ocultar senha' : 'Mostrar senha'"
+              @click="mostrarSenha = !mostrarSenha"
+            >
+              <IconEyeOff v-if="mostrarSenha" :size="19" />
+              <IconEye v-else :size="19" />
+            </button>
+          </div>
+        </div>
+
+        <div class="campo-grupo">
+          <label for="cad-confirma-senha">Confirmar senha</label>
+          <div class="input-icone-container">
+            <IconLock :size="18" class="icone-interno-esquerda" />
+            <input
+              id="cad-confirma-senha"
+              v-model="confirmarSenha"
+              :type="mostrarConfirmarSenha ? 'text' : 'password'"
+              placeholder="Repita a senha criada"
+              autocomplete="new-password"
+              :disabled="carregando"
+              required
+            />
+            <button
+              type="button"
+              class="btn-toggle-senha"
+              :title="mostrarConfirmarSenha ? 'Ocultar senha' : 'Mostrar senha'"
+              @click="mostrarConfirmarSenha = !mostrarConfirmarSenha"
+            >
+              <IconEyeOff v-if="mostrarConfirmarSenha" :size="19" />
+              <IconEye v-else :size="19" />
+            </button>
+          </div>
+        </div>
+
+        <!-- Painel de Regras de Senha em Tempo Real -->
+        <div class="regras-senha-card">
+          <span class="titulo-regras-senha">Requisitos de segurança da senha:</span>
+          <ul class="lista-regras-senha">
+            <li :class="{ 'regra-cumprida': regrasSenha.tamanhoMinimo }">
+              <IconSquareRoundedCheck v-if="regrasSenha.tamanhoMinimo" :size="16" />
+              <IconSquareRoundedX v-else :size="16" />
+              <span>Mínimo de 8 caracteres (sem espaços)</span>
+            </li>
+            <li :class="{ 'regra-cumprida': regrasSenha.temMaiuscula }">
+              <IconSquareRoundedCheck v-if="regrasSenha.temMaiuscula" :size="16" />
+              <IconSquareRoundedX v-else :size="16" />
+              <span>Ao menos uma letra maiúscula (A-Z)</span>
+            </li>
+            <li :class="{ 'regra-cumprida': regrasSenha.temMinuscula }">
+              <IconSquareRoundedCheck v-if="regrasSenha.temMinuscula" :size="16" />
+              <IconSquareRoundedX v-else :size="16" />
+              <span>Ao menos uma letra minúscula (a-z)</span>
+            </li>
+            <li :class="{ 'regra-cumprida': regrasSenha.temNumero }">
+              <IconSquareRoundedCheck v-if="regrasSenha.temNumero" :size="16" />
+              <IconSquareRoundedX v-else :size="16" />
+              <span>Ao menos um número (0-9)</span>
+            </li>
+            <li :class="{ 'regra-cumprida': regrasSenha.temSimbolo }">
+              <IconSquareRoundedCheck v-if="regrasSenha.temSimbolo" :size="16" />
+              <IconSquareRoundedX v-else :size="16" />
+              <span>Ao menos um símbolo (!@#$%&*...)</span>
+            </li>
+            <li :class="{ 'regra-cumprida': regrasSenha.diferenteDoEmail }">
+              <IconSquareRoundedCheck v-if="regrasSenha.diferenteDoEmail" :size="16" />
+              <IconSquareRoundedX v-else :size="16" />
+              <span>Não pode ser parecida com o seu e-mail</span>
+            </li>
+            <li :class="{ 'regra-cumprida': regrasSenha.senhasCoincidem }">
+              <IconSquareRoundedCheck v-if="regrasSenha.senhasCoincidem" :size="16" />
+              <IconSquareRoundedX v-else :size="16" />
+              <span>Confirmação de senha idêntica</span>
+            </li>
+          </ul>
+        </div>
+
+        <button
+          type="submit"
+          class="btn-primario btn-auth-submit item-icone-texto"
+          :disabled="carregando || !formularioValido"
+        >
+          <span v-if="carregando" class="spinner-btn"></span>
+          <IconUserPlus v-else :size="20" />
+          <span>{{ carregando ? 'Cadastrando...' : 'Criar Conta' }}</span>
+        </button>
+      </form>
+
+      <div class="auth-rodape">
+        <span>Já possui uma conta?</span>
+        <router-link :to="{ name: 'login' }" class="link-auth">
+          Fazer login
+        </router-link>
+      </div>
+    </div>
+  </main>
+</template>
+
+// 🏁 FIM DO ARQUIVO: frontend\src\views\CadastroView.vue
+// ------------------------------------------------------------------
+
+
+// ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: frontend\src\views\LoginView.vue
+// ==================================================================
+
+<script setup>
+import { ref } from 'vue'
+import { useRouter } from 'vue-router'
+import { usuarioLogado } from '../store/estacionamentoStore'
+import {
+  IconLogin,
+  IconMail,
+  IconLock,
+  IconEye,
+  IconEyeOff,
+  IconAlertSquareRounded
+} from '../icons'
+
+const API_URL = 'http://127.0.0.1:8000'
+const router = useRouter()
+
+const email = ref('')
+const senha = ref('')
+const mostrarSenha = ref(false)
+const carregando = ref(false)
+const erroMensagem = ref('')
+
+async function realizarLogin() {
+  if (carregando.value) return
+  erroMensagem.value = ''
+
+  if (!email.value.trim() || !senha.value) {
+    erroMensagem.value = 'Preencha seu e-mail e sua senha para entrar.'
+    return
+  }
+
+  carregando.value = true
+  try {
+    const resposta = await fetch(`${API_URL}/auth/login`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        email: email.value.trim(),
+        senha: senha.value
+      })
+    })
+
+    const dados = await resposta.json().catch(() => ({}))
+    if (!resposta.ok) {
+      throw new Error(dados.detail || 'Não foi possível realizar o login.')
+    }
+
+    if (usuarioLogado) {
+      usuarioLogado.value = dados.usuario
+    }
+    localStorage.setItem('vagacerta_usuario', JSON.stringify(dados.usuario))
+    router.push({ name: 'admin-lista' })
+  } catch (err) {
+    erroMensagem.value = err.message
+  } finally {
+    carregando.value = false
+  }
+}
+</script>
+
+<template>
+  <main class="tela-inicial">
+    <div class="auth-card">
+      <div class="auth-cabecalho">
+        <div class="auth-icone-topo">
+          <IconLogin :size="32" />
+        </div>
+        <h1>Bem-vindo de volta</h1>
+        <p class="subtitulo">Acesse sua conta para gerenciar estacionamentos</p>
+      </div>
+
+      <Transition name="fade-pop">
+        <div v-if="erroMensagem" class="alerta-auth erro item-icone-texto">
+          <IconAlertSquareRounded :size="18" />
+          <span>{{ erroMensagem }}</span>
+        </div>
+      </Transition>
+
+      <form class="auth-form" @submit.prevent="realizarLogin">
+        <div class="campo-grupo">
+          <label for="login-email">E-mail</label>
+          <div class="input-icone-container">
+            <IconMail :size="18" class="icone-interno-esquerda" />
+            <input
+              id="login-email"
+              v-model="email"
+              type="email"
+              placeholder="seu@email.com"
+              autocomplete="email"
+              :disabled="carregando"
+              required
+            />
+          </div>
+        </div>
+
+        <div class="campo-grupo">
+          <label for="login-senha">Senha</label>
+          <div class="input-icone-container">
+            <IconLock :size="18" class="icone-interno-esquerda" />
+            <input
+              id="login-senha"
+              v-model="senha"
+              :type="mostrarSenha ? 'text' : 'password'"
+              placeholder="Digite sua senha"
+              autocomplete="current-password"
+              :disabled="carregando"
+              required
+            />
+            <button
+              type="button"
+              class="btn-toggle-senha"
+              :title="mostrarSenha ? 'Ocultar senha' : 'Mostrar senha'"
+              @click="mostrarSenha = !mostrarSenha"
+            >
+              <IconEyeOff v-if="mostrarSenha" :size="19" />
+              <IconEye v-else :size="19" />
+            </button>
+          </div>
+        </div>
+
+        <button
+          type="submit"
+          class="btn-primario btn-auth-submit item-icone-texto"
+          :disabled="carregando"
+        >
+          <span v-if="carregando" class="spinner-btn"></span>
+          <IconLogin v-else :size="20" />
+          <span>{{ carregando ? 'Autenticando...' : 'Entrar' }}</span>
+        </button>
+      </form>
+
+      <div class="auth-rodape">
+        <span>Ainda não tem uma conta?</span>
+        <router-link :to="{ name: 'cadastro' }" class="link-auth">
+          Cadastre-se
+        </router-link>
+      </div>
+    </div>
+  </main>
+</template>
+
+// 🏁 FIM DO ARQUIVO: frontend\src\views\LoginView.vue
+// ------------------------------------------------------------------
+
+
+// ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: frontend\src\views\MotoristaHomeView.vue
+// ==================================================================
+
+<script setup>
+import { IconQrcode } from '../icons'
+</script>
+
+<template>
+  <main class="tela-inicial">
+    <div class="hero-card card-em-breve">
       <div class="icone-destaque" style="color: var(--destaque-azul)">
-        <IconParking :size="56" />
+        <IconQrcode :size="52" />
       </div>
-      <h1 class="titulo-principal">Encontre sua vaga em segundos</h1>
-      <p class="descricao-principal">
-        Aponte a câmera para o <strong>QR Code</strong> localizado na entrada do estacionamento para abrir o mapa de vagas em tempo real.
-      </p>
-
-      <div v-if="cameraAtiva" class="camera-wrapper">
-        <div id="leitor-qr"></div>
-        <button class="btn-cancelar-camera item-icone-texto" @click="pararCamera">
-          <IconSquareRoundedX :size="18" />
-          <span>Fechar Câmera</span>
-        </button>
-      </div>
-
-      <button v-else class="btn-ler-qr item-icone-texto" @click="iniciarCamera">
-        <IconSearch :size="20" />
-        <span>Ler QR Code do Estacionamento</span>
-      </button>
-
-      <p v-if="erroCamera" class="msg-erro">{{ erroCamera }}</p>
-
-      <div class="area-teste-dev">
-        <span>Acesso Rápido de Demonstração:</span>
-        <button
-          v-for="est in estabelecimentos.filter(e => !e.inativo)"
-          :key="est.id"
-          class="btn-teste-dev item-icone-texto"
-          @click="abrirEstacionamento(est.id)"
-        >
-          <IconParking :size="18" />
-          <span>Abrir {{ est.nome }} (ID: {{ est.id }})</span>
-          <IconSquareRoundedArrowRight :size="18" />
-        </button>
-        <button
-          class="btn-teste-dev destaque-admin item-icone-texto"
-          @click="router.push({ name: 'admin-lista' })"
-        >
-          <IconSettings :size="18" />
-          <span>Ir para Painel Admin Dev (Criar / Editar Mapas 2D)</span>
-        </button>
-      </div>
+      <h1 class="titulo-principal">Escanear Estacionamento</h1>
+      <span class="badge-em-breve">Em breve</span>
     </div>
   </main>
 </template>
@@ -5814,165 +6511,46 @@ onUnmounted(() => {
 // ==================================================================
 
 <script setup>
-import { ref, computed, watch } from 'vue'
-import { useRoute, useRouter } from 'vue-router'
-import { estabelecimentos } from '../store/estacionamentoStore'
-import {
-  IconSquareRoundedArrowLeft,
-  IconCpu,
-  IconDoorEnter,
-  IconDoorExit,
-  IconArrowBarRight
-} from '../icons'
-
-const route = useRoute()
-const router = useRouter()
-
-const vagaFavorita = ref(null)
-const filtrarOcupadas = ref(false)
-const modoSimuladorSensor = ref(false)
-const andarSelecionadoId = ref(null)
-
-const estacionamentoAtual = computed(() => {
-  const id = parseInt(route.params.id, 10)
-  return estabelecimentos.value.find(e => e.id === id && !e.inativo) || null
-})
-
-const andarMotorista = computed(() => {
-  if (!estacionamentoAtual.value) return null
-  return (
-    estacionamentoAtual.value.andares.find(a => a.id_andar === andarSelecionadoId.value) ||
-    estacionamentoAtual.value.andares[0]
-  )
-})
-
-watch(
-  estacionamentoAtual,
-  (novo) => {
-    if (novo && novo.andares.length > 0) {
-      andarSelecionadoId.value = novo.andares[0].id_andar
-      vagaFavorita.value = null
-    }
-  },
-  { immediate: true }
-)
-
-function clicarCelulaMotorista(celula) {
-  if (!celula || celula.tipo !== 'VAGA') return
-  if (modoSimuladorSensor.value) {
-    celula.livre = !celula.livre
-    if (!celula.livre && vagaFavorita.value === `${celula.x},${celula.y}`) {
-      vagaFavorita.value = null
-    }
-    return
-  }
-  if (!celula.livre) return
-  const chave = `${celula.x},${celula.y}`
-  vagaFavorita.value = vagaFavorita.value === chave ? null : chave
-}
+import { IconQrcode } from '../icons'
 </script>
 
 <template>
-  <div v-if="estacionamentoAtual && andarMotorista" class="painel-estacionamento">
-    <header class="painel-header">
-      <div>
-        <h1>{{ estacionamentoAtual.nome }}</h1>
-        <p class="subtitulo">Toque em uma vaga livre (verde) para marcá-la em roxo</p>
+  <main class="tela-inicial">
+    <div class="hero-card card-em-breve">
+      <div class="icone-destaque" style="color: var(--destaque-azul)">
+        <IconQrcode :size="52" />
       </div>
-      <button class="btn-secundario item-icone-texto" @click="router.push({ name: 'motorista-home' })">
-        <IconSquareRoundedArrowLeft :size="18" />
-        <span>Ler outro QR Code</span>
-      </button>
-    </header>
-
-    <div class="abas-andares">
-      <button
-        v-for="andar in estacionamentoAtual.andares"
-        :key="andar.id_andar"
-        class="aba-btn"
-        :class="{ 'aba-ativa': andarMotorista.id_andar === andar.id_andar }"
-        @click="andarSelecionadoId = andar.id_andar"
-      >
-        {{ andar.nome_andar }}
-      </button>
+      <h1 class="titulo-principal">Visão do estacionamento para o motorista</h1>
+      <span class="badge-em-breve">Em breve</span>
     </div>
-
-    <div class="barra-controles">
-      <div class="controles-esquerda">
-        <label class="filtro-toggle">
-          <input type="checkbox" v-model="filtrarOcupadas" />
-          Deixar vagas ocupadas cinzas
-        </label>
-        <label class="filtro-toggle item-icone-texto">
-          <input type="checkbox" v-model="modoSimuladorSensor" />
-          <IconCpu :size="16" />
-          <span>Clique simula Sensor HC-SR04 (Carro Entrando/Saindo)</span>
-        </label>
-      </div>
-
-      <div class="legenda">
-        <span class="badge" style="background:#2563eb">Entrada</span>
-        <span class="badge" style="background:#ea580c">Saída</span>
-        <span class="badge" style="background:#16a34a">Vaga Livre</span>
-        <span class="badge" style="background:#9333ea">Sua Vaga</span>
-        <span class="badge" style="background:#dc2626">Ocupada</span>
-      </div>
-    </div>
-
-    <div class="grid-scroll-wrapper">
-      <div
-        class="grid-tabuleiro"
-        :style="{ gridTemplateColumns: `repeat(${andarMotorista.grid_x}, 42px)` }"
-      >
-        <template v-for="y in andarMotorista.grid_y" :key="`mot-row-${y}`">
-          <div
-            v-for="x in andarMotorista.grid_x"
-            :key="`mot-cell-${x}-${y}`"
-            class="celula-fundo-setor"
-            :style="{
-              backgroundColor: andarMotorista.celulas[`${x},${y}`]?.corSetor || 'transparent'
-            }"
-            @click="clicarCelulaMotorista(andarMotorista.celulas[`${x},${y}`])"
-          >
-            <div
-              class="quadrado-interno"
-              :class="{
-                'q-invisivel': andarMotorista.celulas[`${x},${y}`]?.tipo === 'VAZIO',
-                'q-estrada': andarMotorista.celulas[`${x},${y}`]?.tipo === 'ESTRADA',
-                'q-entrada': andarMotorista.celulas[`${x},${y}`]?.tipo === 'ENTRADA',
-                'q-saida': andarMotorista.celulas[`${x},${y}`]?.tipo === 'SAIDA',
-                'q-acesso': andarMotorista.celulas[`${x},${y}`]?.tipo === 'ACESSO',
-                'q-vaga-livre': andarMotorista.celulas[`${x},${y}`]?.tipo === 'VAGA' && andarMotorista.celulas[`${x},${y}`]?.livre && vagaFavorita !== `${x},${y}`,
-                'q-vaga-roxa': andarMotorista.celulas[`${x},${y}`]?.tipo === 'VAGA' && andarMotorista.celulas[`${x},${y}`]?.livre && vagaFavorita === `${x},${y}`,
-                'q-vaga-ocupada': andarMotorista.celulas[`${x},${y}`]?.tipo === 'VAGA' && !andarMotorista.celulas[`${x},${y}`]?.livre && !filtrarOcupadas,
-                'q-vaga-cinza': andarMotorista.celulas[`${x},${y}`]?.tipo === 'VAGA' && !andarMotorista.celulas[`${x},${y}`]?.livre && filtrarOcupadas
-              }"
-            >
-              <span v-if="andarMotorista.celulas[`${x},${y}`]?.tipo === 'VAGA'">
-                {{ andarMotorista.celulas[`${x},${y}`]?.identificador }}
-              </span>
-              <IconDoorEnter v-else-if="andarMotorista.celulas[`${x},${y}`]?.tipo === 'ENTRADA'" :size="18" />
-              <IconDoorExit v-else-if="andarMotorista.celulas[`${x},${y}`]?.tipo === 'SAIDA'" :size="18" />
-              <IconArrowBarRight v-else-if="andarMotorista.celulas[`${x},${y}`]?.tipo === 'ACESSO'" :size="18" />
-            </div>
-          </div>
-        </template>
-      </div>
-    </div>
-  </div>
-
-  <div v-else class="admin-container">
-    <div class="lista-card" style="text-align: center">
-      <h2>Estacionamento não encontrado ou inativo</h2>
-      <button class="btn-primario item-icone-texto" style="margin: 16px auto 0" @click="router.push({ name: 'motorista-home' })">
-        <IconSquareRoundedArrowLeft :size="18" />
-        <span>Voltar ao Início</span>
-      </button>
-    </div>
-  </div>
+  </main>
 </template>
 
 // 🏁 FIM DO ARQUIVO: frontend\src\views\MotoristaMapaView.vue
+// ------------------------------------------------------------------
+
+
+// ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: frontend\src\views\SobreView.vue
+// ==================================================================
+
+<script setup>
+import { IconInfoCircle } from '../icons'
+</script>
+
+<template>
+  <main class="tela-inicial">
+    <div class="hero-card card-em-breve">
+      <div class="icone-destaque" style="color: var(--destaque-azul)">
+        <IconInfoCircle :size="52" />
+      </div>
+      <h1 class="titulo-principal">Sobre</h1>
+      <span class="badge-em-breve">Em breve</span>
+    </div>
+  </main>
+</template>
+
+// 🏁 FIM DO ARQUIVO: frontend\src\views\SobreView.vue
 // ------------------------------------------------------------------
 
 

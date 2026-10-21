@@ -28,5 +28,15 @@ export {
   IconSettings,
   IconRoad,
   IconParking,
-  IconSquareRoundedChevronDown
+  IconSquareRoundedChevronDown,
+  IconEye,
+  IconEyeOff,
+  IconLogin,
+  IconUserPlus,
+  IconInfoCircle,
+  IconQrcode,
+  IconLock,
+  IconMail,
+  IconUser,
+  IconLogout
 } from '@tabler/icons-vue'

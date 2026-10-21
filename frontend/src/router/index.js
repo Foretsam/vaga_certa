@@ -1,9 +1,15 @@
 import { createRouter, createWebHistory } from 'vue-router'
+import { usuarioLogado } from '../store/estacionamentoStore'
 import MotoristaHomeView from '../views/MotoristaHomeView.vue'
 import MotoristaMapaView from '../views/MotoristaMapaView.vue'
 import AdminListaView from '../views/AdminListaView.vue'
 import AdminInfoGeraisView from '../views/AdminInfoGeraisView.vue'
 import AdminEditor2DView from '../views/AdminEditor2DView.vue'
+import GerenteView from '../views/GerenteView.vue'
+import AcessoNegadoView from '../views/AcessoNegadoView.vue'
+import LoginView from '../views/LoginView.vue'
+import CadastroView from '../views/CadastroView.vue'
+import SobreView from '../views/SobreView.vue'
 
 const routes = [
   {
@@ -12,24 +18,53 @@ const routes = [
     component: MotoristaHomeView
   },
   {
+    path: '/login',
+    name: 'login',
+    component: LoginView
+  },
+  {
+    path: '/cadastro',
+    name: 'cadastro',
+    component: CadastroView
+  },
+  {
+    path: '/sobre',
+    name: 'sobre',
+    component: SobreView
+  },
+  {
     path: '/vagas/:id',
     name: 'motorista-mapa',
     component: MotoristaMapaView
   },
   {
+    path: '/gerente',
+    name: 'gerente',
+    component: GerenteView,
+    meta: { rolesPermitidas: ['admin_estabelecimento', 'admin_dev'] }
+  },
+  {
     path: '/admin',
     name: 'admin-lista',
-    component: AdminListaView
+    component: AdminListaView,
+    meta: { rolesPermitidas: ['admin_dev'] }
   },
   {
     path: '/admin/informacoes-gerais',
     name: 'admin-info-gerais',
-    component: AdminInfoGeraisView
+    component: AdminInfoGeraisView,
+    meta: { rolesPermitidas: ['admin_dev'] }
   },
   {
     path: '/admin/editor-2d',
     name: 'admin-editor-2d',
-    component: AdminEditor2DView
+    component: AdminEditor2DView,
+    meta: { rolesPermitidas: ['admin_dev'] }
+  },
+  {
+    path: '/acesso-negado',
+    name: 'acesso-negado',
+    component: AcessoNegadoView
   }
 ]
 
@@ -38,13 +73,20 @@ const router = createRouter({
   routes
 })
 
-// Se alguém ler um QR Code externo no formato antigo "/?id=1", redireciona direto para "/vagas/1"
 router.beforeEach((to, from, next) => {
   if (to.path === '/' && to.query.id) {
-    next({ name: 'motorista-mapa', params: { id: to.query.id } })
-  } else {
-    next()
+    return next({ name: 'motorista-mapa', params: { id: to.query.id } })
   }
+
+  // Verifica se a rota exige nível de acesso específico
+  if (to.meta.rolesPermitidas) {
+    const usuario = usuarioLogado.value
+    if (!usuario || !to.meta.rolesPermitidas.includes(usuario.nivel_acesso)) {
+      return next({ name: 'acesso-negado' })
+    }
+  }
+
+  next()
 })
 
 export default router

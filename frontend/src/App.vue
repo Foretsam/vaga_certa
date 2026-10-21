@@ -1,18 +1,15 @@
 <script setup>
 import { ref, onMounted } from 'vue'
 import { useRouter } from 'vue-router'
-import {
-  estabelecimentos,
-  iniciarNovoFormulario,
-  carregarDadosDoBanco
-} from './store/estacionamentoStore'
+import { carregarDadosDoBanco, usuarioLogado } from './store/estacionamentoStore'
 import {
   IconMenu2,
   IconSquareRoundedX,
-  IconSearch,
-  IconParking,
-  IconSquareRoundedPlus,
-  IconSettings
+  IconQrcode,
+  IconLogin,
+  IconUserPlus,
+  IconInfoCircle,
+  IconLogout
 } from './icons'
 
 const menuAberto = ref(false)
@@ -27,10 +24,11 @@ function irPara(rota) {
   router.push(rota)
 }
 
-function irParaNovoEstacionamento() {
-  iniciarNovoFormulario()
+function sairDaConta() {
+  usuarioLogado.value = null
+  localStorage.removeItem('vagacerta_usuario')
   menuAberto.value = false
-  router.push({ name: 'admin-info-gerais' })
+  router.push({ name: 'motorista-home' })
 }
 </script>
 
@@ -53,36 +51,40 @@ function irParaNovoEstacionamento() {
           </button>
         </div>
         <nav class="menu-links">
-          <span class="menu-secao">NÍVEL 1 (MOTORISTA)</span>
           <a href="#" class="item-icone-texto" @click.prevent="irPara({ name: 'motorista-home' })">
-            <IconSearch :size="18" />
-            <span>Leitor de QR Code</span>
-          </a>
-          <a
-            v-for="est in estabelecimentos.filter(e => !e.inativo)"
-            :key="est.id"
-            href="#"
-            class="item-icone-texto"
-            @click.prevent="irPara({ name: 'motorista-mapa', params: { id: est.id } })"
-          >
-            <IconParking :size="18" />
-            <span>{{ est.nome }}</span>
+            <IconQrcode :size="19" />
+            <span>Escanear Estacionamento</span>
           </a>
 
-          <span class="menu-secao">NÍVEL 3 (ADMIN DEV)</span>
-          <a href="#" class="item-icone-texto" @click.prevent="irPara({ name: 'admin-lista' })">
-            <IconSettings :size="18" />
-            <span>Gerenciar Estacionamentos</span>
+          <template v-if="!usuarioLogado">
+            <a href="#" class="item-icone-texto" @click.prevent="irPara({ name: 'login' })">
+              <IconLogin :size="19" />
+              <span>Login</span>
+            </a>
+            <a href="#" class="item-icone-texto" @click.prevent="irPara({ name: 'cadastro' })">
+              <IconUserPlus :size="19" />
+              <span>Cadastro</span>
+            </a>
+          </template>
+
+          <a href="#" class="item-icone-texto" @click.prevent="irPara({ name: 'sobre' })">
+            <IconInfoCircle :size="19" />
+            <span>Sobre</span>
           </a>
-          <a href="#" class="item-icone-texto" @click.prevent="irParaNovoEstacionamento">
-            <IconSquareRoundedPlus :size="18" />
-            <span>Novo Estacionamento (Editor 2D)</span>
+
+          <a
+            v-if="usuarioLogado"
+            href="#"
+            class="item-icone-texto link-sair-menu"
+            @click.prevent="sairDaConta"
+          >
+            <IconLogout :size="19" />
+            <span>Sair</span>
           </a>
         </nav>
       </aside>
     </Transition>
 
-    <!-- Animação leve, sutil e rápida ao alternar entre as views -->
     <router-view v-slot="{ Component }">
       <Transition name="fade-view" mode="out-in">
         <component :is="Component" />

@@ -121,6 +121,10 @@ export const usuariosCadastrados = ref([])
 export const estabelecimentos = ref([])
 export const carregandoDados = ref(false)
 
+export const usuarioLogado = ref(
+  JSON.parse(localStorage.getItem('vagacerta_usuario') || 'null')
+)
+
 export const modoEdicaoId = ref(null)
 export const formEstabelecimento = ref({
   nome: '',

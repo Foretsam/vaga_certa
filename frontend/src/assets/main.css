@@ -1531,6 +1531,276 @@ html, body, #app {
   padding-left: 38px;
 }
 
+.card-em-breve {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 44px 28px;
+}
+
+.badge-em-breve {
+  margin-top: 8px;
+  display: inline-block;
+  padding: 6px 16px;
+  border-radius: 999px;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--destaque-azul);
+  background: rgba(37, 99, 235, 0.12);
+  border: 1px solid var(--destaque-azul);
+}
+
+.auth-card {
+  background: var(--bg-card);
+  border: 1px solid var(--borda);
+  border-radius: 18px;
+  padding: 30px 26px;
+  max-width: 430px;
+  width: 100%;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.18);
+}
+
+.auth-card-cadastro {
+  max-width: 460px;
+}
+
+.auth-cabecalho {
+  text-align: center;
+  margin-bottom: 22px;
+}
+
+.auth-icone-topo {
+  width: 56px;
+  height: 56px;
+  border-radius: 14px;
+  background: rgba(37, 99, 235, 0.12);
+  color: var(--destaque-azul);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 10px;
+}
+
+.auth-cabecalho h1 {
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.alerta-auth {
+  padding: 10px 14px;
+  border-radius: 10px;
+  font-size: 13.5px;
+  font-weight: 600;
+  margin-bottom: 16px;
+  width: 100%;
+  justify-content: flex-start;
+}
+
+.alerta-auth.erro {
+  background: rgba(220, 38, 38, 0.12);
+  color: #f87171;
+  border: 1px solid #ef4444;
+}
+
+.input-icone-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.icone-interno-esquerda {
+  position: absolute;
+  left: 12px;
+  color: var(--texto-secundario);
+  pointer-events: none;
+}
+
+.input-icone-container input {
+  width: 100%;
+  padding-left: 38px !important;
+  padding-right: 40px !important;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.input-icone-container input:focus {
+  outline: none;
+  border-color: var(--destaque-azul);
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.18);
+}
+
+.btn-toggle-senha {
+  position: absolute;
+  right: 8px;
+  background: transparent;
+  border: none;
+  color: var(--texto-secundario);
+  padding: 6px;
+  border-radius: 6px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 0.15s ease, background-color 0.15s ease;
+}
+
+.btn-toggle-senha:hover {
+  color: var(--texto-principal);
+  background: rgba(148, 163, 184, 0.15);
+}
+
+/* Checklist de Regras da Senha */
+.regras-senha-card {
+  background: var(--bg-painel);
+  border: 1px solid var(--borda);
+  border-radius: 10px;
+  padding: 12px 14px;
+  margin-bottom: 18px;
+}
+
+.titulo-regras-senha {
+  display: block;
+  font-size: 12.5px;
+  font-weight: 700;
+  color: var(--texto-secundario);
+  margin-bottom: 8px;
+}
+
+.lista-regras-senha {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.lista-regras-senha li {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 12.5px;
+  color: var(--texto-secundario);
+  transition: color 0.15s ease, transform 0.15s ease;
+}
+
+.lista-regras-senha li.regra-cumprida {
+  color: #16a34a;
+  font-weight: 600;
+}
+
+.btn-auth-submit {
+  width: 100%;
+  padding: 12px;
+  font-size: 15.5px;
+}
+
+.btn-auth-submit:disabled {
+  background: #64748b;
+  opacity: 0.55;
+  cursor: not-allowed;
+  transform: none !important;
+  box-shadow: none !important;
+}
+
+/* Spinner de carregamento nos botões */
+.spinner-btn {
+  width: 18px;
+  height: 18px;
+  border: 2.5px solid rgba(255, 255, 255, 0.35);
+  border-top-color: #ffffff;
+  border-radius: 50%;
+  animation: giro-spinner 0.7s linear infinite;
+}
+
+@keyframes giro-spinner {
+  to { transform: rotate(360deg); }
+}
+
+.auth-rodape {
+  margin-top: 20px;
+  padding-top: 16px;
+  border-top: 1px solid var(--borda);
+  text-align: center;
+  font-size: 14px;
+  color: var(--texto-secundario);
+  display: flex;
+  justify-content: center;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.link-auth {
+  color: var(--destaque-azul);
+  font-weight: 700;
+  text-decoration: none;
+  transition: opacity 0.15s ease;
+}
+
+.link-auth:hover {
+  text-decoration: underline;
+  opacity: 0.85;
+}
+
+.sucesso-cadastro-box {
+  text-align: center;
+  padding: 12px 0;
+}
+
+.aviso-inline-senha {
+  font-size: 12.5px;
+  font-weight: 600;
+  color: #f59e0b;
+  margin-top: 2px;
+  line-height: 1.35;
+}
+
+.link-sair-menu {
+  color: #ef4444 !important;
+  margin-top: 8px;
+  border-top: 1px solid var(--borda);
+  padding-top: 12px !important;
+}
+.link-sair-menu:hover {
+  background: rgba(239, 68, 68, 0.12) !important;
+}
+
+.card-erro-acesso {
+  text-align: center;
+  max-width: 420px;
+}
+
+.icone-erro-acesso {
+  width: 64px;
+  height: 64px;
+  border-radius: 16px;
+  background: rgba(220, 38, 38, 0.12);
+  color: #ef4444;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 14px;
+}
+
+.texto-erro-acesso {
+  margin-top: 8px;
+  margin-bottom: 22px;
+  line-height: 1.5;
+}
+
+.acoes-erro-acesso {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+@media (max-width: 480px) {
+  .auth-card {
+    padding: 22px 16px;
+  }
+  .auth-cabecalho h1 {
+    font-size: 20px;
+  }
+}
+
 /* =========================================================
    TABLETS MENORES E CELULARES (<= 1024px):
    MENUS FLUTUANTES VISÍVEIS E RESPONSIVOS SOBRE O GRID
