@@ -204,11 +204,13 @@ async function realizarCadastro() {
               <IconEye v-else :size="19" />
             </button>
           </div>
-          <Transition name="fade-pop">
-            <p v-if="avisoFaltandoSenha" class="aviso-inline-senha">
-              {{ avisoFaltandoSenha }}
-            </p>
-          </Transition>
+          <div class="slot-aviso-senha slot-duas-linhas">
+            <Transition name="fade-pop">
+              <p v-if="avisoFaltandoSenha" class="aviso-inline-senha">
+                {{ avisoFaltandoSenha }}
+              </p>
+            </Transition>
+          </div>
         </div>
 
         <div class="campo-grupo">
@@ -234,11 +236,13 @@ async function realizarCadastro() {
               <IconEye v-else :size="19" />
             </button>
           </div>
-          <Transition name="fade-pop">
-            <p v-if="avisoConfirmacaoSenha" class="aviso-inline-senha">
-              {{ avisoConfirmacaoSenha }}
-            </p>
-          </Transition>
+          <div class="slot-aviso-senha slot-uma-linha">
+            <Transition name="fade-pop">
+              <p v-if="avisoConfirmacaoSenha" class="aviso-inline-senha">
+                {{ avisoConfirmacaoSenha }}
+              </p>
+            </Transition>
+          </div>
         </div>
 
         <button

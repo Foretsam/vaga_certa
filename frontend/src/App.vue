@@ -1,10 +1,16 @@
 <script setup>
 import { ref, onMounted } from 'vue'
 import { useRouter } from 'vue-router'
-import { carregarDadosDoBanco, usuarioLogado } from './store/estacionamentoStore'
+import {
+  carregarDadosDoBanco,
+  iniciarNovoFormulario,
+  usuarioLogado
+} from './store/estacionamentoStore'
 import {
   IconMenu2,
   IconSquareRoundedX,
+  IconSquareRoundedPlus,
+  IconSettings,
   IconQrcode,
   IconLogin,
   IconUserPlus,
@@ -22,6 +28,12 @@ onMounted(() => {
 function irPara(rota) {
   menuAberto.value = false
   router.push(rota)
+}
+
+function irParaNovoEstacionamento() {
+  iniciarNovoFormulario()
+  menuAberto.value = false
+  router.push({ name: 'admin-info-gerais' })
 }
 
 function sairDaConta() {
@@ -50,7 +62,21 @@ function sairDaConta() {
             <IconSquareRoundedX :size="22" />
           </button>
         </div>
+
         <nav class="menu-links">
+          <!-- Opções exclusivas do Admin Dev acima de Escanear Estacionamento -->
+          <template v-if="usuarioLogado?.nivel_acesso === 'admin_dev'">
+            <a href="#" class="item-icone-texto" @click.prevent="irParaNovoEstacionamento">
+              <IconSquareRoundedPlus :size="19" />
+              <span>Novo Estacionamento</span>
+            </a>
+            <a href="#" class="item-icone-texto" @click.prevent="irPara({ name: 'admin-lista' })">
+              <IconSettings :size="19" />
+              <span>Gerenciar Estacionamentos</span>
+            </a>
+            <div class="menu-divisor"></div>
+          </template>
+
           <a href="#" class="item-icone-texto" @click.prevent="irPara({ name: 'motorista-home' })">
             <IconQrcode :size="19" />
             <span>Escanear Estacionamento</span>

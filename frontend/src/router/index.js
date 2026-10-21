@@ -41,7 +41,7 @@ const routes = [
     path: '/gerente',
     name: 'gerente',
     component: GerenteView,
-    meta: { rolesPermitidas: ['admin_estabelecimento', 'admin_dev'] }
+    meta: { rolesPermitidas: ['admin_estabelecimento'] }
   },
   {
     path: '/admin',
