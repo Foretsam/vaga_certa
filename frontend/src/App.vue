@@ -4,7 +4,9 @@ import { useRouter } from 'vue-router'
 import {
   carregarDadosDoBanco,
   iniciarNovoFormulario,
-  usuarioLogado
+  usuarioLogado,
+  idsSelecionadosGerente,
+  simulacao1Ativa
 } from './store/estacionamentoStore'
 import {
   IconMenu2,
@@ -15,7 +17,10 @@ import {
   IconLogin,
   IconUserPlus,
   IconInfoCircle,
-  IconLogout
+  IconLogout,
+  IconLayoutBoard,
+  IconParking,
+  IconChartBar
 } from './icons'
 
 const menuAberto = ref(false)
@@ -30,6 +35,18 @@ function irPara(rota) {
   router.push(rota)
 }
 
+function irParaHomePorNivel() {
+  menuAberto.value = false
+  const nivel = usuarioLogado.value?.nivel_acesso
+  if (nivel === 'admin_dev') {
+    router.push({ name: 'admin-lista' })
+  } else if (nivel === 'admin_estabelecimento') {
+    router.push({ name: 'gerente' })
+  } else {
+    router.push({ name: 'motorista-home' })
+  }
+}
+
 function irParaNovoEstacionamento() {
   iniciarNovoFormulario()
   menuAberto.value = false
@@ -38,6 +55,8 @@ function irParaNovoEstacionamento() {
 
 function sairDaConta() {
   usuarioLogado.value = null
+  idsSelecionadosGerente.value = []
+  simulacao1Ativa.value = false
   localStorage.removeItem('vagacerta_usuario')
   menuAberto.value = false
   router.push({ name: 'motorista-home' })
@@ -46,8 +65,13 @@ function sairDaConta() {
 
 <template>
   <div class="app-container">
-    <button class="btn-hamburguer" @click="menuAberto = !menuAberto">
+    <button class="btn-hamburguer" title="Abrir Menu" @click="menuAberto = !menuAberto">
       <IconMenu2 :size="22" />
+    </button>
+
+    <!-- Logo VC estilizado com redirecionamento inteligente para a Home de cada nível -->
+    <button class="btn-logo-vc" title="Ir para a página inicial" @click="irParaHomePorNivel">
+      <span class="vc-letra-v">V</span><span class="vc-letra-c">C</span>
     </button>
 
     <Transition name="fade-backdrop">
@@ -57,14 +81,17 @@ function sairDaConta() {
     <Transition name="slide-menu">
       <aside v-if="menuAberto" class="menu-lateral">
         <div class="menu-header">
-          <h2>Vaga Certa</h2>
+          <div class="item-icone-texto">
+            <span class="badge-logo-menu">VC</span>
+            <h2>Vaga Certa</h2>
+          </div>
           <button class="btn-fechar" @click="menuAberto = false">
             <IconSquareRoundedX :size="22" />
           </button>
         </div>
 
         <nav class="menu-links">
-          <!-- Opções exclusivas do Admin Dev acima de Escanear Estacionamento -->
+          <!-- Atalhos exclusivos do Admin Dev -->
           <template v-if="usuarioLogado?.nivel_acesso === 'admin_dev'">
             <a href="#" class="item-icone-texto" @click.prevent="irParaNovoEstacionamento">
               <IconSquareRoundedPlus :size="19" />
@@ -73,6 +100,23 @@ function sairDaConta() {
             <a href="#" class="item-icone-texto" @click.prevent="irPara({ name: 'admin-lista' })">
               <IconSettings :size="19" />
               <span>Gerenciar Estacionamentos</span>
+            </a>
+            <div class="menu-divisor"></div>
+          </template>
+
+          <!-- Atalhos exclusivos do Gerente (Admin Estabelecimento) -->
+          <template v-if="usuarioLogado?.nivel_acesso === 'admin_estabelecimento'">
+            <a href="#" class="item-icone-texto" @click.prevent="irPara({ name: 'gerente' })">
+              <IconLayoutBoard :size="19" />
+              <span>Dashboard Principal</span>
+            </a>
+            <a href="#" class="item-icone-texto" @click.prevent="irPara({ name: 'gerente-estacionamentos' })">
+              <IconParking :size="19" />
+              <span>Visão dos Estacionamentos</span>
+            </a>
+            <a href="#" class="item-icone-texto" @click.prevent="irPara({ name: 'gerente-relatorios' })">
+              <IconChartBar :size="19" />
+              <span>Relatórios e Exportação</span>
             </a>
             <div class="menu-divisor"></div>
           </template>

@@ -217,13 +217,14 @@ async def listar_estabelecimentos_completos():
 
             vagas_rows = await db.fetch(
                 """
-                SELECT v.id_vaga, v.identificador, v.coord_x, v.coord_y, v.livre_para_estacionar,
+                SELECT v.id_vaga, v.identificador, v.coord_x, v.coord_y,
+                       v.livre_para_estacionar, v.inativo,
                        eq.id_equipamento, eq.codigo_mac,
                        s.id_setor, s.nome_setor, s.prefixo, s.cor_hex
                 FROM vagas v
                 JOIN equipamentos eq ON v.id_equipamento = eq.id_equipamento
                 JOIN setores s ON eq.id_setor = s.id_setor
-                WHERE s.id_andar = %s AND v.inativo = 0
+                WHERE s.id_andar = %s
                 """,
                 (id_andar,),
             )
@@ -252,6 +253,7 @@ async def listar_estabelecimentos_completos():
                             "coord_x": v["coord_x"],
                             "coord_y": v["coord_y"],
                             "livre": bool(v["livre_para_estacionar"]),
+                            "inativo": bool(v["inativo"]),
                             "mac_esp": v["codigo_mac"],
                             "id_setor": v["id_setor"],
                             "nome_setor": v["nome_setor"],
@@ -530,3 +532,29 @@ async def login_usuario(payload: LoginUsuarioPayload):
             "nivel_acesso": usuario["nivel_acesso"],
         },
     }
+
+
+class LoteStatusVagasPayload(BaseModel):
+    ids_vagas: List[int]
+    inativo: bool
+
+
+@app.patch("/vagas/status-lote")
+async def alterar_status_vagas_em_lote(payload: LoteStatusVagasPayload):
+    if not payload.ids_vagas:
+        return {"status": "sucesso", "afetadas": 0}
+
+    placeholders = ",".join(["%s"] * len(payload.ids_vagas))
+    novo_valor = 1 if payload.inativo else 0
+    params = tuple([novo_valor, novo_valor] + payload.ids_vagas)
+
+    await db.execute(
+        f"""
+        UPDATE vagas
+        SET inativo = %s,
+            data_inativacao = IF(%s = 1, CURRENT_TIMESTAMP(), NULL)
+        WHERE id_vaga IN ({placeholders})
+        """,
+        params,
+    )
+    return {"status": "sucesso", "inativo": payload.inativo}

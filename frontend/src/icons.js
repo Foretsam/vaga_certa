@@ -38,5 +38,12 @@ export {
   IconLock,
   IconMail,
   IconUser,
-  IconLogout
+  IconLogout,
+  IconChartBar,
+  IconClock,
+  IconFlame,
+  IconMaximize,
+  IconDownload,
+  IconArrowsLeftRight,
+  IconPlayerPlay
 } from '@tabler/icons-vue'

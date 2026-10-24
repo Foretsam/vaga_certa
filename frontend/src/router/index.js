@@ -6,6 +6,8 @@ import AdminListaView from '../views/AdminListaView.vue'
 import AdminInfoGeraisView from '../views/AdminInfoGeraisView.vue'
 import AdminEditor2DView from '../views/AdminEditor2DView.vue'
 import GerenteView from '../views/GerenteView.vue'
+import GerenteEstacionamentosView from '../views/GerenteEstacionamentosView.vue'
+import GerenteRelatoriosView from '../views/GerenteRelatoriosView.vue'
 import AcessoNegadoView from '../views/AcessoNegadoView.vue'
 import LoginView from '../views/LoginView.vue'
 import CadastroView from '../views/CadastroView.vue'
@@ -44,6 +46,18 @@ const routes = [
     meta: { rolesPermitidas: ['admin_estabelecimento'] }
   },
   {
+    path: '/gerente/estacionamentos',
+    name: 'gerente-estacionamentos',
+    component: GerenteEstacionamentosView,
+    meta: { rolesPermitidas: ['admin_estabelecimento'] }
+  },
+  {
+    path: '/gerente/relatorios',
+    name: 'gerente-relatorios',
+    component: GerenteRelatoriosView,
+    meta: { rolesPermitidas: ['admin_estabelecimento'] }
+  },
+  {
     path: '/admin',
     name: 'admin-lista',
     component: AdminListaView,
@@ -78,7 +92,6 @@ router.beforeEach((to, from, next) => {
     return next({ name: 'motorista-mapa', params: { id: to.query.id } })
   }
 
-  // Verifica se a rota exige nível de acesso específico
   if (to.meta.rolesPermitidas) {
     const usuario = usuarioLogado.value
     if (!usuario || !to.meta.rolesPermitidas.includes(usuario.nivel_acesso)) {

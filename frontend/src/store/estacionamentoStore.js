@@ -1,4 +1,4 @@
-import { ref } from 'vue'
+import { ref, computed } from 'vue'
 
 const API_URL = 'http://127.0.0.1:8000'
 
@@ -36,11 +36,16 @@ export function criarMatrizVazia(largura, altura) {
         corSetor: null,
         nomeSetor: null,
         prefixoSetor: null,
-        tipo: 'VAZIO', // 'VAZIO' | 'ESTRADA' | 'VAGA' | 'ENTRADA' | 'SAIDA' | 'ACESSO'
+        tipo: 'VAZIO',
         orientacao: 'NENHUMA',
         vagaId: null,
         identificador: '',
         livre: true,
+        inativa: false,
+        semEsp: false,
+        usosNoDia: 0,
+        horaChegada: null,
+        duracaoMinutos: 0,
         macEsp: null
       }
     }
@@ -48,7 +53,6 @@ export function criarMatrizVazia(largura, altura) {
   return celulas
 }
 
-// Reconstrói o dicionário `celulas` do Editor 2D a partir das tabelas SQL retornadas pela API
 function hidratarEstabelecimentoDoBanco(estBanco) {
   const andaresHidratados = (estBanco.andares || []).map((andar) => {
     const celulas = criarMatrizVazia(andar.grid_x, andar.grid_y)
@@ -57,7 +61,6 @@ function hidratarEstabelecimentoDoBanco(estBanco) {
       mapaSetores[s.id_setor] = s
     })
 
-    // 1. Preenche estradas, entradas, saídas, acessos e fundos de setor
     ;(andar.elementos_mapa || []).forEach((el) => {
       const chave = `${el.coord_x},${el.coord_y}`
       const c = celulas[chave]
@@ -77,7 +80,6 @@ function hidratarEstabelecimentoDoBanco(estBanco) {
       }
     })
 
-    // 2. Preenche as vagas e seus vínculos com ESP32 e Setor
     ;(andar.vagas || []).forEach((v) => {
       const chave = `${v.coord_x},${v.coord_y}`
       const c = celulas[chave]
@@ -87,7 +89,9 @@ function hidratarEstabelecimentoDoBanco(estBanco) {
       c.vagaId = v.id_vaga
       c.identificador = v.identificador
       c.livre = Boolean(v.livre)
+      c.inativa = Boolean(v.inativo)
       c.macEsp = v.mac_esp
+      c.semEsp = !v.mac_esp
       c.setorId = v.id_setor
       c.nomeSetor = v.nome_setor
       c.prefixoSetor = v.prefixo
@@ -114,13 +118,9 @@ function hidratarEstabelecimentoDoBanco(estBanco) {
   }
 }
 
-// =========================================================
-// ESTADO GLOBAL REATIVO (AGORA POPULADO PELO MYSQL)
-// =========================================================
 export const usuariosCadastrados = ref([])
 export const estabelecimentos = ref([])
 export const carregandoDados = ref(false)
-
 export const usuarioLogado = ref(
   JSON.parse(localStorage.getItem('vagacerta_usuario') || 'null')
 )
@@ -131,6 +131,130 @@ export const formEstabelecimento = ref({
   id_usuario: 1,
   andares: [{ id_andar: Date.now(), nome_andar: 'Subsolo 1', grid_x: 30, grid_y: 20 }]
 })
+
+// =========================================================
+// ESTADO DO GERENTE: FILTRO MULTI-ESTACIONAMENTOS E SIMULAÇÃO 1
+// =========================================================
+// Lista vazia significa "Dashboard completo" (todos os estacionamentos do gerente)
+export const idsSelecionadosGerente = ref([])
+export const simulacao1Ativa = ref(false)
+
+export const estabelecimentosDoGerente = computed(() => {
+  if (!usuarioLogado.value) return []
+  return estabelecimentos.value.filter(
+    e => !e.inativo && Number(e.id_usuario) === Number(usuarioLogado.value.id_usuario)
+  )
+})
+
+export const estabelecimentosFiltradosGerente = computed(() => {
+  const todos = estabelecimentosDoGerente.value
+  if (idsSelecionadosGerente.value.length === 0) return todos
+  const filtrados = todos.filter(e => idsSelecionadosGerente.value.includes(e.id))
+  return filtrados.length > 0 ? filtrados : todos
+})
+
+// Retorna o andar que possui ENTRADA e SAÍDA (ou o 1º andar caso estejam em andares separados)
+export function obterAndarEntradaSaida(est) {
+  if (!est?.andares || est.andares.length === 0) return null
+  const andarAmbos = est.andares.find((a) => {
+    const cels = Object.values(a.celulas || {})
+    return cels.some(c => c.tipo === 'ENTRADA') && cels.some(c => c.tipo === 'SAIDA')
+  })
+  if (andarAmbos) return andarAmbos
+
+  const andarEntrada = est.andares.find((a) =>
+    Object.values(a.celulas || {}).some(c => c.tipo === 'ENTRADA' || c.tipo === 'SAIDA')
+  )
+  return andarEntrada || est.andares[0]
+}
+
+export function contarVagasEstabelecimento(est) {
+  let total = 0
+  let ocupadas = 0
+  let livres = 0
+  let inativas = 0
+  let somaDuracao = 0
+  let qtdComDuracao = 0
+  let somaUsosDia = 0
+
+  ;(est.andares || []).forEach((andar) => {
+    Object.values(andar.celulas || {}).forEach((c) => {
+      if (c.tipo === 'VAGA') {
+        total++
+        somaUsosDia += c.usosNoDia || 0
+        if (c.inativa) {
+          inativas++
+        } else if (c.livre) {
+          livres++
+        } else {
+          ocupadas++
+          if (c.duracaoMinutos > 0) {
+            somaDuracao += c.duracaoMinutos
+            qtdComDuracao++
+          }
+        }
+      }
+    })
+  })
+
+  const ativas = Math.max(1, total - inativas)
+  const taxaOcupacao = total > 0 ? Math.round((ocupadas / ativas) * 100) : 0
+  const tempoMedioMin = qtdComDuracao > 0 ? Math.round(somaDuracao / qtdComDuracao) : (ocupadas > 0 ? 78 : 0)
+
+  return {
+    total,
+    ocupadas,
+    livres,
+    inativas,
+    taxaOcupacao,
+    tempoMedioMin,
+    somaUsosDia
+  }
+}
+
+// Aplica a "Simulação 1" apenas no frontend (60% ocupadas + 1 a 10 usos por vaga)
+export function alternarSimulacao1Frontend() {
+  simulacao1Ativa.value = !simulacao1Ativa.value
+
+  estabelecimentosDoGerente.value.forEach((est) => {
+    ;(est.andares || []).forEach((andar) => {
+      const vagas = Object.values(andar.celulas || {}).filter(
+        c => c.tipo === 'VAGA' && !c.inativa
+      )
+
+      if (!simulacao1Ativa.value) {
+        vagas.forEach((v) => {
+          v.livre = true
+          v.usosNoDia = 0
+          v.horaChegada = null
+          v.duracaoMinutos = 0
+        })
+        return
+      }
+
+      // Embaralha índices para escolher exatamente 60% das vagas como ocupadas
+      const indices = vagas.map((_, i) => i).sort(() => Math.random() - 0.5)
+      const limiteOcupadas = Math.round(vagas.length * 0.6)
+      const setOcupadas = new Set(indices.slice(0, limiteOcupadas))
+
+      const agora = new Date()
+      vagas.forEach((v, idx) => {
+        v.usosNoDia = Math.floor(Math.random() * 10) + 1 // 1 a 10 usos
+        if (setOcupadas.has(idx)) {
+          v.livre = false
+          const duracao = Math.floor(Math.random() * 195) + 15 // 15 a 210 min
+          v.duracaoMinutos = duracao
+          const chegada = new Date(agora.getTime() - duracao * 60000)
+          v.horaChegada = chegada.toTimeString().slice(0, 5)
+        } else {
+          v.livre = true
+          v.duracaoMinutos = 0
+          v.horaChegada = null
+        }
+      })
+    })
+  })
+}
 
 export async function carregarDadosDoBanco() {
   carregandoDados.value = true
@@ -146,6 +270,10 @@ export async function carregarDadosDoBanco() {
     if (resEst.ok) {
       const listaCrua = await resEst.json()
       estabelecimentos.value = listaCrua.map(hidratarEstabelecimentoDoBanco)
+      if (simulacao1Ativa.value) {
+        simulacao1Ativa.value = false
+        alternarSimulacao1Frontend()
+      }
     }
   } catch (err) {
     console.error('Erro ao conectar com a API FastAPI:', err)
@@ -155,7 +283,6 @@ export async function carregarDadosDoBanco() {
 }
 
 export async function salvarEstacionamentoNoBanco() {
-  // Converte a matriz de cada andar em uma lista enxuta apenas com os quadrados preenchidos
   const payload = {
     nome: formEstabelecimento.value.nome,
     id_usuario: formEstabelecimento.value.id_usuario,
@@ -163,8 +290,7 @@ export async function salvarEstacionamentoNoBanco() {
       const celulasPreenchidas = []
 
       Object.values(andar.celulas || {}).forEach((c) => {
-        if (c.tipo === 'VAZIO' && !c.setorId) return // Ignora quadrados cinzas vazios!
-
+        if (c.tipo === 'VAZIO' && !c.setorId) return
         celulasPreenchidas.push({
           x: c.x,
           y: c.y,
