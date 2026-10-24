@@ -20,6 +20,7 @@ import {
   IconSearch,
   IconSquareRoundedChevronDown,
   IconSquareRoundedCheck,
+  IconSquareRoundedX,
   IconAlertSquareRounded,
   IconDoorEnter,
   IconDoorExit,
@@ -33,8 +34,8 @@ const router = useRouter()
 const dropdownMultiAberto = ref(false)
 const termoBuscaMulti = ref('')
 
-// Dropdown de busca para celular/tablet ("Visualizar estacionamentos")
-const dropdownMobileEstAberto = ref(false)
+// Modal Popup para celular/tablet ("Escolher Estacionamento")
+const modalMobileEstAberto = ref(false)
 const termoBuscaMobileEst = ref('')
 
 onMounted(() => {
@@ -50,12 +51,8 @@ function fecharDropdownsAoClicarFora(e) {
   if (!e.target.closest('.seletor-multi-wrapper')) {
     dropdownMultiAberto.value = false
   }
-  if (!e.target.closest('.seletor-mobile-est-wrapper')) {
-    dropdownMobileEstAberto.value = false
-  }
 }
 
-// Regras do seletor do topo: 10 opções no PC (1 "Dashboard completo" + 9 estacionamentos)
 const totalOpcoesFiltro = computed(() => 1 + estabelecimentosDoGerente.value.length)
 const mostrarPesquisaNoMulti = computed(() => totalOpcoesFiltro.value > 5)
 
@@ -69,13 +66,13 @@ const textoBotaoSeletorTopo = computed(() => {
   const qtdSel = idsSelecionadosGerente.value.length
   const total = estabelecimentosDoGerente.value.length
   if (qtdSel === 0 || qtdSel === total) {
-    return 'Dashboard completo (Todos)'
+    return `Todos (${total})`
   }
   if (qtdSel === 1) {
     const est = estabelecimentosDoGerente.value.find(e => e.id === idsSelecionadosGerente.value[0])
     return est ? est.nome : '1 selecionado'
   }
-  return `${qtdSel} estacionamentos selecionados (Média)`
+  return `${qtdSel} estacionamentos selecionados`
 })
 
 function selecionarDashboardCompleto() {
@@ -98,44 +95,89 @@ function alternarSelecaoEstacionamento(idEst) {
 }
 
 // =========================================================
-// MÉTRICAS AGREGADAS / MÉDIAS DOS ESTACIONAMENTOS SELECIONADOS
+// MÉTRICAS SOMADAS DOS ESTACIONAMENTOS SELECIONADOS
 // =========================================================
+const horasBasePadrao = [
+  { hora: '08h', entBase: 2, saiBase: 1 },
+  { hora: '10h', entBase: 4, saiBase: 2 },
+  { hora: '12h', entBase: 7, saiBase: 5 },
+  { hora: '14h', entBase: 5, saiBase: 4 },
+  { hora: '16h', entBase: 4, saiBase: 6 },
+  { hora: '18h', entBase: 8, saiBase: 7 },
+  { hora: '20h', entBase: 3, saiBase: 6 }
+]
+
+function calcularFluxoUnitarioEstacionamento(est, metricasEst) {
+  const multSim = simulacao1Ativa.value ? 1.6 : 1
+  const pesoVagas = Math.max(1, Math.round(metricasEst.total / 3))
+  const variacaoId = (Number(est.id) % 3) + 1
+
+  return horasBasePadrao.map((h, idx) => {
+    const ajusteHora = ((Number(est.id) + idx) % 2 === 0) ? 1 : 0
+    const entradas = Math.max(
+      1,
+      Math.round((h.entBase * pesoVagas + variacaoId + ajusteHora) * multSim)
+    )
+    const saidas = Math.max(
+      1,
+      Math.round((h.saiBase * pesoVagas + (variacaoId - 1) + ajusteHora) * multSim)
+    )
+    return { hora: h.hora, entradas, saidas }
+  })
+}
+
 const metricasConsolidadas = computed(() => {
   const lista = estabelecimentosFiltradosGerente.value
   if (lista.length === 0) {
     return {
-      taxaMediaOcupacao: 0,
-      vagasLivresMedia: 0,
-      vagasOcupadasMedia: 0,
-      vagasTotaisMedia: 0,
+      qtdEstacionamentos: 0,
+      taxaOcupacaoTotal: 0,
+      vagasLivresSoma: 0,
+      vagasOcupadasSoma: 0,
+      vagasTotaisSoma: 0,
       tempoMedioFormatado: '0min',
-      tempoMedioMinutos: 0,
-      fluxoPorHora: []
+      fluxoPorHora: [],
+      maiorValorFluxo: 10
     }
   }
 
-  let somaTaxa = 0
   let somaLivres = 0
   let somaOcupadas = 0
   let somaTotais = 0
+  let somaInativas = 0
   let somaTempoMin = 0
+
+  const mapaSomaHoras = horasBasePadrao.map(h => ({
+    hora: h.hora,
+    entradas: 0,
+    saidas: 0
+  }))
 
   lista.forEach((est) => {
     const m = contarVagasEstabelecimento(est)
-    somaTaxa += m.taxaOcupacao
     somaLivres += m.livres
     somaOcupadas += m.ocupadas
     somaTotais += m.total
+    somaInativas += m.inativas
     somaTempoMin += m.tempoMedioMin
+
+    const fluxoEst = calcularFluxoUnitarioEstacionamento(est, m)
+    fluxoEst.forEach((itemHora, idx) => {
+      mapaSomaHoras[idx].entradas += itemHora.entradas
+      mapaSomaHoras[idx].saidas += itemHora.saidas
+    })
   })
 
-  const divisor = lista.length
-  const taxaMediaOcupacao = Math.round(somaTaxa / divisor)
-  const vagasLivresMedia = Math.round(somaLivres / divisor)
-  const vagasOcupadasMedia = Math.round(somaOcupadas / divisor)
-  const vagasTotaisMedia = Math.round(somaTotais / divisor)
-  const tempoMedioMinutos = Math.round(somaTempoMin / divisor)
+  mapaSomaHoras.forEach((itemHora) => {
+    const totalHora = Math.max(1, itemHora.entradas + itemHora.saidas)
+    itemHora.entPct = Math.round((itemHora.entradas / totalHora) * 100)
+    itemHora.saiPct = 100 - itemHora.entPct
+  })
 
+  const vagasAtivasSoma = Math.max(1, somaTotais - somaInativas)
+  const taxaOcupacaoTotal = somaTotais > 0 ? Math.round((somaOcupadas / vagasAtivasSoma) * 100) : 0
+
+  const tempoMedioMinutos = Math.round(somaTempoMin / lista.length)
   const horas = Math.floor(tempoMedioMinutos / 60)
   const mins = tempoMedioMinutos % 60
   const tempoMedioFormatado =
@@ -145,48 +187,24 @@ const metricasConsolidadas = computed(() => {
         ? `${horas}h ${mins}min`
         : `${mins}min`
 
-  // Gera série de Fluxo de Entradas e Saídas ao longo das horas do dia proporcional às vagas selecionadas
-  const fatorEscala = Math.max(1, Math.round(vagasTotaisMedia / 12))
-  const MultiplicadorSimulacao = simulacao1Ativa.value ? 1.4 : 0.75
-  const horasBase = [
-    { hora: '08h', entBase: 4, saiBase: 1 },
-    { hora: '10h', entBase: 9, saiBase: 3 },
-    { hora: '12h', entBase: 14, saiBase: 10 },
-    { hora: '14h', entBase: 11, saiBase: 9 },
-    { hora: '16h', entBase: 8, saiBase: 11 },
-    { hora: '18h', entBase: 15, saiBase: 13 },
-    { hora: '20h', entBase: 6, saiBase: 14 }
-  ]
-
-  const fluxoPorHora = horasBase.map((h) => {
-    const entradas = Math.max(0, Math.round(h.entBase * fatorEscala * MultiplicadorSimulacao))
-    const saidas = Math.max(0, Math.round(h.saiBase * fatorEscala * MultiplicadorSimulacao))
-    const somaHora = Math.max(1, entradas + saidas)
-    return {
-      hora: h.hora,
-      entradas,
-      saidas,
-      entPct: Math.round((entradas / somaHora) * 100),
-      saiPct: Math.round((saidas / somaHora) * 100)
-    }
-  })
-
-  const maiorValorFluxo = Math.max(10, ...fluxoPorHora.flatMap(f => [f.entradas, f.saidas]))
+  const maiorValorFluxo = Math.max(
+    10,
+    ...mapaSomaHoras.flatMap(f => [f.entradas, f.saidas])
+  )
 
   return {
-    qtdEstacionamentos: divisor,
-    taxaMediaOcupacao,
-    vagasLivresMedia,
-    vagasOcupadasMedia,
-    vagasTotaisMedia,
+    qtdEstacionamentos: lista.length,
+    taxaOcupacaoTotal,
+    vagasLivresSoma: somaLivres,
+    vagasOcupadasSoma: somaOcupadas,
+    vagasTotaisSoma: somaTotais,
     tempoMedioFormatado,
-    tempoMedioMinutos,
-    fluxoPorHora,
+    fluxoPorHora: mapaSomaHoras,
     maiorValorFluxo
   }
 })
 
-// Os 2 estacionamentos com maior número de vagas cadastradas (para exibir na linha inferior do PC)
+// Os 2 estacionamentos com maior número de vagas cadastradas
 const top2Estacionamentos = computed(() => {
   return [...estabelecimentosFiltradosGerente.value]
     .map(est => ({
@@ -205,6 +223,7 @@ const listaEstabelecimentosMobileBusca = computed(() => {
 })
 
 function abrirEstacionamentoTelaCheia(idEst) {
+  modalMobileEstAberto.value = false
   router.push({ name: 'gerente-estacionamentos', query: { id: idEst } })
 }
 </script>
@@ -216,7 +235,7 @@ function abrirEstacionamentoTelaCheia(idEst) {
       <div class="gerente-boas-vindas">
         <div>
           <h1>Bem-vindo, {{ usuarioLogado?.nome || 'Gerente' }}</h1>
-          <p class="subtitulo">Painel de controle operacional e indicadores em tempo real</p>
+          <p class="subtitulo">Painel de controle operacional com indicadores em tempo real !</p>
         </div>
 
         <div class="gerente-atalhos-topo">
@@ -227,7 +246,7 @@ function abrirEstacionamentoTelaCheia(idEst) {
             @click="alternarSimulacao1Frontend"
           >
             <IconPlayerPlay :size="17" />
-            <span>{{ simulacao1Ativa ? 'Simulação 1: ATIVA' : 'Simulação 1' }}</span>
+            <span>{{ simulacao1Ativa ? 'Simulação: Ativa' : 'Simulação' }}</span>
           </button>
 
           <button
@@ -248,7 +267,7 @@ function abrirEstacionamentoTelaCheia(idEst) {
         </div>
       </div>
 
-      <!-- Seletor Múltiplo de Estacionamentos (Oculto caso tenha apenas 1 estacionamento) -->
+      <!-- Seletor Múltiplo alinhado à esquerda junto com os cards -->
       <div v-if="estabelecimentosDoGerente.length >= 2" class="seletor-multi-wrapper">
         <button
           type="button"
@@ -308,13 +327,13 @@ function abrirEstacionamentoTelaCheia(idEst) {
 
     <!-- CONTEÚDO PRINCIPAL DO DASHBOARD -->
     <template v-else>
-      <!-- SEÇÃO SUPERIOR (30-40%): LINHA DE RELATÓRIOS PRINCIPAIS -->
+      <!-- SEÇÃO SUPERIOR: EXATAMENTE OS 3 CARDS DE RELATÓRIOS -->
       <section class="secao-relatorios-dashboard">
         <div class="grade-kpis-gerente">
-          <!-- Card 1: Fluxo Horário do Dia (Número Bruto de Entradas e Saídas) -->
+          <!-- Card 1: Fluxo Horário do Dia (Soma de Entradas e Saídas) -->
           <div class="card-kpi-gerente">
             <div class="kpi-cabecalho">
-              <span class="kpi-titulo">Fluxo por Hora Hoje (Nº Bruto)</span>
+              <span class="kpi-titulo">Fluxo Total por Hora (Hoje)</span>
               <div class="legenda-fluxo-mini">
                 <span class="ponto-legenda ent"></span> Entradas
                 <span class="ponto-legenda sai"></span> Saídas
@@ -330,14 +349,14 @@ function abrirEstacionamentoTelaCheia(idEst) {
                 <div class="par-barras-verticais">
                   <div
                     class="barra-v ent"
-                    :style="{ height: `${Math.max(8, (item.entradas / metricasConsolidadas.maiorValorFluxo) * 100)}%` }"
+                    :style="{ height: `${Math.max(10, (item.entradas / metricasConsolidadas.maiorValorFluxo) * 100)}%` }"
                     :title="`${item.hora} - Entradas: ${item.entradas}`"
                   >
                     <span class="valor-barra-topo">{{ item.entradas }}</span>
                   </div>
                   <div
                     class="barra-v sai"
-                    :style="{ height: `${Math.max(8, (item.saidas / metricasConsolidadas.maiorValorFluxo) * 100)}%` }"
+                    :style="{ height: `${Math.max(10, (item.saidas / metricasConsolidadas.maiorValorFluxo) * 100)}%` }"
                     :title="`${item.hora} - Saídas: ${item.saidas}`"
                   >
                     <span class="valor-barra-topo">{{ item.saidas }}</span>
@@ -348,7 +367,7 @@ function abrirEstacionamentoTelaCheia(idEst) {
             </div>
           </div>
 
-          <!-- Card 2: Taxa de Ocupação Atual -->
+          <!-- Card 2: Taxa de Ocupação Atual (Soma de Livres e Ocupadas) -->
           <div class="card-kpi-gerente kpi-centralizado">
             <div class="kpi-cabecalho">
               <span class="kpi-titulo">Taxa de Ocupação Atual</span>
@@ -356,19 +375,19 @@ function abrirEstacionamentoTelaCheia(idEst) {
             </div>
 
             <div class="kpi-valor-destaque">
-              {{ metricasConsolidadas.taxaMediaOcupacao }}%
+              {{ metricasConsolidadas.taxaOcupacaoTotal }}%
             </div>
 
             <div class="barra-progresso-ocupacao">
               <div
                 class="preenchimento-ocupacao"
-                :style="{ width: `${metricasConsolidadas.taxaMediaOcupacao}%` }"
+                :style="{ width: `${metricasConsolidadas.taxaOcupacaoTotal}%` }"
               ></div>
             </div>
 
             <div class="kpi-rodape-duplo">
-              <span class="tag-kpi livre">{{ metricasConsolidadas.vagasLivresMedia }} livres</span>
-              <span class="tag-kpi ocupada">{{ metricasConsolidadas.vagasOcupadasMedia }} ocupadas</span>
+              <span class="tag-kpi livre">{{ metricasConsolidadas.vagasLivresSoma }} livres</span>
+              <span class="tag-kpi ocupada">{{ metricasConsolidadas.vagasOcupadasSoma }} ocupadas</span>
             </div>
           </div>
 
@@ -390,28 +409,38 @@ function abrirEstacionamentoTelaCheia(idEst) {
               </span>
             </p>
           </div>
-
-          <!-- Card 4 (Exibido apenas em Tablets <= 1024px para fechar 2 linhas de 2 cards) -->
           <div class="card-kpi-gerente kpi-apenas-tablet">
             <div class="kpi-cabecalho">
-              <span class="kpi-titulo">Proporção Entradas vs. Saídas (%)</span>
-              <IconChartBar :size="20" style="color: #f59e0b" />
+              <span class="kpi-titulo">Fluxo por Hora Hoje (%)</span>
+              <div class="legenda-fluxo-mini">
+                <span class="ponto-legenda ent"></span> % Ent.
+                <span class="ponto-legenda sai"></span> % Saí.
+              </div>
             </div>
-            <div class="lista-proporcao-horas">
+
+            <div class="grafico-barras-horarias">
               <div
-                v-for="item in metricasConsolidadas.fluxoPorHora.slice(0, 4)"
-                :key="`pct-${item.hora}`"
-                class="linha-proporcao-item"
+                v-for="item in metricasConsolidadas.fluxoPorHora"
+                :key="`tab-pct-${item.hora}`"
+                class="coluna-hora-item"
               >
-                <span class="hora-pct">{{ item.hora }}</span>
-                <div class="barra-pct-dupla">
-                  <div class="fatia-ent" :style="{ width: `${item.entPct}%` }">
-                    {{ item.entPct }}%
+                <div class="par-barras-verticais">
+                  <div
+                    class="barra-v ent"
+                    :style="{ height: `${Math.max(10, item.entPct)}%` }"
+                    :title="`${item.hora} - Entradas: ${item.entPct}%`"
+                  >
+                    <span class="valor-barra-topo">{{ item.entPct }}%</span>
                   </div>
-                  <div class="fatia-sai" :style="{ width: `${item.saiPct}%` }">
-                    {{ item.saiPct }}%
+                  <div
+                    class="barra-v sai"
+                    :style="{ height: `${Math.max(10, item.saiPct)}%` }"
+                    :title="`${item.hora} - Saídas: ${item.saiPct}%`"
+                  >
+                    <span class="valor-barra-topo">{{ item.saiPct }}%</span>
                   </div>
                 </div>
+                <span class="rotulo-hora-eixo">{{ item.hora }}</span>
               </div>
             </div>
           </div>
@@ -428,17 +457,17 @@ function abrirEstacionamentoTelaCheia(idEst) {
         </div>
       </section>
 
-      <!-- SELETOR DE ESTACIONAMENTOS PARA TABLETS E CELULARES (<= 1024px) -->
+      <!-- BOTÃO QUE ABRE POPUP DE ESTACIONAMENTOS PARA TABLETS E CELULARES (<= 1024px) -->
       <section class="secao-seletor-mobile-est">
         <div class="card-kpi-gerente seletor-mobile-est-wrapper">
           <div class="kpi-cabecalho">
-            <strong>Visualizar Estacionamentos em Tela Cheia</strong>
+            <span class="kpi-titulo">Visualizar Estacionamentos em Tela Cheia</span>
           </div>
           <button
             type="button"
             class="btn-primario item-icone-texto"
             style="width: 100%; justify-content: space-between"
-            @click="dropdownMobileEstAberto = !dropdownMobileEstAberto"
+            @click="modalMobileEstAberto = true"
           >
             <span class="item-icone-texto">
               <IconParking :size="19" />
@@ -446,32 +475,53 @@ function abrirEstacionamentoTelaCheia(idEst) {
             </span>
             <IconSquareRoundedChevronDown :size="19" />
           </button>
-
-          <Transition name="fade-pop">
-            <div v-if="dropdownMobileEstAberto" class="dropdown-mobile-est-box">
-              <div class="busca-multi-topo">
-                <IconSearch :size="16" class="icone-busca-multi" />
-                <input
-                  v-model="termoBuscaMobileEst"
-                  type="text"
-                  placeholder="Pesquisar estacionamento..."
-                />
-              </div>
-              <div class="lista-opcoes-multi">
-                <div
-                  v-for="est in listaEstabelecimentosMobileBusca"
-                  :key="`mob-${est.id}`"
-                  class="item-opcao-multi"
-                  @click="abrirEstacionamentoTelaCheia(est.id)"
-                >
-                  <span>{{ est.nome }}</span>
-                  <IconMaximize :size="16" />
-                </div>
-              </div>
-            </div>
-          </Transition>
         </div>
       </section>
+
+      <!-- MODAL POPUP DE SELEÇÃO DE ESTACIONAMENTO (TABLET / MOBILE) -->
+      <Transition name="fade-pop">
+        <div
+          v-if="modalMobileEstAberto"
+          class="modal-backdrop"
+          @click.self="modalMobileEstAberto = false"
+        >
+          <div class="modal-box modal-escolher-est-mobile">
+            <div class="overlay-header">
+              <h3 class="item-icone-texto">
+                <IconParking :size="20" />
+                <span>Escolher Estacionamento</span>
+              </h3>
+              <button class="btn-fechar-mini" @click="modalMobileEstAberto = false">
+                <IconSquareRoundedX :size="20" />
+              </button>
+            </div>
+
+            <div class="busca-multi-topo" style="padding: 8px 0; border-bottom: none">
+              <IconSearch :size="16" class="icone-busca-multi" style="left: 12px" />
+              <input
+                v-model="termoBuscaMobileEst"
+                type="text"
+                placeholder="Pesquisar estacionamento..."
+              />
+            </div>
+
+            <div class="lista-opcoes-multi lista-modal-est-mobile">
+              <div
+                v-for="est in listaEstabelecimentosMobileBusca"
+                :key="`mob-${est.id}`"
+                class="item-opcao-multi"
+                @click="abrirEstacionamentoTelaCheia(est.id)"
+              >
+                <span>{{ est.nome }}</span>
+                <IconMaximize :size="16" />
+              </div>
+              <div v-if="listaEstabelecimentosMobileBusca.length === 0" class="item-dropdown-vazio">
+                Nenhum estacionamento encontrado.
+              </div>
+            </div>
+          </div>
+        </div>
+      </Transition>
 
       <!-- SEÇÃO INFERIOR PC (> 1024px): OS 2 MAIORES ESTACIONAMENTOS LADO A LADO -->
       <section class="secao-estacionamentos-dupla-pc">

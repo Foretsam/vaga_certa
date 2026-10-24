@@ -5,7 +5,6 @@ import {
   estabelecimentosDoGerente,
   simulacao1Ativa,
   alternarSimulacao1Frontend,
-  contarVagasEstabelecimento,
   carregarDadosDoBanco
 } from '../store/estacionamentoStore'
 import {
@@ -43,14 +42,14 @@ const modoAcaoVagas = ref('NENHUM')
 const modoMapaCalor = ref(false)
 const salvandoStatusLote = ref(false)
 
-//Menus mobile (<= 1024px)
+// Menus mobile (<= 1024px)
 const menuOpcoesMobileAberto = ref(false)
 const painelLateralMobileAberto = ref(false)
 
 // Modal QR Code da Entrada
 const modalQrAberto = ref(false)
 
-// Seleção arrastável (igual ao Editor 2D)
+// Seleção arrastável
 const selecionados = ref(new Set())
 const arrastando = ref(false)
 const pontoInicialArrasto = ref(null)
@@ -142,11 +141,6 @@ function escolherEstacionamento(est) {
 // =========================================================
 // ESTATÍSTICAS DE ANDARES E SETORES AO LADO DO MAPA
 // =========================================================
-const resumoEstacionamento = computed(() => {
-  if (!estacionamentoAtual.value) return null
-  return contarVagasEstabelecimento(estacionamentoAtual.value)
-})
-
 const estatisticasAndares = computed(() => {
   if (!estacionamentoAtual.value?.andares) return []
   return estacionamentoAtual.value.andares.map((andar, idx) => {
@@ -157,8 +151,6 @@ const estatisticasAndares = computed(() => {
     const ocupadas = vagas.filter(v => !v.inativa && !v.livre).length
     const ativas = Math.max(1, total - inativas)
     const lotacaoPct = total > 0 ? Math.round((ocupadas / ativas) * 100) : 0
-
-    // Taxa de variação simulada/calculada do fluxo do andar na última hora
     const variacao = ocupadas === 0 ? 0 : ((idx % 2 === 0 ? 1 : -1) * ((ocupadas * 3) % 14 + 2))
 
     return {
@@ -214,7 +206,6 @@ const mapaCalorPorCoordenada = computed(() => {
   const vagas = Object.values(andarAtual.value.celulas).filter(c => c.tipo === 'VAGA')
   if (vagas.length === 0) return resultado
 
-  // Ordena todas as vagas do andar pelo número de usos no dia (crescente)
   const valoresOrdenados = vagas.map(v => v.usosNoDia || 0).sort((a, b) => a - b)
   const total = valoresOrdenados.length
 
@@ -222,7 +213,6 @@ const mapaCalorPorCoordenada = computed(() => {
     const chave = `${v.x},${v.y}`
     const usos = v.usosNoDia || 0
 
-    // Regra: vagas com uso 0 ficam sempre na 1ª variação (mesmo que passem de 20%)
     if (usos === 0) {
       resultado[chave] = 'calor-nivel-1'
       return
@@ -232,15 +222,15 @@ const mapaCalorPorCoordenada = computed(() => {
     const percentil = posPrimeiraOcorrencia / total
 
     if (percentil < 0.2) {
-      resultado[chave] = 'calor-nivel-1' // Azul Escuro Frio (0-20%)
+      resultado[chave] = 'calor-nivel-1'
     } else if (percentil < 0.4) {
-      resultado[chave] = 'calor-nivel-2' // Azul Claro Frio (20-40%)
+      resultado[chave] = 'calor-nivel-2'
     } else if (percentil < 0.6) {
-      resultado[chave] = 'calor-nivel-3' // Meio Termo Âmbar (40-60%)
+      resultado[chave] = 'calor-nivel-3'
     } else if (percentil < 0.8) {
-      resultado[chave] = 'calor-nivel-4' // Vermelho Alaranjado (60-80%)
+      resultado[chave] = 'calor-nivel-4'
     } else {
-      resultado[chave] = 'calor-nivel-5' // Vermelho Quente (80-100%)
+      resultado[chave] = 'calor-nivel-5'
     }
   })
 
@@ -264,7 +254,6 @@ const infoHoverGerente = computed(() => {
 
   const coord = `(${c.x}, ${c.y})`
 
-  // Se não for vaga, mostra apenas coordenada e tipo básico
   if (c.tipo !== 'VAGA') {
     const mapaTipos = {
       VAZIO: 'Vazio',
@@ -280,7 +269,6 @@ const infoHoverGerente = computed(() => {
     }
   }
 
-  // Modo Mapa de Calor: mostra quantas vezes a vaga foi usada no dia
   if (modoMapaCalor.value) {
     const qtdUsos = c.usosNoDia || 0
     return {
@@ -290,7 +278,6 @@ const infoHoverGerente = computed(() => {
     }
   }
 
-  // Modo Normal: coordenadas, se está livre/ocupada/inativa/sem ESP, hora de chegada e duração
   if (c.inativa) {
     return {
       cor: '#64748b',
@@ -366,14 +353,12 @@ async function confirmarAcaoInativarReativar() {
   salvandoStatusLote.value = true
 
   try {
-    // Atualiza instantaneamente no estado reativo do frontend
     const idsBanco = []
     vagasAlvo.forEach((v) => {
       v.inativa = novoStatusInativo
       if (v.vagaId) idsBanco.push(v.vagaId)
     })
 
-    // Persiste no MySQL caso as vagas já tenham ID de banco
     if (idsBanco.length > 0) {
       await fetch(`${API_URL}/vagas/status-lote`, {
         method: 'PATCH',
@@ -399,7 +384,6 @@ function iniciarSelecaoCelula(x, y, event) {
   pontoInicialArrasto.value = { x, y }
   const chave = `${x},${y}`
 
-  // Mantém a seleção anterior e permite adicionar/remover ou arrastar novos blocos
   baseSelecionadosCtrl.value = new Set(selecionados.value)
   if (event.ctrlKey || event.metaKey) {
     if (baseSelecionadosCtrl.value.has(chave)) {
@@ -590,7 +574,7 @@ function tratarTeclaGlobal(event) {
 
     <!-- BARRA SUPERIOR EM TELA CHEIA -->
     <header
-      class="editor-topbar"
+      class="editor-topbar topbar-gerente-est"
       :class="{ 'topbar-mobile-aberta': menuOpcoesMobileAberto }"
     >
       <div class="topbar-esquerda">
@@ -610,7 +594,7 @@ function tratarTeclaGlobal(event) {
             @click="dropdownEstAberto = !dropdownEstAberto"
           >
             <IconParking :size="18" />
-            <span>{{ estacionamentoAtual.nome }}</span>
+            <span class="texto-truncado-est">{{ estacionamentoAtual.nome }}</span>
             <IconSquareRoundedChevronDown :size="17" />
           </button>
 
@@ -682,27 +666,24 @@ function tratarTeclaGlobal(event) {
       </div>
 
       <div class="topbar-direita-gerente">
-        <!-- Botão Visualizar Mapa de Calor -->
         <button
           class="btn-secundario item-icone-texto"
           :class="{ 'btn-calor-ativo': modoMapaCalor }"
           @click="modoMapaCalor = !modoMapaCalor"
         >
           <IconFlame :size="18" />
-          <span>{{ modoMapaCalor ? 'Mapa de Calor: ON' : 'Visualizar Mapa de Calor' }}</span>
+          <span>{{ modoMapaCalor ? 'Mapa de Calor: ON' : 'Mapa de Calor' }}</span>
         </button>
 
-        <!-- Botão Simulação 1 -->
         <button
           class="btn-secundario item-icone-texto"
           :class="{ 'btn-simulacao-ativa': simulacao1Ativa }"
           @click="alternarSimulacao1Frontend"
         >
           <IconPlayerPlay :size="17" />
-          <span>{{ simulacao1Ativa ? 'Simulação 1: ON' : 'Simulação 1' }}</span>
+          <span>{{ simulacao1Ativa ? 'Simulação: Ativa' : 'Simulação' }}</span>
         </button>
 
-        <!-- Botão QR Code -->
         <button
           class="btn-primario item-icone-texto"
           @click="modalQrAberto = true"
@@ -716,7 +697,6 @@ function tratarTeclaGlobal(event) {
     <!-- ÁREA CENTRAL: MAPA 2D + PAINEL DIREITO DE ANDARES E SETORES -->
     <div class="editor-workspace">
       <div class="area-grid-container">
-        <!-- 1. BANNER DE INSTRUÇÃO QUANDO INATIVAR OU REATIVAR ESTIVER ATIVO -->
         <Transition name="fade-pop">
           <div
             v-if="modoAcaoVagas !== 'NENHUM'"
@@ -731,7 +711,6 @@ function tratarTeclaGlobal(event) {
           </div>
         </Transition>
 
-        <!-- 2. LEGENDA RÁPIDA DO MAPA DE CALOR (QUANDO ATIVO) -->
         <Transition name="fade-pop">
           <div v-if="modoMapaCalor" class="overlay-flutuante legenda-calor-overlay">
             <strong>Uso no dia:</strong>
@@ -743,7 +722,6 @@ function tratarTeclaGlobal(event) {
           </div>
         </Transition>
 
-        <!-- 3. POPUP INFERIOR DE CONFIRMAÇÃO DE SELEÇÃO (NÃO INTERROMPE A SELEÇÃO) -->
         <Transition name="fade-pop">
           <div
             v-if="modoAcaoVagas !== 'NENHUM' && selecionados.size > 0"
@@ -783,7 +761,6 @@ function tratarTeclaGlobal(event) {
           </div>
         </Transition>
 
-        <!-- 4. HUD INFERIOR DE HOVER (NORMAL OU MAPA DE CALOR) -->
         <Transition name="fade-pop">
           <div v-if="infoHoverGerente" class="overlay-flutuante badge-hover-setor">
             <span
@@ -850,11 +827,9 @@ function tratarTeclaGlobal(event) {
                       andarAtual.celulas[`${x},${y}`]?.tipo === 'ENTRADA' ? 'qe-entrada' : '',
                       andarAtual.celulas[`${x},${y}`]?.tipo === 'SAIDA' ? 'qe-saida' : '',
                       andarAtual.celulas[`${x},${y}`]?.tipo === 'ACESSO' ? 'qe-acesso' : '',
-                      // Modo Mapa de Calor nas vagas
                       modoMapaCalor && andarAtual.celulas[`${x},${y}`]?.tipo === 'VAGA'
                         ? mapaCalorPorCoordenada[`${x},${y}`]
                         : '',
-                      // Modo Normal nas vagas: Cinza (Inativa), Amarela (Sem ESP), Verde (Livre), Vermelha (Ocupada)
                       !modoMapaCalor && andarAtual.celulas[`${x},${y}`]?.tipo === 'VAGA' && andarAtual.celulas[`${x},${y}`]?.inativa
                         ? 'vaga-gerente-inativa'
                         : '',
@@ -893,7 +868,6 @@ function tratarTeclaGlobal(event) {
         class="sidebar-direita-editor sidebar-gerente-metricas"
         :class="{ 'sidebar-mobile-aberta': painelLateralMobileAberto }"
       >
-        <!-- Resumo dos Andares -->
         <div class="painel-ferramentas">
           <h4 class="item-icone-texto">
             <IconStack2 :size="18" />
@@ -933,7 +907,6 @@ function tratarTeclaGlobal(event) {
           </div>
         </div>
 
-        <!-- Resumo dos Setores do Andar Atual -->
         <div class="painel-ferramentas">
           <h4 class="item-icone-texto">
             <IconLayoutBoard :size="18" />
@@ -982,7 +955,7 @@ function tratarTeclaGlobal(event) {
       </aside>
     </div>
 
-    <!-- MODAL DO QR CODE PARA ENTRADA DO ESTACIONAMENTO -->
+    <!-- MODAL DO QR CODE PARA ENTRADA DO ESTACIONAMENTO (SEM A FRASE EXTRA) -->
     <Transition name="fade-pop">
       <div v-if="modalQrAberto" class="modal-backdrop">
         <div class="modal-box modal-qr-gerente">
@@ -995,10 +968,6 @@ function tratarTeclaGlobal(event) {
               <IconSquareRoundedX :size="20" />
             </button>
           </div>
-
-          <p class="subtitulo">
-            Imprima e posicione na entrada para os motoristas abrirem o mapa de vagas em tempo real:
-          </p>
 
           <div class="box-imagem-qr">
             <img :src="imagemQrCodeUrl" :alt="`QR Code ${estacionamentoAtual.nome}`" width="220" height="220" />

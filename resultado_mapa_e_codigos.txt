@@ -36,13 +36,19 @@
                     📂 origin/
                         📄 HEAD
                         📄 main
+            📂 01/
+                📄 49a5e6de2992b939b2607779b7145d233306fe
+                📄 a93c2903eaeada4330c6478a59392af3bf9489
             📂 02/
                 📄 251f4b956c55af2d76fd0788124d7eee2b45eb
                 📄 eb319f10f70b460c2eb756b71d84bd67c7682f
+            📂 03/
+                📄 ca94a290ea30eb60c8a72e51394ebf8243dee8
             📂 04/
                 📄 28107b13a890a96e2983ac5ac365ec97e4c470
                 📄 a3e54bf68335107a348259e4770142ac1d2536
             📂 05/
+                📄 49dd83f5533c8ec49c18fab864b0e35d0afc2c
                 📄 d5f192045b2d8e084004420249a30c85b7a3b4
             📂 06/
                 📄 a06d0be0368a6cceb76d421ce1c920b1f9846c
@@ -58,6 +64,7 @@
                 📄 df490efe94449c1403e5232f6c2e03fa99c337
             📂 0c/
                 📄 065b924bb5fa4111890dc78b76d68cc1d6d403
+                📄 3b5c4c6cf504252b72dbb49989d2c333a7ce80
             📂 0e/
                 📄 643ce9b8a54f0ed9f2f6d02c27e60bd4b65f4e
             📂 0f/
@@ -95,6 +102,10 @@
                 📄 7b95c931dc579a181a6c3749a06e2ef8533691
             📂 2b/
                 📄 89906d8c627b7e5eb23cfe858b5ff5931810b5
+            📂 2d/
+                📄 0978de55e6d7a268d3e509da8bf82f3f043de3
+            📂 2f/
+                📄 65c84c5af3780e12de512deb7edb5e30b82400
             📂 31/
                 📄 d938528fbbe876e356e5b1cd20b76539e58845
             📂 33/
@@ -107,6 +118,7 @@
                 📄 901970659696a80eef38d5754a0678dad3f069
             📂 3d/
                 📄 c17d4f11a738f42dbd0ef492f34d08aaaa076c
+                📄 d49be272955edbd7761aa83325e1dffed94622
             📂 3e/
                 📄 82379dab3fe93d9ee22251949604ed63ddea39
             📂 41/
@@ -123,6 +135,8 @@
                 📄 5d8b7070ffbd8693ebba820a12535b06494bff
             📂 4a/
                 📄 1aea1ad35b0b9eadecd0d92ce991948bc5bd63
+            📂 4c/
+                📄 6c6bd6b29956b6c5d7fac0528a8f6e4b64fe85
             📂 4d/
                 📄 df9122c5ca0d4bb4aad3dfdca88c9d11c5b45d
             📂 4f/
@@ -133,8 +147,11 @@
                 📄 7d4fba5579d5e4e9d260051974927071f2b4a1
             📂 53/
                 📄 3f3844723ab8694c64850a0cdf36ceb15c3174
+            📂 54/
+                📄 3ce0e84207988ccea992ee2d0e4c19375d9128
             📂 57/
                 📄 434022187e0bdf3707b401cb8ae756d870bc60
+                📄 5bcaf70e227c9174d6aa09cddf91983985f9ab
                 📄 ffcde289691ca090d761e5ec7b99bc3f8d0e02
             📂 5a/
                 📄 cd2f23c2a1b7370a4dee3ab097708137435dfe
@@ -142,12 +159,16 @@
                 📄 2c408d1c9873a919513089538c157cc01eed46
                 📄 440c088acad92aba91032270758b0814456731
                 📄 c76810926bc986c8016355a804189357a2082d
+                📄 de00abf27d27d56e2dad27396881f5c3adbf82
             📂 5c/
                 📄 eb06667da36f8ae69cfe43a97527953acf9a4f
             📂 5d/
+                📄 a041f0d085e7530d16836be137c7264ac8cdd0
                 📄 da71f1e9803069344a88f9cf8fea367a278ae1
             📂 5e/
                 📄 83bcbf57907010602a73f562ba52c711a83e40
+            📂 61/
+                📄 6820b5e24605586889855c2cb106d0638f6ea8
             📂 63/
                 📄 8657cf01ca80ab9297f146b5ea732aa37b918a
             📂 65/
@@ -160,10 +181,13 @@
                 📄 9509c88bed7080d496fc5e1d87a9315e30549d
             📂 70/
                 📄 0e1cd3fba8e9ecd5710c66153a219043090f76
+            📂 72/
+                📄 d06bbf9719869e139866bbc325aa4cc3051439
             📂 73/
                 📄 773baa760717ae1e2571aac9473c2ec79c48ba
             📂 76/
                 📄 4129682cad74137e25bb36abd2a3472d937a9a
+                📄 83193ed8df6007708b23285bc804014e7fb237
             📂 77/
                 📄 0e9d333ee70e75fe7c0bad7fb13e4f6ed4627a
             📂 7b/
@@ -176,6 +200,10 @@
             📂 81/
                 📄 03bc9f494264183a30b30a8fc90b16740835d7
                 📄 98ab9d4d4711cfcdad090e39ad6af9c0fefa5e
+            📂 83/
+                📄 4198db60a6ec29a85a76c17e138f58ee2563de
+            📂 84/
+                📄 b05aee7111d96224c276b6ccfdd20471cbe9a2
             📂 85/
                 📄 005aa2449ac4845e7f81bbf6da5c3744927e59
             📂 86/
@@ -189,10 +217,17 @@
                 📄 bb5ee6c07004e372ddd3fd49ee75964c2c9e75
             📂 8f/
                 📄 e3499015179d3bb1b2d005efbec7e10771f9e2
+            📂 91/
+                📄 389d4b11e9c7e192caa5ec51055c2890a5403a
+                📄 58755c421e659f0dd276a0b740aebb1faecf77
             📂 92/
                 📄 e86ff355f7a54278a9608b1cac188c202b0d02
             📂 95/
                 📄 511b63968465a1985a4a1d0e760e91f48cd1b1
+            📂 97/
+                📄 46779f3a18ca4528271c81c948bb129e649ba7
+            📂 9a/
+                📄 b35451c7112bab8c54e0062df3796d2d080fc6
             📂 9c/
                 📄 342b0da2115997d027cdc9a85d2b13c7578845
             📂 9d/
@@ -202,6 +237,8 @@
             📂 a1/
                 📄 536a8de8666cea720407bcc9abbbbc7eb8b814
                 📄 8cc39e43c8ed3391834d138ce8eaeb48256312
+            📂 a2/
+                📄 47da3b2137e20d8798224282a037e4e712197b
             📂 a4/
                 📄 17a1c66ca2653bf76e3afa8479c426b3c891c3
                 📄 1cb16f718dbb2c82b1dbb89c08dd4df61493b6
@@ -225,6 +262,7 @@
                 📄 a3509be3f006e7b96bceaab9bd98ca91b7b25e
             📂 b2/
                 📄 259e5d54488208f00f514aec8329184535bd4b
+                📄 30c82a572dc1e639e458304bcf55c2b48a6668
                 📄 9e339b0b60cf70dd7163098f447049f4ec9f59
             📂 b3/
                 📄 07f4b8446fa249b4ef4438eab98f8e567030be
@@ -243,8 +281,12 @@
                 📄 2c6289571f2271ec419141ad2b5ba7aca238b4
             📂 cb/
                 📄 a576915494073d55140abc61e826a0ecfb57e1
+            📂 cc/
+                📄 758f51d1708fdc922fae800044d57b9e9f1c72
             📂 ce/
                 📄 9c48d9c1876034a21000926a121d232c1a7b75
+            📂 cf/
+                📄 53c3567b1714146e15d53b7f074978c66e95a2
             📂 d1/
                 📄 5c1653d372bdc1ce078bb7ac75cc34cb9b4e9f
                 📄 7b5e59bf6b3924828e1401513566df2ce7feb3
@@ -265,19 +307,26 @@
                 📄 e2c9348cba750718fc555fa23daa5ca96737fe
             📂 df/
                 📄 e0770424b2a19faf507a501ebfc23be8f54e7b
+            📂 e2/
+                📄 cfd9f96ed69438e1929a5e05f6fc9c897b7568
             📂 e4/
                 📄 ca0349653db5381d190350ab1dce315e95c6a5
+            📂 e5/
+                📄 82578157dedbcda5d554702a7c81b6933b2745
             📂 e6/
                 📄 9de29bb2d1d6434b8b29ae775ad8c2e48c5391
             📂 e7/
                 📄 48d96eb7227a56a68a1be32c844862123311b5
                 📄 70ce191495395b7ffb47939c6d1f0fd1c2435e
             📂 e9/
+                📄 211ee383f5d13852d50f46ad65d01c8613e878
+                📄 5153bbc2191f000ca4489236fc1fd614166d14
                 📄 522193d9f796a9748e9ad8c952a5df73c87db9
             📂 ea/
                 📄 27a156e576856d9a93e52d6d0a92823ec4a7c1
             📂 ef/
                 📄 153556ae299e777fe4d5a8499195dce391cb97
+                📄 85f0532da972f86d0e96faa3bef9dc637573c3
             📂 f0/
                 📄 a2483fb9f531f5cdbef870c76c6e0321080046
             📂 f2/
@@ -301,7 +350,11 @@
             📂 fa/
                 📄 bc7adf919638c0c7a5b0151021da9a894805fb
             📂 fb/
+                📄 7bd527d8cfa206ce25debd5c134530001d18d3
+                📄 d9b1044f09206fa71d8e1aecc7b61ca119d755
                 📄 f37db7a78a5323420f0e3fd779b9d570fa11d3
+            📂 fe/
+                📄 e1e107a4747df31ebfc389735d604a6b486c28
             📂 heads/
                 📄 main
                 📂 origin/
@@ -329,6 +382,8 @@
                 📄 AdminInfoGeraisView.vue
                 📄 AdminListaView.vue
                 📄 CadastroView.vue
+                📄 GerenteEstacionamentosView.vue
+                📄 GerenteRelatoriosView.vue
                 📄 GerenteView.vue
                 📄 LoginView.vue
                 📄 MotoristaHomeView.vue
@@ -557,7 +612,7 @@ COMMIT;
 // 🚀 INÍCIO DO ARQUIVO: .git\COMMIT_EDITMSG
 // ==================================================================
 
-implementação de cadastro e login
+inicio das views do gestor com relatórios e visão dos estacionamentos
 
 
 // 🏁 FIM DO ARQUIVO: .git\COMMIT_EDITMSG
@@ -568,7 +623,7 @@ implementação de cadastro e login
 // 🚀 INÍCIO DO ARQUIVO: .git\FETCH_HEAD
 // ==================================================================
 
-d1e4703307ee1b9ff8395a707e58b3b092f6261e		branch 'main' of https://github.com/Foretsam/vaga_certa
+0149a5e6de2992b939b2607779b7145d233306fe		branch 'main' of https://github.com/Foretsam/vaga_certa
 
 
 // 🏁 FIM DO ARQUIVO: .git\FETCH_HEAD
@@ -1673,6 +1728,8 @@ f73a57bca719d82ee92f5712f1a4e8d02a0c5778 10b789cea22d2254ed54dd4a6754849a9099f8b
 10b789cea22d2254ed54dd4a6754849a9099f8b0 d1dd9c89df02be67775a39cdb5427dc818505011 Lucas Schuab <lucaschuab2015@outlook.com> 1792542363 -0300	commit: implementação de iconografia usando tablericons do mit
 d1dd9c89df02be67775a39cdb5427dc818505011 10b0fb3e9f779aa97cbda3b8f53d412138a4a2fc Lucas Schuab <lucaschuab2015@outlook.com> 1792549367 -0300	commit: aperfeiçoamento do css
 10b0fb3e9f779aa97cbda3b8f53d412138a4a2fc d1e4703307ee1b9ff8395a707e58b3b092f6261e Lucas Schuab <lucaschuab2015@outlook.com> 1792553202 -0300	commit: implementação de cadastro e login
+d1e4703307ee1b9ff8395a707e58b3b092f6261e 4c6c6bd6b29956b6c5d7fac0528a8f6e4b64fe85 Lucas Schuab <lucaschuab2015@outlook.com> 1792627039 -0300	commit: finalização das views devs e limpeza do css
+4c6c6bd6b29956b6c5d7fac0528a8f6e4b64fe85 0149a5e6de2992b939b2607779b7145d233306fe Lucas Schuab <lucaschuab2015@outlook.com> 1792804399 -0300	commit: inicio das views do gestor com relatórios e visão dos estacionamentos
 
 
 // 🏁 FIM DO ARQUIVO: .git\logs\HEAD
@@ -1694,6 +1751,8 @@ f73a57bca719d82ee92f5712f1a4e8d02a0c5778 10b789cea22d2254ed54dd4a6754849a9099f8b
 10b789cea22d2254ed54dd4a6754849a9099f8b0 d1dd9c89df02be67775a39cdb5427dc818505011 Lucas Schuab <lucaschuab2015@outlook.com> 1792542363 -0300	commit: implementação de iconografia usando tablericons do mit
 d1dd9c89df02be67775a39cdb5427dc818505011 10b0fb3e9f779aa97cbda3b8f53d412138a4a2fc Lucas Schuab <lucaschuab2015@outlook.com> 1792549367 -0300	commit: aperfeiçoamento do css
 10b0fb3e9f779aa97cbda3b8f53d412138a4a2fc d1e4703307ee1b9ff8395a707e58b3b092f6261e Lucas Schuab <lucaschuab2015@outlook.com> 1792553202 -0300	commit: implementação de cadastro e login
+d1e4703307ee1b9ff8395a707e58b3b092f6261e 4c6c6bd6b29956b6c5d7fac0528a8f6e4b64fe85 Lucas Schuab <lucaschuab2015@outlook.com> 1792627039 -0300	commit: finalização das views devs e limpeza do css
+4c6c6bd6b29956b6c5d7fac0528a8f6e4b64fe85 0149a5e6de2992b939b2607779b7145d233306fe Lucas Schuab <lucaschuab2015@outlook.com> 1792804399 -0300	commit: inicio das views do gestor com relatórios e visão dos estacionamentos
 
 
 // 🏁 FIM DO ARQUIVO: .git\logs\refs\heads\main
@@ -1721,6 +1780,11 @@ d1dd9c89df02be67775a39cdb5427dc818505011 d1dd9c89df02be67775a39cdb5427dc81850501
 d1dd9c89df02be67775a39cdb5427dc818505011 d1dd9c89df02be67775a39cdb5427dc818505011 Lucas Oliveira Schuab <lucas@LAPTOP-SKE6HI0S.(none)> 1792548262 -0300	remote set-head
 10b0fb3e9f779aa97cbda3b8f53d412138a4a2fc 10b0fb3e9f779aa97cbda3b8f53d412138a4a2fc Lucas Oliveira Schuab <lucas@LAPTOP-SKE6HI0S.(none)> 1792549371 -0300	remote set-head
 d1e4703307ee1b9ff8395a707e58b3b092f6261e d1e4703307ee1b9ff8395a707e58b3b092f6261e Lucas Oliveira Schuab <lucas@LAPTOP-SKE6HI0S.(none)> 1792553207 -0300	remote set-head
+4c6c6bd6b29956b6c5d7fac0528a8f6e4b64fe85 4c6c6bd6b29956b6c5d7fac0528a8f6e4b64fe85 Lucas Oliveira Schuab <lucas@LAPTOP-SKE6HI0S.(none)> 1792627044 -0300	remote set-head
+4c6c6bd6b29956b6c5d7fac0528a8f6e4b64fe85 4c6c6bd6b29956b6c5d7fac0528a8f6e4b64fe85 Lucas Oliveira Schuab <lucas@LAPTOP-SKE6HI0S.(none)> 1792629002 -0300	remote set-head
+4c6c6bd6b29956b6c5d7fac0528a8f6e4b64fe85 4c6c6bd6b29956b6c5d7fac0528a8f6e4b64fe85 Lucas Oliveira Schuab <lucas@LAPTOP-SKE6HI0S.(none)> 1792633295 -0300	remote set-head
+0149a5e6de2992b939b2607779b7145d233306fe 0149a5e6de2992b939b2607779b7145d233306fe Lucas Oliveira Schuab <lucas@LAPTOP-SKE6HI0S.(none)> 1792804405 -0300	remote set-head
+0149a5e6de2992b939b2607779b7145d233306fe 0149a5e6de2992b939b2607779b7145d233306fe Lucas Oliveira Schuab <lucas@LAPTOP-SKE6HI0S.(none)> 1792807778 -0300	remote set-head
 
 
 // 🏁 FIM DO ARQUIVO: .git\logs\refs\remotes\origin\HEAD
@@ -1742,9 +1806,33 @@ f73a57bca719d82ee92f5712f1a4e8d02a0c5778 10b789cea22d2254ed54dd4a6754849a9099f8b
 10b789cea22d2254ed54dd4a6754849a9099f8b0 d1dd9c89df02be67775a39cdb5427dc818505011 Lucas Schuab <lucaschuab2015@outlook.com> 1792542367 -0300	update by push
 d1dd9c89df02be67775a39cdb5427dc818505011 10b0fb3e9f779aa97cbda3b8f53d412138a4a2fc Lucas Schuab <lucaschuab2015@outlook.com> 1792549370 -0300	update by push
 10b0fb3e9f779aa97cbda3b8f53d412138a4a2fc d1e4703307ee1b9ff8395a707e58b3b092f6261e Lucas Schuab <lucaschuab2015@outlook.com> 1792553206 -0300	update by push
+d1e4703307ee1b9ff8395a707e58b3b092f6261e 4c6c6bd6b29956b6c5d7fac0528a8f6e4b64fe85 Lucas Schuab <lucaschuab2015@outlook.com> 1792627043 -0300	update by push
+4c6c6bd6b29956b6c5d7fac0528a8f6e4b64fe85 0149a5e6de2992b939b2607779b7145d233306fe Lucas Schuab <lucaschuab2015@outlook.com> 1792804403 -0300	update by push
 
 
 // 🏁 FIM DO ARQUIVO: .git\logs\refs\remotes\origin\main
+// ------------------------------------------------------------------
+
+
+// ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: .git\objects\01\49a5e6de2992b939b2607779b7145d233306fe
+// ==================================================================
+
+// [Arquivo binário ignorado pelo leitor de segurança]
+
+
+// 🏁 FIM DO ARQUIVO: .git\objects\01\49a5e6de2992b939b2607779b7145d233306fe
+// ------------------------------------------------------------------
+
+
+// ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: .git\objects\01\a93c2903eaeada4330c6478a59392af3bf9489
+// ==================================================================
+
+// [Arquivo binário ignorado pelo leitor de segurança]
+
+
+// 🏁 FIM DO ARQUIVO: .git\objects\01\a93c2903eaeada4330c6478a59392af3bf9489
 // ------------------------------------------------------------------
 
 
@@ -1771,6 +1859,17 @@ d1dd9c89df02be67775a39cdb5427dc818505011 10b0fb3e9f779aa97cbda3b8f53d412138a4a2f
 
 
 // ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: .git\objects\03\ca94a290ea30eb60c8a72e51394ebf8243dee8
+// ==================================================================
+
+// [Arquivo binário ignorado pelo leitor de segurança]
+
+
+// 🏁 FIM DO ARQUIVO: .git\objects\03\ca94a290ea30eb60c8a72e51394ebf8243dee8
+// ------------------------------------------------------------------
+
+
+// ==================================================================
 // 🚀 INÍCIO DO ARQUIVO: .git\objects\04\28107b13a890a96e2983ac5ac365ec97e4c470
 // ==================================================================
 
@@ -1789,6 +1888,17 @@ d1dd9c89df02be67775a39cdb5427dc818505011 10b0fb3e9f779aa97cbda3b8f53d412138a4a2f
 
 
 // 🏁 FIM DO ARQUIVO: .git\objects\04\a3e54bf68335107a348259e4770142ac1d2536
+// ------------------------------------------------------------------
+
+
+// ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: .git\objects\05\49dd83f5533c8ec49c18fab864b0e35d0afc2c
+// ==================================================================
+
+// [Arquivo binário ignorado pelo leitor de segurança]
+
+
+// 🏁 FIM DO ARQUIVO: .git\objects\05\49dd83f5533c8ec49c18fab864b0e35d0afc2c
 // ------------------------------------------------------------------
 
 
@@ -1887,6 +1997,17 @@ d1dd9c89df02be67775a39cdb5427dc818505011 10b0fb3e9f779aa97cbda3b8f53d412138a4a2f
 x+)JMU01f040031QH�(I�+���+��*��cX~n���F��['\��S,�<{b% Ȝ�
 
 // 🏁 FIM DO ARQUIVO: .git\objects\0c\065b924bb5fa4111890dc78b76d68cc1d6d403
+// ------------------------------------------------------------------
+
+
+// ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: .git\objects\0c\3b5c4c6cf504252b72dbb49989d2c333a7ce80
+// ==================================================================
+
+// [Arquivo binário ignorado pelo leitor de segurança]
+
+
+// 🏁 FIM DO ARQUIVO: .git\objects\0c\3b5c4c6cf504252b72dbb49989d2c333a7ce80
 // ------------------------------------------------------------------
 
 
@@ -2132,6 +2253,28 @@ x+)JMU05`040031QH-.IL���K�M�+�.�/J��*f8j��Cy����
 
 
 // ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: .git\objects\2d\0978de55e6d7a268d3e509da8bf82f3f043de3
+// ==================================================================
+
+// [Arquivo binário ignorado pelo leitor de segurança]
+
+
+// 🏁 FIM DO ARQUIVO: .git\objects\2d\0978de55e6d7a268d3e509da8bf82f3f043de3
+// ------------------------------------------------------------------
+
+
+// ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: .git\objects\2f\65c84c5af3780e12de512deb7edb5e30b82400
+// ==================================================================
+
+// [Arquivo binário ignorado pelo leitor de segurança]
+
+
+// 🏁 FIM DO ARQUIVO: .git\objects\2f\65c84c5af3780e12de512deb7edb5e30b82400
+// ------------------------------------------------------------------
+
+
+// ==================================================================
 // 🚀 INÍCIO DO ARQUIVO: .git\objects\31\d938528fbbe876e356e5b1cd20b76539e58845
 // ==================================================================
 
@@ -2194,6 +2337,17 @@ x+)JMU05`040031QH-.IL���K�M�+�.�/J��*f8j��Cy����
 
 
 // 🏁 FIM DO ARQUIVO: .git\objects\3d\c17d4f11a738f42dbd0ef492f34d08aaaa076c
+// ------------------------------------------------------------------
+
+
+// ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: .git\objects\3d\d49be272955edbd7761aa83325e1dffed94622
+// ==================================================================
+
+// [Arquivo binário ignorado pelo leitor de segurança]
+
+
+// 🏁 FIM DO ARQUIVO: .git\objects\3d\d49be272955edbd7761aa83325e1dffed94622
 // ------------------------------------------------------------------
 
 
@@ -2297,6 +2451,17 @@ x+)JMU05`040031QH-.IL���K�M�+�.�/J��*f8j��Cy����
 
 
 // ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: .git\objects\4c\6c6bd6b29956b6c5d7fac0528a8f6e4b64fe85
+// ==================================================================
+
+// [Arquivo binário ignorado pelo leitor de segurança]
+
+
+// 🏁 FIM DO ARQUIVO: .git\objects\4c\6c6bd6b29956b6c5d7fac0528a8f6e4b64fe85
+// ------------------------------------------------------------------
+
+
+// ==================================================================
 // 🚀 INÍCIO DO ARQUIVO: .git\objects\4d\df9122c5ca0d4bb4aad3dfdca88c9d11c5b45d
 // ==================================================================
 
@@ -2352,6 +2517,16 @@ x+)JMU05`040031QH-.IL���K�M�+�.�/J��*f8j��Cy����
 
 
 // ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: .git\objects\54\3ce0e84207988ccea992ee2d0e4c19375d9128
+// ==================================================================
+
+x+)JMU05`040031QH-.IL���K�M�+�.�/J��*fxt��ϼkS,N����Ϝ��� k=�
+
+// 🏁 FIM DO ARQUIVO: .git\objects\54\3ce0e84207988ccea992ee2d0e4c19375d9128
+// ------------------------------------------------------------------
+
+
+// ==================================================================
 // 🚀 INÍCIO DO ARQUIVO: .git\objects\57\434022187e0bdf3707b401cb8ae756d870bc60
 // ==================================================================
 
@@ -2359,6 +2534,17 @@ x+)JMU05`040031QH-.IL���K�M�+�.�/J��*f8j��Cy����
 
 
 // 🏁 FIM DO ARQUIVO: .git\objects\57\434022187e0bdf3707b401cb8ae756d870bc60
+// ------------------------------------------------------------------
+
+
+// ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: .git\objects\57\5bcaf70e227c9174d6aa09cddf91983985f9ab
+// ==================================================================
+
+// [Arquivo binário ignorado pelo leitor de segurança]
+
+
+// 🏁 FIM DO ARQUIVO: .git\objects\57\5bcaf70e227c9174d6aa09cddf91983985f9ab
 // ------------------------------------------------------------------
 
 
@@ -2418,6 +2604,17 @@ x+)JMU05`040031QH-.IL���K�M�+�.�/J��*f8j��Cy����
 
 
 // ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: .git\objects\5b\de00abf27d27d56e2dad27396881f5c3adbf82
+// ==================================================================
+
+// [Arquivo binário ignorado pelo leitor de segurança]
+
+
+// 🏁 FIM DO ARQUIVO: .git\objects\5b\de00abf27d27d56e2dad27396881f5c3adbf82
+// ------------------------------------------------------------------
+
+
+// ==================================================================
 // 🚀 INÍCIO DO ARQUIVO: .git\objects\5c\eb06667da36f8ae69cfe43a97527953acf9a4f
 // ==================================================================
 
@@ -2425,6 +2622,17 @@ x+)JMU05`040031QH-.IL���K�M�+�.�/J��*f8j��Cy����
 
 
 // 🏁 FIM DO ARQUIVO: .git\objects\5c\eb06667da36f8ae69cfe43a97527953acf9a4f
+// ------------------------------------------------------------------
+
+
+// ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: .git\objects\5d\a041f0d085e7530d16836be137c7264ac8cdd0
+// ==================================================================
+
+// [Arquivo binário ignorado pelo leitor de segurança]
+
+
+// 🏁 FIM DO ARQUIVO: .git\objects\5d\a041f0d085e7530d16836be137c7264ac8cdd0
 // ------------------------------------------------------------------
 
 
@@ -2447,6 +2655,17 @@ x+)JMU05`040031QH-.IL���K�M�+�.�/J��*f8j��Cy����
 
 
 // 🏁 FIM DO ARQUIVO: .git\objects\5e\83bcbf57907010602a73f562ba52c711a83e40
+// ------------------------------------------------------------------
+
+
+// ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: .git\objects\61\6820b5e24605586889855c2cb106d0638f6ea8
+// ==================================================================
+
+// [Arquivo binário ignorado pelo leitor de segurança]
+
+
+// 🏁 FIM DO ARQUIVO: .git\objects\61\6820b5e24605586889855c2cb106d0638f6ea8
 // ------------------------------------------------------------------
 
 
@@ -2516,6 +2735,17 @@ x+)JMU01b040031Q�K�,I,))�L*-I-f����Ee��������~
 
 
 // ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: .git\objects\72\d06bbf9719869e139866bbc325aa4cc3051439
+// ==================================================================
+
+// [Arquivo binário ignorado pelo leitor de segurança]
+
+
+// 🏁 FIM DO ARQUIVO: .git\objects\72\d06bbf9719869e139866bbc325aa4cc3051439
+// ------------------------------------------------------------------
+
+
+// ==================================================================
 // 🚀 INÍCIO DO ARQUIVO: .git\objects\73\773baa760717ae1e2571aac9473c2ec79c48ba
 // ==================================================================
 
@@ -2534,6 +2764,17 @@ x+)JMU01b040031Q�K�,I,))�L*-I-f����Ee��������~
 
 
 // 🏁 FIM DO ARQUIVO: .git\objects\76\4129682cad74137e25bb36abd2a3472d937a9a
+// ------------------------------------------------------------------
+
+
+// ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: .git\objects\76\83193ed8df6007708b23285bc804014e7fb237
+// ==================================================================
+
+// [Arquivo binário ignorado pelo leitor de segurança]
+
+
+// 🏁 FIM DO ARQUIVO: .git\objects\76\83193ed8df6007708b23285bc804014e7fb237
 // ------------------------------------------------------------------
 
 
@@ -2610,6 +2851,28 @@ xK��OR045e��-�/*Q(+MUH+��UPw(�,I�*�/�)M���J�sAU
 
 
 // 🏁 FIM DO ARQUIVO: .git\objects\81\98ab9d4d4711cfcdad090e39ad6af9c0fefa5e
+// ------------------------------------------------------------------
+
+
+// ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: .git\objects\83\4198db60a6ec29a85a76c17e138f58ee2563de
+// ==================================================================
+
+// [Arquivo binário ignorado pelo leitor de segurança]
+
+
+// 🏁 FIM DO ARQUIVO: .git\objects\83\4198db60a6ec29a85a76c17e138f58ee2563de
+// ------------------------------------------------------------------
+
+
+// ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: .git\objects\84\b05aee7111d96224c276b6ccfdd20471cbe9a2
+// ==================================================================
+
+x+)JMU04�`01 ����������x���.�>�k�~h~\�����f&&
+)�%�I�ũz�?�Ϥ�����u||����_�_��r3�@JΔ�^,�3I]����y�e��J�R�KsJS��s�S��S2���J*J~�ݾ�+Xى���z�Ϋ�/ .�H�
+
+// 🏁 FIM DO ARQUIVO: .git\objects\84\b05aee7111d96224c276b6ccfdd20471cbe9a2
 // ------------------------------------------------------------------
 
 
@@ -2691,6 +2954,28 @@ xK��OR045e��-�/*Q(+MUH+��UPw(�,I�*�/�)M���J�sAU
 
 
 // ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: .git\objects\91\389d4b11e9c7e192caa5ec51055c2890a5403a
+// ==================================================================
+
+// [Arquivo binário ignorado pelo leitor de segurança]
+
+
+// 🏁 FIM DO ARQUIVO: .git\objects\91\389d4b11e9c7e192caa5ec51055c2890a5403a
+// ------------------------------------------------------------------
+
+
+// ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: .git\objects\91\58755c421e659f0dd276a0b740aebb1faecf77
+// ==================================================================
+
+// [Arquivo binário ignorado pelo leitor de segurança]
+
+
+// 🏁 FIM DO ARQUIVO: .git\objects\91\58755c421e659f0dd276a0b740aebb1faecf77
+// ------------------------------------------------------------------
+
+
+// ==================================================================
 // 🚀 INÍCIO DO ARQUIVO: .git\objects\92\e86ff355f7a54278a9608b1cac188c202b0d02
 // ==================================================================
 
@@ -2709,6 +2994,28 @@ xK��OR045e��-�/*Q(+MUH+��UPw(�,I�*�/�)M���J�sAU
 
 
 // 🏁 FIM DO ARQUIVO: .git\objects\95\511b63968465a1985a4a1d0e760e91f48cd1b1
+// ------------------------------------------------------------------
+
+
+// ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: .git\objects\97\46779f3a18ca4528271c81c948bb129e649ba7
+// ==================================================================
+
+// [Arquivo binário ignorado pelo leitor de segurança]
+
+
+// 🏁 FIM DO ARQUIVO: .git\objects\97\46779f3a18ca4528271c81c948bb129e649ba7
+// ------------------------------------------------------------------
+
+
+// ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: .git\objects\9a\b35451c7112bab8c54e0062df3796d2d080fc6
+// ==================================================================
+
+// [Arquivo binário ignorado pelo leitor de segurança]
+
+
+// 🏁 FIM DO ARQUIVO: .git\objects\9a\b35451c7112bab8c54e0062df3796d2d080fc6
 // ------------------------------------------------------------------
 
 
@@ -2763,6 +3070,16 @@ h
 x+)JMU05`040031QH-.IL���K�M�+�.�/J��*f���.(���m��]M\B��l���E��
 
 // 🏁 FIM DO ARQUIVO: .git\objects\a1\8cc39e43c8ed3391834d138ce8eaeb48256312
+// ------------------------------------------------------------------
+
+
+// ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: .git\objects\a2\47da3b2137e20d8798224282a037e4e712197b
+// ==================================================================
+
+xK��OR07g�)I�-�I,I��I�,SH�I,.�UJL����M��+I��K-R�sN,*JMO�K�Wp-I,HT0��ӳ�j��ч �~?
+
+// 🏁 FIM DO ARQUIVO: .git\objects\a2\47da3b2137e20d8798224282a037e4e712197b
 // ------------------------------------------------------------------
 
 
@@ -2921,6 +3238,17 @@ xK��OR0�d��RPP*JM���M�KI,���+V�R�V
 
 
 // ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: .git\objects\b2\30c82a572dc1e639e458304bcf55c2b48a6668
+// ==================================================================
+
+// [Arquivo binário ignorado pelo leitor de segurança]
+
+
+// 🏁 FIM DO ARQUIVO: .git\objects\b2\30c82a572dc1e639e458304bcf55c2b48a6668
+// ------------------------------------------------------------------
+
+
+// ==================================================================
 // 🚀 INÍCIO DO ARQUIVO: .git\objects\b2\9e339b0b60cf70dd7163098f447049f4ec9f59
 // ==================================================================
 
@@ -3042,6 +3370,17 @@ xK��OR0�d��RPP*JM���M�KI,���+V�R�V
 
 
 // ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: .git\objects\cc\758f51d1708fdc922fae800044d57b9e9f1c72
+// ==================================================================
+
+// [Arquivo binário ignorado pelo leitor de segurança]
+
+
+// 🏁 FIM DO ARQUIVO: .git\objects\cc\758f51d1708fdc922fae800044d57b9e9f1c72
+// ------------------------------------------------------------------
+
+
+// ==================================================================
 // 🚀 INÍCIO DO ARQUIVO: .git\objects\ce\9c48d9c1876034a21000926a121d232c1a7b75
 // ==================================================================
 
@@ -3049,6 +3388,16 @@ xK��OR0�d��RPP*JM���M�KI,���+V�R�V
 
 
 // 🏁 FIM DO ARQUIVO: .git\objects\ce\9c48d9c1876034a21000926a121d232c1a7b75
+// ------------------------------------------------------------------
+
+
+// ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: .git\objects\cf\53c3567b1714146e15d53b7f074978c66e95a2
+// ==================================================================
+
+x+)JMU06c040031Q��KI���*f`\i�����-g�c�]��Z��O� 1�
+
+// 🏁 FIM DO ARQUIVO: .git\objects\cf\53c3567b1714146e15d53b7f074978c66e95a2
 // ------------------------------------------------------------------
 
 
@@ -3184,6 +3533,17 @@ xK��OR03cPVp,-�WHI-IM.Q(I�(QH��I-VH�KQ(H-J�/�U�qS�҉9�
 
 
 // ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: .git\objects\e2\cfd9f96ed69438e1929a5e05f6fc9c897b7568
+// ==================================================================
+
+// [Arquivo binário ignorado pelo leitor de segurança]
+
+
+// 🏁 FIM DO ARQUIVO: .git\objects\e2\cfd9f96ed69438e1929a5e05f6fc9c897b7568
+// ------------------------------------------------------------------
+
+
+// ==================================================================
 // 🚀 INÍCIO DO ARQUIVO: .git\objects\e4\ca0349653db5381d190350ab1dce315e95c6a5
 // ==================================================================
 
@@ -3191,6 +3551,17 @@ xK��OR03cPVp,-�WHI-IM.Q(I�(QH��I-VH�KQ(H-J�/�U�qS�҉9�
 
 
 // 🏁 FIM DO ARQUIVO: .git\objects\e4\ca0349653db5381d190350ab1dce315e95c6a5
+// ------------------------------------------------------------------
+
+
+// ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: .git\objects\e5\82578157dedbcda5d554702a7c81b6933b2745
+// ==================================================================
+
+// [Arquivo binário ignorado pelo leitor de segurança]
+
+
+// 🏁 FIM DO ARQUIVO: .git\objects\e5\82578157dedbcda5d554702a7c81b6933b2745
 // ------------------------------------------------------------------
 
 
@@ -3227,6 +3598,28 @@ xK��OR0`  	��
 
 
 // ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: .git\objects\e9\211ee383f5d13852d50f46ad65d01c8613e878
+// ==================================================================
+
+// [Arquivo binário ignorado pelo leitor de segurança]
+
+
+// 🏁 FIM DO ARQUIVO: .git\objects\e9\211ee383f5d13852d50f46ad65d01c8613e878
+// ------------------------------------------------------------------
+
+
+// ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: .git\objects\e9\5153bbc2191f000ca4489236fc1fd614166d14
+// ==================================================================
+
+// [Arquivo binário ignorado pelo leitor de segurança]
+
+
+// 🏁 FIM DO ARQUIVO: .git\objects\e9\5153bbc2191f000ca4489236fc1fd614166d14
+// ------------------------------------------------------------------
+
+
+// ==================================================================
 // 🚀 INÍCIO DO ARQUIVO: .git\objects\e9\522193d9f796a9748e9ad8c952a5df73c87db9
 // ==================================================================
 
@@ -3256,6 +3649,17 @@ xK��OR0`  	��
 
 
 // 🏁 FIM DO ARQUIVO: .git\objects\ef\153556ae299e777fe4d5a8499195dce391cb97
+// ------------------------------------------------------------------
+
+
+// ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: .git\objects\ef\85f0532da972f86d0e96faa3bef9dc637573c3
+// ==================================================================
+
+// [Arquivo binário ignorado pelo leitor de segurança]
+
+
+// 🏁 FIM DO ARQUIVO: .git\objects\ef\85f0532da972f86d0e96faa3bef9dc637573c3
 // ------------------------------------------------------------------
 
 
@@ -3414,6 +3818,28 @@ xK��OR0`  	��
 
 
 // ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: .git\objects\fb\7bd527d8cfa206ce25debd5c134530001d18d3
+// ==================================================================
+
+// [Arquivo binário ignorado pelo leitor de segurança]
+
+
+// 🏁 FIM DO ARQUIVO: .git\objects\fb\7bd527d8cfa206ce25debd5c134530001d18d3
+// ------------------------------------------------------------------
+
+
+// ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: .git\objects\fb\d9b1044f09206fa71d8e1aecc7b61ca119d755
+// ==================================================================
+
+// [Arquivo binário ignorado pelo leitor de segurança]
+
+
+// 🏁 FIM DO ARQUIVO: .git\objects\fb\d9b1044f09206fa71d8e1aecc7b61ca119d755
+// ------------------------------------------------------------------
+
+
+// ==================================================================
 // 🚀 INÍCIO DO ARQUIVO: .git\objects\fb\f37db7a78a5323420f0e3fd779b9d570fa11d3
 // ==================================================================
 
@@ -3425,10 +3851,21 @@ xK��OR0`  	��
 
 
 // ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: .git\objects\fe\e1e107a4747df31ebfc389735d604a6b486c28
+// ==================================================================
+
+// [Arquivo binário ignorado pelo leitor de segurança]
+
+
+// 🏁 FIM DO ARQUIVO: .git\objects\fe\e1e107a4747df31ebfc389735d604a6b486c28
+// ------------------------------------------------------------------
+
+
+// ==================================================================
 // 🚀 INÍCIO DO ARQUIVO: .git\refs\heads\main
 // ==================================================================
 
-d1e4703307ee1b9ff8395a707e58b3b092f6261e
+0149a5e6de2992b939b2607779b7145d233306fe
 
 
 // 🏁 FIM DO ARQUIVO: .git\refs\heads\main
@@ -3450,7 +3887,7 @@ ref: refs/remotes/origin/main
 // 🚀 INÍCIO DO ARQUIVO: .git\refs\remotes\origin\main
 // ==================================================================
 
-d1e4703307ee1b9ff8395a707e58b3b092f6261e
+0149a5e6de2992b939b2607779b7145d233306fe
 
 
 // 🏁 FIM DO ARQUIVO: .git\refs\remotes\origin\main
@@ -3735,13 +4172,14 @@ async def listar_estabelecimentos_completos():
 
             vagas_rows = await db.fetch(
                 """
-                SELECT v.id_vaga, v.identificador, v.coord_x, v.coord_y, v.livre_para_estacionar,
+                SELECT v.id_vaga, v.identificador, v.coord_x, v.coord_y,
+                       v.livre_para_estacionar, v.inativo,
                        eq.id_equipamento, eq.codigo_mac,
                        s.id_setor, s.nome_setor, s.prefixo, s.cor_hex
                 FROM vagas v
                 JOIN equipamentos eq ON v.id_equipamento = eq.id_equipamento
                 JOIN setores s ON eq.id_setor = s.id_setor
-                WHERE s.id_andar = %s AND v.inativo = 0
+                WHERE s.id_andar = %s
                 """,
                 (id_andar,),
             )
@@ -3770,6 +4208,7 @@ async def listar_estabelecimentos_completos():
                             "coord_x": v["coord_x"],
                             "coord_y": v["coord_y"],
                             "livre": bool(v["livre_para_estacionar"]),
+                            "inativo": bool(v["inativo"]),
                             "mac_esp": v["codigo_mac"],
                             "id_setor": v["id_setor"],
                             "nome_setor": v["nome_setor"],
@@ -4050,6 +4489,32 @@ async def login_usuario(payload: LoginUsuarioPayload):
     }
 
 
+class LoteStatusVagasPayload(BaseModel):
+    ids_vagas: List[int]
+    inativo: bool
+
+
+@app.patch("/vagas/status-lote")
+async def alterar_status_vagas_em_lote(payload: LoteStatusVagasPayload):
+    if not payload.ids_vagas:
+        return {"status": "sucesso", "afetadas": 0}
+
+    placeholders = ",".join(["%s"] * len(payload.ids_vagas))
+    novo_valor = 1 if payload.inativo else 0
+    params = tuple([novo_valor, novo_valor] + payload.ids_vagas)
+
+    await db.execute(
+        f"""
+        UPDATE vagas
+        SET inativo = %s,
+            data_inativacao = IF(%s = 1, CURRENT_TIMESTAMP(), NULL)
+        WHERE id_vaga IN ({placeholders})
+        """,
+        params,
+    )
+    return {"status": "sucesso", "inativo": payload.inativo}
+
+
 // 🏁 FIM DO ARQUIVO: backend\main.py
 // ------------------------------------------------------------------
 
@@ -4101,15 +4566,26 @@ export default defineConfig({
 <script setup>
 import { ref, onMounted } from 'vue'
 import { useRouter } from 'vue-router'
-import { carregarDadosDoBanco, usuarioLogado } from './store/estacionamentoStore'
+import {
+  carregarDadosDoBanco,
+  iniciarNovoFormulario,
+  usuarioLogado,
+  idsSelecionadosGerente,
+  simulacao1Ativa
+} from './store/estacionamentoStore'
 import {
   IconMenu2,
   IconSquareRoundedX,
+  IconSquareRoundedPlus,
+  IconSettings,
   IconQrcode,
   IconLogin,
   IconUserPlus,
   IconInfoCircle,
-  IconLogout
+  IconLogout,
+  IconLayoutBoard,
+  IconParking,
+  IconChartBar
 } from './icons'
 
 const menuAberto = ref(false)
@@ -4124,8 +4600,28 @@ function irPara(rota) {
   router.push(rota)
 }
 
+function irParaHomePorNivel() {
+  menuAberto.value = false
+  const nivel = usuarioLogado.value?.nivel_acesso
+  if (nivel === 'admin_dev') {
+    router.push({ name: 'admin-lista' })
+  } else if (nivel === 'admin_estabelecimento') {
+    router.push({ name: 'gerente' })
+  } else {
+    router.push({ name: 'motorista-home' })
+  }
+}
+
+function irParaNovoEstacionamento() {
+  iniciarNovoFormulario()
+  menuAberto.value = false
+  router.push({ name: 'admin-info-gerais' })
+}
+
 function sairDaConta() {
   usuarioLogado.value = null
+  idsSelecionadosGerente.value = []
+  simulacao1Ativa.value = false
   localStorage.removeItem('vagacerta_usuario')
   menuAberto.value = false
   router.push({ name: 'motorista-home' })
@@ -4134,8 +4630,13 @@ function sairDaConta() {
 
 <template>
   <div class="app-container">
-    <button class="btn-hamburguer" @click="menuAberto = !menuAberto">
+    <button class="btn-hamburguer" title="Abrir Menu" @click="menuAberto = !menuAberto">
       <IconMenu2 :size="22" />
+    </button>
+
+    <!-- Logo VC estilizado com redirecionamento inteligente para a Home de cada nível -->
+    <button class="btn-logo-vc" title="Ir para a página inicial" @click="irParaHomePorNivel">
+      <span class="vc-letra-v">V</span><span class="vc-letra-c">C</span>
     </button>
 
     <Transition name="fade-backdrop">
@@ -4145,12 +4646,46 @@ function sairDaConta() {
     <Transition name="slide-menu">
       <aside v-if="menuAberto" class="menu-lateral">
         <div class="menu-header">
-          <h2>Vaga Certa</h2>
+          <div class="item-icone-texto">
+            <span class="badge-logo-menu">VC</span>
+            <h2>Vaga Certa</h2>
+          </div>
           <button class="btn-fechar" @click="menuAberto = false">
             <IconSquareRoundedX :size="22" />
           </button>
         </div>
+
         <nav class="menu-links">
+          <!-- Atalhos exclusivos do Admin Dev -->
+          <template v-if="usuarioLogado?.nivel_acesso === 'admin_dev'">
+            <a href="#" class="item-icone-texto" @click.prevent="irParaNovoEstacionamento">
+              <IconSquareRoundedPlus :size="19" />
+              <span>Novo Estacionamento</span>
+            </a>
+            <a href="#" class="item-icone-texto" @click.prevent="irPara({ name: 'admin-lista' })">
+              <IconSettings :size="19" />
+              <span>Gerenciar Estacionamentos</span>
+            </a>
+            <div class="menu-divisor"></div>
+          </template>
+
+          <!-- Atalhos exclusivos do Gerente (Admin Estabelecimento) -->
+          <template v-if="usuarioLogado?.nivel_acesso === 'admin_estabelecimento'">
+            <a href="#" class="item-icone-texto" @click.prevent="irPara({ name: 'gerente' })">
+              <IconLayoutBoard :size="19" />
+              <span>Dashboard Principal</span>
+            </a>
+            <a href="#" class="item-icone-texto" @click.prevent="irPara({ name: 'gerente-estacionamentos' })">
+              <IconParking :size="19" />
+              <span>Visão dos Estacionamentos</span>
+            </a>
+            <a href="#" class="item-icone-texto" @click.prevent="irPara({ name: 'gerente-relatorios' })">
+              <IconChartBar :size="19" />
+              <span>Relatórios e Exportação</span>
+            </a>
+            <div class="menu-divisor"></div>
+          </template>
+
           <a href="#" class="item-icone-texto" @click.prevent="irPara({ name: 'motorista-home' })">
             <IconQrcode :size="19" />
             <span>Escanear Estacionamento</span>
@@ -4241,7 +4776,14 @@ export {
   IconLock,
   IconMail,
   IconUser,
-  IconLogout
+  IconLogout,
+  IconChartBar,
+  IconClock,
+  IconFlame,
+  IconMaximize,
+  IconDownload,
+  IconArrowsLeftRight,
+  IconPlayerPlay
 } from '@tabler/icons-vue'
 
 // 🏁 FIM DO ARQUIVO: frontend\src\icons.js
@@ -4269,8 +4811,2983 @@ app.mount('#app')
 // 🚀 INÍCIO DO ARQUIVO: frontend\src\assets\main.css
 // ==================================================================
 
-// [Arquivo binário ignorado pelo leitor de segurança]
+:root {
+  --bg-painel: #f1f5f9;
+  --bg-card: #ffffff;
+  --bg-botao-sec: #e2e8f0;
+  --borda-botao-sec: #94a3b8;
+  --texto-principal: #0f172a;
+  --texto-secundario: #475569;
+  --borda: #cbd5e1;
+  --destaque-azul: #2563eb;
+  --cor-asfalto: #1e293b;
+  --borda-asfalto: #475569;
+  --filtro-icone-calendario: invert(18%) sepia(24%) saturate(1100%) hue-rotate(185deg) brightness(92%) contrast(95%);
+}
 
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg-painel: #0b1120;
+    --bg-card: #1e293b;
+    --bg-botao-sec: #0f172a;
+    --borda-botao-sec: #475569;
+    --texto-principal: #f8fafc;
+    --texto-secundario: #94a3b8;
+    --borda: #334155;
+    --destaque-azul: #3b82f6;
+    --cor-asfalto: #090d16;
+    --borda-asfalto: #64748b;
+    --filtro-icone-calendario: invert(95%) sepia(5%) saturate(200%) hue-rotate(180deg) brightness(105%) contrast(100%);
+  }
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, sans-serif;
+}
+
+html, body, #app {
+  width: 100% !important;
+  max-width: 100% !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  display: block !important;
+  overflow-x: hidden;
+  text-align: left;
+  font-size: 16px;
+}
+
+.app-container {
+  width: 100%;
+  min-height: 100vh;
+  background: var(--bg-painel);
+  color: var(--texto-principal);
+}
+
+.item-icone-texto {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+}
+
+/* =========================================================
+   ANIMAÇÕES GLOBAIS (VIEWS, MENU LATERAL, TABELAS E POPUPS)
+   ========================================================= */
+.fade-view-enter-active,
+.fade-view-leave-active {
+  transition: opacity 0.14s ease, transform 0.14s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.fade-view-enter-from {
+  opacity: 0;
+  transform: translateY(4px);
+}
+.fade-view-leave-to {
+  opacity: 0;
+  transform: translateY(-4px);
+}
+
+.fade-tabela-enter-active,
+.fade-tabela-leave-active {
+  transition: opacity 0.15s ease, transform 0.15s ease;
+}
+.fade-tabela-enter-from {
+  opacity: 0;
+  transform: translateX(6px);
+}
+.fade-tabela-leave-to {
+  opacity: 0;
+  transform: translateX(-6px);
+}
+
+.slide-menu-enter-active,
+.slide-menu-leave-active {
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.2s ease;
+}
+.slide-menu-enter-from,
+.slide-menu-leave-to {
+  transform: translateX(-100%);
+  opacity: 0;
+}
+
+.fade-backdrop-enter-active,
+.fade-backdrop-leave-active {
+  transition: opacity 0.22s ease;
+}
+.fade-backdrop-enter-from,
+.fade-backdrop-leave-to {
+  opacity: 0;
+}
+
+.fade-pop-enter-active,
+.fade-pop-leave-active {
+  transition: opacity 0.16s ease, transform 0.16s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.fade-pop-enter-from,
+.fade-pop-leave-to {
+  opacity: 0;
+  transform: translateY(-4px) scale(0.98);
+}
+
+/* =========================================================
+   MENU HAMBÚRGUER E LATERAL
+   ========================================================= */
+.btn-hamburguer {
+  position: fixed;
+  top: 10px;
+  left: 10px;
+  z-index: 1000;
+  background: var(--bg-card);
+  color: var(--texto-principal);
+  border: 1px solid var(--borda-botao-sec);
+  width: 46px;
+  height: 46px;
+  border-radius: 11px;
+  font-size: 22px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+  transition: border-color 0.15s ease, color 0.15s ease, transform 0.15s ease;
+}
+.btn-hamburguer:hover {
+  border-color: var(--destaque-azul);
+  color: var(--destaque-azul);
+}
+
+.menu-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+  z-index: 1000;
+}
+
+.menu-lateral {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 300px;
+  max-width: 82vw;
+  height: 100%;
+  background: var(--bg-card);
+  color: var(--texto-principal);
+  z-index: 1001;
+  padding: 20px;
+  box-shadow: 4px 0 20px rgba(0, 0, 0, 0.35);
+}
+
+.menu-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 14px;
+  border-bottom: 1px solid var(--borda);
+}
+.menu-header h2 { font-size: 20px; }
+
+.btn-fechar {
+  background: none;
+  border: none;
+  color: var(--texto-principal);
+  font-size: 20px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  transition: color 0.15s ease;
+}
+.btn-fechar:hover {
+  color: #ef4444;
+}
+
+.menu-links {
+  margin-top: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.menu-links a {
+  color: var(--texto-principal);
+  text-decoration: none;
+  font-size: 15px;
+  font-weight: 500;
+  padding: 10px 12px;
+  border-radius: 8px;
+  justify-content: flex-start;
+  transition: background-color 0.15s ease, color 0.15s ease, transform 0.15s ease;
+}
+.menu-links a:hover {
+  background: rgba(59, 130, 246, 0.1);
+  color: var(--destaque-azul);
+  transform: translateX(2px);
+}
+
+.menu-divisor {
+  height: 1px;
+  background: var(--borda);
+  margin: 6px 0;
+}
+
+.link-sair-menu {
+  color: #ef4444 !important;
+  margin-top: 6px;
+  border-top: 1px solid var(--borda);
+  padding-top: 12px !important;
+  border-radius: 0 0 8px 8px !important;
+}
+.link-sair-menu:hover {
+  background: rgba(239, 68, 68, 0.12) !important;
+  color: #ef4444 !important;
+}
+
+/* =========================================================
+   TELAS CENTRAIS ("EM BREVE", LOGIN, CADASTRO E ERRO)
+   ========================================================= */
+.tela-inicial {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+.hero-card {
+  background: var(--bg-card);
+  border: 1px solid var(--borda);
+  border-radius: 18px;
+  padding: 32px 28px;
+  max-width: 520px;
+  width: 100%;
+  text-align: center;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+.card-em-breve {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 44px 28px;
+}
+
+.icone-destaque {
+  font-size: 54px;
+  margin-bottom: 12px;
+}
+
+.titulo-principal {
+  font-size: 27px;
+  margin-bottom: 12px;
+}
+
+.badge-em-breve {
+  margin-top: 8px;
+  display: inline-block;
+  padding: 6px 16px;
+  border-radius: 999px;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--destaque-azul);
+  background: rgba(37, 99, 235, 0.12);
+  border: 1px solid var(--destaque-azul);
+}
+
+/* =========================================================
+   CABEÇALHO E BOTÕES PADRÃO ADMINISTRATIVO (ALTO CONTRASTE LIGHT/DARK)
+   ========================================================= */
+.admin-container {
+  padding: 20px 24px 28px 24px;
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.topbar-titulo-central {
+  min-height: 46px;
+  padding-top: 6px;
+  padding-left: 114px;
+  padding-right: 60px;
+  margin-bottom: 22px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  position: relative;
+}
+
+.topbar-titulo-central.com-botao-direita {
+  padding-right: 130px;
+}
+
+.topbar-titulo-central h1 {
+  font-size: 28px;
+  font-weight: 700;
+  line-height: 1.25;
+}
+
+.subtitulo {
+  color: var(--texto-secundario);
+  font-size: 15px;
+  margin-top: 4px;
+}
+
+.btn-voltar-topo {
+  position: absolute;
+  right: 0;
+  top: 55%;
+  transform: translateY(-50%);
+  padding: 10px 18px !important;
+  font-size: 15.5px !important;
+}
+.btn-voltar-topo:hover:not(:disabled) {
+  transform: translateY(calc(-50% - 1px)) !important;
+}
+.btn-voltar-topo:active:not(:disabled) {
+  transform: translateY(-50%) !important;
+}
+
+.btn-primario {
+  background: var(--destaque-azul);
+  color: #fff;
+  border: 1px solid transparent;
+  padding: 11px 20px;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 15.5px;
+  cursor: pointer;
+  transition: background-color 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease, transform 0.15s ease;
+}
+.btn-primario:hover:not(:disabled) {
+  background: #1d4ed8;
+  border-color: #93c5fd;
+  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+  transform: translateY(-1px);
+}
+.btn-primario:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+.btn-secundario {
+  background: var(--bg-botao-sec);
+  color: var(--texto-principal);
+  border: 1px solid var(--borda-botao-sec);
+  padding: 10px 16px;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 15px;
+  cursor: pointer;
+  transition: border-color 0.15s ease, color 0.15s ease, background-color 0.15s ease, transform 0.15s ease, opacity 0.15s ease;
+}
+.btn-secundario:hover:not(:disabled) {
+  border-color: var(--destaque-azul);
+  color: var(--destaque-azul);
+  background: rgba(59, 130, 246, 0.12);
+  transform: translateY(-1px);
+}
+.btn-secundario:active:not(:disabled) {
+  transform: translateY(0);
+}
+.btn-secundario:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+/* =========================================================
+   LISTA DE ESTACIONAMENTOS E FORMULÁRIOS GERAIS
+   ========================================================= */
+.barra-pesquisa-admin {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.input-pesquisa-icone-wrapper {
+  position: relative;
+  flex: 1;
+  display: flex;
+  align-items: center;
+}
+
+.icone-input-pesquisa {
+  position: absolute;
+  left: 12px;
+  color: var(--texto-secundario);
+  pointer-events: none;
+}
+
+.input-pesquisa-grande {
+  flex: 1;
+  width: 100%;
+  padding: 12px 16px;
+  border-radius: 8px;
+  border: 1px solid var(--borda-botao-sec);
+  background: var(--bg-botao-sec);
+  color: var(--texto-principal);
+  font-size: 16px;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+.input-pesquisa-grande.com-icone {
+  padding-left: 38px;
+}
+.input-pesquisa-grande:focus {
+  outline: none;
+  border-color: var(--destaque-azul);
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.18);
+}
+
+.lista-card {
+  background: var(--bg-card);
+  border: 1px solid var(--borda);
+  border-radius: 10px;
+  padding: 10px 16px;
+}
+
+.form-card {
+  background: var(--bg-card);
+  border: 1px solid var(--borda);
+  border-radius: 12px;
+  padding: 24px;
+}
+
+.linha-estabelecimento {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 8px;
+  border-bottom: 1px solid var(--borda);
+  gap: 14px;
+  flex-wrap: nowrap;
+}
+.linha-estabelecimento:last-child { border-bottom: none; }
+.linha-inativa { opacity: 0.55; }
+
+.info-est {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  min-width: 0;
+  flex: 1;
+}
+
+.id-badge {
+  background: var(--bg-botao-sec);
+  border: 1px solid var(--borda-botao-sec);
+  padding: 5px 10px;
+  border-radius: 6px;
+  font-weight: 700;
+  font-size: 14px;
+  flex-shrink: 0;
+}
+
+.textos-est {
+  min-width: 0;
+  flex: 1;
+}
+
+.textos-est h3 {
+  font-size: 18.5px;
+  font-weight: 600;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.tag-inativo {
+  background: #dc2626;
+  color: #fff;
+  font-size: 11.5px;
+  padding: 2px 7px;
+  border-radius: 4px;
+  margin-left: 8px;
+}
+
+.meta-est {
+  font-size: 14.5px;
+  color: var(--texto-secundario);
+  margin-top: 3px;
+}
+
+.acoes-direita {
+  display: flex;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.btn-icone {
+  background: var(--bg-botao-sec);
+  color: var(--texto-principal);
+  border: 1px solid var(--borda-botao-sec);
+  width: 40px;
+  height: 40px;
+  border-radius: 8px;
+  font-size: 18px;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: border-color 0.15s ease, color 0.15s ease, background-color 0.15s ease, transform 0.15s ease;
+}
+.btn-icone:hover {
+  transform: translateY(-1px);
+}
+.btn-icone.editar:hover {
+  border-color: var(--destaque-azul);
+  color: var(--destaque-azul);
+}
+.btn-icone.remover:hover {
+  border-color: #ef4444;
+  color: #ef4444;
+}
+.btn-icone.inativar:hover {
+  border-color: #dc2626;
+  background: rgba(220, 38, 38, 0.08);
+}
+.linha-inativa .btn-icone.inativar:hover {
+  border-color: #16a34a;
+  background: rgba(22, 163, 74, 0.08);
+}
+
+.lista-vazia {
+  padding: 24px;
+  text-align: center;
+  font-size: 16px;
+  color: var(--texto-secundario);
+}
+
+.paginacao-admin {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+  margin-top: 16px;
+  font-size: 15px;
+}
+.paginacao-admin button {
+  padding: 9px 16px;
+  border-radius: 8px;
+  border: 1px solid var(--borda-botao-sec);
+  background: var(--bg-botao-sec);
+  color: var(--texto-principal);
+  font-weight: 600;
+  font-size: 14.5px;
+  cursor: pointer;
+  transition: border-color 0.15s ease, color 0.15s ease, background-color 0.15s ease, opacity 0.15s ease;
+}
+.paginacao-admin button:hover:not(:disabled) {
+  border-color: var(--destaque-azul);
+  color: var(--destaque-azul);
+  background: rgba(59, 130, 246, 0.12);
+}
+.paginacao-admin button:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.campo-grupo {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  margin-bottom: 18px;
+}
+.campo-grupo label {
+  font-weight: 600;
+  font-size: 15.5px;
+}
+.campo-grupo input,
+.select-padrao {
+  padding: 11px 14px;
+  border-radius: 8px;
+  border: 1px solid var(--borda-botao-sec);
+  background: var(--bg-botao-sec);
+  color: var(--texto-principal);
+  font-size: 16px;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+.campo-grupo input:focus,
+.select-padrao:focus {
+  outline: none;
+  border-color: var(--destaque-azul);
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.18);
+}
+.select-padrao option {
+  background-color: var(--bg-card);
+  color: var(--texto-principal);
+}
+
+/* Ícone de Calendário Nativo Nítido no Dark e Light Mode */
+input[type="date"].input-data-nativo {
+  position: relative;
+  cursor: pointer;
+}
+input[type="date"].input-data-nativo::-webkit-calendar-picker-indicator {
+  filter: var(--filtro-icone-calendario);
+  opacity: 1;
+  cursor: pointer;
+  padding: 4px;
+  border-radius: 4px;
+}
+input[type="date"].input-data-nativo::-webkit-calendar-picker-indicator:hover {
+  background-color: rgba(59, 130, 246, 0.15);
+}
+
+.linha-andar-dinamica {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+.linha-andar-dinamica input { flex: 1; }
+
+.btn-mais-menos {
+  width: 44px;
+  height: 44px;
+  border-radius: 8px;
+  border: 1px solid transparent;
+  font-size: 22px;
+  font-weight: bold;
+  color: #fff;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: background-color 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease, transform 0.15s ease;
+}
+.btn-mais { background: #16a34a; }
+.btn-mais:hover {
+  background: #15803d;
+  border-color: #86efac;
+  box-shadow: 0 3px 10px rgba(22, 163, 74, 0.3);
+  transform: translateY(-1px);
+}
+.btn-menos { background: #dc2626; }
+.btn-menos:hover {
+  background: #b91c1c;
+  border-color: #fca5a5;
+  box-shadow: 0 3px 10px rgba(220, 38, 38, 0.3);
+  transform: translateY(-1px);
+}
+
+.rodape-form {
+  margin-top: 22px;
+  display: flex;
+  justify-content: flex-end;
+}
+.btn-grande {
+  width: 100%;
+  padding: 13px 22px;
+  font-size: 16px;
+}
+
+/* =========================================================
+   EDITOR GAMIFICADO 2D E VISÃO EM TELA CHEIA (DESKTOP)
+   ========================================================= */
+.editor-layout {
+  position: relative;
+  padding: 8px 12px 12px 12px;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  overflow: hidden;
+}
+
+.hud-btn-flutuante,
+.hud-coluna-direita-mobile {
+  display: none;
+}
+
+.editor-topbar {
+  margin-left: 108px !important;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  background: var(--bg-card);
+  padding: 8px 12px;
+  border-radius: 10px;
+  border: 1px solid var(--borda);
+}
+
+.topbar-esquerda,
+.topbar-direita,
+.topbar-direita-gerente {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.editor-topbar .btn-secundario {
+  padding: 8px 13px;
+  font-size: 14px;
+}
+
+.texto-truncado-est {
+  max-width: 200px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.btn-duas-linhas br {
+  display: none;
+}
+.btn-duas-linhas span {
+  margin-left: 4px;
+}
+
+.seletor-andar-box {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--bg-botao-sec);
+  color: var(--texto-principal);
+  padding: 6px 12px;
+  border-radius: 8px;
+  border: 1px solid var(--borda-botao-sec);
+  font-size: 14px;
+  white-space: nowrap;
+}
+
+.select-andar-editor {
+  background-color: transparent;
+  color: var(--texto-principal);
+  border: none;
+  font-weight: bold;
+  font-size: 14px;
+  padding: 2px 4px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.select-andar-editor option {
+  background-color: var(--bg-card);
+  color: var(--texto-principal);
+}
+
+.btn-caution-avisos {
+  background: var(--bg-botao-sec);
+  color: var(--texto-principal);
+  border: 2px solid var(--borda-botao-sec);
+  border-radius: 8px;
+  padding: 8px 14px;
+  font-size: 16px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: transform 0.15s ease, border-color 0.15s ease;
+}
+.btn-caution-avisos:hover {
+  transform: translateY(-1px);
+}
+.btn-caution-avisos.caution-pendente {
+  border-color: #f59e0b;
+  background: rgba(245, 158, 11, 0.15);
+}
+.btn-caution-avisos.caution-ok { border-color: #16a34a; }
+
+.caution-badge {
+  background: #dc2626;
+  color: #fff;
+  font-size: 12.5px;
+  font-weight: 800;
+  padding: 2px 7px;
+  border-radius: 999px;
+}
+.caution-ok .caution-badge { background: #16a34a; }
+
+.btn-salvar-final {
+  background: #16a34a;
+  color: #fff;
+  border: 1px solid transparent;
+  padding: 9px 16px;
+  border-radius: 8px;
+  font-weight: bold;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease, transform 0.15s ease;
+}
+.btn-salvar-final:hover:not(:disabled) {
+  background: #15803d;
+  border-color: #86efac;
+  box-shadow: 0 3px 10px rgba(22, 163, 74, 0.35);
+  transform: translateY(-1px);
+}
+.btn-salvar-final:disabled {
+  background: #64748b;
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+/* Ajuste responsivo entre 1025px e 1360px para o menu superior nunca quebrar */
+@media (min-width: 1025px) and (max-width: 1360px) {
+  .btn-duas-linhas {
+    line-height: 1.15;
+    text-align: center;
+    padding: 5px 9px !important;
+    font-size: 12px !important;
+  }
+  .btn-duas-linhas br {
+    display: inline;
+  }
+  .btn-duas-linhas span {
+    margin-left: 0;
+    font-size: 11px;
+    opacity: 0.92;
+  }
+  .editor-topbar {
+    padding: 6px 10px;
+    gap: 6px;
+  }
+  .editor-topbar .btn-secundario,
+  .editor-topbar .btn-primario,
+  .editor-topbar .btn-seletor-multi,
+  .seletor-andar-box {
+    font-size: 12.5px !important;
+    padding: 6px 10px !important;
+  }
+  .texto-truncado-est {
+    max-width: 145px;
+  }
+}
+
+.editor-workspace {
+  flex: 1;
+  display: flex;
+  gap: 12px;
+  min-height: 0;
+  overflow: hidden;
+}
+
+.area-grid-container {
+  position: relative;
+  flex: 1;
+  min-width: 0;
+  min-height: 0;
+  display: flex;
+}
+
+/* Overlays Flutuantes do Grid */
+.overlay-flutuante {
+  position: absolute;
+  z-index: 60;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.35);
+}
+
+.painel-avisos-overlay {
+  top: 10px;
+  right: 10px;
+  width: 360px;
+  max-width: calc(100% - 20px);
+  background: var(--bg-card);
+  color: var(--texto-principal);
+  border: 2px solid #f59e0b;
+  border-radius: 10px;
+  padding: 14px;
+}
+
+.overlay-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+  font-size: 14.5px;
+}
+
+.btn-fechar-mini {
+  background: transparent;
+  border: none;
+  color: var(--texto-principal);
+  font-size: 16px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  transition: color 0.15s ease;
+}
+.btn-fechar-mini:hover {
+  color: #ef4444;
+}
+
+.lista-avisos-ul {
+  padding-left: 18px;
+  font-size: 13.5px;
+  color: #f87171;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.aviso-tudo-ok {
+  font-size: 13.5px;
+  color: #22c55e;
+  font-weight: 600;
+}
+
+.banner-carimbo-overlay {
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #065f46;
+  color: #ecfdf5;
+  border: 1px solid #10b981;
+  padding: 8px 14px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 13.5px;
+  white-space: nowrap;
+}
+
+.btn-cancelar-carimbo {
+  background: #dc2626;
+  color: #fff;
+  border: none;
+  padding: 4px 6px;
+  border-radius: 4px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+}
+
+.menu-selecao-overlay {
+  bottom: 14px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #1e1b4b;
+  color: #fff;
+  padding: 8px 14px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  flex-wrap: nowrap;
+  gap: 10px;
+  border: 1px solid #6366f1;
+}
+
+.contagem-sel {
+  font-size: 13px;
+  font-weight: bold;
+  color: #c4b5fd;
+  white-space: nowrap;
+}
+
+.grupo-acao-item {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 13.5px;
+}
+
+.btn-mini {
+  border: none;
+  width: 28px;
+  height: 28px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 12.5px;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  transition: transform 0.12s ease, opacity 0.12s ease;
+}
+.btn-mini:hover {
+  transform: scale(1.07);
+}
+.btn-mini.add { background: #22c55e; color: #fff; }
+.btn-mini.rem { background: #ef4444; color: #fff; }
+.btn-mini.borracha-tudo {
+  background: #f43f5e;
+  color: #ffffff;
+  border: 1px solid #fda4af;
+}
+.btn-mini.borracha-tudo:hover { background: #e11d48; }
+.btn-mini.limpar { background: #475569; color: #fff; }
+
+.icone-com-tooltip {
+  position: relative;
+  cursor: help;
+  display: inline-flex;
+  align-items: center;
+}
+.icone-com-tooltip:hover::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: 135%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #0f172a;
+  color: #f8fafc;
+  padding: 4px 8px;
+  border-radius: 5px;
+  font-size: 11.5px;
+  font-weight: 600;
+  white-space: nowrap;
+  border: 1px solid #475569;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.35);
+  z-index: 100;
+  pointer-events: none;
+}
+
+.badge-hover-setor {
+  bottom: 14px;
+  left: 14px;
+  background: rgba(15, 23, 42, 0.92);
+  color: #f8fafc;
+  padding: 8px 14px;
+  border-radius: 999px;
+  font-size: 13.5px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  border: 1px solid #475569;
+  pointer-events: none;
+}
+
+.bolinha-cor-setor {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  border: 1px solid #fff;
+  flex-shrink: 0;
+}
+
+.texto-colchetes-setor {
+  color: #38bdf8;
+  font-weight: 600;
+}
+
+/* Tabuleiro 2D */
+.area-grid-principal {
+  flex: 1;
+  width: 100%;
+  height: 100%;
+  background: #ffffff;
+  border: 2px solid var(--borda);
+  border-radius: 12px;
+  overflow: auto;
+  padding: 14px;
+  user-select: none;
+  touch-action: none;
+}
+
+.viewport-touch-canvas {
+  display: inline-block;
+  will-change: transform;
+}
+
+.matriz-com-coordenadas { display: inline-block; }
+.linha-coordenadas-x,
+.linha-grid-y { display: grid; }
+
+.canto-xy,
+.rotulo-coord {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 11.5px;
+  font-weight: bold;
+  color: #334155;
+  background: #f1f5f9;
+  border: 1px solid #cbd5e1;
+}
+
+.celula-editor-fundo {
+  width: 36px;
+  height: 36px;
+  padding: 3px;
+}
+
+.quadrado-editor {
+  width: 100%;
+  height: 100%;
+  border-radius: 4px;
+  border: 1px solid #94a3b8;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 10.5px;
+  font-weight: 800;
+  color: #fff;
+  cursor: pointer;
+}
+
+.qe-vazio { background-color: #cbd5e1; color: transparent; }
+.qe-estrada { background-color: #1e293b; border: 1px solid #64748b; }
+.qe-vaga-amarela { background-color: #eab308; color: #0f172a; border-color: #a16207; }
+.qe-entrada { background-color: #2563eb; }
+.qe-saida { background-color: #ea580c; }
+.qe-acesso { background-color: #16a34a; }
+.qe-selecionado-roxo {
+  background-color: #9333ea !important;
+  border: 2px solid #ffffff !important;
+  color: #fff !important;
+}
+.qe-sombra-verde {
+  background-color: rgba(34, 197, 94, 0.78) !important;
+  border: 2px dashed #14532d !important;
+}
+
+/* Barra Lateral Direita do Editor */
+.sidebar-direita-editor {
+  width: 310px;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  overflow-y: auto;
+}
+
+.painel-ferramentas {
+  background: var(--bg-card);
+  border: 1px solid var(--borda);
+  border-radius: 12px;
+  padding: 15px;
+}
+.painel-ferramentas h4 {
+  font-size: 16px;
+  margin-bottom: 6px;
+  justify-content: flex-start;
+}
+.dica-painel {
+  font-size: 13.5px;
+  color: var(--texto-secundario);
+  margin-bottom: 4px;
+  line-height: 1.35;
+}
+
+.linha-botoes-dupla {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.btn-ferramenta {
+  border: 1px solid transparent;
+  padding: 10px 8px;
+  border-radius: 8px;
+  color: #fff;
+  font-weight: bold;
+  font-size: 13.5px;
+  cursor: pointer;
+  transition: background-color 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease, transform 0.15s ease;
+}
+.btn-ferramenta:active {
+  transform: translateY(0) !important;
+}
+
+.cor-entrada { background: #2563eb; }
+.cor-entrada:hover {
+  background: #1d4ed8;
+  border-color: #93c5fd;
+  box-shadow: 0 3px 10px rgba(37, 99, 235, 0.35);
+  transform: translateY(-1px);
+}
+
+.cor-saida { background: #ea580c; }
+.cor-saida:hover {
+  background: #c2410c;
+  border-color: #fdba74;
+  box-shadow: 0 3px 10px rgba(234, 88, 12, 0.35);
+  transform: translateY(-1px);
+}
+
+.cor-acesso { background: #16a34a; }
+.cor-acesso:hover {
+  background: #15803d;
+  border-color: #86efac;
+  box-shadow: 0 3px 10px rgba(22, 163, 74, 0.35);
+  transform: translateY(-1px);
+}
+
+.linha-equipamentos {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.btn-equipamento {
+  flex: 1;
+  background: var(--bg-botao-sec);
+  color: var(--texto-principal);
+  border: 1px solid var(--borda-botao-sec);
+  padding: 10px 6px;
+  border-radius: 8px;
+  font-weight: bold;
+  font-size: 14px;
+  cursor: pointer;
+  transition: border-color 0.15s ease, color 0.15s ease, background-color 0.15s ease, transform 0.15s ease;
+}
+.btn-equipamento:hover {
+  border-color: var(--destaque-azul);
+  color: var(--destaque-azul);
+  background: rgba(59, 130, 246, 0.12);
+  transform: translateY(-1px);
+}
+
+.btn-alterar-setores-menu {
+  width: 100%;
+  margin-top: 6px;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid var(--destaque-azul);
+  background: rgba(37, 99, 235, 0.12);
+  color: var(--texto-principal);
+  font-weight: 700;
+  font-size: 13.5px;
+  cursor: pointer;
+  transition: background-color 0.15s ease, color 0.15s ease, transform 0.15s ease;
+}
+.btn-alterar-setores-menu:hover {
+  background: var(--destaque-azul);
+  color: #ffffff;
+  transform: translateY(-1px);
+}
+
+/* =========================================================
+   MODAIS DO SISTEMA
+   ========================================================= */
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.65);
+  z-index: 2000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 14px;
+}
+
+.modal-box {
+  background: var(--bg-card);
+  color: var(--texto-principal);
+  border-radius: 12px;
+  padding: 18px;
+  max-width: 360px;
+  width: 100%;
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.4);
+  border: 1px solid var(--borda);
+}
+.modal-box h3 { font-size: 17px; }
+.modal-box.modal-compacto { max-width: 280px; }
+.modal-box.modal-alterar-setor { max-width: 400px; }
+.modal-box.modal-escolher-est-mobile { max-width: 380px; }
+
+.lista-modal-est-mobile {
+  max-height: 55vh;
+  overflow-y: auto;
+  border: 1px solid var(--borda);
+  border-radius: 8px;
+  margin-top: 6px;
+}
+
+.linha-inputs-compactos {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 12px;
+}
+
+.campo-compacto {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+}
+.campo-compacto label {
+  font-size: 13.5px;
+  font-weight: 600;
+}
+
+.input-numero-compacto {
+  width: 72px !important;
+  padding: 7px 6px !important;
+  text-align: center;
+  font-size: 15px !important;
+  font-weight: bold;
+  border-radius: 7px;
+  border: 1px solid var(--borda-botao-sec);
+  background: var(--bg-botao-sec);
+  color: var(--texto-principal);
+}
+
+.input-curto-prefixo {
+  width: 82px !important;
+  text-align: center;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.separador-x {
+  font-size: 18px;
+  font-weight: bold;
+  padding-bottom: 6px;
+  color: var(--texto-secundario);
+}
+
+.grade-cores-setor {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.botao-cor-setor {
+  padding: 9px;
+  border-radius: 7px;
+  border: 2px solid transparent;
+  color: #ffffff;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+  font-weight: bold;
+  font-size: 13px;
+  cursor: pointer;
+  transition: transform 0.12s ease;
+}
+.botao-cor-setor:hover:not(:disabled) {
+  transform: scale(1.02);
+}
+.cor-selecionada {
+  border-color: #ffffff;
+  outline: 2px solid var(--destaque-azul);
+}
+
+.modal-acoes {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+  margin-top: 16px;
+}
+
+.combobox-setor-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+.combobox-setor-wrapper input {
+  width: 100%;
+  padding-right: 34px;
+}
+
+.btn-seta-combobox {
+  position: absolute;
+  right: 8px;
+  background: transparent;
+  border: none;
+  color: var(--texto-principal);
+  cursor: pointer;
+  font-size: 12px;
+  padding: 4px;
+  display: inline-flex;
+  align-items: center;
+}
+
+.lista-dropdown-setores {
+  position: absolute;
+  top: calc(100% + 4px);
+  left: 0;
+  right: 0;
+  max-height: 160px;
+  overflow-y: auto;
+  background: var(--bg-card);
+  border: 1px solid var(--borda);
+  border-radius: 8px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.35);
+  z-index: 80;
+}
+
+.item-dropdown-setor {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 9px 12px;
+  font-size: 13.5px;
+  cursor: pointer;
+  border-bottom: 1px solid var(--borda);
+}
+.item-dropdown-setor:last-child { border-bottom: none; }
+.item-dropdown-setor:hover { background: var(--bg-painel); }
+
+.item-dropdown-vazio {
+  padding: 12px;
+  text-align: center;
+  font-size: 12.5px;
+  color: var(--texto-secundario);
+}
+
+.area-edicao-setor-campos {
+  transition: opacity 0.2s ease;
+}
+.area-edicao-setor-campos.campos-desabilitados {
+  opacity: 0.42;
+  pointer-events: none;
+  filter: grayscale(85%);
+}
+
+.msg-preencha-setor {
+  color: #f59e0b;
+  font-size: 13px;
+  font-weight: 600;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.botoes-empilhados-setor {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.btn-excluir-setor {
+  width: 100%;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid transparent;
+  font-weight: 700;
+  font-size: 14px;
+  background: #dc2626;
+  color: #ffffff;
+  cursor: pointer;
+  transition: background-color 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease, transform 0.15s ease, opacity 0.2s ease;
+}
+.btn-excluir-setor:hover:not(:disabled) {
+  background: #b91c1c;
+  border-color: #fca5a5;
+  box-shadow: 0 3px 10px rgba(220, 38, 38, 0.3);
+  transform: translateY(-1px);
+}
+.btn-excluir-setor:active:not(:disabled) {
+  transform: translateY(0);
+}
+.btn-excluir-setor:disabled {
+  background: #64748b;
+  color: #cbd5e1;
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+.btn-confirmar-setor {
+  width: 100%;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid transparent;
+  font-weight: 700;
+  font-size: 14px;
+  background: #16a34a;
+  color: #ffffff;
+  cursor: pointer;
+  transition: background-color 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease, transform 0.15s ease, opacity 0.2s ease;
+}
+.btn-confirmar-setor:hover:not(:disabled) {
+  background: #15803d;
+  border-color: #86efac;
+  box-shadow: 0 3px 10px rgba(22, 163, 74, 0.3);
+  transform: translateY(-1px);
+}
+.btn-confirmar-setor:active:not(:disabled) {
+  transform: translateY(0);
+}
+.btn-confirmar-setor:disabled {
+  background: #64748b;
+  color: #cbd5e1;
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+.modal-box.modal-sucesso-salvar {
+  text-align: center;
+  max-width: 340px;
+  padding: 24px 20px;
+}
+.icone-sucesso-modal {
+  font-size: 44px;
+  margin-bottom: 10px;
+}
+.btn-confirmar-sucesso {
+  margin-top: 18px;
+  width: 100%;
+  padding: 11px;
+  border-radius: 8px;
+  border: 1px solid transparent;
+  background: #16a34a;
+  color: #ffffff;
+  font-weight: 700;
+  font-size: 15px;
+  cursor: pointer;
+  transition: background-color 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease, transform 0.15s ease;
+}
+.btn-confirmar-sucesso:hover {
+  background: #15803d;
+  border-color: #86efac;
+  box-shadow: 0 3px 10px rgba(22, 163, 74, 0.3);
+  transform: translateY(-1px);
+}
+
+/* =========================================================
+   AUTENTICAÇÃO (LOGIN, CADASTRO E ACESSO RESTRITO)
+   ========================================================= */
+.auth-card {
+  background: var(--bg-card);
+  border: 1px solid var(--borda);
+  border-radius: 18px;
+  padding: 30px 26px;
+  max-width: 430px;
+  width: 100%;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.18);
+}
+
+.auth-card-cadastro {
+  max-width: 460px;
+}
+
+.auth-cabecalho {
+  text-align: center;
+  margin-bottom: 22px;
+}
+
+.auth-icone-topo {
+  width: 56px;
+  height: 56px;
+  border-radius: 14px;
+  background: rgba(37, 99, 235, 0.12);
+  color: var(--destaque-azul);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 10px;
+}
+
+.auth-cabecalho h1 {
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.alerta-auth {
+  padding: 10px 14px;
+  border-radius: 10px;
+  font-size: 13.5px;
+  font-weight: 600;
+  margin-bottom: 16px;
+  width: 100%;
+  justify-content: flex-start;
+}
+.alerta-auth.erro {
+  background: rgba(220, 38, 38, 0.12);
+  color: #f87171;
+  border: 1px solid #ef4444;
+}
+
+.input-icone-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.icone-interno-esquerda {
+  position: absolute;
+  left: 12px;
+  color: var(--texto-secundario);
+  pointer-events: none;
+}
+
+.input-icone-container input {
+  width: 100%;
+  padding-left: 38px !important;
+  padding-right: 40px !important;
+}
+
+.btn-toggle-senha {
+  position: absolute;
+  right: 8px;
+  background: transparent;
+  border: none;
+  color: var(--texto-secundario);
+  padding: 6px;
+  border-radius: 6px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 0.15s ease, background-color 0.15s ease;
+}
+.btn-toggle-senha:hover {
+  color: var(--texto-principal);
+  background: rgba(148, 163, 184, 0.15);
+}
+
+.slot-aviso-senha {
+  display: flex;
+  align-items: flex-start;
+  overflow: hidden;
+}
+.slot-aviso-senha.slot-duas-linhas {
+  min-height: 34px;
+}
+.slot-aviso-senha.slot-uma-linha {
+  min-height: 18px;
+}
+
+.aviso-inline-senha {
+  font-size: 12.5px;
+  font-weight: 600;
+  color: #f59e0b;
+  margin-top: 2px;
+  line-height: 1.35;
+}
+
+.btn-auth-submit {
+  width: 100%;
+  padding: 12px;
+  font-size: 15.5px;
+}
+.btn-auth-submit:disabled {
+  background: #64748b;
+  opacity: 0.55;
+  cursor: not-allowed;
+  transform: none !important;
+  box-shadow: none !important;
+}
+
+.spinner-btn {
+  width: 18px;
+  height: 18px;
+  border: 2.5px solid rgba(255, 255, 255, 0.35);
+  border-top-color: #ffffff;
+  border-radius: 50%;
+  animation: giro-spinner 0.7s linear infinite;
+}
+
+@keyframes giro-spinner {
+  to { transform: rotate(360deg); }
+}
+
+.auth-rodape {
+  margin-top: 20px;
+  padding-top: 16px;
+  border-top: 1px solid var(--borda);
+  text-align: center;
+  font-size: 14px;
+  color: var(--texto-secundario);
+  display: flex;
+  justify-content: center;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.link-auth {
+  color: var(--destaque-azul);
+  font-weight: 700;
+  text-decoration: none;
+  transition: opacity 0.15s ease;
+}
+.link-auth:hover {
+  text-decoration: underline;
+  opacity: 0.85;
+}
+
+.sucesso-cadastro-box {
+  text-align: center;
+  padding: 12px 0;
+}
+
+.card-erro-acesso {
+  text-align: center;
+  max-width: 420px;
+}
+
+.icone-erro-acesso {
+  width: 64px;
+  height: 64px;
+  border-radius: 16px;
+  background: rgba(220, 38, 38, 0.12);
+  color: #ef4444;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 14px;
+}
+
+.texto-erro-acesso {
+  margin-top: 8px;
+  margin-bottom: 22px;
+  line-height: 1.5;
+}
+
+.acoes-erro-acesso {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* =========================================================
+   LOGO "VC" ESTILIZADO E DASHBOARD DO GERENTE
+   ========================================================= */
+.btn-logo-vc {
+  position: fixed;
+  top: 10px;
+  left: 64px;
+  z-index: 1000;
+  width: 46px;
+  height: 46px;
+  border-radius: 11px;
+  border: 1px solid rgba(59, 130, 246, 0.45);
+  background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 100%);
+  color: #ffffff;
+  font-weight: 900;
+  font-size: 18px;
+  letter-spacing: -1px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  box-shadow: 0 3px 10px rgba(37, 99, 235, 0.35);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+.btn-logo-vc:hover {
+  transform: translateY(-1px) scale(1.02);
+  box-shadow: 0 5px 14px rgba(37, 99, 235, 0.5);
+}
+.vc-letra-v { color: #ffffff; }
+.vc-letra-c { color: #38bdf8; }
+
+.badge-logo-menu {
+  background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 100%);
+  color: #fff;
+  font-weight: 900;
+  font-size: 13px;
+  padding: 4px 7px;
+  border-radius: 7px;
+  letter-spacing: -0.5px;
+}
+
+/* Container Principal do Dashboard do Gerente */
+.gerente-dashboard-container {
+  padding: 16px 24px 24px 24px;
+  max-width: 1440px;
+  margin: 0 auto;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* Apenas a 1ª linha do cabeçalho tem recuo para os botões fixos; a linha de baixo começa junto com os cards */
+.gerente-header-topo {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.gerente-boas-vindas {
+  padding-left: 108px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+.gerente-boas-vindas h1 {
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.gerente-atalhos-topo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.btn-simulacao-ativa {
+  border-color: #16a34a !important;
+  color: #16a34a !important;
+  background: rgba(22, 163, 74, 0.12) !important;
+}
+
+/* Seletor Múltiplo de Estacionamentos (Alinhado à esquerda junto com os cards) */
+.seletor-multi-wrapper {
+  position: relative;
+  align-self: flex-start;
+  margin-left: 0;
+}
+
+.btn-seletor-multi {
+  background: var(--bg-botao-sec);
+  color: var(--texto-principal);
+  border: 1.5px solid var(--destaque-azul);
+  padding: 8px 14px;
+  border-radius: 9px;
+  font-weight: 700;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.15s ease, transform 0.15s ease;
+}
+.btn-seletor-multi:hover {
+  background: rgba(59, 130, 246, 0.12);
+}
+
+.dropdown-multi-box {
+  position: absolute;
+  top: calc(100% + 6px);
+  left: 0;
+  width: 320px;
+  max-width: 90vw;
+  background: var(--bg-card);
+  border: 1px solid var(--borda-botao-sec);
+  border-radius: 12px;
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.35);
+  z-index: 900;
+  overflow: hidden;
+}
+
+.busca-multi-topo {
+  position: relative;
+  padding: 8px;
+  border-bottom: 1px solid var(--borda);
+  display: flex;
+  align-items: center;
+}
+.icone-busca-multi {
+  position: absolute;
+  left: 18px;
+  color: var(--texto-secundario);
+}
+.busca-multi-topo input {
+  width: 100%;
+  padding: 7px 10px 7px 32px;
+  border-radius: 7px;
+  border: 1px solid var(--borda-botao-sec);
+  background: var(--bg-botao-sec);
+  color: var(--texto-principal);
+  font-size: 13.5px;
+}
+
+/* Até 10 opções visíveis no PC antes do scroll */
+.lista-opcoes-multi {
+  max-height: 380px;
+  overflow-y: auto;
+}
+
+.item-opcao-multi {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 9px 14px;
+  font-size: 14px;
+  cursor: pointer;
+  border-bottom: 1px solid var(--borda);
+  transition: background-color 0.12s ease;
+}
+.item-opcao-multi:last-child { border-bottom: none; }
+.item-opcao-multi:hover { background: var(--bg-painel); }
+.item-opcao-multi.destaque-completo {
+  font-weight: 700;
+}
+.item-opcao-multi.opcao-ativa {
+  color: var(--destaque-azul);
+  background: rgba(37, 99, 235, 0.1);
+  font-weight: 700;
+}
+
+.aviso-sem-estacionamento {
+  text-align: center;
+  padding: 48px 24px;
+  margin-top: 20px;
+}
+
+/* Linha Superior de Relatórios (3 colunas no PC) */
+.secao-relatorios-dashboard {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.grade-kpis-gerente {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+}
+
+.card-kpi-gerente {
+  background: var(--bg-card);
+  border: 1px solid var(--borda);
+  border-radius: 14px;
+  padding: 16px 18px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 195px;
+}
+
+.kpi-cabecalho {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+/* Título dos cards superiores com a cor principal (branco no modo dark) igual aos demais títulos */
+.kpi-titulo {
+  font-size: 15.5px;
+  font-weight: 700;
+  color: var(--texto-principal);
+}
+
+.legenda-fluxo-mini {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 12px;
+  color: var(--texto-secundario);
+}
+.ponto-legenda {
+  display: inline-block;
+  width: 9px;
+  height: 9px;
+  border-radius: 2px;
+}
+.ponto-legenda.ent { background: #3b82f6; }
+.ponto-legenda.sai { background: #f97316; }
+
+/* Gráfico de Barras Horárias (Altura explícita para funcionar em qualquer tela/tablet) */
+.grafico-barras-horarias {
+  width: 100%;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 6px;
+  padding-top: 18px;
+  height: 135px;
+}
+
+.coluna-hora-item {
+  flex: 1;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 4px;
+}
+
+.par-barras-verticais {
+  width: 100%;
+  height: 96px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  gap: 3px;
+}
+
+.barra-v {
+  width: 12px;
+  border-radius: 3px 3px 0 0;
+  position: relative;
+  transition: height 0.25s ease;
+}
+.barra-v.ent { background: #3b82f6; }
+.barra-v.sai { background: #f97316; }
+
+.valor-barra-topo {
+  position: absolute;
+  top: -15px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 9.5px;
+  font-weight: 700;
+  color: var(--texto-principal);
+  white-space: nowrap;
+}
+
+.rotulo-hora-eixo {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--texto-secundario);
+}
+
+.kpi-centralizado {
+  text-align: center;
+}
+
+.kpi-valor-destaque {
+  font-size: 38px;
+  font-weight: 800;
+  color: var(--destaque-azul);
+  margin: 6px 0;
+}
+
+.barra-progresso-ocupacao {
+  width: 100%;
+  height: 10px;
+  background: var(--bg-botao-sec);
+  border-radius: 999px;
+  overflow: hidden;
+  border: 1px solid var(--borda-botao-sec);
+}
+.preenchimento-ocupacao {
+  height: 100%;
+  background: linear-gradient(90deg, #22c55e 0%, #eab308 60%, #ef4444 100%);
+  transition: width 0.3s ease;
+}
+
+.kpi-rodape-duplo {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 10px;
+  font-size: 13px;
+  font-weight: 700;
+}
+.tag-kpi.livre { color: #16a34a; }
+.tag-kpi.ocupada { color: #ef4444; }
+
+.kpi-descricao-apoio {
+  font-size: 13px;
+  color: var(--texto-secundario);
+  line-height: 1.4;
+}
+
+.acoes-abaixo-relatorios {
+  display: flex;
+  justify-content: center;
+}
+
+/* Seção Inferior PC: 2 Maiores Estacionamentos Lado a Lado */
+.secao-seletor-mobile-est {
+  display: none;
+}
+
+.secao-estacionamentos-dupla-pc {
+  flex: 1;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+
+.card-estacionamento-preview {
+  background: var(--bg-card);
+  border: 1px solid var(--borda);
+  border-radius: 14px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  min-width: 0;
+}
+
+.header-preview-est {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 10px;
+}
+.header-preview-est h3 { font-size: 18px; }
+.subtitulo-preview {
+  font-size: 13px;
+  color: var(--texto-secundario);
+}
+
+.badge-total-vagas {
+  background: rgba(37, 99, 235, 0.12);
+  color: var(--destaque-azul);
+  border: 1px solid var(--destaque-azul);
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: 12.5px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.preview-mapa-scroll {
+  flex: 1;
+  background: #ffffff;
+  border: 1px solid var(--borda);
+  border-radius: 10px;
+  padding: 10px;
+  overflow: auto;
+  max-height: 310px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.grid-preview-mini {
+  display: grid;
+}
+
+.celula-preview-fundo {
+  width: 24px;
+  height: 24px;
+  padding: 2px;
+}
+
+.quadrado-preview-interno {
+  width: 100%;
+  height: 100%;
+  border-radius: 3px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 7.5px;
+  font-weight: 800;
+  color: #fff;
+}
+.qp-vazio { background: transparent; }
+.qp-estrada { background: #1e293b; }
+.qp-entrada { background: #2563eb; }
+.qp-saida { background: #ea580c; }
+.qp-acesso { background: #16a34a; }
+.qp-vaga-livre { background: #16a34a; }
+.qp-vaga-ocupada { background: #dc2626; }
+.qp-vaga-amarela { background: #eab308; color: #0f172a; }
+.qp-vaga-inativa { background: #64748b; opacity: 0.45; }
+
+.btn-ver-tela-cheia {
+  width: 100%;
+  padding: 10px;
+}
+
+.seletor-est-tela-cheia {
+  position: relative;
+}
+
+.btn-modo-inativar-ativo {
+  background: #dc2626 !important;
+  border-color: #fca5a5 !important;
+  color: #ffffff !important;
+}
+
+.btn-modo-reativar-ativo {
+  background: #16a34a !important;
+  border-color: #86efac !important;
+  color: #ffffff !important;
+}
+
+.btn-calor-ativo {
+  background: linear-gradient(135deg, #1d4ed8 0%, #ea580c 50%, #dc2626 100%) !important;
+  border-color: #fdba74 !important;
+  color: #ffffff !important;
+}
+
+/* Cores das Vagas no Modo Normal do Gerente */
+.vaga-gerente-livre {
+  background-color: #16a34a !important;
+  border-color: #14532d !important;
+  color: #ffffff !important;
+}
+.vaga-gerente-ocupada {
+  background-color: #dc2626 !important;
+  border-color: #7f1d1d !important;
+  color: #ffffff !important;
+}
+.vaga-gerente-inativa {
+  background-color: #64748b !important;
+  border-color: #334155 !important;
+  color: #cbd5e1 !important;
+  opacity: 0.48;
+}
+
+/* 5 Variações do Mapa de Calor */
+.calor-nivel-1 {
+  background-color: #1d4ed8 !important;
+  border-color: #1e3a8a !important;
+  color: #ffffff !important;
+}
+.calor-nivel-2 {
+  background-color: #0284c7 !important;
+  border-color: #0c4a6e !important;
+  color: #ffffff !important;
+}
+.calor-nivel-3 {
+  background-color: #eab308 !important;
+  border-color: #713f12 !important;
+  color: #0f172a !important;
+}
+.calor-nivel-4 {
+  background-color: #ea580c !important;
+  border-color: #7c2d12 !important;
+  color: #ffffff !important;
+}
+.calor-nivel-5 {
+  background-color: #dc2626 !important;
+  border-color: #7f1d1d !important;
+  color: #ffffff !important;
+}
+
+/* Overlays de Instrução, Legenda de Calor e Confirmação em Lote */
+.banner-instrucao-gerente {
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 8px 16px;
+  border-radius: 9px;
+  font-size: 13.5px;
+  color: #ffffff;
+  white-space: nowrap;
+}
+.cor-banner-inativar {
+  background: rgba(185, 28, 28, 0.95);
+  border: 1px solid #fca5a5;
+}
+.cor-banner-reativar {
+  background: rgba(21, 128, 61, 0.95);
+  border: 1px solid #86efac;
+}
+
+.legenda-calor-overlay {
+  top: 10px;
+  right: 12px;
+  background: rgba(15, 23, 42, 0.92);
+  color: #f8fafc;
+  padding: 7px 12px;
+  border-radius: 9px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  border: 1px solid #475569;
+}
+.amostra-calor {
+  padding: 2px 7px;
+  border-radius: 5px;
+  font-weight: 700;
+  font-size: 11px;
+}
+
+.popup-confirmar-lote-gerente {
+  bottom: 14px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #0f172a;
+  color: #ffffff;
+  padding: 9px 14px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border: 1px solid #475569;
+}
+.btn-popup-lote {
+  padding: 7px 12px !important;
+  font-size: 13px !important;
+}
+.btn-lote-vermelho { background: #dc2626 !important; }
+.btn-lote-verde { background: #16a34a !important; }
+
+/* Painel Lateral de Andares e Setores */
+.sidebar-gerente-metricas {
+  width: 320px;
+}
+
+.lista-cards-laterais {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.card-lateral-metrica {
+  background: var(--bg-painel);
+  border: 1px solid var(--borda);
+  border-radius: 9px;
+  padding: 10px 12px;
+  cursor: pointer;
+  transition: border-color 0.15s ease, transform 0.12s ease;
+}
+.card-lateral-metrica:hover {
+  border-color: var(--destaque-azul);
+}
+.card-lateral-metrica.card-lateral-ativo {
+  border-color: var(--destaque-azul);
+  box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.2);
+}
+
+.topo-card-lateral {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 13.5px;
+  margin-bottom: 6px;
+}
+
+.badge-variacao {
+  font-size: 11px;
+  font-weight: 800;
+  padding: 2px 6px;
+  border-radius: 999px;
+}
+.badge-variacao.var-alta {
+  background: rgba(22, 163, 74, 0.15);
+  color: #22c55e;
+}
+.badge-variacao.var-baixa {
+  background: rgba(245, 158, 11, 0.15);
+  color: #f59e0b;
+}
+
+.numeros-card-lateral {
+  display: flex;
+  gap: 10px;
+  font-size: 12px;
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+.num-livre { color: #16a34a; }
+.num-ocupada { color: #ef4444; }
+.num-inativa { color: #94a3b8; }
+
+.barra-mini-lateral {
+  width: 100%;
+  height: 6px;
+  background: var(--borda);
+  border-radius: 999px;
+  overflow: hidden;
+}
+.preenchimento-mini {
+  height: 100%;
+  background: var(--destaque-azul);
+  transition: width 0.25s ease;
+}
+
+/* Modal de QR Code */
+.modal-qr-gerente {
+  text-align: center;
+  max-width: 360px;
+}
+.box-imagem-qr {
+  background: #ffffff;
+  padding: 14px;
+  border-radius: 12px;
+  display: inline-flex;
+  margin: 10px 0;
+  border: 2px solid var(--borda);
+}
+.url-qr-codigo {
+  display: block;
+  font-size: 12px;
+  padding: 6px 10px;
+  background: var(--bg-botao-sec);
+  border-radius: 6px;
+  color: var(--texto-principal);
+  word-break: break-all;
+}
+
+/* =========================================================
+   PÁGINA DE RELATÓRIOS ANALÍTICOS E EXPORTAÇÃO BI
+   ========================================================= */
+.grade-quatro-kpis-relatorio {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 14px;
+}
+
+.card-kpi-gerente.kpi-compacto {
+  min-height: 145px;
+  text-align: center;
+}
+
+.grade-dupla-relatorios {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+
+.card-relatorio-bloco {
+  background: var(--bg-card);
+  border: 1px solid var(--borda);
+  border-radius: 14px;
+  padding: 18px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  min-width: 0;
+}
+
+.header-relatorio-bloco {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.header-relatorio-bloco h3 {
+  font-size: 17.5px;
+  font-weight: 700;
+  color: var(--texto-principal);
+}
+
+.btn-exportar-card {
+  padding: 7px 12px !important;
+  font-size: 13px !important;
+  flex-shrink: 0;
+}
+
+.grafico-relatorio-maior {
+  height: 195px;
+  padding-top: 24px;
+}
+.grafico-relatorio-maior .par-barras-verticais {
+  height: 140px;
+}
+.grafico-relatorio-maior .barra-v {
+  width: 14px;
+}
+
+/* Tabelas de Ranking e Histórico (Altura fixa para 8 linhas no Histórico) */
+.tabela-responsiva-wrapper {
+  width: 100%;
+  overflow-x: auto;
+}
+
+.tabela-historico-altura-fixa {
+  min-height: 395px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.tabela-relatorio {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13.5px;
+}
+
+.tabela-relatorio th,
+.tabela-relatorio td {
+  padding: 10px 12px;
+  text-align: left;
+  border-bottom: 1px solid var(--borda);
+  white-space: nowrap;
+}
+
+.tabela-relatorio th {
+  font-size: 12px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+  color: var(--texto-secundario);
+  background: var(--bg-painel);
+}
+
+.tabela-relatorio tbody tr:hover {
+  background: rgba(59, 130, 246, 0.05);
+}
+
+.tag-em-andamento {
+  background: rgba(245, 158, 11, 0.15);
+  color: #f59e0b;
+  padding: 3px 8px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.acoes-topo-historico {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.input-historico-compacto {
+  padding: 8px 12px 8px 34px !important;
+  font-size: 13.5px !important;
+  background: var(--bg-botao-sec) !important;
+  border: 1px solid var(--borda-botao-sec) !important;
+}
+
+/* Comparador Lado a Lado de 2 Estacionamentos */
+.seletores-comparador-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+
+.grade-cards-comparador {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+
+.card-unidade-comparada {
+  background: var(--bg-painel);
+  border: 1px solid var(--borda);
+  border-radius: 12px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.card-unidade-comparada h4 {
+  font-size: 16.5px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--borda);
+}
+
+.linha-metrica-comp {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 13.5px;
+  gap: 8px;
+}
+
+/* Seção de Exportação Completa e Modal de Exportação */
+.card-exportacao-completa-bi {
+  border: 1.5px solid rgba(22, 163, 74, 0.45);
+}
+
+.controles-exportacao-completa {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.campos-datas-exportacao {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  transition: opacity 0.2s ease, filter 0.2s ease;
+}
+
+.campos-datas-modal {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  transition: opacity 0.2s ease, filter 0.2s ease;
+}
+
+.datas-cinzadas {
+  opacity: 0.4;
+  pointer-events: none;
+  filter: grayscale(90%);
+}
+
+.atalhos-periodo-box {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.rotulo-atalho {
+  font-size: 12.5px;
+  font-weight: 600;
+  color: var(--texto-secundario);
+}
+
+.botoes-atalhos-periodo {
+  display: flex;
+  gap: 8px;
+}
+
+.botoes-atalhos-modal {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  margin-top: 2px;
+}
+
+.atalho-periodo-ativo {
+  background: var(--destaque-azul) !important;
+  border-color: var(--destaque-azul) !important;
+  color: #ffffff !important;
+}
+
+.btn-baixar-completo-bi {
+  background: #16a34a !important;
+  padding: 12px 20px !important;
+}
+.btn-baixar-completo-bi:hover {
+  background: #15803d !important;
+}
+
+.modal-box.modal-exportar-relatorio {
+  max-width: 390px;
+}
+
+/* =========================================================
+   RESPONSIVIDADE: TABLETS E CELULARES (<= 1024px E <= 768px)
+   ========================================================= */
+@media (max-width: 1024px) {
+  .btn-hamburguer {
+    width: 38px;
+    height: 38px;
+    font-size: 18px;
+    border-radius: 9px;
+  }
+
+  .btn-logo-vc {
+    left: 54px;
+    width: 38px;
+    height: 38px;
+    font-size: 15px;
+    border-radius: 9px;
+  }
+
+  .editor-layout {
+    padding: 0;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+  }
+
+  .editor-workspace {
+    width: 100%;
+    height: 100%;
+    gap: 0;
+  }
+
+  .area-grid-principal {
+    border: none;
+    border-radius: 0;
+    padding: 56px 12px 48px 12px;
+    overflow: hidden;
+  }
+
+  .hud-btn-flutuante {
+    display: flex !important;
+    justify-content: center;
+    align-items: center;
+    width: 38px;
+    height: 38px;
+    border-radius: 9px;
+    background: var(--bg-card);
+    color: var(--texto-principal);
+    border: 1px solid var(--borda-botao-sec);
+    font-size: 16px;
+    cursor: pointer;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.28);
+    position: relative;
+  }
+
+  .hud-btn-flutuante.hud-ativo {
+    border-color: var(--destaque-azul);
+    background: var(--destaque-azul);
+    color: #fff;
+  }
+
+  .hud-esquerda-alertas {
+    position: fixed !important;
+    top: 56px;
+    left: 10px;
+    z-index: 950;
+  }
+  .hud-esquerda-alertas.caution-pendente { border-color: #f59e0b; }
+  .hud-esquerda-alertas.caution-ok { border-color: #16a34a; }
+
+  .hud-mini-badge {
+    position: absolute;
+    top: -4px;
+    right: -4px;
+    background: #dc2626;
+    color: #fff;
+    font-size: 9px;
+    font-weight: 800;
+    min-width: 16px;
+    height: 16px;
+    padding: 0 3px;
+    border-radius: 999px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .caution-ok .hud-mini-badge { background: #16a34a; }
+
+  .hud-coluna-direita-mobile {
+    display: flex !important;
+    flex-direction: column;
+    gap: 8px;
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    z-index: 950;
+  }
+
+  .hud-btn-salvar {
+    background: #16a34a;
+    border-color: #15803d;
+    color: #fff;
+  }
+  .hud-btn-salvar:disabled {
+    background: #475569;
+    border-color: #334155;
+    opacity: 0.5;
+  }
+
+  .hud-btn-add {
+    background: var(--destaque-azul);
+    border-color: var(--destaque-azul);
+    color: #fff;
+  }
+
+  .editor-topbar {
+    display: none;
+    position: fixed;
+    top: 56px;
+    right: 54px;
+    left: auto;
+    width: 255px;
+    margin-left: 0 !important;
+    z-index: 960;
+    flex-direction: column;
+    align-items: stretch;
+    padding: 10px;
+    box-shadow: 0 10px 28px rgba(0, 0, 0, 0.45);
+  }
+  .editor-topbar.topbar-mobile-aberta {
+    display: flex !important;
+  }
+  .topbar-esquerda {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .topbar-direita {
+    display: none;
+  }
+  .topbar-direita-gerente {
+    flex-direction: column;
+    align-items: stretch;
+    margin-top: 6px;
+  }
+
+  .sidebar-direita-editor {
+    display: none;
+    position: fixed;
+    top: 56px;
+    right: 54px;
+    width: 255px;
+    max-height: calc(100vh - 70px);
+    z-index: 960;
+    background: var(--bg-painel);
+    padding: 8px;
+    border-radius: 12px;
+    border: 1px solid var(--borda);
+    box-shadow: 0 10px 28px rgba(0, 0, 0, 0.45);
+  }
+  .sidebar-direita-editor.sidebar-mobile-aberta {
+    display: flex !important;
+  }
+
+  .admin-container {
+    padding: 18px 16px 24px 16px;
+  }
+  .topbar-titulo-central {
+    min-height: 38px;
+    padding-top: 5px;
+    padding-left: 96px;
+    padding-right: 48px;
+  }
+  .topbar-titulo-central.com-botao-direita {
+    padding-right: 95px;
+  }
+  .topbar-titulo-central h1 {
+    font-size: 19px;
+  }
+  .subtitulo {
+    font-size: 12.5px;
+  }
+  .btn-voltar-topo {
+    padding: 7px 12px !important;
+    font-size: 13px !important;
+  }
+  .sidebar-direita-editor .painel-ferramentas { padding: 10px; }
+  .sidebar-direita-editor .painel-ferramentas h4 { font-size: 12.5px; }
+  .sidebar-direita-editor .dica-painel { font-size: 11px; }
+  .sidebar-direita-editor .btn-ferramenta { font-size: 11px; padding: 6px 4px; }
+  .sidebar-direita-editor .btn-equipamento { font-size: 11px; padding: 6px 4px; }
+
+  .painel-avisos-overlay {
+    top: 56px;
+    left: 54px;
+    right: auto;
+    width: 270px;
+  }
+
+  /* Títulos e botões superiores menores em Tablets (<= 1024px) */
+  .gerente-boas-vindas {
+    padding-left: 92px;
+  }
+  .gerente-boas-vindas h1 {
+    font-size: 18.5px;
+  }
+  .gerente-boas-vindas .subtitulo {
+    font-size: 12px;
+  }
+  .gerente-atalhos-topo .btn-secundario,
+  .gerente-atalhos-topo .btn-primario,
+  .btn-seletor-multi {
+    padding: 7px 11px !important;
+    font-size: 12.5px !important;
+  }
+
+  .grade-kpis-gerente {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  /* Oculta os 2 mapas lado a lado e mostra o card que abre o popup de estacionamentos */
+  .secao-estacionamentos-dupla-pc {
+    display: none;
+  }
+  .secao-seletor-mobile-est {
+    display: block;
+  }
+  .seletor-mobile-est-wrapper {
+    min-height: auto;
+  }
+
+  .grade-quatro-kpis-relatorio {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .grade-dupla-relatorios {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .admin-container {
+    padding: 16px 12px 20px 12px;
+  }
+
+  .topbar-titulo-central {
+    padding-top: 6px;
+    padding-left: 90px;
+    padding-right: 8px;
+    margin-bottom: 14px;
+    min-height: 38px;
+  }
+  .topbar-titulo-central.com-botao-direita {
+    padding-right: 72px;
+  }
+  .topbar-titulo-central h1 {
+    font-size: 16px;
+  }
+  .subtitulo {
+    font-size: 11.5px;
+  }
+
+  .btn-voltar-topo {
+    padding: 5px 8px !important;
+    font-size: 11.5px !important;
+  }
+
+  .campo-grupo label { font-size: 13px; }
+  .campo-grupo input,
+  .select-padrao {
+    padding: 8px 10px;
+    font-size: 13.5px;
+  }
+  .btn-primario {
+    padding: 9px 14px;
+    font-size: 13.5px;
+  }
+
+  .barra-pesquisa-admin {
+    flex-direction: column;
+    gap: 8px;
+  }
+  .input-pesquisa-grande {
+    padding: 8px 11px;
+    font-size: 13px;
+  }
+  .btn-add-est {
+    padding: 8px 12px;
+    font-size: 13px;
+  }
+
+  .lista-card {
+    padding: 4px 8px;
+  }
+  .linha-estabelecimento {
+    padding: 7px 2px;
+    gap: 6px;
+  }
+  .info-est {
+    gap: 7px;
+  }
+  .id-badge {
+    padding: 3px 6px;
+    font-size: 11px;
+  }
+  .textos-est h3 {
+    font-size: 13px;
+  }
+  .meta-est {
+    font-size: 10.5px;
+  }
+  .acoes-direita {
+    gap: 4px;
+  }
+  .btn-icone {
+    width: 28px;
+    height: 28px;
+    font-size: 12px;
+    border-radius: 6px;
+  }
+  .gerente-dashboard-container {
+    padding: 14px 12px 24px 12px;
+  }
+
+  .gerente-boas-vindas h1 {
+    font-size: 16.5px;
+  }
+
+  .lista-opcoes-multi {
+    max-height: 195px;
+  }
+
+  .grade-kpis-gerente,
+  .grade-quatro-kpis-relatorio,
+  .seletores-comparador-grid,
+  .grade-cards-comparador,
+  .campos-datas-modal {
+    grid-template-columns: 1fr;
+  }
+  .controles-exportacao-completa {
+    flex-direction: column;
+    align-items: stretch;
+  }
+}
+
+@media (max-width: 480px) {
+  .auth-card {
+    padding: 22px 16px;
+  }
+  .auth-cabecalho h1 {
+    font-size: 20px;
+  }
+}
+
+/* Na impressão do QR Code, exibe apenas o QR Code centralizado */
+@media print {
+  body * {
+    visibility: hidden;
+  }
+  .modal-qr-gerente,
+  .modal-qr-gerente * {
+    visibility: visible;
+  }
+  .modal-qr-gerente {
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    box-shadow: none !important;
+    border: none !important;
+  }
+  .modal-qr-gerente .modal-acoes,
+  .modal-qr-gerente .btn-fechar-mini {
+    display: none !important;
+  }
+}
 
 // 🏁 FIM DO ARQUIVO: frontend\src\assets\main.css
 // ------------------------------------------------------------------
@@ -4288,6 +7805,8 @@ import AdminListaView from '../views/AdminListaView.vue'
 import AdminInfoGeraisView from '../views/AdminInfoGeraisView.vue'
 import AdminEditor2DView from '../views/AdminEditor2DView.vue'
 import GerenteView from '../views/GerenteView.vue'
+import GerenteEstacionamentosView from '../views/GerenteEstacionamentosView.vue'
+import GerenteRelatoriosView from '../views/GerenteRelatoriosView.vue'
 import AcessoNegadoView from '../views/AcessoNegadoView.vue'
 import LoginView from '../views/LoginView.vue'
 import CadastroView from '../views/CadastroView.vue'
@@ -4326,6 +7845,18 @@ const routes = [
     meta: { rolesPermitidas: ['admin_estabelecimento'] }
   },
   {
+    path: '/gerente/estacionamentos',
+    name: 'gerente-estacionamentos',
+    component: GerenteEstacionamentosView,
+    meta: { rolesPermitidas: ['admin_estabelecimento'] }
+  },
+  {
+    path: '/gerente/relatorios',
+    name: 'gerente-relatorios',
+    component: GerenteRelatoriosView,
+    meta: { rolesPermitidas: ['admin_estabelecimento'] }
+  },
+  {
     path: '/admin',
     name: 'admin-lista',
     component: AdminListaView,
@@ -4360,7 +7891,6 @@ router.beforeEach((to, from, next) => {
     return next({ name: 'motorista-mapa', params: { id: to.query.id } })
   }
 
-  // Verifica se a rota exige nível de acesso específico
   if (to.meta.rolesPermitidas) {
     const usuario = usuarioLogado.value
     if (!usuario || !to.meta.rolesPermitidas.includes(usuario.nivel_acesso)) {
@@ -6753,23 +10283,586 @@ async function realizarCadastro() {
 
 
 // ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: frontend\src\views\GerenteEstacionamentosView.vue
+// ==================================================================
+
+// [Arquivo binário ignorado pelo leitor de segurança]
+
+
+// 🏁 FIM DO ARQUIVO: frontend\src\views\GerenteEstacionamentosView.vue
+// ------------------------------------------------------------------
+
+
+// ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: frontend\src\views\GerenteRelatoriosView.vue
+// ==================================================================
+
+// [Arquivo binário ignorado pelo leitor de segurança]
+
+
+// 🏁 FIM DO ARQUIVO: frontend\src\views\GerenteRelatoriosView.vue
+// ------------------------------------------------------------------
+
+
+// ==================================================================
 // 🚀 INÍCIO DO ARQUIVO: frontend\src\views\GerenteView.vue
 // ==================================================================
 
 <script setup>
-import { IconLayoutBoard } from '../icons'
+import { ref, computed, onMounted, onUnmounted } from 'vue'
+import { useRouter } from 'vue-router'
+import {
+  usuarioLogado,
+  estabelecimentosDoGerente,
+  estabelecimentosFiltradosGerente,
+  idsSelecionadosGerente,
+  simulacao1Ativa,
+  alternarSimulacao1Frontend,
+  obterAndarEntradaSaida,
+  contarVagasEstabelecimento,
+  carregarDadosDoBanco
+} from '../store/estacionamentoStore'
+import {
+  IconChartBar,
+  IconClock,
+  IconParking,
+  IconMaximize,
+  IconSearch,
+  IconSquareRoundedChevronDown,
+  IconSquareRoundedCheck,
+  IconSquareRoundedX,
+  IconAlertSquareRounded,
+  IconDoorEnter,
+  IconDoorExit,
+  IconArrowBarRight,
+  IconPlayerPlay
+} from '../icons'
+
+const router = useRouter()
+
+// Dropdown de seleção múltipla no topo
+const dropdownMultiAberto = ref(false)
+const termoBuscaMulti = ref('')
+
+// Modal Popup para celular/tablet ("Escolher Estacionamento")
+const modalMobileEstAberto = ref(false)
+const termoBuscaMobileEst = ref('')
+
+onMounted(() => {
+  carregarDadosDoBanco()
+  window.addEventListener('click', fecharDropdownsAoClicarFora)
+})
+
+onUnmounted(() => {
+  window.removeEventListener('click', fecharDropdownsAoClicarFora)
+})
+
+function fecharDropdownsAoClicarFora(e) {
+  if (!e.target.closest('.seletor-multi-wrapper')) {
+    dropdownMultiAberto.value = false
+  }
+}
+
+const totalOpcoesFiltro = computed(() => 1 + estabelecimentosDoGerente.value.length)
+const mostrarPesquisaNoMulti = computed(() => totalOpcoesFiltro.value > 5)
+
+const listaEstabelecimentosNoMulti = computed(() => {
+  const termo = termoBuscaMulti.value.trim().toLowerCase()
+  if (!termo) return estabelecimentosDoGerente.value
+  return estabelecimentosDoGerente.value.filter(e => e.nome.toLowerCase().includes(termo))
+})
+
+const textoBotaoSeletorTopo = computed(() => {
+  const qtdSel = idsSelecionadosGerente.value.length
+  const total = estabelecimentosDoGerente.value.length
+  if (qtdSel === 0 || qtdSel === total) {
+    return `Dashboard completo (${total})`
+  }
+  if (qtdSel === 1) {
+    const est = estabelecimentosDoGerente.value.find(e => e.id === idsSelecionadosGerente.value[0])
+    return est ? est.nome : '1 selecionado'
+  }
+  return `${qtdSel} estacionamentos selecionados`
+})
+
+function selecionarDashboardCompleto() {
+  idsSelecionadosGerente.value = []
+}
+
+function alternarSelecaoEstacionamento(idEst) {
+  const atual = [...idsSelecionadosGerente.value]
+  const idx = atual.indexOf(idEst)
+  if (idx !== -1) {
+    atual.splice(idx, 1)
+  } else {
+    atual.push(idEst)
+  }
+  if (atual.length === estabelecimentosDoGerente.value.length) {
+    idsSelecionadosGerente.value = []
+  } else {
+    idsSelecionadosGerente.value = atual
+  }
+}
+
+// =========================================================
+// MÉTRICAS SOMADAS DOS ESTACIONAMENTOS SELECIONADOS
+// =========================================================
+const horasBasePadrao = [
+  { hora: '08h', entBase: 2, saiBase: 1 },
+  { hora: '10h', entBase: 4, saiBase: 2 },
+  { hora: '12h', entBase: 7, saiBase: 5 },
+  { hora: '14h', entBase: 5, saiBase: 4 },
+  { hora: '16h', entBase: 4, saiBase: 6 },
+  { hora: '18h', entBase: 8, saiBase: 7 },
+  { hora: '20h', entBase: 3, saiBase: 6 }
+]
+
+function calcularFluxoUnitarioEstacionamento(est, metricasEst) {
+  const multSim = simulacao1Ativa.value ? 1.6 : 1
+  const pesoVagas = Math.max(1, Math.round(metricasEst.total / 3))
+  const variacaoId = (Number(est.id) % 3) + 1
+
+  return horasBasePadrao.map((h, idx) => {
+    const ajusteHora = ((Number(est.id) + idx) % 2 === 0) ? 1 : 0
+    const entradas = Math.max(
+      1,
+      Math.round((h.entBase * pesoVagas + variacaoId + ajusteHora) * multSim)
+    )
+    const saidas = Math.max(
+      1,
+      Math.round((h.saiBase * pesoVagas + (variacaoId - 1) + ajusteHora) * multSim)
+    )
+    return { hora: h.hora, entradas, saidas }
+  })
+}
+
+const metricasConsolidadas = computed(() => {
+  const lista = estabelecimentosFiltradosGerente.value
+  if (lista.length === 0) {
+    return {
+      qtdEstacionamentos: 0,
+      taxaOcupacaoTotal: 0,
+      vagasLivresSoma: 0,
+      vagasOcupadasSoma: 0,
+      vagasTotaisSoma: 0,
+      tempoMedioFormatado: '0min',
+      fluxoPorHora: [],
+      maiorValorFluxo: 10
+    }
+  }
+
+  let somaLivres = 0
+  let somaOcupadas = 0
+  let somaTotais = 0
+  let somaInativas = 0
+  let somaTempoMin = 0
+
+  const mapaSomaHoras = horasBasePadrao.map(h => ({
+    hora: h.hora,
+    entradas: 0,
+    saidas: 0
+  }))
+
+  lista.forEach((est) => {
+    const m = contarVagasEstabelecimento(est)
+    somaLivres += m.livres
+    somaOcupadas += m.ocupadas
+    somaTotais += m.total
+    somaInativas += m.inativas
+    somaTempoMin += m.tempoMedioMin
+
+    const fluxoEst = calcularFluxoUnitarioEstacionamento(est, m)
+    fluxoEst.forEach((itemHora, idx) => {
+      mapaSomaHoras[idx].entradas += itemHora.entradas
+      mapaSomaHoras[idx].saidas += itemHora.saidas
+    })
+  })
+
+  const vagasAtivasSoma = Math.max(1, somaTotais - somaInativas)
+  const taxaOcupacaoTotal = somaTotais > 0 ? Math.round((somaOcupadas / vagasAtivasSoma) * 100) : 0
+
+  const tempoMedioMinutos = Math.round(somaTempoMin / lista.length)
+  const horas = Math.floor(tempoMedioMinutos / 60)
+  const mins = tempoMedioMinutos % 60
+  const tempoMedioFormatado =
+    tempoMedioMinutos === 0
+      ? '0min'
+      : horas > 0
+        ? `${horas}h ${mins}min`
+        : `${mins}min`
+
+  const maiorValorFluxo = Math.max(
+    10,
+    ...mapaSomaHoras.flatMap(f => [f.entradas, f.saidas])
+  )
+
+  return {
+    qtdEstacionamentos: lista.length,
+    taxaOcupacaoTotal,
+    vagasLivresSoma: somaLivres,
+    vagasOcupadasSoma: somaOcupadas,
+    vagasTotaisSoma: somaTotais,
+    tempoMedioFormatado,
+    fluxoPorHora: mapaSomaHoras,
+    maiorValorFluxo
+  }
+})
+
+// Os 2 estacionamentos com maior número de vagas cadastradas
+const top2Estacionamentos = computed(() => {
+  return [...estabelecimentosFiltradosGerente.value]
+    .map(est => ({
+      est,
+      metricas: contarVagasEstabelecimento(est),
+      andarPrincipal: obterAndarEntradaSaida(est)
+    }))
+    .sort((a, b) => b.metricas.total - a.metricas.total)
+    .slice(0, 2)
+})
+
+const listaEstabelecimentosMobileBusca = computed(() => {
+  const termo = termoBuscaMobileEst.value.trim().toLowerCase()
+  if (!termo) return estabelecimentosDoGerente.value
+  return estabelecimentosDoGerente.value.filter(e => e.nome.toLowerCase().includes(termo))
+})
+
+function abrirEstacionamentoTelaCheia(idEst) {
+  modalMobileEstAberto.value = false
+  router.push({ name: 'gerente-estacionamentos', query: { id: idEst } })
+}
 </script>
 
 <template>
-  <main class="tela-inicial">
-    <div class="hero-card card-em-breve">
-      <div class="icone-destaque" style="color: var(--destaque-azul)">
-        <IconLayoutBoard :size="52" />
+  <div class="gerente-dashboard-container">
+    <!-- CABEÇALHO DO GERENTE + SELETOR MULTI-ESTACIONAMENTOS -->
+    <header class="gerente-header-topo">
+      <div class="gerente-boas-vindas">
+        <div>
+          <h1>Bem-vindo, {{ usuarioLogado?.nome || 'Gerente' }}</h1>
+          <p class="subtitulo">Painel de controle operacional e indicadores em tempo real</p>
+        </div>
+
+        <div class="gerente-atalhos-topo">
+          <button
+            class="btn-secundario item-icone-texto"
+            :class="{ 'btn-simulacao-ativa': simulacao1Ativa }"
+            title="Preenche 60% das vagas como ocupadas e gera usos de 1 a 10 no frontend"
+            @click="alternarSimulacao1Frontend"
+          >
+            <IconPlayerPlay :size="17" />
+            <span>{{ simulacao1Ativa ? 'Simulação 1: ATIVA' : 'Simulação 1' }}</span>
+          </button>
+
+          <button
+            class="btn-secundario item-icone-texto"
+            @click="router.push({ name: 'gerente-estacionamentos' })"
+          >
+            <IconParking :size="18" />
+            <span>Estacionamentos</span>
+          </button>
+
+          <button
+            class="btn-primario item-icone-texto"
+            @click="router.push({ name: 'gerente-relatorios' })"
+          >
+            <IconChartBar :size="18" />
+            <span>Relatórios</span>
+          </button>
+        </div>
       </div>
-      <h1 class="titulo-principal">Painel do Gerente</h1>
-      <span class="badge-em-breve">Em breve</span>
+
+      <!-- Seletor Múltiplo alinhado à esquerda junto com os cards -->
+      <div v-if="estabelecimentosDoGerente.length >= 2" class="seletor-multi-wrapper">
+        <button
+          type="button"
+          class="btn-seletor-multi item-icone-texto"
+          @click="dropdownMultiAberto = !dropdownMultiAberto"
+        >
+          <IconParking :size="18" />
+          <span>{{ textoBotaoSeletorTopo }}</span>
+          <IconSquareRoundedChevronDown :size="18" />
+        </button>
+
+        <Transition name="fade-pop">
+          <div v-if="dropdownMultiAberto" class="dropdown-multi-box">
+            <div v-if="mostrarPesquisaNoMulti" class="busca-multi-topo">
+              <IconSearch :size="16" class="icone-busca-multi" />
+              <input
+                v-model="termoBuscaMulti"
+                type="text"
+                placeholder="Pesquisar estacionamento..."
+              />
+            </div>
+
+            <div class="lista-opcoes-multi">
+              <div
+                class="item-opcao-multi destaque-completo"
+                :class="{ 'opcao-ativa': idsSelecionadosGerente.length === 0 }"
+                @click="selecionarDashboardCompleto"
+              >
+                <span>Dashboard completo</span>
+                <IconSquareRoundedCheck v-if="idsSelecionadosGerente.length === 0" :size="18" />
+              </div>
+
+              <div
+                v-for="est in listaEstabelecimentosNoMulti"
+                :key="est.id"
+                class="item-opcao-multi"
+                :class="{ 'opcao-ativa': idsSelecionadosGerente.includes(est.id) }"
+                @click="alternarSelecaoEstacionamento(est.id)"
+              >
+                <span>{{ est.nome }}</span>
+                <IconSquareRoundedCheck v-if="idsSelecionadosGerente.includes(est.id)" :size="18" />
+              </div>
+            </div>
+          </div>
+        </Transition>
+      </div>
+    </header>
+
+    <!-- CASO O GERENTE NÃO TENHA NENHUM ESTACIONAMENTO VINCULADO -->
+    <div v-if="estabelecimentosDoGerente.length === 0" class="lista-card aviso-sem-estacionamento">
+      <IconAlertSquareRounded :size="44" style="color: #f59e0b; margin-bottom: 10px" />
+      <h2>Nenhum estacionamento vinculado à sua conta</h2>
+      <p class="subtitulo">
+        Solicite ao administrador do sistema (Admin Dev) que vincule seu usuário ao seu estacionamento nas Informações Gerais.
+      </p>
     </div>
-  </main>
+
+    <!-- CONTEÚDO PRINCIPAL DO DASHBOARD -->
+    <template v-else>
+      <!-- SEÇÃO SUPERIOR: EXATAMENTE OS 3 CARDS DE RELATÓRIOS -->
+      <section class="secao-relatorios-dashboard">
+        <div class="grade-kpis-gerente">
+          <!-- Card 1: Fluxo Horário do Dia (Soma de Entradas e Saídas) -->
+          <div class="card-kpi-gerente">
+            <div class="kpi-cabecalho">
+              <span class="kpi-titulo">Fluxo por Hora Hoje (Nº Bruto)</span>
+              <div class="legenda-fluxo-mini">
+                <span class="ponto-legenda ent"></span> Entradas
+                <span class="ponto-legenda sai"></span> Saídas
+              </div>
+            </div>
+
+            <div class="grafico-barras-horarias">
+              <div
+                v-for="item in metricasConsolidadas.fluxoPorHora"
+                :key="item.hora"
+                class="coluna-hora-item"
+              >
+                <div class="par-barras-verticais">
+                  <div
+                    class="barra-v ent"
+                    :style="{ height: `${Math.max(10, (item.entradas / metricasConsolidadas.maiorValorFluxo) * 100)}%` }"
+                    :title="`${item.hora} - Entradas: ${item.entradas}`"
+                  >
+                    <span class="valor-barra-topo">{{ item.entradas }}</span>
+                  </div>
+                  <div
+                    class="barra-v sai"
+                    :style="{ height: `${Math.max(10, (item.saidas / metricasConsolidadas.maiorValorFluxo) * 100)}%` }"
+                    :title="`${item.hora} - Saídas: ${item.saidas}`"
+                  >
+                    <span class="valor-barra-topo">{{ item.saidas }}</span>
+                  </div>
+                </div>
+                <span class="rotulo-hora-eixo">{{ item.hora }}</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 2: Taxa de Ocupação Atual (Soma de Livres e Ocupadas) -->
+          <div class="card-kpi-gerente kpi-centralizado">
+            <div class="kpi-cabecalho">
+              <span class="kpi-titulo">Taxa de Ocupação Atual</span>
+              <IconParking :size="20" style="color: var(--destaque-azul)" />
+            </div>
+
+            <div class="kpi-valor-destaque">
+              {{ metricasConsolidadas.taxaOcupacaoTotal }}%
+            </div>
+
+            <div class="barra-progresso-ocupacao">
+              <div
+                class="preenchimento-ocupacao"
+                :style="{ width: `${metricasConsolidadas.taxaOcupacaoTotal}%` }"
+              ></div>
+            </div>
+
+            <div class="kpi-rodape-duplo">
+              <span class="tag-kpi livre">{{ metricasConsolidadas.vagasLivresSoma }} livres</span>
+              <span class="tag-kpi ocupada">{{ metricasConsolidadas.vagasOcupadasSoma }} ocupadas</span>
+            </div>
+          </div>
+
+          <!-- Card 3: Tempo Médio de Permanência no Dia -->
+          <div class="card-kpi-gerente kpi-centralizado">
+            <div class="kpi-cabecalho">
+              <span class="kpi-titulo">Tempo Médio de Permanência (Hoje)</span>
+              <IconClock :size="20" style="color: #14b8a6" />
+            </div>
+
+            <div class="kpi-valor-destaque" style="color: #14b8a6">
+              {{ metricasConsolidadas.tempoMedioFormatado }}
+            </div>
+
+            <p class="kpi-descricao-apoio">
+              Média calculada sobre os veículos estacionados hoje
+              <span v-if="metricasConsolidadas.qtdEstacionamentos > 1">
+                ({{ metricasConsolidadas.qtdEstacionamentos }} unidades)
+              </span>
+            </p>
+          </div>
+        </div>
+
+        <div class="acoes-abaixo-relatorios">
+          <button
+            class="btn-secundario item-icone-texto"
+            @click="router.push({ name: 'gerente-relatorios' })"
+          >
+            <IconChartBar :size="18" />
+            <span>Ver relatórios em detalhe</span>
+          </button>
+        </div>
+      </section>
+
+      <!-- BOTÃO QUE ABRE POPUP DE ESTACIONAMENTOS PARA TABLETS E CELULARES (<= 1024px) -->
+      <section class="secao-seletor-mobile-est">
+        <div class="card-kpi-gerente seletor-mobile-est-wrapper">
+          <div class="kpi-cabecalho">
+            <span class="kpi-titulo">Visualizar Estacionamentos em Tela Cheia</span>
+          </div>
+          <button
+            type="button"
+            class="btn-primario item-icone-texto"
+            style="width: 100%; justify-content: space-between"
+            @click="modalMobileEstAberto = true"
+          >
+            <span class="item-icone-texto">
+              <IconParking :size="19" />
+              <span>Escolher Estacionamento ({{ estabelecimentosDoGerente.length }})</span>
+            </span>
+            <IconSquareRoundedChevronDown :size="19" />
+          </button>
+        </div>
+      </section>
+
+      <!-- MODAL POPUP DE SELEÇÃO DE ESTACIONAMENTO (TABLET / MOBILE) -->
+      <Transition name="fade-pop">
+        <div
+          v-if="modalMobileEstAberto"
+          class="modal-backdrop"
+          @click.self="modalMobileEstAberto = false"
+        >
+          <div class="modal-box modal-escolher-est-mobile">
+            <div class="overlay-header">
+              <h3 class="item-icone-texto">
+                <IconParking :size="20" />
+                <span>Escolher Estacionamento</span>
+              </h3>
+              <button class="btn-fechar-mini" @click="modalMobileEstAberto = false">
+                <IconSquareRoundedX :size="20" />
+              </button>
+            </div>
+
+            <div class="busca-multi-topo" style="padding: 8px 0; border-bottom: none">
+              <IconSearch :size="16" class="icone-busca-multi" style="left: 12px" />
+              <input
+                v-model="termoBuscaMobileEst"
+                type="text"
+                placeholder="Pesquisar estacionamento..."
+              />
+            </div>
+
+            <div class="lista-opcoes-multi lista-modal-est-mobile">
+              <div
+                v-for="est in listaEstabelecimentosMobileBusca"
+                :key="`mob-${est.id}`"
+                class="item-opcao-multi"
+                @click="abrirEstacionamentoTelaCheia(est.id)"
+              >
+                <span>{{ est.nome }}</span>
+                <IconMaximize :size="16" />
+              </div>
+              <div v-if="listaEstabelecimentosMobileBusca.length === 0" class="item-dropdown-vazio">
+                Nenhum estacionamento encontrado.
+              </div>
+            </div>
+          </div>
+        </div>
+      </Transition>
+
+      <!-- SEÇÃO INFERIOR PC (> 1024px): OS 2 MAIORES ESTACIONAMENTOS LADO A LADO -->
+      <section class="secao-estacionamentos-dupla-pc">
+        <div
+          v-for="item in top2Estacionamentos"
+          :key="item.est.id"
+          class="card-estacionamento-preview"
+        >
+          <div class="header-preview-est">
+            <div>
+              <h3>{{ item.est.nome }}</h3>
+              <span class="subtitulo-preview">
+                Planta de Entrada/Saída: <strong>{{ item.andarPrincipal?.nome_andar }}</strong>
+                — {{ item.metricas.ocupadas }}/{{ item.metricas.total }} ocupadas ({{ item.metricas.taxaOcupacao }}%)
+              </span>
+            </div>
+            <span class="badge-total-vagas">{{ item.metricas.total }} vagas</span>
+          </div>
+
+          <div v-if="item.andarPrincipal" class="preview-mapa-scroll">
+            <div
+              class="grid-preview-mini"
+              :style="{
+                gridTemplateColumns: `repeat(${item.andarPrincipal.grid_x}, 24px)`
+              }"
+            >
+              <template v-for="y in item.andarPrincipal.grid_y" :key="`prev-r-${y}`">
+                <div
+                  v-for="x in item.andarPrincipal.grid_x"
+                  :key="`prev-c-${x}-${y}`"
+                  class="celula-preview-fundo"
+                  :style="{
+                    backgroundColor: item.andarPrincipal.celulas[`${x},${y}`]?.corSetor || 'transparent'
+                  }"
+                >
+                  <div
+                    class="quadrado-preview-interno"
+                    :class="{
+                      'qp-vazio': item.andarPrincipal.celulas[`${x},${y}`]?.tipo === 'VAZIO',
+                      'qp-estrada': item.andarPrincipal.celulas[`${x},${y}`]?.tipo === 'ESTRADA',
+                      'qp-entrada': item.andarPrincipal.celulas[`${x},${y}`]?.tipo === 'ENTRADA',
+                      'qp-saida': item.andarPrincipal.celulas[`${x},${y}`]?.tipo === 'SAIDA',
+                      'qp-acesso': item.andarPrincipal.celulas[`${x},${y}`]?.tipo === 'ACESSO',
+                      'qp-vaga-inativa': item.andarPrincipal.celulas[`${x},${y}`]?.tipo === 'VAGA' && item.andarPrincipal.celulas[`${x},${y}`]?.inativa,
+                      'qp-vaga-amarela': item.andarPrincipal.celulas[`${x},${y}`]?.tipo === 'VAGA' && !item.andarPrincipal.celulas[`${x},${y}`]?.inativa && !item.andarPrincipal.celulas[`${x},${y}`]?.macEsp,
+                      'qp-vaga-livre': item.andarPrincipal.celulas[`${x},${y}`]?.tipo === 'VAGA' && !item.andarPrincipal.celulas[`${x},${y}`]?.inativa && item.andarPrincipal.celulas[`${x},${y}`]?.macEsp && item.andarPrincipal.celulas[`${x},${y}`]?.livre,
+                      'qp-vaga-ocupada': item.andarPrincipal.celulas[`${x},${y}`]?.tipo === 'VAGA' && !item.andarPrincipal.celulas[`${x},${y}`]?.inativa && item.andarPrincipal.celulas[`${x},${y}`]?.macEsp && !item.andarPrincipal.celulas[`${x},${y}`]?.livre
+                    }"
+                  >
+                    <span v-if="item.andarPrincipal.celulas[`${x},${y}`]?.tipo === 'VAGA'">
+                      {{ item.andarPrincipal.celulas[`${x},${y}`]?.identificador }}
+                    </span>
+                    <IconDoorEnter v-else-if="item.andarPrincipal.celulas[`${x},${y}`]?.tipo === 'ENTRADA'" :size="12" />
+                    <IconDoorExit v-else-if="item.andarPrincipal.celulas[`${x},${y}`]?.tipo === 'SAIDA'" :size="12" />
+                    <IconArrowBarRight v-else-if="item.andarPrincipal.celulas[`${x},${y}`]?.tipo === 'ACESSO'" :size="12" />
+                  </div>
+                </div>
+              </template>
+            </div>
+          </div>
+
+          <button
+            class="btn-primario btn-ver-tela-cheia item-icone-texto"
+            @click="abrirEstacionamentoTelaCheia(item.est.id)"
+          >
+            <IconMaximize :size="18" />
+            <span>Ver em tela cheia</span>
+          </button>
+        </div>
+      </section>
+    </template>
+  </div>
 </template>
 
 // 🏁 FIM DO ARQUIVO: frontend\src\views\GerenteView.vue

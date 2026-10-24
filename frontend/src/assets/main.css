@@ -1,24 +1,30 @@
 :root {
   --bg-painel: #f1f5f9;
   --bg-card: #ffffff;
+  --bg-botao-sec: #e2e8f0;
+  --borda-botao-sec: #94a3b8;
   --texto-principal: #0f172a;
   --texto-secundario: #475569;
   --borda: #cbd5e1;
   --destaque-azul: #2563eb;
   --cor-asfalto: #1e293b;
   --borda-asfalto: #475569;
+  --filtro-icone-calendario: invert(18%) sepia(24%) saturate(1100%) hue-rotate(185deg) brightness(92%) contrast(95%);
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
     --bg-painel: #0b1120;
     --bg-card: #1e293b;
+    --bg-botao-sec: #0f172a;
+    --borda-botao-sec: #475569;
     --texto-principal: #f8fafc;
     --texto-secundario: #94a3b8;
     --borda: #334155;
     --destaque-azul: #3b82f6;
     --cor-asfalto: #090d16;
     --borda-asfalto: #64748b;
+    --filtro-icone-calendario: invert(95%) sepia(5%) saturate(200%) hue-rotate(180deg) brightness(105%) contrast(100%);
   }
 }
 
@@ -55,7 +61,7 @@ html, body, #app {
 }
 
 /* =========================================================
-   ANIMAÇÕES GLOBAIS (VIEWS, MENU LATERAL E POPUPS)
+   ANIMAÇÕES GLOBAIS (VIEWS, MENU LATERAL, TABELAS E POPUPS)
    ========================================================= */
 .fade-view-enter-active,
 .fade-view-leave-active {
@@ -68,6 +74,15 @@ html, body, #app {
 .fade-view-leave-to {
   opacity: 0;
   transform: translateY(-4px);
+}
+
+.fade-tabela-enter-active,
+.fade-tabela-leave-active {
+  transition: opacity 0.15s ease;
+}
+.fade-tabela-enter-from,
+.fade-tabela-leave-to {
+  opacity: 0;
 }
 
 .slide-menu-enter-active,
@@ -109,7 +124,7 @@ html, body, #app {
   z-index: 1000;
   background: var(--bg-card);
   color: var(--texto-principal);
-  border: 1px solid var(--borda);
+  border: 1px solid var(--borda-botao-sec);
   width: 46px;
   height: 46px;
   border-radius: 11px;
@@ -264,7 +279,7 @@ html, body, #app {
 }
 
 /* =========================================================
-   CABEÇALHO E BOTÕES PADRÃO ADMINISTRATIVO
+   CABEÇALHO E BOTÕES PADRÃO ADMINISTRATIVO (ALTO CONTRASTE LIGHT/DARK)
    ========================================================= */
 .admin-container {
   padding: 20px 24px 28px 24px;
@@ -276,7 +291,7 @@ html, body, #app {
 .topbar-titulo-central {
   min-height: 46px;
   padding-top: 6px;
-  padding-left: 60px;
+  padding-left: 114px;
   padding-right: 60px;
   margin-bottom: 22px;
   display: flex;
@@ -340,9 +355,9 @@ html, body, #app {
 }
 
 .btn-secundario {
-  background: var(--bg-card);
+  background: var(--bg-botao-sec);
   color: var(--texto-principal);
-  border: 1px solid var(--borda);
+  border: 1px solid var(--borda-botao-sec);
   padding: 10px 16px;
   border-radius: 8px;
   font-weight: 600;
@@ -353,7 +368,7 @@ html, body, #app {
 .btn-secundario:hover:not(:disabled) {
   border-color: var(--destaque-azul);
   color: var(--destaque-azul);
-  background: rgba(59, 130, 246, 0.06);
+  background: rgba(59, 130, 246, 0.12);
   transform: translateY(-1px);
 }
 .btn-secundario:active:not(:disabled) {
@@ -392,8 +407,8 @@ html, body, #app {
   width: 100%;
   padding: 12px 16px;
   border-radius: 8px;
-  border: 1px solid var(--borda);
-  background: var(--bg-card);
+  border: 1px solid var(--borda-botao-sec);
+  background: var(--bg-botao-sec);
   color: var(--texto-principal);
   font-size: 16px;
   transition: border-color 0.15s ease, box-shadow 0.15s ease;
@@ -442,11 +457,12 @@ html, body, #app {
 }
 
 .id-badge {
-  background: var(--borda);
-  padding: 7px 11px;
+  background: var(--bg-botao-sec);
+  border: 1px solid var(--borda-botao-sec);
+  padding: 5px 10px;
   border-radius: 6px;
   font-weight: 700;
-  font-size: 15px;
+  font-size: 14px;
   flex-shrink: 0;
 }
 
@@ -485,9 +501,9 @@ html, body, #app {
 }
 
 .btn-icone {
-  background: var(--bg-painel);
+  background: var(--bg-botao-sec);
   color: var(--texto-principal);
-  border: 1px solid var(--borda);
+  border: 1px solid var(--borda-botao-sec);
   width: 40px;
   height: 40px;
   border-radius: 8px;
@@ -535,18 +551,19 @@ html, body, #app {
 }
 .paginacao-admin button {
   padding: 9px 16px;
-  border-radius: 6px;
-  border: 1px solid var(--borda);
-  background: var(--bg-card);
+  border-radius: 8px;
+  border: 1px solid var(--borda-botao-sec);
+  background: var(--bg-botao-sec);
   color: var(--texto-principal);
-  font-size: 15px;
+  font-weight: 600;
+  font-size: 14.5px;
   cursor: pointer;
   transition: border-color 0.15s ease, color 0.15s ease, background-color 0.15s ease, opacity 0.15s ease;
 }
 .paginacao-admin button:hover:not(:disabled) {
   border-color: var(--destaque-azul);
   color: var(--destaque-azul);
-  background: rgba(59, 130, 246, 0.06);
+  background: rgba(59, 130, 246, 0.12);
 }
 .paginacao-admin button:disabled {
   opacity: 0.45;
@@ -567,8 +584,8 @@ html, body, #app {
 .select-padrao {
   padding: 11px 14px;
   border-radius: 8px;
-  border: 1px solid var(--borda);
-  background: var(--bg-painel);
+  border: 1px solid var(--borda-botao-sec);
+  background: var(--bg-botao-sec);
   color: var(--texto-principal);
   font-size: 16px;
   transition: border-color 0.15s ease, box-shadow 0.15s ease;
@@ -582,6 +599,22 @@ html, body, #app {
 .select-padrao option {
   background-color: var(--bg-card);
   color: var(--texto-principal);
+}
+
+/* Ícone de Calendário Nativo Nítido no Dark e Light Mode */
+input[type="date"].input-data-nativo {
+  position: relative;
+  cursor: pointer;
+}
+input[type="date"].input-data-nativo::-webkit-calendar-picker-indicator {
+  filter: var(--filtro-icone-calendario);
+  opacity: 1;
+  cursor: pointer;
+  padding: 4px;
+  border-radius: 4px;
+}
+input[type="date"].input-data-nativo::-webkit-calendar-picker-indicator:hover {
+  background-color: rgba(59, 130, 246, 0.15);
 }
 
 .linha-andar-dinamica {
@@ -632,7 +665,7 @@ html, body, #app {
 }
 
 /* =========================================================
-   EDITOR GAMIFICADO 2D (DESKTOP)
+   EDITOR GAMIFICADO 2D E VISÃO EM TELA CHEIA (DESKTOP)
    ========================================================= */
 .editor-layout {
   position: relative;
@@ -651,29 +684,37 @@ html, body, #app {
 }
 
 .editor-topbar {
-  margin-left: 54px;
+  margin-left: 108px !important;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  flex-wrap: nowrap;
-  gap: 10px;
+  flex-wrap: wrap;
+  gap: 8px;
   background: var(--bg-card);
-  padding: 8px 14px;
+  padding: 8px 12px;
   border-radius: 10px;
   border: 1px solid var(--borda);
 }
 
 .topbar-esquerda,
-.topbar-direita {
+.topbar-direita,
+.topbar-direita-gerente {
   display: flex;
   align-items: center;
   gap: 8px;
-  flex-wrap: nowrap;
+  flex-wrap: wrap;
 }
 
 .editor-topbar .btn-secundario {
-  padding: 9px 15px;
-  font-size: 14.5px;
+  padding: 8px 13px;
+  font-size: 14px;
+}
+
+.texto-truncado-est {
+  max-width: 200px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .btn-duas-linhas br {
@@ -687,22 +728,22 @@ html, body, #app {
   display: flex;
   align-items: center;
   gap: 6px;
-  background: var(--bg-painel);
+  background: var(--bg-botao-sec);
   color: var(--texto-principal);
   padding: 6px 12px;
   border-radius: 8px;
-  border: 1px solid var(--borda);
-  font-size: 14.5px;
+  border: 1px solid var(--borda-botao-sec);
+  font-size: 14px;
   white-space: nowrap;
 }
 
 .select-andar-editor {
-  background-color: var(--bg-painel);
+  background-color: transparent;
   color: var(--texto-principal);
   border: none;
   font-weight: bold;
-  font-size: 14.5px;
-  padding: 4px 6px;
+  font-size: 14px;
+  padding: 2px 4px;
   border-radius: 4px;
   cursor: pointer;
 }
@@ -712,9 +753,9 @@ html, body, #app {
 }
 
 .btn-caution-avisos {
-  background: var(--bg-painel);
+  background: var(--bg-botao-sec);
   color: var(--texto-principal);
-  border: 2px solid var(--borda);
+  border: 2px solid var(--borda-botao-sec);
   border-radius: 8px;
   padding: 8px 14px;
   font-size: 16px;
@@ -747,10 +788,10 @@ html, body, #app {
   background: #16a34a;
   color: #fff;
   border: 1px solid transparent;
-  padding: 10px 18px;
+  padding: 9px 16px;
   border-radius: 8px;
   font-weight: bold;
-  font-size: 14.5px;
+  font-size: 14px;
   cursor: pointer;
   transition: background-color 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease, transform 0.15s ease;
 }
@@ -766,24 +807,35 @@ html, body, #app {
   cursor: not-allowed;
 }
 
-@media (min-width: 1025px) and (max-width: 1291px) {
+/* Ajuste responsivo entre 1025px e 1360px para o menu superior nunca quebrar */
+@media (min-width: 1025px) and (max-width: 1360px) {
   .btn-duas-linhas {
     line-height: 1.15;
     text-align: center;
-    padding: 5px 10px !important;
-    font-size: 12.5px !important;
+    padding: 5px 9px !important;
+    font-size: 12px !important;
   }
   .btn-duas-linhas br {
     display: inline;
   }
   .btn-duas-linhas span {
     margin-left: 0;
-    font-size: 11.5px;
+    font-size: 11px;
     opacity: 0.92;
   }
-  .editor-topbar .btn-secundario {
-    font-size: 13px;
+  .editor-topbar {
     padding: 6px 10px;
+    gap: 6px;
+  }
+  .editor-topbar .btn-secundario,
+  .editor-topbar .btn-primario,
+  .editor-topbar .btn-seletor-multi,
+  .seletor-andar-box {
+    font-size: 12.5px !important;
+    padding: 6px 10px !important;
+  }
+  .texto-truncado-est {
+    max-width: 145px;
   }
 }
 
@@ -1088,7 +1140,7 @@ html, body, #app {
 .dica-painel {
   font-size: 13.5px;
   color: var(--texto-secundario);
-  margin-bottom: 10px;
+  margin-bottom: 4px;
   line-height: 1.35;
 }
 
@@ -1145,9 +1197,9 @@ html, body, #app {
 
 .btn-equipamento {
   flex: 1;
-  background: var(--bg-painel);
+  background: var(--bg-botao-sec);
   color: var(--texto-principal);
-  border: 1px solid var(--borda);
+  border: 1px solid var(--borda-botao-sec);
   padding: 10px 6px;
   border-radius: 8px;
   font-weight: bold;
@@ -1158,7 +1210,7 @@ html, body, #app {
 .btn-equipamento:hover {
   border-color: var(--destaque-azul);
   color: var(--destaque-azul);
-  background: rgba(59, 130, 246, 0.06);
+  background: rgba(59, 130, 246, 0.12);
   transform: translateY(-1px);
 }
 
@@ -1182,12 +1234,12 @@ html, body, #app {
 }
 
 /* =========================================================
-   MODAIS DO EDITOR 2D
+   MODAIS DO SISTEMA
    ========================================================= */
 .modal-backdrop {
   position: fixed;
   inset: 0;
-  background: rgba(0, 0, 0, 0.6);
+  background: rgba(0, 0, 0, 0.65);
   z-index: 2000;
   display: flex;
   justify-content: center;
@@ -1208,6 +1260,15 @@ html, body, #app {
 .modal-box h3 { font-size: 17px; }
 .modal-box.modal-compacto { max-width: 280px; }
 .modal-box.modal-alterar-setor { max-width: 400px; }
+.modal-box.modal-escolher-est-mobile { max-width: 380px; }
+
+.lista-modal-est-mobile {
+  max-height: 55vh;
+  overflow-y: auto;
+  border: 1px solid var(--borda);
+  border-radius: 8px;
+  margin-top: 6px;
+}
 
 .linha-inputs-compactos {
   display: flex;
@@ -1235,8 +1296,8 @@ html, body, #app {
   font-size: 15px !important;
   font-weight: bold;
   border-radius: 7px;
-  border: 1px solid var(--borda);
-  background: var(--bg-painel);
+  border: 1px solid var(--borda-botao-sec);
+  background: var(--bg-botao-sec);
   color: var(--texto-principal);
 }
 
@@ -1689,13 +1750,6 @@ html, body, #app {
   letter-spacing: -0.5px;
 }
 
-.editor-topbar {
-  margin-left: 108px !important;
-}
-.topbar-titulo-central {
-  padding-left: 114px;
-}
-
 /* Container Principal do Dashboard do Gerente */
 .gerente-dashboard-container {
   padding: 16px 24px 24px 24px;
@@ -1707,14 +1761,15 @@ html, body, #app {
   gap: 16px;
 }
 
+/* Apenas a 1ª linha do cabeçalho tem recuo para os botões fixos; a linha de baixo começa junto com os cards */
 .gerente-header-topo {
-  padding-left: 108px;
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 12px;
 }
 
 .gerente-boas-vindas {
+  padding-left: 108px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -1722,7 +1777,7 @@ html, body, #app {
   gap: 12px;
 }
 .gerente-boas-vindas h1 {
-  font-size: 25px;
+  font-size: 24px;
   font-weight: 700;
 }
 
@@ -1736,24 +1791,29 @@ html, body, #app {
 .btn-simulacao-ativa {
   border-color: #16a34a !important;
   color: #16a34a !important;
-  background: rgba(22, 163, 74, 0.1) !important;
+  background: rgba(22, 163, 74, 0.12) !important;
 }
 
-/* Seletor Múltiplo de Estacionamentos */
+/* Seletor Múltiplo de Estacionamentos (Alinhado à esquerda junto com os cards) */
 .seletor-multi-wrapper {
   position: relative;
   align-self: flex-start;
+  margin-left: 0;
 }
 
 .btn-seletor-multi {
-  background: var(--bg-card);
+  background: var(--bg-botao-sec);
   color: var(--texto-principal);
-  border: 1px solid var(--destaque-azul);
+  border: 1.5px solid var(--destaque-azul);
   padding: 8px 14px;
   border-radius: 9px;
   font-weight: 700;
   font-size: 14px;
   cursor: pointer;
+  transition: background-color 0.15s ease, transform 0.15s ease;
+}
+.btn-seletor-multi:hover {
+  background: rgba(59, 130, 246, 0.12);
 }
 
 .dropdown-multi-box {
@@ -1763,7 +1823,7 @@ html, body, #app {
   width: 320px;
   max-width: 90vw;
   background: var(--bg-card);
-  border: 1px solid var(--borda);
+  border: 1px solid var(--borda-botao-sec);
   border-radius: 12px;
   box-shadow: 0 12px 28px rgba(0, 0, 0, 0.35);
   z-index: 900;
@@ -1786,8 +1846,8 @@ html, body, #app {
   width: 100%;
   padding: 7px 10px 7px 32px;
   border-radius: 7px;
-  border: 1px solid var(--borda);
-  background: var(--bg-painel);
+  border: 1px solid var(--borda-botao-sec);
+  background: var(--bg-botao-sec);
   color: var(--texto-principal);
   font-size: 13.5px;
 }
@@ -1815,7 +1875,7 @@ html, body, #app {
 }
 .item-opcao-multi.opcao-ativa {
   color: var(--destaque-azul);
-  background: rgba(37, 99, 235, 0.08);
+  background: rgba(37, 99, 235, 0.1);
   font-weight: 700;
 }
 
@@ -1838,10 +1898,6 @@ html, body, #app {
   gap: 14px;
 }
 
-.kpi-apenas-tablet {
-  display: none;
-}
-
 .card-kpi-gerente {
   background: var(--bg-card);
   border: 1px solid var(--borda);
@@ -1853,6 +1909,10 @@ html, body, #app {
   min-height: 195px;
 }
 
+.card-kpi-gerente.kpi-apenas-tablet {
+  display: none;
+}
+
 .kpi-cabecalho {
   display: flex;
   justify-content: space-between;
@@ -1861,17 +1921,18 @@ html, body, #app {
   margin-bottom: 10px;
 }
 
+/* Título dos cards superiores com a cor principal (branco no modo dark) igual aos demais títulos */
 .kpi-titulo {
-  font-size: 14px;
+  font-size: 15.5px;
   font-weight: 700;
-  color: var(--texto-secundario);
+  color: var(--texto-principal);
 }
 
 .legenda-fluxo-mini {
   display: flex;
   align-items: center;
-  gap: 8px;
-  font-size: 11.5px;
+  gap: 10px;
+  font-size: 12px;
   color: var(--texto-secundario);
 }
 .ponto-legenda {
@@ -1883,15 +1944,15 @@ html, body, #app {
 .ponto-legenda.ent { background: #3b82f6; }
 .ponto-legenda.sai { background: #f97316; }
 
-/* Gráfico de Barras Horárias */
+/* Gráfico de Barras Horárias (Altura explícita para funcionar em qualquer tela/tablet) */
 .grafico-barras-horarias {
-  flex: 1;
+  width: 100%;
   display: flex;
   align-items: flex-end;
   justify-content: space-between;
   gap: 6px;
-  padding-top: 16px;
-  height: 125px;
+  padding-top: 18px;
+  height: 135px;
 }
 
 .coluna-hora-item {
@@ -1905,8 +1966,8 @@ html, body, #app {
 }
 
 .par-barras-verticais {
-  flex: 1;
   width: 100%;
+  height: 96px;
   display: flex;
   align-items: flex-end;
   justify-content: center;
@@ -1914,7 +1975,7 @@ html, body, #app {
 }
 
 .barra-v {
-  width: 11px;
+  width: 12px;
   border-radius: 3px 3px 0 0;
   position: relative;
   transition: height 0.25s ease;
@@ -1924,12 +1985,13 @@ html, body, #app {
 
 .valor-barra-topo {
   position: absolute;
-  top: -14px;
+  top: -15px;
   left: 50%;
   transform: translateX(-50%);
   font-size: 9.5px;
   font-weight: 700;
-  color: var(--texto-secundario);
+  color: var(--texto-principal);
+  white-space: nowrap;
 }
 
 .rotulo-hora-eixo {
@@ -1952,10 +2014,10 @@ html, body, #app {
 .barra-progresso-ocupacao {
   width: 100%;
   height: 10px;
-  background: var(--bg-painel);
+  background: var(--bg-botao-sec);
   border-radius: 999px;
   overflow: hidden;
-  border: 1px solid var(--borda);
+  border: 1px solid var(--borda-botao-sec);
 }
 .preenchimento-ocupacao {
   height: 100%;
@@ -2084,13 +2146,6 @@ html, body, #app {
   position: relative;
 }
 
-.topbar-direita-gerente {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  flex-wrap: nowrap;
-}
-
 .btn-modo-inativar-ativo {
   background: #dc2626 !important;
   border-color: #fca5a5 !important;
@@ -2127,7 +2182,7 @@ html, body, #app {
   opacity: 0.48;
 }
 
-/* 5 Variações do Mapa de Calor (2 Azuis, 1 Meio-termo, 2 Vermelhas) */
+/* 5 Variações do Mapa de Calor */
 .calor-nivel-1 {
   background-color: #1d4ed8 !important;
   border-color: #1e3a8a !important;
@@ -2298,21 +2353,21 @@ html, body, #app {
   padding: 14px;
   border-radius: 12px;
   display: inline-flex;
-  margin: 14px 0 10px 0;
+  margin: 10px 0;
   border: 2px solid var(--borda);
 }
 .url-qr-codigo {
   display: block;
   font-size: 12px;
   padding: 6px 10px;
-  background: var(--bg-painel);
+  background: var(--bg-botao-sec);
   border-radius: 6px;
-  color: var(--texto-secundario);
+  color: var(--texto-principal);
   word-break: break-all;
 }
 
 /* =========================================================
-   ETAPA 3: PÁGINA DE RELATÓRIOS ANALÍTICOS E EXPORTAÇÃO BI
+   PÁGINA DE RELATÓRIOS ANALÍTICOS E EXPORTAÇÃO BI
    ========================================================= */
 .grade-quatro-kpis-relatorio {
   display: grid;
@@ -2352,6 +2407,7 @@ html, body, #app {
 .header-relatorio-bloco h3 {
   font-size: 17.5px;
   font-weight: 700;
+  color: var(--texto-principal);
 }
 
 .btn-exportar-card {
@@ -2361,14 +2417,28 @@ html, body, #app {
 }
 
 .grafico-relatorio-maior {
-  height: 175px;
-  padding-top: 22px;
+  height: 195px;
+  padding-top: 24px;
+}
+.grafico-relatorio-maior .par-barras-verticais {
+  height: 140px;
+}
+.grafico-relatorio-maior .barra-v {
+  width: 14px;
 }
 
-/* Tabelas de Ranking e Histórico */
+/* Tabelas de Ranking e Histórico (Altura fixa para 8 linhas no Histórico) */
 .tabela-responsiva-wrapper {
   width: 100%;
   overflow-x: auto;
+}
+
+.tabela-historico-altura-fixa {
+  min-height: 395px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  overflow-y: hidden;
 }
 
 .tabela-relatorio {
@@ -2417,6 +2487,8 @@ html, body, #app {
 .input-historico-compacto {
   padding: 8px 12px 8px 34px !important;
   font-size: 13.5px !important;
+  background: var(--bg-botao-sec) !important;
+  border: 1px solid var(--borda-botao-sec) !important;
 }
 
 /* Comparador Lado a Lado de 2 Estacionamentos */
@@ -2455,7 +2527,7 @@ html, body, #app {
   gap: 8px;
 }
 
-/* Seção de Exportação Completa em Múltiplas Abas e Modal de Exportação */
+/* Seção de Exportação Completa e Modal de Exportação */
 .card-exportacao-completa-bi {
   border: 1.5px solid rgba(22, 163, 74, 0.45);
 }
@@ -2482,7 +2554,6 @@ html, body, #app {
   transition: opacity 0.2s ease, filter 0.2s ease;
 }
 
-/* Deixa as datas cinzas e sem interação ao escolher Último dia ou Última semana */
 .datas-cinzadas {
   opacity: 0.4;
   pointer-events: none;
@@ -2542,6 +2613,14 @@ html, body, #app {
     border-radius: 9px;
   }
 
+  .btn-logo-vc {
+    left: 54px;
+    width: 38px;
+    height: 38px;
+    font-size: 15px;
+    border-radius: 9px;
+  }
+
   .editor-layout {
     padding: 0;
     width: 100vw;
@@ -2571,7 +2650,7 @@ html, body, #app {
     border-radius: 9px;
     background: var(--bg-card);
     color: var(--texto-principal);
-    border: 1px solid var(--borda);
+    border: 1px solid var(--borda-botao-sec);
     font-size: 16px;
     cursor: pointer;
     box-shadow: 0 3px 10px rgba(0, 0, 0, 0.28);
@@ -2644,8 +2723,8 @@ html, body, #app {
     top: 56px;
     right: 54px;
     left: auto;
-    width: 245px;
-    margin-left: 0;
+    width: 255px;
+    margin-left: 0 !important;
     z-index: 960;
     flex-direction: column;
     align-items: stretch;
@@ -2661,6 +2740,11 @@ html, body, #app {
   }
   .topbar-direita {
     display: none;
+  }
+  .topbar-direita-gerente {
+    flex-direction: column;
+    align-items: stretch;
+    margin-top: 6px;
   }
 
   .sidebar-direita-editor {
@@ -2687,14 +2771,14 @@ html, body, #app {
   .topbar-titulo-central {
     min-height: 38px;
     padding-top: 5px;
-    padding-left: 48px;
+    padding-left: 96px;
     padding-right: 48px;
   }
   .topbar-titulo-central.com-botao-direita {
     padding-right: 95px;
   }
   .topbar-titulo-central h1 {
-    font-size: 20px;
+    font-size: 19px;
   }
   .subtitulo {
     font-size: 12.5px;
@@ -2715,58 +2799,32 @@ html, body, #app {
     right: auto;
     width: 270px;
   }
-  .btn-logo-vc {
-    left: 54px;
-    width: 38px;
-    height: 38px;
-    font-size: 15px;
-    border-radius: 9px;
-  }
 
-  .topbar-titulo-central {
-    padding-left: 96px;
-  }
-
-  .gerente-header-topo {
+  /* Títulos e botões superiores menores em Tablets (<= 1024px) */
+  .gerente-boas-vindas {
     padding-left: 92px;
   }
+  .gerente-boas-vindas h1 {
+    font-size: 18.5px;
+  }
+  .gerente-boas-vindas .subtitulo {
+    font-size: 12px;
+  }
+  .gerente-atalhos-topo .btn-secundario,
+  .gerente-atalhos-topo .btn-primario,
+  .btn-seletor-multi {
+    padding: 7px 11px !important;
+    font-size: 12.5px !important;
+  }
 
-  /* Em Tablets: 2 cards por linha (4 cards em 2 linhas) */
   .grade-kpis-gerente {
     grid-template-columns: repeat(2, 1fr);
   }
-  .kpi-apenas-tablet {
+  .card-kpi-gerente.kpi-apenas-tablet {
     display: flex;
   }
 
-  .lista-proporcao-horas {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-    flex: 1;
-    justify-content: center;
-  }
-  .linha-proporcao-item {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    font-size: 12px;
-  }
-  .hora-pct { width: 32px; font-weight: 700; }
-  .barra-pct-dupla {
-    flex: 1;
-    height: 18px;
-    border-radius: 6px;
-    overflow: hidden;
-    display: flex;
-    font-size: 10.5px;
-    font-weight: 700;
-    color: #fff;
-  }
-  .fatia-ent { background: #3b82f6; display: flex; align-items: center; justify-content: center; }
-  .fatia-sai { background: #f97316; display: flex; align-items: center; justify-content: center; }
-
-  /* Oculta os 2 mapas lado a lado e mostra o seletor de estacionamentos com pesquisa */
+  /* Oculta os 2 mapas lado a lado e mostra o card que abre o popup de estacionamentos */
   .secao-estacionamentos-dupla-pc {
     display: none;
   }
@@ -2775,20 +2833,8 @@ html, body, #app {
   }
   .seletor-mobile-est-wrapper {
     min-height: auto;
-    position: relative;
   }
-  .dropdown-mobile-est-box {
-    margin-top: 8px;
-    border: 1px solid var(--borda);
-    border-radius: 10px;
-    overflow: hidden;
-    background: var(--bg-painel);
-  }
-  .topbar-direita-gerente {
-    flex-direction: column;
-    align-items: stretch;
-    margin-top: 6px;
-  }
+
   .grade-quatro-kpis-relatorio {
     grid-template-columns: repeat(2, 1fr);
   }
@@ -2804,7 +2850,7 @@ html, body, #app {
 
   .topbar-titulo-central {
     padding-top: 6px;
-    padding-left: 44px;
+    padding-left: 90px;
     padding-right: 8px;
     margin-bottom: 14px;
     min-height: 38px;
@@ -2813,7 +2859,7 @@ html, body, #app {
     padding-right: 72px;
   }
   .topbar-titulo-central h1 {
-    font-size: 16.5px;
+    font-size: 16px;
   }
   .subtitulo {
     font-size: 11.5px;
@@ -2881,18 +2927,51 @@ html, body, #app {
     padding: 14px 12px 24px 12px;
   }
 
-  /* Em Celulares: até 5 opções visíveis antes do scroll no seletor */
+  .gerente-boas-vindas h1 {
+    font-size: 16.5px;
+  }
+
+  .gerente-atalhos-topo {
+    margin-left: -92px; /* Remove o recuo do logo apenas para esta linha */
+    width: calc(100% + 92px);
+    gap: 6px;
+    flex-wrap: nowrap; /* Força tudo a ficar na mesma linha */
+    margin-top: 4px;
+  }
+
+  .gerente-atalhos-topo .btn-secundario,
+  .gerente-atalhos-topo .btn-primario {
+    padding: 8px 4px !important;
+    font-size: 11.5px !important;
+    flex: 1; /* Distribui a largura igualmente entre os 3 botões */
+    min-width: 0; 
+  }
+
+  .gerente-atalhos-topo .item-icone-texto {
+    gap: 4px;
+  }
+
+  .gerente-atalhos-topo span {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis; /* Abrevia o texto caso a tela do celular seja muito pequena */
+  }
+
+  .gerente-atalhos-topo svg {
+    width: 15px;
+    height: 15px;
+    flex-shrink: 0;
+  }
+
   .lista-opcoes-multi {
     max-height: 195px;
   }
 
-  /* Em Celulares: 1 card por linha (3 cards empilhados) */
-  .grade-kpis-gerente {
-    grid-template-columns: 1fr;
-  }
-  .kpi-apenas-tablet {
+  .card-kpi-gerente.kpi-apenas-tablet {
     display: none;
   }
+
+  .grade-kpis-gerente,
   .grade-quatro-kpis-relatorio,
   .seletores-comparador-grid,
   .grade-cards-comparador,
@@ -2911,5 +2990,28 @@ html, body, #app {
   }
   .auth-cabecalho h1 {
     font-size: 20px;
+  }
+}
+
+/* Na impressão do QR Code, exibe apenas o QR Code centralizado */
+@media print {
+  body * {
+    visibility: hidden;
+  }
+  .modal-qr-gerente,
+  .modal-qr-gerente * {
+    visibility: visible;
+  }
+  .modal-qr-gerente {
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    box-shadow: none !important;
+    border: none !important;
+  }
+  .modal-qr-gerente .modal-acoes,
+  .modal-qr-gerente .btn-fechar-mini {
+    display: none !important;
   }
 }

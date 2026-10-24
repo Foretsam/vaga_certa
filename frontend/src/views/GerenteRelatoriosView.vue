@@ -48,10 +48,9 @@ const hojeIso = new Date().toISOString().slice(0, 10)
 const seteDiasAtrasIso = new Date(Date.now() - 7 * 86400000).toISOString().slice(0, 10)
 const ontemIso = new Date(Date.now() - 86400000).toISOString().slice(0, 10)
 
-// Seção de Exportação Completa (Múltiplas Abas)
+// Seção de Exportação Completa
 const dataInicioCompleto = ref(seteDiasAtrasIso)
 const dataFimCompleto = ref(hojeIso)
-// '' (personalizado) | 'ULTIMO_DIA' | 'ULTIMA_SEMANA'
 const atalhoPeriodoCompleto = ref('')
 
 // Modal Popup de Exportação Individual
@@ -95,9 +94,6 @@ function fecharDropdownsAoClicarFora(e) {
   }
 }
 
-// =========================================================
-// SELETOR MÚLTIPLO DO TOPO (MÉDIA / AGREGAÇÃO)
-// =========================================================
 const totalOpcoesFiltro = computed(() => 1 + estabelecimentosDoGerente.value.length)
 const mostrarPesquisaNoMulti = computed(() => totalOpcoesFiltro.value > 5)
 
@@ -111,13 +107,13 @@ const textoBotaoSeletorTopo = computed(() => {
   const qtdSel = idsSelecionadosGerente.value.length
   const total = estabelecimentosDoGerente.value.length
   if (qtdSel === 0 || qtdSel === total) {
-    return 'Dashboard completo (Todos)'
+    return `Todos (${total})`
   }
   if (qtdSel === 1) {
     const est = estabelecimentosDoGerente.value.find(e => e.id === idsSelecionadosGerente.value[0])
     return est ? est.nome : '1 selecionado'
   }
-  return `${qtdSel} estacionamentos selecionados (Média)`
+  return `${qtdSel} estacionamentos selecionados`
 })
 
 function selecionarDashboardCompleto() {
@@ -140,8 +136,19 @@ function alternarSelecaoEstacionamento(idEst) {
 }
 
 // =========================================================
-// DADOS ANALÍTICOS CONSOLIDADOS DOS RELATÓRIOS
+// DADOS ANALÍTICOS SOMADOS DOS ESTACIONAMENTOS SELECIONADOS
 // =========================================================
+const faixasHorariasPadrao = [
+  { hora: '08h', entBase: 2, saiBase: 1 },
+  { hora: '10h', entBase: 4, saiBase: 2 },
+  { hora: '12h', entBase: 7, saiBase: 5 },
+  { hora: '14h', entBase: 5, saiBase: 4 },
+  { hora: '16h', entBase: 4, saiBase: 6 },
+  { hora: '18h', entBase: 8, saiBase: 7 },
+  { hora: '20h', entBase: 3, saiBase: 6 },
+  { hora: '22h', entBase: 2, saiBase: 4 }
+]
+
 const dadosRelatorios = computed(() => {
   const lista = estabelecimentosFiltradosGerente.value
   if (lista.length === 0) {
@@ -161,10 +168,10 @@ const dadosRelatorios = computed(() => {
     }
   }
 
-  let somaTaxa = 0
   let somaLivres = 0
   let somaOcupadas = 0
   let somaTotais = 0
+  let somaInativas = 0
   let somaTempoMin = 0
   let somaUsosDia = 0
 
@@ -172,14 +179,39 @@ const dadosRelatorios = computed(() => {
   const listaVagasRanking = []
   const historicoGerado = []
 
+  const mapaSomaHoras = faixasHorariasPadrao.map(f => ({
+    hora: f.hora,
+    entradas: 0,
+    saidas: 0,
+    entPct: 50,
+    saiPct: 50
+  }))
+
+  const multSim = simulacao1Ativa.value ? 1.6 : 1
+
   lista.forEach((est) => {
     const m = contarVagasEstabelecimento(est)
-    somaTaxa += m.taxaOcupacao
     somaLivres += m.livres
     somaOcupadas += m.ocupadas
     somaTotais += m.total
+    somaInativas += m.inativas
     somaTempoMin += m.tempoMedioMin
     somaUsosDia += m.somaUsosDia
+
+    const pesoVagas = Math.max(1, Math.round(m.total / 3))
+    const variacaoId = (Number(est.id) % 3) + 1
+
+    faixasHorariasPadrao.forEach((f, idx) => {
+      const ajusteHora = ((Number(est.id) + idx) % 2 === 0) ? 1 : 0
+      mapaSomaHoras[idx].entradas += Math.max(
+        1,
+        Math.round((f.entBase * pesoVagas + variacaoId + ajusteHora) * multSim)
+      )
+      mapaSomaHoras[idx].saidas += Math.max(
+        1,
+        Math.round((f.saiBase * pesoVagas + (variacaoId - 1) + ajusteHora) * multSim)
+      )
+    })
 
     ;(est.andares || []).forEach((andar) => {
       const celulas = Object.values(andar.celulas || {})
@@ -220,7 +252,6 @@ const dadosRelatorios = computed(() => {
             statusAtual: v.inativa ? 'Inativa' : v.livre ? 'Livre' : 'Ocupada'
           })
 
-          // Popula registros de histórico para a tabela e para o CSV/BI
           const horaBase = 8 + (vIdx % 11)
           const minBase = (vIdx * 7) % 60
           const entradaStr = `${hojeIso} ${String(horaBase).padStart(2, '0')}:${String(minBase).padStart(2, '0')}`
@@ -245,44 +276,29 @@ const dadosRelatorios = computed(() => {
     })
   })
 
-  const div = lista.length
-  const taxaOcupacao = Math.round(somaTaxa / div)
-  const vagasLivres = Math.round(somaLivres / div)
-  const vagasOcupadas = Math.round(somaOcupadas / div)
-  const vagasTotais = Math.round(somaTotais / div)
-  const tempoMedioMin = Math.round(somaTempoMin / div) || 68
+  const vagasAtivasSoma = Math.max(1, somaTotais - somaInativas)
+  const taxaOcupacao = somaTotais > 0 ? Math.round((somaOcupadas / vagasAtivasSoma) * 100) : 0
+  const tempoMedioMin = Math.round(somaTempoMin / lista.length) || 68
 
-  const fatorEscala = Math.max(1, Math.round(vagasTotais / 10))
-  const multSim = simulacao1Ativa.value ? 1.45 : 0.85
-  const faixas = [
-    { hora: '08h', e: 5, s: 1 },
-    { hora: '10h', e: 11, s: 4 },
-    { hora: '12h', e: 16, s: 12 },
-    { hora: '14h', e: 13, s: 10 },
-    { hora: '16h', e: 10, s: 13 },
-    { hora: '18h', e: 19, s: 15 },
-    { hora: '20h', e: 8, s: 17 },
-    { hora: '22h', e: 3, s: 11 }
-  ]
-
-  const fluxoPorHora = faixas.map((f) => {
-    const entradas = Math.max(1, Math.round(f.e * fatorEscala * multSim))
-    const saidas = Math.max(1, Math.round(f.s * fatorEscala * multSim))
-    const totalHora = Math.max(1, entradas + saidas)
+  const fluxoPorHora = mapaSomaHoras.map((item) => {
+    const somaHora = Math.max(1, item.entradas + item.saidas)
+    const entPct = Math.round((item.entradas / somaHora) * 100)
     return {
-      hora: f.hora,
-      entradas,
-      saidas,
-      entPct: Math.round((entradas / totalHora) * 100),
-      saiPct: 100 - Math.round((entradas / totalHora) * 100)
+      hora: item.hora,
+      entradas: item.entradas,
+      saidas: item.saidas,
+      entPct,
+      saiPct: 100 - entPct
     }
   })
 
   const maiorValorFluxo = Math.max(10, ...fluxoPorHora.flatMap(f => [f.entradas, f.saidas]))
   const picoObj = [...fluxoPorHora].sort((a, b) => (b.entradas + b.saidas) - (a.entradas + a.saidas))[0]
+
+  // Soma real de todos os veículos dos estacionamentos selecionados hoje
   const totalVeiculosDia =
     somaUsosDia > 0
-      ? Math.round(somaUsosDia / div)
+      ? somaUsosDia
       : fluxoPorHora.reduce((acc, f) => acc + f.entradas, 0)
 
   listaSetoresRanking.sort((a, b) => b.giroDiario - a.giroDiario)
@@ -290,9 +306,9 @@ const dadosRelatorios = computed(() => {
 
   return {
     taxaOcupacao,
-    vagasLivres,
-    vagasOcupadas,
-    vagasTotais,
+    vagasLivres: somaLivres,
+    vagasOcupadas: somaOcupadas,
+    vagasTotais: somaTotais,
     totalVeiculosDia,
     tempoMedioFormatado: formatarMinutos(tempoMedioMin),
     horarioPico: picoObj ? picoObj.hora : '18h',
@@ -364,7 +380,7 @@ const historicoPaginado = computed(() => {
 })
 
 // =========================================================
-// ATALHOS DE DATA ("ÚLTIMO DIA" / "ÚLTIMA SEMANA") E EXPORTAÇÃO
+// ATALHOS DE DATA E EXPORTAÇÃO CSV (PADRÃO BRASILEIRO ';')
 // =========================================================
 function selecionarAtalhoCompleto(tipo) {
   if (atalhoPeriodoCompleto.value === tipo) {
@@ -481,11 +497,11 @@ function obterLinhasRelatorioPorChave(chave, dtIni, dtFim) {
   return [
     ['Indicador', 'Valor', 'Periodo'],
     ['Taxa de Ocupacao Atual', `${d.taxaOcupacao}%`, periodoStr],
-    ['Vagas Livres', d.vagasLivres, periodoStr],
-    ['Vagas Ocupadas', d.vagasOcupadas, periodoStr],
-    ['Total de Veiculos no Dia', d.totalVeiculosDia, periodoStr],
+    ['Vagas Livres (Soma)', d.vagasLivres, periodoStr],
+    ['Vagas Ocupadas (Soma)', d.vagasOcupadas, periodoStr],
+    ['Total de Veiculos no Dia (Soma)', d.totalVeiculosDia, periodoStr],
     ['Tempo Medio de Permanencia', d.tempoMedioFormatado, periodoStr],
-    ['Horario de Pico', d.horarioPico, periodoStr]
+    ['Horario de Maior Pico', d.horarioPico, periodoStr]
   ]
 }
 
@@ -501,14 +517,16 @@ function dispararDownloadArquivo(conteudo, nomeArquivo, mimeType) {
   URL.revokeObjectURL(url)
 }
 
+function formatarLinhasParaCsvBrasil(linhas) {
+  return linhas
+    .map(row => row.map(val => `"${String(val ?? '').replace(/"/g, '""')}"`).join(';'))
+    .join('\r\n')
+}
+
 function confirmarExportacaoCsvIndividual() {
   const { chave, titulo } = relatorioAlvoExportacao.value
   const linhas = obterLinhasRelatorioPorChave(chave, dataInicioModal.value, dataFimModal.value)
-  const csvContent =
-    '\uFEFF' +
-    linhas
-      .map(row => row.map(val => `"${String(val ?? '').replace(/"/g, '""')}"`).join(';'))
-      .join('\r\n')
+  const csvContent = '\uFEFF' + formatarLinhasParaCsvBrasil(linhas)
 
   const slug = titulo.toLowerCase().replace(/[^a-z0-9]+/g, '_')
   dispararDownloadArquivo(
@@ -519,78 +537,42 @@ function confirmarExportacaoCsvIndividual() {
   modalExportarAberto.value = false
 }
 
-// Exporta TODOS os relatórios em um único arquivo Excel (.xls XML) com CADA RELATÓRIO EM UMA ABA DIFERENTE
-function exportarRelatorioCompletoMultiAbas() {
+// Exporta TODOS os relatórios em um único arquivo .CSV padrão brasileiro (separado por ponto e vírgula ';')
+function exportarRelatorioCompletoCsvPadrao() {
   const dtIni = dataInicioCompleto.value
   const dtFim = dataFimCompleto.value
 
-  const abas = [
-    { nome: 'Resumo_KPIs', linhas: obterLinhasRelatorioPorChave('RESUMO', dtIni, dtFim) },
-    { nome: 'Fluxo_Bruto_Horas', linhas: obterLinhasRelatorioPorChave('FLUXO_BRUTO', dtIni, dtFim) },
-    { nome: 'Fluxo_Porcentagem', linhas: obterLinhasRelatorioPorChave('FLUXO_PCT', dtIni, dtFim) },
-    { nome: 'Ranking_Setores', linhas: obterLinhasRelatorioPorChave('RANKING_SETORES', dtIni, dtFim) },
-    { nome: 'Ranking_Vagas', linhas: obterLinhasRelatorioPorChave('RANKING_VAGAS', dtIni, dtFim) },
-    { nome: 'Comparativo_Unidades', linhas: obterLinhasRelatorioPorChave('COMPARATIVO', dtIni, dtFim) },
-    { nome: 'Historico_Ocupacao', linhas: obterLinhasRelatorioPorChave('HISTORICO', dtIni, dtFim) }
+  const secoes = [
+    { titulo: '1. RESUMO DE KPIS', chave: 'RESUMO' },
+    { titulo: '2. FLUXO POR HORA (NUMERO BRUTO)', chave: 'FLUXO_BRUTO' },
+    { titulo: '3. FLUXO POR HORA (PORCENTAGEM)', chave: 'FLUXO_PCT' },
+    { titulo: '4. RANKING DE SETORES', chave: 'RANKING_SETORES' },
+    { titulo: '5. RANKING DE VAGAS', chave: 'RANKING_VAGAS' },
+    { titulo: '6. COMPARATIVO DE UNIDADES', chave: 'COMPARATIVO' },
+    { titulo: '7. HISTORICO DETALHADO DE OCUPACAO', chave: 'HISTORICO' }
   ]
 
-  const escaparXml = (str) =>
-    String(str ?? '')
-      .replace(/&/g, '&amp;')
-      .replace(/</g, '&lt;')
-      .replace(/>/g, '&gt;')
-      .replace(/"/g, '&quot;')
+  const blocosCsv = secoes.map((secao) => {
+    const linhas = obterLinhasRelatorioPorChave(secao.chave, dtIni, dtFim)
+    return `"=== ${secao.titulo} ==="\r\n` + formatarLinhasParaCsvBrasil(linhas)
+  })
 
-  const worksheetsXml = abas
-    .map((aba) => {
-      const rowsXml = aba.linhas
-        .map((linha, rIdx) => {
-          const cellsXml = linha
-            .map((celula) => {
-              const ehNumero = typeof celula === 'number'
-              const tipo = ehNumero ? 'Number' : 'String'
-              const estilo = rIdx === 0 ? ' ss:StyleID="cabecalho"' : ''
-              return `<Cell${estilo}><Data ss:Type="${tipo}">${escaparXml(celula)}</Data></Cell>`
-            })
-            .join('')
-          return `<Row>${cellsXml}</Row>`
-        })
-        .join('')
-
-      return `<Worksheet ss:Name="${aba.nome}"><Table>${rowsXml}</Table></Worksheet>`
-    })
-    .join('')
-
-  const workbookXml = `<?xml version="1.0" encoding="UTF-8"?>
-<?mso-application progid="Excel.Sheet"?>
-<Workbook xmlns="urn:schemas-microsoft-com:office:spreadsheet"
- xmlns:o="urn:schemas-microsoft-com:office:office"
- xmlns:x="urn:schemas-microsoft-com:office:excel"
- xmlns:ss="urn:schemas-microsoft-com:office:spreadsheet">
- <Styles>
-  <Style ss:ID="cabecalho">
-   <Font ss:Bold="1" ss:Color="#FFFFFF"/>
-   <Interior ss:Color="#1D4ED8" ss:Pattern="Solid"/>
-  </Style>
- </Styles>
- ${worksheetsXml}
-</Workbook>`
-
+  const conteudoFinal = '\uFEFF' + blocosCsv.join('\r\n\r\n')
   dispararDownloadArquivo(
-    workbookXml,
-    `vaga_certa_relatorio_completo_BI_${dtIni}_a_${dtFim}.xls`,
-    'application/vnd.ms-excel;charset=utf-8;'
+    conteudoFinal,
+    `vaga_certa_relatorio_completo_BI_${dtIni}_a_${dtFim}.csv`,
+    'text/csv;charset=utf-8;'
   )
 }
 </script>
 
 <template>
   <div class="gerente-dashboard-container">
-    <!-- CABEÇALHO DO TOPO + SELETOR MULTI-ESTACIONAMENTOS -->
+    <!-- CABEÇALHO DO TOPO + SELETOR MULTI-ESTACIONAMENTOS ALINHADO COM OS CARDS -->
     <header class="gerente-header-topo">
       <div class="gerente-boas-vindas">
         <div>
-          <h1>Relatórios Analíticos e Exportação BI</h1>
+          <h1>Relatórios Detalhados e Exportação BI</h1>
           <p class="subtitulo">
             Análise de fluxo horário, permanência, rotatividade de vagas e comparativo entre unidades
           </p>
@@ -624,7 +606,7 @@ function exportarRelatorioCompletoMultiAbas() {
         </div>
       </div>
 
-      <!-- Seletor Múltiplo de Estacionamentos (Oculto caso tenha apenas 1 estacionamento) -->
+      <!-- Seletor Múltiplo alinhado à esquerda junto com os cards -->
       <div v-if="estabelecimentosDoGerente.length >= 2" class="seletor-multi-wrapper">
         <button
           type="button"
@@ -653,7 +635,7 @@ function exportarRelatorioCompletoMultiAbas() {
                 :class="{ 'opcao-ativa': idsSelecionadosGerente.length === 0 }"
                 @click="selecionarDashboardCompleto"
               >
-                <span>Dashboard completo</span>
+                <span>Todos</span>
                 <IconSquareRoundedCheck v-if="idsSelecionadosGerente.length === 0" :size="18" />
               </div>
 
@@ -695,7 +677,7 @@ function exportarRelatorioCompletoMultiAbas() {
         <div class="kpi-valor-destaque" style="color: #22c55e">
           {{ dadosRelatorios.totalVeiculosDia }}
         </div>
-        <p class="kpi-descricao-apoio">Entradas registradas ao longo do dia</p>
+        <p class="kpi-descricao-apoio">Soma de entradas registradas hoje</p>
       </div>
 
       <div class="card-kpi-gerente kpi-compacto">
@@ -717,18 +699,18 @@ function exportarRelatorioCompletoMultiAbas() {
         <div class="kpi-valor-destaque" style="color: #f97316">
           {{ dadosRelatorios.horarioPico }}
         </div>
-        <p class="kpi-descricao-apoio">Faixa com maior volume de entradas e saídas</p>
+        <p class="kpi-descricao-apoio">Faixa com maior volume de movimentações</p>
       </div>
     </section>
 
-    <!-- 2. FLUXO AO LONGO DAS HORAS DO DIA (NÚMERO BRUTO vs. PORCENTAGEM) -->
+    <!-- 2. FLUXO AO LONGO DAS HORAS DO DIA (NÚMERO BRUTO vs. PORCENTAGEM EM GRÁFICO DE BARRAS) -->
     <section class="grade-dupla-relatorios">
       <!-- Relatório A: Fluxo Horário em Número Bruto -->
       <div class="card-relatorio-bloco">
         <div class="header-relatorio-bloco">
           <div>
-            <h3>Fluxo ao Longo das Horas — Número Bruto</h3>
-            <p class="dica-painel">Comparativo absoluto de veículos entrando e saindo por faixa horária</p>
+            <h3>Fluxo Total por Hora (Hoje)</h3>
+            <p class="dica-painel">Soma de veículos entrando e saindo por faixa horária</p>
           </div>
           <button
             class="btn-secundario btn-exportar-card item-icone-texto"
@@ -748,13 +730,15 @@ function exportarRelatorioCompletoMultiAbas() {
             <div class="par-barras-verticais">
               <div
                 class="barra-v ent"
-                :style="{ height: `${Math.max(8, (item.entradas / dadosRelatorios.maiorValorFluxo) * 100)}%` }"
+                :style="{ height: `${Math.max(10, (item.entradas / dadosRelatorios.maiorValorFluxo) * 100)}%` }"
+                :title="`${item.hora} - Entradas: ${item.entradas}`"
               >
                 <span class="valor-barra-topo">{{ item.entradas }}</span>
               </div>
               <div
                 class="barra-v sai"
-                :style="{ height: `${Math.max(8, (item.saidas / dadosRelatorios.maiorValorFluxo) * 100)}%` }"
+                :style="{ height: `${Math.max(10, (item.saidas / dadosRelatorios.maiorValorFluxo) * 100)}%` }"
+                :title="`${item.hora} - Saídas: ${item.saidas}`"
               >
                 <span class="valor-barra-topo">{{ item.saidas }}</span>
               </div>
@@ -769,12 +753,12 @@ function exportarRelatorioCompletoMultiAbas() {
         </div>
       </div>
 
-      <!-- Relatório B: Fluxo Horário em Porcentagem (%) -->
+      <!-- Relatório B: Fluxo Horário em Porcentagem (%) em Gráfico de Barras Verticais -->
       <div class="card-relatorio-bloco">
         <div class="header-relatorio-bloco">
           <div>
-            <h3>Fluxo ao Longo das Horas — Porcentagem (%)</h3>
-            <p class="dica-painel">Proporção percentual entre entradas e saídas em cada faixa do dia</p>
+            <h3>Fluxo em % por Hora (Hoje)</h3>
+            <p class="dica-painel">Gráfico comparativo percentual entre entradas e saídas por hora</p>
           </div>
           <button
             class="btn-secundario btn-exportar-card item-icone-texto"
@@ -785,29 +769,41 @@ function exportarRelatorioCompletoMultiAbas() {
           </button>
         </div>
 
-        <div class="lista-proporcao-horas">
+        <div class="grafico-barras-horarias grafico-relatorio-maior">
           <div
             v-for="item in dadosRelatorios.fluxoPorHora"
             :key="`pct-rel-${item.hora}`"
-            class="linha-proporcao-item"
+            class="coluna-hora-item"
           >
-            <span class="hora-pct">{{ item.hora }}</span>
-            <div class="barra-pct-dupla">
-              <div class="fatia-ent" :style="{ width: `${item.entPct}%` }">
-                {{ item.entPct }}% Ent.
+            <div class="par-barras-verticais">
+              <div
+                class="barra-v ent"
+                :style="{ height: `${Math.max(10, item.entPct)}%` }"
+                :title="`${item.hora} - Entradas: ${item.entPct}%`"
+              >
+                <span class="valor-barra-topo">{{ item.entPct }}%</span>
               </div>
-              <div class="fatia-sai" :style="{ width: `${item.saiPct}%` }">
-                {{ item.saiPct }}% Saí.
+              <div
+                class="barra-v sai"
+                :style="{ height: `${Math.max(10, item.saiPct)}%` }"
+                :title="`${item.hora} - Saídas: ${item.saiPct}%`"
+              >
+                <span class="valor-barra-topo">{{ item.saiPct }}%</span>
               </div>
             </div>
+            <span class="rotulo-hora-eixo">{{ item.hora }}</span>
           </div>
+        </div>
+
+        <div class="legenda-fluxo-mini" style="justify-content: center; margin-top: 8px">
+          <span><i class="ponto-legenda ent"></i> % de Entradas</span>
+          <span><i class="ponto-legenda sai"></i> % de Saídas</span>
         </div>
       </div>
     </section>
 
     <!-- 3. RANKING DE SETORES E RANKING DE VAGAS COM MAIOR ROTATIVIDADE -->
     <section class="grade-dupla-relatorios">
-      <!-- Ranking de Setores -->
       <div class="card-relatorio-bloco">
         <div class="header-relatorio-bloco">
           <div>
@@ -850,7 +846,6 @@ function exportarRelatorioCompletoMultiAbas() {
         </div>
       </div>
 
-      <!-- Ranking de Vagas -->
       <div class="card-relatorio-bloco">
         <div class="header-relatorio-bloco">
           <div>
@@ -959,7 +954,7 @@ function exportarRelatorioCompletoMultiAbas() {
       </div>
     </section>
 
-    <!-- 5. HISTÓRICO DETALHADO DE OCUPAÇÃO (TABELA PAGINADA) -->
+    <!-- 5. HISTÓRICO DETALHADO DE OCUPAÇÃO (ALTURA FIXA + ANIMAÇÃO DE TROCA DE PÁGINA) -->
     <section class="card-relatorio-bloco">
       <div class="header-relatorio-bloco">
         <div>
@@ -989,33 +984,41 @@ function exportarRelatorioCompletoMultiAbas() {
         </div>
       </div>
 
-      <div class="tabela-responsiva-wrapper">
-        <table class="tabela-relatorio">
-          <thead>
-            <tr>
-              <th>Estacionamento</th>
-              <th>Andar / Setor</th>
-              <th>Vaga</th>
-              <th>Data/Hora Entrada</th>
-              <th>Data/Hora Saída</th>
-              <th>Permanência</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr v-for="reg in historicoPaginado" :key="reg.id">
-              <td><strong>{{ reg.estacionamento }}</strong></td>
-              <td>{{ reg.andar }} — {{ reg.setor }}</td>
-              <td><span class="id-badge">{{ reg.vaga }}</span></td>
-              <td>{{ reg.dataEntrada }}</td>
-              <td>
-                <span :class="{ 'tag-em-andamento': reg.dataSaida === 'Em andamento' }">
-                  {{ reg.dataSaida }}
-                </span>
-              </td>
-              <td><strong>{{ reg.permanenciaTexto }}</strong></td>
-            </tr>
-          </tbody>
-        </table>
+      <!-- Container com altura fixa para não mudar de tamanho quando a página tiver menos de 8 linhas -->
+      <div class="tabela-responsiva-wrapper tabela-historico-altura-fixa">
+        <Transition name="fade-tabela" mode="out-in">
+          <table :key="paginaHistorico" class="tabela-relatorio">
+            <thead>
+              <tr>
+                <th>Estacionamento</th>
+                <th>Andar / Setor</th>
+                <th>Vaga</th>
+                <th>Data/Hora Entrada</th>
+                <th>Data/Hora Saída</th>
+                <th>Permanência</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr v-for="reg in historicoPaginado" :key="reg.id">
+                <td><strong>{{ reg.estacionamento }}</strong></td>
+                <td>{{ reg.andar }} — {{ reg.setor }}</td>
+                <td><span class="id-badge">{{ reg.vaga }}</span></td>
+                <td>{{ reg.dataEntrada }}</td>
+                <td>
+                  <span :class="{ 'tag-em-andamento': reg.dataSaida === 'Em andamento' }">
+                    {{ reg.dataSaida }}
+                  </span>
+                </td>
+                <td><strong>{{ reg.permanenciaTexto }}</strong></td>
+              </tr>
+              <tr v-if="historicoPaginado.length === 0">
+                <td colspan="6" style="text-align: center; padding: 32px; color: var(--texto-secundario)">
+                  Nenhum registro encontrado para este filtro.
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </Transition>
       </div>
 
       <div class="paginacao-admin">
@@ -1039,23 +1042,21 @@ function exportarRelatorioCompletoMultiAbas() {
       </div>
     </section>
 
-    <!-- 6. SEÇÃO RESERVADA: EXPORTAR RELATÓRIOS COMPLETOS EM MÚLTIPLAS ABAS (BI) -->
+    <!-- 6. SEÇÃO RESERVADA: EXPORTAR RELATÓRIOS COMPLETOS (CSV PADRÃO BRASIL) -->
     <section class="card-relatorio-bloco card-exportacao-completa-bi">
       <div class="header-relatorio-bloco">
         <div>
           <h3 class="item-icone-texto" style="justify-content: flex-start">
             <IconLayoutBoard :size="20" style="color: #16a34a" />
-            <span>Exportar Relatórios Completos para BI (Múltiplas Abas)</span>
+            <span>Exportar Relatórios Completos para BI (CSV Padrão Brasil)</span>
           </h3>
           <p class="dica-painel">
-            Gera uma pasta de trabalho única para Excel / Power BI contendo cada relatório em uma aba separada
-            (Resumo, Fluxo Bruto, Fluxo %, Setores, Vagas, Comparativo e Histórico).
+            Exporta todos os relatórios consolidados no formato .csv
           </p>
         </div>
       </div>
 
       <div class="controles-exportacao-completa">
-        <!-- Datas ficam cinzas e desabilitadas quando "Último dia" ou "Última semana" está selecionado -->
         <div
           class="campos-datas-exportacao"
           :class="{ 'datas-cinzadas': atalhoPeriodoCompleto !== '' }"
@@ -1065,6 +1066,7 @@ function exportarRelatorioCompletoMultiAbas() {
             <input
               v-model="dataInicioCompleto"
               type="date"
+              class="input-data-nativo"
               :disabled="atalhoPeriodoCompleto !== ''"
             />
           </div>
@@ -1074,13 +1076,14 @@ function exportarRelatorioCompletoMultiAbas() {
             <input
               v-model="dataFimCompleto"
               type="date"
+              class="input-data-nativo"
               :disabled="atalhoPeriodoCompleto !== ''"
             />
           </div>
         </div>
 
         <div class="atalhos-periodo-box">
-          <span class="rotulo-atalho">Período rápido (clique novamente para liberar as datas):</span>
+          <span class="rotulo-atalho">Seleções Rápidas</span>
           <div class="botoes-atalhos-periodo">
             <button
               type="button"
@@ -1105,10 +1108,10 @@ function exportarRelatorioCompletoMultiAbas() {
         <button
           type="button"
           class="btn-primario btn-baixar-completo-bi item-icone-texto"
-          @click="exportarRelatorioCompletoMultiAbas"
+          @click="exportarRelatorioCompletoCsvPadrao"
         >
           <IconDownload :size="20" />
-          <span>Baixar Relatório Completo (Múltiplas Abas)</span>
+          <span>Baixar Relatório Completo (.CSV)</span>
         </button>
       </div>
     </section>
@@ -1131,7 +1134,6 @@ function exportarRelatorioCompletoMultiAbas() {
             Escolha o intervalo de datas ou selecione uma opção rápida abaixo:
           </p>
 
-          <!-- Campos de Data Início e Data Fim (Ficam cinzas ao escolher Último dia ou Última semana) -->
           <div
             class="campos-datas-modal"
             :class="{ 'datas-cinzadas': atalhoPeriodoModal !== '' }"
@@ -1141,6 +1143,7 @@ function exportarRelatorioCompletoMultiAbas() {
               <input
                 v-model="dataInicioModal"
                 type="date"
+                class="input-data-nativo"
                 :disabled="atalhoPeriodoModal !== ''"
               />
             </div>
@@ -1150,12 +1153,12 @@ function exportarRelatorioCompletoMultiAbas() {
               <input
                 v-model="dataFimModal"
                 type="date"
+                class="input-data-nativo"
                 :disabled="atalhoPeriodoModal !== ''"
               />
             </div>
           </div>
 
-          <!-- Opções abaixo das datas: Último dia e Última semana -->
           <div class="botoes-atalhos-modal">
             <button
               type="button"
