@@ -1,44 +1,25 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import { usuarioLogado } from '../store/estacionamentoStore'
-import MotoristaHomeView from '../views/MotoristaHomeView.vue'
-import MotoristaMapaView from '../views/MotoristaMapaView.vue'
-import AdminListaView from '../views/AdminListaView.vue'
-import AdminInfoGeraisView from '../views/AdminInfoGeraisView.vue'
-import AdminEditor2DView from '../views/AdminEditor2DView.vue'
-import GerenteView from '../views/GerenteView.vue'
-import GerenteEstacionamentosView from '../views/GerenteEstacionamentosView.vue'
-import GerenteRelatoriosView from '../views/GerenteRelatoriosView.vue'
-import AcessoNegadoView from '../views/AcessoNegadoView.vue'
-import LoginView from '../views/LoginView.vue'
-import CadastroView from '../views/CadastroView.vue'
-import SobreView from '../views/SobreView.vue'
+import { configurarGuardsRouter } from './guards'
+
+import MotoristaHomeView from '@/views/motorista/MotoristaHomeView.vue'
+import MotoristaMapaView from '@/views/motorista/MotoristaMapaView.vue'
+import AdminListaView from '@/views/admin/AdminListaView.vue'
+import AdminInfoGeraisView from '@/views/admin/AdminInfoGeraisView.vue'
+import AdminEditor2DView from '@/views/admin/AdminEditor2DView.vue'
+import GerenteView from '@/views/gerente/GerenteView.vue'
+import GerenteEstacionamentosView from '@/views/gerente/GerenteEstacionamentosView.vue'
+import GerenteRelatoriosView from '@/views/gerente/GerenteRelatoriosView.vue'
+import AcessoNegadoView from '@/views/auth/AcessoNegadoView.vue'
+import LoginView from '@/views/auth/LoginView.vue'
+import CadastroView from '@/views/auth/CadastroView.vue'
+import SobreView from '@/views/public/SobreView.vue'
 
 const routes = [
-  {
-    path: '/',
-    name: 'motorista-home',
-    component: MotoristaHomeView
-  },
-  {
-    path: '/login',
-    name: 'login',
-    component: LoginView
-  },
-  {
-    path: '/cadastro',
-    name: 'cadastro',
-    component: CadastroView
-  },
-  {
-    path: '/sobre',
-    name: 'sobre',
-    component: SobreView
-  },
-  {
-    path: '/vagas/:id',
-    name: 'motorista-mapa',
-    component: MotoristaMapaView
-  },
+  { path: '/', name: 'motorista-home', component: MotoristaHomeView },
+  { path: '/login', name: 'login', component: LoginView },
+  { path: '/cadastro', name: 'cadastro', component: CadastroView },
+  { path: '/sobre', name: 'sobre', component: SobreView },
+  { path: '/vagas/:id', name: 'motorista-mapa', component: MotoristaMapaView },
   {
     path: '/gerente',
     name: 'gerente',
@@ -75,11 +56,7 @@ const routes = [
     component: AdminEditor2DView,
     meta: { rolesPermitidas: ['admin_dev'] }
   },
-  {
-    path: '/acesso-negado',
-    name: 'acesso-negado',
-    component: AcessoNegadoView
-  }
+  { path: '/acesso-negado', name: 'acesso-negado', component: AcessoNegadoView }
 ]
 
 const router = createRouter({
@@ -87,19 +64,6 @@ const router = createRouter({
   routes
 })
 
-router.beforeEach((to, from, next) => {
-  if (to.path === '/' && to.query.id) {
-    return next({ name: 'motorista-mapa', params: { id: to.query.id } })
-  }
-
-  if (to.meta.rolesPermitidas) {
-    const usuario = usuarioLogado.value
-    if (!usuario || !to.meta.rolesPermitidas.includes(usuario.nivel_acesso)) {
-      return next({ name: 'acesso-negado' })
-    }
-  }
-
-  next()
-})
+configurarGuardsRouter(router)
 
 export default router

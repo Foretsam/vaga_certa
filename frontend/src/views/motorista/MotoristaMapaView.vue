@@ -1,5 +1,5 @@
 <script setup>
-import { IconQrcode } from '../icons'
+import { IconQrcode } from '@/constants/icons'
 </script>
 
 <template>
@@ -8,7 +8,7 @@ import { IconQrcode } from '../icons'
       <div class="icone-destaque" style="color: var(--destaque-azul)">
         <IconQrcode :size="52" />
       </div>
-      <h1 class="titulo-principal">Escanear Estacionamento</h1>
+      <h1 class="titulo-principal">Visão do estacionamento para o motorista</h1>
       <span class="badge-em-breve">Em breve</span>
     </div>
   </main>

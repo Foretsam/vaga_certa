@@ -4,14 +4,14 @@ import {
   usuariosCadastrados,
   formEstabelecimento,
   criarMatrizVazia
-} from '../store/estacionamentoStore'
+} from '@/stores/estacionamentoStore'
 import {
   IconSquareRoundedArrowLeft,
   IconSquareRoundedArrowRight,
   IconSquareRoundedPlus,
   IconSquareRoundedMinus,
   IconLayoutGrid
-} from '../icons'
+} from '@/constants/icons'
 
 const router = useRouter()
 

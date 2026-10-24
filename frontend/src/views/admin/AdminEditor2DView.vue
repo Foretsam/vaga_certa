@@ -7,7 +7,7 @@ import {
   criarMatrizVazia,
   formEstabelecimento,
   salvarEstacionamentoNoBanco
-} from '../store/estacionamentoStore'
+} from '@/stores/estacionamentoStore'
 import {
   IconSquareRoundedPlus,
   IconSquareRoundedMinus,
@@ -33,7 +33,7 @@ import {
   IconRoad,
   IconParking,
   IconSquareRoundedChevronDown
-} from '../icons'
+} from '@/constants/icons'
 
 const router = useRouter()
 

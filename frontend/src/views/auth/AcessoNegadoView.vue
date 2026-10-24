@@ -1,12 +1,12 @@
 <script setup>
 import { computed } from 'vue'
 import { useRouter } from 'vue-router'
-import { usuarioLogado } from '../store/estacionamentoStore'
+import { usuarioLogado } from '@/stores/estacionamentoStore'
 import {
   IconBan,
   IconLogin,
   IconSquareRoundedArrowLeft
-} from '../icons'
+} from '@/constants/icons'
 
 const router = useRouter()
 

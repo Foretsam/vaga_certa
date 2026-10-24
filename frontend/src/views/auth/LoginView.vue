@@ -1,7 +1,7 @@
 <script setup>
 import { ref } from 'vue'
 import { useRouter } from 'vue-router'
-import { usuarioLogado } from '../store/estacionamentoStore'
+import { usuarioLogado } from '@/stores/estacionamentoStore'
 import {
   IconLogin,
   IconMail,
@@ -9,7 +9,7 @@ import {
   IconEye,
   IconEyeOff,
   IconAlertSquareRounded
-} from '../icons'
+} from '@/constants/icons'
 
 const API_URL = 'http://127.0.0.1:8000'
 const router = useRouter()

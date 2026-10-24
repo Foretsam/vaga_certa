@@ -11,7 +11,7 @@ import {
   obterAndarEntradaSaida,
   contarVagasEstabelecimento,
   carregarDadosDoBanco
-} from '../store/estacionamentoStore'
+} from '@/stores/estacionamentoStore'
 import {
   IconChartBar,
   IconClock,
@@ -26,7 +26,7 @@ import {
   IconDoorExit,
   IconArrowBarRight,
   IconPlayerPlay
-} from '../icons'
+} from '@/constants/icons'
 
 const router = useRouter()
 

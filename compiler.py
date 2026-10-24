@@ -12,6 +12,7 @@ EXTENSOES_INVALIDAS = {
     ".txt",
     ".png",
     ".svg",
+    ".env",
 }
 
 # Estas pastas (e tudo dentro delas) serão IGNORADAS

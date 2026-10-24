@@ -9,7 +9,7 @@ import {
   alternarSimulacao1Frontend,
   contarVagasEstabelecimento,
   carregarDadosDoBanco
-} from '../store/estacionamentoStore'
+} from '@/stores/estacionamentoStore'
 import {
   IconChartBar,
   IconClock,
@@ -26,7 +26,7 @@ import {
   IconPlayerPlay,
   IconFlame,
   IconLayoutBoard
-} from '../icons'
+} from '@/constants/icons'
 
 const router = useRouter()
 

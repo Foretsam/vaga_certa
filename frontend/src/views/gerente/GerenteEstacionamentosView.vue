@@ -6,7 +6,7 @@ import {
   simulacao1Ativa,
   alternarSimulacao1Frontend,
   carregarDadosDoBanco
-} from '../store/estacionamentoStore'
+} from '@/stores/estacionamentoStore'
 import {
   IconParking,
   IconSearch,
@@ -24,7 +24,7 @@ import {
   IconDoorExit,
   IconArrowBarRight,
   IconSettings
-} from '../icons'
+} from '@/constants/icons'
 
 const API_URL = 'http://127.0.0.1:8000'
 const route = useRoute()

@@ -1,0 +1,894 @@
+/* =========================================================
+   LOGO "VC" ESTILIZADO E DASHBOARD DO GERENTE
+   ========================================================= */
+.btn-logo-vc {
+  position: fixed;
+  top: 10px;
+  left: 64px;
+  z-index: 1000;
+  width: 46px;
+  height: 46px;
+  border-radius: 11px;
+  border: 1px solid rgba(59, 130, 246, 0.45);
+  background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 100%);
+  color: #ffffff;
+  font-weight: 900;
+  font-size: 18px;
+  letter-spacing: -1px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  box-shadow: 0 3px 10px rgba(37, 99, 235, 0.35);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+.btn-logo-vc:hover {
+  transform: translateY(-1px) scale(1.02);
+  box-shadow: 0 5px 14px rgba(37, 99, 235, 0.5);
+}
+.vc-letra-v { color: #ffffff; }
+.vc-letra-c { color: #38bdf8; }
+
+.badge-logo-menu {
+  background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 100%);
+  color: #fff;
+  font-weight: 900;
+  font-size: 13px;
+  padding: 4px 7px;
+  border-radius: 7px;
+  letter-spacing: -0.5px;
+}
+
+/* Container Principal do Dashboard do Gerente */
+.gerente-dashboard-container {
+  padding: 16px 24px 24px 24px;
+  max-width: 1440px;
+  margin: 0 auto;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* Apenas a 1ª linha do cabeçalho tem recuo para os botões fixos; a linha de baixo começa junto com os cards */
+.gerente-header-topo {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.gerente-boas-vindas {
+  padding-left: 108px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+.gerente-boas-vindas h1 {
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.gerente-atalhos-topo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.btn-simulacao-ativa {
+  border-color: #16a34a !important;
+  color: #16a34a !important;
+  background: rgba(22, 163, 74, 0.12) !important;
+}
+
+/* Seletor Múltiplo de Estacionamentos (Alinhado à esquerda junto com os cards) */
+.seletor-multi-wrapper {
+  position: relative;
+  align-self: flex-start;
+  margin-left: 0;
+}
+
+.btn-seletor-multi {
+  background: var(--bg-botao-sec);
+  color: var(--texto-principal);
+  border: 1.5px solid var(--destaque-azul);
+  padding: 8px 14px;
+  border-radius: 9px;
+  font-weight: 700;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.15s ease, transform 0.15s ease;
+}
+.btn-seletor-multi:hover {
+  background: rgba(59, 130, 246, 0.12);
+}
+
+.dropdown-multi-box {
+  position: absolute;
+  top: calc(100% + 6px);
+  left: 0;
+  width: 320px;
+  max-width: 90vw;
+  background: var(--bg-card);
+  border: 1px solid var(--borda-botao-sec);
+  border-radius: 12px;
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.35);
+  z-index: 900;
+  overflow: hidden;
+}
+
+.busca-multi-topo {
+  position: relative;
+  padding: 8px;
+  border-bottom: 1px solid var(--borda);
+  display: flex;
+  align-items: center;
+}
+.icone-busca-multi {
+  position: absolute;
+  left: 18px;
+  color: var(--texto-secundario);
+}
+.busca-multi-topo input {
+  width: 100%;
+  padding: 7px 10px 7px 32px;
+  border-radius: 7px;
+  border: 1px solid var(--borda-botao-sec);
+  background: var(--bg-botao-sec);
+  color: var(--texto-principal);
+  font-size: 13.5px;
+}
+
+/* Até 10 opções visíveis no PC antes do scroll */
+.lista-opcoes-multi {
+  max-height: 380px;
+  overflow-y: auto;
+}
+
+.item-opcao-multi {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 9px 14px;
+  font-size: 14px;
+  cursor: pointer;
+  border-bottom: 1px solid var(--borda);
+  transition: background-color 0.12s ease;
+}
+.item-opcao-multi:last-child { border-bottom: none; }
+.item-opcao-multi:hover { background: var(--bg-painel); }
+.item-opcao-multi.destaque-completo {
+  font-weight: 700;
+}
+.item-opcao-multi.opcao-ativa {
+  color: var(--destaque-azul);
+  background: rgba(37, 99, 235, 0.1);
+  font-weight: 700;
+}
+
+.aviso-sem-estacionamento {
+  text-align: center;
+  padding: 48px 24px;
+  margin-top: 20px;
+}
+
+/* Linha Superior de Relatórios (3 colunas no PC) */
+.secao-relatorios-dashboard {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.grade-kpis-gerente {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+}
+
+.card-kpi-gerente {
+  background: var(--bg-card);
+  border: 1px solid var(--borda);
+  border-radius: 14px;
+  padding: 16px 18px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 195px;
+}
+
+.card-kpi-gerente.kpi-apenas-tablet {
+  display: none;
+}
+
+.kpi-cabecalho {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+/* Título dos cards superiores com a cor principal (branco no modo dark) igual aos demais títulos */
+.kpi-titulo {
+  font-size: 15.5px;
+  font-weight: 700;
+  color: var(--texto-principal);
+}
+
+.legenda-fluxo-mini {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 12px;
+  color: var(--texto-secundario);
+}
+.ponto-legenda {
+  display: inline-block;
+  width: 9px;
+  height: 9px;
+  border-radius: 2px;
+}
+.ponto-legenda.ent { background: #3b82f6; }
+.ponto-legenda.sai { background: #f97316; }
+
+/* Gráfico de Barras Horárias (Altura explícita para funcionar em qualquer tela/tablet) */
+.grafico-barras-horarias {
+  width: 100%;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 6px;
+  padding-top: 18px;
+  height: 135px;
+}
+
+.coluna-hora-item {
+  flex: 1;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 4px;
+}
+
+.par-barras-verticais {
+  width: 100%;
+  height: 96px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  gap: 3px;
+}
+
+.barra-v {
+  width: 12px;
+  border-radius: 3px 3px 0 0;
+  position: relative;
+  transition: height 0.25s ease;
+}
+.barra-v.ent { background: #3b82f6; }
+.barra-v.sai { background: #f97316; }
+
+.valor-barra-topo {
+  position: absolute;
+  top: -15px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 9.5px;
+  font-weight: 700;
+  color: var(--texto-principal);
+  white-space: nowrap;
+}
+
+.rotulo-hora-eixo {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--texto-secundario);
+}
+
+.kpi-centralizado {
+  text-align: center;
+}
+
+.kpi-valor-destaque {
+  font-size: 38px;
+  font-weight: 800;
+  color: var(--destaque-azul);
+  margin: 6px 0;
+}
+
+.barra-progresso-ocupacao {
+  width: 100%;
+  height: 10px;
+  background: var(--bg-botao-sec);
+  border-radius: 999px;
+  overflow: hidden;
+  border: 1px solid var(--borda-botao-sec);
+}
+.preenchimento-ocupacao {
+  height: 100%;
+  background: linear-gradient(90deg, #22c55e 0%, #eab308 60%, #ef4444 100%);
+  transition: width 0.3s ease;
+}
+
+.kpi-rodape-duplo {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 10px;
+  font-size: 13px;
+  font-weight: 700;
+}
+.tag-kpi.livre { color: #16a34a; }
+.tag-kpi.ocupada { color: #ef4444; }
+
+.kpi-descricao-apoio {
+  font-size: 13px;
+  color: var(--texto-secundario);
+  line-height: 1.4;
+}
+
+.acoes-abaixo-relatorios {
+  display: flex;
+  justify-content: center;
+}
+
+/* Seção Inferior PC: 2 Maiores Estacionamentos Lado a Lado */
+.secao-seletor-mobile-est {
+  display: none;
+}
+
+.secao-estacionamentos-dupla-pc {
+  flex: 1;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+
+.card-estacionamento-preview {
+  background: var(--bg-card);
+  border: 1px solid var(--borda);
+  border-radius: 14px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  min-width: 0;
+}
+
+.header-preview-est {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 10px;
+}
+.header-preview-est h3 { font-size: 18px; }
+.subtitulo-preview {
+  font-size: 13px;
+  color: var(--texto-secundario);
+}
+
+.badge-total-vagas {
+  background: rgba(37, 99, 235, 0.12);
+  color: var(--destaque-azul);
+  border: 1px solid var(--destaque-azul);
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: 12.5px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.preview-mapa-scroll {
+  flex: 1;
+  background: #ffffff;
+  border: 1px solid var(--borda);
+  border-radius: 10px;
+  padding: 10px;
+  overflow: auto;
+  max-height: 310px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.grid-preview-mini {
+  display: grid;
+}
+
+.celula-preview-fundo {
+  width: 24px;
+  height: 24px;
+  padding: 2px;
+}
+
+.quadrado-preview-interno {
+  width: 100%;
+  height: 100%;
+  border-radius: 3px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 7.5px;
+  font-weight: 800;
+  color: #fff;
+}
+.qp-vazio { background: transparent; }
+.qp-estrada { background: #1e293b; }
+.qp-entrada { background: #2563eb; }
+.qp-saida { background: #ea580c; }
+.qp-acesso { background: #16a34a; }
+.qp-vaga-livre { background: #16a34a; }
+.qp-vaga-ocupada { background: #dc2626; }
+.qp-vaga-amarela { background: #eab308; color: #0f172a; }
+.qp-vaga-inativa { background: #64748b; opacity: 0.45; }
+
+.btn-ver-tela-cheia {
+  width: 100%;
+  padding: 10px;
+}
+
+.seletor-est-tela-cheia {
+  position: relative;
+}
+
+.btn-modo-inativar-ativo {
+  background: #dc2626 !important;
+  border-color: #fca5a5 !important;
+  color: #ffffff !important;
+}
+
+.btn-modo-reativar-ativo {
+  background: #16a34a !important;
+  border-color: #86efac !important;
+  color: #ffffff !important;
+}
+
+.btn-calor-ativo {
+  background: linear-gradient(135deg, #1d4ed8 0%, #ea580c 50%, #dc2626 100%) !important;
+  border-color: #fdba74 !important;
+  color: #ffffff !important;
+}
+
+/* Cores das Vagas no Modo Normal do Gerente */
+.vaga-gerente-livre {
+  background-color: #16a34a !important;
+  border-color: #14532d !important;
+  color: #ffffff !important;
+}
+.vaga-gerente-ocupada {
+  background-color: #dc2626 !important;
+  border-color: #7f1d1d !important;
+  color: #ffffff !important;
+}
+.vaga-gerente-inativa {
+  background-color: #64748b !important;
+  border-color: #334155 !important;
+  color: #cbd5e1 !important;
+  opacity: 0.48;
+}
+
+/* 5 Variações do Mapa de Calor */
+.calor-nivel-1 {
+  background-color: #1d4ed8 !important;
+  border-color: #1e3a8a !important;
+  color: #ffffff !important;
+}
+.calor-nivel-2 {
+  background-color: #0284c7 !important;
+  border-color: #0c4a6e !important;
+  color: #ffffff !important;
+}
+.calor-nivel-3 {
+  background-color: #eab308 !important;
+  border-color: #713f12 !important;
+  color: #0f172a !important;
+}
+.calor-nivel-4 {
+  background-color: #ea580c !important;
+  border-color: #7c2d12 !important;
+  color: #ffffff !important;
+}
+.calor-nivel-5 {
+  background-color: #dc2626 !important;
+  border-color: #7f1d1d !important;
+  color: #ffffff !important;
+}
+
+/* Overlays de Instrução, Legenda de Calor e Confirmação em Lote */
+.banner-instrucao-gerente {
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 8px 16px;
+  border-radius: 9px;
+  font-size: 13.5px;
+  color: #ffffff;
+  white-space: nowrap;
+}
+.cor-banner-inativar {
+  background: rgba(185, 28, 28, 0.95);
+  border: 1px solid #fca5a5;
+}
+.cor-banner-reativar {
+  background: rgba(21, 128, 61, 0.95);
+  border: 1px solid #86efac;
+}
+
+.legenda-calor-overlay {
+  top: 10px;
+  right: 12px;
+  background: rgba(15, 23, 42, 0.92);
+  color: #f8fafc;
+  padding: 7px 12px;
+  border-radius: 9px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  border: 1px solid #475569;
+}
+.amostra-calor {
+  padding: 2px 7px;
+  border-radius: 5px;
+  font-weight: 700;
+  font-size: 11px;
+}
+
+.popup-confirmar-lote-gerente {
+  bottom: 14px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #0f172a;
+  color: #ffffff;
+  padding: 9px 14px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border: 1px solid #475569;
+}
+.btn-popup-lote {
+  padding: 7px 12px !important;
+  font-size: 13px !important;
+}
+.btn-lote-vermelho { background: #dc2626 !important; }
+.btn-lote-verde { background: #16a34a !important; }
+
+/* Painel Lateral de Andares e Setores */
+.sidebar-gerente-metricas {
+  width: 320px;
+}
+
+.lista-cards-laterais {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.card-lateral-metrica {
+  background: var(--bg-painel);
+  border: 1px solid var(--borda);
+  border-radius: 9px;
+  padding: 10px 12px;
+  cursor: pointer;
+  transition: border-color 0.15s ease, transform 0.12s ease;
+}
+.card-lateral-metrica:hover {
+  border-color: var(--destaque-azul);
+}
+.card-lateral-metrica.card-lateral-ativo {
+  border-color: var(--destaque-azul);
+  box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.2);
+}
+
+.topo-card-lateral {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 13.5px;
+  margin-bottom: 6px;
+}
+
+.badge-variacao {
+  font-size: 11px;
+  font-weight: 800;
+  padding: 2px 6px;
+  border-radius: 999px;
+}
+.badge-variacao.var-alta {
+  background: rgba(22, 163, 74, 0.15);
+  color: #22c55e;
+}
+.badge-variacao.var-baixa {
+  background: rgba(245, 158, 11, 0.15);
+  color: #f59e0b;
+}
+
+.numeros-card-lateral {
+  display: flex;
+  gap: 10px;
+  font-size: 12px;
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+.num-livre { color: #16a34a; }
+.num-ocupada { color: #ef4444; }
+.num-inativa { color: #94a3b8; }
+
+.barra-mini-lateral {
+  width: 100%;
+  height: 6px;
+  background: var(--borda);
+  border-radius: 999px;
+  overflow: hidden;
+}
+.preenchimento-mini {
+  height: 100%;
+  background: var(--destaque-azul);
+  transition: width 0.25s ease;
+}
+
+/* Modal de QR Code */
+.modal-qr-gerente {
+  text-align: center;
+  max-width: 360px;
+}
+.box-imagem-qr {
+  background: #ffffff;
+  padding: 14px;
+  border-radius: 12px;
+  display: inline-flex;
+  margin: 10px 0;
+  border: 2px solid var(--borda);
+}
+.url-qr-codigo {
+  display: block;
+  font-size: 12px;
+  padding: 6px 10px;
+  background: var(--bg-botao-sec);
+  border-radius: 6px;
+  color: var(--texto-principal);
+  word-break: break-all;
+}
+
+
+
+/* =========================================================
+   PÁGINA DE RELATÓRIOS ANALÍTICOS E EXPORTAÇÃO BI
+   ========================================================= */
+.grade-quatro-kpis-relatorio {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 14px;
+}
+
+.card-kpi-gerente.kpi-compacto {
+  min-height: 145px;
+  text-align: center;
+}
+
+.grade-dupla-relatorios {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+
+.card-relatorio-bloco {
+  background: var(--bg-card);
+  border: 1px solid var(--borda);
+  border-radius: 14px;
+  padding: 18px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  min-width: 0;
+}
+
+.header-relatorio-bloco {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.header-relatorio-bloco h3 {
+  font-size: 17.5px;
+  font-weight: 700;
+  color: var(--texto-principal);
+}
+
+.btn-exportar-card {
+  padding: 7px 12px !important;
+  font-size: 13px !important;
+  flex-shrink: 0;
+}
+
+.grafico-relatorio-maior {
+  height: 195px;
+  padding-top: 24px;
+}
+.grafico-relatorio-maior .par-barras-verticais {
+  height: 140px;
+}
+.grafico-relatorio-maior .barra-v {
+  width: 14px;
+}
+
+/* Tabelas de Ranking e Histórico (Altura fixa para 8 linhas no Histórico) */
+.tabela-responsiva-wrapper {
+  width: 100%;
+  overflow-x: auto;
+}
+
+.tabela-historico-altura-fixa {
+  min-height: 395px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  overflow-y: hidden;
+}
+
+.tabela-relatorio {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13.5px;
+}
+
+.tabela-relatorio th,
+.tabela-relatorio td {
+  padding: 10px 12px;
+  text-align: left;
+  border-bottom: 1px solid var(--borda);
+  white-space: nowrap;
+}
+
+.tabela-relatorio th {
+  font-size: 12px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+  color: var(--texto-secundario);
+  background: var(--bg-painel);
+}
+
+.tabela-relatorio tbody tr:hover {
+  background: rgba(59, 130, 246, 0.05);
+}
+
+.tag-em-andamento {
+  background: rgba(245, 158, 11, 0.15);
+  color: #f59e0b;
+  padding: 3px 8px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.acoes-topo-historico {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.input-historico-compacto {
+  padding: 8px 12px 8px 34px !important;
+  font-size: 13.5px !important;
+  background: var(--bg-botao-sec) !important;
+  border: 1px solid var(--borda-botao-sec) !important;
+}
+
+/* Comparador Lado a Lado de 2 Estacionamentos */
+.seletores-comparador-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+
+.grade-cards-comparador {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+
+.card-unidade-comparada {
+  background: var(--bg-painel);
+  border: 1px solid var(--borda);
+  border-radius: 12px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.card-unidade-comparada h4 {
+  font-size: 16.5px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--borda);
+}
+
+.linha-metrica-comp {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 13.5px;
+  gap: 8px;
+}
+
+/* Seção de Exportação Completa e Modal de Exportação */
+.card-exportacao-completa-bi {
+  border: 1.5px solid rgba(22, 163, 74, 0.45);
+}
+
+.controles-exportacao-completa {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.campos-datas-exportacao {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  transition: opacity 0.2s ease, filter 0.2s ease;
+}
+
+.campos-datas-modal {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  transition: opacity 0.2s ease, filter 0.2s ease;
+}
+
+.datas-cinzadas {
+  opacity: 0.4;
+  pointer-events: none;
+  filter: grayscale(90%);
+}
+
+.atalhos-periodo-box {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.rotulo-atalho {
+  font-size: 12.5px;
+  font-weight: 600;
+  color: var(--texto-secundario);
+}
+
+.botoes-atalhos-periodo {
+  display: flex;
+  gap: 8px;
+}
+
+.botoes-atalhos-modal {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  margin-top: 2px;
+}
+
+.atalho-periodo-ativo {
+  background: var(--destaque-azul) !important;
+  border-color: var(--destaque-azul) !important;
+  color: #ffffff !important;
+}
+
+.btn-baixar-completo-bi {
+  background: #16a34a !important;
+  padding: 12px 20px !important;
+}
+.btn-baixar-completo-bi:hover {
+  background: #15803d !important;
+}
+
+.modal-box.modal-exportar-relatorio {
+  max-width: 390px;
+}

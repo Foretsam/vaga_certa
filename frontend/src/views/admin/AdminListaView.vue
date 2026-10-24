@@ -9,7 +9,7 @@ import {
   carregarDadosDoBanco,
   alternarInativoNoBanco,
   removerEstabelecimentoNoBanco
-} from '../store/estacionamentoStore'
+} from '@/stores/estacionamentoStore'
 import {
   IconSearch,
   IconSquareRoundedPlus,
@@ -19,7 +19,7 @@ import {
   IconTrash,
   IconSquareRoundedChevronLeft,
   IconSquareRoundedChevronRight
-} from '../icons'
+} from '@/constants/icons'
 
 const router = useRouter()
 const termoPesquisaAdmin = ref('')
