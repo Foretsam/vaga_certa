@@ -37,6 +37,11 @@ function avancarParaEditorP2() {
     return
   }
 
+  if (!formEstabelecimento.value.cidade || !formEstabelecimento.value.cidade.trim()) {
+    alert('Digite a cidade do estabelecimento antes de continuar.')
+    return
+  }
+
   const nomesAndares = formEstabelecimento.value.andares.map(a => a.nome_andar.trim().toLowerCase())
   if (nomesAndares.some(n => !n)) {
     alert('Preencha o nome de todos os andares.')
@@ -68,7 +73,7 @@ function avancarParaEditorP2() {
     <header class="topbar-titulo-central com-botao-direita">
       <div class="bloco-titulo-centro">
         <h1>Editar estacionamento - Informações Gerais</h1>
-        <p class="subtitulo">Defina os dados gerais e a lista de andares sem nomes repetidos (máx. 10)</p>
+        <p class="subtitulo">Defina os dados gerais, a cidade e a lista de andares sem nomes repetidos (máx. 10)</p>
       </div>
       <button class="btn-secundario btn-voltar-topo item-icone-texto" @click="router.push({ name: 'admin-lista' })">
         <IconSquareRoundedArrowLeft :size="18" />
@@ -77,14 +82,26 @@ function avancarParaEditorP2() {
     </header>
 
     <div class="form-card">
-      <div class="campo-grupo">
-        <label>Nome do Estabelecimento (máx. 50 caracteres)</label>
-        <input
-          v-model="formEstabelecimento.nome"
-          type="text"
-          maxlength="50"
-          placeholder="Ex: Shopping Sorocaba Center"
-        />
+      <div class="grade-campos-dupla">
+        <div class="campo-grupo">
+          <label>Nome do Estabelecimento (máx. 50 caracteres)</label>
+          <input
+            v-model="formEstabelecimento.nome"
+            type="text"
+            maxlength="50"
+            placeholder="Ex: Shopping Sorocaba Center"
+          />
+        </div>
+
+        <div class="campo-grupo">
+          <label>Cidade (máx. 60 caracteres)</label>
+          <input
+            v-model="formEstabelecimento.cidade"
+            type="text"
+            maxlength="60"
+            placeholder="Ex: Sorocaba"
+          />
+        </div>
       </div>
 
       <div class="campo-grupo">

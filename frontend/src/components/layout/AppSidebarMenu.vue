@@ -112,7 +112,12 @@ function sairDaConta() {
           <div class="menu-divisor"></div>
         </template>
 
-        <a href="#" class="item-icone-texto" @click.prevent="irPara({ name: 'motorista-home' })">
+        <a
+          v-if="usuarioLogado?.nivel_acesso !== 'admin_dev' && usuarioLogado?.nivel_acesso !== 'admin_estabelecimento'"
+          href="#"
+          class="item-icone-texto"
+          @click.prevent="irPara({ name: 'motorista-home' })"
+        >
           <IconQrcode :size="19" />
           <span>Escanear Estacionamento</span>
         </a>

@@ -5,7 +5,11 @@ import {
   estabelecimentosDoGerente,
   simulacao1Ativa,
   alternarSimulacao1Frontend,
-  carregarDadosDoBanco
+  carregarDadosDoBanco,
+  cidadeSelecionadaGerente, 
+  cidadesDoGerente, 
+  estabelecimentosDoGerentePorCidade, 
+  selecionarCidadeGerente
 } from '@/stores/estacionamentoStore'
 import {
   IconParking,
@@ -23,7 +27,8 @@ import {
   IconDoorEnter,
   IconDoorExit,
   IconArrowBarRight,
-  IconSettings
+  IconSettings,
+  IconPin
 } from '@/constants/icons'
 
 const API_URL = 'http://127.0.0.1:8000'
@@ -125,9 +130,21 @@ const andarAtual = computed(() => {
 
 const listaEstabelecimentosFiltrados = computed(() => {
   const termo = termoBuscaEst.value.trim().toLowerCase()
-  if (!termo) return estabelecimentosDoGerente.value
-  return estabelecimentosDoGerente.value.filter(e => e.nome.toLowerCase().includes(termo))
+  const base = estabelecimentosDoGerentePorCidade.value
+  if (!termo) return base
+  return base.filter(
+    e =>
+      e.nome.toLowerCase().includes(termo) ||
+      (e.cidade || '').toLowerCase().includes(termo)
+  )
 })
+
+function aoTrocarCidadeTelaCheia(novaCidade) {
+  selecionarCidadeGerente(novaCidade)
+  if (estabelecimentosDoGerentePorCidade.value.length > 0) {
+    escolherEstacionamento(estabelecimentosDoGerentePorCidade.value[0])
+  }
+}
 
 function escolherEstacionamento(est) {
   estSelecionadoId.value = est.id
@@ -585,7 +602,20 @@ function tratarTeclaGlobal(event) {
           <IconSquareRoundedArrowLeft :size="18" />
           <span>Dashboard</span>
         </button>
-
+        <div v-if="cidadesDoGerente.length >= 1" class="seletor-andar-box">
+          <IconPin :size="17" style="color: var(--destaque-azul)" />
+          <span>Cidade:</span>
+          <select
+            :value="cidadeSelecionadaGerente"
+            class="select-andar-editor"
+            @change="aoTrocarCidadeTelaCheia($event.target.value)"
+          >
+            <option value="TODAS">Todas</option>
+            <option v-for="cid in cidadesDoGerente" :key="cid" :value="cid">
+              {{ cid }}
+            </option>
+          </select>
+        </div>
         <!-- Seletor de Estacionamento com Pesquisa -->
         <div class="seletor-est-tela-cheia">
           <button

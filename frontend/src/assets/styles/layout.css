@@ -445,3 +445,313 @@
   box-shadow: 0 3px 10px rgba(22, 163, 74, 0.3);
   transform: translateY(-1px);
 }
+
+/* =========================================================
+   VIEWS DO MOTORISTA (QR CODE, BUSCA, FILTRO DE CIDADE E MAPA)
+   ========================================================= */
+.motorista-home-layout {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 72px 16px 32px 16px;
+}
+
+.motorista-home-card {
+  background: var(--bg-card);
+  border: 1px solid var(--borda);
+  border-radius: 18px;
+  padding: 28px 24px;
+  max-width: 680px;
+  width: 100%;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.16);
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.motorista-qr-secao {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.icone-destaque-qr {
+  width: 68px;
+  height: 68px;
+  border-radius: 18px;
+  background: rgba(37, 99, 235, 0.12);
+  color: var(--destaque-azul);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 12px;
+}
+
+.btn-escanear-qr {
+  margin-top: 16px;
+  width: 100%;
+  max-width: 340px;
+  padding: 13px 20px;
+  font-size: 16px;
+}
+
+.camera-qr-box {
+  margin-top: 16px;
+  width: 100%;
+  max-width: 360px;
+}
+
+.camera-video-wrapper {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  background: #000;
+  border-radius: 14px;
+  overflow: hidden;
+  border: 2px solid var(--destaque-azul);
+}
+
+.video-leitor-qr {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.mira-qr-overlay {
+  position: absolute;
+  inset: 18%;
+  border: 2.5px dashed rgba(56, 189, 248, 0.9);
+  border-radius: 14px;
+  box-shadow: 0 0 0 9999px rgba(0, 0, 0, 0.32);
+  pointer-events: none;
+}
+
+.divisor-ou-motorista {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: var(--texto-secundario);
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.6px;
+}
+.divisor-ou-motorista::before,
+.divisor-ou-motorista::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--borda);
+}
+
+.filtros-motorista-grid {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  gap: 10px;
+}
+
+.select-cidade-motorista-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.select-com-icone-esq {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 100%;
+  height: 100%;
+  padding: 11px 32px 11px 36px !important;
+  font-size: 14.5px;
+  font-weight: 600;
+  border-radius: 8px;
+  border: 1px solid var(--borda-botao-sec);
+  background-color: var(--bg-botao-sec);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='15' height='15' viewBox='0 0 24 24' fill='none' stroke='%2364748b' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 11px center;
+  cursor: pointer;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.select-com-icone-esq:hover {
+  border-color: var(--destaque-azul);
+}
+
+.lista-estacionamentos-motorista {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  max-height: 360px;
+  overflow-y: auto;
+  padding-right: 2px;
+}
+
+.item-est-motorista {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 16px;
+  border-radius: 12px;
+  background: var(--bg-painel);
+  border: 1px solid var(--borda);
+  cursor: pointer;
+  transition: border-color 0.15s ease, transform 0.15s ease, box-shadow 0.15s ease;
+}
+.item-est-motorista:hover {
+  border-color: var(--destaque-azul);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.14);
+}
+
+.info-est-motorista {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-width: 0;
+}
+
+.icone-p-motorista {
+  width: 42px;
+  height: 42px;
+  border-radius: 10px;
+  background: rgba(37, 99, 235, 0.12);
+  color: var(--destaque-azul);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.textos-est-motorista h3 {
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.sub-meta-motorista {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  color: var(--texto-secundario);
+  margin-top: 2px;
+}
+
+.badge-cidade-motorista {
+  color: var(--destaque-azul);
+  font-weight: 600;
+}
+
+.status-vagas-motorista {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-shrink: 0;
+}
+
+.badge-livres-motorista {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 5px 11px;
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 800;
+}
+.badge-livres-motorista.tem-vaga {
+  background: rgba(22, 163, 74, 0.15);
+  color: #16a34a;
+  border: 1px solid rgba(22, 163, 74, 0.4);
+}
+.badge-livres-motorista.lotado {
+  background: rgba(220, 38, 38, 0.15);
+  color: #ef4444;
+  border: 1px solid rgba(220, 38, 38, 0.4);
+}
+
+.seta-ir-mapa {
+  color: var(--texto-secundario);
+}
+
+/* Barra de Filtros do Gerente e Campos Duplos */
+.barra-filtros-gerente {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.grade-campos-dupla {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  gap: 14px;
+}
+
+.badge-cidade-inline {
+  display: inline-block;
+  background: rgba(37, 99, 235, 0.12);
+  color: var(--destaque-azul);
+  border: 1px solid rgba(37, 99, 235, 0.35);
+  font-size: 12px;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: 999px;
+  margin-left: 8px;
+}
+
+.cidade-op-muted {
+  color: var(--texto-secundario);
+  font-weight: 500;
+}
+
+/* Topbar e Mapa do Motorista */
+.topbar-motorista-mapa {
+  display: flex !important;
+}
+
+.identificacao-est-motorista {
+  display: flex;
+  align-items: center;
+  font-size: 15px;
+  padding: 0 4px;
+}
+
+.topbar-direita-motorista {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.legenda-motorista-inline {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 12.5px;
+  color: var(--texto-secundario);
+}
+
+.item-legenda-mot {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-weight: 600;
+}
+
+.cor-mot {
+  display: inline-block;
+  width: 11px;
+  height: 11px;
+  border-radius: 3px;
+}
+.cor-mot.livre { background: #16a34a; }
+.cor-mot.ocupada { background: #dc2626; }
+.cor-mot.entrada { background: #2563eb; }
+.cor-mot.saida { background: #ea580c; }
+
+.celula-esmaecida-setor {
+  opacity: 0.25;
+  transition: opacity 0.2s ease;
+}

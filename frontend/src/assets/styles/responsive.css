@@ -378,6 +378,57 @@
     flex-direction: column;
     align-items: stretch;
   }
+  .ocultar-info-mobile {
+    display: none !important;
+  }
+
+  .filtros-motorista-grid,
+  .grade-campos-dupla {
+    grid-template-columns: 1fr;
+  }
+
+  .motorista-home-layout {
+    padding: 60px 12px 24px 12px;
+  }
+
+  .motorista-home-card {
+    padding: 20px 14px;
+    gap: 16px;
+  }
+
+  .item-est-motorista {
+    padding: 11px 12px;
+  }
+
+  .textos-est-motorista h3 {
+    font-size: 14.5px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 210px;
+  }
+
+  .topbar-motorista-mapa {
+    position: static !important;
+    width: calc(100% - 96px) !important;
+    margin-left: 96px !important;
+    padding: 6px 10px !important;
+    flex-direction: row !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+  }
+
+  .topbar-motorista-mapa .topbar-esquerda {
+    flex-direction: row !important;
+    align-items: center !important;
+    flex-wrap: wrap !important;
+    gap: 6px !important;
+  }
+
+  .legenda-motorista-inline,
+  .topbar-direita-motorista {
+    display: none !important;
+  }
 }
 
 @media (max-width: 480px) {

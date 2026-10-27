@@ -42,7 +42,10 @@ const estabelecimentosFiltrados = computed(() => {
   const termo = termoPesquisaAdmin.value.trim().toLowerCase()
   if (!termo) return estabelecimentos.value
   return estabelecimentos.value.filter(
-    e => e.nome.toLowerCase().includes(termo) || String(e.id) === termo
+    e =>
+      e.nome.toLowerCase().includes(termo) ||
+      (e.cidade || '').toLowerCase().includes(termo) ||
+      String(e.id) === termo
   )
 })
 
@@ -120,6 +123,7 @@ async function removerEstabelecimento(est) {
           <div class="textos-est">
             <h3>
               {{ est.nome }}
+              <span class="badge-cidade-inline">{{ est.cidade || 'Sorocaba' }}</span>
               <span v-if="est.inativo" class="tag-inativo">INATIVO</span>
             </h3>
             <p class="meta-est">

@@ -85,6 +85,7 @@ export function hidratarEstabelecimentoDoBanco(estBanco) {
   return {
     id: estBanco.id,
     nome: estBanco.nome,
+    cidade: estBanco.cidade || 'Sorocaba',
     id_usuario: estBanco.id_usuario,
     inativo: Boolean(estBanco.inativo),
     andares: andaresHidratados

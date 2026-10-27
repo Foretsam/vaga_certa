@@ -92,7 +92,7 @@ async def gravar_andares_e_mapa(
 @router.get("/estabelecimentos")
 async def listar_estabelecimentos_completos():
     estabelecimentos_rows = await db.fetch("""
-        SELECT e.id_estabelecimento AS id, e.nome, e.inativo,
+        SELECT e.id_estabelecimento AS id, e.nome, e.cidade, e.inativo,
                COALESCE(ue.id_usuario, 1) AS id_usuario
         FROM estabelecimentos e
         LEFT JOIN usuario_estabelecimento ue ON e.id_estabelecimento = ue.id_estabelecimento
@@ -189,6 +189,7 @@ async def listar_estabelecimentos_completos():
             {
                 "id": id_est,
                 "nome": est["nome"],
+                "cidade": est.get("cidade") or "Sorocaba",
                 "id_usuario": est["id_usuario"],
                 "inativo": bool(est["inativo"]),
                 "andares": andares_formatados,
@@ -200,13 +201,14 @@ async def listar_estabelecimentos_completos():
 
 @router.post("/estabelecimentos", status_code=status.HTTP_201_CREATED)
 async def criar_estabelecimento(payload: EstabelecimentoSavePayload):
+    cidade_limpa = (payload.cidade or "Sorocaba").strip()
     async with db.pool.acquire() as conn:
         async with conn.cursor() as cursor:
             try:
                 await conn.begin()
                 await cursor.execute(
-                    "INSERT INTO estabelecimentos (nome) VALUES (%s)",
-                    (payload.nome.strip(),),
+                    "INSERT INTO estabelecimentos (nome, cidade) VALUES (%s, %s)",
+                    (payload.nome.strip(), cidade_limpa),
                 )
                 id_est = cursor.lastrowid
 
@@ -229,13 +231,14 @@ async def criar_estabelecimento(payload: EstabelecimentoSavePayload):
 async def atualizar_estabelecimento(
     id_estabelecimento: int, payload: EstabelecimentoSavePayload
 ):
+    cidade_limpa = (payload.cidade or "Sorocaba").strip()
     async with db.pool.acquire() as conn:
         async with conn.cursor() as cursor:
             try:
                 await conn.begin()
                 await cursor.execute(
-                    "UPDATE estabelecimentos SET nome = %s WHERE id_estabelecimento = %s",
-                    (payload.nome.strip(), id_estabelecimento),
+                    "UPDATE estabelecimentos SET nome = %s, cidade = %s WHERE id_estabelecimento = %s",
+                    (payload.nome.strip(), cidade_limpa, id_estabelecimento),
                 )
 
                 await cursor.execute(

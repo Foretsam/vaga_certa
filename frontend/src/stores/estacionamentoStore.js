@@ -17,6 +17,10 @@ import {
 import { usuarioLogado } from './authStore'
 import {
   idsSelecionadosGerente,
+  cidadeSelecionadaGerente,
+  cidadesDoGerente,
+  estabelecimentosDoGerentePorCidade,
+  selecionarCidadeGerente,
   simulacao1Ativa,
   estabelecimentosDoGerente,
   estabelecimentosFiltradosGerente,
@@ -31,6 +35,10 @@ export {
   contarVagasEstabelecimento,
   usuarioLogado,
   idsSelecionadosGerente,
+  cidadeSelecionadaGerente,
+  cidadesDoGerente,
+  estabelecimentosDoGerentePorCidade,
+  selecionarCidadeGerente,
   simulacao1Ativa,
   estabelecimentosDoGerente,
   estabelecimentosFiltradosGerente,
@@ -44,6 +52,7 @@ export const carregandoDados = ref(false)
 export const modoEdicaoId = ref(null)
 export const formEstabelecimento = ref({
   nome: '',
+  cidade: 'Sorocaba',
   id_usuario: 1,
   andares: [{ id_andar: Date.now(), nome_andar: 'Subsolo 1', grid_x: 30, grid_y: 20 }]
 })
@@ -73,6 +82,7 @@ export async function carregarDadosDoBanco() {
 export async function salvarEstacionamentoNoBanco() {
   const payload = {
     nome: formEstabelecimento.value.nome,
+    cidade: (formEstabelecimento.value.cidade || 'Sorocaba').trim(),
     id_usuario: formEstabelecimento.value.id_usuario,
     andares: formEstabelecimento.value.andares.map((andar) => {
       const celulasPreenchidas = []
@@ -125,6 +135,7 @@ export function iniciarNovoFormulario() {
   const idPadrao = usuariosCadastrados.value[0]?.id_usuario || 1
   formEstabelecimento.value = {
     nome: '',
+    cidade: 'Sorocaba',
     id_usuario: idPadrao,
     andares: [{ id_andar: Date.now(), nome_andar: 'Subsolo 1', grid_x: 30, grid_y: 20 }]
   }
@@ -132,5 +143,7 @@ export function iniciarNovoFormulario() {
 
 export function carregarFormularioEdicao(est) {
   modoEdicaoId.value = est.id
-  formEstabelecimento.value = JSON.parse(JSON.stringify(est))
+  const copia = JSON.parse(JSON.stringify(est))
+  copia.cidade = copia.cidade || 'Sorocaba'
+  formEstabelecimento.value = copia
 }

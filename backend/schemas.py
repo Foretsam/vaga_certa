@@ -30,6 +30,7 @@ class AndarPayload(BaseModel):
 
 class EstabelecimentoSavePayload(BaseModel):
     nome: str
+    cidade: str = "Sorocaba"
     id_usuario: int
     andares: List[AndarPayload]
 

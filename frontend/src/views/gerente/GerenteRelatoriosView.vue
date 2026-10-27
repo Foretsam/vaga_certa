@@ -8,7 +8,11 @@ import {
   simulacao1Ativa,
   alternarSimulacao1Frontend,
   contarVagasEstabelecimento,
-  carregarDadosDoBanco
+  carregarDadosDoBanco,
+  cidadeSelecionadaGerente,
+  cidadesDoGerente,
+  estabelecimentosDoGerentePorCidade,
+  selecionarCidadeGerente
 } from '@/stores/estacionamentoStore'
 import {
   IconChartBar,
@@ -25,7 +29,8 @@ import {
   IconArrowsLeftRight,
   IconPlayerPlay,
   IconFlame,
-  IconLayoutBoard
+  IconLayoutBoard,
+  IconPin
 } from '@/constants/icons'
 
 const router = useRouter()
@@ -99,18 +104,19 @@ const mostrarPesquisaNoMulti = computed(() => totalOpcoesFiltro.value > 5)
 
 const listaEstabelecimentosNoMulti = computed(() => {
   const termo = termoBuscaMulti.value.trim().toLowerCase()
-  if (!termo) return estabelecimentosDoGerente.value
-  return estabelecimentosDoGerente.value.filter(e => e.nome.toLowerCase().includes(termo))
+  const base = estabelecimentosDoGerentePorCidade.value
+  if (!termo) return base
+  return base.filter(e => e.nome.toLowerCase().includes(termo))
 })
 
 const textoBotaoSeletorTopo = computed(() => {
   const qtdSel = idsSelecionadosGerente.value.length
-  const total = estabelecimentosDoGerente.value.length
+  const total = estabelecimentosDoGerentePorCidade.value.length
   if (qtdSel === 0 || qtdSel === total) {
     return `Todos (${total})`
   }
   if (qtdSel === 1) {
-    const est = estabelecimentosDoGerente.value.find(e => e.id === idsSelecionadosGerente.value[0])
+    const est = estabelecimentosDoGerentePorCidade.value.find(e => e.id === idsSelecionadosGerente.value[0])
     return est ? est.nome : '1 selecionado'
   }
   return `${qtdSel} estacionamentos selecionados`
@@ -607,51 +613,69 @@ function exportarRelatorioCompletoCsvPadrao() {
       </div>
 
       <!-- Seletor Múltiplo alinhado à esquerda junto com os cards -->
-      <div v-if="estabelecimentosDoGerente.length >= 2" class="seletor-multi-wrapper">
-        <button
-          type="button"
-          class="btn-seletor-multi item-icone-texto"
-          @click="dropdownMultiAberto = !dropdownMultiAberto"
-        >
-          <IconParking :size="18" />
-          <span>{{ textoBotaoSeletorTopo }}</span>
-          <IconSquareRoundedChevronDown :size="18" />
-        </button>
+      <div v-if="estabelecimentosDoGerente.length >= 2" class="barra-filtros-gerente">
+        <div class="seletor-multi-wrapper">
+          <button
+            type="button"
+            class="btn-seletor-multi item-icone-texto"
+            @click="dropdownMultiAberto = !dropdownMultiAberto"
+          >
+            <IconParking :size="18" />
+            <span>{{ textoBotaoSeletorTopo }}</span>
+            <IconSquareRoundedChevronDown :size="18" />
+          </button>
 
-        <Transition name="fade-pop">
-          <div v-if="dropdownMultiAberto" class="dropdown-multi-box">
-            <div v-if="mostrarPesquisaNoMulti" class="busca-multi-topo">
-              <IconSearch :size="16" class="icone-busca-multi" />
-              <input
-                v-model="termoBuscaMulti"
-                type="text"
-                placeholder="Pesquisar estacionamento..."
-              />
-            </div>
-
-            <div class="lista-opcoes-multi">
-              <div
-                class="item-opcao-multi destaque-completo"
-                :class="{ 'opcao-ativa': idsSelecionadosGerente.length === 0 }"
-                @click="selecionarDashboardCompleto"
-              >
-                <span>Todos</span>
-                <IconSquareRoundedCheck v-if="idsSelecionadosGerente.length === 0" :size="18" />
+          <Transition name="fade-pop">
+            <div v-if="dropdownMultiAberto" class="dropdown-multi-box">
+              <div v-if="mostrarPesquisaNoMulti" class="busca-multi-topo">
+                <IconSearch :size="16" class="icone-busca-multi" />
+                <input
+                  v-model="termoBuscaMulti"
+                  type="text"
+                  placeholder="Pesquisar estacionamento..."
+                />
               </div>
 
-              <div
-                v-for="est in listaEstabelecimentosNoMulti"
-                :key="est.id"
-                class="item-opcao-multi"
-                :class="{ 'opcao-ativa': idsSelecionadosGerente.includes(est.id) }"
-                @click="alternarSelecaoEstacionamento(est.id)"
-              >
-                <span>{{ est.nome }}</span>
-                <IconSquareRoundedCheck v-if="idsSelecionadosGerente.includes(est.id)" :size="18" />
+              <div class="lista-opcoes-multi">
+                <div
+                  class="item-opcao-multi destaque-completo"
+                  :class="{ 'opcao-ativa': idsSelecionadosGerente.length === 0 }"
+                  @click="selecionarDashboardCompleto"
+                >
+                  <span>Dashboard completo ({{ estabelecimentosDoGerentePorCidade.length }})</span>
+                  <IconSquareRoundedCheck v-if="idsSelecionadosGerente.length === 0" :size="18" />
+                </div>
+
+                <div
+                  v-for="est in listaEstabelecimentosNoMulti"
+                  :key="est.id"
+                  class="item-opcao-multi"
+                  :class="{ 'opcao-ativa': idsSelecionadosGerente.includes(est.id) }"
+                  @click="alternarSelecaoEstacionamento(est.id)"
+                >
+                  <span>{{ est.nome }} <small class="cidade-op-muted">({{ est.cidade || 'Sorocaba' }})</small></span>
+                  <IconSquareRoundedCheck v-if="idsSelecionadosGerente.includes(est.id)" :size="18" />
+                </div>
               </div>
             </div>
-          </div>
-        </Transition>
+          </Transition>
+        </div>
+
+        <!-- Filtro de Cidade -->
+        <div class="seletor-andar-box filtro-cidade-gerente-box">
+          <IconPin :size="17" style="color: var(--destaque-azul)" />
+          <span>Cidade:</span>
+          <select
+            :value="cidadeSelecionadaGerente"
+            class="select-andar-editor"
+            @change="selecionarCidadeGerente($event.target.value)"
+          >
+            <option value="TODAS">Todas ({{ cidadesDoGerente.length }})</option>
+            <option v-for="cid in cidadesDoGerente" :key="cid" :value="cid">
+              {{ cid }}
+            </option>
+          </select>
+        </div>
       </div>
     </header>
 

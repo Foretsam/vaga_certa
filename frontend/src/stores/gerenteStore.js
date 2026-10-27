@@ -3,6 +3,7 @@ import { usuarioLogado } from './authStore'
 import { estabelecimentos } from './estacionamentoStore'
 
 export const idsSelecionadosGerente = ref([])
+export const cidadeSelecionadaGerente = ref('TODAS')
 export const simulacao1Ativa = ref(false)
 
 export const estabelecimentosDoGerente = computed(() => {
@@ -12,12 +13,36 @@ export const estabelecimentosDoGerente = computed(() => {
   )
 })
 
-export const estabelecimentosFiltradosGerente = computed(() => {
-  const todos = estabelecimentosDoGerente.value
-  if (idsSelecionadosGerente.value.length === 0) return todos
-  const filtrados = todos.filter(e => idsSelecionadosGerente.value.includes(e.id))
-  return filtrados.length > 0 ? filtrados : todos
+export const cidadesDoGerente = computed(() => {
+  const setCidades = new Set(
+    estabelecimentosDoGerente.value
+      .map(e => (e.cidade || 'Sorocaba').trim())
+      .filter(Boolean)
+  )
+  return Array.from(setCidades).sort((a, b) => a.localeCompare(b, 'pt-BR'))
 })
+
+export const estabelecimentosDoGerentePorCidade = computed(() => {
+  const todos = estabelecimentosDoGerente.value
+  if (!cidadeSelecionadaGerente.value || cidadeSelecionadaGerente.value === 'TODAS') {
+    return todos
+  }
+  return todos.filter(
+    e => (e.cidade || 'Sorocaba').toLowerCase() === cidadeSelecionadaGerente.value.toLowerCase()
+  )
+})
+
+export const estabelecimentosFiltradosGerente = computed(() => {
+  const baseCidade = estabelecimentosDoGerentePorCidade.value
+  if (idsSelecionadosGerente.value.length === 0) return baseCidade
+  const filtrados = baseCidade.filter(e => idsSelecionadosGerente.value.includes(e.id))
+  return filtrados.length > 0 ? filtrados : baseCidade
+})
+
+export function selecionarCidadeGerente(novaCidade) {
+  cidadeSelecionadaGerente.value = novaCidade
+  idsSelecionadosGerente.value = []
+}
 
 export function alternarSimulacao1Frontend() {
   simulacao1Ativa.value = !simulacao1Ativa.value
