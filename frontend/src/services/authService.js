@@ -17,3 +17,10 @@ export function cadastrarUsuarioApi(nome, email, senha) {
 export function listarUsuariosApi() {
   return apiRequest('/usuarios')
 }
+
+export function registrarTutorialVistoApi(idUsuario, rota) {
+  return apiRequest(`/usuarios/${idUsuario}/tutorial`, {
+    method: 'PATCH',
+    body: JSON.stringify({ rota })
+  })
+}

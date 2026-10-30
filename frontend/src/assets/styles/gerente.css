@@ -58,13 +58,14 @@
 }
 
 .gerente-boas-vindas {
-  padding-left: 108px;
+  padding-left: 162px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   flex-wrap: wrap;
   gap: 12px;
 }
+
 .gerente-boas-vindas h1 {
   font-size: 24px;
   font-weight: 700;

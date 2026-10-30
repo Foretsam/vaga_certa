@@ -49,3 +49,7 @@ class LoginUsuarioPayload(BaseModel):
 class LoteStatusVagasPayload(BaseModel):
     ids_vagas: List[int]
     inativo: bool
+
+
+class TutorialVistoPayload(BaseModel):
+    rota: str

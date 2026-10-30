@@ -274,7 +274,7 @@ function abrirEstacionamentoTelaCheia(idEst) {
       </div>
 
       <!-- Seletor Múltiplo alinhado à esquerda junto com os cards -->
-      <div v-if="estabelecimentosDoGerente.length >= 2" class="barra-filtros-gerente">
+      <div v-if="estabelecimentosDoGerente.length >= 1" class="barra-filtros-gerente">
         <div class="seletor-multi-wrapper">
           <button
             type="button"

@@ -167,7 +167,7 @@
   .topbar-titulo-central {
     min-height: 38px;
     padding-top: 5px;
-    padding-left: 96px;
+    padding-left: 140px;
     padding-right: 48px;
   }
   .topbar-titulo-central.com-botao-direita {
@@ -198,7 +198,7 @@
 
   /* Títulos e botões superiores menores em Tablets (<= 1024px) */
   .gerente-boas-vindas {
-    padding-left: 92px;
+    padding-left: 136px;
   }
   .gerente-boas-vindas h1 {
     font-size: 18.5px;
@@ -237,6 +237,18 @@
   .grade-dupla-relatorios {
     grid-template-columns: 1fr;
   }
+
+  .btn-tutorial-info {
+    left: 98px;
+    width: 38px;
+    height: 38px;
+    border-radius: 9px;
+  }
+
+  .editor-topbar.tutorial-forcar-painel-mobile,
+  .sidebar-direita-editor.tutorial-forcar-painel-mobile {
+    display: flex !important;
+  }
 }
 
 @media (max-width: 768px) {
@@ -246,7 +258,7 @@
 
   .topbar-titulo-central {
     padding-top: 6px;
-    padding-left: 90px;
+    padding-left: 136px;
     padding-right: 8px;
     margin-bottom: 14px;
     min-height: 38px;
@@ -328,10 +340,10 @@
   }
 
   .gerente-atalhos-topo {
-    margin-left: -92px; /* Remove o recuo do logo apenas para esta linha */
-    width: calc(100% + 92px);
+    margin-left: -136px;
+    width: calc(100% + 136px);
     gap: 6px;
-    flex-wrap: nowrap; /* Força tudo a ficar na mesma linha */
+    flex-wrap: nowrap;
     margin-top: 4px;
   }
 
@@ -429,6 +441,8 @@
   .topbar-direita-motorista {
     display: none !important;
   }
+
+
 }
 
 @media (max-width: 480px) {

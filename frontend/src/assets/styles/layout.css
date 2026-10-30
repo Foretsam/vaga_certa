@@ -755,3 +755,252 @@
   opacity: 0.25;
   transition: opacity 0.2s ease;
 }
+
+/* =========================================================
+   BOTÃO INFO CIRCLE E SISTEMA DE TUTORIAL GUIADO (SPOTLIGHT)
+   ========================================================= */
+.btn-tutorial-info {
+  position: fixed;
+  top: 10px;
+  left: 118px;
+  z-index: 1000;
+  width: 46px;
+  height: 46px;
+  border-radius: 11px;
+  background: var(--bg-card);
+  color: var(--destaque-azul);
+  border: 1px solid var(--borda-botao-sec);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+  transition: border-color 0.15s ease, background-color 0.15s ease, color 0.15s ease, transform 0.15s ease;
+}
+
+.btn-tutorial-info:hover {
+  border-color: var(--destaque-azul);
+  background: var(--destaque-azul);
+  color: #ffffff;
+  transform: translateY(-1px);
+}
+
+.tutorial-overlay-bloqueio {
+  position: fixed;
+  inset: 0;
+  z-index: 3000;
+  pointer-events: all;
+  user-select: none;
+}
+
+.tutorial-backdrop-central {
+  position: fixed;
+  inset: 0;
+  background: rgba(2, 6, 23, 0.76);
+}
+
+.tutorial-spotlight-box {
+  position: fixed;
+  border-radius: 12px;
+  border: 2.5px solid #38bdf8;
+  box-shadow: 0 0 0 9999px rgba(2, 6, 23, 0.76), 0 0 22px rgba(56, 189, 248, 0.55);
+  pointer-events: none;
+  transition: top 0.22s ease, left 0.22s ease, width 0.22s ease, height 0.22s ease;
+}
+
+.tutorial-popup-card {
+  position: fixed;
+  z-index: 3005;
+  background: var(--bg-card);
+  color: var(--texto-principal);
+  border: 1.5px solid var(--destaque-azul);
+  border-radius: 14px;
+  padding: 18px 20px;
+  width: 360px;
+  max-width: calc(100vw - 24px);
+  box-shadow: 0 16px 38px rgba(0, 0, 0, 0.55);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  transition: top 0.22s ease, left 0.22s ease;
+}
+
+.tutorial-popup-topo {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.badge-etapa-tutorial {
+  background: rgba(37, 99, 235, 0.14);
+  color: var(--destaque-azul);
+  border: 1px solid rgba(37, 99, 235, 0.35);
+  font-size: 12px;
+  font-weight: 800;
+  padding: 3px 10px;
+  border-radius: 999px;
+}
+
+.tutorial-popup-titulo {
+  font-size: 17px;
+  font-weight: 800;
+  color: var(--texto-principal);
+}
+
+.tutorial-popup-texto {
+  font-size: 14px;
+  line-height: 1.48;
+  color: var(--texto-secundario);
+}
+
+.tutorial-popup-acoes {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  margin-top: 6px;
+}
+
+.btn-tutorial-nav {
+  flex: 1;
+  padding: 9px 12px !important;
+  font-size: 13.5px !important;
+}
+
+/* =========================================================
+   PÁGINA SOBRE O PROJETO (3 SEÇÕES)
+   ========================================================= */
+.sobre-container {
+  max-width: 960px;
+}
+
+.grade-sobre-secoes {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.card-sobre-bloco {
+  background: var(--bg-card);
+  border: 1px solid var(--borda);
+  border-radius: 14px;
+  padding: 22px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
+}
+
+.card-sobre-bloco.destaque-futuro {
+  border-color: rgba(37, 99, 235, 0.4);
+}
+
+.cabecalho-sobre-bloco {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 2px;
+}
+
+.cabecalho-sobre-bloco h2 {
+  font-size: 19px;
+  font-weight: 700;
+  color: var(--texto-principal);
+}
+
+.icone-sobre-badge {
+  width: 42px;
+  height: 42px;
+  border-radius: 10px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.icone-sobre-badge.azul {
+  background: rgba(37, 99, 235, 0.12);
+  color: var(--destaque-azul);
+}
+.icone-sobre-badge.roxo {
+  background: rgba(147, 51, 234, 0.14);
+  color: #a855f7;
+}
+.icone-sobre-badge.verde {
+  background: rgba(22, 163, 74, 0.14);
+  color: #22c55e;
+}
+
+.texto-sobre {
+  font-size: 14.5px;
+  line-height: 1.6;
+  color: var(--texto-secundario);
+}
+.texto-sobre strong {
+  color: var(--texto-principal);
+}
+
+.lista-tecnologias-sobre {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding-left: 18px;
+  font-size: 14px;
+  line-height: 1.55;
+  color: var(--texto-secundario);
+}
+.lista-tecnologias-sobre strong {
+  color: var(--texto-principal);
+}
+
+.grade-planos-futuros {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin: 4px 0;
+}
+
+.item-plano-futuro {
+  background: var(--bg-painel);
+  border: 1px solid var(--borda);
+  border-radius: 10px;
+  padding: 14px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.item-plano-futuro strong {
+  font-size: 14.5px;
+  color: var(--destaque-azul);
+}
+.item-plano-futuro span {
+  font-size: 13.5px;
+  line-height: 1.5;
+  color: var(--texto-secundario);
+}
+
+.conclusao-sobre {
+  margin-top: 4px;
+  padding-top: 12px;
+  border-top: 1px solid var(--borda);
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  color: var(--texto-principal);
+}
+
+.icone-conclusao {
+  color: var(--destaque-azul);
+  flex-shrink: 0;
+  margin-top: 3px;
+}
+
+@media (max-width: 768px) {
+  .card-sobre-bloco {
+    padding: 16px;
+  }
+  .cabecalho-sobre-bloco h2 {
+    font-size: 16.5px;
+  }
+  .grade-planos-futuros {
+    grid-template-columns: 1fr;
+  }
+}
