@@ -249,6 +249,32 @@
   .sidebar-direita-editor.tutorial-forcar-painel-mobile {
     display: flex !important;
   }
+
+  .btn-toggle-tema {
+    left: 98px;
+    width: 38px;
+    height: 38px;
+    border-radius: 9px;
+  }
+  .btn-toggle-tema.com-botao-tutorial {
+    left: 142px;
+  }
+
+  .gerente-boas-vindas {
+    padding-left: 180px;
+  }
+
+  .topbar-titulo-central {
+    padding-left: 184px;
+  }
+
+  .grupo-filtros-navegacao-gerente,
+  .grupo-inativar-reativar-gerente,
+  .grupo-calor-simulacao-gerente {
+    flex-direction: column;
+    align-items: stretch;
+    width: 100%;
+  }
 }
 
 @media (max-width: 768px) {
@@ -442,7 +468,10 @@
     display: none !important;
   }
 
-
+  .gerente-atalhos-topo {
+    margin-left: -180px;
+    width: calc(100% + 180px);
+  }
 }
 
 @media (max-width: 480px) {

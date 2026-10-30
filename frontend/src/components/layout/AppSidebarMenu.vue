@@ -1,6 +1,6 @@
 <script setup>
-import { ref } from 'vue'
-import { useRouter } from 'vue-router'
+import { ref, onMounted } from 'vue'
+import { useRouter, useRoute } from 'vue-router'
 import {
   iniciarNovoFormulario,
   usuarioLogado,
@@ -8,6 +8,7 @@ import {
   simulacao1Ativa
 } from '@/stores/estacionamentoStore'
 import { encerrarSessaoUsuario } from '@/stores/authStore'
+import { TUTORIAIS_POR_ROTA } from '@/constants/tutoriaisConfig'
 import {
   IconMenu2,
   IconSquareRoundedX,
@@ -20,11 +21,36 @@ import {
   IconLogout,
   IconLayoutBoard,
   IconParking,
-  IconChartBar
+  IconChartBar,
+  IconSun,
+  IconMoon
 } from '@/constants/icons'
 
 const menuAberto = ref(false)
 const router = useRouter()
+const route = useRoute()
+
+const temaEscuro = ref(true)
+
+onMounted(() => {
+  const salvo = localStorage.getItem('vagacerta_tema')
+  if (salvo === 'light' || salvo === 'dark') {
+    temaEscuro.value = salvo === 'dark'
+  } else {
+    temaEscuro.value = window.matchMedia('(prefers-color-scheme: dark)').matches
+  }
+  aplicarTemaDom()
+})
+
+function aplicarTemaDom() {
+  document.documentElement.setAttribute('data-theme', temaEscuro.value ? 'dark' : 'light')
+}
+
+function alternarTema() {
+  temaEscuro.value = !temaEscuro.value
+  localStorage.setItem('vagacerta_tema', temaEscuro.value ? 'dark' : 'light')
+  aplicarTemaDom()
+}
 
 function irPara(rota) {
   menuAberto.value = false
@@ -65,6 +91,18 @@ function sairDaConta() {
 
   <button class="btn-logo-vc" title="Ir para a página inicial" @click="irParaHomePorNivel">
     <span class="vc-letra-v">V</span><span class="vc-letra-c">C</span>
+  </button>
+
+  <!-- Toggle Light / Dark Mode sutil (apenas ícone, com dica no hover) -->
+  <button
+    type="button"
+    class="btn-toggle-tema"
+    :class="{ 'com-botao-tutorial': route.name && TUTORIAIS_POR_ROTA[route.name] }"
+    :title="temaEscuro ? 'Mudar para Modo Claro (Light Mode)' : 'Mudar para Modo Escuro (Dark Mode)'"
+    @click="alternarTema"
+  >
+    <IconSun v-if="temaEscuro" :size="18" />
+    <IconMoon v-else :size="18" />
   </button>
 
   <Transition name="fade-backdrop">

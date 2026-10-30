@@ -58,7 +58,7 @@
 }
 
 .gerente-boas-vindas {
-  padding-left: 162px;
+  padding-left: 224px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -892,4 +892,21 @@
 
 .modal-box.modal-exportar-relatorio {
   max-width: 390px;
+}
+
+.tabela-historico-colunas-fixas {
+  table-layout: fixed;
+  width: 100%;
+}
+
+.col-hist-est { width: 24%; }
+.col-hist-setor { width: 22%; }
+.col-hist-vaga { width: 10%; }
+.col-hist-data { width: 17%; }
+.col-hist-perm { width: 10%; }
+
+.celula-truncada {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }

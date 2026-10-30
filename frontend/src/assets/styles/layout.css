@@ -1035,6 +1035,128 @@
   transform: translateY(-1px);
 }
 
+/* Botão sutil de alternância Light/Dark Mode */
+.btn-toggle-tema {
+  position: fixed;
+  top: 10px;
+  left: 118px;
+  z-index: 1000;
+  width: 46px;
+  height: 46px;
+  border-radius: 11px;
+  background: var(--bg-card);
+  color: var(--texto-principal);
+  border: 1px solid var(--borda-botao-sec);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+  transition: border-color 0.15s ease, color 0.15s ease, transform 0.15s ease, background-color 0.15s ease;
+}
+.btn-toggle-tema.com-botao-tutorial {
+  left: 172px;
+}
+.btn-toggle-tema:hover {
+  border-color: var(--destaque-azul);
+  color: var(--destaque-azul);
+  transform: translateY(-1px);
+}
+
+/* Corrige o corte superior no hover do 1º estacionamento e suaviza a filtragem */
+.lista-estacionamentos-motorista {
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 2px;
+}
+
+.lista-suave-move,
+.lista-suave-enter-active,
+.lista-suave-leave-active {
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+.lista-suave-enter-from,
+.lista-suave-leave-to {
+  opacity: 0;
+  transform: translateY(6px);
+}
+
+.btn-seletor-altura-input {
+  width: 100%;
+  height: 44px;
+  justify-content: space-between;
+}
+
+/* Grupos de foco na topbar do Gerente */
+.grupo-filtros-navegacao-gerente,
+.grupo-inativar-reativar-gerente,
+.grupo-calor-simulacao-gerente {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+/* Mapa do Motorista sem coordenadas, espaçamento de 1px e fundo limpo */
+.area-grid-motorista-limpa {
+  background: var(--bg-card) !important;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  padding: 20px !important;
+  overflow: auto !important;
+}
+
+.viewport-motorista-central {
+  margin: auto;
+}
+
+.matriz-motorista-sem-coordenadas {
+  display: inline-block;
+  padding: 6px;
+  border-radius: 10px;
+}
+
+.celula-motorista-compacta {
+  width: 30px;
+  height: 30px;
+  padding: 1px;
+}
+
+.quadrado-motorista {
+  font-size: 9.5px;
+  border-radius: 3px;
+}
+
+.controles-zoom-motorista {
+  display: inline-flex;
+  align-items: center;
+  background: var(--bg-botao-sec);
+  border: 1px solid var(--borda-botao-sec);
+  border-radius: 9px;
+  overflow: hidden;
+}
+
+.btn-zoom-acao,
+.btn-zoom-reset {
+  background: transparent;
+  color: var(--texto-principal);
+  border: none;
+  padding: 6px 9px;
+  font-size: 12.5px;
+  font-weight: 700;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.15s ease, color 0.15s ease;
+}
+.btn-zoom-acao:hover,
+.btn-zoom-reset:hover {
+  background: rgba(59, 130, 246, 0.14);
+  color: var(--destaque-azul);
+}
+
 @media (max-width: 768px) {
   .card-sobre-bloco {
     padding: 18px 16px;

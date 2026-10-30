@@ -12,6 +12,8 @@ import {
   IconPin,
   IconParking,
   IconSquareRoundedArrowRight,
+  IconSquareRoundedChevronDown,
+  IconSquareRoundedCheck,
   IconSquareRoundedX,
   IconAlertSquareRounded
 } from '@/constants/icons'
@@ -20,6 +22,8 @@ const router = useRouter()
 
 const termoBuscaNome = ref('')
 const cidadeFiltro = ref('TODAS')
+const dropdownCidadeAberto = ref(false)
+const termoBuscaCidade = ref('')
 
 // Estado do Leitor de QR Code via Câmera
 const cameraAtiva = ref(false)
@@ -33,13 +37,20 @@ onMounted(() => {
   if (estabelecimentos.value.length === 0) {
     carregarDadosDoBanco()
   }
+  window.addEventListener('click', fecharDropdownCidadeFora)
 })
 
 onUnmounted(() => {
   pararCameraQr()
+  window.removeEventListener('click', fecharDropdownCidadeFora)
 })
 
-// Apenas estacionamentos ativos para o motorista
+function fecharDropdownCidadeFora(e) {
+  if (!e.target.closest('.seletor-cidade-custom')) {
+    dropdownCidadeAberto.value = false
+  }
+}
+
 const estacionamentosAtivos = computed(() => {
   return estabelecimentos.value.filter(e => !e.inativo)
 })
@@ -52,6 +63,25 @@ const cidadesDisponiveis = computed(() => {
   )
   return Array.from(setCidades).sort((a, b) => a.localeCompare(b, 'pt-BR'))
 })
+
+const cidadesFiltradasDropdown = computed(() => {
+  const t = termoBuscaCidade.value.trim().toLowerCase()
+  if (!t) return cidadesDisponiveis.value
+  return cidadesDisponiveis.value.filter(c => c.toLowerCase().includes(t))
+})
+
+const textoBotaoCidade = computed(() => {
+  if (cidadeFiltro.value === 'TODAS') {
+    return `Todas as cidades (${cidadesDisponiveis.value.length})`
+  }
+  return cidadeFiltro.value
+})
+
+function escolherCidadeFiltro(cid) {
+  cidadeFiltro.value = cid
+  dropdownCidadeAberto.value = false
+  termoBuscaCidade.value = ''
+}
 
 const estacionamentosFiltrados = computed(() => {
   const termo = termoBuscaNome.value.trim().toLowerCase()
@@ -97,14 +127,12 @@ function extrairIdDoTextoQr(textoLido) {
   if (!textoLido) return null
   const limpo = textoLido.trim()
 
-  // Caso 1: URL do formato /vagas/12 ou ?id=12
   const matchVagas = limpo.match(/\/vagas\/(\d+)/i)
   if (matchVagas) return Number(matchVagas[1])
 
   const matchQuery = limpo.match(/[?&]id=(\d+)/i)
   if (matchQuery) return Number(matchQuery[1])
 
-  // Caso 2: Apenas o número do ID
   if (/^\d+$/.test(limpo)) return Number(limpo)
 
   return null
@@ -144,7 +172,7 @@ async function iniciarCameraQr() {
         monitorarQuadroVideo(detectorNativo)
       }
     }, 100)
-  } catch (err) {
+  } catch {
     erroCamera.value = 'Permissão de câmera negada ou câmera indisponível. Pesquise o estacionamento abaixo.'
     cameraAtiva.value = false
   }
@@ -156,7 +184,6 @@ function monitorarQuadroVideo(detectorNativo) {
 
     const video = videoRef.value
     if (video.readyState === video.HAVE_ENOUGH_DATA) {
-      // 1. Tenta pelo BarcodeDetector nativo
       if (detectorNativo) {
         try {
           const codigos = await detectorNativo.detect(video)
@@ -172,7 +199,6 @@ function monitorarQuadroVideo(detectorNativo) {
         }
       }
 
-      // 2. Fallback via Canvas + jsQR
       if (window.jsQR && canvasRef.value) {
         const canvas = canvasRef.value
         const ctx = canvas.getContext('2d', { willReadFrequently: true })
@@ -233,7 +259,6 @@ function pararCameraQr() {
           <span>Escanear QR Code com a Câmera</span>
         </button>
 
-        <!-- Visor da Câmera quando ativado -->
         <Transition name="fade-pop">
           <div v-if="cameraAtiva" class="camera-qr-box">
             <div class="camera-video-wrapper">
@@ -266,7 +291,7 @@ function pararCameraQr() {
         <span>OU PESQUISE O ESTACIONAMENTO</span>
       </div>
 
-      <!-- FILTROS: BUSCA POR NOME E FILTRO DE CIDADE -->
+      <!-- FILTROS: BUSCA POR NOME E SELETOR CUSTOMIZADO DE CIDADE -->
       <div class="filtros-motorista-grid">
         <div class="input-pesquisa-icone-wrapper">
           <IconSearch :size="18" class="icone-input-pesquisa" />
@@ -278,19 +303,58 @@ function pararCameraQr() {
           />
         </div>
 
-        <div class="select-cidade-motorista-wrapper">
-          <IconPin :size="18" class="icone-input-pesquisa" style="color: var(--destaque-azul)" />
-          <select v-model="cidadeFiltro" class="select-padrao select-com-icone-esq">
-            <option value="TODAS">Todas as cidades ({{ cidadesDisponiveis.length }})</option>
-            <option v-for="cid in cidadesDisponiveis" :key="cid" :value="cid">
-              {{ cid }}
-            </option>
-          </select>
+        <div class="seletor-multi-wrapper seletor-cidade-custom" style="width: 100%">
+          <button
+            type="button"
+            class="btn-seletor-multi btn-seletor-altura-input item-icone-texto"
+            @click="dropdownCidadeAberto = !dropdownCidadeAberto"
+          >
+            <span class="item-icone-texto" style="min-width: 0">
+              <IconPin :size="18" style="color: var(--destaque-azul); flex-shrink: 0" />
+              <span class="texto-truncado-est">{{ textoBotaoCidade }}</span>
+            </span>
+            <IconSquareRoundedChevronDown :size="18" style="flex-shrink: 0" />
+          </button>
+
+          <Transition name="fade-pop">
+            <div v-if="dropdownCidadeAberto" class="dropdown-multi-box" style="width: 100%">
+              <div v-if="cidadesDisponiveis.length > 5" class="busca-multi-topo">
+                <IconSearch :size="16" class="icone-busca-multi" />
+                <input
+                  v-model="termoBuscaCidade"
+                  type="text"
+                  placeholder="Filtrar cidade..."
+                />
+              </div>
+
+              <div class="lista-opcoes-multi">
+                <div
+                  class="item-opcao-multi destaque-completo"
+                  :class="{ 'opcao-ativa': cidadeFiltro === 'TODAS' }"
+                  @click="escolherCidadeFiltro('TODAS')"
+                >
+                  <span>Todas as cidades ({{ cidadesDisponiveis.length }})</span>
+                  <IconSquareRoundedCheck v-if="cidadeFiltro === 'TODAS'" :size="18" />
+                </div>
+
+                <div
+                  v-for="cid in cidadesFiltradasDropdown"
+                  :key="cid"
+                  class="item-opcao-multi"
+                  :class="{ 'opcao-ativa': cidadeFiltro === cid }"
+                  @click="escolherCidadeFiltro(cid)"
+                >
+                  <span>{{ cid }}</span>
+                  <IconSquareRoundedCheck v-if="cidadeFiltro === cid" :size="18" />
+                </div>
+              </div>
+            </div>
+          </Transition>
         </div>
       </div>
 
-      <!-- LISTA DE ESTACIONAMENTOS DISPONÍVEIS -->
-      <div class="lista-estacionamentos-motorista">
+      <!-- LISTA DE ESTACIONAMENTOS DISPONÍVEIS COM ANIMAÇÃO SUAVE -->
+      <TransitionGroup name="lista-suave" tag="div" class="lista-estacionamentos-motorista">
         <div
           v-for="est in estacionamentosFiltrados"
           :key="est.id"
@@ -325,10 +389,10 @@ function pararCameraQr() {
           </div>
         </div>
 
-        <div v-if="estacionamentosFiltrados.length === 0" class="lista-vazia">
+        <div v-if="estacionamentosFiltrados.length === 0" key="vazio-mot" class="lista-vazia">
           Nenhum estacionamento encontrado para este filtro.
         </div>
-      </div>
+      </TransitionGroup>
     </div>
   </main>
 </template>

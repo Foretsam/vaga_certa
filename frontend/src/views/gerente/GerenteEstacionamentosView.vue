@@ -40,6 +40,8 @@ const andarIndex = ref(0)
 
 // Dropdown de pesquisa para trocar de estacionamento
 const dropdownEstAberto = ref(false)
+const dropdownCidadeAberto = ref(false)
+const dropdownAndarAberto = ref(false)
 const termoBuscaEst = ref('')
 
 // Modos especiais: 'NENHUM' | 'INATIVAR' | 'REATIVAR'
@@ -108,6 +110,12 @@ watch(estabelecimentosDoGerente, () => {
 function fecharDropdownAoClicarFora(e) {
   if (!e.target.closest('.seletor-est-tela-cheia')) {
     dropdownEstAberto.value = false
+  }
+  if (!e.target.closest('.seletor-cidade-tela-cheia')) {
+    dropdownCidadeAberto.value = false
+  }
+  if (!e.target.closest('.seletor-andar-tela-cheia')) {
+    dropdownAndarAberto.value = false
   }
 }
 
@@ -602,120 +610,163 @@ function tratarTeclaGlobal(event) {
           <IconSquareRoundedArrowLeft :size="18" />
           <span>Dashboard</span>
         </button>
-        <div v-if="cidadesDoGerente.length >= 1" class="seletor-andar-box">
-          <IconPin :size="17" style="color: var(--destaque-azul)" />
-          <span>Cidade:</span>
-          <select
-            :value="cidadeSelecionadaGerente"
-            class="select-andar-editor"
-            @change="aoTrocarCidadeTelaCheia($event.target.value)"
-          >
-            <option value="TODAS">Todas</option>
-            <option v-for="cid in cidadesDoGerente" :key="cid" :value="cid">
-              {{ cid }}
-            </option>
-          </select>
-        </div>
-        <!-- Seletor de Estacionamento com Pesquisa -->
-        <div class="seletor-est-tela-cheia">
-          <button
-            type="button"
-            class="btn-seletor-multi item-icone-texto"
-            @click="dropdownEstAberto = !dropdownEstAberto"
-          >
-            <IconParking :size="18" />
-            <span class="texto-truncado-est">{{ estacionamentoAtual.nome }}</span>
-            <IconSquareRoundedChevronDown :size="17" />
-          </button>
 
-          <Transition name="fade-pop">
-            <div v-if="dropdownEstAberto" class="dropdown-multi-box">
-              <div class="busca-multi-topo">
-                <IconSearch :size="16" class="icone-busca-multi" />
-                <input
-                  v-model="termoBuscaEst"
-                  type="text"
-                  placeholder="Pesquisar estacionamento..."
-                />
-              </div>
-              <div class="lista-opcoes-multi">
-                <div
-                  v-for="est in listaEstabelecimentosFiltrados"
-                  :key="est.id"
-                  class="item-opcao-multi"
-                  :class="{ 'opcao-ativa': est.id === estacionamentoAtual.id }"
-                  @click="escolherEstacionamento(est)"
-                >
-                  <span>{{ est.nome }}</span>
-                  <IconSquareRoundedCheck v-if="est.id === estacionamentoAtual.id" :size="18" />
+        <!-- Grupo focado no Passo 2 do Tutorial (Cidade, Estacionamento e Andar) -->
+        <div class="grupo-filtros-navegacao-gerente">
+          <!-- Filtro de Cidade Estilizado -->
+          <div v-if="cidadesDoGerente.length >= 1" class="seletor-multi-wrapper seletor-cidade-tela-cheia">
+            <button
+              type="button"
+              class="btn-seletor-multi item-icone-texto"
+              @click="dropdownCidadeAberto = !dropdownCidadeAberto; dropdownEstAberto = false; dropdownAndarAberto = false"
+            >
+              <IconPin :size="17" style="color: var(--destaque-azul)" />
+              <span>{{ cidadeSelecionadaGerente === 'TODAS' ? 'Todas as cidades' : cidadeSelecionadaGerente }}</span>
+              <IconSquareRoundedChevronDown :size="17" />
+            </button>
+
+            <Transition name="fade-pop">
+              <div v-if="dropdownCidadeAberto" class="dropdown-multi-box" style="width: 220px">
+                <div class="lista-opcoes-multi">
+                  <div
+                    class="item-opcao-multi destaque-completo"
+                    :class="{ 'opcao-ativa': cidadeSelecionadaGerente === 'TODAS' }"
+                    @click="aoTrocarCidadeTelaCheia('TODAS'); dropdownCidadeAberto = false"
+                  >
+                    <span>Todas</span>
+                    <IconSquareRoundedCheck v-if="cidadeSelecionadaGerente === 'TODAS'" :size="18" />
+                  </div>
+                  <div
+                    v-for="cid in cidadesDoGerente"
+                    :key="cid"
+                    class="item-opcao-multi"
+                    :class="{ 'opcao-ativa': cidadeSelecionadaGerente === cid }"
+                    @click="aoTrocarCidadeTelaCheia(cid); dropdownCidadeAberto = false"
+                  >
+                    <span>{{ cid }}</span>
+                    <IconSquareRoundedCheck v-if="cidadeSelecionadaGerente === cid" :size="18" />
+                  </div>
                 </div>
               </div>
-            </div>
-          </Transition>
-        </div>
+            </Transition>
+          </div>
 
-        <!-- Seletor de Andar -->
-        <div class="seletor-andar-box">
-          <IconStack2 :size="18" />
-          <span>Andar:</span>
-          <select
-            v-if="estacionamentoAtual.andares.length > 1"
-            v-model="andarIndex"
-            class="select-andar-editor"
-            @change="cancelarModoSelecao(); resetarCameraGrid()"
-          >
-            <option
-              v-for="(a, idx) in estacionamentoAtual.andares"
-              :key="a.id_andar"
-              :value="idx"
+          <!-- Seletor de Estacionamento com Pesquisa -->
+          <div class="seletor-est-tela-cheia">
+            <button
+              type="button"
+              class="btn-seletor-multi item-icone-texto"
+              @click="dropdownEstAberto = !dropdownEstAberto; dropdownCidadeAberto = false; dropdownAndarAberto = false"
             >
-              {{ a.nome_andar }}
-            </option>
-          </select>
-          <strong v-else>{{ andarAtual.nome_andar }}</strong>
+              <IconParking :size="18" />
+              <span class="texto-truncado-est">{{ estacionamentoAtual.nome }}</span>
+              <IconSquareRoundedChevronDown :size="17" />
+            </button>
+
+            <Transition name="fade-pop">
+              <div v-if="dropdownEstAberto" class="dropdown-multi-box">
+                <div class="busca-multi-topo">
+                  <IconSearch :size="16" class="icone-busca-multi" />
+                  <input
+                    v-model="termoBuscaEst"
+                    type="text"
+                    placeholder="Pesquisar estacionamento..."
+                  />
+                </div>
+                <div class="lista-opcoes-multi">
+                  <div
+                    v-for="est in listaEstabelecimentosFiltrados"
+                    :key="est.id"
+                    class="item-opcao-multi"
+                    :class="{ 'opcao-ativa': est.id === estacionamentoAtual.id }"
+                    @click="escolherEstacionamento(est)"
+                  >
+                    <span>{{ est.nome }}</span>
+                    <IconSquareRoundedCheck v-if="est.id === estacionamentoAtual.id" :size="18" />
+                  </div>
+                </div>
+              </div>
+            </Transition>
+          </div>
+
+          <!-- Seletor de Andar Estilizado -->
+          <div class="seletor-multi-wrapper seletor-andar-tela-cheia">
+            <button
+              type="button"
+              class="btn-seletor-multi item-icone-texto"
+              @click="dropdownAndarAberto = !dropdownAndarAberto; dropdownEstAberto = false; dropdownCidadeAberto = false"
+            >
+              <IconStack2 :size="18" style="color: var(--destaque-azul)" />
+              <span>{{ andarAtual.nome_andar }}</span>
+              <IconSquareRoundedChevronDown :size="17" />
+            </button>
+
+            <Transition name="fade-pop">
+              <div v-if="dropdownAndarAberto" class="dropdown-multi-box" style="width: 210px">
+                <div class="lista-opcoes-multi">
+                  <div
+                    v-for="(a, idx) in estacionamentoAtual.andares"
+                    :key="a.id_andar"
+                    class="item-opcao-multi"
+                    :class="{ 'opcao-ativa': idx === andarIndex }"
+                    @click="andarIndex = idx; dropdownAndarAberto = false; cancelarModoSelecao(); resetarCameraGrid()"
+                  >
+                    <span>{{ a.nome_andar }}</span>
+                    <IconSquareRoundedCheck v-if="idx === andarIndex" :size="18" />
+                  </div>
+                </div>
+              </div>
+            </Transition>
+          </div>
         </div>
 
-        <!-- Botões Inativar / Reativar Vagas -->
-        <button
-          class="btn-secundario item-icone-texto"
-          :class="{ 'btn-modo-inativar-ativo': modoAcaoVagas === 'INATIVAR' }"
-          @click="ativarModoSelecao('INATIVAR')"
-        >
-          <IconBan :size="17" />
-          <span>Inativar</span>
-        </button>
+        <!-- Grupo focado no Passo 4 do Tutorial (Inativar e Reativar) -->
+        <div class="grupo-inativar-reativar-gerente">
+          <button
+            class="btn-secundario item-icone-texto"
+            :class="{ 'btn-modo-inativar-ativo': modoAcaoVagas === 'INATIVAR' }"
+            @click="ativarModoSelecao('INATIVAR')"
+          >
+            <IconBan :size="17" />
+            <span>Inativar</span>
+          </button>
 
-        <button
-          class="btn-secundario item-icone-texto"
-          :class="{ 'btn-modo-reativar-ativo': modoAcaoVagas === 'REATIVAR' }"
-          @click="ativarModoSelecao('REATIVAR')"
-        >
-          <IconSquareRoundedCheck :size="17" />
-          <span>Reativar</span>
-        </button>
+          <button
+            class="btn-secundario item-icone-texto"
+            :class="{ 'btn-modo-reativar-ativo': modoAcaoVagas === 'REATIVAR' }"
+            @click="ativarModoSelecao('REATIVAR')"
+          >
+            <IconSquareRoundedCheck :size="17" />
+            <span>Reativar</span>
+          </button>
+        </div>
       </div>
 
       <div class="topbar-direita-gerente">
-        <button
-          class="btn-secundario item-icone-texto"
-          :class="{ 'btn-calor-ativo': modoMapaCalor }"
-          @click="modoMapaCalor = !modoMapaCalor"
-        >
-          <IconFlame :size="18" />
-          <span>{{ modoMapaCalor ? 'Mapa de Calor: ON' : 'Mapa de Calor' }}</span>
-        </button>
+        <!-- Grupo focado no Passo 5 do Tutorial (Sem incluir QR Code) -->
+        <div class="grupo-calor-simulacao-gerente">
+          <button
+            class="btn-secundario item-icone-texto"
+            :class="{ 'btn-calor-ativo': modoMapaCalor }"
+            @click="modoMapaCalor = !modoMapaCalor"
+          >
+            <IconFlame :size="18" />
+            <span>{{ modoMapaCalor ? 'Mapa de Calor: ON' : 'Mapa de Calor' }}</span>
+          </button>
 
-        <button
-          class="btn-secundario item-icone-texto"
-          :class="{ 'btn-simulacao-ativa': simulacao1Ativa }"
-          @click="alternarSimulacao1Frontend"
-        >
-          <IconPlayerPlay :size="17" />
-          <span>{{ simulacao1Ativa ? 'Simulação: Ativa' : 'Simulação' }}</span>
-        </button>
+          <button
+            class="btn-secundario item-icone-texto"
+            :class="{ 'btn-simulacao-ativa': simulacao1Ativa }"
+            @click="alternarSimulacao1Frontend"
+          >
+            <IconPlayerPlay :size="17" />
+            <span>{{ simulacao1Ativa ? 'Simulação 1: ON' : 'Simulação 1' }}</span>
+          </button>
+        </div>
 
+        <!-- Botão focado exclusivamente no Passo 6 do Tutorial -->
         <button
-          class="btn-primario item-icone-texto"
+          class="btn-primario btn-qrcode-gerente item-icone-texto"
           @click="modalQrAberto = true"
         >
           <IconQrcode :size="18" />

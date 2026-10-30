@@ -69,7 +69,7 @@ export const TUTORIAIS_POR_ROTA = {
       texto: 'Acompanhe a planta 2D completa de cada andar em tempo real, inspecione vagas e gerencie bloqueios operacionais com facilidade.'
     },
     {
-      seletor: '.editor-topbar .topbar-esquerda',
+      seletor: '.grupo-filtros-navegacao-gerente',
       abrirTopbarMobile: true,
       titulo: 'Troca de Cidade, Unidade e Andar',
       texto: 'Utilize estes controles para filtrar a cidade, alternar entre seus estacionamentos ou mudar o andar exibido na tela.'
@@ -80,19 +80,19 @@ export const TUTORIAIS_POR_ROTA = {
       texto: 'No mapa, cada elemento possui uma cor: Verde (vaga livre), Vermelho (vaga ocupada), Cinza (vaga inativa), Cinza Escuro (estradas de circulação), Azul (entrada), Laranja (saída) e Ícone Verde (acesso de pedestres/elevador).'
     },
     {
-      seletor: '.topbar-direita-gerente',
+      seletor: '.grupo-inativar-reativar-gerente',
       abrirTopbarMobile: true,
       titulo: 'Inativar e Reativar Vagas em Lote',
       texto: 'Precisa interditar vagas para manutenção? Clique em "Inativar Vagas" (ou "Reativar"), selecione uma ou mais vagas diretamente no mapa e confirme a alteração na barra inferior.'
     },
     {
-      seletor: '.topbar-direita-gerente',
+      seletor: '.grupo-calor-simulacao-gerente',
       abrirTopbarMobile: true,
       titulo: 'Mapa de Calor de Rotatividade',
       texto: 'Ao ativar o "Mapa de Calor", as vagas mudam de cor em 5 níveis (do azul ao vermelho intenso) para mostrar quais vagas foram mais utilizadas ao longo do dia.'
     },
     {
-      seletor: '.topbar-direita-gerente',
+      seletor: '.btn-qrcode-gerente',
       abrirTopbarMobile: true,
       titulo: 'QR Code para Motoristas',
       texto: 'Clique neste botão para visualizar e imprimir o QR Code exclusivo deste estacionamento. Com ele na entrada da unidade, os motoristas escaneiam e abrem o mapa de vagas livres direto no celular.'

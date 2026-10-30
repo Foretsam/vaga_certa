@@ -1,5 +1,5 @@
 <script setup>
-import { ref, computed, watch, onMounted } from 'vue'
+import { ref, computed, watch, nextTick, onMounted, onUnmounted } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import {
   estabelecimentos,
@@ -9,11 +9,14 @@ import {
 import { useGridPanZoom } from '@/composables/useGridPanZoom'
 import {
   IconSquareRoundedArrowLeft,
+  IconSquareRoundedChevronDown,
+  IconSquareRoundedCheck,
+  IconSquareRoundedPlus,
+  IconSquareRoundedMinus,
   IconParking,
   IconPin,
   IconStack2,
   IconLayoutBoard,
-  IconSearch,
   IconDoorEnter,
   IconDoorExit,
   IconArrowBarRight,
@@ -24,9 +27,11 @@ const route = useRoute()
 const router = useRouter()
 
 const andarIndex = ref(0)
+const dropdownAndarAberto = ref(false)
 const setorDestacadoId = ref(null)
 const celulaInspecionada = ref(null)
 const painelSetoresMobileAberto = ref(false)
+const containerMapaRef = ref(null)
 
 const {
   panX,
@@ -42,22 +47,27 @@ onMounted(async () => {
   if (estabelecimentos.value.length === 0) {
     await carregarDadosDoBanco()
   }
+  await nextTick()
+  ajustarZoomERolagemParaEntrada()
+  window.addEventListener('click', fecharDropdownAndarFora)
+  window.addEventListener('resize', ajustarZoomERolagemParaEntrada)
 })
+
+onUnmounted(() => {
+  window.removeEventListener('click', fecharDropdownAndarFora)
+  window.removeEventListener('resize', ajustarZoomERolagemParaEntrada)
+})
+
+function fecharDropdownAndarFora(e) {
+  if (!e.target.closest('.seletor-andar-custom')) {
+    dropdownAndarAberto.value = false
+  }
+}
 
 const estacionamentoAtual = computed(() => {
   const idParam = Number(route.params.id)
   return estabelecimentos.value.find(e => e.id === idParam && !e.inativo) || null
 })
-
-watch(
-  () => route.params.id,
-  () => {
-    andarIndex.value = 0
-    setorDestacadoId.value = null
-    celulaInspecionada.value = null
-    resetarCameraGrid()
-  }
-)
 
 const andarAtual = computed(() => {
   if (!estacionamentoAtual.value?.andares) return null
@@ -67,6 +77,149 @@ const andarAtual = computed(() => {
     null
   )
 })
+
+// =========================================================
+// RECORTE DE EXTREMIDADES VAZIAS E ROTAÇÃO COM ENTRADA EMBAIXO
+// =========================================================
+const mapaProcessadoMotorista = computed(() => {
+  const andar = andarAtual.value
+  if (!andar?.celulas) return null
+
+  const todas = Object.values(andar.celulas)
+  const preenchidas = todas.filter(c => c.tipo !== 'VAZIO' || c.setorId)
+
+  if (preenchidas.length === 0) {
+    return {
+      largura: 1,
+      altura: 1,
+      linhas: [[todas[0]]]
+    }
+  }
+
+  let minX = Infinity
+  let maxX = -Infinity
+  let minY = Infinity
+  let maxY = -Infinity
+
+  preenchidas.forEach((c) => {
+    if (c.x < minX) minX = c.x
+    if (c.x > maxX) maxX = c.x
+    if (c.y < minY) minY = c.y
+    if (c.y > maxY) maxY = c.y
+  })
+
+  // Matriz recortada apenas onde existem elementos
+  let matriz = []
+  for (let y = minY; y <= maxY; y++) {
+    const linha = []
+    for (let x = minX; x <= maxX; x++) {
+      linha.push(andar.celulas[`${x},${y}`])
+    }
+    matriz.push(linha)
+  }
+
+  // Descobre onde está a ENTRADA (ou SAIDA) para rotacionar e deixá-la sempre na borda inferior
+  const entradas = preenchidas.filter(c => c.tipo === 'ENTRADA')
+  const alvosRef = entradas.length > 0 ? entradas : preenchidas.filter(c => c.tipo === 'SAIDA')
+
+  let rotacoes90Horario = 0
+  if (alvosRef.length > 0) {
+    const mediaX = alvosRef.reduce((acc, c) => acc + c.x, 0) / alvosRef.length
+    const mediaY = alvosRef.reduce((acc, c) => acc + c.y, 0) / alvosRef.length
+
+    const distTopo = Math.abs(mediaY - minY)
+    const distBase = Math.abs(maxY - mediaY)
+    const distEsq = Math.abs(mediaX - minX)
+    const distDir = Math.abs(maxX - mediaX)
+
+    const menor = Math.min(distBase, distTopo, distEsq, distDir)
+    if (menor === distBase) {
+      rotacoes90Horario = 0 // Já está embaixo
+    } else if (menor === distTopo) {
+      rotacoes90Horario = 2 // 180 graus (topo vai para baixo)
+    } else if (menor === distDir) {
+      rotacoes90Horario = 1 // 90 graus horário (direita vai para baixo)
+    } else {
+      rotacoes90Horario = 3 // 270 graus horário (esquerda vai para baixo)
+    }
+  }
+
+  for (let r = 0; r < rotacoes90Horario; r++) {
+    const h = matriz.length
+    const w = matriz[0].length
+    const nova = Array.from({ length: w }, () => Array(h))
+    for (let y = 0; y < h; y++) {
+      for (let x = 0; x < w; x++) {
+        nova[x][h - 1 - y] = matriz[y][x]
+      }
+    }
+    matriz = nova
+  }
+
+  return {
+    largura: matriz[0]?.length || 1,
+    altura: matriz.length || 1,
+    linhas: matriz
+  }
+})
+
+// =========================================================
+// AUTO-ZOOM SE MENOR QUE A TELA E SCROLL NA ENTRADA (INFERIOR)
+// =========================================================
+function ajustarZoomERolagemParaEntrada() {
+  const container = containerMapaRef.value
+  const dados = mapaProcessadoMotorista.value
+  if (!container || !dados) return
+
+  resetarCameraGrid()
+
+  const tamanhoCelulaPx = 30
+  const larguraMapaPx = dados.largura * tamanhoCelulaPx
+  const alturaMapaPx = dados.altura * tamanhoCelulaPx
+
+  const largDisp = container.clientWidth - 36
+  const altDisp = container.clientHeight - 36
+
+  if (larguraMapaPx < largDisp && alturaMapaPx < altDisp) {
+    const escalaIdeal = Math.min(largDisp / larguraMapaPx, altDisp / alturaMapaPx, 2.1)
+    zoomEscala.value = Number(Math.max(1, escalaIdeal).toFixed(2))
+  } else {
+    zoomEscala.value = 1
+  }
+
+  // Posiciona a rolagem para que a Entrada (parte inferior) fique totalmente visível
+  setTimeout(() => {
+    if (!containerMapaRef.value) return
+    containerMapaRef.value.scrollTop = containerMapaRef.value.scrollHeight
+    const sobraH = containerMapaRef.value.scrollWidth - containerMapaRef.value.clientWidth
+    if (sobraH > 0) {
+      containerMapaRef.value.scrollLeft = Math.floor(sobraH / 2)
+    }
+  }, 60)
+}
+
+function alterarZoomBotao(delta) {
+  const novo = Math.min(2.6, Math.max(0.5, Number((zoomEscala.value + delta).toFixed(2))))
+  zoomEscala.value = novo
+}
+
+function aoRolarMouseMapa(e) {
+  if (e.ctrlKey || e.metaKey) {
+    e.preventDefault()
+    const delta = e.deltaY < 0 ? 0.12 : -0.12
+    alterarZoomBotao(delta)
+  }
+}
+
+watch(
+  () => [route.params.id, andarIndex.value, estacionamentoAtual.value?.id],
+  async () => {
+    setorDestacadoId.value = null
+    celulaInspecionada.value = null
+    await nextTick()
+    ajustarZoomERolagemParaEntrada()
+  }
+)
 
 const metricasGerais = computed(() => {
   if (!estacionamentoAtual.value) return { total: 0, livres: 0, ocupadas: 0 }
@@ -89,6 +242,11 @@ const estatisticasAndaresMotorista = computed(() => {
   })
 })
 
+function escolherAndarDropdown(idx) {
+  andarIndex.value = idx
+  dropdownAndarAberto.value = false
+}
+
 const setoresAndarAtual = computed(() => {
   if (!andarAtual.value) return []
   const celulas = Object.values(andarAtual.value.celulas || {})
@@ -110,21 +268,20 @@ const setoresAndarAtual = computed(() => {
 })
 
 function alternarFiltroSetor(idSetor) {
-  if (setorDestacadoId.value === idSetor) {
-    setorDestacadoId.value = null
-  } else {
-    setorDestacadoId.value = idSetor
-  }
+  setorDestacadoId.value = setorDestacadoId.value === idSetor ? null : idSetor
 }
 
-function inspecionarCelula(x, y) {
-  if (!andarAtual.value?.celulas) return
-  const c = andarAtual.value.celulas[`${x},${y}`]
+function inspecionarCelula(c) {
   if (!c || c.tipo === 'VAZIO') {
     celulaInspecionada.value = null
     return
   }
   celulaInspecionada.value = c
+}
+
+function inspecionarPorCoordenada(x, y) {
+  if (!andarAtual.value?.celulas) return
+  inspecionarCelula(andarAtual.value.celulas[`${x},${y}`])
 }
 
 const infoBadgeMotorista = computed(() => {
@@ -169,7 +326,6 @@ const infoBadgeMotorista = computed(() => {
 </script>
 
 <template>
-  <!-- Caso o ID não exista ou esteja inativo -->
   <main v-if="!estacionamentoAtual" class="tela-inicial">
     <div class="auth-card card-erro-acesso">
       <div class="icone-erro-acesso" style="color: #f59e0b; background: rgba(245, 158, 11, 0.12)">
@@ -189,9 +345,7 @@ const infoBadgeMotorista = computed(() => {
     </div>
   </main>
 
-  <!-- VISÃO DO MAPA 2D PARA O MOTORISTA -->
-  <div v-else-if="andarAtual" class="editor-layout">
-    <!-- Botão Flutuante Mobile para abrir lista de Andares/Setores -->
+  <div v-else-if="andarAtual && mapaProcessadoMotorista" class="editor-layout">
     <div class="hud-coluna-direita-mobile">
       <button
         class="hud-btn-flutuante"
@@ -222,36 +376,66 @@ const infoBadgeMotorista = computed(() => {
           </span>
         </div>
 
-        <!-- Seletor de Andar -->
-        <div class="seletor-andar-box">
-          <IconStack2 :size="18" />
-          <span>Andar:</span>
-          <select
-            v-if="estacionamentoAtual.andares.length > 1"
-            v-model="andarIndex"
-            class="select-andar-editor"
-            @change="setorDestacadoId = null; resetarCameraGrid()"
+        <!-- Seletor de Andar Estilizado como os demais -->
+        <div class="seletor-multi-wrapper seletor-andar-custom">
+          <button
+            type="button"
+            class="btn-seletor-multi item-icone-texto"
+            @click="dropdownAndarAberto = !dropdownAndarAberto"
           >
-            <option
-              v-for="a in estatisticasAndaresMotorista"
-              :key="a.id_andar"
-              :value="a.idx"
-            >
-              {{ a.nome_andar }} ({{ a.livres }} livres)
-            </option>
-          </select>
-          <strong v-else>{{ andarAtual.nome_andar }}</strong>
+            <IconStack2 :size="18" style="color: var(--destaque-azul)" />
+            <span>
+              {{ andarAtual.nome_andar }}
+              ({{ estatisticasAndaresMotorista[andarIndex]?.livres ?? 0 }} livres)
+            </span>
+            <IconSquareRoundedChevronDown :size="17" />
+          </button>
+
+          <Transition name="fade-pop">
+            <div v-if="dropdownAndarAberto" class="dropdown-multi-box">
+              <div class="lista-opcoes-multi">
+                <div
+                  v-for="a in estatisticasAndaresMotorista"
+                  :key="a.id_andar"
+                  class="item-opcao-multi"
+                  :class="{ 'opcao-ativa': a.idx === andarIndex }"
+                  @click="escolherAndarDropdown(a.idx)"
+                >
+                  <span>{{ a.nome_andar }} ({{ a.livres }} livres)</span>
+                  <IconSquareRoundedCheck v-if="a.idx === andarIndex" :size="18" />
+                </div>
+              </div>
+            </div>
+          </Transition>
         </div>
 
-        <button
-          v-if="panX !== 0 || panY !== 0 || zoomEscala !== 1"
-          class="btn-secundario item-icone-texto"
-          title="Centralizar Mapa"
-          @click="resetarCameraGrid"
-        >
-          <IconSearch :size="16" />
-          <span>{{ Math.round(zoomEscala * 100) }}%</span>
-        </button>
+        <!-- Controles de Zoom na Tela -->
+        <div class="controles-zoom-motorista">
+          <button
+            type="button"
+            class="btn-zoom-acao"
+            title="Diminuir Zoom (ou Ctrl + Roda do Mouse)"
+            @click="alterarZoomBotao(-0.15)"
+          >
+            <IconSquareRoundedMinus :size="17" />
+          </button>
+          <button
+            type="button"
+            class="btn-zoom-reset"
+            title="Reajustar Zoom Padrão"
+            @click="ajustarZoomERolagemParaEntrada"
+          >
+            {{ Math.round(zoomEscala * 100) }}%
+          </button>
+          <button
+            type="button"
+            class="btn-zoom-acao"
+            title="Aumentar Zoom (ou Ctrl + Roda do Mouse)"
+            @click="alterarZoomBotao(0.15)"
+          >
+            <IconSquareRoundedPlus :size="17" />
+          </button>
+        </div>
       </div>
 
       <div class="topbar-direita-motorista">
@@ -272,10 +456,9 @@ const infoBadgeMotorista = computed(() => {
       </div>
     </header>
 
-    <!-- ÁREA DO MAPA + PAINEL LATERAL DE ANDARES E SETORES -->
+    <!-- ÁREA DO MAPA (SEM COORDENADAS, SEM QUADRADOS VAZIOS, COM ENTRADA EMBAIXO) -->
     <div class="editor-workspace">
       <div class="area-grid-container">
-        <!-- HUD Inferior ao tocar ou passar o mouse sobre uma vaga -->
         <Transition name="fade-pop">
           <div v-if="infoBadgeMotorista" class="overlay-flutuante badge-hover-setor">
             <span
@@ -290,87 +473,73 @@ const infoBadgeMotorista = computed(() => {
         </Transition>
 
         <div
-          class="area-grid-principal"
+          ref="containerMapaRef"
+          class="area-grid-principal area-grid-motorista-limpa"
           @mouseleave="celulaInspecionada = null"
+          @wheel="aoRolarMouseMapa"
           @touchstart.passive="iniciarToquePanZoom"
           @touchmove.prevent="moverToquePanZoom"
-          @touchend="finalizarToquePanZoom($event, inspecionarCelula)"
+          @touchend="finalizarToquePanZoom($event, inspecionarPorCoordenada)"
         >
           <div
-            class="viewport-touch-canvas"
+            class="viewport-touch-canvas viewport-motorista-central"
             :style="{
               transform: `translate(${panX}px, ${panY}px) scale(${zoomEscala})`,
-              transformOrigin: '0 0'
+              transformOrigin: 'center bottom'
             }"
           >
-            <div class="matriz-com-coordenadas">
+            <div class="matriz-motorista-sem-coordenadas">
               <div
-                class="linha-coordenadas-x"
-                :style="{ gridTemplateColumns: `36px repeat(${andarAtual.grid_x}, 36px)` }"
-              >
-                <div class="canto-xy">Y\X</div>
-                <div v-for="x in andarAtual.grid_x" :key="`mx-${x}`" class="rotulo-coord">
-                  {{ x }}
-                </div>
-              </div>
-
-              <div
-                v-for="y in andarAtual.grid_y"
-                :key="`my-${y}`"
+                v-for="(linha, rIdx) in mapaProcessadoMotorista.linhas"
+                :key="`m-row-${rIdx}`"
                 class="linha-grid-y"
-                :style="{ gridTemplateColumns: `36px repeat(${andarAtual.grid_x}, 36px)` }"
+                :style="{
+                  gridTemplateColumns: `repeat(${mapaProcessadoMotorista.largura}, 30px)`
+                }"
               >
-                <div class="rotulo-coord">{{ y }}</div>
-
                 <div
-                  v-for="x in andarAtual.grid_x"
-                  :key="`mc-${x}-${y}`"
-                  :data-coord="`${x},${y}`"
-                  class="celula-editor-fundo"
+                  v-for="(cel, cIdx) in linha"
+                  :key="`m-cel-${rIdx}-${cIdx}`"
+                  :data-coord="cel ? `${cel.x},${cel.y}` : ''"
+                  class="celula-motorista-compacta"
                   :class="{
                     'celula-esmaecida-setor':
                       setorDestacadoId &&
-                      andarAtual.celulas[`${x},${y}`]?.setorId !== setorDestacadoId &&
-                      andarAtual.celulas[`${x},${y}`]?.tipo === 'VAGA'
+                      cel?.setorId !== setorDestacadoId &&
+                      cel?.tipo === 'VAGA'
                   }"
                   :style="{
-                    backgroundColor: andarAtual.celulas[`${x},${y}`]?.corSetor || 'transparent'
+                    backgroundColor: cel?.corSetor || 'transparent'
                   }"
-                  @mouseenter="inspecionarCelula(x, y)"
-                  @click="inspecionarCelula(x, y)"
+                  @mouseenter="inspecionarCelula(cel)"
+                  @click="inspecionarCelula(cel)"
                 >
+                  <!-- Renderiza o quadrado apenas quando NÃO for vazio -->
                   <div
-                    class="quadrado-editor"
+                    v-if="cel && cel.tipo !== 'VAZIO'"
+                    class="quadrado-editor quadrado-motorista"
                     :class="[
-                      andarAtual.celulas[`${x},${y}`]?.tipo === 'VAZIO' ? 'qe-vazio' : '',
-                      andarAtual.celulas[`${x},${y}`]?.tipo === 'ESTRADA' ? 'qe-estrada' : '',
-                      andarAtual.celulas[`${x},${y}`]?.tipo === 'ENTRADA' ? 'qe-entrada' : '',
-                      andarAtual.celulas[`${x},${y}`]?.tipo === 'SAIDA' ? 'qe-saida' : '',
-                      andarAtual.celulas[`${x},${y}`]?.tipo === 'ACESSO' ? 'qe-acesso' : '',
-                      andarAtual.celulas[`${x},${y}`]?.tipo === 'VAGA' &&
-                      (andarAtual.celulas[`${x},${y}`]?.inativa || !andarAtual.celulas[`${x},${y}`]?.macEsp)
+                      cel.tipo === 'ESTRADA' ? 'qe-estrada' : '',
+                      cel.tipo === 'ENTRADA' ? 'qe-entrada' : '',
+                      cel.tipo === 'SAIDA' ? 'qe-saida' : '',
+                      cel.tipo === 'ACESSO' ? 'qe-acesso' : '',
+                      cel.tipo === 'VAGA' && (cel.inativa || !cel.macEsp)
                         ? 'vaga-gerente-inativa'
                         : '',
-                      andarAtual.celulas[`${x},${y}`]?.tipo === 'VAGA' &&
-                      !andarAtual.celulas[`${x},${y}`]?.inativa &&
-                      andarAtual.celulas[`${x},${y}`]?.macEsp &&
-                      andarAtual.celulas[`${x},${y}`]?.livre
+                      cel.tipo === 'VAGA' && !cel.inativa && cel.macEsp && cel.livre
                         ? 'vaga-gerente-livre'
                         : '',
-                      andarAtual.celulas[`${x},${y}`]?.tipo === 'VAGA' &&
-                      !andarAtual.celulas[`${x},${y}`]?.inativa &&
-                      andarAtual.celulas[`${x},${y}`]?.macEsp &&
-                      !andarAtual.celulas[`${x},${y}`]?.livre
+                      cel.tipo === 'VAGA' && !cel.inativa && cel.macEsp && !cel.livre
                         ? 'vaga-gerente-ocupada'
                         : ''
                     ]"
                   >
-                    <span v-if="andarAtual.celulas[`${x},${y}`]?.tipo === 'VAGA'">
-                      {{ andarAtual.celulas[`${x},${y}`]?.identificador }}
+                    <span v-if="cel.tipo === 'VAGA'">
+                      {{ cel.identificador }}
                     </span>
-                    <IconDoorEnter v-else-if="andarAtual.celulas[`${x},${y}`]?.tipo === 'ENTRADA'" :size="16" />
-                    <IconDoorExit v-else-if="andarAtual.celulas[`${x},${y}`]?.tipo === 'SAIDA'" :size="16" />
-                    <IconArrowBarRight v-else-if="andarAtual.celulas[`${x},${y}`]?.tipo === 'ACESSO'" :size="16" />
+                    <IconDoorEnter v-else-if="cel.tipo === 'ENTRADA'" :size="15" />
+                    <IconDoorExit v-else-if="cel.tipo === 'SAIDA'" :size="15" />
+                    <IconArrowBarRight v-else-if="cel.tipo === 'ACESSO'" :size="15" />
                   </div>
                 </div>
               </div>

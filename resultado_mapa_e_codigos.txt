@@ -36,6 +36,8 @@
                     📂 origin/
                         📄 HEAD
                         📄 main
+            📂 00/
+                📄 b78fc95c1e76f18b2319c282577c386452c25d
             📂 01/
                 📄 49a5e6de2992b939b2607779b7145d233306fe
                 📄 a93c2903eaeada4330c6478a59392af3bf9489
@@ -52,10 +54,14 @@
                 📄 d5f192045b2d8e084004420249a30c85b7a3b4
             📂 06/
                 📄 a06d0be0368a6cceb76d421ce1c920b1f9846c
+            📂 07/
+                📄 4aa642724beb5470c58118ff308b244ddf622d
             📂 08/
                 📄 29c58940a7eb8d2009ab86987aa2a49a3bddd8
                 📄 42bb15a29bf37fe1ca11a032720e172b638bfa
+                📄 fd8dc020a47fe151103151cf5ad7a96d7e56c0
             📂 09/
+                📄 3b05b9d10d7b355423e7810d52570d0200da5d
                 📄 aff7685cf8c0e381d7da44afcd1240a417092c
                 📄 e5707f73de070f965f6607cdaa8d5b6738b11c
             📂 0a/
@@ -64,19 +70,25 @@
                 📄 6cc631d8807752b63ca2526c0184eb16b8240a
                 📄 b1ec67d77287053bb179fa70e095d0b130cfdd
                 📄 df490efe94449c1403e5232f6c2e03fa99c337
+                📄 e91188cd8dc6e996b4d1c98845e202783badba
             📂 0c/
                 📄 065b924bb5fa4111890dc78b76d68cc1d6d403
                 📄 3b5c4c6cf504252b72dbb49989d2c333a7ce80
+                📄 d59e445b0f1109d2737fc8882590276b92442d
             📂 0e/
                 📄 643ce9b8a54f0ed9f2f6d02c27e60bd4b65f4e
+                📄 9ef73cf52e66fbd9190a6b87b0ed6217eb8f18
+                📄 a139139e622f4a3fbff45ac9d01034beb6131e
             📂 0f/
                 📄 31f13bb51a13228a9ed32a6d5279c6b2829e0f
                 📄 5c665308ed3779dddf1faf4780f16696f367cb
                 📄 60ab414f2d1566bbaf1e8aaa3f678e08516ba5
+                📄 e3e4263267dddfcafd6b2703a1be2a15686df3
             📂 10/
                 📄 28ce32afaa0e2d134d7a63975c3db59f0aeb1c
                 📄 b0fb3e9f779aa97cbda3b8f53d412138a4a2fc
                 📄 b789cea22d2254ed54dd4a6754849a9099f8b0
+                📄 c3233c1d5f64016cadc1004bb2abb4c65e9e19
             📂 11/
                 📄 17899941471274e45049185c8142a206b93b14
             📂 13/
@@ -93,34 +105,45 @@
             📂 1b/
                 📄 7916a3174de590007a7dd21916cb7fae95fb85
                 📄 b1ed6fe01ee58f98b2d9260cb2ad6e6b2df857
+                📄 d66685b1032dd3fe149e257589bd9ba49a159e
             📂 1c/
                 📄 8c5701f81a8f3a27545658bb6f8b9508db11f0
                 📄 d3dce331ed297aa5844968417c0480889df175
             📂 1e/
+                📄 0a640a07bde8f3225cc92c6dc644737453eb69
                 📄 81c075b85ff15c44eb029d64f22992f444a55a
             📂 1f/
                 📄 e8fb659a48698a9be51fec9ac7aa2d65b0d67f
             📂 20/
                 📄 2f46834747412676a527044aeab9c6cc87cb9f
                 📄 71b8108e134958d9259328245aee36555919b9
+                📄 771585a315a824e77ae38fd540ca7df0ba8ced
             📂 21/
                 📄 6650a508d427dd3708349383a204fccb953cb0
+                📄 780e80fe03fe627b08c0e4054e0b39f62ff5e5
             📂 22/
+                📄 61d6a6cbd9e5370b92a49c72f4f871f38d4c9e
                 📄 a1a2e70e6fa9d30f08dde3643166d9d34638bb
                 📄 abdaf288c34fdd7cbc6f1d74865c4263c160ea
             📂 23/
                 📄 c11d66e762de057168960bf6f35187a3395b88
+                📄 e19d2011c52d6f6c8fba636ebf44674cfa317b
             📂 24/
                 📄 25c0f745bef4d009cb6661b62fd9dfd62960b0
                 📄 640ec99045a9a5b700312ab45f1b5e2d807a98
+            📂 25/
+                📄 efa844d71e33659c7c204e9cc3d97d77364b7c
             📂 27/
+                📄 10f6d3376b0cc7930fb1b2e0c0cd9b30d80e27
                 📄 7b95c931dc579a181a6c3749a06e2ef8533691
+                📄 e5d6dfe2201ae4eb2803f026aadd16ce9bd38a
             📂 28/
                 📄 e2deadde2f2bceb629be4aaff9a1ad45276c77
             📂 29/
                 📄 0d3b37475cb36d05324b6dc035794880f70c6a
                 📄 b0020ebf22ee193a7ab2146efdc3020c46f3f6
                 📄 c71e22a5839849e86a7f46208b431bb299d730
+                📄 ca34a6722c603d6a4af081a23ecde71d3bf6ae
             📂 2b/
                 📄 89906d8c627b7e5eb23cfe858b5ff5931810b5
             📂 2c/
@@ -137,14 +160,20 @@
             📂 32/
                 📄 0a54fff5dc63148db31ab2ebc2b7b4a4538e17
             📂 33/
+                📄 95a43ad988a23e9d169cc05c2b6e57b9ddb30e
                 📄 ff4fa50e6727ab2280e3ae5f1cad4348157958
             📂 35/
                 📄 473514eb506590f5daccd7c5fe9ef41d3dd2ba
+            📂 36/
+                📄 138f1dfe7ff25807d9ca5b714fd1babe9810e4
             📂 39/
                 📄 a3c4cfb4c9bb9b6928d30a39693c1ba39b6bf2
+                📄 c88ae72454001978f80ac65aa7aa043f31e9a9
+                📄 d569353ad5f4b39d3caa9a092febf7566952e4
             📂 3b/
                 📄 86e677af9e2f191f4eac80ac4a2a676e90f6c9
             📂 3c/
+                📄 33894220ff797143fe4914ed7d75abc34115a5
                 📄 901970659696a80eef38d5754a0678dad3f069
                 📄 e422e62c6c0e54599ae8970f309eb41f43e169
             📂 3d/
@@ -162,11 +191,16 @@
             📂 44/
                 📄 4a0a3145deabaef81cef8bfce5d7cf0874d11f
             📂 46/
+                📄 4cd13606f643a8ea09a56445df938a45bded2e
                 📄 75b651a13942e3b5b231ecf9088a10295e8e6a
                 📄 8016a6e53167eccbb383bdf24732d32c011c5f
                 📄 bfa20bbd6887892dafc2882419b0b682ca0d7f
+            📂 47/
+                📄 f0306bc3d6b7b03d468212309ff34e169f7120
             📂 48/
                 📄 9263e952c080b0e856c5018ff99b80baf8f97c
+                📄 ab147a4f1177f7a680e6bd0ba3a72924908b2e
+                📄 d09432ca0c3c2fc869ed42a323aca5285b4dbc
             📂 49/
                 📄 5d8b7070ffbd8693ebba820a12535b06494bff
             📂 4a/
@@ -176,7 +210,9 @@
             📂 4d/
                 📄 80649cf3e7427fd23390c25a8fd9cde625967a
                 📄 df9122c5ca0d4bb4aad3dfdca88c9d11c5b45d
+                📄 f43cc58d2b961d58e7059a050eac11958c6249
             📂 4f/
+                📄 cd55f76d266c20df346b721d8dc82025256caf
                 📄 df031c8acf092d1a64e62a001b7ac0f2b7ef4a
             📂 51/
                 📄 01b674df391399da71c767aa5c976426c9dc7a
@@ -185,17 +221,23 @@
                 📄 7d4fba5579d5e4e9d260051974927071f2b4a1
             📂 53/
                 📄 3f3844723ab8694c64850a0cdf36ceb15c3174
+                📄 8b1f5d80cd93fae19d8d1c0952d9f685a5bf7a
                 📄 bbf0b67866e4d5fb86b1e1f1fbf7505e9fa066
             📂 54/
                 📄 0eceb1fdff0fc34e44d506b402a1c21862a494
                 📄 3ce0e84207988ccea992ee2d0e4c19375d9128
+            📂 55/
+                📄 0e8b7818b8a6b59a7d3b02d718cd55961e47bd
             📂 57/
                 📄 434022187e0bdf3707b401cb8ae756d870bc60
                 📄 5bcaf70e227c9174d6aa09cddf91983985f9ab
                 📄 ffcde289691ca090d761e5ec7b99bc3f8d0e02
+            📂 58/
+                📄 cf19fda1a53c0143568030e521dd0b3c6a20ea
             📂 59/
                 📄 b8a46923b6de7f30b83f6e29f0e92911f207ae
             📂 5a/
+                📄 7f993c4cad97bbb952b1d0b42e2230052585a7
                 📄 cd2f23c2a1b7370a4dee3ab097708137435dfe
             📂 5b/
                 📄 2c408d1c9873a919513089538c157cc01eed46
@@ -203,6 +245,7 @@
                 📄 c76810926bc986c8016355a804189357a2082d
                 📄 de00abf27d27d56e2dad27396881f5c3adbf82
             📂 5c/
+                📄 0b2f0aed6dcc8bef28428139c4b790c9ff1f83
                 📄 eb06667da36f8ae69cfe43a97527953acf9a4f
             📂 5d/
                 📄 a041f0d085e7530d16836be137c7264ac8cdd0
@@ -239,6 +282,7 @@
                 📄 d06bbf9719869e139866bbc325aa4cc3051439
             📂 73/
                 📄 773baa760717ae1e2571aac9473c2ec79c48ba
+                📄 c00d1f62333c36631b053355b6e56d6a75d616
             📂 76/
                 📄 4129682cad74137e25bb36abd2a3472d937a9a
                 📄 83193ed8df6007708b23285bc804014e7fb237
@@ -247,6 +291,8 @@
                 📄 1dbbb773592cf34a5e5fbd966994dde9b3d62e
             📂 78/
                 📄 059df18f77c8be268332e9b55771dd07f8830b
+            📂 79/
+                📄 2bc9ee4c09709bc38ee1c7123211d9ab52a86a
             📂 7b/
                 📄 409f68d8503b7d22e83abe669dc1d1adc5e394
                 📄 5a0224a47d194b3fe9d768e7a1123924e9c4c0
@@ -266,6 +312,7 @@
             📂 83/
                 📄 4198db60a6ec29a85a76c17e138f58ee2563de
             📂 84/
+                📄 4afa402683a9843c90b56cf7606ae116fe2131
                 📄 b05aee7111d96224c276b6ccfdd20471cbe9a2
             📂 85/
                 📄 005aa2449ac4845e7f81bbf6da5c3744927e59
@@ -289,41 +336,56 @@
                 📄 58755c421e659f0dd276a0b740aebb1faecf77
             📂 92/
                 📄 e86ff355f7a54278a9608b1cac188c202b0d02
+            📂 93/
+                📄 ca4a1cad4f2db6d8eb58aa1b5211f8a48e9b02
+            📂 94/
+                📄 a062ab810ff79744c20434b80303abea31e3b4
             📂 95/
                 📄 511b63968465a1985a4a1d0e760e91f48cd1b1
             📂 97/
                 📄 06495f78e3669adb749592edd43fed3b15d68d
+                📄 383b7f7b863cf621e8c6e1a8a251e515fd029c
                 📄 46779f3a18ca4528271c81c948bb129e649ba7
+                📄 8c3af753997b18d1670ef1bf68892be61b8bbe
             📂 9a/
                 📄 b35451c7112bab8c54e0062df3796d2d080fc6
             📂 9b/
                 📄 709ef966c6b405b3f0607a6028cadc52294066
                 📄 99fe090ad1cb0087f797634135db66857b309a
+                📄 ad59d43de259dd2cef06cb1e635e566ff4937a
             📂 9c/
                 📄 342b0da2115997d027cdc9a85d2b13c7578845
             📂 9d/
                 📄 ad541c09356313f9fe02dac787d9e6748869e6
+                📄 b273656326dd1179cf97f7c16960da6bb61027
             📂 9e/
                 📄 4fb8564cf6fdfb45c7cec942ad3e3c9bd17f8a
             📂 9f/
+                📄 4b44195fdabe4ee141b25ecfa5f13253f54fe1
                 📄 cf22104cd3343b16c0e06505fe3e7fde5a2c1c
             📂 a0/
                 📄 5046d03264ddef72f19a9e8ff20a4dc974a321
+                📄 8d789008b9e785427f4086e0b34c33a29fd9c8
             📂 a1/
                 📄 536a8de8666cea720407bcc9abbbbc7eb8b814
                 📄 8cc39e43c8ed3391834d138ce8eaeb48256312
             📂 a2/
                 📄 47da3b2137e20d8798224282a037e4e712197b
+                📄 47ef39961a345b9effbe65c907828dc9e16a96
             📂 a4/
                 📄 17a1c66ca2653bf76e3afa8479c426b3c891c3
                 📄 1cb16f718dbb2c82b1dbb89c08dd4df61493b6
+                📄 71e6c4af1c27672bd45b83b39397441a135a59
                 📄 e9e1d618d09cad896f63747b8134d1e2531915
             📂 a5/
                 📄 26e2aca3e1c93d2654ce534924529b6cbd09a3
                 📄 47bf36d8d11a4f89c59c144f24795749086dd1
                 📄 49c60477bd094db72173686dac78231592b881
                 📄 8311ab69a267a8ab9208d01ec4e9935f26edda
+                📄 cc6eacef4f12c712e56bda00a05c77029d7e6f
             📂 a6/
+                📄 65b326545f82b99a5277ed6991b51137199356
+                📄 771dfb1fa80326b4d8bca83804e05f1f5ca680
                 📄 885ac88553305473ebff9e245634435beaa1a5
             📂 a7/
                 📄 cea0b0678120a1b590d1b6592c7318039b9179
@@ -337,15 +399,21 @@
                 📄 7afda73578cc60bf975b4d6b500ebbf9a65e84
             📂 ab/
                 📄 2b2b8e494d3bd116d69a8a4f2095330cff1b03
+            📂 ac/
+                📄 3e1e0f431c43e670c44186ca4b977fbce726d0
             📂 ad/
                 📄 8e92422fefe066cfa8777105304af2adf94d28
+            📂 ae/
+                📄 5ff4a061c7914982771d16788a53ffc9b6f77b
             📂 af/
                 📄 62ad7d1801081013cfd273f208bdd3a14bde5b
             📂 b0/
+                📄 1029371f569b5f4dae337a05041d39e133263b
                 📄 7d0254cd44f3625e970631c27e440b05bdcb5d
                 📄 a3509be3f006e7b96bceaab9bd98ca91b7b25e
             📂 b1/
                 📄 6ebc7fffe62783dba43ef58220303874656aff
+                📄 aae86cbd6797226f3487d18b67e668782efbbf
             📂 b2/
                 📄 259e5d54488208f00f514aec8329184535bd4b
                 📄 30c82a572dc1e639e458304bcf55c2b48a6668
@@ -366,27 +434,38 @@
                 📄 170d7b964e72b84edbac5cfece6d29622cb0d5
                 📄 c5668b7ce35d67af38b977cedfc85c012855c5
             📂 bf/
+                📄 2c51bc4c053c2a01d1bef725942423a37dfb9f
                 📄 8b3334cc16cc54a3ae5f6cc1aea732bd139482
                 📄 8db3d079fd68b707e5f0c56c019df10990dcae
             📂 c0/
                 📄 b3dd1237f453ff6a84da7d0b2bb05073bd069d
             📂 c2/
                 📄 21fdaf0b89fa2e302370719ebd116256d0605d
+                📄 883482be77fbf37d1cd840f13e6b89bd6d93a2
             📂 c3/
                 📄 08cb6b7c48b092f3376003ecf8b2580c223c7e
             📂 c4/
+                📄 73b8309fde481b8d26aeb64ed5db49c5df1372
                 📄 809d5dfb9afeed86040458887c58649c696cf3
             📂 c5/
                 📄 3225b8239a1b2425e5e996ca32fb978d612306
+                📄 b45bef15aee8ee15066162eabb1b38fdc2a572
             📂 c6/
                 📄 75f0a9558be34e96b90496673917c7bcc267ea
             📂 c7/
                 📄 159ad4a5c4e571eb75970a17e2bb53a94aa80d
                 📄 2ccf3f8be741a4d8412ea1260be954b8a9f94d
                 📄 d7b9dbb22a7a44818cc756032d9172168d42b0
+            📂 c8/
+                📄 af732d098ca575d0a2dc2066f7755e131d4e65
+                📄 d03b0e228ff48a9b8ce094ad95a15e2331bfd2
+                📄 ecb80ce93973736129494f33770dcd0393adb4
+            📂 c9/
+                📄 7745c22983195babbca97e8828847bad4d7163
             📂 ca/
                 📄 2c6289571f2271ec419141ad2b5ba7aca238b4
             📂 cb/
+                📄 1645a0ec308483fe16795bfb1718190f236d42
                 📄 a576915494073d55140abc61e826a0ecfb57e1
             📂 cc/
                 📄 758f51d1708fdc922fae800044d57b9e9f1c72
@@ -400,6 +479,7 @@
                 📄 53c3567b1714146e15d53b7f074978c66e95a2
             📂 d1/
                 📄 5c1653d372bdc1ce078bb7ac75cc34cb9b4e9f
+                📄 658f43b90c017ad466e519bfe4028893f69cec
                 📄 7b5e59bf6b3924828e1401513566df2ce7feb3
                 📄 dd9c89df02be67775a39cdb5427dc818505011
                 📄 e4703307ee1b9ff8395a707e58b3b092f6261e
@@ -418,6 +498,7 @@
             📂 da/
                 📄 9f7eeaa1292d58f4464107793bf7fb9f843158
             📂 db/
+                📄 585eb52360a1d6c5d90cb3fc4b68aa0c23f361
                 📄 ffaf738c89560886aaae551e259463a0cd53f6
                 📄 fff6c35387496556422b6bb42eda58d8159134
             📂 dc/
@@ -425,15 +506,20 @@
                 📄 e2c9348cba750718fc555fa23daa5ca96737fe
             📂 dd/
                 📄 3622fb0996b825ffc90bfcafb74759c1896a77
+                📄 725a8f8b8a8608064f58fb427f084c2be58afb
             📂 df/
+                📄 bcc31aa9bdfd329f49d70a42b076914a52f4e9
                 📄 e0770424b2a19faf507a501ebfc23be8f54e7b
             📂 e2/
                 📄 cfd9f96ed69438e1929a5e05f6fc9c897b7568
             📂 e3/
+                📄 53124e7ebe2bbb04c35cd7e57a28451af85c5e
                 📄 fca2404b16d226c51ca8385eb9e3753710e590
             📂 e4/
+                📄 8ee698459d22e89b0f06798d6dfdd2e6c7e442
                 📄 ca0349653db5381d190350ab1dce315e95c6a5
             📂 e5/
+                📄 005d33857f6415fdc61bb41adc4d6540cdb720
                 📄 82578157dedbcda5d554702a7c81b6933b2745
             📂 e6/
                 📄 9de29bb2d1d6434b8b29ae775ad8c2e48c5391
@@ -445,8 +531,15 @@
                 📄 5153bbc2191f000ca4489236fc1fd614166d14
                 📄 522193d9f796a9748e9ad8c952a5df73c87db9
             📂 ea/
+                📄 1f0c4e798c57c5e933bff91d23f4912caff688
                 📄 27a156e576856d9a93e52d6d0a92823ec4a7c1
+                📄 c892a5e228873aae03cd2a2f50b4981ab33402
+            📂 ec/
+                📄 dff1e45e0cbfebbd57cac20abe6420e4eaefcb
+            📂 ed/
+                📄 07b2514d2fc3ecf8d5dda848782a16a8bedb08
             📂 ee/
+                📄 00e89f3ed028ad2ecf7c6175da6d9e571f122b
                 📄 beb54532dc21ff7f2a81a2f2ce7778d44678c5
             📂 ef/
                 📄 0a5794093396ca90085fb52e0a95f83df125e9
@@ -455,6 +548,8 @@
                 📄 e75070eea43382b9342c6224e3e6ac3dbbb945
             📂 f0/
                 📄 a2483fb9f531f5cdbef870c76c6e0321080046
+            📂 f1/
+                📄 d7e85233043586bf611d721b4a49d5db342e12
             📂 f2/
                 📄 915720c8f27f94c4c226d6e9bf2d38c8463f36
                 📄 ee6a2970a9a4e9746aa53322b4a035b0b2d357
@@ -479,14 +574,18 @@
                 📄 bc7adf919638c0c7a5b0151021da9a894805fb
             📂 fb/
                 📄 3b757ba4c0ce3a552a8a3dc6cafc3f3ad9087b
+                📄 3e62c3fc3c4b371396519a1e7edfcde869d54a
                 📄 7bd527d8cfa206ce25debd5c134530001d18d3
                 📄 d9b1044f09206fa71d8e1aecc7b61ca119d755
                 📄 f37db7a78a5323420f0e3fd779b9d570fa11d3
+            📂 fd/
+                📄 ef240a26391fd1733d1bb910e9722caab3e62f
             📂 fe/
                 📄 4ede3a6ee951f815c29a1b5174c6b86eb239eb
                 📄 642a2ba68e5d74fbf5699a664ecdedcf1d54d8
                 📄 e1e107a4747df31ebfc389735d604a6b486c28
             📂 ff/
+                📄 2306d05ddb34a310722a866d9b482b97574071
                 📄 27de9aac12764fd2e6e7e1e3dd53bd3c4b4f31
             📂 heads/
                 📄 main
@@ -521,11 +620,14 @@
                     📄 variables.css
                 📂 layout/
                     📄 AppSidebarMenu.vue
+                📂 ui/
+                    📄 TutorialGuiaOverlay.vue
             📂 composables/
                 📄 useGridPanZoom.js
             📂 constants/
                 📄 icons.js
                 📄 paletaSetores.js
+                📄 tutoriaisConfig.js
             📂 router/
                 📄 guards.js
                 📄 index.js
@@ -537,6 +639,7 @@
                 📄 authStore.js
                 📄 estacionamentoStore.js
                 📄 gerenteStore.js
+                📄 tutorialStore.js
             📂 utils/
                 📄 colorUtils.js
                 📄 exportUtils.js
@@ -779,7 +882,7 @@ COMMIT;
 // 🚀 INÍCIO DO ARQUIVO: .git\COMMIT_EDITMSG
 // ==================================================================
 
-re-modularização completa do projeto
+melhorias na view sobre
 
 
 // 🏁 FIM DO ARQUIVO: .git\COMMIT_EDITMSG
@@ -790,7 +893,7 @@ re-modularização completa do projeto
 // 🚀 INÍCIO DO ARQUIVO: .git\FETCH_HEAD
 // ==================================================================
 
-fb3b757ba4c0ce3a552a8a3dc6cafc3f3ad9087b		branch 'main' of https://github.com/Foretsam/vaga_certa
+ae5ff4a061c7914982771d16788a53ffc9b6f77b		branch 'main' of https://github.com/Foretsam/vaga_certa
 
 
 // 🏁 FIM DO ARQUIVO: .git\FETCH_HEAD
@@ -1899,6 +2002,9 @@ d1e4703307ee1b9ff8395a707e58b3b092f6261e 4c6c6bd6b29956b6c5d7fac0528a8f6e4b64fe8
 4c6c6bd6b29956b6c5d7fac0528a8f6e4b64fe85 0149a5e6de2992b939b2607779b7145d233306fe Lucas Schuab <lucaschuab2015@outlook.com> 1792804399 -0300	commit: inicio das views do gestor com relatórios e visão dos estacionamentos
 0149a5e6de2992b939b2607779b7145d233306fe dd3622fb0996b825ffc90bfcafb74759c1896a77 Lucas Schuab <lucaschuab2015@outlook.com> 1792813236 -0300	commit: polimento das views do gerente e responsividade
 dd3622fb0996b825ffc90bfcafb74759c1896a77 fb3b757ba4c0ce3a552a8a3dc6cafc3f3ad9087b Lucas Schuab <lucaschuab2015@outlook.com> 1792882487 -0300	commit: re-modularização completa do projeto
+fb3b757ba4c0ce3a552a8a3dc6cafc3f3ad9087b c97745c22983195babbca97e8828847bad4d7163 Lucas Schuab <lucaschuab2015@outlook.com> 1793106752 -0300	commit: implementação das views motorista
+c97745c22983195babbca97e8828847bad4d7163 ecdff1e45e0cbfebbd57cac20abe6420e4eaefcb Lucas Schuab <lucaschuab2015@outlook.com> 1793366891 -0300	commit: implementação de tutoriais e view sobre
+ecdff1e45e0cbfebbd57cac20abe6420e4eaefcb ae5ff4a061c7914982771d16788a53ffc9b6f77b Lucas Schuab <lucaschuab2015@outlook.com> 1793369101 -0300	commit: melhorias na view sobre
 
 
 // 🏁 FIM DO ARQUIVO: .git\logs\HEAD
@@ -1924,6 +2030,9 @@ d1e4703307ee1b9ff8395a707e58b3b092f6261e 4c6c6bd6b29956b6c5d7fac0528a8f6e4b64fe8
 4c6c6bd6b29956b6c5d7fac0528a8f6e4b64fe85 0149a5e6de2992b939b2607779b7145d233306fe Lucas Schuab <lucaschuab2015@outlook.com> 1792804399 -0300	commit: inicio das views do gestor com relatórios e visão dos estacionamentos
 0149a5e6de2992b939b2607779b7145d233306fe dd3622fb0996b825ffc90bfcafb74759c1896a77 Lucas Schuab <lucaschuab2015@outlook.com> 1792813236 -0300	commit: polimento das views do gerente e responsividade
 dd3622fb0996b825ffc90bfcafb74759c1896a77 fb3b757ba4c0ce3a552a8a3dc6cafc3f3ad9087b Lucas Schuab <lucaschuab2015@outlook.com> 1792882487 -0300	commit: re-modularização completa do projeto
+fb3b757ba4c0ce3a552a8a3dc6cafc3f3ad9087b c97745c22983195babbca97e8828847bad4d7163 Lucas Schuab <lucaschuab2015@outlook.com> 1793106752 -0300	commit: implementação das views motorista
+c97745c22983195babbca97e8828847bad4d7163 ecdff1e45e0cbfebbd57cac20abe6420e4eaefcb Lucas Schuab <lucaschuab2015@outlook.com> 1793366891 -0300	commit: implementação de tutoriais e view sobre
+ecdff1e45e0cbfebbd57cac20abe6420e4eaefcb ae5ff4a061c7914982771d16788a53ffc9b6f77b Lucas Schuab <lucaschuab2015@outlook.com> 1793369101 -0300	commit: melhorias na view sobre
 
 
 // 🏁 FIM DO ARQUIVO: .git\logs\refs\heads\main
@@ -1961,6 +2070,14 @@ dd3622fb0996b825ffc90bfcafb74759c1896a77 dd3622fb0996b825ffc90bfcafb74759c1896a7
 dd3622fb0996b825ffc90bfcafb74759c1896a77 dd3622fb0996b825ffc90bfcafb74759c1896a77 Lucas Oliveira Schuab <lucas@LAPTOP-SKE6HI0S.(none)> 1792881536 -0300	remote set-head
 fb3b757ba4c0ce3a552a8a3dc6cafc3f3ad9087b fb3b757ba4c0ce3a552a8a3dc6cafc3f3ad9087b Lucas Oliveira Schuab <lucas@LAPTOP-SKE6HI0S.(none)> 1792882499 -0300	remote set-head
 fb3b757ba4c0ce3a552a8a3dc6cafc3f3ad9087b fb3b757ba4c0ce3a552a8a3dc6cafc3f3ad9087b Lucas Oliveira Schuab <lucas@LAPTOP-SKE6HI0S.(none)> 1792932013 -0300	remote set-head
+c97745c22983195babbca97e8828847bad4d7163 c97745c22983195babbca97e8828847bad4d7163 Lucas Oliveira Schuab <lucas@LAPTOP-SKE6HI0S.(none)> 1793106758 -0300	remote set-head
+c97745c22983195babbca97e8828847bad4d7163 c97745c22983195babbca97e8828847bad4d7163 Lucas Oliveira Schuab <lucas@LAPTOP-SKE6HI0S.(none)> 1793108621 -0300	remote set-head
+c97745c22983195babbca97e8828847bad4d7163 c97745c22983195babbca97e8828847bad4d7163 Lucas Oliveira Schuab <lucas@LAPTOP-SKE6HI0S.(none)> 1793110534 -0300	remote set-head
+c97745c22983195babbca97e8828847bad4d7163 c97745c22983195babbca97e8828847bad4d7163 Lucas Oliveira Schuab <lucas@LAPTOP-SKE6HI0S.(none)> 1793366875 -0300	remote set-head
+ecdff1e45e0cbfebbd57cac20abe6420e4eaefcb ecdff1e45e0cbfebbd57cac20abe6420e4eaefcb Lucas Oliveira Schuab <lucas@LAPTOP-SKE6HI0S.(none)> 1793366896 -0300	remote set-head
+ecdff1e45e0cbfebbd57cac20abe6420e4eaefcb ecdff1e45e0cbfebbd57cac20abe6420e4eaefcb Lucas Oliveira Schuab <lucas@LAPTOP-SKE6HI0S.(none)> 1793368751 -0300	remote set-head
+ae5ff4a061c7914982771d16788a53ffc9b6f77b ae5ff4a061c7914982771d16788a53ffc9b6f77b Lucas Oliveira Schuab <lucas@LAPTOP-SKE6HI0S.(none)> 1793369111 -0300	remote set-head
+ae5ff4a061c7914982771d16788a53ffc9b6f77b ae5ff4a061c7914982771d16788a53ffc9b6f77b Lucas Oliveira Schuab <lucas@LAPTOP-SKE6HI0S.(none)> 1793370943 -0300	remote set-head
 
 
 // 🏁 FIM DO ARQUIVO: .git\logs\refs\remotes\origin\HEAD
@@ -1986,9 +2103,23 @@ d1e4703307ee1b9ff8395a707e58b3b092f6261e 4c6c6bd6b29956b6c5d7fac0528a8f6e4b64fe8
 4c6c6bd6b29956b6c5d7fac0528a8f6e4b64fe85 0149a5e6de2992b939b2607779b7145d233306fe Lucas Schuab <lucaschuab2015@outlook.com> 1792804403 -0300	update by push
 0149a5e6de2992b939b2607779b7145d233306fe dd3622fb0996b825ffc90bfcafb74759c1896a77 Lucas Schuab <lucaschuab2015@outlook.com> 1792813243 -0300	update by push
 dd3622fb0996b825ffc90bfcafb74759c1896a77 fb3b757ba4c0ce3a552a8a3dc6cafc3f3ad9087b Lucas Schuab <lucaschuab2015@outlook.com> 1792882496 -0300	update by push
+fb3b757ba4c0ce3a552a8a3dc6cafc3f3ad9087b c97745c22983195babbca97e8828847bad4d7163 Lucas Schuab <lucaschuab2015@outlook.com> 1793106757 -0300	update by push
+c97745c22983195babbca97e8828847bad4d7163 ecdff1e45e0cbfebbd57cac20abe6420e4eaefcb Lucas Schuab <lucaschuab2015@outlook.com> 1793366895 -0300	update by push
+ecdff1e45e0cbfebbd57cac20abe6420e4eaefcb ae5ff4a061c7914982771d16788a53ffc9b6f77b Lucas Schuab <lucaschuab2015@outlook.com> 1793369108 -0300	update by push
 
 
 // 🏁 FIM DO ARQUIVO: .git\logs\refs\remotes\origin\main
+// ------------------------------------------------------------------
+
+
+// ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: .git\objects\00\b78fc95c1e76f18b2319c282577c386452c25d
+// ==================================================================
+
+// [Arquivo binário ignorado pelo leitor de segurança]
+
+
+// 🏁 FIM DO ARQUIVO: .git\objects\00\b78fc95c1e76f18b2319c282577c386452c25d
 // ------------------------------------------------------------------
 
 
@@ -2103,6 +2234,17 @@ dd3622fb0996b825ffc90bfcafb74759c1896a77 fb3b757ba4c0ce3a552a8a3dc6cafc3f3ad9087
 
 
 // ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: .git\objects\07\4aa642724beb5470c58118ff308b244ddf622d
+// ==================================================================
+
+// [Arquivo binário ignorado pelo leitor de segurança]
+
+
+// 🏁 FIM DO ARQUIVO: .git\objects\07\4aa642724beb5470c58118ff308b244ddf622d
+// ------------------------------------------------------------------
+
+
+// ==================================================================
 // 🚀 INÍCIO DO ARQUIVO: .git\objects\08\29c58940a7eb8d2009ab86987aa2a49a3bddd8
 // ==================================================================
 
@@ -2121,6 +2263,28 @@ dd3622fb0996b825ffc90bfcafb74759c1896a77 fb3b757ba4c0ce3a552a8a3dc6cafc3f3ad9087
 
 
 // 🏁 FIM DO ARQUIVO: .git\objects\08\42bb15a29bf37fe1ca11a032720e172b638bfa
+// ------------------------------------------------------------------
+
+
+// ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: .git\objects\08\fd8dc020a47fe151103151cf5ad7a96d7e56c0
+// ==================================================================
+
+// [Arquivo binário ignorado pelo leitor de segurança]
+
+
+// 🏁 FIM DO ARQUIVO: .git\objects\08\fd8dc020a47fe151103151cf5ad7a96d7e56c0
+// ------------------------------------------------------------------
+
+
+// ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: .git\objects\09\3b05b9d10d7b355423e7810d52570d0200da5d
+// ==================================================================
+
+// [Arquivo binário ignorado pelo leitor de segurança]
+
+
+// 🏁 FIM DO ARQUIVO: .git\objects\09\3b05b9d10d7b355423e7810d52570d0200da5d
 // ------------------------------------------------------------------
 
 
@@ -2189,6 +2353,18 @@ x+)JMU046f040031QpLN-.��KMOL��L-�++Me0�ע�{��(^��g]��
 
 
 // ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: .git\objects\0b\e91188cd8dc6e996b4d1c98845e202783badba
+// ==================================================================
+
+x+)JMU042f040031QH���/
+-��)��*f�pֵ�oX��+?��.�l]���TajEA~Q	\���g:9|!��^L�7��E��a&TezQf
+\]T�L���w��xa����j�r 0�3�
+
+// 🏁 FIM DO ARQUIVO: .git\objects\0b\e91188cd8dc6e996b4d1c98845e202783badba
+// ------------------------------------------------------------------
+
+
+// ==================================================================
 // 🚀 INÍCIO DO ARQUIVO: .git\objects\0c\065b924bb5fa4111890dc78b76d68cc1d6d403
 // ==================================================================
 
@@ -2210,12 +2386,44 @@ x+)JMU01f040031QH�(I�+���+��*��cX~n���F��['\��
 
 
 // ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: .git\objects\0c\d59e445b0f1109d2737fc8882590276b92442d
+// ==================================================================
+
+// [Arquivo binário ignorado pelo leitor de segurança]
+
+
+// 🏁 FIM DO ARQUIVO: .git\objects\0c\d59e445b0f1109d2737fc8882590276b92442d
+// ------------------------------------------------------------------
+
+
+// ==================================================================
 // 🚀 INÍCIO DO ARQUIVO: .git\objects\0e\643ce9b8a54f0ed9f2f6d02c27e60bd4b65f4e
 // ==================================================================
 
 x+)JMU05`040031QH-.IL���K�M�+�.�/J��*f8j��Cy����ӗ�N��ޛ�� ;�u
 
 // 🏁 FIM DO ARQUIVO: .git\objects\0e\643ce9b8a54f0ed9f2f6d02c27e60bd4b65f4e
+// ------------------------------------------------------------------
+
+
+// ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: .git\objects\0e\9ef73cf52e66fbd9190a6b87b0ed6217eb8f18
+// ==================================================================
+
+// [Arquivo binário ignorado pelo leitor de segurança]
+
+
+// 🏁 FIM DO ARQUIVO: .git\objects\0e\9ef73cf52e66fbd9190a6b87b0ed6217eb8f18
+// ------------------------------------------------------------------
+
+
+// ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: .git\objects\0e\a139139e622f4a3fbff45ac9d01034beb6131e
+// ==================================================================
+
+x+)JMU05d040031Q)-�/�L�q/�L�/K-�I��++Me���85Y��`����f&���&� \�
+
+// 🏁 FIM DO ARQUIVO: .git\objects\0e\a139139e622f4a3fbff45ac9d01034beb6131e
 // ------------------------------------------------------------------
 
 
@@ -2253,6 +2461,17 @@ x+)JMU05`040031QH-.IL���K�M�+�.�/J��*f8j��Cy����
 
 
 // ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: .git\objects\0f\e3e4263267dddfcafd6b2703a1be2a15686df3
+// ==================================================================
+
+// [Arquivo binário ignorado pelo leitor de segurança]
+
+
+// 🏁 FIM DO ARQUIVO: .git\objects\0f\e3e4263267dddfcafd6b2703a1be2a15686df3
+// ------------------------------------------------------------------
+
+
+// ==================================================================
 // 🚀 INÍCIO DO ARQUIVO: .git\objects\10\28ce32afaa0e2d134d7a63975c3db59f0aeb1c
 // ==================================================================
 
@@ -2282,6 +2501,17 @@ x+)JMU05`040031QH-.IL���K�M�+�.�/J��*f8j��Cy����
 
 
 // 🏁 FIM DO ARQUIVO: .git\objects\10\b789cea22d2254ed54dd4a6754849a9099f8b0
+// ------------------------------------------------------------------
+
+
+// ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: .git\objects\10\c3233c1d5f64016cadc1004bb2abb4c65e9e19
+// ==================================================================
+
+// [Arquivo binário ignorado pelo leitor de segurança]
+
+
+// 🏁 FIM DO ARQUIVO: .git\objects\10\c3233c1d5f64016cadc1004bb2abb4c65e9e19
 // ------------------------------------------------------------------
 
 
@@ -2396,6 +2626,17 @@ x+)JMU05`040031QH-.IL���K�M�+�.�/J��*f8j��Cy����
 
 
 // ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: .git\objects\1b\d66685b1032dd3fe149e257589bd9ba49a159e
+// ==================================================================
+
+// [Arquivo binário ignorado pelo leitor de segurança]
+
+
+// 🏁 FIM DO ARQUIVO: .git\objects\1b\d66685b1032dd3fe149e257589bd9ba49a159e
+// ------------------------------------------------------------------
+
+
+// ==================================================================
 // 🚀 INÍCIO DO ARQUIVO: .git\objects\1c\8c5701f81a8f3a27545658bb6f8b9508db11f0
 // ==================================================================
 
@@ -2413,6 +2654,17 @@ x+)JMU01c040031Qp,(�LIMJ,�M�+�++Me8�q:��cä��	�o~l��Q�
 
 
 // 🏁 FIM DO ARQUIVO: .git\objects\1c\d3dce331ed297aa5844968417c0480889df175
+// ------------------------------------------------------------------
+
+
+// ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: .git\objects\1e\0a640a07bde8f3225cc92c6dc644737453eb69
+// ==================================================================
+
+// [Arquivo binário ignorado pelo leitor de segurança]
+
+
+// 🏁 FIM DO ARQUIVO: .git\objects\1e\0a640a07bde8f3225cc92c6dc644737453eb69
 // ------------------------------------------------------------------
 
 
@@ -2461,6 +2713,17 @@ x+)JMU01c040031Qp,(�LIMJ,�M�+�++Me8�q:��cä��	�o~l��Q�
 
 
 // ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: .git\objects\20\771585a315a824e77ae38fd540ca7df0ba8ced
+// ==================================================================
+
+// [Arquivo binário ignorado pelo leitor de segurança]
+
+
+// 🏁 FIM DO ARQUIVO: .git\objects\20\771585a315a824e77ae38fd540ca7df0ba8ced
+// ------------------------------------------------------------------
+
+
+// ==================================================================
 // 🚀 INÍCIO DO ARQUIVO: .git\objects\21\6650a508d427dd3708349383a204fccb953cb0
 // ==================================================================
 
@@ -2468,6 +2731,28 @@ x+)JMU01c040031Qp,(�LIMJ,�M�+�++Me8�q:��cä��	�o~l��Q�
 
 
 // 🏁 FIM DO ARQUIVO: .git\objects\21\6650a508d427dd3708349383a204fccb953cb0
+// ------------------------------------------------------------------
+
+
+// ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: .git\objects\21\780e80fe03fe627b08c0e4054e0b39f62ff5e5
+// ==================================================================
+
+// [Arquivo binário ignorado pelo leitor de segurança]
+
+
+// 🏁 FIM DO ARQUIVO: .git\objects\21\780e80fe03fe627b08c0e4054e0b39f62ff5e5
+// ------------------------------------------------------------------
+
+
+// ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: .git\objects\22\61d6a6cbd9e5370b92a49c72f4f871f38d4c9e
+// ==================================================================
+
+// [Arquivo binário ignorado pelo leitor de segurança]
+
+
+// 🏁 FIM DO ARQUIVO: .git\objects\22\61d6a6cbd9e5370b92a49c72f4f871f38d4c9e
 // ------------------------------------------------------------------
 
 
@@ -2505,6 +2790,17 @@ x+)JMU01c040031Qp,(�LIMJ,�M�+�++Me8�q:��cä��	�o~l��Q�
 
 
 // ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: .git\objects\23\e19d2011c52d6f6c8fba636ebf44674cfa317b
+// ==================================================================
+
+// [Arquivo binário ignorado pelo leitor de segurança]
+
+
+// 🏁 FIM DO ARQUIVO: .git\objects\23\e19d2011c52d6f6c8fba636ebf44674cfa317b
+// ------------------------------------------------------------------
+
+
+// ==================================================================
 // 🚀 INÍCIO DO ARQUIVO: .git\objects\24\25c0f745bef4d009cb6661b62fd9dfd62960b0
 // ==================================================================
 
@@ -2527,6 +2823,28 @@ x+)JMU01c040031Qp,(�LIMJ,�M�+�++Me8�q:��cä��	�o~l��Q�
 
 
 // ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: .git\objects\25\efa844d71e33659c7c204e9cc3d97d77364b7c
+// ==================================================================
+
+// [Arquivo binário ignorado pelo leitor de segurança]
+
+
+// 🏁 FIM DO ARQUIVO: .git\objects\25\efa844d71e33659c7c204e9cc3d97d77364b7c
+// ------------------------------------------------------------------
+
+
+// ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: .git\objects\27\10f6d3376b0cc7930fb1b2e0c0cd9b30d80e27
+// ==================================================================
+
+// [Arquivo binário ignorado pelo leitor de segurança]
+
+
+// 🏁 FIM DO ARQUIVO: .git\objects\27\10f6d3376b0cc7930fb1b2e0c0cd9b30d80e27
+// ------------------------------------------------------------------
+
+
+// ==================================================================
 // 🚀 INÍCIO DO ARQUIVO: .git\objects\27\7b95c931dc579a181a6c3749a06e2ef8533691
 // ==================================================================
 
@@ -2534,6 +2852,17 @@ x+)JMU01c040031Qp,(�LIMJ,�M�+�++Me8�q:��cä��	�o~l��Q�
 
 
 // 🏁 FIM DO ARQUIVO: .git\objects\27\7b95c931dc579a181a6c3749a06e2ef8533691
+// ------------------------------------------------------------------
+
+
+// ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: .git\objects\27\e5d6dfe2201ae4eb2803f026aadd16ce9bd38a
+// ==================================================================
+
+// [Arquivo binário ignorado pelo leitor de segurança]
+
+
+// 🏁 FIM DO ARQUIVO: .git\objects\27\e5d6dfe2201ae4eb2803f026aadd16ce9bd38a
 // ------------------------------------------------------------------
 
 
@@ -2578,6 +2907,17 @@ x+)JMU07f040031QH/M,J)��*f8�07���o�XX":j"R�d�|�*��KI�
 
 
 // 🏁 FIM DO ARQUIVO: .git\objects\29\c71e22a5839849e86a7f46208b431bb299d730
+// ------------------------------------------------------------------
+
+
+// ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: .git\objects\29\ca34a6722c603d6a4af081a23ecde71d3bf6ae
+// ==================================================================
+
+// [Arquivo binário ignorado pelo leitor de segurança]
+
+
+// 🏁 FIM DO ARQUIVO: .git\objects\29\ca34a6722c603d6a4af081a23ecde71d3bf6ae
 // ------------------------------------------------------------------
 
 
@@ -2670,6 +3010,17 @@ x+)JMU07f040031QH/M,J)��*f8�07���o�XX":j"R�d�|�*��KI�
 
 
 // ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: .git\objects\33\95a43ad988a23e9d169cc05c2b6e57b9ddb30e
+// ==================================================================
+
+// [Arquivo binário ignorado pelo leitor de segurança]
+
+
+// 🏁 FIM DO ARQUIVO: .git\objects\33\95a43ad988a23e9d169cc05c2b6e57b9ddb30e
+// ------------------------------------------------------------------
+
+
+// ==================================================================
 // 🚀 INÍCIO DO ARQUIVO: .git\objects\33\ff4fa50e6727ab2280e3ae5f1cad4348157958
 // ==================================================================
 
@@ -2692,6 +3043,17 @@ x+)JMU07f040031QH/M,J)��*f8�07���o�XX":j"R�d�|�*��KI�
 
 
 // ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: .git\objects\36\138f1dfe7ff25807d9ca5b714fd1babe9810e4
+// ==================================================================
+
+// [Arquivo binário ignorado pelo leitor de segurança]
+
+
+// 🏁 FIM DO ARQUIVO: .git\objects\36\138f1dfe7ff25807d9ca5b714fd1babe9810e4
+// ------------------------------------------------------------------
+
+
+// ==================================================================
 // 🚀 INÍCIO DO ARQUIVO: .git\objects\39\a3c4cfb4c9bb9b6928d30a39693c1ba39b6bf2
 // ==================================================================
 
@@ -2703,6 +3065,28 @@ x+)JMU07f040031QH/M,J)��*f8�07���o�XX":j"R�d�|�*��KI�
 
 
 // ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: .git\objects\39\c88ae72454001978f80ac65aa7aa043f31e9a9
+// ==================================================================
+
+// [Arquivo binário ignorado pelo leitor de segurança]
+
+
+// 🏁 FIM DO ARQUIVO: .git\objects\39\c88ae72454001978f80ac65aa7aa043f31e9a9
+// ------------------------------------------------------------------
+
+
+// ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: .git\objects\39\d569353ad5f4b39d3caa9a092febf7566952e4
+// ==================================================================
+
+// [Arquivo binário ignorado pelo leitor de segurança]
+
+
+// 🏁 FIM DO ARQUIVO: .git\objects\39\d569353ad5f4b39d3caa9a092febf7566952e4
+// ------------------------------------------------------------------
+
+
+// ==================================================================
 // 🚀 INÍCIO DO ARQUIVO: .git\objects\3b\86e677af9e2f191f4eac80ac4a2a676e90f6c9
 // ==================================================================
 
@@ -2710,6 +3094,17 @@ x+)JMU07f040031QH/M,J)��*f8�07���o�XX":j"R�d�|�*��KI�
 
 
 // 🏁 FIM DO ARQUIVO: .git\objects\3b\86e677af9e2f191f4eac80ac4a2a676e90f6c9
+// ------------------------------------------------------------------
+
+
+// ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: .git\objects\3c\33894220ff797143fe4914ed7d75abc34115a5
+// ==================================================================
+
+// [Arquivo binário ignorado pelo leitor de segurança]
+
+
+// 🏁 FIM DO ARQUIVO: .git\objects\3c\33894220ff797143fe4914ed7d75abc34115a5
 // ------------------------------------------------------------------
 
 
@@ -2824,6 +3219,17 @@ x+)JMU07f040031QH/M,J)��*f8�07���o�XX":j"R�d�|�*��KI�
 
 
 // ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: .git\objects\46\4cd13606f643a8ea09a56445df938a45bded2e
+// ==================================================================
+
+// [Arquivo binário ignorado pelo leitor de segurança]
+
+
+// 🏁 FIM DO ARQUIVO: .git\objects\46\4cd13606f643a8ea09a56445df938a45bded2e
+// ------------------------------------------------------------------
+
+
+// ==================================================================
 // 🚀 INÍCIO DO ARQUIVO: .git\objects\46\75b651a13942e3b5b231ecf9088a10295e8e6a
 // ==================================================================
 
@@ -2857,6 +3263,17 @@ x+)JMU07f040031QH/M,J)��*f8�07���o�XX":j"R�d�|�*��KI�
 
 
 // ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: .git\objects\47\f0306bc3d6b7b03d468212309ff34e169f7120
+// ==================================================================
+
+// [Arquivo binário ignorado pelo leitor de segurança]
+
+
+// 🏁 FIM DO ARQUIVO: .git\objects\47\f0306bc3d6b7b03d468212309ff34e169f7120
+// ------------------------------------------------------------------
+
+
+// ==================================================================
 // 🚀 INÍCIO DO ARQUIVO: .git\objects\48\9263e952c080b0e856c5018ff99b80baf8f97c
 // ==================================================================
 
@@ -2864,6 +3281,28 @@ x+)JMU07f040031QH/M,J)��*f8�07���o�XX":j"R�d�|�*��KI�
 
 
 // 🏁 FIM DO ARQUIVO: .git\objects\48\9263e952c080b0e856c5018ff99b80baf8f97c
+// ------------------------------------------------------------------
+
+
+// ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: .git\objects\48\ab147a4f1177f7a680e6bd0ba3a72924908b2e
+// ==================================================================
+
+// [Arquivo binário ignorado pelo leitor de segurança]
+
+
+// 🏁 FIM DO ARQUIVO: .git\objects\48\ab147a4f1177f7a680e6bd0ba3a72924908b2e
+// ------------------------------------------------------------------
+
+
+// ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: .git\objects\48\d09432ca0c3c2fc869ed42a323aca5285b4dbc
+// ==================================================================
+
+// [Arquivo binário ignorado pelo leitor de segurança]
+
+
+// 🏁 FIM DO ARQUIVO: .git\objects\48\d09432ca0c3c2fc869ed42a323aca5285b4dbc
 // ------------------------------------------------------------------
 
 
@@ -2923,6 +3362,28 @@ x+)JMU07f040031QH/M,J)��*f8�07���o�XX":j"R�d�|�*��KI�
 
 
 // ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: .git\objects\4d\f43cc58d2b961d58e7059a050eac11958c6249
+// ==================================================================
+
+// [Arquivo binário ignorado pelo leitor de segurança]
+
+
+// 🏁 FIM DO ARQUIVO: .git\objects\4d\f43cc58d2b961d58e7059a050eac11958c6249
+// ------------------------------------------------------------------
+
+
+// ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: .git\objects\4f\cd55f76d266c20df346b721d8dc82025256caf
+// ==================================================================
+
+// [Arquivo binário ignorado pelo leitor de segurança]
+
+
+// 🏁 FIM DO ARQUIVO: .git\objects\4f\cd55f76d266c20df346b721d8dc82025256caf
+// ------------------------------------------------------------------
+
+
+// ==================================================================
 // 🚀 INÍCIO DO ARQUIVO: .git\objects\4f\df031c8acf092d1a64e62a001b7ac0f2b7ef4a
 // ==================================================================
 
@@ -2978,6 +3439,17 @@ x+)JMU07f040031QH/M,J)��*f8�07���o�XX":j"R�d�|�*��KI�
 
 
 // ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: .git\objects\53\8b1f5d80cd93fae19d8d1c0952d9f685a5bf7a
+// ==================================================================
+
+// [Arquivo binário ignorado pelo leitor de segurança]
+
+
+// 🏁 FIM DO ARQUIVO: .git\objects\53\8b1f5d80cd93fae19d8d1c0952d9f685a5bf7a
+// ------------------------------------------------------------------
+
+
+// ==================================================================
 // 🚀 INÍCIO DO ARQUIVO: .git\objects\53\bbf0b67866e4d5fb86b1e1f1fbf7505e9fa066
 // ==================================================================
 
@@ -3006,6 +3478,17 @@ x+)JMU07f040031QH/M,J)��*f8�07���o�XX":j"R�d�|�*��KI�
 x+)JMU05`040031QH-.IL���K�M�+�.�/J��*fxt��ϼkS,N����Ϝ��� k=�
 
 // 🏁 FIM DO ARQUIVO: .git\objects\54\3ce0e84207988ccea992ee2d0e4c19375d9128
+// ------------------------------------------------------------------
+
+
+// ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: .git\objects\55\0e8b7818b8a6b59a7d3b02d718cd55961e47bd
+// ==================================================================
+
+// [Arquivo binário ignorado pelo leitor de segurança]
+
+
+// 🏁 FIM DO ARQUIVO: .git\objects\55\0e8b7818b8a6b59a7d3b02d718cd55961e47bd
 // ------------------------------------------------------------------
 
 
@@ -3043,6 +3526,17 @@ x+)JMU05`040031QH-.IL���K�M�+�.�/J��*fxt��ϼkS,N��
 
 
 // ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: .git\objects\58\cf19fda1a53c0143568030e521dd0b3c6a20ea
+// ==================================================================
+
+// [Arquivo binário ignorado pelo leitor de segurança]
+
+
+// 🏁 FIM DO ARQUIVO: .git\objects\58\cf19fda1a53c0143568030e521dd0b3c6a20ea
+// ------------------------------------------------------------------
+
+
+// ==================================================================
 // 🚀 INÍCIO DO ARQUIVO: .git\objects\59\b8a46923b6de7f30b83f6e29f0e92911f207ae
 // ==================================================================
 
@@ -3050,6 +3544,17 @@ x+)JMU05`040031QH-.IL���K�M�+�.�/J��*fxt��ϼkS,N��
 
 
 // 🏁 FIM DO ARQUIVO: .git\objects\59\b8a46923b6de7f30b83f6e29f0e92911f207ae
+// ------------------------------------------------------------------
+
+
+// ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: .git\objects\5a\7f993c4cad97bbb952b1d0b42e2230052585a7
+// ==================================================================
+
+// [Arquivo binário ignorado pelo leitor de segurança]
+
+
+// 🏁 FIM DO ARQUIVO: .git\objects\5a\7f993c4cad97bbb952b1d0b42e2230052585a7
 // ------------------------------------------------------------------
 
 
@@ -3105,6 +3610,17 @@ x+)JMU05`040031QH-.IL���K�M�+�.�/J��*fxt��ϼkS,N��
 
 
 // 🏁 FIM DO ARQUIVO: .git\objects\5b\de00abf27d27d56e2dad27396881f5c3adbf82
+// ------------------------------------------------------------------
+
+
+// ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: .git\objects\5c\0b2f0aed6dcc8bef28428139c4b790c9ff1f83
+// ==================================================================
+
+// [Arquivo binário ignorado pelo leitor de segurança]
+
+
+// 🏁 FIM DO ARQUIVO: .git\objects\5c\0b2f0aed6dcc8bef28428139c4b790c9ff1f83
 // ------------------------------------------------------------------
 
 
@@ -3350,6 +3866,17 @@ x+)JMU01b040031Q�K�,I,))�L*-I-f����Ee��������~
 
 
 // ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: .git\objects\73\c00d1f62333c36631b053355b6e56d6a75d616
+// ==================================================================
+
+// [Arquivo binário ignorado pelo leitor de segurança]
+
+
+// 🏁 FIM DO ARQUIVO: .git\objects\73\c00d1f62333c36631b053355b6e56d6a75d616
+// ------------------------------------------------------------------
+
+
+// ==================================================================
 // 🚀 INÍCIO DO ARQUIVO: .git\objects\76\4129682cad74137e25bb36abd2a3472d937a9a
 // ==================================================================
 
@@ -3401,6 +3928,17 @@ x+)JMU01b040031Q�K�,I,))�L*-I-f����Ee��������~
 
 
 // 🏁 FIM DO ARQUIVO: .git\objects\78\059df18f77c8be268332e9b55771dd07f8830b
+// ------------------------------------------------------------------
+
+
+// ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: .git\objects\79\2bc9ee4c09709bc38ee1c7123211d9ab52a86a
+// ==================================================================
+
+// [Arquivo binário ignorado pelo leitor de segurança]
+
+
+// 🏁 FIM DO ARQUIVO: .git\objects\79\2bc9ee4c09709bc38ee1c7123211d9ab52a86a
 // ------------------------------------------------------------------
 
 
@@ -3521,6 +4059,17 @@ xK��OR045e��-�/*Q(+MUH+��UPw(�,I�*�/�)M���J�sAU
 
 
 // 🏁 FIM DO ARQUIVO: .git\objects\83\4198db60a6ec29a85a76c17e138f58ee2563de
+// ------------------------------------------------------------------
+
+
+// ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: .git\objects\84\4afa402683a9843c90b56cf7606ae116fe2131
+// ==================================================================
+
+// [Arquivo binário ignorado pelo leitor de segurança]
+
+
+// 🏁 FIM DO ARQUIVO: .git\objects\84\4afa402683a9843c90b56cf7606ae116fe2131
 // ------------------------------------------------------------------
 
 
@@ -3668,6 +4217,28 @@ x+)JMU04�`01 ����������x���.�>�k�~h~\�
 
 
 // ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: .git\objects\93\ca4a1cad4f2db6d8eb58aa1b5211f8a48e9b02
+// ==================================================================
+
+// [Arquivo binário ignorado pelo leitor de segurança]
+
+
+// 🏁 FIM DO ARQUIVO: .git\objects\93\ca4a1cad4f2db6d8eb58aa1b5211f8a48e9b02
+// ------------------------------------------------------------------
+
+
+// ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: .git\objects\94\a062ab810ff79744c20434b80303abea31e3b4
+// ==================================================================
+
+// [Arquivo binário ignorado pelo leitor de segurança]
+
+
+// 🏁 FIM DO ARQUIVO: .git\objects\94\a062ab810ff79744c20434b80303abea31e3b4
+// ------------------------------------------------------------------
+
+
+// ==================================================================
 // 🚀 INÍCIO DO ARQUIVO: .git\objects\95\511b63968465a1985a4a1d0e760e91f48cd1b1
 // ==================================================================
 
@@ -3690,6 +4261,17 @@ x+)JMU04�`01 ����������x���.�>�k�~h~\�
 
 
 // ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: .git\objects\97\383b7f7b863cf621e8c6e1a8a251e515fd029c
+// ==================================================================
+
+// [Arquivo binário ignorado pelo leitor de segurança]
+
+
+// 🏁 FIM DO ARQUIVO: .git\objects\97\383b7f7b863cf621e8c6e1a8a251e515fd029c
+// ------------------------------------------------------------------
+
+
+// ==================================================================
 // 🚀 INÍCIO DO ARQUIVO: .git\objects\97\46779f3a18ca4528271c81c948bb129e649ba7
 // ==================================================================
 
@@ -3697,6 +4279,16 @@ x+)JMU04�`01 ����������x���.�>�k�~h~\�
 
 
 // 🏁 FIM DO ARQUIVO: .git\objects\97\46779f3a18ca4528271c81c948bb129e649ba7
+// ------------------------------------------------------------------
+
+
+// ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: .git\objects\97\8c3af753997b18d1670ef1bf68892be61b8bbe
+// ==================================================================
+
+x+)JMU046f040031QH,-�.�/J��*f��a[Eړ���6>���{@��iPu��%�ə�y���y%�p�u����h1^��]u�������:�S��JS�J�E�ww�q��G�v����~�� �9�
+
+// 🏁 FIM DO ARQUIVO: .git\objects\97\8c3af753997b18d1670ef1bf68892be61b8bbe
 // ------------------------------------------------------------------
 
 
@@ -3734,6 +4326,17 @@ x+)JMU04�`01 ����������x���.�>�k�~h~\�
 
 
 // ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: .git\objects\9b\ad59d43de259dd2cef06cb1e635e566ff4937a
+// ==================================================================
+
+// [Arquivo binário ignorado pelo leitor de segurança]
+
+
+// 🏁 FIM DO ARQUIVO: .git\objects\9b\ad59d43de259dd2cef06cb1e635e566ff4937a
+// ------------------------------------------------------------------
+
+
+// ==================================================================
 // 🚀 INÍCIO DO ARQUIVO: .git\objects\9c\342b0da2115997d027cdc9a85d2b13c7578845
 // ==================================================================
 
@@ -3756,6 +4359,17 @@ h
 
 
 // ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: .git\objects\9d\b273656326dd1179cf97f7c16960da6bb61027
+// ==================================================================
+
+// [Arquivo binário ignorado pelo leitor de segurança]
+
+
+// 🏁 FIM DO ARQUIVO: .git\objects\9d\b273656326dd1179cf97f7c16960da6bb61027
+// ------------------------------------------------------------------
+
+
+// ==================================================================
 // 🚀 INÍCIO DO ARQUIVO: .git\objects\9e\4fb8564cf6fdfb45c7cec942ad3e3c9bd17f8a
 // ==================================================================
 
@@ -3763,6 +4377,17 @@ h
 
 
 // 🏁 FIM DO ARQUIVO: .git\objects\9e\4fb8564cf6fdfb45c7cec942ad3e3c9bd17f8a
+// ------------------------------------------------------------------
+
+
+// ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: .git\objects\9f\4b44195fdabe4ee141b25ecfa5f13253f54fe1
+// ==================================================================
+
+// [Arquivo binário ignorado pelo leitor de segurança]
+
+
+// 🏁 FIM DO ARQUIVO: .git\objects\9f\4b44195fdabe4ee141b25ecfa5f13253f54fe1
 // ------------------------------------------------------------------
 
 
@@ -3785,6 +4410,17 @@ h
 
 
 // 🏁 FIM DO ARQUIVO: .git\objects\a0\5046d03264ddef72f19a9e8ff20a4dc974a321
+// ------------------------------------------------------------------
+
+
+// ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: .git\objects\a0\8d789008b9e785427f4086e0b34c33a29fd9c8
+// ==================================================================
+
+// [Arquivo binário ignorado pelo leitor de segurança]
+
+
+// 🏁 FIM DO ARQUIVO: .git\objects\a0\8d789008b9e785427f4086e0b34c33a29fd9c8
 // ------------------------------------------------------------------
 
 
@@ -3820,6 +4456,17 @@ xK��OR07g�)I�-�I,I��I�,SH�I,.�UJL����M��+I��
 
 
 // ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: .git\objects\a2\47ef39961a345b9effbe65c907828dc9e16a96
+// ==================================================================
+
+x+)JMU01d040031Q�O*J
+�L-�++Mex�k�Z�"�����;��g�+  ���
+
+// 🏁 FIM DO ARQUIVO: .git\objects\a2\47ef39961a345b9effbe65c907828dc9e16a96
+// ------------------------------------------------------------------
+
+
+// ==================================================================
 // 🚀 INÍCIO DO ARQUIVO: .git\objects\a4\17a1c66ca2653bf76e3afa8479c426b3c891c3
 // ==================================================================
 
@@ -3838,6 +4485,17 @@ xK��OR07g�)I�-�I,I��I�,SH�I,.�UJL����M��+I��
 
 
 // 🏁 FIM DO ARQUIVO: .git\objects\a4\1cb16f718dbb2c82b1dbb89c08dd4df61493b6
+// ------------------------------------------------------------------
+
+
+// ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: .git\objects\a4\71e6c4af1c27672bd45b83b39397441a135a59
+// ==================================================================
+
+// [Arquivo binário ignorado pelo leitor de segurança]
+
+
+// 🏁 FIM DO ARQUIVO: .git\objects\a4\71e6c4af1c27672bd45b83b39397441a135a59
 // ------------------------------------------------------------------
 
 
@@ -3893,6 +4551,39 @@ xK��OR07g�)I�-�I,I��I�,SH�I,.�UJL����M��+I��
 
 
 // 🏁 FIM DO ARQUIVO: .git\objects\a5\8311ab69a267a8ab9208d01ec4e9935f26edda
+// ------------------------------------------------------------------
+
+
+// ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: .git\objects\a5\cc6eacef4f12c712e56bda00a05c77029d7e6f
+// ==================================================================
+
+// [Arquivo binário ignorado pelo leitor de segurança]
+
+
+// 🏁 FIM DO ARQUIVO: .git\objects\a5\cc6eacef4f12c712e56bda00a05c77029d7e6f
+// ------------------------------------------------------------------
+
+
+// ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: .git\objects\a6\65b326545f82b99a5277ed6991b51137199356
+// ==================================================================
+
+// [Arquivo binário ignorado pelo leitor de segurança]
+
+
+// 🏁 FIM DO ARQUIVO: .git\objects\a6\65b326545f82b99a5277ed6991b51137199356
+// ------------------------------------------------------------------
+
+
+// ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: .git\objects\a6\771dfb1fa80326b4d8bca83804e05f1f5ca680
+// ==================================================================
+
+// [Arquivo binário ignorado pelo leitor de segurança]
+
+
+// 🏁 FIM DO ARQUIVO: .git\objects\a6\771dfb1fa80326b4d8bca83804e05f1f5ca680
 // ------------------------------------------------------------------
 
 
@@ -3985,6 +4676,17 @@ xK��OR0�d��RPP*JM���M�KI,���+V�R�V
 
 
 // ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: .git\objects\ac\3e1e0f431c43e670c44186ca4b977fbce726d0
+// ==================================================================
+
+// [Arquivo binário ignorado pelo leitor de segurança]
+
+
+// 🏁 FIM DO ARQUIVO: .git\objects\ac\3e1e0f431c43e670c44186ca4b977fbce726d0
+// ------------------------------------------------------------------
+
+
+// ==================================================================
 // 🚀 INÍCIO DO ARQUIVO: .git\objects\ad\8e92422fefe066cfa8777105304af2adf94d28
 // ==================================================================
 
@@ -3996,6 +4698,17 @@ xK��OR0�d��RPP*JM���M�KI,���+V�R�V
 
 
 // ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: .git\objects\ae\5ff4a061c7914982771d16788a53ffc9b6f77b
+// ==================================================================
+
+// [Arquivo binário ignorado pelo leitor de segurança]
+
+
+// 🏁 FIM DO ARQUIVO: .git\objects\ae\5ff4a061c7914982771d16788a53ffc9b6f77b
+// ------------------------------------------------------------------
+
+
+// ==================================================================
 // 🚀 INÍCIO DO ARQUIVO: .git\objects\af\62ad7d1801081013cfd273f208bdd3a14bde5b
 // ==================================================================
 
@@ -4003,6 +4716,17 @@ xK��OR0�d��RPP*JM���M�KI,���+V�R�V
 
 
 // 🏁 FIM DO ARQUIVO: .git\objects\af\62ad7d1801081013cfd273f208bdd3a14bde5b
+// ------------------------------------------------------------------
+
+
+// ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: .git\objects\b0\1029371f569b5f4dae337a05041d39e133263b
+// ==================================================================
+
+// [Arquivo binário ignorado pelo leitor de segurança]
+
+
+// 🏁 FIM DO ARQUIVO: .git\objects\b0\1029371f569b5f4dae337a05041d39e133263b
 // ------------------------------------------------------------------
 
 
@@ -4036,6 +4760,17 @@ xK��OR0�d��RPP*JM���M�KI,���+V�R�V
 
 
 // 🏁 FIM DO ARQUIVO: .git\objects\b1\6ebc7fffe62783dba43ef58220303874656aff
+// ------------------------------------------------------------------
+
+
+// ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: .git\objects\b1\aae86cbd6797226f3487d18b67e668782efbbf
+// ==================================================================
+
+// [Arquivo binário ignorado pelo leitor de segurança]
+
+
+// 🏁 FIM DO ARQUIVO: .git\objects\b1\aae86cbd6797226f3487d18b67e668782efbbf
 // ------------------------------------------------------------------
 
 
@@ -4173,6 +4908,17 @@ x+)JMU01d040031Q�O*J
 
 
 // ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: .git\objects\bf\2c51bc4c053c2a01d1bef725942423a37dfb9f
+// ==================================================================
+
+// [Arquivo binário ignorado pelo leitor de segurança]
+
+
+// 🏁 FIM DO ARQUIVO: .git\objects\bf\2c51bc4c053c2a01d1bef725942423a37dfb9f
+// ------------------------------------------------------------------
+
+
+// ==================================================================
 // 🚀 INÍCIO DO ARQUIVO: .git\objects\bf\8b3334cc16cc54a3ae5f6cc1aea732bd139482
 // ==================================================================
 
@@ -4217,6 +4963,17 @@ x+)JMU01d040031Q�O*J
 
 
 // ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: .git\objects\c2\883482be77fbf37d1cd840f13e6b89bd6d93a2
+// ==================================================================
+
+// [Arquivo binário ignorado pelo leitor de segurança]
+
+
+// 🏁 FIM DO ARQUIVO: .git\objects\c2\883482be77fbf37d1cd840f13e6b89bd6d93a2
+// ------------------------------------------------------------------
+
+
+// ==================================================================
 // 🚀 INÍCIO DO ARQUIVO: .git\objects\c3\08cb6b7c48b092f3376003ecf8b2580c223c7e
 // ==================================================================
 
@@ -4224,6 +4981,17 @@ x+)JMU01d040031Q�O*J
 
 
 // 🏁 FIM DO ARQUIVO: .git\objects\c3\08cb6b7c48b092f3376003ecf8b2580c223c7e
+// ------------------------------------------------------------------
+
+
+// ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: .git\objects\c4\73b8309fde481b8d26aeb64ed5db49c5df1372
+// ==================================================================
+
+// [Arquivo binário ignorado pelo leitor de segurança]
+
+
+// 🏁 FIM DO ARQUIVO: .git\objects\c4\73b8309fde481b8d26aeb64ed5db49c5df1372
 // ------------------------------------------------------------------
 
 
@@ -4246,6 +5014,17 @@ x+)JMU01d040031Q�O*J
 
 
 // 🏁 FIM DO ARQUIVO: .git\objects\c5\3225b8239a1b2425e5e996ca32fb978d612306
+// ------------------------------------------------------------------
+
+
+// ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: .git\objects\c5\b45bef15aee8ee15066162eabb1b38fdc2a572
+// ==================================================================
+
+x+)JMU01d040031Q�O*J
+�L-�++Me8R��`�=�^�u�����<z_� ��
+
+// 🏁 FIM DO ARQUIVO: .git\objects\c5\b45bef15aee8ee15066162eabb1b38fdc2a572
 // ------------------------------------------------------------------
 
 
@@ -4296,6 +5075,50 @@ xm�1
 
 
 // ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: .git\objects\c8\af732d098ca575d0a2dc2066f7755e131d4e65
+// ==================================================================
+
+// [Arquivo binário ignorado pelo leitor de segurança]
+
+
+// 🏁 FIM DO ARQUIVO: .git\objects\c8\af732d098ca575d0a2dc2066f7755e131d4e65
+// ------------------------------------------------------------------
+
+
+// ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: .git\objects\c8\d03b0e228ff48a9b8ce094ad95a15e2331bfd2
+// ==================================================================
+
+// [Arquivo binário ignorado pelo leitor de segurança]
+
+
+// 🏁 FIM DO ARQUIVO: .git\objects\c8\d03b0e228ff48a9b8ce094ad95a15e2331bfd2
+// ------------------------------------------------------------------
+
+
+// ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: .git\objects\c8\ecb80ce93973736129494f33770dcd0393adb4
+// ==================================================================
+
+// [Arquivo binário ignorado pelo leitor de segurança]
+
+
+// 🏁 FIM DO ARQUIVO: .git\objects\c8\ecb80ce93973736129494f33770dcd0393adb4
+// ------------------------------------------------------------------
+
+
+// ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: .git\objects\c9\7745c22983195babbca97e8828847bad4d7163
+// ==================================================================
+
+// [Arquivo binário ignorado pelo leitor de segurança]
+
+
+// 🏁 FIM DO ARQUIVO: .git\objects\c9\7745c22983195babbca97e8828847bad4d7163
+// ------------------------------------------------------------------
+
+
+// ==================================================================
 // 🚀 INÍCIO DO ARQUIVO: .git\objects\ca\2c6289571f2271ec419141ad2b5ba7aca238b4
 // ==================================================================
 
@@ -4303,6 +5126,17 @@ xm�1
 
 
 // 🏁 FIM DO ARQUIVO: .git\objects\ca\2c6289571f2271ec419141ad2b5ba7aca238b4
+// ------------------------------------------------------------------
+
+
+// ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: .git\objects\cb\1645a0ec308483fe16795bfb1718190f236d42
+// ==================================================================
+
+// [Arquivo binário ignorado pelo leitor de segurança]
+
+
+// 🏁 FIM DO ARQUIVO: .git\objects\cb\1645a0ec308483fe16795bfb1718190f236d42
 // ------------------------------------------------------------------
 
 
@@ -4401,6 +5235,17 @@ x+)JMU06c040031Q��KI���*f`\i�����-g�c�]��Z��O�
 
 
 // 🏁 FIM DO ARQUIVO: .git\objects\d1\5c1653d372bdc1ce078bb7ac75cc34cb9b4e9f
+// ------------------------------------------------------------------
+
+
+// ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: .git\objects\d1\658f43b90c017ad466e519bfe4028893f69cec
+// ==================================================================
+
+// [Arquivo binário ignorado pelo leitor de segurança]
+
+
+// 🏁 FIM DO ARQUIVO: .git\objects\d1\658f43b90c017ad466e519bfe4028893f69cec
 // ------------------------------------------------------------------
 
 
@@ -4537,6 +5382,17 @@ x+)JMU06c040031Q��KI���*f`\i�����-g�c�]��Z��O�
 
 
 // ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: .git\objects\db\585eb52360a1d6c5d90cb3fc4b68aa0c23f361
+// ==================================================================
+
+// [Arquivo binário ignorado pelo leitor de segurança]
+
+
+// 🏁 FIM DO ARQUIVO: .git\objects\db\585eb52360a1d6c5d90cb3fc4b68aa0c23f361
+// ------------------------------------------------------------------
+
+
+// ==================================================================
 // 🚀 INÍCIO DO ARQUIVO: .git\objects\db\ffaf738c89560886aaae551e259463a0cd53f6
 // ==================================================================
 
@@ -4592,6 +5448,28 @@ x+)JMU06c040031Q��KI���*f`\i�����-g�c�]��Z��O�
 
 
 // ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: .git\objects\dd\725a8f8b8a8608064f58fb427f084c2be58afb
+// ==================================================================
+
+// [Arquivo binário ignorado pelo leitor de segurança]
+
+
+// 🏁 FIM DO ARQUIVO: .git\objects\dd\725a8f8b8a8608064f58fb427f084c2be58afb
+// ------------------------------------------------------------------
+
+
+// ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: .git\objects\df\bcc31aa9bdfd329f49d70a42b076914a52f4e9
+// ==================================================================
+
+// [Arquivo binário ignorado pelo leitor de segurança]
+
+
+// 🏁 FIM DO ARQUIVO: .git\objects\df\bcc31aa9bdfd329f49d70a42b076914a52f4e9
+// ------------------------------------------------------------------
+
+
+// ==================================================================
 // 🚀 INÍCIO DO ARQUIVO: .git\objects\df\e0770424b2a19faf507a501ebfc23be8f54e7b
 // ==================================================================
 
@@ -4613,6 +5491,17 @@ xK��OR03cPVp,-�WHI-IM.Q(I�(QH��I-VH�KQ(H-J�/�U�qS�҉9�
 
 
 // ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: .git\objects\e3\53124e7ebe2bbb04c35cd7e57a28451af85c5e
+// ==================================================================
+
+// [Arquivo binário ignorado pelo leitor de segurança]
+
+
+// 🏁 FIM DO ARQUIVO: .git\objects\e3\53124e7ebe2bbb04c35cd7e57a28451af85c5e
+// ------------------------------------------------------------------
+
+
+// ==================================================================
 // 🚀 INÍCIO DO ARQUIVO: .git\objects\e3\fca2404b16d226c51ca8385eb9e3753710e590
 // ==================================================================
 
@@ -4624,6 +5513,17 @@ xK��OR03cPVp,-�WHI-IM.Q(I�(QH��I-VH�KQ(H-J�/�U�qS�҉9�
 
 
 // ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: .git\objects\e4\8ee698459d22e89b0f06798d6dfdd2e6c7e442
+// ==================================================================
+
+// [Arquivo binário ignorado pelo leitor de segurança]
+
+
+// 🏁 FIM DO ARQUIVO: .git\objects\e4\8ee698459d22e89b0f06798d6dfdd2e6c7e442
+// ------------------------------------------------------------------
+
+
+// ==================================================================
 // 🚀 INÍCIO DO ARQUIVO: .git\objects\e4\ca0349653db5381d190350ab1dce315e95c6a5
 // ==================================================================
 
@@ -4631,6 +5531,17 @@ xK��OR03cPVp,-�WHI-IM.Q(I�(QH��I-VH�KQ(H-J�/�U�qS�҉9�
 
 
 // 🏁 FIM DO ARQUIVO: .git\objects\e4\ca0349653db5381d190350ab1dce315e95c6a5
+// ------------------------------------------------------------------
+
+
+// ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: .git\objects\e5\005d33857f6415fdc61bb41adc4d6540cdb720
+// ==================================================================
+
+// [Arquivo binário ignorado pelo leitor de segurança]
+
+
+// 🏁 FIM DO ARQUIVO: .git\objects\e5\005d33857f6415fdc61bb41adc4d6540cdb720
 // ------------------------------------------------------------------
 
 
@@ -4711,6 +5622,17 @@ xK��OR0`  	��
 
 
 // ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: .git\objects\ea\1f0c4e798c57c5e933bff91d23f4912caff688
+// ==================================================================
+
+// [Arquivo binário ignorado pelo leitor de segurança]
+
+
+// 🏁 FIM DO ARQUIVO: .git\objects\ea\1f0c4e798c57c5e933bff91d23f4912caff688
+// ------------------------------------------------------------------
+
+
+// ==================================================================
 // 🚀 INÍCIO DO ARQUIVO: .git\objects\ea\27a156e576856d9a93e52d6d0a92823ec4a7c1
 // ==================================================================
 
@@ -4718,6 +5640,50 @@ xK��OR0`  	��
 
 
 // 🏁 FIM DO ARQUIVO: .git\objects\ea\27a156e576856d9a93e52d6d0a92823ec4a7c1
+// ------------------------------------------------------------------
+
+
+// ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: .git\objects\ea\c892a5e228873aae03cd2a2f50b4981ab33402
+// ==================================================================
+
+// [Arquivo binário ignorado pelo leitor de segurança]
+
+
+// 🏁 FIM DO ARQUIVO: .git\objects\ea\c892a5e228873aae03cd2a2f50b4981ab33402
+// ------------------------------------------------------------------
+
+
+// ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: .git\objects\ec\dff1e45e0cbfebbd57cac20abe6420e4eaefcb
+// ==================================================================
+
+// [Arquivo binário ignorado pelo leitor de segurança]
+
+
+// 🏁 FIM DO ARQUIVO: .git\objects\ec\dff1e45e0cbfebbd57cac20abe6420e4eaefcb
+// ------------------------------------------------------------------
+
+
+// ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: .git\objects\ed\07b2514d2fc3ecf8d5dda848782a16a8bedb08
+// ==================================================================
+
+// [Arquivo binário ignorado pelo leitor de segurança]
+
+
+// 🏁 FIM DO ARQUIVO: .git\objects\ed\07b2514d2fc3ecf8d5dda848782a16a8bedb08
+// ------------------------------------------------------------------
+
+
+// ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: .git\objects\ee\00e89f3ed028ad2ecf7c6175da6d9e571f122b
+// ==================================================================
+
+// [Arquivo binário ignorado pelo leitor de segurança]
+
+
+// 🏁 FIM DO ARQUIVO: .git\objects\ee\00e89f3ed028ad2ecf7c6175da6d9e571f122b
 // ------------------------------------------------------------------
 
 
@@ -4785,6 +5751,17 @@ x+)JMU042f040031QH���/
 
 
 // 🏁 FIM DO ARQUIVO: .git\objects\f0\a2483fb9f531f5cdbef870c76c6e0321080046
+// ------------------------------------------------------------------
+
+
+// ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: .git\objects\f1\d7e85233043586bf611d721b4a49d5db342e12
+// ==================================================================
+
+// [Arquivo binário ignorado pelo leitor de segurança]
+
+
+// 🏁 FIM DO ARQUIVO: .git\objects\f1\d7e85233043586bf611d721b4a49d5db342e12
 // ------------------------------------------------------------------
 
 
@@ -4965,6 +5942,16 @@ x+)JMU042f040031QH���/
 
 
 // ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: .git\objects\fb\3e62c3fc3c4b371396519a1e7edfcde869d54a
+// ==================================================================
+
+x+)JMU045a040031QpO-J�+Iu-.IL���K����2S���JS�>;�^F=]�Jt����]���"Qu��$��e"i��D�(���S�ՙ�������	n~��/��-6��|O�z(�O� /�?.
+
+// 🏁 FIM DO ARQUIVO: .git\objects\fb\3e62c3fc3c4b371396519a1e7edfcde869d54a
+// ------------------------------------------------------------------
+
+
+// ==================================================================
 // 🚀 INÍCIO DO ARQUIVO: .git\objects\fb\7bd527d8cfa206ce25debd5c134530001d18d3
 // ==================================================================
 
@@ -4994,6 +5981,17 @@ x+)JMU042f040031QH���/
 
 
 // 🏁 FIM DO ARQUIVO: .git\objects\fb\f37db7a78a5323420f0e3fd779b9d570fa11d3
+// ------------------------------------------------------------------
+
+
+// ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: .git\objects\fd\ef240a26391fd1733d1bb910e9722caab3e62f
+// ==================================================================
+
+// [Arquivo binário ignorado pelo leitor de segurança]
+
+
+// 🏁 FIM DO ARQUIVO: .git\objects\fd\ef240a26391fd1733d1bb910e9722caab3e62f
 // ------------------------------------------------------------------
 
 
@@ -5031,6 +6029,17 @@ x+)JMU042f040031QH���/
 
 
 // ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: .git\objects\ff\2306d05ddb34a310722a866d9b482b97574071
+// ==================================================================
+
+// [Arquivo binário ignorado pelo leitor de segurança]
+
+
+// 🏁 FIM DO ARQUIVO: .git\objects\ff\2306d05ddb34a310722a866d9b482b97574071
+// ------------------------------------------------------------------
+
+
+// ==================================================================
 // 🚀 INÍCIO DO ARQUIVO: .git\objects\ff\27de9aac12764fd2e6e7e1e3dd53bd3c4b4f31
 // ==================================================================
 
@@ -5045,7 +6054,7 @@ x+)JMU042f040031QH���/
 // 🚀 INÍCIO DO ARQUIVO: .git\refs\heads\main
 // ==================================================================
 
-fb3b757ba4c0ce3a552a8a3dc6cafc3f3ad9087b
+ae5ff4a061c7914982771d16788a53ffc9b6f77b
 
 
 // 🏁 FIM DO ARQUIVO: .git\refs\heads\main
@@ -5067,7 +6076,7 @@ ref: refs/remotes/origin/main
 // 🚀 INÍCIO DO ARQUIVO: .git\refs\remotes\origin\main
 // ==================================================================
 
-fb3b757ba4c0ce3a552a8a3dc6cafc3f3ad9087b
+ae5ff4a061c7914982771d16788a53ffc9b6f77b
 
 
 // 🏁 FIM DO ARQUIVO: .git\refs\remotes\origin\main
@@ -5233,6 +6242,10 @@ class LoteStatusVagasPayload(BaseModel):
     inativo: bool
 
 
+class TutorialVistoPayload(BaseModel):
+    rota: str
+
+
 // 🏁 FIM DO ARQUIVO: backend\schemas.py
 // ------------------------------------------------------------------
 
@@ -5329,13 +6342,24 @@ def validar_regras_senha(senha: str, email: str):
 // 🚀 INÍCIO DO ARQUIVO: backend\routes\auth.py
 // ==================================================================
 
+import json
 import re
 from fastapi import APIRouter, HTTPException, status
 from database import db
-from schemas import CadastroUsuarioPayload, LoginUsuarioPayload
+from schemas import CadastroUsuarioPayload, LoginUsuarioPayload, TutorialVistoPayload
 from security import gerar_hash_senha, verificar_hash_senha, validar_regras_senha
 
 router = APIRouter()
+
+
+def extrair_lista_tutoriais(valor_banco) -> list:
+    if not valor_banco:
+        return []
+    try:
+        dados = json.loads(valor_banco)
+        return dados if isinstance(dados, list) else []
+    except Exception:
+        return []
 
 
 @router.get("/usuarios")
@@ -5375,8 +6399,8 @@ async def cadastrar_usuario(payload: CadastroUsuarioPayload):
     senha_hash = gerar_hash_senha(senha)
     novo_id = await db.execute(
         """
-        INSERT INTO usuarios (nome, email, senha_hash, nivel_acesso)
-        VALUES (%s, %s, %s, 'usuario')
+        INSERT INTO usuarios (nome, email, senha_hash, nivel_acesso, tutoriais_vistos)
+        VALUES (%s, %s, %s, 'usuario', '[]')
         """,
         (nome, email, senha_hash),
     )
@@ -5388,6 +6412,7 @@ async def cadastrar_usuario(payload: CadastroUsuarioPayload):
             "nome": nome,
             "email": email,
             "nivel_acesso": "usuario",
+            "tutoriais_vistos": [],
         },
     }
 
@@ -5397,7 +6422,7 @@ async def login_usuario(payload: LoginUsuarioPayload):
     email = payload.email.strip().lower()
     usuario = await db.fetch(
         """
-        SELECT id_usuario, nome, email, senha_hash, nivel_acesso, inativo
+        SELECT id_usuario, nome, email, senha_hash, nivel_acesso, tutoriais_vistos, inativo
         FROM usuarios
         WHERE email = %s
         """,
@@ -5420,8 +6445,33 @@ async def login_usuario(payload: LoginUsuarioPayload):
             "nome": usuario["nome"],
             "email": usuario["email"],
             "nivel_acesso": usuario["nivel_acesso"],
+            "tutoriais_vistos": extrair_lista_tutoriais(
+                usuario.get("tutoriais_vistos")
+            ),
         },
     }
+
+
+@router.patch("/usuarios/{id_usuario}/tutorial")
+async def registrar_tutorial_visto(id_usuario: int, payload: TutorialVistoPayload):
+    usuario = await db.fetch(
+        "SELECT tutoriais_vistos FROM usuarios WHERE id_usuario = %s",
+        (id_usuario,),
+        one=True,
+    )
+    if not usuario:
+        raise HTTPException(status_code=404, detail="Usuário não encontrado.")
+
+    lista_atual = extrair_lista_tutoriais(usuario.get("tutoriais_vistos"))
+    rota_limpa = payload.rota.strip()
+    if rota_limpa and rota_limpa not in lista_atual:
+        lista_atual.append(rota_limpa)
+        await db.execute(
+            "UPDATE usuarios SET tutoriais_vistos = %s WHERE id_usuario = %s",
+            (json.dumps(lista_atual), id_usuario),
+        )
+
+    return {"status": "sucesso", "tutoriais_vistos": lista_atual}
 
 
 // 🏁 FIM DO ARQUIVO: backend\routes\auth.py
@@ -5826,6 +6876,7 @@ export default defineConfig({
 import { onMounted } from 'vue'
 import { carregarDadosDoBanco } from '@/stores/estacionamentoStore'
 import AppSidebarMenu from '@/components/layout/AppSidebarMenu.vue'
+import TutorialGuiaOverlay from '@/components/ui/TutorialGuiaOverlay.vue'
 
 onMounted(() => {
   carregarDadosDoBanco()
@@ -5835,6 +6886,7 @@ onMounted(() => {
 <template>
   <div class="app-container">
     <AppSidebarMenu />
+    <TutorialGuiaOverlay />
 
     <router-view v-slot="{ Component }">
       <Transition name="fade-view" mode="out-in">
@@ -5843,7 +6895,6 @@ onMounted(() => {
     </router-view>
   </div>
 </template>
-
 
 // 🏁 FIM DO ARQUIVO: frontend\src\App.vue
 // ------------------------------------------------------------------
@@ -6170,7 +7221,7 @@ app.mount('#app')
 }
 
 .editor-topbar {
-  margin-left: 108px !important;
+  margin-left: 162px !important;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -6211,31 +7262,56 @@ app.mount('#app')
 }
 
 .seletor-andar-box {
-  display: flex;
+  display: inline-flex;
   align-items: center;
-  gap: 6px;
+  gap: 8px;
   background: var(--bg-botao-sec);
-  color: var(--texto-principal);
+  color: var(--texto-secundario);
   padding: 6px 12px;
-  border-radius: 8px;
+  border-radius: 9px;
   border: 1px solid var(--borda-botao-sec);
-  font-size: 14px;
+  font-size: 13.5px;
+  font-weight: 600;
   white-space: nowrap;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.seletor-andar-box:hover,
+.seletor-andar-box:focus-within {
+  border-color: var(--destaque-azul);
+}
+
+.seletor-andar-box svg {
+  color: var(--destaque-azul);
+  flex-shrink: 0;
+}
+
+.seletor-andar-box strong {
+  color: var(--texto-principal);
+  font-weight: 700;
 }
 
 .select-andar-editor {
+  appearance: none;
+  -webkit-appearance: none;
   background-color: transparent;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%2364748b' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 2px center;
   color: var(--texto-principal);
   border: none;
-  font-weight: bold;
-  font-size: 14px;
-  padding: 2px 4px;
+  font-weight: 700;
+  font-size: 13.5px;
+  padding: 2px 20px 2px 2px;
   border-radius: 4px;
   cursor: pointer;
+  outline: none;
 }
+
 .select-andar-editor option {
   background-color: var(--bg-card);
   color: var(--texto-principal);
+  font-weight: 600;
 }
 
 .btn-caution-avisos {
@@ -6788,13 +7864,14 @@ app.mount('#app')
 }
 
 .gerente-boas-vindas {
-  padding-left: 108px;
+  padding-left: 162px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   flex-wrap: wrap;
   gap: 12px;
 }
+
 .gerente-boas-vindas h1 {
   font-size: 24px;
   font-weight: 700;
@@ -8192,9 +9269,25 @@ app.mount('#app')
 }
 
 .select-com-icone-esq {
+  appearance: none;
+  -webkit-appearance: none;
   width: 100%;
-  padding-left: 36px !important;
   height: 100%;
+  padding: 11px 32px 11px 36px !important;
+  font-size: 14.5px;
+  font-weight: 600;
+  border-radius: 8px;
+  border: 1px solid var(--borda-botao-sec);
+  background-color: var(--bg-botao-sec);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='15' height='15' viewBox='0 0 24 24' fill='none' stroke='%2364748b' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 11px center;
+  cursor: pointer;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.select-com-icone-esq:hover {
+  border-color: var(--destaque-azul);
 }
 
 .lista-estacionamentos-motorista {
@@ -8374,8 +9467,295 @@ app.mount('#app')
   transition: opacity 0.2s ease;
 }
 
+/* =========================================================
+   BOTÃO INFO CIRCLE E SISTEMA DE TUTORIAL GUIADO (SPOTLIGHT)
+   ========================================================= */
+.btn-tutorial-info {
+  position: fixed;
+  top: 10px;
+  left: 118px;
+  z-index: 1000;
+  width: 46px;
+  height: 46px;
+  border-radius: 11px;
+  background: var(--bg-card);
+  color: var(--destaque-azul);
+  border: 1px solid var(--borda-botao-sec);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+  transition: border-color 0.15s ease, background-color 0.15s ease, color 0.15s ease, transform 0.15s ease;
+}
+
+.btn-tutorial-info:hover {
+  border-color: var(--destaque-azul);
+  background: var(--destaque-azul);
+  color: #ffffff;
+  transform: translateY(-1px);
+}
+
+.tutorial-overlay-bloqueio {
+  position: fixed;
+  inset: 0;
+  z-index: 3000;
+  pointer-events: all;
+  user-select: none;
+}
+
+.tutorial-backdrop-central {
+  position: fixed;
+  inset: 0;
+  background: rgba(2, 6, 23, 0.76);
+}
+
+.tutorial-spotlight-box {
+  position: fixed;
+  border-radius: 12px;
+  border: 2.5px solid #38bdf8;
+  box-shadow: 0 0 0 9999px rgba(2, 6, 23, 0.76), 0 0 22px rgba(56, 189, 248, 0.55);
+  pointer-events: none;
+  transition: top 0.22s ease, left 0.22s ease, width 0.22s ease, height 0.22s ease;
+}
+
+.tutorial-popup-card {
+  position: fixed;
+  z-index: 3005;
+  background: var(--bg-card);
+  color: var(--texto-principal);
+  border: 1.5px solid var(--destaque-azul);
+  border-radius: 14px;
+  padding: 18px 20px;
+  width: 360px;
+  max-width: calc(100vw - 24px);
+  box-shadow: 0 16px 38px rgba(0, 0, 0, 0.55);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  transition: top 0.22s ease, left 0.22s ease;
+}
+
+.tutorial-popup-topo {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.badge-etapa-tutorial {
+  background: rgba(37, 99, 235, 0.14);
+  color: var(--destaque-azul);
+  border: 1px solid rgba(37, 99, 235, 0.35);
+  font-size: 12px;
+  font-weight: 800;
+  padding: 3px 10px;
+  border-radius: 999px;
+}
+
+.tutorial-popup-titulo {
+  font-size: 17px;
+  font-weight: 800;
+  color: var(--texto-principal);
+}
+
+.tutorial-popup-texto {
+  font-size: 14px;
+  line-height: 1.48;
+  color: var(--texto-secundario);
+}
+
+.tutorial-popup-acoes {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  margin-top: 6px;
+}
+
+.btn-tutorial-nav {
+  flex: 1;
+  padding: 9px 12px !important;
+  font-size: 13.5px !important;
+}
+
+/* =========================================================
+   PÁGINA SOBRE O PROJETO (CARDS AMIGÁVEIS, TEXTO LEGÍVEL E FOOTER)
+   ========================================================= */
+.sobre-container {
+  max-width: 920px;
+}
+
+.grade-sobre-secoes {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.card-sobre-bloco {
+  background: var(--bg-card);
+  border: 1px solid var(--borda);
+  border-radius: 16px;
+  padding: 24px 26px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.08);
+  transition: border-color 0.2s ease, transform 0.2s ease;
+}
+
+.card-sobre-bloco:hover {
+  border-color: rgba(59, 130, 246, 0.45);
+}
+
+.cabecalho-sobre-bloco {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 2px;
+}
+
+.cabecalho-sobre-bloco h2 {
+  font-size: 19.5px;
+  font-weight: 700;
+  color: var(--texto-principal);
+}
+
+.icone-sobre-badge {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.icone-sobre-badge.azul {
+  background: rgba(37, 99, 235, 0.15);
+  color: #3b82f6;
+}
+.icone-sobre-badge.roxo {
+  background: rgba(168, 85, 247, 0.15);
+  color: #a855f7;
+}
+.icone-sobre-badge.verde {
+  background: rgba(34, 197, 94, 0.15);
+  color: #22c55e;
+}
+
+/* Cor principal nítida para máxima legibilidade no modo claro e escuro */
+.texto-sobre {
+  font-size: 15px;
+  line-height: 1.65;
+  color: var(--texto-principal);
+  opacity: 0.94;
+}
+.texto-sobre strong {
+  color: #38bdf8;
+  font-weight: 700;
+}
+
+@media (prefers-color-scheme: light) {
+  .texto-sobre strong,
+  .lista-tecnologias-sobre strong {
+    color: var(--destaque-azul);
+  }
+}
+
+.lista-tecnologias-sobre {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding-left: 20px;
+  font-size: 14.5px;
+  line-height: 1.6;
+  color: var(--texto-principal);
+  opacity: 0.94;
+}
+.lista-tecnologias-sobre strong {
+  color: #38bdf8;
+  font-weight: 700;
+}
+
+.grade-planos-futuros {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+  margin: 4px 0;
+}
+
+.item-plano-futuro {
+  background: var(--bg-painel);
+  border: 1px solid var(--borda-botao-sec);
+  border-radius: 12px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.item-plano-futuro strong {
+  font-size: 15px;
+  color: var(--destaque-azul);
+}
+.item-plano-futuro span {
+  font-size: 14px;
+  line-height: 1.55;
+  color: var(--texto-principal);
+  opacity: 0.92;
+}
+
+.conclusao-sobre {
+  margin-top: 4px;
+  padding-top: 14px;
+  border-top: 1px solid var(--borda);
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-weight: 500;
+}
+
+.icone-conclusao {
+  color: var(--destaque-azul);
+  flex-shrink: 0;
+  margin-top: 3px;
+}
+
+/* Footer com link do GitHub */
+.sobre-footer {
+  margin-top: 24px;
+  padding-top: 18px;
+  border-top: 1px solid var(--borda);
+  display: flex;
+  justify-content: center;
+}
+
+.link-github-footer {
+  background: var(--bg-card);
+  color: var(--texto-principal);
+  border: 1px solid var(--borda-botao-sec);
+  padding: 10px 20px;
+  border-radius: 999px;
+  font-size: 14.5px;
+  font-weight: 700;
+  text-decoration: none;
+  transition: border-color 0.15s ease, color 0.15s ease, background-color 0.15s ease, transform 0.15s ease;
+}
+
+.link-github-footer:hover {
+  border-color: var(--destaque-azul);
+  color: var(--destaque-azul);
+  background: rgba(59, 130, 246, 0.1);
+  transform: translateY(-1px);
+}
+
 @media (max-width: 768px) {
-  
+  .card-sobre-bloco {
+    padding: 18px 16px;
+  }
+  .cabecalho-sobre-bloco h2 {
+    font-size: 17px;
+  }
+  .grade-planos-futuros {
+    grid-template-columns: 1fr;
+  }
 }
 
 // 🏁 FIM DO ARQUIVO: frontend\src\assets\styles\layout.css
@@ -8573,7 +9953,7 @@ app.mount('#app')
   .topbar-titulo-central {
     min-height: 38px;
     padding-top: 5px;
-    padding-left: 96px;
+    padding-left: 140px;
     padding-right: 48px;
   }
   .topbar-titulo-central.com-botao-direita {
@@ -8604,7 +9984,7 @@ app.mount('#app')
 
   /* Títulos e botões superiores menores em Tablets (<= 1024px) */
   .gerente-boas-vindas {
-    padding-left: 92px;
+    padding-left: 136px;
   }
   .gerente-boas-vindas h1 {
     font-size: 18.5px;
@@ -8643,6 +10023,18 @@ app.mount('#app')
   .grade-dupla-relatorios {
     grid-template-columns: 1fr;
   }
+
+  .btn-tutorial-info {
+    left: 98px;
+    width: 38px;
+    height: 38px;
+    border-radius: 9px;
+  }
+
+  .editor-topbar.tutorial-forcar-painel-mobile,
+  .sidebar-direita-editor.tutorial-forcar-painel-mobile {
+    display: flex !important;
+  }
 }
 
 @media (max-width: 768px) {
@@ -8652,7 +10044,7 @@ app.mount('#app')
 
   .topbar-titulo-central {
     padding-top: 6px;
-    padding-left: 90px;
+    padding-left: 136px;
     padding-right: 8px;
     margin-bottom: 14px;
     min-height: 38px;
@@ -8734,10 +10126,10 @@ app.mount('#app')
   }
 
   .gerente-atalhos-topo {
-    margin-left: -92px; /* Remove o recuo do logo apenas para esta linha */
-    width: calc(100% + 92px);
+    margin-left: -136px;
+    width: calc(100% + 136px);
     gap: 6px;
-    flex-wrap: nowrap; /* Força tudo a ficar na mesma linha */
+    flex-wrap: nowrap;
     margin-top: 4px;
   }
 
@@ -8784,22 +10176,59 @@ app.mount('#app')
     flex-direction: column;
     align-items: stretch;
   }
+  .ocultar-info-mobile {
+    display: none !important;
+  }
+
   .filtros-motorista-grid,
   .grade-campos-dupla {
     grid-template-columns: 1fr;
   }
-  .motorista-home-card {
-    padding: 22px 16px;
+
+  .motorista-home-layout {
+    padding: 60px 12px 24px 12px;
   }
+
+  .motorista-home-card {
+    padding: 20px 14px;
+    gap: 16px;
+  }
+
+  .item-est-motorista {
+    padding: 11px 12px;
+  }
+
+  .textos-est-motorista h3 {
+    font-size: 14.5px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 210px;
+  }
+
   .topbar-motorista-mapa {
     position: static !important;
-    width: calc(100% - 108px) !important;
-    margin-left: 100px !important;
+    width: calc(100% - 96px) !important;
+    margin-left: 96px !important;
     padding: 6px 10px !important;
+    flex-direction: row !important;
+    justify-content: space-between !important;
+    align-items: center !important;
   }
-  .legenda-motorista-inline {
-    display: none;
+
+  .topbar-motorista-mapa .topbar-esquerda {
+    flex-direction: row !important;
+    align-items: center !important;
+    flex-wrap: wrap !important;
+    gap: 6px !important;
   }
+
+  .legenda-motorista-inline,
+  .topbar-direita-motorista {
+    display: none !important;
+  }
+
+
 }
 
 @media (max-width: 480px) {
@@ -9028,7 +10457,12 @@ function sairDaConta() {
           <div class="menu-divisor"></div>
         </template>
 
-        <a href="#" class="item-icone-texto" @click.prevent="irPara({ name: 'motorista-home' })">
+        <a
+          v-if="usuarioLogado?.nivel_acesso !== 'admin_dev' && usuarioLogado?.nivel_acesso !== 'admin_estabelecimento'"
+          href="#"
+          class="item-icone-texto"
+          @click.prevent="irPara({ name: 'motorista-home' })"
+        >
           <IconQrcode :size="19" />
           <span>Escanear Estacionamento</span>
         </a>
@@ -9065,6 +10499,273 @@ function sairDaConta() {
 
 
 // 🏁 FIM DO ARQUIVO: frontend\src\components\layout\AppSidebarMenu.vue
+// ------------------------------------------------------------------
+
+
+// ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: frontend\src\components\ui\TutorialGuiaOverlay.vue
+// ==================================================================
+
+<script setup>
+import { ref, computed, watch, nextTick, onMounted, onUnmounted } from 'vue'
+import { useRoute } from 'vue-router'
+import { TUTORIAIS_POR_ROTA } from '@/constants/tutoriaisConfig'
+import {
+  rotaTutorialAtivo,
+  indiceEtapaTutorial,
+  etapasTutorialAtual,
+  etapaTutorialAtual,
+  verificarPrimeiroAcessoTutorial,
+  iniciarTutorial,
+  avancarEtapaTutorial,
+  voltarEtapaTutorial
+} from '@/stores/tutorialStore'
+import {
+  IconInfoCircle,
+  IconSquareRoundedChevronLeft,
+  IconSquareRoundedChevronRight,
+  IconSquareRoundedCheck
+} from '@/constants/icons'
+
+const route = useRoute()
+
+const larguraTela = ref(window.innerWidth)
+const alturaTela = ref(window.innerHeight)
+const rectDestaque = ref(null)
+
+const mostrarBotaoInfoTopo = computed(() => {
+  return Boolean(route.name && TUTORIAIS_POR_ROTA[route.name])
+})
+
+const ehTabletOuMobile = computed(() => larguraTela.value <= 1024)
+
+const textoExibidoEtapa = computed(() => {
+  if (!etapaTutorialAtual.value) return ''
+  if (ehTabletOuMobile.value && etapaTutorialAtual.value.textoTabletMobile) {
+    return etapaTutorialAtual.value.textoTabletMobile
+  }
+  return etapaTutorialAtual.value.texto
+})
+
+function limparClassesTemporariasMobile() {
+  document
+    .querySelectorAll('.tutorial-forcar-painel-mobile')
+    .forEach(el => el.classList.remove('tutorial-forcar-painel-mobile'))
+}
+
+function localizarElementoAlvo(etapa) {
+  if (!etapa) return null
+  const seletorAtivo =
+    ehTabletOuMobile.value && etapa.seletorTabletMobile
+      ? etapa.seletorTabletMobile
+      : etapa.seletor
+
+  if (!seletorAtivo) return null
+
+  if (ehTabletOuMobile.value) {
+    if (etapa.abrirTopbarMobile) {
+      document.querySelector('.editor-topbar')?.classList.add('tutorial-forcar-painel-mobile')
+    }
+    if (etapa.abrirSidebarMobile) {
+      document.querySelector('.sidebar-direita-editor')?.classList.add('tutorial-forcar-painel-mobile')
+    }
+  }
+
+  let el = document.querySelector(seletorAtivo)
+  if (el && etapa.subirParaPai) {
+    el = el.closest(etapa.subirParaPai) || el
+  }
+  return el
+}
+
+async function calcularPosicaoDestaque() {
+  limparClassesTemporariasMobile()
+  await nextTick()
+
+  const etapa = etapaTutorialAtual.value
+  if (!etapa) {
+    rectDestaque.value = null
+    return
+  }
+
+  const el = localizarElementoAlvo(etapa)
+  if (!el) {
+    rectDestaque.value = null
+    return
+  }
+
+  el.scrollIntoView({ behavior: 'smooth', block: 'center', inline: 'nearest' })
+
+  setTimeout(() => {
+    const r = el.getBoundingClientRect()
+    if (r.width === 0 && r.height === 0) {
+      rectDestaque.value = null
+      return
+    }
+    const pad = 6
+    rectDestaque.value = {
+      top: Math.max(4, r.top - pad),
+      left: Math.max(4, r.left - pad),
+      width: Math.min(larguraTela.value - 8, r.width + pad * 2),
+      height: r.height + pad * 2,
+      bottom: r.bottom + pad
+    }
+  }, 220)
+}
+
+const estiloSpotlight = computed(() => {
+  if (!rectDestaque.value) return null
+  return {
+    top: `${rectDestaque.value.top}px`,
+    left: `${rectDestaque.value.left}px`,
+    width: `${rectDestaque.value.width}px`,
+    height: `${rectDestaque.value.height}px`
+  }
+})
+
+const estiloPopup = computed(() => {
+  if (!rectDestaque.value) {
+    return {
+      top: '50%',
+      left: '50%',
+      transform: 'translate(-50%, -50%)'
+    }
+  }
+
+  const larguraPopup = Math.min(370, larguraTela.value - 24)
+  let left = rectDestaque.value.left + rectDestaque.value.width / 2 - larguraPopup / 2
+  left = Math.max(12, Math.min(left, larguraTela.value - larguraPopup - 12))
+
+  const alturaEstimadaPopup = 215
+  let top = rectDestaque.value.bottom + 14
+
+  // Se não couber embaixo do elemento, posiciona acima dele (ou dentro da tela)
+  if (top + alturaEstimadaPopup > alturaTela.value - 12) {
+    const topAcima = rectDestaque.value.top - alturaEstimadaPopup - 14
+    top = topAcima >= 12 ? topAcima : Math.max(12, alturaTela.value - alturaEstimadaPopup - 16)
+  }
+
+  return {
+    top: `${top}px`,
+    left: `${left}px`,
+    width: `${larguraPopup}px`
+  }
+})
+
+watch(
+  () => route.name,
+  (novaRota) => {
+    limparClassesTemporariasMobile()
+    rotaTutorialAtivo.value = null
+    if (novaRota && TUTORIAIS_POR_ROTA[novaRota]) {
+      setTimeout(() => {
+        verificarPrimeiroAcessoTutorial(novaRota)
+      }, 350)
+    }
+  },
+  { immediate: true }
+)
+
+watch(
+  [rotaTutorialAtivo, indiceEtapaTutorial],
+  ([ativo]) => {
+    if (ativo) {
+      calcularPosicaoDestaque()
+    } else {
+      limparClassesTemporariasMobile()
+      rectDestaque.value = null
+    }
+  }
+)
+
+function aoRedimensionarJanela() {
+  larguraTela.value = window.innerWidth
+  alturaTela.value = window.innerHeight
+  if (rotaTutorialAtivo.value) {
+    calcularPosicaoDestaque()
+  }
+}
+
+onMounted(() => {
+  window.addEventListener('resize', aoRedimensionarJanela)
+})
+
+onUnmounted(() => {
+  limparClassesTemporariasMobile()
+  window.removeEventListener('resize', aoRedimensionarJanela)
+})
+</script>
+
+<template>
+  <!-- Botão Superior Info Circle nas Views Gerente e Dev para Reabrir o Tutorial -->
+  <button
+    v-if="mostrarBotaoInfoTopo"
+    type="button"
+    class="btn-tutorial-info"
+    title="Ver tutorial desta página"
+    @click="iniciarTutorial(route.name)"
+  >
+    <IconInfoCircle :size="22" />
+  </button>
+
+  <!-- Camada de Bloqueio Total + Destaque Spotlight + Popup do Tutorial -->
+  <Transition name="fade-backdrop">
+    <div
+      v-if="rotaTutorialAtivo && etapaTutorialAtual"
+      class="tutorial-overlay-bloqueio"
+      @click.stop.prevent
+    >
+      <!-- Recorte iluminado no elemento alvo (ou fundo escuro total quando central) -->
+      <div
+        v-if="estiloSpotlight"
+        class="tutorial-spotlight-box"
+        :style="estiloSpotlight"
+      ></div>
+      <div v-else class="tutorial-backdrop-central"></div>
+
+      <!-- Popup Explicativo -->
+      <div class="tutorial-popup-card" :style="estiloPopup">
+        <div class="tutorial-popup-topo">
+          <span class="badge-etapa-tutorial">
+            Passo {{ indiceEtapaTutorial + 1 }} de {{ etapasTutorialAtual.length }}
+          </span>
+        </div>
+
+        <h3 class="tutorial-popup-titulo">{{ etapaTutorialAtual.titulo }}</h3>
+        <p class="tutorial-popup-texto">{{ textoExibidoEtapa }}</p>
+
+        <div class="tutorial-popup-acoes">
+          <button
+            type="button"
+            class="btn-secundario btn-tutorial-nav item-icone-texto"
+            :disabled="indiceEtapaTutorial === 0"
+            @click="voltarEtapaTutorial"
+          >
+            <IconSquareRoundedChevronLeft :size="18" />
+            <span>Anterior</span>
+          </button>
+
+          <button
+            type="button"
+            class="btn-primario btn-tutorial-nav item-icone-texto"
+            @click="avancarEtapaTutorial"
+          >
+            <span>
+              {{ indiceEtapaTutorial === etapasTutorialAtual.length - 1 ? 'Concluir' : 'Próximo' }}
+            </span>
+            <IconSquareRoundedCheck
+              v-if="indiceEtapaTutorial === etapasTutorialAtual.length - 1"
+              :size="18"
+            />
+            <IconSquareRoundedChevronRight v-else :size="18" />
+          </button>
+        </div>
+      </div>
+    </div>
+  </Transition>
+</template>
+
+// 🏁 FIM DO ARQUIVO: frontend\src\components\ui\TutorialGuiaOverlay.vue
 // ------------------------------------------------------------------
 
 
@@ -9252,6 +10953,17 @@ export {
 
 
 // ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: frontend\src\constants\tutoriaisConfig.js
+// ==================================================================
+
+// [Arquivo binário ignorado pelo leitor de segurança]
+
+
+// 🏁 FIM DO ARQUIVO: frontend\src\constants\tutoriaisConfig.js
+// ------------------------------------------------------------------
+
+
+// ==================================================================
 // 🚀 INÍCIO DO ARQUIVO: frontend\src\router\guards.js
 // ==================================================================
 
@@ -9412,6 +11124,12 @@ export function listarUsuariosApi() {
   return apiRequest('/usuarios')
 }
 
+export function registrarTutorialVistoApi(idUsuario, rota) {
+  return apiRequest(`/usuarios/${idUsuario}/tutorial`, {
+    method: 'PATCH',
+    body: JSON.stringify({ rota })
+  })
+}
 
 // 🏁 FIM DO ARQUIVO: frontend\src\services\authService.js
 // ------------------------------------------------------------------
@@ -9736,6 +11454,105 @@ export function alternarSimulacao1Frontend() {
 }
 
 // 🏁 FIM DO ARQUIVO: frontend\src\stores\gerenteStore.js
+// ------------------------------------------------------------------
+
+
+// ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: frontend\src\stores\tutorialStore.js
+// ==================================================================
+
+import { ref, computed } from 'vue'
+import { TUTORIAIS_POR_ROTA } from '@/constants/tutoriaisConfig'
+import { usuarioLogado, salvarSessaoUsuario } from './authStore'
+import { registrarTutorialVistoApi } from '@/services/authService'
+
+export const rotaTutorialAtivo = ref(null)
+export const indiceEtapaTutorial = ref(0)
+
+export const etapasTutorialAtual = computed(() => {
+  if (!rotaTutorialAtivo.value) return []
+  return TUTORIAIS_POR_ROTA[rotaTutorialAtivo.value] || []
+})
+
+export const etapaTutorialAtual = computed(() => {
+  return etapasTutorialAtual.value[indiceEtapaTutorial.value] || null
+})
+
+function chaveLocalStorageUsuario(idUsuario) {
+  return `vagacerta_tutoriais_vistos_${idUsuario}`
+}
+
+export function obterTutoriaisVistosUsuario() {
+  if (!usuarioLogado.value) return []
+  const doUsuario = Array.isArray(usuarioLogado.value.tutoriais_vistos)
+    ? usuarioLogado.value.tutoriais_vistos
+    : []
+  const doStorage = JSON.parse(
+    localStorage.getItem(chaveLocalStorageUsuario(usuarioLogado.value.id_usuario)) || '[]'
+  )
+  return Array.from(new Set([...doUsuario, ...doStorage]))
+}
+
+export function verificarPrimeiroAcessoTutorial(nomeRota) {
+  if (!nomeRota || !TUTORIAIS_POR_ROTA[nomeRota] || !usuarioLogado.value) return
+  const vistos = obterTutoriaisVistosUsuario()
+  if (!vistos.includes(nomeRota)) {
+    iniciarTutorial(nomeRota)
+  }
+}
+
+export function iniciarTutorial(nomeRota) {
+  if (!TUTORIAIS_POR_ROTA[nomeRota]) return
+  indiceEtapaTutorial.value = 0
+  rotaTutorialAtivo.value = nomeRota
+}
+
+export function avancarEtapaTutorial() {
+  if (indiceEtapaTutorial.value < etapasTutorialAtual.value.length - 1) {
+    indiceEtapaTutorial.value++
+  } else {
+    concluirTutorialAtual()
+  }
+}
+
+export function voltarEtapaTutorial() {
+  if (indiceEtapaTutorial.value > 0) {
+    indiceEtapaTutorial.value--
+  }
+}
+
+export async function concluirTutorialAtual() {
+  const rotaConcluida = rotaTutorialAtivo.value
+  rotaTutorialAtivo.value = null
+  indiceEtapaTutorial.value = 0
+
+  if (!rotaConcluida || !usuarioLogado.value) return
+
+  const idUsuario = usuarioLogado.value.id_usuario
+  const atualizados = Array.from(new Set([...obterTutoriaisVistosUsuario(), rotaConcluida]))
+
+  // Salva imediatamente na sessão local para não reabrir
+  localStorage.setItem(chaveLocalStorageUsuario(idUsuario), JSON.stringify(atualizados))
+  salvarSessaoUsuario({
+    ...usuarioLogado.value,
+    tutoriais_vistos: atualizados
+  })
+
+  // Persiste no banco de dados MySQL
+  try {
+    const resp = await registrarTutorialVistoApi(idUsuario, rotaConcluida)
+    if (resp?.tutoriais_vistos) {
+      salvarSessaoUsuario({
+        ...usuarioLogado.value,
+        tutoriais_vistos: resp.tutoriais_vistos
+      })
+    }
+  } catch (err) {
+    console.warn('Tutorial salvo localmente (sincronização com banco pendente):', err)
+  }
+}
+
+// 🏁 FIM DO ARQUIVO: frontend\src\stores\tutorialStore.js
 // ------------------------------------------------------------------
 
 
@@ -12807,7 +14624,7 @@ function abrirEstacionamentoTelaCheia(idEst) {
       </div>
 
       <!-- Seletor Múltiplo alinhado à esquerda junto com os cards -->
-      <div v-if="estabelecimentosDoGerente.length >= 2" class="barra-filtros-gerente">
+      <div v-if="estabelecimentosDoGerente.length >= 1" class="barra-filtros-gerente">
         <div class="seletor-multi-wrapper">
           <button
             type="button"
@@ -13472,15 +15289,15 @@ function pararCameraQr() {
                   <IconPin :size="13" />
                   {{ est.cidade || 'Sorocaba' }}
                 </span>
-                <span>•</span>
-                <span>{{ est.andares?.length || 1 }} andar(es)</span>
+                <span class="ocultar-info-mobile">•</span>
+                <span class="ocultar-info-mobile">{{ est.andares?.length || 1 }} andar(es)</span>
               </div>
             </div>
           </div>
 
           <div class="status-vagas-motorista">
             <span
-              class="badge-livres-motorista"
+              class="badge-livres-motorista ocultar-info-mobile"
               :class="est.metricas.livres > 0 ? 'tem-vaga' : 'lotado'"
             >
               {{ est.metricas.livres > 0 ? `${est.metricas.livres} livres` : 'Lotado' }}
@@ -13770,7 +15587,7 @@ const infoBadgeMotorista = computed(() => {
         </div>
 
         <span
-          class="badge-livres-motorista"
+          class="badge-livres-motorista ocultar-info-mobile"
           :class="metricasGerais.livres > 0 ? 'tem-vaga' : 'lotado'"
         >
           <IconParking :size="16" />

@@ -37,6 +37,7 @@ const router = useRouter()
 
 // Dropdown de seleção múltipla no topo
 const dropdownMultiAberto = ref(false)
+const dropdownCidadeAberto = ref(false)
 const termoBuscaMulti = ref('')
 
 // Comparador de 2 Estacionamentos
@@ -96,6 +97,7 @@ function inicializarComparador() {
 function fecharDropdownsAoClicarFora(e) {
   if (!e.target.closest('.seletor-multi-wrapper')) {
     dropdownMultiAberto.value = false
+    dropdownCidadeAberto.value = false
   }
 }
 
@@ -618,43 +620,39 @@ function exportarRelatorioCompletoCsvPadrao() {
           <button
             type="button"
             class="btn-seletor-multi item-icone-texto"
-            @click="dropdownMultiAberto = !dropdownMultiAberto"
+            @click="dropdownCidadeAberto = !dropdownCidadeAberto; dropdownMultiAberto = false"
           >
-            <IconParking :size="18" />
-            <span>{{ textoBotaoSeletorTopo }}</span>
-            <IconSquareRoundedChevronDown :size="18" />
+            <IconPin :size="17" style="color: var(--destaque-azul)" />
+            <span>
+              {{
+                cidadeSelecionadaGerente === 'TODAS'
+                  ? `Todas as cidades (${cidadesDoGerente.length})`
+                  : cidadeSelecionadaGerente
+              }}
+            </span>
+            <IconSquareRoundedChevronDown :size="17" />
           </button>
 
           <Transition name="fade-pop">
-            <div v-if="dropdownMultiAberto" class="dropdown-multi-box">
-              <div v-if="mostrarPesquisaNoMulti" class="busca-multi-topo">
-                <IconSearch :size="16" class="icone-busca-multi" />
-                <input
-                  v-model="termoBuscaMulti"
-                  type="text"
-                  placeholder="Pesquisar estacionamento..."
-                />
-              </div>
-
+            <div v-if="dropdownCidadeAberto" class="dropdown-multi-box" style="width: 240px">
               <div class="lista-opcoes-multi">
                 <div
                   class="item-opcao-multi destaque-completo"
-                  :class="{ 'opcao-ativa': idsSelecionadosGerente.length === 0 }"
-                  @click="selecionarDashboardCompleto"
+                  :class="{ 'opcao-ativa': cidadeSelecionadaGerente === 'TODAS' }"
+                  @click="selecionarCidadeGerente('TODAS'); dropdownCidadeAberto = false"
                 >
-                  <span>Dashboard completo ({{ estabelecimentosDoGerentePorCidade.length }})</span>
-                  <IconSquareRoundedCheck v-if="idsSelecionadosGerente.length === 0" :size="18" />
+                  <span>Todas ({{ cidadesDoGerente.length }})</span>
+                  <IconSquareRoundedCheck v-if="cidadeSelecionadaGerente === 'TODAS'" :size="18" />
                 </div>
-
                 <div
-                  v-for="est in listaEstabelecimentosNoMulti"
-                  :key="est.id"
+                  v-for="cid in cidadesDoGerente"
+                  :key="cid"
                   class="item-opcao-multi"
-                  :class="{ 'opcao-ativa': idsSelecionadosGerente.includes(est.id) }"
-                  @click="alternarSelecaoEstacionamento(est.id)"
+                  :class="{ 'opcao-ativa': cidadeSelecionadaGerente === cid }"
+                  @click="selecionarCidadeGerente(cid); dropdownCidadeAberto = false"
                 >
-                  <span>{{ est.nome }} <small class="cidade-op-muted">({{ est.cidade || 'Sorocaba' }})</small></span>
-                  <IconSquareRoundedCheck v-if="idsSelecionadosGerente.includes(est.id)" :size="18" />
+                  <span>{{ cid }}</span>
+                  <IconSquareRoundedCheck v-if="cidadeSelecionadaGerente === cid" :size="18" />
                 </div>
               </div>
             </div>
@@ -1011,21 +1009,21 @@ function exportarRelatorioCompletoCsvPadrao() {
       <!-- Container com altura fixa para não mudar de tamanho quando a página tiver menos de 8 linhas -->
       <div class="tabela-responsiva-wrapper tabela-historico-altura-fixa">
         <Transition name="fade-tabela" mode="out-in">
-          <table :key="paginaHistorico" class="tabela-relatorio">
+          <table :key="`${paginaHistorico}-${buscaHistorico}`" class="tabela-relatorio tabela-historico-colunas-fixas">
             <thead>
               <tr>
-                <th>Estacionamento</th>
-                <th>Andar / Setor</th>
-                <th>Vaga</th>
-                <th>Data/Hora Entrada</th>
-                <th>Data/Hora Saída</th>
-                <th>Permanência</th>
+                <th class="col-hist-est">Estacionamento</th>
+                <th class="col-hist-setor">Andar / Setor</th>
+                <th class="col-hist-vaga">Vaga</th>
+                <th class="col-hist-data">Data/Hora Entrada</th>
+                <th class="col-hist-data">Data/Hora Saída</th>
+                <th class="col-hist-perm">Permanência</th>
               </tr>
             </thead>
             <tbody>
               <tr v-for="reg in historicoPaginado" :key="reg.id">
-                <td><strong>{{ reg.estacionamento }}</strong></td>
-                <td>{{ reg.andar }} — {{ reg.setor }}</td>
+                <td class="celula-truncada" :title="reg.estacionamento"><strong>{{ reg.estacionamento }}</strong></td>
+                <td class="celula-truncada" :title="`${reg.andar} — ${reg.setor}`">{{ reg.andar }} — {{ reg.setor }}</td>
                 <td><span class="id-badge">{{ reg.vaga }}</span></td>
                 <td>{{ reg.dataEntrada }}</td>
                 <td>
@@ -1072,7 +1070,7 @@ function exportarRelatorioCompletoCsvPadrao() {
         <div>
           <h3 class="item-icone-texto" style="justify-content: flex-start">
             <IconLayoutBoard :size="20" style="color: #16a34a" />
-            <span>Exportar Relatórios Completos para BI (CSV Padrão Brasil)</span>
+            <span>Exportar Relatórios Completos para BI (CSV)</span>
           </h3>
           <p class="dica-painel">
             Exporta todos os relatórios consolidados no formato .csv

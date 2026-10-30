@@ -128,13 +128,18 @@ const estiloPopup = computed(() => {
   let left = rectDestaque.value.left + rectDestaque.value.width / 2 - larguraPopup / 2
   left = Math.max(12, Math.min(left, larguraTela.value - larguraPopup - 12))
 
-  const alturaEstimadaPopup = 215
-  let top = rectDestaque.value.bottom + 14
+  // Reserva margem segura para nunca cortar os botões inferiores do card
+  const alturaEstimadaPopup = 250
+  let top = rectDestaque.value.bottom + 12
 
-  // Se não couber embaixo do elemento, posiciona acima dele (ou dentro da tela)
-  if (top + alturaEstimadaPopup > alturaTela.value - 12) {
-    const topAcima = rectDestaque.value.top - alturaEstimadaPopup - 14
-    top = topAcima >= 12 ? topAcima : Math.max(12, alturaTela.value - alturaEstimadaPopup - 16)
+  if (top + alturaEstimadaPopup > alturaTela.value - 16) {
+    const topAcima = rectDestaque.value.top - alturaEstimadaPopup - 12
+    if (topAcima >= 14) {
+      top = topAcima
+    } else {
+      // Quando o elemento é grande (ex: Mapa 2D no Passo 3), ancora dentro da área visível com folga inferior
+      top = Math.max(14, alturaTela.value - alturaEstimadaPopup - 24)
+    }
   }
 
   return {

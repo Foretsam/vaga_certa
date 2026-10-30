@@ -162,8 +162,8 @@ def mapear_e_consolidar(caminho_base, arquivo_saida):
 
 
 if __name__ == "__main__":
-    caminho_usuario = input("Digite o caminho (PATH) do diretório: ").strip()
-    caminho_usuario = caminho_usuario.strip('"').strip("'")
+    # Caminho fixo definido como padrão
+    caminho_usuario = r"C:\Users\lucas\Desktop\Git\vaga_certa"
 
     if os.path.isdir(caminho_usuario):
         nome_arquivo_saida = "resultado_mapa_e_codigos.txt"
@@ -174,5 +174,5 @@ if __name__ == "__main__":
         print(f"✅ Processo concluído! Resultado salvo em '{nome_arquivo_saida}'")
     else:
         print(
-            "❌ O caminho informado não é um diretório válido. Verifique e tente novamente."
+            f"❌ O caminho informado ({caminho_usuario}) não é um diretório válido. Verifique se a pasta existe."
         )

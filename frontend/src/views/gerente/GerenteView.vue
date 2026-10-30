@@ -37,6 +37,7 @@ const router = useRouter()
 
 // Dropdown de seleção múltipla no topo
 const dropdownMultiAberto = ref(false)
+const dropdownCidadeAberto = ref(false)
 const termoBuscaMulti = ref('')
 
 // Modal Popup para celular/tablet ("Escolher Estacionamento")
@@ -55,6 +56,7 @@ onUnmounted(() => {
 function fecharDropdownsAoClicarFora(e) {
   if (!e.target.closest('.seletor-multi-wrapper')) {
     dropdownMultiAberto.value = false
+    dropdownCidadeAberto.value = false
   }
 }
 
@@ -279,43 +281,39 @@ function abrirEstacionamentoTelaCheia(idEst) {
           <button
             type="button"
             class="btn-seletor-multi item-icone-texto"
-            @click="dropdownMultiAberto = !dropdownMultiAberto"
+            @click="dropdownCidadeAberto = !dropdownCidadeAberto; dropdownMultiAberto = false"
           >
-            <IconParking :size="18" />
-            <span>{{ textoBotaoSeletorTopo }}</span>
-            <IconSquareRoundedChevronDown :size="18" />
+            <IconPin :size="17" style="color: var(--destaque-azul)" />
+            <span>
+              {{
+                cidadeSelecionadaGerente === 'TODAS'
+                  ? `Todas as cidades (${cidadesDoGerente.length})`
+                  : cidadeSelecionadaGerente
+              }}
+            </span>
+            <IconSquareRoundedChevronDown :size="17" />
           </button>
 
         <Transition name="fade-pop">
-            <div v-if="dropdownMultiAberto" class="dropdown-multi-box">
-              <div v-if="mostrarPesquisaNoMulti" class="busca-multi-topo">
-                <IconSearch :size="16" class="icone-busca-multi" />
-                <input
-                  v-model="termoBuscaMulti"
-                  type="text"
-                  placeholder="Pesquisar estacionamento..."
-                />
-              </div>
-
+            <div v-if="dropdownCidadeAberto" class="dropdown-multi-box" style="width: 240px">
               <div class="lista-opcoes-multi">
                 <div
                   class="item-opcao-multi destaque-completo"
-                  :class="{ 'opcao-ativa': idsSelecionadosGerente.length === 0 }"
-                  @click="selecionarDashboardCompleto"
+                  :class="{ 'opcao-ativa': cidadeSelecionadaGerente === 'TODAS' }"
+                  @click="selecionarCidadeGerente('TODAS'); dropdownCidadeAberto = false"
                 >
-                  <span>Dashboard completo ({{ estabelecimentosDoGerentePorCidade.length }})</span>
-                  <IconSquareRoundedCheck v-if="idsSelecionadosGerente.length === 0" :size="18" />
+                  <span>Todas ({{ cidadesDoGerente.length }})</span>
+                  <IconSquareRoundedCheck v-if="cidadeSelecionadaGerente === 'TODAS'" :size="18" />
                 </div>
-
                 <div
-                  v-for="est in listaEstabelecimentosNoMulti"
-                  :key="est.id"
+                  v-for="cid in cidadesDoGerente"
+                  :key="cid"
                   class="item-opcao-multi"
-                  :class="{ 'opcao-ativa': idsSelecionadosGerente.includes(est.id) }"
-                  @click="alternarSelecaoEstacionamento(est.id)"
+                  :class="{ 'opcao-ativa': cidadeSelecionadaGerente === cid }"
+                  @click="selecionarCidadeGerente(cid); dropdownCidadeAberto = false"
                 >
-                  <span>{{ est.nome }} <small class="cidade-op-muted">({{ est.cidade || 'Sorocaba' }})</small></span>
-                  <IconSquareRoundedCheck v-if="idsSelecionadosGerente.includes(est.id)" :size="18" />
+                  <span>{{ cid }}</span>
+                  <IconSquareRoundedCheck v-if="cidadeSelecionadaGerente === cid" :size="18" />
                 </div>
               </div>
             </div>
