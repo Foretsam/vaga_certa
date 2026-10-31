@@ -47,5 +47,6 @@ export {
   IconArrowsLeftRight,
   IconPlayerPlay,
   IconSun,
-  IconMoon
+  IconMoon,
+  IconChevronUp
 } from '@tabler/icons-vue'

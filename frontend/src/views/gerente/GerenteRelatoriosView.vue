@@ -581,7 +581,7 @@ function exportarRelatorioCompletoCsvPadrao() {
       <div class="gerente-boas-vindas">
         <div>
           <h1>Relatórios Detalhados e Exportação BI</h1>
-          <p class="subtitulo">
+          <p class="subtitulo ocultar-subtitulo-mobile">
             Análise de fluxo horário, permanência, rotatividade de vagas e comparativo entre unidades
           </p>
         </div>

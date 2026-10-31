@@ -217,6 +217,16 @@ async def criar_estabelecimento(payload: EstabelecimentoSavePayload):
                     (payload.id_usuario, id_est),
                 )
 
+                # Se o usuário vinculado era 'usuario' (motorista), promove para 'admin_estabelecimento' (gerente)
+                await cursor.execute(
+                    """
+                    UPDATE usuarios
+                    SET nivel_acesso = 'admin_estabelecimento'
+                    WHERE id_usuario = %s AND nivel_acesso = 'usuario'
+                    """,
+                    (payload.id_usuario,),
+                )
+
                 await gravar_andares_e_mapa(cursor, id_est, payload.andares)
                 await conn.commit()
                 return {"status": "sucesso", "id_estabelecimento": id_est}
@@ -248,6 +258,16 @@ async def atualizar_estabelecimento(
                 await cursor.execute(
                     "INSERT INTO usuario_estabelecimento (id_usuario, id_estabelecimento) VALUES (%s, %s)",
                     (payload.id_usuario, id_estabelecimento),
+                )
+
+                # Se o usuário vinculado era 'usuario' (motorista), promove para 'admin_estabelecimento' (gerente)
+                await cursor.execute(
+                    """
+                    UPDATE usuarios
+                    SET nivel_acesso = 'admin_estabelecimento'
+                    WHERE id_usuario = %s AND nivel_acesso = 'usuario'
+                    """,
+                    (payload.id_usuario,),
                 )
 
                 await cursor.execute(

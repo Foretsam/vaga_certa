@@ -78,12 +78,17 @@ function alternarPainelAvisos() {
 // =========================================================
 // TOUCH PAN (ARRASTAR DEDO) E PINCH-TO-ZOOM (MOVIMENTO PINÇA)
 // =========================================================
+const dropdownAndarEditorAberto = ref(false)
+const gridPrincipalRef = ref(null)
+
 const panX = ref(0)
 const panY = ref(0)
 const zoomEscala = ref(1)
 
 let toqueUnico = null
 let pinchInicial = null
+let autoScrollFrame = null
+let ponteiroAtualClient = { x: 0, y: 0 }
 
 function distanciaEntreToques(t1, t2) {
   return Math.hypot(t2.clientX - t1.clientX, t2.clientY - t1.clientY)
@@ -96,8 +101,83 @@ function pontoMedioToques(t1, t2) {
   }
 }
 
+function obterCoordenadaPorPontoTela(clientX, clientY) {
+  const el = document.elementFromPoint(clientX, clientY)
+  const celulaEl = el?.closest('[data-coord]')
+  if (!celulaEl) return null
+  const [cx, cy] = celulaEl.getAttribute('data-coord').split(',').map(Number)
+  return { x: cx, y: cy }
+}
+
+function atualizarRetanguloSelecao(x, y) {
+  if (!pontoInicialArrasto.value) return
+  const xMin = Math.min(pontoInicialArrasto.value.x, x)
+  const xMax = Math.max(pontoInicialArrasto.value.x, x)
+  const yMin = Math.min(pontoInicialArrasto.value.y, y)
+  const yMax = Math.max(pontoInicialArrasto.value.y, y)
+
+  const novaSelecao = new Set(baseSelecionadosCtrl.value)
+  for (let cy = yMin; cy <= yMax; cy++) {
+    for (let cx = xMin; cx <= xMax; cx++) {
+      novaSelecao.add(`${cx},${cy}`)
+    }
+  }
+  selecionados.value = novaSelecao
+}
+
+function iniciarLoopAutoScroll() {
+  if (autoScrollFrame) return
+  const step = () => {
+    if (!arrastando.value || !gridPrincipalRef.value) {
+      autoScrollFrame = null
+      return
+    }
+    const container = gridPrincipalRef.value
+    const rect = container.getBoundingClientRect()
+    const margem = 48
+    const vel = 12
+    let mudouScroll = false
+
+    if (ponteiroAtualClient.x < rect.left + margem) {
+      container.scrollLeft -= vel
+      mudouScroll = true
+    } else if (ponteiroAtualClient.x > rect.right - margem) {
+      container.scrollLeft += vel
+      mudouScroll = true
+    }
+
+    if (ponteiroAtualClient.y < rect.top + margem) {
+      container.scrollTop -= vel
+      mudouScroll = true
+    } else if (ponteiroAtualClient.y > rect.bottom - margem) {
+      container.scrollTop += vel
+      mudouScroll = true
+    }
+
+    if (mudouScroll) {
+      const coord = obterCoordenadaPorPontoTela(ponteiroAtualClient.x, ponteiroAtualClient.y)
+      if (coord) {
+        hoverCoord.value = coord
+        atualizarRetanguloSelecao(coord.x, coord.y)
+      }
+    }
+    autoScrollFrame = requestAnimationFrame(step)
+  }
+  autoScrollFrame = requestAnimationFrame(step)
+}
+
+function pararLoopAutoScroll() {
+  if (autoScrollFrame) {
+    cancelAnimationFrame(autoScrollFrame)
+    autoScrollFrame = null
+  }
+}
+
+// No tablet/celular: 2 dedos movem/dão zoom no mapa; 1 dedo seleciona quadrados com swipe
 function aoIniciarToqueGrid(e) {
   if (e.touches.length === 2) {
+    arrastando.value = false
+    pararLoopAutoScroll()
     toqueUnico = null
     const dist = distanciaEntreToques(e.touches[0], e.touches[1])
     const meio = pontoMedioToques(e.touches[0], e.touches[1])
@@ -112,14 +192,24 @@ function aoIniciarToqueGrid(e) {
   } else if (e.touches.length === 1) {
     pinchInicial = null
     const t = e.touches[0]
+    ponteiroAtualClient = { x: t.clientX, y: t.clientY }
+    const coord = obterCoordenadaPorPontoTela(t.clientX, t.clientY)
+
     toqueUnico = {
       startX: t.clientX,
       startY: t.clientY,
       lastX: t.clientX,
       lastY: t.clientY,
-      panXInicial: panX.value,
-      panYInicial: panY.value,
+      coordInicial: coord,
       moveu: false
+    }
+
+    if (coord && !ferramentaCarimbo.value) {
+      arrastando.value = true
+      mostrarMenuFlutuante.value = false
+      pontoInicialArrasto.value = coord
+      baseSelecionadosCtrl.value = new Set(selecionados.value)
+      iniciarLoopAutoScroll()
     }
   }
 }
@@ -136,13 +226,18 @@ function aoMoverToqueGrid(e) {
     const t = e.touches[0]
     toqueUnico.lastX = t.clientX
     toqueUnico.lastY = t.clientY
+    ponteiroAtualClient = { x: t.clientX, y: t.clientY }
+
     const dx = t.clientX - toqueUnico.startX
     const dy = t.clientY - toqueUnico.startY
-
-    if (Math.hypot(dx, dy) > 7) {
+    if (Math.hypot(dx, dy) > 6) {
       toqueUnico.moveu = true
-      panX.value = toqueUnico.panXInicial + dx
-      panY.value = toqueUnico.panYInicial + dy
+    }
+
+    const coord = obterCoordenadaPorPontoTela(t.clientX, t.clientY)
+    if (coord && arrastando.value) {
+      hoverCoord.value = coord
+      atualizarRetanguloSelecao(coord.x, coord.y)
     }
   }
 }
@@ -151,37 +246,31 @@ function aoFinalizarToqueGrid(e) {
   if (e.touches.length < 2) {
     pinchInicial = null
   }
-  if (e.touches.length === 0 && toqueUnico) {
-    if (!toqueUnico.moveu) {
-      const el = document.elementFromPoint(toqueUnico.lastX, toqueUnico.lastY)
-      const celulaEl = el?.closest('[data-coord]')
-      if (celulaEl) {
-        const [cx, cy] = celulaEl.getAttribute('data-coord').split(',').map(Number)
+  if (e.touches.length === 0) {
+    pararLoopAutoScroll()
+    arrastando.value = false
+
+    if (toqueUnico) {
+      if (!toqueUnico.moveu && toqueUnico.coordInicial) {
+        const { x: cx, y: cy } = toqueUnico.coordInicial
         if (ferramentaCarimbo.value) {
           aplicarCarimboNoGrid(cx, cy)
         } else {
           const chave = `${cx},${cy}`
-          const nova = new Set(selecionados.value)
+          const nova = new Set(baseSelecionadosCtrl.value)
           if (nova.has(chave)) {
             nova.delete(chave)
           } else {
             nova.add(chave)
           }
           selecionados.value = nova
-          mostrarMenuFlutuante.value = nova.size > 0
         }
       }
+      mostrarMenuFlutuante.value = selecionados.value.size > 0
+      toqueUnico = null
     }
-    toqueUnico = null
   }
 }
-
-function resetarCameraGrid() {
-  panX.value = 0
-  panY.value = 0
-  zoomEscala.value = 1
-}
-
 // =========================================================
 // PILHAS DE DESFAZER / REFAZER
 // =========================================================
@@ -360,6 +449,7 @@ function iniciarSelecaoCelula(x, y, event) {
   arrastando.value = true
   mostrarMenuFlutuante.value = false
   pontoInicialArrasto.value = { x, y }
+  ponteiroAtualClient = { x: event.clientX, y: event.clientY }
   const chave = `${x},${y}`
 
   if (event.ctrlKey || event.metaKey) {
@@ -374,27 +464,20 @@ function iniciarSelecaoCelula(x, y, event) {
     baseSelecionadosCtrl.value = new Set()
     selecionados.value = new Set([chave])
   }
+  iniciarLoopAutoScroll()
 }
 
-function moverMouseCelula(x, y) {
+function moverMouseCelula(x, y, event) {
   hoverCoord.value = { x, y }
-  if (!arrastando.value || !pontoInicialArrasto.value) return
-
-  const xMin = Math.min(pontoInicialArrasto.value.x, x)
-  const xMax = Math.max(pontoInicialArrasto.value.x, x)
-  const yMin = Math.min(pontoInicialArrasto.value.y, y)
-  const yMax = Math.max(pontoInicialArrasto.value.y, y)
-
-  const novaSelecao = new Set(baseSelecionadosCtrl.value)
-  for (let cy = yMin; cy <= yMax; cy++) {
-    for (let cx = xMin; cx <= xMax; cx++) {
-      novaSelecao.add(`${cx},${cy}`)
-    }
+  if (event) {
+    ponteiroAtualClient = { x: event.clientX, y: event.clientY }
   }
-  selecionados.value = novaSelecao
+  if (!arrastando.value || !pontoInicialArrasto.value) return
+  atualizarRetanguloSelecao(x, y)
 }
 
 function finalizarSelecaoMouse() {
+  pararLoopAutoScroll()
   if (arrastando.value) {
     arrastando.value = false
     if (selecionados.value.size > 0) {
@@ -951,6 +1034,23 @@ function confirmarModalSucessoSalvar() {
 }
 
 function tratarTeclaGlobal(event) {
+  const tagAtiva = document.activeElement?.tagName
+  const digitandoEmInput = tagAtiva === 'INPUT' || tagAtiva === 'TEXTAREA' || tagAtiva === 'SELECT'
+
+  if (!digitandoEmInput && (event.ctrlKey || event.metaKey)) {
+    const tecla = event.key.toLowerCase()
+    if (tecla === 'z' && !event.shiftKey) {
+      event.preventDefault()
+      desfazer()
+      return
+    }
+    if (tecla === 'y' || (tecla === 'z' && event.shiftKey)) {
+      event.preventDefault()
+      refazer()
+      return
+    }
+  }
+
   if (event.key === 'Escape') {
     if (ferramentaCarimbo.value) ferramentaCarimbo.value = null
     if (mostrarMenuFlutuante.value) {
@@ -961,6 +1061,7 @@ function tratarTeclaGlobal(event) {
     menuTopoMobileAberto.value = false
     menuAdicionarMobileAberto.value = false
     dropdownSetoresAberto.value = false
+    dropdownAndarEditorAberto.value = false
   }
 }
 
@@ -1021,29 +1122,43 @@ onUnmounted(() => {
       :class="{ 'topbar-mobile-aberta': menuTopoMobileAberto }"
     >
       <div class="topbar-esquerda">
-        <button class="btn-secundario btn-duas-linhas item-icone-texto" @click="router.push({ name: 'admin-info-gerais' })">
-          <IconSquareRoundedArrowLeft :size="18" />
-          <div>Editar estacionamento<br /><span>Informações Gerais</span></div>
+        <!-- Botão apenas com ícone e dica "Informações Gerais" no hover -->
+        <button
+          class="btn-secundario item-icone-texto"
+          title="Informações Gerais"
+          @click="router.push({ name: 'admin-info-gerais' })"
+        >
+          <IconSquareRoundedArrowLeft :size="19" />
         </button>
 
-        <div class="seletor-andar-box">
-          <IconStack2 :size="18" />
-          <span>Andar:</span>
-          <select
-            v-if="formEstabelecimento.andares.length > 1"
-            v-model="andarEditorIndex"
-            class="select-andar-editor"
-            @change="selecionados.clear(); historicoUndo = []; historicoRedo = []; resetarCameraGrid(); menuTopoMobileAberto = false"
+        <!-- Seletor de Andar estilizado como os demais dropdowns do projeto -->
+        <div class="seletor-multi-wrapper">
+          <button
+            type="button"
+            class="btn-seletor-multi item-icone-texto"
+            @click="dropdownAndarEditorAberto = !dropdownAndarEditorAberto"
           >
-            <option
-              v-for="(a, idx) in formEstabelecimento.andares"
-              :key="a.id_andar"
-              :value="idx"
-            >
-              {{ a.nome_andar }} ({{ a.grid_x }}x{{ a.grid_y }})
-            </option>
-          </select>
-          <strong v-else>{{ andarEditorAtual.nome_andar }}</strong>
+            <IconStack2 :size="18" style="color: var(--destaque-azul)" />
+            <span>{{ andarEditorAtual.nome_andar }} ({{ andarEditorAtual.grid_x }}x{{ andarEditorAtual.grid_y }})</span>
+            <IconSquareRoundedChevronDown :size="17" />
+          </button>
+
+          <Transition name="fade-pop">
+            <div v-if="dropdownAndarEditorAberto" class="dropdown-multi-box" style="width: 240px">
+              <div class="lista-opcoes-multi">
+                <div
+                  v-for="(a, idx) in formEstabelecimento.andares"
+                  :key="a.id_andar"
+                  class="item-opcao-multi"
+                  :class="{ 'opcao-ativa': idx === andarEditorIndex }"
+                  @click="andarEditorIndex = idx; dropdownAndarEditorAberto = false; selecionados.clear(); historicoUndo = []; historicoRedo = []; resetarCameraGrid(); menuTopoMobileAberto = false"
+                >
+                  <span>{{ a.nome_andar }} ({{ a.grid_x }}x{{ a.grid_y }})</span>
+                  <IconSquareRoundedCheck v-if="idx === andarEditorIndex" :size="18" />
+                </div>
+              </div>
+            </div>
+          </Transition>
         </div>
 
         <button class="btn-secundario btn-duas-linhas item-icone-texto" @click="abrirModalTamanhoGrid">
@@ -1051,11 +1166,21 @@ onUnmounted(() => {
           <div>Tamanho do Grid<br /><span>({{ andarEditorAtual.grid_x }}x{{ andarEditorAtual.grid_y }})</span></div>
         </button>
 
-        <button class="btn-secundario item-icone-texto" :disabled="historicoUndo.length === 0" @click="desfazer">
+        <button
+          class="btn-secundario item-icone-texto"
+          :disabled="historicoUndo.length === 0"
+          title="Desfazer (Ctrl + Z)"
+          @click="desfazer"
+        >
           <IconArrowBackUp :size="18" />
           <span>Desfazer</span>
         </button>
-        <button class="btn-secundario item-icone-texto" :disabled="historicoRedo.length === 0" @click="refazer">
+        <button
+          class="btn-secundario item-icone-texto"
+          :disabled="historicoRedo.length === 0"
+          title="Refazer (Ctrl + Y)"
+          @click="refazer"
+        >
           <IconArrowForwardUp :size="18" />
           <span>Refazer</span>
         </button>
@@ -1202,6 +1327,7 @@ onUnmounted(() => {
         </Transition>
 
         <div
+          ref="gridPrincipalRef"
           class="area-grid-principal"
           @mouseleave="hoverCoord = null"
           @touchstart.passive="aoIniciarToqueGrid"
@@ -1243,7 +1369,7 @@ onUnmounted(() => {
                     backgroundColor: andarEditorAtual.celulas[`${x},${y}`]?.corSetor || 'transparent'
                   }"
                   @mousedown.prevent="iniciarSelecaoCelula(x, y, $event)"
-                  @mouseenter="moverMouseCelula(x, y)"
+                  @mouseenter="moverMouseCelula(x, y, $event)"
                 >
                   <div
                     class="quadrado-editor"

@@ -1157,6 +1157,85 @@
   color: var(--destaque-azul);
 }
 
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation: none;
+  mix-blend-mode: normal;
+}
+
+.transicao-tema-global,
+.transicao-tema-global * {
+  transition: background-color 0.38s ease, color 0.38s ease, border-color 0.38s ease, box-shadow 0.38s ease !important;
+}
+
+.btn-toggle-tema.tema-pulsando {
+  transform: scale(1.12);
+  border-color: var(--destaque-azul);
+  box-shadow: 0 0 18px rgba(59, 130, 246, 0.45);
+}
+
+.icone-sol-animado {
+  color: #f59e0b;
+  filter: drop-shadow(0 0 6px rgba(245, 158, 11, 0.45));
+}
+
+.icone-lua-animada {
+  color: #38bdf8;
+  filter: drop-shadow(0 0 6px rgba(56, 189, 248, 0.45));
+}
+
+.icone-tema-spin-enter-active,
+.icone-tema-spin-leave-active {
+  transition: transform 0.34s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.22s ease;
+}
+.icone-tema-spin-enter-from {
+  opacity: 0;
+  transform: rotate(-140deg) scale(0.3);
+}
+.icone-tema-spin-leave-to {
+  opacity: 0;
+  transform: rotate(140deg) scale(0.3);
+}
+
+/* Botão sem bordas no formato de V apontado para cima ao rolar a página */
+.btn-voltar-topo-scroll {
+  position: fixed;
+  bottom: 22px;
+  right: 22px;
+  z-index: 1100;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: var(--destaque-azul);
+  padding: 6px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  filter: drop-shadow(0 3px 8px rgba(0, 0, 0, 0.35));
+  transition: transform 0.2s ease, color 0.2s ease, opacity 0.2s ease;
+}
+.btn-voltar-topo-scroll:hover {
+  transform: translateY(-4px) scale(1.12);
+  color: #38bdf8;
+}
+
+/* Ajuste da área do mapa do motorista para não cortar o topo com zoom */
+.area-grid-motorista-limpa {
+  background: var(--bg-card) !important;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  padding: 20px !important;
+  overflow: auto !important;
+}
+
+.caixa-escalada-motorista {
+  margin: auto;
+  position: relative;
+  flex-shrink: 0;
+}
+
 @media (max-width: 768px) {
   .card-sobre-bloco {
     padding: 18px 16px;

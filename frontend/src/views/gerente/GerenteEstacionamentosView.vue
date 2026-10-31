@@ -107,6 +107,101 @@ watch(estabelecimentosDoGerente, () => {
   }
 })
 
+const gridGerenteRef = ref(null)
+let autoScrollGerenteFrame = null
+let ponteiroGerenteClient = { x: 0, y: 0 }
+
+function obterCoordElementoToque(clientX, clientY) {
+  const el = document.elementFromPoint(clientX, clientY)
+  const celulaEl = el?.closest('[data-coord]')
+  if (!celulaEl) return null
+  const [cx, cy] = celulaEl.getAttribute('data-coord').split(',').map(Number)
+  return { x: cx, y: cy }
+}
+
+function iniciarAutoScrollGerente() {
+  if (autoScrollGerenteFrame) return
+  const step = () => {
+    if (!arrastandoSelecao.value || !gridGerenteRef.value) {
+      autoScrollGerenteFrame = null
+      return
+    }
+    const container = gridGerenteRef.value
+    const rect = container.getBoundingClientRect()
+    const margem = 48
+    const vel = 12
+    let moveu = false
+
+    if (ponteiroGerenteClient.x < rect.left + margem) {
+      container.scrollLeft -= vel
+      moveu = true
+    } else if (ponteiroGerenteClient.x > rect.right - margem) {
+      container.scrollLeft += vel
+      moveu = true
+    }
+
+    if (ponteiroGerenteClient.y < rect.top + margem) {
+      container.scrollTop -= vel
+      moveu = true
+    } else if (ponteiroGerenteClient.y > rect.bottom - margem) {
+      container.scrollTop += vel
+      moveu = true
+    }
+
+    if (moveu) {
+      const coord = obterCoordElementoToque(ponteiroGerenteClient.x, ponteiroGerenteClient.y)
+      if (coord) {
+        moverArrastoCelulaGerente(coord.x, coord.y)
+      }
+    }
+    autoScrollGerenteFrame = requestAnimationFrame(step)
+  }
+  autoScrollGerenteFrame = requestAnimationFrame(step)
+}
+
+function pararAutoScrollGerente() {
+  if (autoScrollGerenteFrame) {
+    cancelAnimationFrame(autoScrollGerenteFrame)
+    autoScrollGerenteFrame = null
+  }
+}
+
+function aoTouchStartGridGerente(e) {
+  if (modoAcaoVagas.value && e.touches.length === 1) {
+    const t = e.touches[0]
+    ponteiroGerenteClient = { x: t.clientX, y: t.clientY }
+    const coord = obterCoordElementoToque(t.clientX, t.clientY)
+    if (coord) {
+      iniciarCliqueCelulaGerente(coord.x, coord.y)
+      iniciarAutoScrollGerente()
+    }
+    return
+  }
+  iniciarToquePanZoom(e)
+}
+
+function aoTouchMoveGridGerente(e) {
+  if (modoAcaoVagas.value && e.touches.length === 1) {
+    const t = e.touches[0]
+    ponteiroGerenteClient = { x: t.clientX, y: t.clientY }
+    const coord = obterCoordElementoToque(t.clientX, t.clientY)
+    if (coord) {
+      moverArrastoCelulaGerente(coord.x, coord.y)
+    }
+    return
+  }
+  moverToquePanZoom(e)
+}
+
+function aoTouchEndGridGerente(e) {
+  if (modoAcaoVagas.value) {
+    pararAutoScrollGerente()
+    finalizarArrastoGerente()
+    return
+  }
+  finalizarToquePanZoom(e, tratarToqueSimplesCelula)
+}
+
 function fecharDropdownAoClicarFora(e) {
   if (!e.target.closest('.seletor-est-tela-cheia')) {
     dropdownEstAberto.value = false
@@ -857,11 +952,15 @@ function tratarTeclaGlobal(event) {
 
         <!-- TABULEIRO 2D EM TELA CHEIA -->
         <div
+          ref="gridGerenteRef"
           class="area-grid-principal"
           @mouseleave="hoverCoord = null"
-          @touchstart.passive="aoIniciarToqueGrid"
-          @touchmove.prevent="aoMoverToqueGrid"
-          @touchend="aoFinalizarToqueGrid"
+          @mousemove="ponteiroGerenteClient = { x: $event.clientX, y: $event.clientY }"
+          @mousedown="iniciarAutoScrollGerente"
+          @mouseup="pararAutoScrollGerente"
+          @touchstart.passive="aoTouchStartGridGerente"
+          @touchmove.prevent="aoTouchMoveGridGerente"
+          @touchend="aoTouchEndGridGerente"
         >
           <div
             class="viewport-touch-canvas"

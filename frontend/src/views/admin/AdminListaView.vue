@@ -90,8 +90,10 @@ async function removerEstabelecimento(est) {
 <template>
   <div class="admin-container">
     <header class="topbar-titulo-central">
-      <h1>Gerenciamento de Estacionamentos</h1>
-      <p class="subtitulo">Pesquise, adicione, edite, inative ou remova estabelecimentos</p>
+      <div class="bloco-titulo-centro">
+        <h1>Gerenciamento de Estacionamentos</h1>
+        <p class="subtitulo ocultar-subtitulo-mobile">Pesquise, adicione, edite, inative ou remova estabelecimentos</p>
+      </div>
     </header>
 
     <div class="barra-pesquisa-admin">

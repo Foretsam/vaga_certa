@@ -1,4 +1,5 @@
 <script setup>
+import { computed, onMounted } from 'vue'
 import { useRouter } from 'vue-router'
 import {
   usuariosCadastrados,
@@ -14,6 +15,25 @@ import {
 } from '@/constants/icons'
 
 const router = useRouter()
+
+// Filtra para exibir apenas motoristas ('usuario') e gerentes ('admin_estabelecimento')
+const usuariosResponsaveisDisponiveis = computed(() => {
+  return usuariosCadastrados.value.filter(u => u.nivel_acesso !== 'admin_dev')
+})
+
+onMounted(() => {
+  const disponiveis = usuariosResponsaveisDisponiveis.value
+  if (
+    disponiveis.length > 0 &&
+    !disponiveis.some(u => u.id_usuario === formEstabelecimento.value.id_usuario)
+  ) {
+    formEstabelecimento.value.id_usuario = disponiveis[0].id_usuario
+  }
+})
+
+function rotuloNivelUsuario(nivel) {
+  return nivel === 'admin_estabelecimento' ? 'Gerente' : 'Motorista'
+}
 
 function adicionarAndarForm() {
   if (formEstabelecimento.value.andares.length >= 10) return
@@ -72,8 +92,7 @@ function avancarParaEditorP2() {
   <div class="admin-container">
     <header class="topbar-titulo-central com-botao-direita">
       <div class="bloco-titulo-centro">
-        <h1>Editar estacionamento - Informações Gerais</h1>
-        <p class="subtitulo">Defina os dados gerais, a cidade e a lista de andares sem nomes repetidos (máx. 10)</p>
+        <h1>Informações Gerais</h1>
       </div>
       <button class="btn-secundario btn-voltar-topo item-icone-texto" @click="router.push({ name: 'admin-lista' })">
         <IconSquareRoundedArrowLeft :size="18" />
@@ -105,10 +124,14 @@ function avancarParaEditorP2() {
       </div>
 
       <div class="campo-grupo">
-        <label>Vincular Usuário Responsável (Dono do Estacionamento)</label>
+        <label>Vincular Usuário Responsável (Motorista vinculado torna-se Gerente automaticamente)</label>
         <select v-model="formEstabelecimento.id_usuario" class="select-padrao">
-          <option v-for="u in usuariosCadastrados" :key="u.id_usuario" :value="u.id_usuario">
-            #{{ u.id_usuario }} - {{ u.nome }} ({{ u.email }})
+          <option
+            v-for="u in usuariosResponsaveisDisponiveis"
+            :key="u.id_usuario"
+            :value="u.id_usuario"
+          >
+            #{{ u.id_usuario }} - {{ u.nome }} ({{ u.email }}) — [{{ rotuloNivelUsuario(u.nivel_acesso) }}]
           </option>
         </select>
       </div>

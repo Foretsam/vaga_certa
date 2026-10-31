@@ -1,5 +1,5 @@
 <script setup>
-import { ref, onMounted } from 'vue'
+import { ref, onMounted, onUnmounted } from 'vue'
 import { useRouter, useRoute } from 'vue-router'
 import {
   iniciarNovoFormulario,
@@ -23,7 +23,8 @@ import {
   IconParking,
   IconChartBar,
   IconSun,
-  IconMoon
+  IconMoon,
+  IconChevronUp
 } from '@/constants/icons'
 
 const menuAberto = ref(false)
@@ -31,6 +32,8 @@ const router = useRouter()
 const route = useRoute()
 
 const temaEscuro = ref(true)
+const animandoTrocaTema = ref(false)
+const mostrarVoltarTopo = ref(false)
 
 onMounted(() => {
   const salvo = localStorage.getItem('vagacerta_tema')
@@ -40,16 +43,70 @@ onMounted(() => {
     temaEscuro.value = window.matchMedia('(prefers-color-scheme: dark)').matches
   }
   aplicarTemaDom()
+  window.addEventListener('scroll', verificarScrollPagina, { passive: true })
 })
+
+onUnmounted(() => {
+  window.removeEventListener('scroll', verificarScrollPagina)
+})
+
+function verificarScrollPagina() {
+  mostrarVoltarTopo.value = window.scrollY > 180
+}
+
+function voltarAoTopoSuave() {
+  window.scrollTo({ top: 0, behavior: 'smooth' })
+}
 
 function aplicarTemaDom() {
   document.documentElement.setAttribute('data-theme', temaEscuro.value ? 'dark' : 'light')
 }
 
-function alternarTema() {
-  temaEscuro.value = !temaEscuro.value
-  localStorage.setItem('vagacerta_tema', temaEscuro.value ? 'dark' : 'light')
-  aplicarTemaDom()
+function alternarTema(event) {
+  const x = event?.clientX ?? 140
+  const y = event?.clientY ?? 32
+  const raioMaximo = Math.hypot(
+    Math.max(x, window.innerWidth - x),
+    Math.max(y, window.innerHeight - y)
+  )
+
+  animandoTrocaTema.value = true
+  setTimeout(() => {
+    animandoTrocaTema.value = false
+  }, 520)
+
+  const executarTroca = () => {
+    temaEscuro.value = !temaEscuro.value
+    localStorage.setItem('vagacerta_tema', temaEscuro.value ? 'dark' : 'light')
+    aplicarTemaDom()
+  }
+
+  if (document.startViewTransition) {
+    const transicao = document.startViewTransition(() => {
+      executarTroca()
+    })
+    transicao.ready.then(() => {
+      document.documentElement.animate(
+        {
+          clipPath: [
+            `circle(0px at ${x}px ${y}px)`,
+            `circle(${raioMaximo}px at ${x}px ${y}px)`
+          ]
+        },
+        {
+          duration: 480,
+          easing: 'cubic-bezier(0.22, 1, 0.36, 1)',
+          pseudoElement: '::view-transition-new(root)'
+        }
+      )
+    }).catch(() => {})
+  } else {
+    document.documentElement.classList.add('transicao-tema-global')
+    executarTroca()
+    setTimeout(() => {
+      document.documentElement.classList.remove('transicao-tema-global')
+    }, 450)
+  }
 }
 
 function irPara(rota) {
@@ -93,17 +150,35 @@ function sairDaConta() {
     <span class="vc-letra-v">V</span><span class="vc-letra-c">C</span>
   </button>
 
-  <!-- Toggle Light / Dark Mode sutil (apenas ícone, com dica no hover) -->
+  <!-- Toggle Light / Dark Mode com animação elaborada -->
   <button
     type="button"
     class="btn-toggle-tema"
-    :class="{ 'com-botao-tutorial': route.name && TUTORIAIS_POR_ROTA[route.name] }"
+    :class="{
+      'com-botao-tutorial': route.name && TUTORIAIS_POR_ROTA[route.name],
+      'tema-pulsando': animandoTrocaTema
+    }"
     :title="temaEscuro ? 'Mudar para Modo Claro (Light Mode)' : 'Mudar para Modo Escuro (Dark Mode)'"
-    @click="alternarTema"
+    @click="alternarTema($event)"
   >
-    <IconSun v-if="temaEscuro" :size="18" />
-    <IconMoon v-else :size="18" />
+    <Transition name="icone-tema-spin" mode="out-in">
+      <IconSun v-if="temaEscuro" key="sol" :size="19" class="icone-sol-animado" />
+      <IconMoon v-else key="lua" :size="19" class="icone-lua-animada" />
+    </Transition>
   </button>
+
+  <!-- Botão sem bordas no formato de "V" apontado para cima ao usar scroll -->
+  <Transition name="fade-pop">
+    <button
+      v-if="mostrarVoltarTopo"
+      type="button"
+      class="btn-voltar-topo-scroll"
+      title="Voltar ao início da página"
+      @click="voltarAoTopoSuave"
+    >
+      <IconChevronUp :size="28" stroke-width="2.5" />
+    </button>
+  </Transition>
 
   <Transition name="fade-backdrop">
     <div v-if="menuAberto" class="menu-backdrop" @click="menuAberto = false"></div>

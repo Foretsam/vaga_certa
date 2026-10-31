@@ -33,6 +33,8 @@ const celulaInspecionada = ref(null)
 const painelSetoresMobileAberto = ref(false)
 const containerMapaRef = ref(null)
 
+const TAMANHO_CELULA = 30
+
 const {
   panX,
   panY,
@@ -78,9 +80,6 @@ const andarAtual = computed(() => {
   )
 })
 
-// =========================================================
-// RECORTE DE EXTREMIDADES VAZIAS E ROTAÇÃO COM ENTRADA EMBAIXO
-// =========================================================
 const mapaProcessadoMotorista = computed(() => {
   const andar = andarAtual.value
   if (!andar?.celulas) return null
@@ -108,7 +107,6 @@ const mapaProcessadoMotorista = computed(() => {
     if (c.y > maxY) maxY = c.y
   })
 
-  // Matriz recortada apenas onde existem elementos
   let matriz = []
   for (let y = minY; y <= maxY; y++) {
     const linha = []
@@ -118,7 +116,6 @@ const mapaProcessadoMotorista = computed(() => {
     matriz.push(linha)
   }
 
-  // Descobre onde está a ENTRADA (ou SAIDA) para rotacionar e deixá-la sempre na borda inferior
   const entradas = preenchidas.filter(c => c.tipo === 'ENTRADA')
   const alvosRef = entradas.length > 0 ? entradas : preenchidas.filter(c => c.tipo === 'SAIDA')
 
@@ -134,13 +131,13 @@ const mapaProcessadoMotorista = computed(() => {
 
     const menor = Math.min(distBase, distTopo, distEsq, distDir)
     if (menor === distBase) {
-      rotacoes90Horario = 0 // Já está embaixo
+      rotacoes90Horario = 0
     } else if (menor === distTopo) {
-      rotacoes90Horario = 2 // 180 graus (topo vai para baixo)
+      rotacoes90Horario = 2
     } else if (menor === distDir) {
-      rotacoes90Horario = 1 // 90 graus horário (direita vai para baixo)
+      rotacoes90Horario = 1
     } else {
-      rotacoes90Horario = 3 // 270 graus horário (esquerda vai para baixo)
+      rotacoes90Horario = 3
     }
   }
 
@@ -163,9 +160,17 @@ const mapaProcessadoMotorista = computed(() => {
   }
 })
 
-// =========================================================
-// AUTO-ZOOM SE MENOR QUE A TELA E SCROLL NA ENTRADA (INFERIOR)
-// =========================================================
+const estiloCaixaEscalada = computed(() => {
+  const dados = mapaProcessadoMotorista.value
+  if (!dados) return {}
+  const w = Math.round((dados.largura * TAMANHO_CELULA + 12) * zoomEscala.value)
+  const h = Math.round((dados.altura * TAMANHO_CELULA + 12) * zoomEscala.value)
+  return {
+    width: `${w}px`,
+    height: `${h}px`
+  }
+})
+
 function ajustarZoomERolagemParaEntrada() {
   const container = containerMapaRef.value
   const dados = mapaProcessadoMotorista.value
@@ -173,28 +178,24 @@ function ajustarZoomERolagemParaEntrada() {
 
   resetarCameraGrid()
 
-  const tamanhoCelulaPx = 30
-  const larguraMapaPx = dados.largura * tamanhoCelulaPx
-  const alturaMapaPx = dados.altura * tamanhoCelulaPx
+  const larguraMapaPx = dados.largura * TAMANHO_CELULA + 12
+  const alturaMapaPx = dados.altura * TAMANHO_CELULA + 12
 
-  const largDisp = container.clientWidth - 36
-  const altDisp = container.clientHeight - 36
+  const largDisp = Math.max(120, container.clientWidth - 48)
+  const altDisp = Math.max(120, container.clientHeight - 48)
 
   if (larguraMapaPx < largDisp && alturaMapaPx < altDisp) {
-    const escalaIdeal = Math.min(largDisp / larguraMapaPx, altDisp / alturaMapaPx, 2.1)
+    const escalaIdeal = Math.min(largDisp / larguraMapaPx, altDisp / alturaMapaPx, 1.95)
     zoomEscala.value = Number(Math.max(1, escalaIdeal).toFixed(2))
   } else {
     zoomEscala.value = 1
   }
 
-  // Posiciona a rolagem para que a Entrada (parte inferior) fique totalmente visível
   setTimeout(() => {
     if (!containerMapaRef.value) return
     containerMapaRef.value.scrollTop = containerMapaRef.value.scrollHeight
     const sobraH = containerMapaRef.value.scrollWidth - containerMapaRef.value.clientWidth
-    if (sobraH > 0) {
-      containerMapaRef.value.scrollLeft = Math.floor(sobraH / 2)
-    }
+    containerMapaRef.value.scrollLeft = sobraH > 0 ? Math.floor(sobraH / 2) : 0
   }, 60)
 }
 
@@ -362,13 +363,14 @@ const infoBadgeMotorista = computed(() => {
       <div class="topbar-esquerda">
         <button
           class="btn-secundario item-icone-texto"
+          title="Trocar Estacionamento"
           @click="router.push({ name: 'motorista-home' })"
         >
           <IconSquareRoundedArrowLeft :size="18" />
-          <span>Trocar Estacionamento</span>
+          <span class="ocultar-texto-topbar-mobile">Trocar Estacionamento</span>
         </button>
 
-        <div class="identificacao-est-motorista">
+        <div class="identificacao-est-motorista ocultar-texto-topbar-mobile">
           <strong>{{ estacionamentoAtual.nome }}</strong>
           <span class="badge-cidade-inline">
             <IconPin :size="12" style="vertical-align: -1px" />
@@ -376,23 +378,24 @@ const infoBadgeMotorista = computed(() => {
           </span>
         </div>
 
-        <!-- Seletor de Andar Estilizado como os demais -->
+        <!-- Seletor de Andar Estilizado -->
         <div class="seletor-multi-wrapper seletor-andar-custom">
           <button
             type="button"
             class="btn-seletor-multi item-icone-texto"
+            :title="`Andar: ${andarAtual.nome_andar}`"
             @click="dropdownAndarAberto = !dropdownAndarAberto"
           >
             <IconStack2 :size="18" style="color: var(--destaque-azul)" />
-            <span>
+            <span class="ocultar-texto-topbar-mobile">
               {{ andarAtual.nome_andar }}
               ({{ estatisticasAndaresMotorista[andarIndex]?.livres ?? 0 }} livres)
             </span>
-            <IconSquareRoundedChevronDown :size="17" />
+            <IconSquareRoundedChevronDown :size="16" />
           </button>
 
           <Transition name="fade-pop">
-            <div v-if="dropdownAndarAberto" class="dropdown-multi-box">
+            <div v-if="dropdownAndarAberto" class="dropdown-multi-box" style="width: 220px">
               <div class="lista-opcoes-multi">
                 <div
                   v-for="a in estatisticasAndaresMotorista"
@@ -409,7 +412,7 @@ const infoBadgeMotorista = computed(() => {
           </Transition>
         </div>
 
-        <!-- Controles de Zoom na Tela -->
+        <!-- Controles de Zoom -->
         <div class="controles-zoom-motorista">
           <button
             type="button"
@@ -421,7 +424,7 @@ const infoBadgeMotorista = computed(() => {
           </button>
           <button
             type="button"
-            class="btn-zoom-reset"
+            class="btn-zoom-reset ocultar-texto-topbar-mobile"
             title="Reajustar Zoom Padrão"
             @click="ajustarZoomERolagemParaEntrada"
           >
@@ -456,7 +459,7 @@ const infoBadgeMotorista = computed(() => {
       </div>
     </header>
 
-    <!-- ÁREA DO MAPA (SEM COORDENADAS, SEM QUADRADOS VAZIOS, COM ENTRADA EMBAIXO) -->
+    <!-- ÁREA DO MAPA -->
     <div class="editor-workspace">
       <div class="area-grid-container">
         <Transition name="fade-pop">
@@ -481,65 +484,66 @@ const infoBadgeMotorista = computed(() => {
           @touchmove.prevent="moverToquePanZoom"
           @touchend="finalizarToquePanZoom($event, inspecionarPorCoordenada)"
         >
-          <div
-            class="viewport-touch-canvas viewport-motorista-central"
-            :style="{
-              transform: `translate(${panX}px, ${panY}px) scale(${zoomEscala})`,
-              transformOrigin: 'center bottom'
-            }"
-          >
-            <div class="matriz-motorista-sem-coordenadas">
-              <div
-                v-for="(linha, rIdx) in mapaProcessadoMotorista.linhas"
-                :key="`m-row-${rIdx}`"
-                class="linha-grid-y"
-                :style="{
-                  gridTemplateColumns: `repeat(${mapaProcessadoMotorista.largura}, 30px)`
-                }"
-              >
+          <div class="caixa-escalada-motorista" :style="estiloCaixaEscalada">
+            <div
+              class="viewport-touch-canvas"
+              :style="{
+                transform: `translate(${panX}px, ${panY}px) scale(${zoomEscala})`,
+                transformOrigin: '0 0'
+              }"
+            >
+              <div class="matriz-motorista-sem-coordenadas">
                 <div
-                  v-for="(cel, cIdx) in linha"
-                  :key="`m-cel-${rIdx}-${cIdx}`"
-                  :data-coord="cel ? `${cel.x},${cel.y}` : ''"
-                  class="celula-motorista-compacta"
-                  :class="{
-                    'celula-esmaecida-setor':
-                      setorDestacadoId &&
-                      cel?.setorId !== setorDestacadoId &&
-                      cel?.tipo === 'VAGA'
-                  }"
+                  v-for="(linha, rIdx) in mapaProcessadoMotorista.linhas"
+                  :key="`m-row-${rIdx}`"
+                  class="linha-grid-y"
                   :style="{
-                    backgroundColor: cel?.corSetor || 'transparent'
+                    gridTemplateColumns: `repeat(${mapaProcessadoMotorista.largura}, 30px)`
                   }"
-                  @mouseenter="inspecionarCelula(cel)"
-                  @click="inspecionarCelula(cel)"
                 >
-                  <!-- Renderiza o quadrado apenas quando NÃO for vazio -->
                   <div
-                    v-if="cel && cel.tipo !== 'VAZIO'"
-                    class="quadrado-editor quadrado-motorista"
-                    :class="[
-                      cel.tipo === 'ESTRADA' ? 'qe-estrada' : '',
-                      cel.tipo === 'ENTRADA' ? 'qe-entrada' : '',
-                      cel.tipo === 'SAIDA' ? 'qe-saida' : '',
-                      cel.tipo === 'ACESSO' ? 'qe-acesso' : '',
-                      cel.tipo === 'VAGA' && (cel.inativa || !cel.macEsp)
-                        ? 'vaga-gerente-inativa'
-                        : '',
-                      cel.tipo === 'VAGA' && !cel.inativa && cel.macEsp && cel.livre
-                        ? 'vaga-gerente-livre'
-                        : '',
-                      cel.tipo === 'VAGA' && !cel.inativa && cel.macEsp && !cel.livre
-                        ? 'vaga-gerente-ocupada'
-                        : ''
-                    ]"
+                    v-for="(cel, cIdx) in linha"
+                    :key="`m-cel-${rIdx}-${cIdx}`"
+                    :data-coord="cel ? `${cel.x},${cel.y}` : ''"
+                    class="celula-motorista-compacta"
+                    :class="{
+                      'celula-esmaecida-setor':
+                        setorDestacadoId &&
+                        cel?.setorId !== setorDestacadoId &&
+                        cel?.tipo === 'VAGA'
+                    }"
+                    :style="{
+                      backgroundColor: cel?.corSetor || 'transparent'
+                    }"
+                    @mouseenter="inspecionarCelula(cel)"
+                    @click="inspecionarCelula(cel)"
                   >
-                    <span v-if="cel.tipo === 'VAGA'">
-                      {{ cel.identificador }}
-                    </span>
-                    <IconDoorEnter v-else-if="cel.tipo === 'ENTRADA'" :size="15" />
-                    <IconDoorExit v-else-if="cel.tipo === 'SAIDA'" :size="15" />
-                    <IconArrowBarRight v-else-if="cel.tipo === 'ACESSO'" :size="15" />
+                    <div
+                      v-if="cel && cel.tipo !== 'VAZIO'"
+                      class="quadrado-editor quadrado-motorista"
+                      :class="[
+                        cel.tipo === 'ESTRADA' ? 'qe-estrada' : '',
+                        cel.tipo === 'ENTRADA' ? 'qe-entrada' : '',
+                        cel.tipo === 'SAIDA' ? 'qe-saida' : '',
+                        cel.tipo === 'ACESSO' ? 'qe-acesso' : '',
+                        cel.tipo === 'VAGA' && (cel.inativa || !cel.macEsp)
+                          ? 'vaga-gerente-inativa'
+                          : '',
+                        cel.tipo === 'VAGA' && !cel.inativa && cel.macEsp && cel.livre
+                          ? 'vaga-gerente-livre'
+                          : '',
+                        cel.tipo === 'VAGA' && !cel.inativa && cel.macEsp && !cel.livre
+                          ? 'vaga-gerente-ocupada'
+                          : ''
+                      ]"
+                    >
+                      <span v-if="cel.tipo === 'VAGA'">
+                        {{ cel.identificador }}
+                      </span>
+                      <IconDoorEnter v-else-if="cel.tipo === 'ENTRADA'" :size="15" />
+                      <IconDoorExit v-else-if="cel.tipo === 'SAIDA'" :size="15" />
+                      <IconArrowBarRight v-else-if="cel.tipo === 'ACESSO'" :size="15" />
+                    </div>
                   </div>
                 </div>
               </div>
@@ -548,7 +552,6 @@ const infoBadgeMotorista = computed(() => {
         </div>
       </div>
 
-      <!-- PAINEL LATERAL: DISPONIBILIDADE POR ANDAR E SETOR -->
       <aside
         class="sidebar-direita-editor sidebar-gerente-metricas"
         :class="{ 'sidebar-mobile-aberta': painelSetoresMobileAberto }"

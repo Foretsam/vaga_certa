@@ -17,6 +17,23 @@
     border-radius: 9px;
   }
 
+  .btn-tutorial-info {
+    left: 98px;
+    width: 38px;
+    height: 38px;
+    border-radius: 9px;
+  }
+
+  .btn-toggle-tema {
+    left: 98px;
+    width: 38px;
+    height: 38px;
+    border-radius: 9px;
+  }
+  .btn-toggle-tema.com-botao-tutorial {
+    left: 142px;
+  }
+
   .editor-layout {
     padding: 0;
     width: 100vw;
@@ -143,6 +160,33 @@
     margin-top: 6px;
   }
 
+  /* No iPad e Celular: Topbar do Motorista sempre ao lado do botão de tema */
+  .topbar-motorista-mapa {
+    display: flex !important;
+    position: static !important;
+    width: calc(100% - 202px) !important;
+    margin-top: 10px !important;
+    margin-left: 146px !important;
+    margin-right: 56px !important;
+    min-height: 38px;
+    padding: 4px 10px !important;
+    flex-direction: row !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    box-shadow: none !important;
+  }
+
+  .topbar-motorista-mapa .topbar-esquerda {
+    flex-direction: row !important;
+    align-items: center !important;
+    flex-wrap: nowrap !important;
+    gap: 6px !important;
+  }
+
+  .legenda-motorista-inline {
+    display: none !important;
+  }
+
   .sidebar-direita-editor {
     display: none;
     position: fixed;
@@ -164,14 +208,17 @@
   .admin-container {
     padding: 18px 16px 24px 16px;
   }
+
+  /* Centralização simétrica perfeita em Tablets (iPad 768x1024) */
   .topbar-titulo-central {
     min-height: 38px;
-    padding-top: 5px;
-    padding-left: 140px;
-    padding-right: 48px;
+    padding-top: 4px;
+    padding-left: 186px;
+    padding-right: 186px;
   }
   .topbar-titulo-central.com-botao-direita {
-    padding-right: 95px;
+    padding-left: 186px;
+    padding-right: 186px;
   }
   .topbar-titulo-central h1 {
     font-size: 19px;
@@ -183,6 +230,7 @@
     padding: 7px 12px !important;
     font-size: 13px !important;
   }
+
   .sidebar-direita-editor .painel-ferramentas { padding: 10px; }
   .sidebar-direita-editor .painel-ferramentas h4 { font-size: 12.5px; }
   .sidebar-direita-editor .dica-painel { font-size: 11px; }
@@ -196,9 +244,8 @@
     width: 270px;
   }
 
-  /* Títulos e botões superiores menores em Tablets (<= 1024px) */
   .gerente-boas-vindas {
-    padding-left: 136px;
+    padding-left: 180px;
   }
   .gerente-boas-vindas h1 {
     font-size: 18.5px;
@@ -220,7 +267,6 @@
     display: flex;
   }
 
-  /* Oculta os 2 mapas lado a lado e mostra o card que abre o popup de estacionamentos */
   .secao-estacionamentos-dupla-pc {
     display: none;
   }
@@ -238,34 +284,9 @@
     grid-template-columns: 1fr;
   }
 
-  .btn-tutorial-info {
-    left: 98px;
-    width: 38px;
-    height: 38px;
-    border-radius: 9px;
-  }
-
   .editor-topbar.tutorial-forcar-painel-mobile,
   .sidebar-direita-editor.tutorial-forcar-painel-mobile {
     display: flex !important;
-  }
-
-  .btn-toggle-tema {
-    left: 98px;
-    width: 38px;
-    height: 38px;
-    border-radius: 9px;
-  }
-  .btn-toggle-tema.com-botao-tutorial {
-    left: 142px;
-  }
-
-  .gerente-boas-vindas {
-    padding-left: 180px;
-  }
-
-  .topbar-titulo-central {
-    padding-left: 184px;
   }
 
   .grupo-filtros-navegacao-gerente,
@@ -282,26 +303,40 @@
     padding: 16px 12px 20px 12px;
   }
 
-  .topbar-titulo-central {
-    padding-top: 6px;
-    padding-left: 136px;
-    padding-right: 8px;
-    margin-bottom: 14px;
-    min-height: 38px;
-  }
-  .topbar-titulo-central.com-botao-direita {
-    padding-right: 72px;
-  }
-  .topbar-titulo-central h1 {
-    font-size: 16px;
-  }
-  .subtitulo {
-    font-size: 11.5px;
+  .ocultar-info-mobile,
+  .ocultar-subtitulo-mobile,
+  .ocultar-texto-topbar-mobile {
+    display: none !important;
   }
 
-  .btn-voltar-topo {
-    padding: 5px 8px !important;
-    font-size: 11.5px !important;
+  /* Em celulares (iPhone 12 Pro): Título centralizado e abaixo da linha dos botões superiores */
+  .topbar-titulo-central,
+  .topbar-titulo-central.com-botao-direita {
+    margin-top: 44px;
+    padding-top: 4px;
+    padding-left: 8px !important;
+    padding-right: 8px !important;
+    margin-bottom: 14px;
+    min-height: auto;
+  }
+
+  .topbar-titulo-central .btn-voltar-topo {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    z-index: 1000;
+    height: 38px;
+    padding: 0 12px !important;
+    font-size: 12px !important;
+  }
+
+  .topbar-titulo-central h1 {
+    font-size: 18px;
+    text-align: center;
+  }
+
+  .subtitulo {
+    font-size: 11.5px;
   }
 
   .campo-grupo label { font-size: 13px; }
@@ -357,17 +392,18 @@
     font-size: 12px;
     border-radius: 6px;
   }
+
   .gerente-dashboard-container {
     padding: 14px 12px 24px 12px;
   }
 
   .gerente-boas-vindas h1 {
-    font-size: 16.5px;
+    font-size: 16px;
   }
 
   .gerente-atalhos-topo {
-    margin-left: -136px;
-    width: calc(100% + 136px);
+    margin-left: -180px;
+    width: calc(100% + 180px);
     gap: 6px;
     flex-wrap: nowrap;
     margin-top: 4px;
@@ -377,8 +413,8 @@
   .gerente-atalhos-topo .btn-primario {
     padding: 8px 4px !important;
     font-size: 11.5px !important;
-    flex: 1; /* Distribui a largura igualmente entre os 3 botões */
-    min-width: 0; 
+    flex: 1;
+    min-width: 0;
   }
 
   .gerente-atalhos-topo .item-icone-texto {
@@ -388,13 +424,33 @@
   .gerente-atalhos-topo span {
     white-space: nowrap;
     overflow: hidden;
-    text-overflow: ellipsis; /* Abrevia o texto caso a tela do celular seja muito pequena */
+    text-overflow: ellipsis;
   }
 
   .gerente-atalhos-topo svg {
     width: 15px;
     height: 15px;
     flex-shrink: 0;
+  }
+
+  /* Seletores de Estacionamentos e Cidades lado a lado na mesma linha no iPhone */
+  .barra-filtros-gerente {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr;
+    gap: 6px;
+    width: 100%;
+  }
+
+  .barra-filtros-gerente .seletor-multi-wrapper {
+    width: 100%;
+    min-width: 0;
+  }
+
+  .barra-filtros-gerente .btn-seletor-multi {
+    width: 100%;
+    padding: 7px 8px !important;
+    font-size: 11.5px !important;
+    justify-content: space-between;
   }
 
   .lista-opcoes-multi {
@@ -415,9 +471,6 @@
   .controles-exportacao-completa {
     flex-direction: column;
     align-items: stretch;
-  }
-  .ocultar-info-mobile {
-    display: none !important;
   }
 
   .filtros-motorista-grid,
@@ -446,31 +499,55 @@
     max-width: 210px;
   }
 
+  /* Topbar do Motorista no iPhone: ao lado do toggle de tema e apenas com ícones */
   .topbar-motorista-mapa {
-    position: static !important;
-    width: calc(100% - 96px) !important;
-    margin-left: 96px !important;
-    padding: 6px 10px !important;
-    flex-direction: row !important;
-    justify-content: space-between !important;
-    align-items: center !important;
+    width: calc(100% - 196px) !important;
+    margin-top: 10px !important;
+    margin-left: 142px !important;
+    margin-right: 54px !important;
+    height: 38px;
+    padding: 3px 6px !important;
   }
 
-  .topbar-motorista-mapa .topbar-esquerda {
-    flex-direction: row !important;
-    align-items: center !important;
-    flex-wrap: wrap !important;
-    gap: 6px !important;
+  .topbar-motorista-mapa .btn-secundario,
+  .topbar-motorista-mapa .btn-seletor-multi {
+    padding: 5px 7px !important;
+    height: 30px;
   }
 
-  .legenda-motorista-inline,
   .topbar-direita-motorista {
     display: none !important;
   }
+}
 
-  .gerente-atalhos-topo {
-    margin-left: -180px;
-    width: calc(100% + 180px);
+@media (max-width: 480px) {
+  .auth-card {
+    padding: 22px 16px;
+  }
+  .auth-cabecalho h1 {
+    font-size: 20px;
+  }
+}
+
+@media print {
+  body * {
+    visibility: hidden;
+  }
+  .modal-qr-gerente,
+  .modal-qr-gerente * {
+    visibility: visible;
+  }
+  .modal-qr-gerente {
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    box-shadow: none !important;
+    border: none !important;
+  }
+  .modal-qr-gerente .modal-acoes,
+  .modal-qr-gerente .btn-fechar-mini {
+    display: none !important;
   }
 }
 

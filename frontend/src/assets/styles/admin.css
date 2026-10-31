@@ -12,7 +12,7 @@
   min-height: 46px;
   padding-top: 6px;
   padding-left: 224px;
-  padding-right: 60px;
+  padding-right: 224px;
   margin-bottom: 22px;
   display: flex;
   flex-direction: column;
@@ -20,6 +20,11 @@
   align-items: center;
   text-align: center;
   position: relative;
+}
+
+.bloco-titulo-centro {
+  width: 100%;
+  text-align: center;
 }
 
 .topbar-titulo-central.com-botao-direita {

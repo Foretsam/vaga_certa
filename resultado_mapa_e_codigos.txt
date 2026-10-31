@@ -88,7 +88,9 @@
                 📄 28ce32afaa0e2d134d7a63975c3db59f0aeb1c
                 📄 b0fb3e9f779aa97cbda3b8f53d412138a4a2fc
                 📄 b789cea22d2254ed54dd4a6754849a9099f8b0
+                📄 bbf2b3fea7550ccd0c03a0c06a238da79b47b4
                 📄 c3233c1d5f64016cadc1004bb2abb4c65e9e19
+                📄 ff2678e9a503cb8150e4d9d8ae043fabe808f9
             📂 11/
                 📄 17899941471274e45049185c8142a206b93b14
             📂 13/
@@ -108,14 +110,19 @@
                 📄 d66685b1032dd3fe149e257589bd9ba49a159e
             📂 1c/
                 📄 8c5701f81a8f3a27545658bb6f8b9508db11f0
+                📄 cd320b5a1fef89cb362758d16c4d00aa610983
                 📄 d3dce331ed297aa5844968417c0480889df175
+            📂 1d/
+                📄 69b143cb5c623e7780478a9c18a52b5a7e43fa
             📂 1e/
                 📄 0a640a07bde8f3225cc92c6dc644737453eb69
+                📄 76b2f3e37790747e1f5c5c89f93c4ac09f4833
                 📄 81c075b85ff15c44eb029d64f22992f444a55a
             📂 1f/
                 📄 e8fb659a48698a9be51fec9ac7aa2d65b0d67f
             📂 20/
                 📄 2f46834747412676a527044aeab9c6cc87cb9f
+                📄 57da6a5d3bef03c759746446897b2bda82f54c
                 📄 71b8108e134958d9259328245aee36555919b9
                 📄 771585a315a824e77ae38fd540ca7df0ba8ced
             📂 21/
@@ -127,6 +134,7 @@
                 📄 abdaf288c34fdd7cbc6f1d74865c4263c160ea
             📂 23/
                 📄 c11d66e762de057168960bf6f35187a3395b88
+                📄 c4a522102cc0d837f69660c29a822ffd51718b
                 📄 e19d2011c52d6f6c8fba636ebf44674cfa317b
             📂 24/
                 📄 25c0f745bef4d009cb6661b62fd9dfd62960b0
@@ -155,11 +163,13 @@
                 📄 f539989bfab317bc031a103842739623ba7d83
             📂 30/
                 📄 12fe842747bbbefd5a0d1499cd444ae6854bd0
+                📄 f568991924825ef8a2039b87681356c547f03b
             📂 31/
                 📄 d938528fbbe876e356e5b1cd20b76539e58845
             📂 32/
                 📄 0a54fff5dc63148db31ab2ebc2b7b4a4538e17
             📂 33/
+                📄 68fda70bcefa9ba70eae9abef7cca5cd31d832
                 📄 95a43ad988a23e9d169cc05c2b6e57b9ddb30e
                 📄 ff4fa50e6727ab2280e3ae5f1cad4348157958
             📂 35/
@@ -167,6 +177,7 @@
             📂 36/
                 📄 138f1dfe7ff25807d9ca5b714fd1babe9810e4
             📂 39/
+                📄 34ccc3dcec47b58637b30f92ffa2270b471b22
                 📄 a3c4cfb4c9bb9b6928d30a39693c1ba39b6bf2
                 📄 c88ae72454001978f80ac65aa7aa043f31e9a9
                 📄 d569353ad5f4b39d3caa9a092febf7566952e4
@@ -211,6 +222,8 @@
                 📄 80649cf3e7427fd23390c25a8fd9cde625967a
                 📄 df9122c5ca0d4bb4aad3dfdca88c9d11c5b45d
                 📄 f43cc58d2b961d58e7059a050eac11958c6249
+            📂 4e/
+                📄 ab0e1dcd548421c91c5f1cc0c9f7ceef2eee15
             📂 4f/
                 📄 cd55f76d266c20df346b721d8dc82025256caf
                 📄 df031c8acf092d1a64e62a001b7ac0f2b7ef4a
@@ -226,13 +239,17 @@
             📂 54/
                 📄 0eceb1fdff0fc34e44d506b402a1c21862a494
                 📄 3ce0e84207988ccea992ee2d0e4c19375d9128
+                📄 75860a8fba21b68be5485478d2c7ac68c94565
             📂 55/
                 📄 0e8b7818b8a6b59a7d3b02d718cd55961e47bd
+            📂 56/
+                📄 6e2a79fbfabc8f016b6703de91f2a87c73905b
             📂 57/
                 📄 434022187e0bdf3707b401cb8ae756d870bc60
                 📄 5bcaf70e227c9174d6aa09cddf91983985f9ab
                 📄 ffcde289691ca090d761e5ec7b99bc3f8d0e02
             📂 58/
+                📄 35c01cf2636e0f03c1e0a011ff00464bf41d13
                 📄 cf19fda1a53c0143568030e521dd0b3c6a20ea
             📂 59/
                 📄 b8a46923b6de7f30b83f6e29f0e92911f207ae
@@ -259,13 +276,17 @@
                 📄 22d62cb3e2200e057bf713f035b3f2d71d218e
                 📄 66db4f1e5d2f0357b2c88c969982e368fa2118
                 📄 8657cf01ca80ab9297f146b5ea732aa37b918a
+                📄 95c46d64cc1f9b3e1daaa2d2cd3033e9d9597a
             📂 65/
                 📄 a7f976853ef2138443d0c7c80cf46d947e9ba5
                 📄 eec32460a588a40809591502531f2bce997e56
             📂 67/
                 📄 d6ab8beadb3976786a9d56c873727941352583
             📂 68/
+                📄 55b384abb00b96465334bcf038f3b485a2eaa2
                 📄 93eb13237060adc0c968a690149a49faa2d7d3
+            📂 69/
+                📄 a0db877adbc8192dd3c8a7416c698a45bd59a4
             📂 6d/
                 📄 73e6df219c966058c427e06d70afd95af76e0b
             📂 6e/
@@ -298,6 +319,7 @@
                 📄 5a0224a47d194b3fe9d768e7a1123924e9c4c0
                 📄 a572c6911878fe2c8d89f2b0d2d5b85a7ac413
             📂 7c/
+                📄 5a9816ac62d062d5de7b39ae43d487f31c0255
                 📄 7075603e25c76c09c131836a1c2bd9b37a1556
             📂 7d/
                 📄 64cc40847fc415969a83df21140bf79ce90488
@@ -309,6 +331,8 @@
             📂 81/
                 📄 03bc9f494264183a30b30a8fc90b16740835d7
                 📄 98ab9d4d4711cfcdad090e39ad6af9c0fefa5e
+            📂 82/
+                📄 50e7a9f3ad09afc0bcdacda0415bf8c16af397
             📂 83/
                 📄 4198db60a6ec29a85a76c17e138f58ee2563de
             📂 84/
@@ -330,6 +354,7 @@
             📂 8f/
                 📄 e3499015179d3bb1b2d005efbec7e10771f9e2
             📂 90/
+                📄 3056d60f344a4a0314abcfd296f73e99a51174
                 📄 cd4572fd567bf03ed4f93abda7d33b7b4cb9fc
             📂 91/
                 📄 389d4b11e9c7e192caa5ec51055c2890a5403a
@@ -342,6 +367,7 @@
                 📄 a062ab810ff79744c20434b80303abea31e3b4
             📂 95/
                 📄 511b63968465a1985a4a1d0e760e91f48cd1b1
+                📄 a2e43f2e92ad65e9b90ad88fa16514d5c0a977
             📂 97/
                 📄 06495f78e3669adb749592edd43fed3b15d68d
                 📄 383b7f7b863cf621e8c6e1a8a251e515fd029c
@@ -424,6 +450,9 @@
                 📄 01a8e86cbffe077f8d306d24a787706bf11979
             📂 b7/
                 📄 a091c208c4166d66e9f61961607327f8015ba4
+            📂 b8/
+                📄 55f6d168fa2b6da06cca9e6c9c5146cb169327
+                📄 e1dedd3f48b3e3df778b44dfaaf7a60d975ff5
             📂 b9/
                 📄 2506f1b05d97bd102d4c789764d796309f8ec0
                 📄 eefd4f60110b08400a649f5ea61532df11b5e0
@@ -465,6 +494,7 @@
             📂 ca/
                 📄 2c6289571f2271ec419141ad2b5ba7aca238b4
             📂 cb/
+                📄 148b8bd475f56d176efbf19e11256f0e847694
                 📄 1645a0ec308483fe16795bfb1718190f236d42
                 📄 a576915494073d55140abc61e826a0ecfb57e1
             📂 cc/
@@ -502,6 +532,7 @@
                 📄 ffaf738c89560886aaae551e259463a0cd53f6
                 📄 fff6c35387496556422b6bb42eda58d8159134
             📂 dc/
+                📄 942b78af3ca8204b858398856cb4438c98ef6f
                 📄 e25a18fbb97d82aedcec3f971131c599404bc5
                 📄 e2c9348cba750718fc555fa23daa5ca96737fe
             📂 dd/
@@ -510,12 +541,15 @@
             📂 df/
                 📄 bcc31aa9bdfd329f49d70a42b076914a52f4e9
                 📄 e0770424b2a19faf507a501ebfc23be8f54e7b
+            📂 e0/
+                📄 9cf6ea85b817e60238a186162a088dd879bc6e
             📂 e2/
                 📄 cfd9f96ed69438e1929a5e05f6fc9c897b7568
             📂 e3/
                 📄 53124e7ebe2bbb04c35cd7e57a28451af85c5e
                 📄 fca2404b16d226c51ca8385eb9e3753710e590
             📂 e4/
+                📄 7c64bfeea89c2e09d1a3ab2fec8ae3aa878b66
                 📄 8ee698459d22e89b0f06798d6dfdd2e6c7e442
                 📄 ca0349653db5381d190350ab1dce315e95c6a5
             📂 e5/
@@ -530,6 +564,8 @@
                 📄 211ee383f5d13852d50f46ad65d01c8613e878
                 📄 5153bbc2191f000ca4489236fc1fd614166d14
                 📄 522193d9f796a9748e9ad8c952a5df73c87db9
+                📄 b8c71e31bf35aeff7bb87891d90a4da6329687
+                📄 d10c475e62dce9706781d4da7915b5d19b9c2e
             📂 ea/
                 📄 1f0c4e798c57c5e933bff91d23f4912caff688
                 📄 27a156e576856d9a93e52d6d0a92823ec4a7c1
@@ -553,6 +589,8 @@
             📂 f2/
                 📄 915720c8f27f94c4c226d6e9bf2d38c8463f36
                 📄 ee6a2970a9a4e9746aa53322b4a035b0b2d357
+            📂 f3/
+                📄 473c3e2832ad75c535b5e2a8f91eaa0e183c10
             📂 f4/
                 📄 25c98826efcee71afc0f0740f4c3a5316c0749
                 📄 84dfd1c52a8fe5733470b587374ffa8f651f25
@@ -580,6 +618,7 @@
                 📄 f37db7a78a5323420f0e3fd779b9d570fa11d3
             📂 fd/
                 📄 ef240a26391fd1733d1bb910e9722caab3e62f
+                📄 f5f4f9c3fb3f9d0c360e8b41f9b724c6bf3068
             📂 fe/
                 📄 4ede3a6ee951f815c29a1b5174c6b86eb239eb
                 📄 642a2ba68e5d74fbf5699a664ecdedcf1d54d8
@@ -882,7 +921,7 @@ COMMIT;
 // 🚀 INÍCIO DO ARQUIVO: .git\COMMIT_EDITMSG
 // ==================================================================
 
-melhorias na view sobre
+correção de erros geral
 
 
 // 🏁 FIM DO ARQUIVO: .git\COMMIT_EDITMSG
@@ -893,7 +932,7 @@ melhorias na view sobre
 // 🚀 INÍCIO DO ARQUIVO: .git\FETCH_HEAD
 // ==================================================================
 
-ae5ff4a061c7914982771d16788a53ffc9b6f77b		branch 'main' of https://github.com/Foretsam/vaga_certa
+6395c46d64cc1f9b3e1daaa2d2cd3033e9d9597a		branch 'main' of https://github.com/Foretsam/vaga_certa
 
 
 // 🏁 FIM DO ARQUIVO: .git\FETCH_HEAD
@@ -2005,6 +2044,7 @@ dd3622fb0996b825ffc90bfcafb74759c1896a77 fb3b757ba4c0ce3a552a8a3dc6cafc3f3ad9087
 fb3b757ba4c0ce3a552a8a3dc6cafc3f3ad9087b c97745c22983195babbca97e8828847bad4d7163 Lucas Schuab <lucaschuab2015@outlook.com> 1793106752 -0300	commit: implementação das views motorista
 c97745c22983195babbca97e8828847bad4d7163 ecdff1e45e0cbfebbd57cac20abe6420e4eaefcb Lucas Schuab <lucaschuab2015@outlook.com> 1793366891 -0300	commit: implementação de tutoriais e view sobre
 ecdff1e45e0cbfebbd57cac20abe6420e4eaefcb ae5ff4a061c7914982771d16788a53ffc9b6f77b Lucas Schuab <lucaschuab2015@outlook.com> 1793369101 -0300	commit: melhorias na view sobre
+ae5ff4a061c7914982771d16788a53ffc9b6f77b 6395c46d64cc1f9b3e1daaa2d2cd3033e9d9597a Lucas Schuab <lucaschuab2015@outlook.com> 1793396879 -0300	commit: correção de erros geral
 
 
 // 🏁 FIM DO ARQUIVO: .git\logs\HEAD
@@ -2033,6 +2073,7 @@ dd3622fb0996b825ffc90bfcafb74759c1896a77 fb3b757ba4c0ce3a552a8a3dc6cafc3f3ad9087
 fb3b757ba4c0ce3a552a8a3dc6cafc3f3ad9087b c97745c22983195babbca97e8828847bad4d7163 Lucas Schuab <lucaschuab2015@outlook.com> 1793106752 -0300	commit: implementação das views motorista
 c97745c22983195babbca97e8828847bad4d7163 ecdff1e45e0cbfebbd57cac20abe6420e4eaefcb Lucas Schuab <lucaschuab2015@outlook.com> 1793366891 -0300	commit: implementação de tutoriais e view sobre
 ecdff1e45e0cbfebbd57cac20abe6420e4eaefcb ae5ff4a061c7914982771d16788a53ffc9b6f77b Lucas Schuab <lucaschuab2015@outlook.com> 1793369101 -0300	commit: melhorias na view sobre
+ae5ff4a061c7914982771d16788a53ffc9b6f77b 6395c46d64cc1f9b3e1daaa2d2cd3033e9d9597a Lucas Schuab <lucaschuab2015@outlook.com> 1793396879 -0300	commit: correção de erros geral
 
 
 // 🏁 FIM DO ARQUIVO: .git\logs\refs\heads\main
@@ -2078,6 +2119,13 @@ ecdff1e45e0cbfebbd57cac20abe6420e4eaefcb ecdff1e45e0cbfebbd57cac20abe6420e4eaefc
 ecdff1e45e0cbfebbd57cac20abe6420e4eaefcb ecdff1e45e0cbfebbd57cac20abe6420e4eaefcb Lucas Oliveira Schuab <lucas@LAPTOP-SKE6HI0S.(none)> 1793368751 -0300	remote set-head
 ae5ff4a061c7914982771d16788a53ffc9b6f77b ae5ff4a061c7914982771d16788a53ffc9b6f77b Lucas Oliveira Schuab <lucas@LAPTOP-SKE6HI0S.(none)> 1793369111 -0300	remote set-head
 ae5ff4a061c7914982771d16788a53ffc9b6f77b ae5ff4a061c7914982771d16788a53ffc9b6f77b Lucas Oliveira Schuab <lucas@LAPTOP-SKE6HI0S.(none)> 1793370943 -0300	remote set-head
+ae5ff4a061c7914982771d16788a53ffc9b6f77b ae5ff4a061c7914982771d16788a53ffc9b6f77b Lucas Oliveira Schuab <lucas@LAPTOP-SKE6HI0S.(none)> 1793372818 -0300	remote set-head
+ae5ff4a061c7914982771d16788a53ffc9b6f77b ae5ff4a061c7914982771d16788a53ffc9b6f77b Lucas Oliveira Schuab <lucas@LAPTOP-SKE6HI0S.(none)> 1793374693 -0300	remote set-head
+ae5ff4a061c7914982771d16788a53ffc9b6f77b ae5ff4a061c7914982771d16788a53ffc9b6f77b Lucas Oliveira Schuab <lucas@LAPTOP-SKE6HI0S.(none)> 1793376570 -0300	remote set-head
+ae5ff4a061c7914982771d16788a53ffc9b6f77b ae5ff4a061c7914982771d16788a53ffc9b6f77b Lucas Oliveira Schuab <lucas@LAPTOP-SKE6HI0S.(none)> 1793378447 -0300	remote set-head
+ae5ff4a061c7914982771d16788a53ffc9b6f77b ae5ff4a061c7914982771d16788a53ffc9b6f77b Lucas Oliveira Schuab <lucas@LAPTOP-SKE6HI0S.(none)> 1793380327 -0300	remote set-head
+ae5ff4a061c7914982771d16788a53ffc9b6f77b ae5ff4a061c7914982771d16788a53ffc9b6f77b Lucas Oliveira Schuab <lucas@LAPTOP-SKE6HI0S.(none)> 1793396874 -0300	remote set-head
+6395c46d64cc1f9b3e1daaa2d2cd3033e9d9597a 6395c46d64cc1f9b3e1daaa2d2cd3033e9d9597a Lucas Oliveira Schuab <lucas@LAPTOP-SKE6HI0S.(none)> 1793396889 -0300	remote set-head
 
 
 // 🏁 FIM DO ARQUIVO: .git\logs\refs\remotes\origin\HEAD
@@ -2106,6 +2154,7 @@ dd3622fb0996b825ffc90bfcafb74759c1896a77 fb3b757ba4c0ce3a552a8a3dc6cafc3f3ad9087
 fb3b757ba4c0ce3a552a8a3dc6cafc3f3ad9087b c97745c22983195babbca97e8828847bad4d7163 Lucas Schuab <lucaschuab2015@outlook.com> 1793106757 -0300	update by push
 c97745c22983195babbca97e8828847bad4d7163 ecdff1e45e0cbfebbd57cac20abe6420e4eaefcb Lucas Schuab <lucaschuab2015@outlook.com> 1793366895 -0300	update by push
 ecdff1e45e0cbfebbd57cac20abe6420e4eaefcb ae5ff4a061c7914982771d16788a53ffc9b6f77b Lucas Schuab <lucaschuab2015@outlook.com> 1793369108 -0300	update by push
+ae5ff4a061c7914982771d16788a53ffc9b6f77b 6395c46d64cc1f9b3e1daaa2d2cd3033e9d9597a Lucas Schuab <lucaschuab2015@outlook.com> 1793396887 -0300	update by push
 
 
 // 🏁 FIM DO ARQUIVO: .git\logs\refs\remotes\origin\main
@@ -2505,6 +2554,17 @@ x+)JMU05d040031Q)-�/�L�q/�L�/K-�I��++Me���85Y��`��
 
 
 // ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: .git\objects\10\bbf2b3fea7550ccd0c03a0c06a238da79b47b4
+// ==================================================================
+
+// [Arquivo binário ignorado pelo leitor de segurança]
+
+
+// 🏁 FIM DO ARQUIVO: .git\objects\10\bbf2b3fea7550ccd0c03a0c06a238da79b47b4
+// ------------------------------------------------------------------
+
+
+// ==================================================================
 // 🚀 INÍCIO DO ARQUIVO: .git\objects\10\c3233c1d5f64016cadc1004bb2abb4c65e9e19
 // ==================================================================
 
@@ -2512,6 +2572,17 @@ x+)JMU05d040031Q)-�/�L�q/�L�/K-�I��++Me���85Y��`��
 
 
 // 🏁 FIM DO ARQUIVO: .git\objects\10\c3233c1d5f64016cadc1004bb2abb4c65e9e19
+// ------------------------------------------------------------------
+
+
+// ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: .git\objects\10\ff2678e9a503cb8150e4d9d8ae043fabe808f9
+// ==================================================================
+
+// [Arquivo binário ignorado pelo leitor de segurança]
+
+
+// 🏁 FIM DO ARQUIVO: .git\objects\10\ff2678e9a503cb8150e4d9d8ae043fabe808f9
 // ------------------------------------------------------------------
 
 
@@ -2647,6 +2718,17 @@ x+)JMU01c040031Qp,(�LIMJ,�M�+�++Me8�q:��cä��	�o~l��Q�
 
 
 // ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: .git\objects\1c\cd320b5a1fef89cb362758d16c4d00aa610983
+// ==================================================================
+
+// [Arquivo binário ignorado pelo leitor de segurança]
+
+
+// 🏁 FIM DO ARQUIVO: .git\objects\1c\cd320b5a1fef89cb362758d16c4d00aa610983
+// ------------------------------------------------------------------
+
+
+// ==================================================================
 // 🚀 INÍCIO DO ARQUIVO: .git\objects\1c\d3dce331ed297aa5844968417c0480889df175
 // ==================================================================
 
@@ -2658,6 +2740,17 @@ x+)JMU01c040031Qp,(�LIMJ,�M�+�++Me8�q:��cä��	�o~l��Q�
 
 
 // ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: .git\objects\1d\69b143cb5c623e7780478a9c18a52b5a7e43fa
+// ==================================================================
+
+// [Arquivo binário ignorado pelo leitor de segurança]
+
+
+// 🏁 FIM DO ARQUIVO: .git\objects\1d\69b143cb5c623e7780478a9c18a52b5a7e43fa
+// ------------------------------------------------------------------
+
+
+// ==================================================================
 // 🚀 INÍCIO DO ARQUIVO: .git\objects\1e\0a640a07bde8f3225cc92c6dc644737453eb69
 // ==================================================================
 
@@ -2665,6 +2758,17 @@ x+)JMU01c040031Qp,(�LIMJ,�M�+�++Me8�q:��cä��	�o~l��Q�
 
 
 // 🏁 FIM DO ARQUIVO: .git\objects\1e\0a640a07bde8f3225cc92c6dc644737453eb69
+// ------------------------------------------------------------------
+
+
+// ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: .git\objects\1e\76b2f3e37790747e1f5c5c89f93c4ac09f4833
+// ==================================================================
+
+// [Arquivo binário ignorado pelo leitor de segurança]
+
+
+// 🏁 FIM DO ARQUIVO: .git\objects\1e\76b2f3e37790747e1f5c5c89f93c4ac09f4833
 // ------------------------------------------------------------------
 
 
@@ -2698,6 +2802,16 @@ x+)JMU01c040031Qp,(�LIMJ,�M�+�++Me8�q:��cä��	�o~l��Q�
 
 
 // 🏁 FIM DO ARQUIVO: .git\objects\20\2f46834747412676a527044aeab9c6cc87cb9f
+// ------------------------------------------------------------------
+
+
+// ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: .git\objects\20\57da6a5d3bef03c759746446897b2bda82f54c
+// ==================================================================
+
+x+)JMU05d040031Q)-�/�L�q/�L�/K-�I��++Me�����ÿ����u;�ܮrl�A xF
+
+// 🏁 FIM DO ARQUIVO: .git\objects\20\57da6a5d3bef03c759746446897b2bda82f54c
 // ------------------------------------------------------------------
 
 
@@ -2786,6 +2900,17 @@ x+)JMU01c040031Qp,(�LIMJ,�M�+�++Me8�q:��cä��	�o~l��Q�
 
 
 // 🏁 FIM DO ARQUIVO: .git\objects\23\c11d66e762de057168960bf6f35187a3395b88
+// ------------------------------------------------------------------
+
+
+// ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: .git\objects\23\c4a522102cc0d837f69660c29a822ffd51718b
+// ==================================================================
+
+// [Arquivo binário ignorado pelo leitor de segurança]
+
+
+// 🏁 FIM DO ARQUIVO: .git\objects\23\c4a522102cc0d837f69660c29a822ffd51718b
 // ------------------------------------------------------------------
 
 
@@ -2988,6 +3113,17 @@ x+)JMU07f040031QH/M,J)��*f8�07���o�XX":j"R�d�|�*��KI�
 
 
 // ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: .git\objects\30\f568991924825ef8a2039b87681356c547f03b
+// ==================================================================
+
+// [Arquivo binário ignorado pelo leitor de segurança]
+
+
+// 🏁 FIM DO ARQUIVO: .git\objects\30\f568991924825ef8a2039b87681356c547f03b
+// ------------------------------------------------------------------
+
+
+// ==================================================================
 // 🚀 INÍCIO DO ARQUIVO: .git\objects\31\d938528fbbe876e356e5b1cd20b76539e58845
 // ==================================================================
 
@@ -3006,6 +3142,17 @@ x+)JMU07f040031QH/M,J)��*f8�07���o�XX":j"R�d�|�*��KI�
 
 
 // 🏁 FIM DO ARQUIVO: .git\objects\32\0a54fff5dc63148db31ab2ebc2b7b4a4538e17
+// ------------------------------------------------------------------
+
+
+// ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: .git\objects\33\68fda70bcefa9ba70eae9abef7cca5cd31d832
+// ==================================================================
+
+// [Arquivo binário ignorado pelo leitor de segurança]
+
+
+// 🏁 FIM DO ARQUIVO: .git\objects\33\68fda70bcefa9ba70eae9abef7cca5cd31d832
 // ------------------------------------------------------------------
 
 
@@ -3050,6 +3197,17 @@ x+)JMU07f040031QH/M,J)��*f8�07���o�XX":j"R�d�|�*��KI�
 
 
 // 🏁 FIM DO ARQUIVO: .git\objects\36\138f1dfe7ff25807d9ca5b714fd1babe9810e4
+// ------------------------------------------------------------------
+
+
+// ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: .git\objects\39\34ccc3dcec47b58637b30f92ffa2270b471b22
+// ==================================================================
+
+// [Arquivo binário ignorado pelo leitor de segurança]
+
+
+// 🏁 FIM DO ARQUIVO: .git\objects\39\34ccc3dcec47b58637b30f92ffa2270b471b22
 // ------------------------------------------------------------------
 
 
@@ -3373,6 +3531,17 @@ x+)JMU07f040031QH/M,J)��*f8�07���o�XX":j"R�d�|�*��KI�
 
 
 // ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: .git\objects\4e\ab0e1dcd548421c91c5f1cc0c9f7ceef2eee15
+// ==================================================================
+
+// [Arquivo binário ignorado pelo leitor de segurança]
+
+
+// 🏁 FIM DO ARQUIVO: .git\objects\4e\ab0e1dcd548421c91c5f1cc0c9f7ceef2eee15
+// ------------------------------------------------------------------
+
+
+// ==================================================================
 // 🚀 INÍCIO DO ARQUIVO: .git\objects\4f\cd55f76d266c20df346b721d8dc82025256caf
 // ==================================================================
 
@@ -3482,6 +3651,17 @@ x+)JMU05`040031QH-.IL���K�M�+�.�/J��*fxt��ϼkS,N��
 
 
 // ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: .git\objects\54\75860a8fba21b68be5485478d2c7ac68c94565
+// ==================================================================
+
+// [Arquivo binário ignorado pelo leitor de segurança]
+
+
+// 🏁 FIM DO ARQUIVO: .git\objects\54\75860a8fba21b68be5485478d2c7ac68c94565
+// ------------------------------------------------------------------
+
+
+// ==================================================================
 // 🚀 INÍCIO DO ARQUIVO: .git\objects\55\0e8b7818b8a6b59a7d3b02d718cd55961e47bd
 // ==================================================================
 
@@ -3489,6 +3669,17 @@ x+)JMU05`040031QH-.IL���K�M�+�.�/J��*fxt��ϼkS,N��
 
 
 // 🏁 FIM DO ARQUIVO: .git\objects\55\0e8b7818b8a6b59a7d3b02d718cd55961e47bd
+// ------------------------------------------------------------------
+
+
+// ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: .git\objects\56\6e2a79fbfabc8f016b6703de91f2a87c73905b
+// ==================================================================
+
+// [Arquivo binário ignorado pelo leitor de segurança]
+
+
+// 🏁 FIM DO ARQUIVO: .git\objects\56\6e2a79fbfabc8f016b6703de91f2a87c73905b
 // ------------------------------------------------------------------
 
 
@@ -3522,6 +3713,17 @@ x+)JMU05`040031QH-.IL���K�M�+�.�/J��*fxt��ϼkS,N��
 
 
 // 🏁 FIM DO ARQUIVO: .git\objects\57\ffcde289691ca090d761e5ec7b99bc3f8d0e02
+// ------------------------------------------------------------------
+
+
+// ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: .git\objects\58\35c01cf2636e0f03c1e0a011ff00464bf41d13
+// ==================================================================
+
+// [Arquivo binário ignorado pelo leitor de segurança]
+
+
+// 🏁 FIM DO ARQUIVO: .git\objects\58\35c01cf2636e0f03c1e0a011ff00464bf41d13
 // ------------------------------------------------------------------
 
 
@@ -3724,6 +3926,17 @@ x+)JMU05`040031QH-.IL���K�M�+�.�/J��*fxt��ϼkS,N��
 
 
 // ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: .git\objects\63\95c46d64cc1f9b3e1daaa2d2cd3033e9d9597a
+// ==================================================================
+
+// [Arquivo binário ignorado pelo leitor de segurança]
+
+
+// 🏁 FIM DO ARQUIVO: .git\objects\63\95c46d64cc1f9b3e1daaa2d2cd3033e9d9597a
+// ------------------------------------------------------------------
+
+
+// ==================================================================
 // 🚀 INÍCIO DO ARQUIVO: .git\objects\65\a7f976853ef2138443d0c7c80cf46d947e9ba5
 // ==================================================================
 
@@ -3757,6 +3970,17 @@ x+)JMU05`040031QH-.IL���K�M�+�.�/J��*fxt��ϼkS,N��
 
 
 // ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: .git\objects\68\55b384abb00b96465334bcf038f3b485a2eaa2
+// ==================================================================
+
+// [Arquivo binário ignorado pelo leitor de segurança]
+
+
+// 🏁 FIM DO ARQUIVO: .git\objects\68\55b384abb00b96465334bcf038f3b485a2eaa2
+// ------------------------------------------------------------------
+
+
+// ==================================================================
 // 🚀 INÍCIO DO ARQUIVO: .git\objects\68\93eb13237060adc0c968a690149a49faa2d7d3
 // ==================================================================
 
@@ -3764,6 +3988,17 @@ x+)JMU05`040031QH-.IL���K�M�+�.�/J��*fxt��ϼkS,N��
 
 
 // 🏁 FIM DO ARQUIVO: .git\objects\68\93eb13237060adc0c968a690149a49faa2d7d3
+// ------------------------------------------------------------------
+
+
+// ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: .git\objects\69\a0db877adbc8192dd3c8a7416c698a45bd59a4
+// ==================================================================
+
+// [Arquivo binário ignorado pelo leitor de segurança]
+
+
+// 🏁 FIM DO ARQUIVO: .git\objects\69\a0db877adbc8192dd3c8a7416c698a45bd59a4
 // ------------------------------------------------------------------
 
 
@@ -3975,6 +4210,17 @@ xK��OR045e��-�/*Q(+MUH+��UPw(�,I�*�/�)M���J�sAU
 
 
 // ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: .git\objects\7c\5a9816ac62d062d5de7b39ae43d487f31c0255
+// ==================================================================
+
+// [Arquivo binário ignorado pelo leitor de segurança]
+
+
+// 🏁 FIM DO ARQUIVO: .git\objects\7c\5a9816ac62d062d5de7b39ae43d487f31c0255
+// ------------------------------------------------------------------
+
+
+// ==================================================================
 // 🚀 INÍCIO DO ARQUIVO: .git\objects\7c\7075603e25c76c09c131836a1c2bd9b37a1556
 // ==================================================================
 
@@ -4048,6 +4294,17 @@ xK��OR045e��-�/*Q(+MUH+��UPw(�,I�*�/�)M���J�sAU
 
 
 // 🏁 FIM DO ARQUIVO: .git\objects\81\98ab9d4d4711cfcdad090e39ad6af9c0fefa5e
+// ------------------------------------------------------------------
+
+
+// ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: .git\objects\82\50e7a9f3ad09afc0bcdacda0415bf8c16af397
+// ==================================================================
+
+// [Arquivo binário ignorado pelo leitor de segurança]
+
+
+// 🏁 FIM DO ARQUIVO: .git\objects\82\50e7a9f3ad09afc0bcdacda0415bf8c16af397
 // ------------------------------------------------------------------
 
 
@@ -4173,6 +4430,17 @@ x+)JMU04�`01 ����������x���.�>�k�~h~\�
 
 
 // ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: .git\objects\90\3056d60f344a4a0314abcfd296f73e99a51174
+// ==================================================================
+
+// [Arquivo binário ignorado pelo leitor de segurança]
+
+
+// 🏁 FIM DO ARQUIVO: .git\objects\90\3056d60f344a4a0314abcfd296f73e99a51174
+// ------------------------------------------------------------------
+
+
+// ==================================================================
 // 🚀 INÍCIO DO ARQUIVO: .git\objects\90\cd4572fd567bf03ed4f93abda7d33b7b4cb9fc
 // ==================================================================
 
@@ -4246,6 +4514,17 @@ x+)JMU04�`01 ����������x���.�>�k�~h~\�
 
 
 // 🏁 FIM DO ARQUIVO: .git\objects\95\511b63968465a1985a4a1d0e760e91f48cd1b1
+// ------------------------------------------------------------------
+
+
+// ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: .git\objects\95\a2e43f2e92ad65e9b90ad88fa16514d5c0a977
+// ==================================================================
+
+// [Arquivo binário ignorado pelo leitor de segurança]
+
+
+// 🏁 FIM DO ARQUIVO: .git\objects\95\a2e43f2e92ad65e9b90ad88fa16514d5c0a977
 // ------------------------------------------------------------------
 
 
@@ -4841,6 +5120,27 @@ xK��OR0�d��RPP*JM���M�KI,���+V�R�V
 
 
 // ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: .git\objects\b8\55f6d168fa2b6da06cca9e6c9c5146cb169327
+// ==================================================================
+
+x+)JMU045a040031QpO-J�+Iu-.IL���K����2S���JSv<�w��c�����.�W}_�;=�+�ΠԜĒ��L$M®�xy1��>i�w��KKP5�͗9k�%���z��_�U��� M�?r
+
+// 🏁 FIM DO ARQUIVO: .git\objects\b8\55f6d168fa2b6da06cca9e6c9c5146cb169327
+// ------------------------------------------------------------------
+
+
+// ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: .git\objects\b8\e1dedd3f48b3e3df778b44dfaaf7a60d975ff5
+// ==================================================================
+
+// [Arquivo binário ignorado pelo leitor de segurança]
+
+
+// 🏁 FIM DO ARQUIVO: .git\objects\b8\e1dedd3f48b3e3df778b44dfaaf7a60d975ff5
+// ------------------------------------------------------------------
+
+
+// ==================================================================
 // 🚀 INÍCIO DO ARQUIVO: .git\objects\b9\2506f1b05d97bd102d4c789764d796309f8ec0
 // ==================================================================
 
@@ -5130,6 +5430,17 @@ xm�1
 
 
 // ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: .git\objects\cb\148b8bd475f56d176efbf19e11256f0e847694
+// ==================================================================
+
+// [Arquivo binário ignorado pelo leitor de segurança]
+
+
+// 🏁 FIM DO ARQUIVO: .git\objects\cb\148b8bd475f56d176efbf19e11256f0e847694
+// ------------------------------------------------------------------
+
+
+// ==================================================================
 // 🚀 INÍCIO DO ARQUIVO: .git\objects\cb\1645a0ec308483fe16795bfb1718190f236d42
 // ==================================================================
 
@@ -5415,6 +5726,17 @@ x+)JMU06c040031Q��KI���*f`\i�����-g�c�]��Z��O�
 
 
 // ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: .git\objects\dc\942b78af3ca8204b858398856cb4438c98ef6f
+// ==================================================================
+
+// [Arquivo binário ignorado pelo leitor de segurança]
+
+
+// 🏁 FIM DO ARQUIVO: .git\objects\dc\942b78af3ca8204b858398856cb4438c98ef6f
+// ------------------------------------------------------------------
+
+
+// ==================================================================
 // 🚀 INÍCIO DO ARQUIVO: .git\objects\dc\e25a18fbb97d82aedcec3f971131c599404bc5
 // ==================================================================
 
@@ -5480,6 +5802,17 @@ xK��OR03cPVp,-�WHI-IM.Q(I�(QH��I-VH�KQ(H-J�/�U�qS�҉9�
 
 
 // ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: .git\objects\e0\9cf6ea85b817e60238a186162a088dd879bc6e
+// ==================================================================
+
+// [Arquivo binário ignorado pelo leitor de segurança]
+
+
+// 🏁 FIM DO ARQUIVO: .git\objects\e0\9cf6ea85b817e60238a186162a088dd879bc6e
+// ------------------------------------------------------------------
+
+
+// ==================================================================
 // 🚀 INÍCIO DO ARQUIVO: .git\objects\e2\cfd9f96ed69438e1929a5e05f6fc9c897b7568
 // ==================================================================
 
@@ -5509,6 +5842,17 @@ xK��OR03cPVp,-�WHI-IM.Q(I�(QH��I-VH�KQ(H-J�/�U�qS�҉9�
 
 
 // 🏁 FIM DO ARQUIVO: .git\objects\e3\fca2404b16d226c51ca8385eb9e3753710e590
+// ------------------------------------------------------------------
+
+
+// ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: .git\objects\e4\7c64bfeea89c2e09d1a3ab2fec8ae3aa878b66
+// ==================================================================
+
+// [Arquivo binário ignorado pelo leitor de segurança]
+
+
+// 🏁 FIM DO ARQUIVO: .git\objects\e4\7c64bfeea89c2e09d1a3ab2fec8ae3aa878b66
 // ------------------------------------------------------------------
 
 
@@ -5618,6 +5962,28 @@ xK��OR0`  	��
 
 
 // 🏁 FIM DO ARQUIVO: .git\objects\e9\522193d9f796a9748e9ad8c952a5df73c87db9
+// ------------------------------------------------------------------
+
+
+// ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: .git\objects\e9\b8c71e31bf35aeff7bb87891d90a4da6329687
+// ==================================================================
+
+x+)JMU042c040031Q�L��+��*f0�����ܯ���������ҳ�7��j
+sRK�SK�R�j��l?w9mb�P�{�#-�TmI)PUfbf�s~^Zf:�dK�3��q��f����E����J �/4�
+
+// 🏁 FIM DO ARQUIVO: .git\objects\e9\b8c71e31bf35aeff7bb87891d90a4da6329687
+// ------------------------------------------------------------------
+
+
+// ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: .git\objects\e9\d10c475e62dce9706781d4da7915b5d19b9c2e
+// ==================================================================
+
+// [Arquivo binário ignorado pelo leitor de segurança]
+
+
+// 🏁 FIM DO ARQUIVO: .git\objects\e9\d10c475e62dce9706781d4da7915b5d19b9c2e
 // ------------------------------------------------------------------
 
 
@@ -5784,6 +6150,17 @@ x+)JMU042f040031QH���/
 
 
 // 🏁 FIM DO ARQUIVO: .git\objects\f2\ee6a2970a9a4e9746aa53322b4a035b0b2d357
+// ------------------------------------------------------------------
+
+
+// ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: .git\objects\f3\473c3e2832ad75c535b5e2a8f91eaa0e183c10
+// ==================================================================
+
+// [Arquivo binário ignorado pelo leitor de segurança]
+
+
+// 🏁 FIM DO ARQUIVO: .git\objects\f3\473c3e2832ad75c535b5e2a8f91eaa0e183c10
 // ------------------------------------------------------------------
 
 
@@ -5996,6 +6373,17 @@ x+)JMU045a040031QpO-J�+Iu-.IL���K����2S���JS�>;�^F
 
 
 // ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: .git\objects\fd\f5f4f9c3fb3f9d0c360e8b41f9b724c6bf3068
+// ==================================================================
+
+// [Arquivo binário ignorado pelo leitor de segurança]
+
+
+// 🏁 FIM DO ARQUIVO: .git\objects\fd\f5f4f9c3fb3f9d0c360e8b41f9b724c6bf3068
+// ------------------------------------------------------------------
+
+
+// ==================================================================
 // 🚀 INÍCIO DO ARQUIVO: .git\objects\fe\4ede3a6ee951f815c29a1b5174c6b86eb239eb
 // ==================================================================
 
@@ -6054,7 +6442,7 @@ x+)JMU045a040031QpO-J�+Iu-.IL���K����2S���JS�>;�^F
 // 🚀 INÍCIO DO ARQUIVO: .git\refs\heads\main
 // ==================================================================
 
-ae5ff4a061c7914982771d16788a53ffc9b6f77b
+6395c46d64cc1f9b3e1daaa2d2cd3033e9d9597a
 
 
 // 🏁 FIM DO ARQUIVO: .git\refs\heads\main
@@ -6076,7 +6464,7 @@ ref: refs/remotes/origin/main
 // 🚀 INÍCIO DO ARQUIVO: .git\refs\remotes\origin\main
 // ==================================================================
 
-ae5ff4a061c7914982771d16788a53ffc9b6f77b
+6395c46d64cc1f9b3e1daaa2d2cd3033e9d9597a
 
 
 // 🏁 FIM DO ARQUIVO: .git\refs\remotes\origin\main
@@ -6701,6 +7089,16 @@ async def criar_estabelecimento(payload: EstabelecimentoSavePayload):
                     (payload.id_usuario, id_est),
                 )
 
+                # Se o usuário vinculado era 'usuario' (motorista), promove para 'admin_estabelecimento' (gerente)
+                await cursor.execute(
+                    """
+                    UPDATE usuarios
+                    SET nivel_acesso = 'admin_estabelecimento'
+                    WHERE id_usuario = %s AND nivel_acesso = 'usuario'
+                    """,
+                    (payload.id_usuario,),
+                )
+
                 await gravar_andares_e_mapa(cursor, id_est, payload.andares)
                 await conn.commit()
                 return {"status": "sucesso", "id_estabelecimento": id_est}
@@ -6732,6 +7130,16 @@ async def atualizar_estabelecimento(
                 await cursor.execute(
                     "INSERT INTO usuario_estabelecimento (id_usuario, id_estabelecimento) VALUES (%s, %s)",
                     (payload.id_usuario, id_estabelecimento),
+                )
+
+                # Se o usuário vinculado era 'usuario' (motorista), promove para 'admin_estabelecimento' (gerente)
+                await cursor.execute(
+                    """
+                    UPDATE usuarios
+                    SET nivel_acesso = 'admin_estabelecimento'
+                    WHERE id_usuario = %s AND nivel_acesso = 'usuario'
+                    """,
+                    (payload.id_usuario,),
                 )
 
                 await cursor.execute(
@@ -7088,24 +7496,32 @@ app.mount('#app')
   background: rgba(148, 163, 184, 0.15);
 }
 
+.auth-card-cadastro .campo-grupo {
+  margin-bottom: 10px;
+}
+
 .slot-aviso-senha {
   display: flex;
   align-items: flex-start;
   overflow: hidden;
 }
 .slot-aviso-senha.slot-duas-linhas {
-  min-height: 34px;
+  height: 36px;
+  min-height: 36px;
+  max-height: 36px;
 }
 .slot-aviso-senha.slot-uma-linha {
-  min-height: 18px;
+  height: 20px;
+  min-height: 20px;
+  max-height: 20px;
 }
 
 .aviso-inline-senha {
-  font-size: 12.5px;
+  font-size: 12px;
   font-weight: 600;
   color: #f59e0b;
-  margin-top: 2px;
-  line-height: 1.35;
+  margin: 0;
+  line-height: 1.3;
 }
 
 .btn-auth-submit {
@@ -7221,7 +7637,7 @@ app.mount('#app')
 }
 
 .editor-topbar {
-  margin-left: 162px !important;
+  margin-left: 224px !important;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -7864,7 +8280,7 @@ app.mount('#app')
 }
 
 .gerente-boas-vindas {
-  padding-left: 162px;
+  padding-left: 224px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -8700,6 +9116,29 @@ app.mount('#app')
   max-width: 390px;
 }
 
+.tabela-historico-colunas-fixas {
+  table-layout: fixed;
+  width: 100%;
+  min-width: 720px;
+}
+
+.col-hist-est { width: 24%; }
+.col-hist-setor { width: 22%; }
+.col-hist-vaga { width: 10%; }
+.col-hist-data { width: 17%; }
+.col-hist-perm { width: 10%; }
+
+.celula-truncada {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.texto-truncado-filtro {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
 
 // 🏁 FIM DO ARQUIVO: frontend\src\assets\styles\gerente.css
 // ------------------------------------------------------------------
@@ -9746,6 +10185,207 @@ app.mount('#app')
   transform: translateY(-1px);
 }
 
+/* Botão sutil de alternância Light/Dark Mode */
+.btn-toggle-tema {
+  position: fixed;
+  top: 10px;
+  left: 118px;
+  z-index: 1000;
+  width: 46px;
+  height: 46px;
+  border-radius: 11px;
+  background: var(--bg-card);
+  color: var(--texto-principal);
+  border: 1px solid var(--borda-botao-sec);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+  transition: border-color 0.15s ease, color 0.15s ease, transform 0.15s ease, background-color 0.15s ease;
+}
+.btn-toggle-tema.com-botao-tutorial {
+  left: 172px;
+}
+.btn-toggle-tema:hover {
+  border-color: var(--destaque-azul);
+  color: var(--destaque-azul);
+  transform: translateY(-1px);
+}
+
+/* Corrige o corte superior no hover do 1º estacionamento e suaviza a filtragem */
+.lista-estacionamentos-motorista {
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 2px;
+}
+
+.lista-suave-move,
+.lista-suave-enter-active,
+.lista-suave-leave-active {
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+.lista-suave-enter-from,
+.lista-suave-leave-to {
+  opacity: 0;
+  transform: translateY(6px);
+}
+
+.btn-seletor-altura-input {
+  width: 100%;
+  height: 44px;
+  justify-content: space-between;
+}
+
+/* Grupos de foco na topbar do Gerente */
+.grupo-filtros-navegacao-gerente,
+.grupo-inativar-reativar-gerente,
+.grupo-calor-simulacao-gerente {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+/* Mapa do Motorista sem coordenadas, espaçamento de 1px e fundo limpo */
+.area-grid-motorista-limpa {
+  background: var(--bg-card) !important;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  padding: 20px !important;
+  overflow: auto !important;
+}
+
+.viewport-motorista-central {
+  margin: auto;
+}
+
+.matriz-motorista-sem-coordenadas {
+  display: inline-block;
+  padding: 6px;
+  border-radius: 10px;
+}
+
+.celula-motorista-compacta {
+  width: 30px;
+  height: 30px;
+  padding: 1px;
+}
+
+.quadrado-motorista {
+  font-size: 9.5px;
+  border-radius: 3px;
+}
+
+.controles-zoom-motorista {
+  display: inline-flex;
+  align-items: center;
+  background: var(--bg-botao-sec);
+  border: 1px solid var(--borda-botao-sec);
+  border-radius: 9px;
+  overflow: hidden;
+}
+
+.btn-zoom-acao,
+.btn-zoom-reset {
+  background: transparent;
+  color: var(--texto-principal);
+  border: none;
+  padding: 6px 9px;
+  font-size: 12.5px;
+  font-weight: 700;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.15s ease, color 0.15s ease;
+}
+.btn-zoom-acao:hover,
+.btn-zoom-reset:hover {
+  background: rgba(59, 130, 246, 0.14);
+  color: var(--destaque-azul);
+}
+
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation: none;
+  mix-blend-mode: normal;
+}
+
+.transicao-tema-global,
+.transicao-tema-global * {
+  transition: background-color 0.38s ease, color 0.38s ease, border-color 0.38s ease, box-shadow 0.38s ease !important;
+}
+
+.btn-toggle-tema.tema-pulsando {
+  transform: scale(1.12);
+  border-color: var(--destaque-azul);
+  box-shadow: 0 0 18px rgba(59, 130, 246, 0.45);
+}
+
+.icone-sol-animado {
+  color: #f59e0b;
+  filter: drop-shadow(0 0 6px rgba(245, 158, 11, 0.45));
+}
+
+.icone-lua-animada {
+  color: #38bdf8;
+  filter: drop-shadow(0 0 6px rgba(56, 189, 248, 0.45));
+}
+
+.icone-tema-spin-enter-active,
+.icone-tema-spin-leave-active {
+  transition: transform 0.34s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.22s ease;
+}
+.icone-tema-spin-enter-from {
+  opacity: 0;
+  transform: rotate(-140deg) scale(0.3);
+}
+.icone-tema-spin-leave-to {
+  opacity: 0;
+  transform: rotate(140deg) scale(0.3);
+}
+
+/* Botão sem bordas no formato de V apontado para cima ao rolar a página */
+.btn-voltar-topo-scroll {
+  position: fixed;
+  bottom: 22px;
+  right: 22px;
+  z-index: 1100;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: var(--destaque-azul);
+  padding: 6px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  filter: drop-shadow(0 3px 8px rgba(0, 0, 0, 0.35));
+  transition: transform 0.2s ease, color 0.2s ease, opacity 0.2s ease;
+}
+.btn-voltar-topo-scroll:hover {
+  transform: translateY(-4px) scale(1.12);
+  color: #38bdf8;
+}
+
+/* Ajuste da área do mapa do motorista para não cortar o topo com zoom */
+.area-grid-motorista-limpa {
+  background: var(--bg-card) !important;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  padding: 20px !important;
+  overflow: auto !important;
+}
+
+.caixa-escalada-motorista {
+  margin: auto;
+  position: relative;
+  flex-shrink: 0;
+}
+
 @media (max-width: 768px) {
   .card-sobre-bloco {
     padding: 18px 16px;
@@ -9801,6 +10441,23 @@ app.mount('#app')
     height: 38px;
     font-size: 15px;
     border-radius: 9px;
+  }
+
+  .btn-tutorial-info {
+    left: 98px;
+    width: 38px;
+    height: 38px;
+    border-radius: 9px;
+  }
+
+  .btn-toggle-tema {
+    left: 98px;
+    width: 38px;
+    height: 38px;
+    border-radius: 9px;
+  }
+  .btn-toggle-tema.com-botao-tutorial {
+    left: 142px;
   }
 
   .editor-layout {
@@ -9929,6 +10586,33 @@ app.mount('#app')
     margin-top: 6px;
   }
 
+  /* No iPad e Celular: Topbar do Motorista sempre ao lado do botão de tema */
+  .topbar-motorista-mapa {
+    display: flex !important;
+    position: static !important;
+    width: calc(100% - 202px) !important;
+    margin-top: 10px !important;
+    margin-left: 146px !important;
+    margin-right: 56px !important;
+    min-height: 38px;
+    padding: 4px 10px !important;
+    flex-direction: row !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    box-shadow: none !important;
+  }
+
+  .topbar-motorista-mapa .topbar-esquerda {
+    flex-direction: row !important;
+    align-items: center !important;
+    flex-wrap: nowrap !important;
+    gap: 6px !important;
+  }
+
+  .legenda-motorista-inline {
+    display: none !important;
+  }
+
   .sidebar-direita-editor {
     display: none;
     position: fixed;
@@ -9950,14 +10634,17 @@ app.mount('#app')
   .admin-container {
     padding: 18px 16px 24px 16px;
   }
+
+  /* Centralização simétrica perfeita em Tablets (iPad 768x1024) */
   .topbar-titulo-central {
     min-height: 38px;
-    padding-top: 5px;
-    padding-left: 140px;
-    padding-right: 48px;
+    padding-top: 4px;
+    padding-left: 186px;
+    padding-right: 186px;
   }
   .topbar-titulo-central.com-botao-direita {
-    padding-right: 95px;
+    padding-left: 186px;
+    padding-right: 186px;
   }
   .topbar-titulo-central h1 {
     font-size: 19px;
@@ -9969,6 +10656,7 @@ app.mount('#app')
     padding: 7px 12px !important;
     font-size: 13px !important;
   }
+
   .sidebar-direita-editor .painel-ferramentas { padding: 10px; }
   .sidebar-direita-editor .painel-ferramentas h4 { font-size: 12.5px; }
   .sidebar-direita-editor .dica-painel { font-size: 11px; }
@@ -9982,9 +10670,8 @@ app.mount('#app')
     width: 270px;
   }
 
-  /* Títulos e botões superiores menores em Tablets (<= 1024px) */
   .gerente-boas-vindas {
-    padding-left: 136px;
+    padding-left: 180px;
   }
   .gerente-boas-vindas h1 {
     font-size: 18.5px;
@@ -10006,7 +10693,6 @@ app.mount('#app')
     display: flex;
   }
 
-  /* Oculta os 2 mapas lado a lado e mostra o card que abre o popup de estacionamentos */
   .secao-estacionamentos-dupla-pc {
     display: none;
   }
@@ -10024,16 +10710,17 @@ app.mount('#app')
     grid-template-columns: 1fr;
   }
 
-  .btn-tutorial-info {
-    left: 98px;
-    width: 38px;
-    height: 38px;
-    border-radius: 9px;
-  }
-
   .editor-topbar.tutorial-forcar-painel-mobile,
   .sidebar-direita-editor.tutorial-forcar-painel-mobile {
     display: flex !important;
+  }
+
+  .grupo-filtros-navegacao-gerente,
+  .grupo-inativar-reativar-gerente,
+  .grupo-calor-simulacao-gerente {
+    flex-direction: column;
+    align-items: stretch;
+    width: 100%;
   }
 }
 
@@ -10042,26 +10729,40 @@ app.mount('#app')
     padding: 16px 12px 20px 12px;
   }
 
-  .topbar-titulo-central {
-    padding-top: 6px;
-    padding-left: 136px;
-    padding-right: 8px;
-    margin-bottom: 14px;
-    min-height: 38px;
-  }
-  .topbar-titulo-central.com-botao-direita {
-    padding-right: 72px;
-  }
-  .topbar-titulo-central h1 {
-    font-size: 16px;
-  }
-  .subtitulo {
-    font-size: 11.5px;
+  .ocultar-info-mobile,
+  .ocultar-subtitulo-mobile,
+  .ocultar-texto-topbar-mobile {
+    display: none !important;
   }
 
-  .btn-voltar-topo {
-    padding: 5px 8px !important;
-    font-size: 11.5px !important;
+  /* Em celulares (iPhone 12 Pro): Título centralizado e abaixo da linha dos botões superiores */
+  .topbar-titulo-central,
+  .topbar-titulo-central.com-botao-direita {
+    margin-top: 44px;
+    padding-top: 4px;
+    padding-left: 8px !important;
+    padding-right: 8px !important;
+    margin-bottom: 14px;
+    min-height: auto;
+  }
+
+  .topbar-titulo-central .btn-voltar-topo {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    z-index: 1000;
+    height: 38px;
+    padding: 0 12px !important;
+    font-size: 12px !important;
+  }
+
+  .topbar-titulo-central h1 {
+    font-size: 18px;
+    text-align: center;
+  }
+
+  .subtitulo {
+    font-size: 11.5px;
   }
 
   .campo-grupo label { font-size: 13px; }
@@ -10117,17 +10818,18 @@ app.mount('#app')
     font-size: 12px;
     border-radius: 6px;
   }
+
   .gerente-dashboard-container {
     padding: 14px 12px 24px 12px;
   }
 
   .gerente-boas-vindas h1 {
-    font-size: 16.5px;
+    font-size: 16px;
   }
 
   .gerente-atalhos-topo {
-    margin-left: -136px;
-    width: calc(100% + 136px);
+    margin-left: -180px;
+    width: calc(100% + 180px);
     gap: 6px;
     flex-wrap: nowrap;
     margin-top: 4px;
@@ -10137,8 +10839,8 @@ app.mount('#app')
   .gerente-atalhos-topo .btn-primario {
     padding: 8px 4px !important;
     font-size: 11.5px !important;
-    flex: 1; /* Distribui a largura igualmente entre os 3 botões */
-    min-width: 0; 
+    flex: 1;
+    min-width: 0;
   }
 
   .gerente-atalhos-topo .item-icone-texto {
@@ -10148,13 +10850,33 @@ app.mount('#app')
   .gerente-atalhos-topo span {
     white-space: nowrap;
     overflow: hidden;
-    text-overflow: ellipsis; /* Abrevia o texto caso a tela do celular seja muito pequena */
+    text-overflow: ellipsis;
   }
 
   .gerente-atalhos-topo svg {
     width: 15px;
     height: 15px;
     flex-shrink: 0;
+  }
+
+  /* Seletores de Estacionamentos e Cidades lado a lado na mesma linha no iPhone */
+  .barra-filtros-gerente {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr;
+    gap: 6px;
+    width: 100%;
+  }
+
+  .barra-filtros-gerente .seletor-multi-wrapper {
+    width: 100%;
+    min-width: 0;
+  }
+
+  .barra-filtros-gerente .btn-seletor-multi {
+    width: 100%;
+    padding: 7px 8px !important;
+    font-size: 11.5px !important;
+    justify-content: space-between;
   }
 
   .lista-opcoes-multi {
@@ -10175,9 +10897,6 @@ app.mount('#app')
   .controles-exportacao-completa {
     flex-direction: column;
     align-items: stretch;
-  }
-  .ocultar-info-mobile {
-    display: none !important;
   }
 
   .filtros-motorista-grid,
@@ -10206,29 +10925,56 @@ app.mount('#app')
     max-width: 210px;
   }
 
+  /* Topbar do Motorista no iPhone: ao lado do toggle de tema e apenas com ícones */
   .topbar-motorista-mapa {
-    position: static !important;
-    width: calc(100% - 96px) !important;
-    margin-left: 96px !important;
-    padding: 6px 10px !important;
-    flex-direction: row !important;
-    justify-content: space-between !important;
-    align-items: center !important;
+    width: calc(100% - 196px) !important;
+    margin-top: 10px !important;
+    margin-left: 142px !important;
+    margin-right: 54px !important;
+    height: 38px;
+    padding: 3px 6px !important;
   }
 
-  .topbar-motorista-mapa .topbar-esquerda {
-    flex-direction: row !important;
-    align-items: center !important;
-    flex-wrap: wrap !important;
-    gap: 6px !important;
+  .topbar-motorista-mapa .btn-secundario,
+  .topbar-motorista-mapa .btn-seletor-multi {
+    padding: 5px 7px !important;
+    height: 30px;
   }
 
-  .legenda-motorista-inline,
   .topbar-direita-motorista {
     display: none !important;
   }
+}
 
+@media (max-width: 480px) {
+  .auth-card {
+    padding: 22px 16px;
+  }
+  .auth-cabecalho h1 {
+    font-size: 20px;
+  }
+}
 
+@media print {
+  body * {
+    visibility: hidden;
+  }
+  .modal-qr-gerente,
+  .modal-qr-gerente * {
+    visibility: visible;
+  }
+  .modal-qr-gerente {
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    box-shadow: none !important;
+    border: none !important;
+  }
+  .modal-qr-gerente .modal-acoes,
+  .modal-qr-gerente .btn-fechar-mini {
+    display: none !important;
+  }
 }
 
 @media (max-width: 480px) {
@@ -10272,7 +11018,8 @@ app.mount('#app')
 // 🚀 INÍCIO DO ARQUIVO: frontend\src\assets\styles\variables.css
 // ==================================================================
 
-:root {
+:root,
+:root[data-theme="light"] {
   --bg-painel: #f1f5f9;
   --bg-card: #ffffff;
   --bg-botao-sec: #e2e8f0;
@@ -10287,7 +11034,7 @@ app.mount('#app')
 }
 
 @media (prefers-color-scheme: dark) {
-  :root {
+  :root:not([data-theme="light"]) {
     --bg-painel: #0b1120;
     --bg-card: #1e293b;
     --bg-botao-sec: #0f172a;
@@ -10302,11 +11049,29 @@ app.mount('#app')
   }
 }
 
+:root[data-theme="dark"] {
+  --bg-painel: #0b1120;
+  --bg-card: #1e293b;
+  --bg-botao-sec: #0f172a;
+  --borda-botao-sec: #475569;
+  --texto-principal: #f8fafc;
+  --texto-secundario: #94a3b8;
+  --borda: #334155;
+  --destaque-azul: #3b82f6;
+  --cor-asfalto: #090d16;
+  --borda-asfalto: #64748b;
+  --filtro-icone-calendario: invert(95%) sepia(5%) saturate(200%) hue-rotate(180deg) brightness(105%) contrast(100%);
+}
+
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, sans-serif;
+}
+
+html {
+  scrollbar-gutter: stable;
 }
 
 html, body, #app {
@@ -10325,6 +11090,7 @@ html, body, #app {
   min-height: 100vh;
   background: var(--bg-painel);
   color: var(--texto-principal);
+  transition: background-color 0.2s ease, color 0.2s ease;
 }
 
 .item-icone-texto {
@@ -10333,7 +11099,6 @@ html, body, #app {
   justify-content: center;
   gap: 6px;
 }
-
 
 // 🏁 FIM DO ARQUIVO: frontend\src\assets\styles\variables.css
 // ------------------------------------------------------------------
@@ -10344,8 +11109,8 @@ html, body, #app {
 // ==================================================================
 
 <script setup>
-import { ref } from 'vue'
-import { useRouter } from 'vue-router'
+import { ref, onMounted, onUnmounted } from 'vue'
+import { useRouter, useRoute } from 'vue-router'
 import {
   iniciarNovoFormulario,
   usuarioLogado,
@@ -10353,6 +11118,7 @@ import {
   simulacao1Ativa
 } from '@/stores/estacionamentoStore'
 import { encerrarSessaoUsuario } from '@/stores/authStore'
+import { TUTORIAIS_POR_ROTA } from '@/constants/tutoriaisConfig'
 import {
   IconMenu2,
   IconSquareRoundedX,
@@ -10365,11 +11131,93 @@ import {
   IconLogout,
   IconLayoutBoard,
   IconParking,
-  IconChartBar
+  IconChartBar,
+  IconSun,
+  IconMoon,
+  IconChevronUp
 } from '@/constants/icons'
 
 const menuAberto = ref(false)
 const router = useRouter()
+const route = useRoute()
+
+const temaEscuro = ref(true)
+const animandoTrocaTema = ref(false)
+const mostrarVoltarTopo = ref(false)
+
+onMounted(() => {
+  const salvo = localStorage.getItem('vagacerta_tema')
+  if (salvo === 'light' || salvo === 'dark') {
+    temaEscuro.value = salvo === 'dark'
+  } else {
+    temaEscuro.value = window.matchMedia('(prefers-color-scheme: dark)').matches
+  }
+  aplicarTemaDom()
+  window.addEventListener('scroll', verificarScrollPagina, { passive: true })
+})
+
+onUnmounted(() => {
+  window.removeEventListener('scroll', verificarScrollPagina)
+})
+
+function verificarScrollPagina() {
+  mostrarVoltarTopo.value = window.scrollY > 180
+}
+
+function voltarAoTopoSuave() {
+  window.scrollTo({ top: 0, behavior: 'smooth' })
+}
+
+function aplicarTemaDom() {
+  document.documentElement.setAttribute('data-theme', temaEscuro.value ? 'dark' : 'light')
+}
+
+function alternarTema(event) {
+  const x = event?.clientX ?? 140
+  const y = event?.clientY ?? 32
+  const raioMaximo = Math.hypot(
+    Math.max(x, window.innerWidth - x),
+    Math.max(y, window.innerHeight - y)
+  )
+
+  animandoTrocaTema.value = true
+  setTimeout(() => {
+    animandoTrocaTema.value = false
+  }, 520)
+
+  const executarTroca = () => {
+    temaEscuro.value = !temaEscuro.value
+    localStorage.setItem('vagacerta_tema', temaEscuro.value ? 'dark' : 'light')
+    aplicarTemaDom()
+  }
+
+  if (document.startViewTransition) {
+    const transicao = document.startViewTransition(() => {
+      executarTroca()
+    })
+    transicao.ready.then(() => {
+      document.documentElement.animate(
+        {
+          clipPath: [
+            `circle(0px at ${x}px ${y}px)`,
+            `circle(${raioMaximo}px at ${x}px ${y}px)`
+          ]
+        },
+        {
+          duration: 480,
+          easing: 'cubic-bezier(0.22, 1, 0.36, 1)',
+          pseudoElement: '::view-transition-new(root)'
+        }
+      )
+    }).catch(() => {})
+  } else {
+    document.documentElement.classList.add('transicao-tema-global')
+    executarTroca()
+    setTimeout(() => {
+      document.documentElement.classList.remove('transicao-tema-global')
+    }, 450)
+  }
+}
 
 function irPara(rota) {
   menuAberto.value = false
@@ -10411,6 +11259,36 @@ function sairDaConta() {
   <button class="btn-logo-vc" title="Ir para a página inicial" @click="irParaHomePorNivel">
     <span class="vc-letra-v">V</span><span class="vc-letra-c">C</span>
   </button>
+
+  <!-- Toggle Light / Dark Mode com animação elaborada -->
+  <button
+    type="button"
+    class="btn-toggle-tema"
+    :class="{
+      'com-botao-tutorial': route.name && TUTORIAIS_POR_ROTA[route.name],
+      'tema-pulsando': animandoTrocaTema
+    }"
+    :title="temaEscuro ? 'Mudar para Modo Claro (Light Mode)' : 'Mudar para Modo Escuro (Dark Mode)'"
+    @click="alternarTema($event)"
+  >
+    <Transition name="icone-tema-spin" mode="out-in">
+      <IconSun v-if="temaEscuro" key="sol" :size="19" class="icone-sol-animado" />
+      <IconMoon v-else key="lua" :size="19" class="icone-lua-animada" />
+    </Transition>
+  </button>
+
+  <!-- Botão sem bordas no formato de "V" apontado para cima ao usar scroll -->
+  <Transition name="fade-pop">
+    <button
+      v-if="mostrarVoltarTopo"
+      type="button"
+      class="btn-voltar-topo-scroll"
+      title="Voltar ao início da página"
+      @click="voltarAoTopoSuave"
+    >
+      <IconChevronUp :size="28" stroke-width="2.5" />
+    </button>
+  </Transition>
 
   <Transition name="fade-backdrop">
     <div v-if="menuAberto" class="menu-backdrop" @click="menuAberto = false"></div>
@@ -10496,7 +11374,6 @@ function sairDaConta() {
     </aside>
   </Transition>
 </template>
-
 
 // 🏁 FIM DO ARQUIVO: frontend\src\components\layout\AppSidebarMenu.vue
 // ------------------------------------------------------------------
@@ -10636,13 +11513,18 @@ const estiloPopup = computed(() => {
   let left = rectDestaque.value.left + rectDestaque.value.width / 2 - larguraPopup / 2
   left = Math.max(12, Math.min(left, larguraTela.value - larguraPopup - 12))
 
-  const alturaEstimadaPopup = 215
-  let top = rectDestaque.value.bottom + 14
+  // Reserva margem segura para nunca cortar os botões inferiores do card
+  const alturaEstimadaPopup = 250
+  let top = rectDestaque.value.bottom + 12
 
-  // Se não couber embaixo do elemento, posiciona acima dele (ou dentro da tela)
-  if (top + alturaEstimadaPopup > alturaTela.value - 12) {
-    const topAcima = rectDestaque.value.top - alturaEstimadaPopup - 14
-    top = topAcima >= 12 ? topAcima : Math.max(12, alturaTela.value - alturaEstimadaPopup - 16)
+  if (top + alturaEstimadaPopup > alturaTela.value - 16) {
+    const topAcima = rectDestaque.value.top - alturaEstimadaPopup - 12
+    if (topAcima >= 14) {
+      top = topAcima
+    } else {
+      // Quando o elemento é grande (ex: Mapa 2D no Passo 3), ancora dentro da área visível com folga inferior
+      top = Math.max(14, alturaTela.value - alturaEstimadaPopup - 24)
+    }
   }
 
   return {
@@ -10933,9 +11815,11 @@ export {
   IconMaximize,
   IconDownload,
   IconArrowsLeftRight,
-  IconPlayerPlay
+  IconPlayerPlay,
+  IconSun,
+  IconMoon,
+  IconChevronUp
 } from '@tabler/icons-vue'
-
 
 // 🏁 FIM DO ARQUIVO: frontend\src\constants\icons.js
 // ------------------------------------------------------------------
@@ -11860,12 +12744,17 @@ function alternarPainelAvisos() {
 // =========================================================
 // TOUCH PAN (ARRASTAR DEDO) E PINCH-TO-ZOOM (MOVIMENTO PINÇA)
 // =========================================================
+const dropdownAndarEditorAberto = ref(false)
+const gridPrincipalRef = ref(null)
+
 const panX = ref(0)
 const panY = ref(0)
 const zoomEscala = ref(1)
 
 let toqueUnico = null
 let pinchInicial = null
+let autoScrollFrame = null
+let ponteiroAtualClient = { x: 0, y: 0 }
 
 function distanciaEntreToques(t1, t2) {
   return Math.hypot(t2.clientX - t1.clientX, t2.clientY - t1.clientY)
@@ -11878,8 +12767,83 @@ function pontoMedioToques(t1, t2) {
   }
 }
 
+function obterCoordenadaPorPontoTela(clientX, clientY) {
+  const el = document.elementFromPoint(clientX, clientY)
+  const celulaEl = el?.closest('[data-coord]')
+  if (!celulaEl) return null
+  const [cx, cy] = celulaEl.getAttribute('data-coord').split(',').map(Number)
+  return { x: cx, y: cy }
+}
+
+function atualizarRetanguloSelecao(x, y) {
+  if (!pontoInicialArrasto.value) return
+  const xMin = Math.min(pontoInicialArrasto.value.x, x)
+  const xMax = Math.max(pontoInicialArrasto.value.x, x)
+  const yMin = Math.min(pontoInicialArrasto.value.y, y)
+  const yMax = Math.max(pontoInicialArrasto.value.y, y)
+
+  const novaSelecao = new Set(baseSelecionadosCtrl.value)
+  for (let cy = yMin; cy <= yMax; cy++) {
+    for (let cx = xMin; cx <= xMax; cx++) {
+      novaSelecao.add(`${cx},${cy}`)
+    }
+  }
+  selecionados.value = novaSelecao
+}
+
+function iniciarLoopAutoScroll() {
+  if (autoScrollFrame) return
+  const step = () => {
+    if (!arrastando.value || !gridPrincipalRef.value) {
+      autoScrollFrame = null
+      return
+    }
+    const container = gridPrincipalRef.value
+    const rect = container.getBoundingClientRect()
+    const margem = 48
+    const vel = 12
+    let mudouScroll = false
+
+    if (ponteiroAtualClient.x < rect.left + margem) {
+      container.scrollLeft -= vel
+      mudouScroll = true
+    } else if (ponteiroAtualClient.x > rect.right - margem) {
+      container.scrollLeft += vel
+      mudouScroll = true
+    }
+
+    if (ponteiroAtualClient.y < rect.top + margem) {
+      container.scrollTop -= vel
+      mudouScroll = true
+    } else if (ponteiroAtualClient.y > rect.bottom - margem) {
+      container.scrollTop += vel
+      mudouScroll = true
+    }
+
+    if (mudouScroll) {
+      const coord = obterCoordenadaPorPontoTela(ponteiroAtualClient.x, ponteiroAtualClient.y)
+      if (coord) {
+        hoverCoord.value = coord
+        atualizarRetanguloSelecao(coord.x, coord.y)
+      }
+    }
+    autoScrollFrame = requestAnimationFrame(step)
+  }
+  autoScrollFrame = requestAnimationFrame(step)
+}
+
+function pararLoopAutoScroll() {
+  if (autoScrollFrame) {
+    cancelAnimationFrame(autoScrollFrame)
+    autoScrollFrame = null
+  }
+}
+
+// No tablet/celular: 2 dedos movem/dão zoom no mapa; 1 dedo seleciona quadrados com swipe
 function aoIniciarToqueGrid(e) {
   if (e.touches.length === 2) {
+    arrastando.value = false
+    pararLoopAutoScroll()
     toqueUnico = null
     const dist = distanciaEntreToques(e.touches[0], e.touches[1])
     const meio = pontoMedioToques(e.touches[0], e.touches[1])
@@ -11894,14 +12858,24 @@ function aoIniciarToqueGrid(e) {
   } else if (e.touches.length === 1) {
     pinchInicial = null
     const t = e.touches[0]
+    ponteiroAtualClient = { x: t.clientX, y: t.clientY }
+    const coord = obterCoordenadaPorPontoTela(t.clientX, t.clientY)
+
     toqueUnico = {
       startX: t.clientX,
       startY: t.clientY,
       lastX: t.clientX,
       lastY: t.clientY,
-      panXInicial: panX.value,
-      panYInicial: panY.value,
+      coordInicial: coord,
       moveu: false
+    }
+
+    if (coord && !ferramentaCarimbo.value) {
+      arrastando.value = true
+      mostrarMenuFlutuante.value = false
+      pontoInicialArrasto.value = coord
+      baseSelecionadosCtrl.value = new Set(selecionados.value)
+      iniciarLoopAutoScroll()
     }
   }
 }
@@ -11918,13 +12892,18 @@ function aoMoverToqueGrid(e) {
     const t = e.touches[0]
     toqueUnico.lastX = t.clientX
     toqueUnico.lastY = t.clientY
+    ponteiroAtualClient = { x: t.clientX, y: t.clientY }
+
     const dx = t.clientX - toqueUnico.startX
     const dy = t.clientY - toqueUnico.startY
-
-    if (Math.hypot(dx, dy) > 7) {
+    if (Math.hypot(dx, dy) > 6) {
       toqueUnico.moveu = true
-      panX.value = toqueUnico.panXInicial + dx
-      panY.value = toqueUnico.panYInicial + dy
+    }
+
+    const coord = obterCoordenadaPorPontoTela(t.clientX, t.clientY)
+    if (coord && arrastando.value) {
+      hoverCoord.value = coord
+      atualizarRetanguloSelecao(coord.x, coord.y)
     }
   }
 }
@@ -11933,37 +12912,31 @@ function aoFinalizarToqueGrid(e) {
   if (e.touches.length < 2) {
     pinchInicial = null
   }
-  if (e.touches.length === 0 && toqueUnico) {
-    if (!toqueUnico.moveu) {
-      const el = document.elementFromPoint(toqueUnico.lastX, toqueUnico.lastY)
-      const celulaEl = el?.closest('[data-coord]')
-      if (celulaEl) {
-        const [cx, cy] = celulaEl.getAttribute('data-coord').split(',').map(Number)
+  if (e.touches.length === 0) {
+    pararLoopAutoScroll()
+    arrastando.value = false
+
+    if (toqueUnico) {
+      if (!toqueUnico.moveu && toqueUnico.coordInicial) {
+        const { x: cx, y: cy } = toqueUnico.coordInicial
         if (ferramentaCarimbo.value) {
           aplicarCarimboNoGrid(cx, cy)
         } else {
           const chave = `${cx},${cy}`
-          const nova = new Set(selecionados.value)
+          const nova = new Set(baseSelecionadosCtrl.value)
           if (nova.has(chave)) {
             nova.delete(chave)
           } else {
             nova.add(chave)
           }
           selecionados.value = nova
-          mostrarMenuFlutuante.value = nova.size > 0
         }
       }
+      mostrarMenuFlutuante.value = selecionados.value.size > 0
+      toqueUnico = null
     }
-    toqueUnico = null
   }
 }
-
-function resetarCameraGrid() {
-  panX.value = 0
-  panY.value = 0
-  zoomEscala.value = 1
-}
-
 // =========================================================
 // PILHAS DE DESFAZER / REFAZER
 // =========================================================
@@ -12142,6 +13115,7 @@ function iniciarSelecaoCelula(x, y, event) {
   arrastando.value = true
   mostrarMenuFlutuante.value = false
   pontoInicialArrasto.value = { x, y }
+  ponteiroAtualClient = { x: event.clientX, y: event.clientY }
   const chave = `${x},${y}`
 
   if (event.ctrlKey || event.metaKey) {
@@ -12156,27 +13130,20 @@ function iniciarSelecaoCelula(x, y, event) {
     baseSelecionadosCtrl.value = new Set()
     selecionados.value = new Set([chave])
   }
+  iniciarLoopAutoScroll()
 }
 
-function moverMouseCelula(x, y) {
+function moverMouseCelula(x, y, event) {
   hoverCoord.value = { x, y }
-  if (!arrastando.value || !pontoInicialArrasto.value) return
-
-  const xMin = Math.min(pontoInicialArrasto.value.x, x)
-  const xMax = Math.max(pontoInicialArrasto.value.x, x)
-  const yMin = Math.min(pontoInicialArrasto.value.y, y)
-  const yMax = Math.max(pontoInicialArrasto.value.y, y)
-
-  const novaSelecao = new Set(baseSelecionadosCtrl.value)
-  for (let cy = yMin; cy <= yMax; cy++) {
-    for (let cx = xMin; cx <= xMax; cx++) {
-      novaSelecao.add(`${cx},${cy}`)
-    }
+  if (event) {
+    ponteiroAtualClient = { x: event.clientX, y: event.clientY }
   }
-  selecionados.value = novaSelecao
+  if (!arrastando.value || !pontoInicialArrasto.value) return
+  atualizarRetanguloSelecao(x, y)
 }
 
 function finalizarSelecaoMouse() {
+  pararLoopAutoScroll()
   if (arrastando.value) {
     arrastando.value = false
     if (selecionados.value.size > 0) {
@@ -12733,6 +13700,23 @@ function confirmarModalSucessoSalvar() {
 }
 
 function tratarTeclaGlobal(event) {
+  const tagAtiva = document.activeElement?.tagName
+  const digitandoEmInput = tagAtiva === 'INPUT' || tagAtiva === 'TEXTAREA' || tagAtiva === 'SELECT'
+
+  if (!digitandoEmInput && (event.ctrlKey || event.metaKey)) {
+    const tecla = event.key.toLowerCase()
+    if (tecla === 'z' && !event.shiftKey) {
+      event.preventDefault()
+      desfazer()
+      return
+    }
+    if (tecla === 'y' || (tecla === 'z' && event.shiftKey)) {
+      event.preventDefault()
+      refazer()
+      return
+    }
+  }
+
   if (event.key === 'Escape') {
     if (ferramentaCarimbo.value) ferramentaCarimbo.value = null
     if (mostrarMenuFlutuante.value) {
@@ -12743,6 +13727,7 @@ function tratarTeclaGlobal(event) {
     menuTopoMobileAberto.value = false
     menuAdicionarMobileAberto.value = false
     dropdownSetoresAberto.value = false
+    dropdownAndarEditorAberto.value = false
   }
 }
 
@@ -12803,29 +13788,43 @@ onUnmounted(() => {
       :class="{ 'topbar-mobile-aberta': menuTopoMobileAberto }"
     >
       <div class="topbar-esquerda">
-        <button class="btn-secundario btn-duas-linhas item-icone-texto" @click="router.push({ name: 'admin-info-gerais' })">
-          <IconSquareRoundedArrowLeft :size="18" />
-          <div>Editar estacionamento<br /><span>Informações Gerais</span></div>
+        <!-- Botão apenas com ícone e dica "Informações Gerais" no hover -->
+        <button
+          class="btn-secundario item-icone-texto"
+          title="Informações Gerais"
+          @click="router.push({ name: 'admin-info-gerais' })"
+        >
+          <IconSquareRoundedArrowLeft :size="19" />
         </button>
 
-        <div class="seletor-andar-box">
-          <IconStack2 :size="18" />
-          <span>Andar:</span>
-          <select
-            v-if="formEstabelecimento.andares.length > 1"
-            v-model="andarEditorIndex"
-            class="select-andar-editor"
-            @change="selecionados.clear(); historicoUndo = []; historicoRedo = []; resetarCameraGrid(); menuTopoMobileAberto = false"
+        <!-- Seletor de Andar estilizado como os demais dropdowns do projeto -->
+        <div class="seletor-multi-wrapper">
+          <button
+            type="button"
+            class="btn-seletor-multi item-icone-texto"
+            @click="dropdownAndarEditorAberto = !dropdownAndarEditorAberto"
           >
-            <option
-              v-for="(a, idx) in formEstabelecimento.andares"
-              :key="a.id_andar"
-              :value="idx"
-            >
-              {{ a.nome_andar }} ({{ a.grid_x }}x{{ a.grid_y }})
-            </option>
-          </select>
-          <strong v-else>{{ andarEditorAtual.nome_andar }}</strong>
+            <IconStack2 :size="18" style="color: var(--destaque-azul)" />
+            <span>{{ andarEditorAtual.nome_andar }} ({{ andarEditorAtual.grid_x }}x{{ andarEditorAtual.grid_y }})</span>
+            <IconSquareRoundedChevronDown :size="17" />
+          </button>
+
+          <Transition name="fade-pop">
+            <div v-if="dropdownAndarEditorAberto" class="dropdown-multi-box" style="width: 240px">
+              <div class="lista-opcoes-multi">
+                <div
+                  v-for="(a, idx) in formEstabelecimento.andares"
+                  :key="a.id_andar"
+                  class="item-opcao-multi"
+                  :class="{ 'opcao-ativa': idx === andarEditorIndex }"
+                  @click="andarEditorIndex = idx; dropdownAndarEditorAberto = false; selecionados.clear(); historicoUndo = []; historicoRedo = []; resetarCameraGrid(); menuTopoMobileAberto = false"
+                >
+                  <span>{{ a.nome_andar }} ({{ a.grid_x }}x{{ a.grid_y }})</span>
+                  <IconSquareRoundedCheck v-if="idx === andarEditorIndex" :size="18" />
+                </div>
+              </div>
+            </div>
+          </Transition>
         </div>
 
         <button class="btn-secundario btn-duas-linhas item-icone-texto" @click="abrirModalTamanhoGrid">
@@ -12833,11 +13832,21 @@ onUnmounted(() => {
           <div>Tamanho do Grid<br /><span>({{ andarEditorAtual.grid_x }}x{{ andarEditorAtual.grid_y }})</span></div>
         </button>
 
-        <button class="btn-secundario item-icone-texto" :disabled="historicoUndo.length === 0" @click="desfazer">
+        <button
+          class="btn-secundario item-icone-texto"
+          :disabled="historicoUndo.length === 0"
+          title="Desfazer (Ctrl + Z)"
+          @click="desfazer"
+        >
           <IconArrowBackUp :size="18" />
           <span>Desfazer</span>
         </button>
-        <button class="btn-secundario item-icone-texto" :disabled="historicoRedo.length === 0" @click="refazer">
+        <button
+          class="btn-secundario item-icone-texto"
+          :disabled="historicoRedo.length === 0"
+          title="Refazer (Ctrl + Y)"
+          @click="refazer"
+        >
           <IconArrowForwardUp :size="18" />
           <span>Refazer</span>
         </button>
@@ -12984,6 +13993,7 @@ onUnmounted(() => {
         </Transition>
 
         <div
+          ref="gridPrincipalRef"
           class="area-grid-principal"
           @mouseleave="hoverCoord = null"
           @touchstart.passive="aoIniciarToqueGrid"
@@ -13025,7 +14035,7 @@ onUnmounted(() => {
                     backgroundColor: andarEditorAtual.celulas[`${x},${y}`]?.corSetor || 'transparent'
                   }"
                   @mousedown.prevent="iniciarSelecaoCelula(x, y, $event)"
-                  @mouseenter="moverMouseCelula(x, y)"
+                  @mouseenter="moverMouseCelula(x, y, $event)"
                 >
                   <div
                     class="quadrado-editor"
@@ -13467,6 +14477,7 @@ onUnmounted(() => {
 // ==================================================================
 
 <script setup>
+import { computed, onMounted } from 'vue'
 import { useRouter } from 'vue-router'
 import {
   usuariosCadastrados,
@@ -13482,6 +14493,25 @@ import {
 } from '@/constants/icons'
 
 const router = useRouter()
+
+// Filtra para exibir apenas motoristas ('usuario') e gerentes ('admin_estabelecimento')
+const usuariosResponsaveisDisponiveis = computed(() => {
+  return usuariosCadastrados.value.filter(u => u.nivel_acesso !== 'admin_dev')
+})
+
+onMounted(() => {
+  const disponiveis = usuariosResponsaveisDisponiveis.value
+  if (
+    disponiveis.length > 0 &&
+    !disponiveis.some(u => u.id_usuario === formEstabelecimento.value.id_usuario)
+  ) {
+    formEstabelecimento.value.id_usuario = disponiveis[0].id_usuario
+  }
+})
+
+function rotuloNivelUsuario(nivel) {
+  return nivel === 'admin_estabelecimento' ? 'Gerente' : 'Motorista'
+}
 
 function adicionarAndarForm() {
   if (formEstabelecimento.value.andares.length >= 10) return
@@ -13540,8 +14570,7 @@ function avancarParaEditorP2() {
   <div class="admin-container">
     <header class="topbar-titulo-central com-botao-direita">
       <div class="bloco-titulo-centro">
-        <h1>Editar estacionamento - Informações Gerais</h1>
-        <p class="subtitulo">Defina os dados gerais, a cidade e a lista de andares sem nomes repetidos (máx. 10)</p>
+        <h1>Informações Gerais</h1>
       </div>
       <button class="btn-secundario btn-voltar-topo item-icone-texto" @click="router.push({ name: 'admin-lista' })">
         <IconSquareRoundedArrowLeft :size="18" />
@@ -13573,10 +14602,14 @@ function avancarParaEditorP2() {
       </div>
 
       <div class="campo-grupo">
-        <label>Vincular Usuário Responsável (Dono do Estacionamento)</label>
+        <label>Vincular Usuário Responsável (Motorista vinculado torna-se Gerente automaticamente)</label>
         <select v-model="formEstabelecimento.id_usuario" class="select-padrao">
-          <option v-for="u in usuariosCadastrados" :key="u.id_usuario" :value="u.id_usuario">
-            #{{ u.id_usuario }} - {{ u.nome }} ({{ u.email }})
+          <option
+            v-for="u in usuariosResponsaveisDisponiveis"
+            :key="u.id_usuario"
+            :value="u.id_usuario"
+          >
+            #{{ u.id_usuario }} - {{ u.nome }} ({{ u.email }}) — [{{ rotuloNivelUsuario(u.nivel_acesso) }}]
           </option>
         </select>
       </div>
@@ -13726,8 +14759,10 @@ async function removerEstabelecimento(est) {
 <template>
   <div class="admin-container">
     <header class="topbar-titulo-central">
-      <h1>Gerenciamento de Estacionamentos</h1>
-      <p class="subtitulo">Pesquise, adicione, edite, inative ou remova estabelecimentos</p>
+      <div class="bloco-titulo-centro">
+        <h1>Gerenciamento de Estacionamentos</h1>
+        <p class="subtitulo ocultar-subtitulo-mobile">Pesquise, adicione, edite, inative ou remova estabelecimentos</p>
+      </div>
     </header>
 
     <div class="barra-pesquisa-admin">
@@ -14387,6 +15422,7 @@ const router = useRouter()
 
 // Dropdown de seleção múltipla no topo
 const dropdownMultiAberto = ref(false)
+const dropdownCidadeAberto = ref(false)
 const termoBuscaMulti = ref('')
 
 // Modal Popup para celular/tablet ("Escolher Estacionamento")
@@ -14405,6 +15441,7 @@ onUnmounted(() => {
 function fecharDropdownsAoClicarFora(e) {
   if (!e.target.closest('.seletor-multi-wrapper')) {
     dropdownMultiAberto.value = false
+    dropdownCidadeAberto.value = false
   }
 }
 
@@ -14625,18 +15662,21 @@ function abrirEstacionamentoTelaCheia(idEst) {
 
       <!-- Seletor Múltiplo alinhado à esquerda junto com os cards -->
       <div v-if="estabelecimentosDoGerente.length >= 1" class="barra-filtros-gerente">
+        <!-- 1. Filtro de Estacionamentos -->
         <div class="seletor-multi-wrapper">
           <button
             type="button"
             class="btn-seletor-multi item-icone-texto"
-            @click="dropdownMultiAberto = !dropdownMultiAberto"
+            @click="dropdownMultiAberto = !dropdownMultiAberto; dropdownCidadeAberto = false"
           >
-            <IconParking :size="18" />
-            <span>{{ textoBotaoSeletorTopo }}</span>
-            <IconSquareRoundedChevronDown :size="18" />
+            <span class="item-icone-texto" style="min-width: 0">
+              <IconParking :size="18" style="color: var(--destaque-azul); flex-shrink: 0" />
+              <span class="texto-truncado-filtro">{{ textoBotaoSeletorTopo }}</span>
+            </span>
+            <IconSquareRoundedChevronDown :size="17" style="flex-shrink: 0" />
           </button>
 
-        <Transition name="fade-pop">
+          <Transition name="fade-pop">
             <div v-if="dropdownMultiAberto" class="dropdown-multi-box">
               <div v-if="mostrarPesquisaNoMulti" class="busca-multi-topo">
                 <IconSearch :size="16" class="icone-busca-multi" />
@@ -14653,7 +15693,7 @@ function abrirEstacionamentoTelaCheia(idEst) {
                   :class="{ 'opcao-ativa': idsSelecionadosGerente.length === 0 }"
                   @click="selecionarDashboardCompleto"
                 >
-                  <span>Dashboard completo ({{ estabelecimentosDoGerentePorCidade.length }})</span>
+                  <span>Todos ({{ estabelecimentosDoGerentePorCidade.length }})</span>
                   <IconSquareRoundedCheck v-if="idsSelecionadosGerente.length === 0" :size="18" />
                 </div>
 
@@ -14670,22 +15710,52 @@ function abrirEstacionamentoTelaCheia(idEst) {
               </div>
             </div>
           </Transition>
-      </div>
+        </div>
 
         <!-- Filtro de Cidade -->
-        <div class="seletor-andar-box filtro-cidade-gerente-box">
-          <IconPin :size="17" style="color: var(--destaque-azul)" />
-          <span>Cidade:</span>
-          <select
-            :value="cidadeSelecionadaGerente"
-            class="select-andar-editor"
-            @change="selecionarCidadeGerente($event.target.value)"
+        <div class="seletor-multi-wrapper">
+          <button
+            type="button"
+            class="btn-seletor-multi item-icone-texto"
+            @click="dropdownCidadeAberto = !dropdownCidadeAberto; dropdownMultiAberto = false"
           >
-            <option value="TODAS">Todas ({{ cidadesDoGerente.length }})</option>
-            <option v-for="cid in cidadesDoGerente" :key="cid" :value="cid">
-              {{ cid }}
-            </option>
-          </select>
+            <span class="item-icone-texto" style="min-width: 0">
+              <IconPin :size="17" style="color: var(--destaque-azul); flex-shrink: 0" />
+              <span class="texto-truncado-filtro">
+                {{
+                  cidadeSelecionadaGerente === 'TODAS'
+                    ? `Cidades (${cidadesDoGerente.length})`
+                    : cidadeSelecionadaGerente
+                }}
+              </span>
+            </span>
+            <IconSquareRoundedChevronDown :size="17" style="flex-shrink: 0" />
+          </button>
+
+          <Transition name="fade-pop">
+            <div v-if="dropdownCidadeAberto" class="dropdown-multi-box" style="width: 230px">
+              <div class="lista-opcoes-multi">
+                <div
+                  class="item-opcao-multi destaque-completo"
+                  :class="{ 'opcao-ativa': cidadeSelecionadaGerente === 'TODAS' }"
+                  @click="selecionarCidadeGerente('TODAS'); dropdownCidadeAberto = false"
+                >
+                  <span>Todas as cidades ({{ cidadesDoGerente.length }})</span>
+                  <IconSquareRoundedCheck v-if="cidadeSelecionadaGerente === 'TODAS'" :size="18" />
+                </div>
+                <div
+                  v-for="cid in cidadesDoGerente"
+                  :key="cid"
+                  class="item-opcao-multi"
+                  :class="{ 'opcao-ativa': cidadeSelecionadaGerente === cid }"
+                  @click="selecionarCidadeGerente(cid); dropdownCidadeAberto = false"
+                >
+                  <span>{{ cid }}</span>
+                  <IconSquareRoundedCheck v-if="cidadeSelecionadaGerente === cid" :size="18" />
+                </div>
+              </div>
+            </div>
+          </Transition>
         </div>
       </div>
     </header>
@@ -14993,6 +16063,8 @@ import {
   IconPin,
   IconParking,
   IconSquareRoundedArrowRight,
+  IconSquareRoundedChevronDown,
+  IconSquareRoundedCheck,
   IconSquareRoundedX,
   IconAlertSquareRounded
 } from '@/constants/icons'
@@ -15001,6 +16073,8 @@ const router = useRouter()
 
 const termoBuscaNome = ref('')
 const cidadeFiltro = ref('TODAS')
+const dropdownCidadeAberto = ref(false)
+const termoBuscaCidade = ref('')
 
 // Estado do Leitor de QR Code via Câmera
 const cameraAtiva = ref(false)
@@ -15014,13 +16088,20 @@ onMounted(() => {
   if (estabelecimentos.value.length === 0) {
     carregarDadosDoBanco()
   }
+  window.addEventListener('click', fecharDropdownCidadeFora)
 })
 
 onUnmounted(() => {
   pararCameraQr()
+  window.removeEventListener('click', fecharDropdownCidadeFora)
 })
 
-// Apenas estacionamentos ativos para o motorista
+function fecharDropdownCidadeFora(e) {
+  if (!e.target.closest('.seletor-cidade-custom')) {
+    dropdownCidadeAberto.value = false
+  }
+}
+
 const estacionamentosAtivos = computed(() => {
   return estabelecimentos.value.filter(e => !e.inativo)
 })
@@ -15033,6 +16114,25 @@ const cidadesDisponiveis = computed(() => {
   )
   return Array.from(setCidades).sort((a, b) => a.localeCompare(b, 'pt-BR'))
 })
+
+const cidadesFiltradasDropdown = computed(() => {
+  const t = termoBuscaCidade.value.trim().toLowerCase()
+  if (!t) return cidadesDisponiveis.value
+  return cidadesDisponiveis.value.filter(c => c.toLowerCase().includes(t))
+})
+
+const textoBotaoCidade = computed(() => {
+  if (cidadeFiltro.value === 'TODAS') {
+    return `Todas as cidades (${cidadesDisponiveis.value.length})`
+  }
+  return cidadeFiltro.value
+})
+
+function escolherCidadeFiltro(cid) {
+  cidadeFiltro.value = cid
+  dropdownCidadeAberto.value = false
+  termoBuscaCidade.value = ''
+}
 
 const estacionamentosFiltrados = computed(() => {
   const termo = termoBuscaNome.value.trim().toLowerCase()
@@ -15078,14 +16178,12 @@ function extrairIdDoTextoQr(textoLido) {
   if (!textoLido) return null
   const limpo = textoLido.trim()
 
-  // Caso 1: URL do formato /vagas/12 ou ?id=12
   const matchVagas = limpo.match(/\/vagas\/(\d+)/i)
   if (matchVagas) return Number(matchVagas[1])
 
   const matchQuery = limpo.match(/[?&]id=(\d+)/i)
   if (matchQuery) return Number(matchQuery[1])
 
-  // Caso 2: Apenas o número do ID
   if (/^\d+$/.test(limpo)) return Number(limpo)
 
   return null
@@ -15125,7 +16223,7 @@ async function iniciarCameraQr() {
         monitorarQuadroVideo(detectorNativo)
       }
     }, 100)
-  } catch (err) {
+  } catch {
     erroCamera.value = 'Permissão de câmera negada ou câmera indisponível. Pesquise o estacionamento abaixo.'
     cameraAtiva.value = false
   }
@@ -15137,7 +16235,6 @@ function monitorarQuadroVideo(detectorNativo) {
 
     const video = videoRef.value
     if (video.readyState === video.HAVE_ENOUGH_DATA) {
-      // 1. Tenta pelo BarcodeDetector nativo
       if (detectorNativo) {
         try {
           const codigos = await detectorNativo.detect(video)
@@ -15153,7 +16250,6 @@ function monitorarQuadroVideo(detectorNativo) {
         }
       }
 
-      // 2. Fallback via Canvas + jsQR
       if (window.jsQR && canvasRef.value) {
         const canvas = canvasRef.value
         const ctx = canvas.getContext('2d', { willReadFrequently: true })
@@ -15214,7 +16310,6 @@ function pararCameraQr() {
           <span>Escanear QR Code com a Câmera</span>
         </button>
 
-        <!-- Visor da Câmera quando ativado -->
         <Transition name="fade-pop">
           <div v-if="cameraAtiva" class="camera-qr-box">
             <div class="camera-video-wrapper">
@@ -15247,7 +16342,7 @@ function pararCameraQr() {
         <span>OU PESQUISE O ESTACIONAMENTO</span>
       </div>
 
-      <!-- FILTROS: BUSCA POR NOME E FILTRO DE CIDADE -->
+      <!-- FILTROS: BUSCA POR NOME E SELETOR CUSTOMIZADO DE CIDADE -->
       <div class="filtros-motorista-grid">
         <div class="input-pesquisa-icone-wrapper">
           <IconSearch :size="18" class="icone-input-pesquisa" />
@@ -15259,19 +16354,58 @@ function pararCameraQr() {
           />
         </div>
 
-        <div class="select-cidade-motorista-wrapper">
-          <IconPin :size="18" class="icone-input-pesquisa" style="color: var(--destaque-azul)" />
-          <select v-model="cidadeFiltro" class="select-padrao select-com-icone-esq">
-            <option value="TODAS">Todas as cidades ({{ cidadesDisponiveis.length }})</option>
-            <option v-for="cid in cidadesDisponiveis" :key="cid" :value="cid">
-              {{ cid }}
-            </option>
-          </select>
+        <div class="seletor-multi-wrapper seletor-cidade-custom" style="width: 100%">
+          <button
+            type="button"
+            class="btn-seletor-multi btn-seletor-altura-input item-icone-texto"
+            @click="dropdownCidadeAberto = !dropdownCidadeAberto"
+          >
+            <span class="item-icone-texto" style="min-width: 0">
+              <IconPin :size="18" style="color: var(--destaque-azul); flex-shrink: 0" />
+              <span class="texto-truncado-est">{{ textoBotaoCidade }}</span>
+            </span>
+            <IconSquareRoundedChevronDown :size="18" style="flex-shrink: 0" />
+          </button>
+
+          <Transition name="fade-pop">
+            <div v-if="dropdownCidadeAberto" class="dropdown-multi-box" style="width: 100%">
+              <div v-if="cidadesDisponiveis.length > 5" class="busca-multi-topo">
+                <IconSearch :size="16" class="icone-busca-multi" />
+                <input
+                  v-model="termoBuscaCidade"
+                  type="text"
+                  placeholder="Filtrar cidade..."
+                />
+              </div>
+
+              <div class="lista-opcoes-multi">
+                <div
+                  class="item-opcao-multi destaque-completo"
+                  :class="{ 'opcao-ativa': cidadeFiltro === 'TODAS' }"
+                  @click="escolherCidadeFiltro('TODAS')"
+                >
+                  <span>Todas as cidades ({{ cidadesDisponiveis.length }})</span>
+                  <IconSquareRoundedCheck v-if="cidadeFiltro === 'TODAS'" :size="18" />
+                </div>
+
+                <div
+                  v-for="cid in cidadesFiltradasDropdown"
+                  :key="cid"
+                  class="item-opcao-multi"
+                  :class="{ 'opcao-ativa': cidadeFiltro === cid }"
+                  @click="escolherCidadeFiltro(cid)"
+                >
+                  <span>{{ cid }}</span>
+                  <IconSquareRoundedCheck v-if="cidadeFiltro === cid" :size="18" />
+                </div>
+              </div>
+            </div>
+          </Transition>
         </div>
       </div>
 
-      <!-- LISTA DE ESTACIONAMENTOS DISPONÍVEIS -->
-      <div class="lista-estacionamentos-motorista">
+      <!-- LISTA DE ESTACIONAMENTOS DISPONÍVEIS COM ANIMAÇÃO SUAVE -->
+      <TransitionGroup name="lista-suave" tag="div" class="lista-estacionamentos-motorista">
         <div
           v-for="est in estacionamentosFiltrados"
           :key="est.id"
@@ -15306,10 +16440,10 @@ function pararCameraQr() {
           </div>
         </div>
 
-        <div v-if="estacionamentosFiltrados.length === 0" class="lista-vazia">
+        <div v-if="estacionamentosFiltrados.length === 0" key="vazio-mot" class="lista-vazia">
           Nenhum estacionamento encontrado para este filtro.
         </div>
-      </div>
+      </TransitionGroup>
     </div>
   </main>
 </template>
@@ -15323,7 +16457,7 @@ function pararCameraQr() {
 // ==================================================================
 
 <script setup>
-import { ref, computed, watch, onMounted } from 'vue'
+import { ref, computed, watch, nextTick, onMounted, onUnmounted } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import {
   estabelecimentos,
@@ -15333,11 +16467,14 @@ import {
 import { useGridPanZoom } from '@/composables/useGridPanZoom'
 import {
   IconSquareRoundedArrowLeft,
+  IconSquareRoundedChevronDown,
+  IconSquareRoundedCheck,
+  IconSquareRoundedPlus,
+  IconSquareRoundedMinus,
   IconParking,
   IconPin,
   IconStack2,
   IconLayoutBoard,
-  IconSearch,
   IconDoorEnter,
   IconDoorExit,
   IconArrowBarRight,
@@ -15348,9 +16485,13 @@ const route = useRoute()
 const router = useRouter()
 
 const andarIndex = ref(0)
+const dropdownAndarAberto = ref(false)
 const setorDestacadoId = ref(null)
 const celulaInspecionada = ref(null)
 const painelSetoresMobileAberto = ref(false)
+const containerMapaRef = ref(null)
+
+const TAMANHO_CELULA = 30
 
 const {
   panX,
@@ -15366,22 +16507,27 @@ onMounted(async () => {
   if (estabelecimentos.value.length === 0) {
     await carregarDadosDoBanco()
   }
+  await nextTick()
+  ajustarZoomERolagemParaEntrada()
+  window.addEventListener('click', fecharDropdownAndarFora)
+  window.addEventListener('resize', ajustarZoomERolagemParaEntrada)
 })
+
+onUnmounted(() => {
+  window.removeEventListener('click', fecharDropdownAndarFora)
+  window.removeEventListener('resize', ajustarZoomERolagemParaEntrada)
+})
+
+function fecharDropdownAndarFora(e) {
+  if (!e.target.closest('.seletor-andar-custom')) {
+    dropdownAndarAberto.value = false
+  }
+}
 
 const estacionamentoAtual = computed(() => {
   const idParam = Number(route.params.id)
   return estabelecimentos.value.find(e => e.id === idParam && !e.inativo) || null
 })
-
-watch(
-  () => route.params.id,
-  () => {
-    andarIndex.value = 0
-    setorDestacadoId.value = null
-    celulaInspecionada.value = null
-    resetarCameraGrid()
-  }
-)
 
 const andarAtual = computed(() => {
   if (!estacionamentoAtual.value?.andares) return null
@@ -15391,6 +16537,148 @@ const andarAtual = computed(() => {
     null
   )
 })
+
+const mapaProcessadoMotorista = computed(() => {
+  const andar = andarAtual.value
+  if (!andar?.celulas) return null
+
+  const todas = Object.values(andar.celulas)
+  const preenchidas = todas.filter(c => c.tipo !== 'VAZIO' || c.setorId)
+
+  if (preenchidas.length === 0) {
+    return {
+      largura: 1,
+      altura: 1,
+      linhas: [[todas[0]]]
+    }
+  }
+
+  let minX = Infinity
+  let maxX = -Infinity
+  let minY = Infinity
+  let maxY = -Infinity
+
+  preenchidas.forEach((c) => {
+    if (c.x < minX) minX = c.x
+    if (c.x > maxX) maxX = c.x
+    if (c.y < minY) minY = c.y
+    if (c.y > maxY) maxY = c.y
+  })
+
+  let matriz = []
+  for (let y = minY; y <= maxY; y++) {
+    const linha = []
+    for (let x = minX; x <= maxX; x++) {
+      linha.push(andar.celulas[`${x},${y}`])
+    }
+    matriz.push(linha)
+  }
+
+  const entradas = preenchidas.filter(c => c.tipo === 'ENTRADA')
+  const alvosRef = entradas.length > 0 ? entradas : preenchidas.filter(c => c.tipo === 'SAIDA')
+
+  let rotacoes90Horario = 0
+  if (alvosRef.length > 0) {
+    const mediaX = alvosRef.reduce((acc, c) => acc + c.x, 0) / alvosRef.length
+    const mediaY = alvosRef.reduce((acc, c) => acc + c.y, 0) / alvosRef.length
+
+    const distTopo = Math.abs(mediaY - minY)
+    const distBase = Math.abs(maxY - mediaY)
+    const distEsq = Math.abs(mediaX - minX)
+    const distDir = Math.abs(maxX - mediaX)
+
+    const menor = Math.min(distBase, distTopo, distEsq, distDir)
+    if (menor === distBase) {
+      rotacoes90Horario = 0
+    } else if (menor === distTopo) {
+      rotacoes90Horario = 2
+    } else if (menor === distDir) {
+      rotacoes90Horario = 1
+    } else {
+      rotacoes90Horario = 3
+    }
+  }
+
+  for (let r = 0; r < rotacoes90Horario; r++) {
+    const h = matriz.length
+    const w = matriz[0].length
+    const nova = Array.from({ length: w }, () => Array(h))
+    for (let y = 0; y < h; y++) {
+      for (let x = 0; x < w; x++) {
+        nova[x][h - 1 - y] = matriz[y][x]
+      }
+    }
+    matriz = nova
+  }
+
+  return {
+    largura: matriz[0]?.length || 1,
+    altura: matriz.length || 1,
+    linhas: matriz
+  }
+})
+
+const estiloCaixaEscalada = computed(() => {
+  const dados = mapaProcessadoMotorista.value
+  if (!dados) return {}
+  const w = Math.round((dados.largura * TAMANHO_CELULA + 12) * zoomEscala.value)
+  const h = Math.round((dados.altura * TAMANHO_CELULA + 12) * zoomEscala.value)
+  return {
+    width: `${w}px`,
+    height: `${h}px`
+  }
+})
+
+function ajustarZoomERolagemParaEntrada() {
+  const container = containerMapaRef.value
+  const dados = mapaProcessadoMotorista.value
+  if (!container || !dados) return
+
+  resetarCameraGrid()
+
+  const larguraMapaPx = dados.largura * TAMANHO_CELULA + 12
+  const alturaMapaPx = dados.altura * TAMANHO_CELULA + 12
+
+  const largDisp = Math.max(120, container.clientWidth - 48)
+  const altDisp = Math.max(120, container.clientHeight - 48)
+
+  if (larguraMapaPx < largDisp && alturaMapaPx < altDisp) {
+    const escalaIdeal = Math.min(largDisp / larguraMapaPx, altDisp / alturaMapaPx, 1.95)
+    zoomEscala.value = Number(Math.max(1, escalaIdeal).toFixed(2))
+  } else {
+    zoomEscala.value = 1
+  }
+
+  setTimeout(() => {
+    if (!containerMapaRef.value) return
+    containerMapaRef.value.scrollTop = containerMapaRef.value.scrollHeight
+    const sobraH = containerMapaRef.value.scrollWidth - containerMapaRef.value.clientWidth
+    containerMapaRef.value.scrollLeft = sobraH > 0 ? Math.floor(sobraH / 2) : 0
+  }, 60)
+}
+
+function alterarZoomBotao(delta) {
+  const novo = Math.min(2.6, Math.max(0.5, Number((zoomEscala.value + delta).toFixed(2))))
+  zoomEscala.value = novo
+}
+
+function aoRolarMouseMapa(e) {
+  if (e.ctrlKey || e.metaKey) {
+    e.preventDefault()
+    const delta = e.deltaY < 0 ? 0.12 : -0.12
+    alterarZoomBotao(delta)
+  }
+}
+
+watch(
+  () => [route.params.id, andarIndex.value, estacionamentoAtual.value?.id],
+  async () => {
+    setorDestacadoId.value = null
+    celulaInspecionada.value = null
+    await nextTick()
+    ajustarZoomERolagemParaEntrada()
+  }
+)
 
 const metricasGerais = computed(() => {
   if (!estacionamentoAtual.value) return { total: 0, livres: 0, ocupadas: 0 }
@@ -15413,6 +16701,11 @@ const estatisticasAndaresMotorista = computed(() => {
   })
 })
 
+function escolherAndarDropdown(idx) {
+  andarIndex.value = idx
+  dropdownAndarAberto.value = false
+}
+
 const setoresAndarAtual = computed(() => {
   if (!andarAtual.value) return []
   const celulas = Object.values(andarAtual.value.celulas || {})
@@ -15434,21 +16727,20 @@ const setoresAndarAtual = computed(() => {
 })
 
 function alternarFiltroSetor(idSetor) {
-  if (setorDestacadoId.value === idSetor) {
-    setorDestacadoId.value = null
-  } else {
-    setorDestacadoId.value = idSetor
-  }
+  setorDestacadoId.value = setorDestacadoId.value === idSetor ? null : idSetor
 }
 
-function inspecionarCelula(x, y) {
-  if (!andarAtual.value?.celulas) return
-  const c = andarAtual.value.celulas[`${x},${y}`]
+function inspecionarCelula(c) {
   if (!c || c.tipo === 'VAZIO') {
     celulaInspecionada.value = null
     return
   }
   celulaInspecionada.value = c
+}
+
+function inspecionarPorCoordenada(x, y) {
+  if (!andarAtual.value?.celulas) return
+  inspecionarCelula(andarAtual.value.celulas[`${x},${y}`])
 }
 
 const infoBadgeMotorista = computed(() => {
@@ -15493,7 +16785,6 @@ const infoBadgeMotorista = computed(() => {
 </script>
 
 <template>
-  <!-- Caso o ID não exista ou esteja inativo -->
   <main v-if="!estacionamentoAtual" class="tela-inicial">
     <div class="auth-card card-erro-acesso">
       <div class="icone-erro-acesso" style="color: #f59e0b; background: rgba(245, 158, 11, 0.12)">
@@ -15513,9 +16804,7 @@ const infoBadgeMotorista = computed(() => {
     </div>
   </main>
 
-  <!-- VISÃO DO MAPA 2D PARA O MOTORISTA -->
-  <div v-else-if="andarAtual" class="editor-layout">
-    <!-- Botão Flutuante Mobile para abrir lista de Andares/Setores -->
+  <div v-else-if="andarAtual && mapaProcessadoMotorista" class="editor-layout">
     <div class="hud-coluna-direita-mobile">
       <button
         class="hud-btn-flutuante"
@@ -15532,13 +16821,14 @@ const infoBadgeMotorista = computed(() => {
       <div class="topbar-esquerda">
         <button
           class="btn-secundario item-icone-texto"
+          title="Trocar Estacionamento"
           @click="router.push({ name: 'motorista-home' })"
         >
           <IconSquareRoundedArrowLeft :size="18" />
-          <span>Trocar Estacionamento</span>
+          <span class="ocultar-texto-topbar-mobile">Trocar Estacionamento</span>
         </button>
 
-        <div class="identificacao-est-motorista">
+        <div class="identificacao-est-motorista ocultar-texto-topbar-mobile">
           <strong>{{ estacionamentoAtual.nome }}</strong>
           <span class="badge-cidade-inline">
             <IconPin :size="12" style="vertical-align: -1px" />
@@ -15546,36 +16836,67 @@ const infoBadgeMotorista = computed(() => {
           </span>
         </div>
 
-        <!-- Seletor de Andar -->
-        <div class="seletor-andar-box">
-          <IconStack2 :size="18" />
-          <span>Andar:</span>
-          <select
-            v-if="estacionamentoAtual.andares.length > 1"
-            v-model="andarIndex"
-            class="select-andar-editor"
-            @change="setorDestacadoId = null; resetarCameraGrid()"
+        <!-- Seletor de Andar Estilizado -->
+        <div class="seletor-multi-wrapper seletor-andar-custom">
+          <button
+            type="button"
+            class="btn-seletor-multi item-icone-texto"
+            :title="`Andar: ${andarAtual.nome_andar}`"
+            @click="dropdownAndarAberto = !dropdownAndarAberto"
           >
-            <option
-              v-for="a in estatisticasAndaresMotorista"
-              :key="a.id_andar"
-              :value="a.idx"
-            >
-              {{ a.nome_andar }} ({{ a.livres }} livres)
-            </option>
-          </select>
-          <strong v-else>{{ andarAtual.nome_andar }}</strong>
+            <IconStack2 :size="18" style="color: var(--destaque-azul)" />
+            <span class="ocultar-texto-topbar-mobile">
+              {{ andarAtual.nome_andar }}
+              ({{ estatisticasAndaresMotorista[andarIndex]?.livres ?? 0 }} livres)
+            </span>
+            <IconSquareRoundedChevronDown :size="16" />
+          </button>
+
+          <Transition name="fade-pop">
+            <div v-if="dropdownAndarAberto" class="dropdown-multi-box" style="width: 220px">
+              <div class="lista-opcoes-multi">
+                <div
+                  v-for="a in estatisticasAndaresMotorista"
+                  :key="a.id_andar"
+                  class="item-opcao-multi"
+                  :class="{ 'opcao-ativa': a.idx === andarIndex }"
+                  @click="escolherAndarDropdown(a.idx)"
+                >
+                  <span>{{ a.nome_andar }} ({{ a.livres }} livres)</span>
+                  <IconSquareRoundedCheck v-if="a.idx === andarIndex" :size="18" />
+                </div>
+              </div>
+            </div>
+          </Transition>
         </div>
 
-        <button
-          v-if="panX !== 0 || panY !== 0 || zoomEscala !== 1"
-          class="btn-secundario item-icone-texto"
-          title="Centralizar Mapa"
-          @click="resetarCameraGrid"
-        >
-          <IconSearch :size="16" />
-          <span>{{ Math.round(zoomEscala * 100) }}%</span>
-        </button>
+        <!-- Controles de Zoom -->
+        <div class="controles-zoom-motorista">
+          <button
+            type="button"
+            class="btn-zoom-acao"
+            title="Diminuir Zoom (ou Ctrl + Roda do Mouse)"
+            @click="alterarZoomBotao(-0.15)"
+          >
+            <IconSquareRoundedMinus :size="17" />
+          </button>
+          <button
+            type="button"
+            class="btn-zoom-reset ocultar-texto-topbar-mobile"
+            title="Reajustar Zoom Padrão"
+            @click="ajustarZoomERolagemParaEntrada"
+          >
+            {{ Math.round(zoomEscala * 100) }}%
+          </button>
+          <button
+            type="button"
+            class="btn-zoom-acao"
+            title="Aumentar Zoom (ou Ctrl + Roda do Mouse)"
+            @click="alterarZoomBotao(0.15)"
+          >
+            <IconSquareRoundedPlus :size="17" />
+          </button>
+        </div>
       </div>
 
       <div class="topbar-direita-motorista">
@@ -15596,10 +16917,9 @@ const infoBadgeMotorista = computed(() => {
       </div>
     </header>
 
-    <!-- ÁREA DO MAPA + PAINEL LATERAL DE ANDARES E SETORES -->
+    <!-- ÁREA DO MAPA -->
     <div class="editor-workspace">
       <div class="area-grid-container">
-        <!-- HUD Inferior ao tocar ou passar o mouse sobre uma vaga -->
         <Transition name="fade-pop">
           <div v-if="infoBadgeMotorista" class="overlay-flutuante badge-hover-setor">
             <span
@@ -15614,87 +16934,74 @@ const infoBadgeMotorista = computed(() => {
         </Transition>
 
         <div
-          class="area-grid-principal"
+          ref="containerMapaRef"
+          class="area-grid-principal area-grid-motorista-limpa"
           @mouseleave="celulaInspecionada = null"
+          @wheel="aoRolarMouseMapa"
           @touchstart.passive="iniciarToquePanZoom"
           @touchmove.prevent="moverToquePanZoom"
-          @touchend="finalizarToquePanZoom($event, inspecionarCelula)"
+          @touchend="finalizarToquePanZoom($event, inspecionarPorCoordenada)"
         >
-          <div
-            class="viewport-touch-canvas"
-            :style="{
-              transform: `translate(${panX}px, ${panY}px) scale(${zoomEscala})`,
-              transformOrigin: '0 0'
-            }"
-          >
-            <div class="matriz-com-coordenadas">
-              <div
-                class="linha-coordenadas-x"
-                :style="{ gridTemplateColumns: `36px repeat(${andarAtual.grid_x}, 36px)` }"
-              >
-                <div class="canto-xy">Y\X</div>
-                <div v-for="x in andarAtual.grid_x" :key="`mx-${x}`" class="rotulo-coord">
-                  {{ x }}
-                </div>
-              </div>
-
-              <div
-                v-for="y in andarAtual.grid_y"
-                :key="`my-${y}`"
-                class="linha-grid-y"
-                :style="{ gridTemplateColumns: `36px repeat(${andarAtual.grid_x}, 36px)` }"
-              >
-                <div class="rotulo-coord">{{ y }}</div>
-
+          <div class="caixa-escalada-motorista" :style="estiloCaixaEscalada">
+            <div
+              class="viewport-touch-canvas"
+              :style="{
+                transform: `translate(${panX}px, ${panY}px) scale(${zoomEscala})`,
+                transformOrigin: '0 0'
+              }"
+            >
+              <div class="matriz-motorista-sem-coordenadas">
                 <div
-                  v-for="x in andarAtual.grid_x"
-                  :key="`mc-${x}-${y}`"
-                  :data-coord="`${x},${y}`"
-                  class="celula-editor-fundo"
-                  :class="{
-                    'celula-esmaecida-setor':
-                      setorDestacadoId &&
-                      andarAtual.celulas[`${x},${y}`]?.setorId !== setorDestacadoId &&
-                      andarAtual.celulas[`${x},${y}`]?.tipo === 'VAGA'
-                  }"
+                  v-for="(linha, rIdx) in mapaProcessadoMotorista.linhas"
+                  :key="`m-row-${rIdx}`"
+                  class="linha-grid-y"
                   :style="{
-                    backgroundColor: andarAtual.celulas[`${x},${y}`]?.corSetor || 'transparent'
+                    gridTemplateColumns: `repeat(${mapaProcessadoMotorista.largura}, 30px)`
                   }"
-                  @mouseenter="inspecionarCelula(x, y)"
-                  @click="inspecionarCelula(x, y)"
                 >
                   <div
-                    class="quadrado-editor"
-                    :class="[
-                      andarAtual.celulas[`${x},${y}`]?.tipo === 'VAZIO' ? 'qe-vazio' : '',
-                      andarAtual.celulas[`${x},${y}`]?.tipo === 'ESTRADA' ? 'qe-estrada' : '',
-                      andarAtual.celulas[`${x},${y}`]?.tipo === 'ENTRADA' ? 'qe-entrada' : '',
-                      andarAtual.celulas[`${x},${y}`]?.tipo === 'SAIDA' ? 'qe-saida' : '',
-                      andarAtual.celulas[`${x},${y}`]?.tipo === 'ACESSO' ? 'qe-acesso' : '',
-                      andarAtual.celulas[`${x},${y}`]?.tipo === 'VAGA' &&
-                      (andarAtual.celulas[`${x},${y}`]?.inativa || !andarAtual.celulas[`${x},${y}`]?.macEsp)
-                        ? 'vaga-gerente-inativa'
-                        : '',
-                      andarAtual.celulas[`${x},${y}`]?.tipo === 'VAGA' &&
-                      !andarAtual.celulas[`${x},${y}`]?.inativa &&
-                      andarAtual.celulas[`${x},${y}`]?.macEsp &&
-                      andarAtual.celulas[`${x},${y}`]?.livre
-                        ? 'vaga-gerente-livre'
-                        : '',
-                      andarAtual.celulas[`${x},${y}`]?.tipo === 'VAGA' &&
-                      !andarAtual.celulas[`${x},${y}`]?.inativa &&
-                      andarAtual.celulas[`${x},${y}`]?.macEsp &&
-                      !andarAtual.celulas[`${x},${y}`]?.livre
-                        ? 'vaga-gerente-ocupada'
-                        : ''
-                    ]"
+                    v-for="(cel, cIdx) in linha"
+                    :key="`m-cel-${rIdx}-${cIdx}`"
+                    :data-coord="cel ? `${cel.x},${cel.y}` : ''"
+                    class="celula-motorista-compacta"
+                    :class="{
+                      'celula-esmaecida-setor':
+                        setorDestacadoId &&
+                        cel?.setorId !== setorDestacadoId &&
+                        cel?.tipo === 'VAGA'
+                    }"
+                    :style="{
+                      backgroundColor: cel?.corSetor || 'transparent'
+                    }"
+                    @mouseenter="inspecionarCelula(cel)"
+                    @click="inspecionarCelula(cel)"
                   >
-                    <span v-if="andarAtual.celulas[`${x},${y}`]?.tipo === 'VAGA'">
-                      {{ andarAtual.celulas[`${x},${y}`]?.identificador }}
-                    </span>
-                    <IconDoorEnter v-else-if="andarAtual.celulas[`${x},${y}`]?.tipo === 'ENTRADA'" :size="16" />
-                    <IconDoorExit v-else-if="andarAtual.celulas[`${x},${y}`]?.tipo === 'SAIDA'" :size="16" />
-                    <IconArrowBarRight v-else-if="andarAtual.celulas[`${x},${y}`]?.tipo === 'ACESSO'" :size="16" />
+                    <div
+                      v-if="cel && cel.tipo !== 'VAZIO'"
+                      class="quadrado-editor quadrado-motorista"
+                      :class="[
+                        cel.tipo === 'ESTRADA' ? 'qe-estrada' : '',
+                        cel.tipo === 'ENTRADA' ? 'qe-entrada' : '',
+                        cel.tipo === 'SAIDA' ? 'qe-saida' : '',
+                        cel.tipo === 'ACESSO' ? 'qe-acesso' : '',
+                        cel.tipo === 'VAGA' && (cel.inativa || !cel.macEsp)
+                          ? 'vaga-gerente-inativa'
+                          : '',
+                        cel.tipo === 'VAGA' && !cel.inativa && cel.macEsp && cel.livre
+                          ? 'vaga-gerente-livre'
+                          : '',
+                        cel.tipo === 'VAGA' && !cel.inativa && cel.macEsp && !cel.livre
+                          ? 'vaga-gerente-ocupada'
+                          : ''
+                      ]"
+                    >
+                      <span v-if="cel.tipo === 'VAGA'">
+                        {{ cel.identificador }}
+                      </span>
+                      <IconDoorEnter v-else-if="cel.tipo === 'ENTRADA'" :size="15" />
+                      <IconDoorExit v-else-if="cel.tipo === 'SAIDA'" :size="15" />
+                      <IconArrowBarRight v-else-if="cel.tipo === 'ACESSO'" :size="15" />
+                    </div>
                   </div>
                 </div>
               </div>
@@ -15703,7 +17010,6 @@ const infoBadgeMotorista = computed(() => {
         </div>
       </div>
 
-      <!-- PAINEL LATERAL: DISPONIBILIDADE POR ANDAR E SETOR -->
       <aside
         class="sidebar-direita-editor sidebar-gerente-metricas"
         :class="{ 'sidebar-mobile-aberta': painelSetoresMobileAberto }"
