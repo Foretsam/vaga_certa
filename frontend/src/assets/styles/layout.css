@@ -1236,6 +1236,79 @@
   flex-shrink: 0;
 }
 
+.btn-caution-avisos.btn-mao-ativa {
+  border-color: var(--destaque-azul);
+  background: var(--destaque-azul);
+  color: #ffffff;
+}
+
+.banner-mao-ativa {
+  background: #1e3a8a !important;
+  border-color: #38bdf8 !important;
+}
+
+.matriz-motorista-sem-coordenadas {
+  position: relative;
+  display: inline-block;
+  padding: 6px;
+  border-radius: 10px;
+}
+
+.caixa-escalada-motorista {
+  position: relative;
+  flex-shrink: 0;
+  margin: 0 auto;
+}
+
+.indicador-acesso-animado {
+  position: absolute;
+  z-index: 80;
+  transform: translate(-50%, -105%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  pointer-events: none;
+  animation: pulo-indicador-acesso 0.85s ease-in-out infinite alternate;
+}
+
+.badge-indicador-acesso {
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 900;
+  letter-spacing: 0.4px;
+  color: #ffffff;
+  white-space: nowrap;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.45);
+}
+
+.indicador-acesso-animado.entrada .badge-indicador-acesso {
+  background: #2563eb;
+  border: 1.5px solid #93c5fd;
+}
+.indicador-acesso-animado.entrada .seta-indicador-acesso {
+  color: #2563eb;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.5));
+}
+
+.indicador-acesso-animado.saida .badge-indicador-acesso {
+  background: #ea580c;
+  border: 1.5px solid #fdba74;
+}
+.indicador-acesso-animado.saida .seta-indicador-acesso {
+  color: #ea580c;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.5));
+}
+
+@keyframes pulo-indicador-acesso {
+  0% {
+    transform: translate(-50%, -102%);
+  }
+  100% {
+    transform: translate(-50%, -128%);
+  }
+}
+
 @media (max-width: 768px) {
   .card-sobre-bloco {
     padding: 18px 16px;

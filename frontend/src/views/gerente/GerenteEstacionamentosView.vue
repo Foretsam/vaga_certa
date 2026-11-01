@@ -75,16 +75,24 @@ onMounted(async () => {
     await carregarDadosDoBanco()
   }
   inicializarEstacionamentoAtivo()
-  window.addEventListener('mouseup', finalizarSelecaoMouse)
-  window.addEventListener('keydown', tratarTeclaGlobal)
+  window.addEventListener('mouseup', finalizarArrastoGerente)
   window.addEventListener('click', fecharDropdownAoClicarFora)
+  window.addEventListener('keydown', tratarEscGerente)
 })
 
 onUnmounted(() => {
-  window.removeEventListener('mouseup', finalizarSelecaoMouse)
-  window.removeEventListener('keydown', tratarTeclaGlobal)
+  window.removeEventListener('mouseup', finalizarArrastoGerente)
   window.removeEventListener('click', fecharDropdownAoClicarFora)
+  window.removeEventListener('keydown', tratarEscGerente)
 })
+
+function tratarEscGerente(e) {
+  if (e.key === 'Escape') {
+    if (modoAcaoVagas.value) cancelarModoSelecao()
+    menuOpcoesMobileAberto.value = false
+    menuSetoresMobileAberto.value = false
+  }
+}
 
 function inicializarEstacionamentoAtivo() {
   const idQuery = Number(route.query.id)

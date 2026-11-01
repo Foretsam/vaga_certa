@@ -34,6 +34,10 @@
     left: 142px;
   }
 
+  .ocultar-subtitulo-tablet-mobile {
+    display: none !important;
+  }
+
   .editor-layout {
     padding: 0;
     width: 100vw;
@@ -68,12 +72,22 @@
     cursor: pointer;
     box-shadow: 0 3px 10px rgba(0, 0, 0, 0.28);
     position: relative;
+    transition: transform 0.22s cubic-bezier(0.16, 1, 0.3, 1),
+                background-color 0.22s ease,
+                border-color 0.22s ease,
+                color 0.22s ease,
+                box-shadow 0.22s ease !important;
+  }
+
+  .hud-btn-flutuante:active {
+    transform: scale(0.92);
   }
 
   .hud-btn-flutuante.hud-ativo {
     border-color: var(--destaque-azul);
     background: var(--destaque-azul);
     color: #fff;
+    transform: scale(1.05);
   }
 
   .hud-esquerda-alertas {
@@ -84,6 +98,13 @@
   }
   .hud-esquerda-alertas.caution-pendente { border-color: #f59e0b; }
   .hud-esquerda-alertas.caution-ok { border-color: #16a34a; }
+
+  .hud-esquerda-mao {
+    position: fixed !important;
+    top: 56px;
+    left: 54px;
+    z-index: 950;
+  }
 
   .hud-mini-badge {
     position: absolute;
@@ -130,8 +151,8 @@
     color: #fff;
   }
 
-  .editor-topbar {
-    display: none;
+  .editor-topbar:not(.topbar-motorista-mapa) {
+    display: flex !important;
     position: fixed;
     top: 56px;
     right: 54px;
@@ -143,10 +164,23 @@
     align-items: stretch;
     padding: 10px;
     box-shadow: 0 10px 28px rgba(0, 0, 0, 0.45);
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transform: translateY(-8px) scale(0.96);
+    transform-origin: top right;
+    transition: opacity 0.24s cubic-bezier(0.16, 1, 0.3, 1),
+                transform 0.24s cubic-bezier(0.16, 1, 0.3, 1),
+                visibility 0.24s ease;
   }
-  .editor-topbar.topbar-mobile-aberta {
-    display: flex !important;
+  .editor-topbar.topbar-mobile-aberta,
+  .editor-topbar.tutorial-forcar-painel-mobile {
+    opacity: 1 !important;
+    visibility: visible !important;
+    pointer-events: auto !important;
+    transform: translateY(0) scale(1) !important;
   }
+
   .topbar-esquerda {
     flex-direction: column;
     align-items: stretch;
@@ -188,7 +222,7 @@
   }
 
   .sidebar-direita-editor {
-    display: none;
+    display: flex !important;
     position: fixed;
     top: 56px;
     right: 54px;
@@ -200,35 +234,59 @@
     border-radius: 12px;
     border: 1px solid var(--borda);
     box-shadow: 0 10px 28px rgba(0, 0, 0, 0.45);
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transform: translateX(12px) scale(0.96);
+    transform-origin: top right;
+    transition: opacity 0.24s cubic-bezier(0.16, 1, 0.3, 1),
+                transform 0.24s cubic-bezier(0.16, 1, 0.3, 1),
+                visibility 0.24s ease;
   }
-  .sidebar-direita-editor.sidebar-mobile-aberta {
-    display: flex !important;
+  .sidebar-direita-editor.sidebar-mobile-aberta,
+  .sidebar-direita-editor.tutorial-forcar-painel-mobile {
+    opacity: 1 !important;
+    visibility: visible !important;
+    pointer-events: auto !important;
+    transform: translateX(0) scale(1) !important;
   }
 
   .admin-container {
     padding: 18px 16px 24px 16px;
   }
 
-  /* Centralização simétrica perfeita em Tablets (iPad 768x1024) */
-  .topbar-titulo-central {
-    min-height: 38px;
-    padding-top: 4px;
-    padding-left: 186px;
-    padding-right: 186px;
-  }
+  /* Centralização simétrica em porcentagem da tela (iPad 768x1024) */
+  .topbar-titulo-central,
   .topbar-titulo-central.com-botao-direita {
-    padding-left: 186px;
-    padding-right: 186px;
+    min-height: 38px;
+    padding: 4px 20vw !important;
   }
   .topbar-titulo-central h1 {
-    font-size: 19px;
+    font-size: 22px;
   }
   .subtitulo {
     font-size: 12.5px;
   }
-  .btn-voltar-topo {
-    padding: 7px 12px !important;
+
+  /* Remove o translateY(-50%) herdado para o botão Voltar nunca cortar no topo */
+  .btn-voltar-topo,
+  .topbar-titulo-central .btn-voltar-topo {
+    position: fixed !important;
+    top: 10px !important;
+    right: 12px !important;
+    z-index: 1000;
+    height: 38px !important;
+    padding: 0 12px !important;
     font-size: 13px !important;
+    transform: none !important;
+  }
+  .btn-voltar-topo:hover:not(:disabled),
+  .topbar-titulo-central .btn-voltar-topo:hover:not(:disabled) {
+    transform: translateY(-1px) !important;
+  }
+  .btn-voltar-topo:active:not(:disabled),
+  .topbar-titulo-central .btn-voltar-topo:active:not(:disabled) {
+    transform: none !important;
   }
 
   .sidebar-direita-editor .painel-ferramentas { padding: 10px; }
@@ -239,7 +297,7 @@
 
   .painel-avisos-overlay {
     top: 56px;
-    left: 54px;
+    left: 98px;
     right: auto;
     width: 270px;
   }
@@ -284,11 +342,6 @@
     grid-template-columns: 1fr;
   }
 
-  .editor-topbar.tutorial-forcar-painel-mobile,
-  .sidebar-direita-editor.tutorial-forcar-painel-mobile {
-    display: flex !important;
-  }
-
   .grupo-filtros-navegacao-gerente,
   .grupo-inativar-reativar-gerente,
   .grupo-calor-simulacao-gerente {
@@ -313,21 +366,21 @@
   .topbar-titulo-central,
   .topbar-titulo-central.com-botao-direita {
     margin-top: 44px;
-    padding-top: 4px;
-    padding-left: 8px !important;
-    padding-right: 8px !important;
+    padding: 4px 6vw !important;
     margin-bottom: 14px;
     min-height: auto;
   }
 
+  .btn-voltar-topo,
   .topbar-titulo-central .btn-voltar-topo {
-    position: fixed;
-    top: 10px;
-    right: 10px;
+    position: fixed !important;
+    top: 10px !important;
+    right: 10px !important;
     z-index: 1000;
-    height: 38px;
+    height: 38px !important;
     padding: 0 12px !important;
     font-size: 12px !important;
+    transform: none !important;
   }
 
   .topbar-titulo-central h1 {
@@ -516,37 +569,6 @@
   }
 
   .topbar-direita-motorista {
-    display: none !important;
-  }
-}
-
-@media (max-width: 480px) {
-  .auth-card {
-    padding: 22px 16px;
-  }
-  .auth-cabecalho h1 {
-    font-size: 20px;
-  }
-}
-
-@media print {
-  body * {
-    visibility: hidden;
-  }
-  .modal-qr-gerente,
-  .modal-qr-gerente * {
-    visibility: visible;
-  }
-  .modal-qr-gerente {
-    position: fixed;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    box-shadow: none !important;
-    border: none !important;
-  }
-  .modal-qr-gerente .modal-acoes,
-  .modal-qr-gerente .btn-fechar-mini {
     display: none !important;
   }
 }

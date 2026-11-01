@@ -20,7 +20,9 @@ import {
   IconDoorEnter,
   IconDoorExit,
   IconArrowBarRight,
-  IconAlertSquareRounded
+  IconAlertSquareRounded,
+  IconArrowDown,
+  IconArrowUp
 } from '@/constants/icons'
 
 const route = useRoute()
@@ -32,6 +34,8 @@ const setorDestacadoId = ref(null)
 const celulaInspecionada = ref(null)
 const painelSetoresMobileAberto = ref(false)
 const containerMapaRef = ref(null)
+const mostrarIndicadoresAcesso = ref(true)
+let timerIndicadores = null
 
 const TAMANHO_CELULA = 30
 
@@ -45,17 +49,27 @@ const {
   resetarCameraGrid
 } = useGridPanZoom()
 
+function dispararIndicadoresTemporarios() {
+  mostrarIndicadoresAcesso.value = true
+  if (timerIndicadores) clearTimeout(timerIndicadores)
+  timerIndicadores = setTimeout(() => {
+    mostrarIndicadoresAcesso.value = false
+  }, 4500)
+}
+
 onMounted(async () => {
   if (estabelecimentos.value.length === 0) {
     await carregarDadosDoBanco()
   }
   await nextTick()
   ajustarZoomERolagemParaEntrada()
+  dispararIndicadoresTemporarios()
   window.addEventListener('click', fecharDropdownAndarFora)
   window.addEventListener('resize', ajustarZoomERolagemParaEntrada)
 })
 
 onUnmounted(() => {
+  if (timerIndicadores) clearTimeout(timerIndicadores)
   window.removeEventListener('click', fecharDropdownAndarFora)
   window.removeEventListener('resize', ajustarZoomERolagemParaEntrada)
 })
@@ -91,7 +105,9 @@ const mapaProcessadoMotorista = computed(() => {
     return {
       largura: 1,
       altura: 1,
-      linhas: [[todas[0]]]
+      linhas: [[todas[0]]],
+      pontoEntrada: null,
+      pontoSaida: null
     }
   }
 
@@ -153,10 +169,36 @@ const mapaProcessadoMotorista = computed(() => {
     matriz = nova
   }
 
+  const coordsEntrada = []
+  const coordsSaida = []
+
+  matriz.forEach((linha, rIdx) => {
+    linha.forEach((cel, cIdx) => {
+      if (cel?.tipo === 'ENTRADA') coordsEntrada.push({ col: cIdx, row: rIdx })
+      if (cel?.tipo === 'SAIDA') coordsSaida.push({ col: cIdx, row: rIdx })
+    })
+  })
+
+  const pontoEntrada = coordsEntrada.length > 0
+    ? {
+        col: coordsEntrada.reduce((a, b) => a + b.col, 0) / coordsEntrada.length,
+        row: coordsEntrada.reduce((a, b) => a + b.row, 0) / coordsEntrada.length
+      }
+    : null
+
+  const pontoSaida = coordsSaida.length > 0
+    ? {
+        col: coordsSaida.reduce((a, b) => a + b.col, 0) / coordsSaida.length,
+        row: coordsSaida.reduce((a, b) => a + b.row, 0) / coordsSaida.length
+      }
+    : null
+
   return {
     largura: matriz[0]?.length || 1,
     altura: matriz.length || 1,
-    linhas: matriz
+    linhas: matriz,
+    pontoEntrada,
+    pontoSaida
   }
 })
 
@@ -171,6 +213,28 @@ const estiloCaixaEscalada = computed(() => {
   }
 })
 
+const estiloIndicadorEntrada = computed(() => {
+  const pt = mapaProcessadoMotorista.value?.pontoEntrada
+  if (!pt) return null
+  const leftPx = 6 + (pt.col + 0.5) * TAMANHO_CELULA
+  const topPx = 6 + pt.row * TAMANHO_CELULA
+  return {
+    left: `${leftPx}px`,
+    top: `${topPx}px`
+  }
+})
+
+const estiloIndicadorSaida = computed(() => {
+  const pt = mapaProcessadoMotorista.value?.pontoSaida
+  if (!pt) return null
+  const leftPx = 6 + (pt.col + 0.5) * TAMANHO_CELULA
+  const topPx = 6 + pt.row * TAMANHO_CELULA
+  return {
+    left: `${leftPx}px`,
+    top: `${topPx}px`
+  }
+})
+
 function ajustarZoomERolagemParaEntrada() {
   const container = containerMapaRef.value
   const dados = mapaProcessadoMotorista.value
@@ -181,8 +245,8 @@ function ajustarZoomERolagemParaEntrada() {
   const larguraMapaPx = dados.largura * TAMANHO_CELULA + 12
   const alturaMapaPx = dados.altura * TAMANHO_CELULA + 12
 
-  const largDisp = Math.max(120, container.clientWidth - 48)
-  const altDisp = Math.max(120, container.clientHeight - 48)
+  const largDisp = Math.max(120, container.clientWidth - 32)
+  const altDisp = Math.max(120, container.clientHeight - 32)
 
   if (larguraMapaPx < largDisp && alturaMapaPx < altDisp) {
     const escalaIdeal = Math.min(largDisp / larguraMapaPx, altDisp / alturaMapaPx, 1.95)
@@ -192,11 +256,22 @@ function ajustarZoomERolagemParaEntrada() {
   }
 
   setTimeout(() => {
-    if (!containerMapaRef.value) return
-    containerMapaRef.value.scrollTop = containerMapaRef.value.scrollHeight
-    const sobraH = containerMapaRef.value.scrollWidth - containerMapaRef.value.clientWidth
-    containerMapaRef.value.scrollLeft = sobraH > 0 ? Math.floor(sobraH / 2) : 0
-  }, 60)
+    const el = containerMapaRef.value
+    if (!el) return
+    const escala = zoomEscala.value
+    const foco = dados.pontoEntrada || dados.pontoSaida
+
+    if (foco) {
+      const focoXPx = (6 + (foco.col + 0.5) * TAMANHO_CELULA) * escala
+      const focoYPx = (6 + (foco.row + 1) * TAMANHO_CELULA) * escala
+      el.scrollLeft = Math.max(0, Math.round(focoXPx - el.clientWidth / 2 + 16))
+      el.scrollTop = Math.max(0, Math.round(focoYPx - el.clientHeight + 80))
+    } else {
+      el.scrollTop = el.scrollHeight
+      const sobraH = el.scrollWidth - el.clientWidth
+      el.scrollLeft = sobraH > 0 ? Math.floor(sobraH / 2) : 0
+    }
+  }, 80)
 }
 
 function alterarZoomBotao(delta) {
@@ -219,6 +294,7 @@ watch(
     celulaInspecionada.value = null
     await nextTick()
     ajustarZoomERolagemParaEntrada()
+    dispararIndicadoresTemporarios()
   }
 )
 
@@ -358,7 +434,6 @@ const infoBadgeMotorista = computed(() => {
       </button>
     </div>
 
-    <!-- BARRA SUPERIOR DO MOTORISTA -->
     <header class="editor-topbar topbar-motorista-mapa">
       <div class="topbar-esquerda">
         <button
@@ -378,7 +453,6 @@ const infoBadgeMotorista = computed(() => {
           </span>
         </div>
 
-        <!-- Seletor de Andar Estilizado -->
         <div class="seletor-multi-wrapper seletor-andar-custom">
           <button
             type="button"
@@ -412,7 +486,6 @@ const infoBadgeMotorista = computed(() => {
           </Transition>
         </div>
 
-        <!-- Controles de Zoom -->
         <div class="controles-zoom-motorista">
           <button
             type="button"
@@ -459,7 +532,6 @@ const infoBadgeMotorista = computed(() => {
       </div>
     </header>
 
-    <!-- ÁREA DO MAPA -->
     <div class="editor-workspace">
       <div class="area-grid-container">
         <Transition name="fade-pop">
@@ -493,6 +565,29 @@ const infoBadgeMotorista = computed(() => {
               }"
             >
               <div class="matriz-motorista-sem-coordenadas">
+                <!-- Indicadores animados de Entrada e Saída (saem após poucos segundos) -->
+                <Transition name="fade-pop">
+                  <div
+                    v-if="mostrarIndicadoresAcesso && estiloIndicadorEntrada"
+                    class="indicador-acesso-animado entrada"
+                    :style="estiloIndicadorEntrada"
+                  >
+                    <span class="badge-indicador-acesso">ENTRADA AQUI</span>
+                    <IconArrowDown :size="22" stroke-width="3" class="seta-indicador-acesso" />
+                  </div>
+                </Transition>
+
+                <Transition name="fade-pop">
+                  <div
+                    v-if="mostrarIndicadoresAcesso && estiloIndicadorSaida"
+                    class="indicador-acesso-animado saida"
+                    :style="estiloIndicadorSaida"
+                  >
+                    <span class="badge-indicador-acesso">SAÍDA</span>
+                    <IconArrowDown :size="22" stroke-width="3" class="seta-indicador-acesso" />
+                  </div>
+                </Transition>
+
                 <div
                   v-for="(linha, rIdx) in mapaProcessadoMotorista.linhas"
                   :key="`m-row-${rIdx}`"

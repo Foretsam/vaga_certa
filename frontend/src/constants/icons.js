@@ -48,5 +48,8 @@ export {
   IconPlayerPlay,
   IconSun,
   IconMoon,
-  IconChevronUp
+  IconChevronUp,
+  IconHandMove,
+  IconArrowUp,
+  IconArrowDown
 } from '@tabler/icons-vue'

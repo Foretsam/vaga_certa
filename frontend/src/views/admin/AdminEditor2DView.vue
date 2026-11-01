@@ -32,7 +32,8 @@ import {
   IconSettings,
   IconRoad,
   IconParking,
-  IconSquareRoundedChevronDown
+  IconSquareRoundedChevronDown,
+  IconHandMove
 } from '@/constants/icons'
 
 const router = useRouter()
@@ -80,6 +81,7 @@ function alternarPainelAvisos() {
 // =========================================================
 const dropdownAndarEditorAberto = ref(false)
 const gridPrincipalRef = ref(null)
+const modoMoverMapa = ref(false)
 
 const panX = ref(0)
 const panY = ref(0)
@@ -87,8 +89,18 @@ const zoomEscala = ref(1)
 
 let toqueUnico = null
 let pinchInicial = null
+let arrastandoMapaMouse = null
 let autoScrollFrame = null
 let ponteiroAtualClient = { x: 0, y: 0 }
+
+function alternarModoMoverMapa() {
+  modoMoverMapa.value = !modoMoverMapa.value
+  if (modoMoverMapa.value) {
+    ferramentaCarimbo.value = null
+    arrastando.value = false
+    pararLoopAutoScroll()
+  }
+}
 
 function distanciaEntreToques(t1, t2) {
   return Math.hypot(t2.clientX - t1.clientX, t2.clientY - t1.clientY)
@@ -172,7 +184,6 @@ function pararLoopAutoScroll() {
     autoScrollFrame = null
   }
 }
-
 // No tablet/celular: 2 dedos movem/dão zoom no mapa; 1 dedo seleciona quadrados com swipe
 function aoIniciarToqueGrid(e) {
   if (e.touches.length === 2) {
@@ -189,13 +200,29 @@ function aoIniciarToqueGrid(e) {
       meioX: meio.x,
       meioY: meio.y
     }
-  } else if (e.touches.length === 1) {
+    return
+  }
+
+  if (e.touches.length === 1) {
     pinchInicial = null
     const t = e.touches[0]
+
+    if (modoMoverMapa.value) {
+      toqueUnico = {
+        modo: 'PAN',
+        startX: t.clientX,
+        startY: t.clientY,
+        panXInicial: panX.value,
+        panYInicial: panY.value
+      }
+      return
+    }
+
     ponteiroAtualClient = { x: t.clientX, y: t.clientY }
     const coord = obterCoordenadaPorPontoTela(t.clientX, t.clientY)
 
     toqueUnico = {
+      modo: 'SELECT',
       startX: t.clientX,
       startY: t.clientY,
       lastX: t.clientX,
@@ -208,7 +235,8 @@ function aoIniciarToqueGrid(e) {
       arrastando.value = true
       mostrarMenuFlutuante.value = false
       pontoInicialArrasto.value = coord
-      baseSelecionadosCtrl.value = new Set(selecionados.value)
+      baseSelecionadosCtrl.value = new Set()
+      selecionados.value = new Set([`${coord.x},${coord.y}`])
       iniciarLoopAutoScroll()
     }
   }
@@ -222,15 +250,24 @@ function aoMoverToqueGrid(e) {
     zoomEscala.value = Math.min(2.5, Math.max(0.45, pinchInicial.escala * fator))
     panX.value = pinchInicial.panX + (novoMeio.x - pinchInicial.meioX)
     panY.value = pinchInicial.panY + (novoMeio.y - pinchInicial.meioY)
-  } else if (e.touches.length === 1 && toqueUnico) {
+    return
+  }
+
+  if (e.touches.length === 1 && toqueUnico) {
     const t = e.touches[0]
+    if (toqueUnico.modo === 'PAN') {
+      const dx = t.clientX - toqueUnico.startX
+      const dy = t.clientY - toqueUnico.startY
+      panX.value = toqueUnico.panXInicial + dx
+      panY.value = toqueUnico.panYInicial + dy
+      return
+    }
+
     toqueUnico.lastX = t.clientX
     toqueUnico.lastY = t.clientY
     ponteiroAtualClient = { x: t.clientX, y: t.clientY }
 
-    const dx = t.clientX - toqueUnico.startX
-    const dy = t.clientY - toqueUnico.startY
-    if (Math.hypot(dx, dy) > 6) {
+    if (Math.hypot(t.clientX - toqueUnico.startX, t.clientY - toqueUnico.startY) > 6) {
       toqueUnico.moveu = true
     }
 
@@ -251,24 +288,112 @@ function aoFinalizarToqueGrid(e) {
     arrastando.value = false
 
     if (toqueUnico) {
-      if (!toqueUnico.moveu && toqueUnico.coordInicial) {
-        const { x: cx, y: cy } = toqueUnico.coordInicial
-        if (ferramentaCarimbo.value) {
-          aplicarCarimboNoGrid(cx, cy)
-        } else {
-          const chave = `${cx},${cy}`
-          const nova = new Set(baseSelecionadosCtrl.value)
-          if (nova.has(chave)) {
-            nova.delete(chave)
-          } else {
-            nova.add(chave)
-          }
-          selecionados.value = nova
+      if (toqueUnico.modo === 'SELECT') {
+        if (!toqueUnico.moveu && toqueUnico.coordInicial && ferramentaCarimbo.value) {
+          aplicarCarimboNoGrid(toqueUnico.coordInicial.x, toqueUnico.coordInicial.y)
         }
+        mostrarMenuFlutuante.value = selecionados.value.size > 0
       }
-      mostrarMenuFlutuante.value = selecionados.value.size > 0
       toqueUnico = null
     }
+  }
+}
+
+function iniciarSelecaoCelula(x, y, event) {
+  if (modoMoverMapa.value) {
+    arrastandoMapaMouse = {
+      startX: event.clientX,
+      startY: event.clientY,
+      panXInicial: panX.value,
+      panYInicial: panY.value
+    }
+    return
+  }
+
+  if (ferramentaCarimbo.value) {
+    aplicarCarimboNoGrid(x, y)
+    return
+  }
+
+  arrastando.value = true
+  mostrarMenuFlutuante.value = false
+  pontoInicialArrasto.value = { x, y }
+  ponteiroAtualClient = { x: event.clientX, y: event.clientY }
+  const chave = `${x},${y}`
+
+  if (event.ctrlKey || event.metaKey) {
+    baseSelecionadosCtrl.value = new Set(selecionados.value)
+    if (baseSelecionadosCtrl.value.has(chave)) {
+      baseSelecionadosCtrl.value.delete(chave)
+    } else {
+      baseSelecionadosCtrl.value.add(chave)
+    }
+    selecionados.value = new Set(baseSelecionadosCtrl.value)
+  } else {
+    baseSelecionadosCtrl.value = new Set()
+    selecionados.value = new Set([chave])
+  }
+  iniciarLoopAutoScroll()
+}
+
+function moverMouseCelula(x, y, event) {
+  hoverCoord.value = { x, y }
+  if (arrastandoMapaMouse && event) {
+    panX.value = arrastandoMapaMouse.panXInicial + (event.clientX - arrastandoMapaMouse.startX)
+    panY.value = arrastandoMapaMouse.panYInicial + (event.clientY - arrastandoMapaMouse.startY)
+    return
+  }
+  if (event) {
+    ponteiroAtualClient = { x: event.clientX, y: event.clientY }
+  }
+  if (!arrastando.value || !pontoInicialArrasto.value) return
+  atualizarRetanguloSelecao(x, y)
+}
+
+function finalizarSelecaoMouse() {
+  arrastandoMapaMouse = null
+  pararLoopAutoScroll()
+  if (arrastando.value) {
+    arrastando.value = false
+    if (selecionados.value.size > 0) {
+      mostrarMenuFlutuante.value = true
+    }
+  }
+}
+
+function tratarTeclaGlobal(event) {
+  const tagAtiva = document.activeElement?.tagName
+  const digitandoEmInput = tagAtiva === 'INPUT' || tagAtiva === 'TEXTAREA' || tagAtiva === 'SELECT'
+
+  if (!digitandoEmInput && (event.ctrlKey || event.metaKey)) {
+    const tecla = event.key.toLowerCase()
+    if (tecla === 'z' && !event.shiftKey) {
+      event.preventDefault()
+      desfazer()
+      return
+    }
+    if (tecla === 'y' || (tecla === 'z' && event.shiftKey)) {
+      event.preventDefault()
+      refazer()
+      return
+    }
+  }
+
+  if (event.key === 'Escape') {
+    if (modoMoverMapa.value) {
+      modoMoverMapa.value = false
+      return
+    }
+    if (ferramentaCarimbo.value) ferramentaCarimbo.value = null
+    if (mostrarMenuFlutuante.value) {
+      mostrarMenuFlutuante.value = false
+      selecionados.value.clear()
+    }
+    mostrarPainelAvisos.value = false
+    menuTopoMobileAberto.value = false
+    menuAdicionarMobileAberto.value = false
+    dropdownSetoresAberto.value = false
+    dropdownAndarEditorAberto.value = false
   }
 }
 // =========================================================
@@ -440,51 +565,6 @@ const pontoInicialArrasto = ref(null)
 const baseSelecionadosCtrl = ref(new Set())
 const mostrarMenuFlutuante = ref(false)
 
-function iniciarSelecaoCelula(x, y, event) {
-  if (ferramentaCarimbo.value) {
-    aplicarCarimboNoGrid(x, y)
-    return
-  }
-
-  arrastando.value = true
-  mostrarMenuFlutuante.value = false
-  pontoInicialArrasto.value = { x, y }
-  ponteiroAtualClient = { x: event.clientX, y: event.clientY }
-  const chave = `${x},${y}`
-
-  if (event.ctrlKey || event.metaKey) {
-    baseSelecionadosCtrl.value = new Set(selecionados.value)
-    if (baseSelecionadosCtrl.value.has(chave)) {
-      baseSelecionadosCtrl.value.delete(chave)
-    } else {
-      baseSelecionadosCtrl.value.add(chave)
-    }
-    selecionados.value = new Set(baseSelecionadosCtrl.value)
-  } else {
-    baseSelecionadosCtrl.value = new Set()
-    selecionados.value = new Set([chave])
-  }
-  iniciarLoopAutoScroll()
-}
-
-function moverMouseCelula(x, y, event) {
-  hoverCoord.value = { x, y }
-  if (event) {
-    ponteiroAtualClient = { x: event.clientX, y: event.clientY }
-  }
-  if (!arrastando.value || !pontoInicialArrasto.value) return
-  atualizarRetanguloSelecao(x, y)
-}
-
-function finalizarSelecaoMouse() {
-  pararLoopAutoScroll()
-  if (arrastando.value) {
-    arrastando.value = false
-    if (selecionados.value.size > 0) {
-      mostrarMenuFlutuante.value = true
-    }
-  }
-}
 
 // =========================================================
 // AÇÕES DE SETOR, ESTRADAS, VAGAS E BORRACHA
@@ -1033,38 +1113,6 @@ function confirmarModalSucessoSalvar() {
   router.push({ name: 'admin-lista' })
 }
 
-function tratarTeclaGlobal(event) {
-  const tagAtiva = document.activeElement?.tagName
-  const digitandoEmInput = tagAtiva === 'INPUT' || tagAtiva === 'TEXTAREA' || tagAtiva === 'SELECT'
-
-  if (!digitandoEmInput && (event.ctrlKey || event.metaKey)) {
-    const tecla = event.key.toLowerCase()
-    if (tecla === 'z' && !event.shiftKey) {
-      event.preventDefault()
-      desfazer()
-      return
-    }
-    if (tecla === 'y' || (tecla === 'z' && event.shiftKey)) {
-      event.preventDefault()
-      refazer()
-      return
-    }
-  }
-
-  if (event.key === 'Escape') {
-    if (ferramentaCarimbo.value) ferramentaCarimbo.value = null
-    if (mostrarMenuFlutuante.value) {
-      mostrarMenuFlutuante.value = false
-      selecionados.value.clear()
-    }
-    mostrarPainelAvisos.value = false
-    menuTopoMobileAberto.value = false
-    menuAdicionarMobileAberto.value = false
-    dropdownSetoresAberto.value = false
-    dropdownAndarEditorAberto.value = false
-  }
-}
-
 onMounted(() => {
   window.addEventListener('mouseup', finalizarSelecaoMouse)
   window.addEventListener('keydown', tratarTeclaGlobal)
@@ -1086,6 +1134,15 @@ onUnmounted(() => {
     >
       <IconAlertSquareRounded :size="20" />
       <span class="hud-mini-badge">{{ listaAvisosValidacao.length }}</span>
+    </button>
+
+    <button
+      class="hud-btn-flutuante hud-esquerda-mao"
+      :class="{ 'hud-ativo': modoMoverMapa }"
+      title="Mover Mapa (Arrastar Tela)"
+      @click="alternarModoMoverMapa"
+    >
+      <IconHandMove :size="20" />
     </button>
 
     <div class="hud-coluna-direita-mobile">
@@ -1197,6 +1254,16 @@ onUnmounted(() => {
 
       <div class="topbar-direita">
         <button
+          type="button"
+          class="btn-caution-avisos"
+          :class="{ 'btn-mao-ativa': modoMoverMapa }"
+          title="Alternar modo Mover Mapa (ESC para sair)"
+          @click="alternarModoMoverMapa"
+        >
+          <IconHandMove :size="20" />
+        </button>
+
+        <button
           class="btn-caution-avisos"
           :class="{ 'caution-ok': podeSalvarEstacionamento, 'caution-pendente': !podeSalvarEstacionamento }"
           title="Clique para mostrar/ocultar avisos de validação"
@@ -1244,12 +1311,12 @@ onUnmounted(() => {
         </Transition>
 
         <Transition name="fade-pop">
-          <div v-if="ferramentaCarimbo" class="overlay-flutuante banner-carimbo-overlay">
+          <div v-if="modoMoverMapa" class="overlay-flutuante banner-carimbo-overlay banner-mao-ativa">
             <span class="item-icone-texto">
-              <IconPin :size="18" />
-              <strong>{{ ferramentaCarimbo.tipo }} ({{ ferramentaCarimbo.w }}x{{ ferramentaCarimbo.h }})</strong> — Toque no Grid
+              <IconHandMove :size="18" />
+              <strong>Modo mover tela ativo</strong> — Pressione <strong>ESC</strong> ou toque na mão para sair
             </span>
-            <button class="btn-cancelar-carimbo" @click="ferramentaCarimbo = null">
+            <button class="btn-cancelar-carimbo" @click="modoMoverMapa = false">
               <IconSquareRoundedX :size="16" />
             </button>
           </div>

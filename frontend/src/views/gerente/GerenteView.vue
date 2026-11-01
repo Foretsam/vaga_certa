@@ -80,7 +80,7 @@ const textoBotaoSeletorTopo = computed(() => {
     const est = estabelecimentosDoGerentePorCidade.value.find(e => e.id === idsSelecionadosGerente.value[0])
     return est ? est.nome : '1 selecionado'
   }
-  return `${qtdSel} estacionamentos selecionados`
+  return `${qtdSel} selecionados`
 })
 
 function selecionarDashboardCompleto() {
@@ -242,8 +242,10 @@ function abrirEstacionamentoTelaCheia(idEst) {
     <header class="gerente-header-topo">
       <div class="gerente-boas-vindas">
         <div>
-          <h1>Bem-vindo, {{ usuarioLogado?.nome || 'Gerente' }}</h1>
-          <p class="subtitulo">Painel de controle operacional com indicadores em tempo real !</p>
+          <h1>Olá, Bem Vindo!</h1>
+          <p class="subtitulo ocultar-subtitulo-tablet-mobile">
+            Painel operacional e indicadores em tempo real dos seus estacionamentos
+          </p>
         </div>
 
         <div class="gerente-atalhos-topo">

@@ -1,5 +1,5 @@
 <script setup>
-import { ref, computed, onMounted } from 'vue'
+import { ref, computed, watch, onMounted, onUnmounted } from 'vue'
 import { useRouter } from 'vue-router'
 import {
   estabelecimentos,
@@ -24,10 +24,26 @@ import {
 const router = useRouter()
 const termoPesquisaAdmin = ref('')
 const paginaAtualAdmin = ref(1)
-const itensPorPagina = 5
+const itensPorPagina = ref(6)
+
+function calcularItensPorAlturaTela() {
+  const alturaTela = window.innerHeight
+  const larguraTela = window.innerWidth
+  const espacoReservadoSeguranca = larguraTela <= 768 ? 285 : 310
+  const alturaPorLinha = larguraTela <= 768 ? 58 : 68
+  const disponivel = Math.max(220, alturaTela - espacoReservadoSeguranca)
+  const calculado = Math.floor(disponivel / alturaPorLinha)
+  itensPorPagina.value = Math.max(4, Math.min(14, calculado))
+}
 
 onMounted(() => {
   carregarDadosDoBanco()
+  calcularItensPorAlturaTela()
+  window.addEventListener('resize', calcularItensPorAlturaTela)
+})
+
+onUnmounted(() => {
+  window.removeEventListener('resize', calcularItensPorAlturaTela)
 })
 
 function obterNomeEmailUsuario(idUsuario) {
@@ -50,12 +66,18 @@ const estabelecimentosFiltrados = computed(() => {
 })
 
 const totalPaginasAdmin = computed(() =>
-  Math.max(1, Math.ceil(estabelecimentosFiltrados.value.length / itensPorPagina))
+  Math.max(1, Math.ceil(estabelecimentosFiltrados.value.length / itensPorPagina.value))
 )
 
+watch(totalPaginasAdmin, (novoTotal) => {
+  if (paginaAtualAdmin.value > novoTotal) {
+    paginaAtualAdmin.value = novoTotal
+  }
+})
+
 const estabelecimentosPaginados = computed(() => {
-  const inicio = (paginaAtualAdmin.value - 1) * itensPorPagina
-  return estabelecimentosFiltrados.value.slice(inicio, inicio + itensPorPagina)
+  const inicio = (paginaAtualAdmin.value - 1) * itensPorPagina.value
+  return estabelecimentosFiltrados.value.slice(inicio, inicio + itensPorPagina.value)
 })
 
 function criarNovo() {
@@ -102,7 +124,7 @@ async function removerEstabelecimento(est) {
         <input
           v-model="termoPesquisaAdmin"
           type="text"
-          placeholder="Pesquisar por nome ou ID..."
+          placeholder="Pesquisar por nome, cidade ou ID..."
           class="input-pesquisa-grande com-icone"
           @input="paginaAtualAdmin = 1"
         />
@@ -140,11 +162,11 @@ async function removerEstabelecimento(est) {
           </button>
           <button
             class="btn-icone inativar"
-            :title="est.inativo ? 'Reativar' : 'Inativar'"
+            :title="est.inativo ? 'Reativar Estacionamento' : 'Inativar Estacionamento'"
             @click="alternarInativoEstabelecimento(est)"
           >
-            <IconSquareRoundedCheck v-if="est.inativo" :size="18" style="color: #16a34a" />
-            <IconBan v-else :size="18" style="color: #dc2626" />
+            <IconSquareRoundedCheck v-if="est.inativo" :size="18" />
+            <IconBan v-else :size="18" />
           </button>
           <button class="btn-icone remover" title="Remover Permanentemente" @click="removerEstabelecimento(est)">
             <IconTrash :size="18" />
@@ -152,18 +174,28 @@ async function removerEstabelecimento(est) {
         </div>
       </div>
 
-      <div v-if="estabelecimentosPaginados.length === 0" class="lista-vazia">
+      <div v-if="estabelecimentosFiltrados.length === 0" class="lista-vazia">
         Nenhum estacionamento encontrado.
       </div>
     </div>
 
-    <div class="paginacao-admin">
-      <button class="item-icone-texto" :disabled="paginaAtualAdmin <= 1" @click="paginaAtualAdmin--">
+    <div v-if="totalPaginasAdmin > 1" class="paginacao-rodape">
+      <button
+        class="btn-secundario item-icone-texto"
+        :disabled="paginaAtualAdmin <= 1"
+        @click="paginaAtualAdmin--"
+      >
         <IconSquareRoundedChevronLeft :size="18" />
         <span>Anterior</span>
       </button>
-      <span>Página {{ paginaAtualAdmin }} de {{ totalPaginasAdmin }}</span>
-      <button class="item-icone-texto" :disabled="paginaAtualAdmin >= totalPaginasAdmin" @click="paginaAtualAdmin++">
+      <span class="info-paginacao">
+        Página {{ paginaAtualAdmin }} de {{ totalPaginasAdmin }}
+      </span>
+      <button
+        class="btn-secundario item-icone-texto"
+        :disabled="paginaAtualAdmin >= totalPaginasAdmin"
+        @click="paginaAtualAdmin++"
+      >
         <span>Próxima</span>
         <IconSquareRoundedChevronRight :size="18" />
       </button>
