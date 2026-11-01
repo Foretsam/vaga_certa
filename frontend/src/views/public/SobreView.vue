@@ -16,7 +16,9 @@ const router = useRouter()
     <header class="topbar-titulo-central com-botao-direita">
       <div class="bloco-titulo-centro">
         <h1>Sobre o Vaga Certa</h1>
-        <p class="subtitulo">Gestão de fluxo para estacionamentos e localização de vagas em tempo real</p>
+        <p class="subtitulo ocultar-subtitulo-mobile">
+          Gestão de fluxo para estacionamentos e localização de vagas em tempo real
+        </p>
       </div>
       <button
         class="btn-secundario btn-voltar-topo item-icone-texto"
@@ -28,7 +30,7 @@ const router = useRouter()
     </header>
 
     <div class="grade-sobre-secoes">
-      <!-- PARTE 1: PROPOSTA DO PROJETO -->
+      <!-- Seção 1: Propósito do Projeto -->
       <section class="card-sobre-bloco">
         <div class="cabecalho-sobre-bloco">
           <div class="icone-sobre-badge azul">
@@ -37,14 +39,14 @@ const router = useRouter()
           <h2>1. O Propósito do Projeto</h2>
         </div>
         <p class="texto-sobre">
-          Muitos estacionamentos operam sem dados claros de rotina: o gestor até sabe quantos veículos entraram no mês, mas não consegue acompanhar como o <strong>fluxo</strong> se comporta ao longo do dia. O <strong>Vaga Certa</strong> resolve esse problema registrando em tempo real a ocupação das vagas para entregar métricas diretas de horários de pico, tempo médio de permanência e setores mais procurados.
+          A maioria dos estacionamentos opera sem dados claros de rotina: o gestor até sabe quantos veículos entraram no mês, mas não consegue acompanhar como o <strong>fluxo de pessoas</strong> se comporta ao longo do dia. O <strong>Vaga Certa</strong> resolve esse problema registrando a ocupação das vagas para entregar métricas diretas de horários de pico, tempo médio de permanência e setores mais procurados em cada unidade.
         </p>
         <p class="texto-sobre">
-          Para o motorista, o funcionamento é direto: basta ler o QR Code na entrada do local ou buscar o estacionamento pelo site para abrir o mapa do andar e ir direto até uma vaga livre, sem precisar rodar pelos corredores.
+          Para o motorista, o funcionamento é direto: basta ler o QR Code na entrada do local ou buscar o estacionamento pelo celular para abrir o mapa do andar e ir direto até uma vaga livre, sem precisar rodar pelos corredores.
         </p>
       </section>
 
-      <!-- PARTE 2: STACK E DECISÕES TÉCNICAS -->
+      <!-- Seção 2: Tecnologias e Decisões de Projeto -->
       <section class="card-sobre-bloco">
         <div class="cabecalho-sobre-bloco">
           <div class="icone-sobre-badge roxo">
@@ -63,12 +65,12 @@ const router = useRouter()
             <strong>Backend (Python com FastAPI e MySQL):</strong> O FastAPI recebe as leituras de ocupação e responde ao painel de forma assíncrona, mantendo o sistema leve. O MySQL organiza a estrutura de andares, coordenadas do mapa, setores, usuários e o histórico de movimentação.
           </li>
           <li>
-            <strong>Protótipo de Hardware (ESP32 e HC-SR04):</strong> Em uma implantação comercial real, a leitura das vagas seria feita por equipamentos industriais. Neste projeto, usamos o microcontrolador ESP32 com sensores ultrassônicos por uma questão de orçamento, que não permitia opções superiores. O conjunto cumpriu bem o papel de simular a operação física e validar a integração em tempo real com a API.
+            <strong>Protótipo de Hardware (ESP32 e HC-SR04):</strong> Em uma implantação comercial real, a leitura das vagas seria feita por equipamentos industriais. Neste projeto, usamos o microcontrolador ESP32 com sensores ultrassônicos por uma questão de <strong>orçamento (budget)</strong>, que não permitia opções superiores. O conjunto cumpriu bem o papel de simular a operação física e validar a integração em tempo real com a API.
           </li>
         </ul>
       </section>
 
-      <!-- PARTE 3: PRÓXIMOS PASSOS E CONCLUSÃO -->
+      <!-- Seção 3: Próximos Passos e Conclusão -->
       <section class="card-sobre-bloco">
         <div class="cabecalho-sobre-bloco">
           <div class="icone-sobre-badge verde">
@@ -77,7 +79,7 @@ const router = useRouter()
           <h2>3. Próximos Passos</h2>
         </div>
         <p class="texto-sobre">
-          Com a base de software já estruturada para receber leituras de diferentes origens, a evolução natural do projeto é substituir os sensores do protótipo por duas soluções de mercado:
+          Como toda a base de software já está pronta para receber leituras de diferentes origens, a evolução natural do projeto é substituir os sensores do protótipo por duas soluções de mercado:
         </p>
         <div class="grade-planos-futuros">
           <div class="item-plano-futuro">
@@ -98,7 +100,6 @@ const router = useRouter()
       </section>
     </div>
 
-    <!-- FOOTER COM LINK DO GITHUB -->
     <footer class="sobre-footer">
       <a
         href="https://github.com/Foretsam/vaga_certa"

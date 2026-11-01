@@ -1,6 +1,8 @@
-/* =========================================================
-   ANIMAÇÕES GLOBAIS (VIEWS, MENU LATERAL, TABELAS E POPUPS)
-   ========================================================= */
+/* ==========================================================================
+   ANIMAÇÕES GLOBAIS (ROTAS, MENU LATERAL, TABELAS, LISTAS E POPUPS)
+   ========================================================================== */
+
+/* Transição entre páginas (router-view) */
 .fade-view-enter-active,
 .fade-view-leave-active {
   transition: opacity 0.14s ease, transform 0.14s cubic-bezier(0.16, 1, 0.3, 1);
@@ -14,6 +16,7 @@
   transform: translateY(-4px);
 }
 
+/* Transição de paginação e busca nas tabelas */
 .fade-tabela-enter-active,
 .fade-tabela-leave-active {
   transition: opacity 0.15s ease;
@@ -23,6 +26,7 @@
   opacity: 0;
 }
 
+/* Deslizamento da gaveta do menu lateral */
 .slide-menu-enter-active,
 .slide-menu-leave-active {
   transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.2s ease;
@@ -33,6 +37,7 @@
   opacity: 0;
 }
 
+/* Fundo escurecido de modais e menu */
 .fade-backdrop-enter-active,
 .fade-backdrop-leave-active {
   transition: opacity 0.22s ease;
@@ -42,6 +47,7 @@
   opacity: 0;
 }
 
+/* Popups, dropdowns e alertas flutuantes */
 .fade-pop-enter-active,
 .fade-pop-leave-active {
   transition: opacity 0.16s ease, transform 0.16s cubic-bezier(0.16, 1, 0.3, 1);
@@ -50,4 +56,45 @@
 .fade-pop-leave-to {
   opacity: 0;
   transform: translateY(-4px) scale(0.98);
+}
+
+/* Transição suave ao filtrar lista de estacionamentos do motorista */
+.lista-suave-move,
+.lista-suave-enter-active,
+.lista-suave-leave-active {
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+.lista-suave-enter-from,
+.lista-suave-leave-to {
+  opacity: 0;
+  transform: translateY(6px);
+}
+
+/* Rotação do ícone Sol/Lua ao alternar tema */
+.icone-tema-spin-enter-active,
+.icone-tema-spin-leave-active {
+  transition: transform 0.32s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.22s ease;
+}
+.icone-tema-spin-enter-from {
+  opacity: 0;
+  transform: rotate(-110deg) scale(0.4);
+}
+.icone-tema-spin-leave-to {
+  opacity: 0;
+  transform: rotate(110deg) scale(0.4);
+}
+
+@keyframes giro-spinner {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes pulo-indicador-acesso {
+  0%, 100% {
+    transform: translate(-50%, -100%) translateY(0);
+  }
+  50% {
+    transform: translate(-50%, -100%) translateY(-8px);
+  }
 }

@@ -25,10 +25,7 @@ const larguraTela = ref(window.innerWidth)
 const alturaTela = ref(window.innerHeight)
 const rectDestaque = ref(null)
 
-const mostrarBotaoInfoTopo = computed(() => {
-  return Boolean(route.name && TUTORIAIS_POR_ROTA[route.name])
-})
-
+const mostrarBotaoInfoTopo = computed(() => Boolean(route.name && TUTORIAIS_POR_ROTA[route.name]))
 const ehTabletOuMobile = computed(() => larguraTela.value <= 1024)
 
 const textoExibidoEtapa = computed(() => {
@@ -45,6 +42,7 @@ function limparClassesTemporariasMobile() {
     .forEach(el => el.classList.remove('tutorial-forcar-painel-mobile'))
 }
 
+// Localiza o elemento DOM alvo da etapa atual e força a abertura de menus ocultos no mobile
 function localizarElementoAlvo(etapa) {
   if (!etapa) return null
   const seletorAtivo =
@@ -115,6 +113,7 @@ const estiloSpotlight = computed(() => {
   }
 })
 
+// Calcula a posição do popup mantendo margem de segurança para nunca cortar na borda inferior
 const estiloPopup = computed(() => {
   if (!rectDestaque.value) {
     return {
@@ -128,7 +127,6 @@ const estiloPopup = computed(() => {
   let left = rectDestaque.value.left + rectDestaque.value.width / 2 - larguraPopup / 2
   left = Math.max(12, Math.min(left, larguraTela.value - larguraPopup - 12))
 
-  // Reserva margem segura para nunca cortar os botões inferiores do card
   const alturaEstimadaPopup = 250
   let top = rectDestaque.value.bottom + 12
 
@@ -137,7 +135,6 @@ const estiloPopup = computed(() => {
     if (topAcima >= 14) {
       top = topAcima
     } else {
-      // Quando o elemento é grande (ex: Mapa 2D no Passo 3), ancora dentro da área visível com folga inferior
       top = Math.max(14, alturaTela.value - alturaEstimadaPopup - 24)
     }
   }
@@ -194,7 +191,7 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <!-- Botão Superior Info Circle nas Views Gerente e Dev para Reabrir o Tutorial -->
+  <!-- Botão Superior Info Circle para Reabrir o Tutorial -->
   <button
     v-if="mostrarBotaoInfoTopo"
     type="button"
@@ -205,14 +202,13 @@ onUnmounted(() => {
     <IconInfoCircle :size="22" />
   </button>
 
-  <!-- Camada de Bloqueio Total + Destaque Spotlight + Popup do Tutorial -->
+  <!-- Camada de Bloqueio + Destaque Spotlight + Card de Passo a Passo -->
   <Transition name="fade-backdrop">
     <div
       v-if="rotaTutorialAtivo && etapaTutorialAtual"
       class="tutorial-overlay-bloqueio"
       @click.stop.prevent
     >
-      <!-- Recorte iluminado no elemento alvo (ou fundo escuro total quando central) -->
       <div
         v-if="estiloSpotlight"
         class="tutorial-spotlight-box"
@@ -220,7 +216,6 @@ onUnmounted(() => {
       ></div>
       <div v-else class="tutorial-backdrop-central"></div>
 
-      <!-- Popup Explicativo -->
       <div class="tutorial-popup-card" :style="estiloPopup">
         <div class="tutorial-popup-topo">
           <span class="badge-etapa-tutorial">

@@ -1,6 +1,6 @@
-/* =========================================================
+/* ==========================================================================
    AUTENTICAÇÃO (LOGIN, CADASTRO E ACESSO RESTRITO)
-   ========================================================= */
+   ========================================================================== */
 .auth-card {
   background: var(--bg-card);
   border: 1px solid var(--borda);
@@ -94,6 +94,7 @@
   margin-bottom: 10px;
 }
 
+/* Slots com altura reservada para evitar saltos de layout ao validar senha */
 .slot-aviso-senha {
   display: flex;
   align-items: flex-start;
@@ -138,10 +139,6 @@
   border-top-color: #ffffff;
   border-radius: 50%;
   animation: giro-spinner 0.7s linear infinite;
-}
-
-@keyframes giro-spinner {
-  to { transform: rotate(360deg); }
 }
 
 .auth-rodape {

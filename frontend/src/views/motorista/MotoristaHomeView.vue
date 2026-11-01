@@ -25,7 +25,7 @@ const cidadeFiltro = ref('TODAS')
 const dropdownCidadeAberto = ref(false)
 const termoBuscaCidade = ref('')
 
-// Estado do Leitor de QR Code via Câmera
+// Controle da câmera para leitura de QR Code
 const cameraAtiva = ref(false)
 const erroCamera = ref('')
 const videoRef = ref(null)
@@ -51,9 +51,7 @@ function fecharDropdownCidadeFora(e) {
   }
 }
 
-const estacionamentosAtivos = computed(() => {
-  return estabelecimentos.value.filter(e => !e.inativo)
-})
+const estacionamentosAtivos = computed(() => estabelecimentos.value.filter(e => !e.inativo))
 
 const cidadesDisponiveis = computed(() => {
   const setCidades = new Set(
@@ -109,9 +107,7 @@ function abrirEstacionamentoMotorista(idEst) {
   router.push({ name: 'motorista-mapa', params: { id: idEst } })
 }
 
-// =========================================================
-// LEITOR DE QR CODE PELA CÂMERA (NATIVO + FALLBACK JSQR)
-// =========================================================
+// Carrega sob demanda a biblioteca jsQR caso o navegador não possua BarcodeDetector nativo
 function carregarJsQrFallback() {
   return new Promise((resolve) => {
     if (window.jsQR) return resolve(window.jsQR)
@@ -134,7 +130,6 @@ function extrairIdDoTextoQr(textoLido) {
   if (matchQuery) return Number(matchQuery[1])
 
   if (/^\d+$/.test(limpo)) return Number(limpo)
-
   return null
 }
 
@@ -195,7 +190,7 @@ function monitorarQuadroVideo(detectorNativo) {
             }
           }
         } catch {
-          // Segue para fallback
+          // Continua usando fallback jsQR
         }
       }
 
@@ -239,7 +234,7 @@ function pararCameraQr() {
 <template>
   <main class="motorista-home-layout">
     <div class="motorista-home-card">
-      <!-- TOPO: ESCANEAR QR CODE -->
+      <!-- Seção Superior: Leitor de QR Code -->
       <div class="motorista-qr-secao">
         <div class="icone-destaque-qr">
           <IconQrcode :size="44" />
@@ -280,7 +275,11 @@ function pararCameraQr() {
         </Transition>
 
         <Transition name="fade-pop">
-          <div v-if="erroCamera" class="alerta-auth erro item-icone-texto" style="margin-top: 12px; margin-bottom: 0">
+          <div
+            v-if="erroCamera"
+            class="alerta-auth erro item-icone-texto"
+            style="margin-top: 12px; margin-bottom: 0"
+          >
             <IconAlertSquareRounded :size="18" />
             <span>{{ erroCamera }}</span>
           </div>
@@ -291,7 +290,7 @@ function pararCameraQr() {
         <span>OU PESQUISE O ESTACIONAMENTO</span>
       </div>
 
-      <!-- FILTROS: BUSCA POR NOME E SELETOR CUSTOMIZADO DE CIDADE -->
+      <!-- Barra de Filtros: Busca por Nome + Seletor Customizado de Cidade -->
       <div class="filtros-motorista-grid">
         <div class="input-pesquisa-icone-wrapper">
           <IconSearch :size="18" class="icone-input-pesquisa" />
@@ -353,7 +352,7 @@ function pararCameraQr() {
         </div>
       </div>
 
-      <!-- LISTA DE ESTACIONAMENTOS DISPONÍVEIS COM ANIMAÇÃO SUAVE -->
+      <!-- Lista de Estacionamentos com Transição Suave -->
       <TransitionGroup name="lista-suave" tag="div" class="lista-estacionamentos-motorista">
         <div
           v-for="est in estacionamentosFiltrados"

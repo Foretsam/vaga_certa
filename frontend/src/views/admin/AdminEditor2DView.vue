@@ -4,84 +4,54 @@ import { useRouter } from 'vue-router'
 import {
   paletaSetores,
   escurecerCorHex,
-  criarMatrizVazia,
   formEstabelecimento,
   salvarEstacionamentoNoBanco
 } from '@/stores/estacionamentoStore'
 import {
-  IconSquareRoundedPlus,
-  IconSquareRoundedMinus,
-  IconTrash,
   IconSquareRoundedArrowLeft,
-  IconPin,
-  IconDeviceFloppy,
-  IconAlertSquareRounded,
+  IconStack2,
+  IconLayoutGrid,
   IconArrowBackUp,
   IconArrowForwardUp,
-  IconLayoutGrid,
+  IconAlertSquareRounded,
+  IconDeviceFloppy,
+  IconSettings,
+  IconSquareRoundedPlus,
+  IconSquareRoundedMinus,
   IconSquareRoundedCheck,
   IconSquareRoundedX,
-  IconStack2,
+  IconSquareRoundedChevronDown,
+  IconRoad,
+  IconLayoutBoard,
+  IconParking,
+  IconEraser,
   IconDoorEnter,
   IconDoorExit,
   IconArrowBarRight,
   IconCpu,
-  IconLayoutBoard,
-  IconEraser,
+  IconPencil,
+  IconTrash,
   IconSearch,
-  IconSettings,
-  IconRoad,
-  IconParking,
-  IconSquareRoundedChevronDown,
   IconHandMove
 } from '@/constants/icons'
 
 const router = useRouter()
 
-if (!formEstabelecimento.value.andares || !formEstabelecimento.value.andares[0]?.celulas) {
-  router.replace({ name: 'admin-info-gerais' })
-}
-
 const andarEditorIndex = ref(0)
-const andarEditorAtual = computed(() => formEstabelecimento.value.andares[andarEditorIndex.value])
-
-// Menus flutuantes (Mobile/Tablet <= 1024px)
-const menuTopoMobileAberto = ref(false)
-const menuAdicionarMobileAberto = ref(false)
-const mostrarPainelAvisos = ref(false)
-const salvandoNoBanco = ref(false)
-const modalSucessoSalvarAberto = ref(false)
-
-function alternarMenuEngrenagem() {
-  menuTopoMobileAberto.value = !menuTopoMobileAberto.value
-  if (menuTopoMobileAberto.value) {
-    menuAdicionarMobileAberto.value = false
-    mostrarPainelAvisos.value = false
-  }
-}
-
-function alternarMenuAdicionar() {
-  menuAdicionarMobileAberto.value = !menuAdicionarMobileAberto.value
-  if (menuAdicionarMobileAberto.value) {
-    menuTopoMobileAberto.value = false
-    mostrarPainelAvisos.value = false
-  }
-}
-
-function alternarPainelAvisos() {
-  mostrarPainelAvisos.value = !mostrarPainelAvisos.value
-  if (mostrarPainelAvisos.value) {
-    menuTopoMobileAberto.value = false
-    menuAdicionarMobileAberto.value = false
-  }
-}
-
-// =========================================================
-// TOUCH PAN (ARRASTAR DEDO) E PINCH-TO-ZOOM (MOVIMENTO PINÇA)
-// =========================================================
 const dropdownAndarEditorAberto = ref(false)
 const gridPrincipalRef = ref(null)
 const modoMoverMapa = ref(false)
+
+const selecionados = ref(new Set())
+const baseSelecionadosCtrl = ref(new Set())
+const arrastando = ref(false)
+const pontoInicialArrasto = ref(null)
+const mostrarMenuFlutuante = ref(false)
+const hoverCoord = ref(null)
+const mostrarPainelAvisos = ref(false)
+
+const menuTopoMobileAberto = ref(false)
+const menuAdicionarMobileAberto = ref(false)
 
 const panX = ref(0)
 const panY = ref(0)
@@ -92,10 +62,14 @@ let pinchInicial = null
 let arrastandoMapaMouse = null
 let autoScrollFrame = null
 let ponteiroAtualClient = { x: 0, y: 0 }
-
-// Controle de dois toques seguidos (double-tap) para sair do modo mão no iPad/iPhone
 let ultimoToqueMaoTimestamp = 0
 let ultimoToqueMaoPos = { x: 0, y: 0 }
+
+function resetarCameraGrid() {
+  panX.value = 0
+  panY.value = 0
+  zoomEscala.value = 1
+}
 
 function alternarModoMoverMapa() {
   modoMoverMapa.value = !modoMoverMapa.value
@@ -142,6 +116,7 @@ function atualizarRetanguloSelecao(x, y) {
   selecionados.value = novaSelecao
 }
 
+// Faz rolagem automática contínua caso o ponteiro se aproxime das bordas durante a seleção
 function iniciarLoopAutoScroll() {
   if (autoScrollFrame) return
   const step = () => {
@@ -189,7 +164,7 @@ function pararLoopAutoScroll() {
     autoScrollFrame = null
   }
 }
-// No tablet/celular: 2 dedos movem/dão zoom no mapa; 1 dedo seleciona quadrados com swipe
+
 function aoIniciarToqueGrid(e) {
   if (e.touches.length === 2) {
     arrastando.value = false
@@ -219,7 +194,7 @@ function aoIniciarToqueGrid(e) {
         t.clientY - ultimoToqueMaoPos.y
       )
 
-      // Se deu dois toques em sequência (< 350ms e próximos), sai do modo mover tela
+      // Dois toques em sequência desativam o modo de mover tela em tablets e celulares
       if (agora - ultimoToqueMaoTimestamp < 350 && distUltimoToque < 45) {
         modoMoverMapa.value = false
         ultimoToqueMaoTimestamp = 0
@@ -281,7 +256,6 @@ function aoMoverToqueGrid(e) {
       const dx = t.clientX - toqueUnico.startX
       const dy = t.clientY - toqueUnico.startY
       if (Math.hypot(dx, dy) > 10) {
-        // Se arrastou a tela, não conta como primeiro toque de um duplo toque
         ultimoToqueMaoTimestamp = 0
       }
       panX.value = toqueUnico.panXInicial + dx
@@ -323,6 +297,187 @@ function aoFinalizarToqueGrid(e) {
       toqueUnico = null
     }
   }
+}
+
+const historicoUndo = ref([])
+const historicoRedo = ref([])
+
+const ferramentaCarimbo = ref(null)
+const modalTamanhoAberto = ref(false)
+const tempGridX = ref(30)
+const tempGridY = ref(20)
+
+const modalSetorAberto = ref(false)
+const nomeNovoSetor = ref('')
+const prefixoNovoSetor = ref('')
+const corNovoSetor = ref(paletaSetores[0].hex)
+
+const modalAlterarSetoresAberto = ref(false)
+const termoBuscaSetor = ref('')
+const dropdownSetoresAberto = ref(false)
+const setorEmEdicaoId = ref(null)
+const editNomeSetor = ref('')
+const editPrefixoSetor = ref('')
+const editCorSetor = ref(paletaSetores[0].hex)
+
+const modalAcessoAberto = ref(false)
+const tipoAcessoTemp = ref('ENTRADA')
+const orientacaoAcessoTemp = ref('H')
+const tamanhoAcessoTemp = ref(2)
+
+const modalMacAberto = ref(false)
+const macTemp = ref('')
+const coordsParaVincularMac = ref([])
+const modalSucessoSalvarAberto = ref(false)
+const salvandoNoBanco = ref(false)
+
+const andarEditorAtual = computed(() => {
+  return formEstabelecimento.value.andares[andarEditorIndex.value] || null
+})
+
+function alternarPainelAvisos() {
+  mostrarPainelAvisos.value = !mostrarPainelAvisos.value
+  if (mostrarPainelAvisos.value) {
+    menuTopoMobileAberto.value = false
+    menuAdicionarMobileAberto.value = false
+  }
+}
+
+function alternarMenuTopoMobile() {
+  menuTopoMobileAberto.value = !menuTopoMobileAberto.value
+  if (menuTopoMobileAberto.value) {
+    menuAdicionarMobileAberto.value = false
+    mostrarPainelAvisos.value = false
+  }
+}
+
+function alternarMenuAdicionarMobile() {
+  menuAdicionarMobileAberto.value = !menuAdicionarMobileAberto.value
+  if (menuAdicionarMobileAberto.value) {
+    menuTopoMobileAberto.value = false
+    mostrarPainelAvisos.value = false
+  }
+}
+
+const celulaInspecionadaHover = computed(() => {
+  if (!hoverCoord.value || !andarEditorAtual.value) return null
+  const c = andarEditorAtual.value.celulas[`${hoverCoord.value.x},${hoverCoord.value.y}`]
+  if (!c) return null
+
+  if (c.tipo === 'VAGA') {
+    const corFundo = c.macEsp ? escurecerCorHex(c.corSetor, 0.55) : '#eab308'
+    const statusEsp = c.macEsp ? `ESP32: ${c.macEsp}` : 'Sem ESP32 (Amarela)'
+    const infoSetor = c.nomeSetor ? `Setor ${c.nomeSetor} (${c.prefixoSetor})` : 'Sem Setor'
+    return {
+      cor: corFundo,
+      titulo: `Vaga ${c.identificador || ''} — (${c.x},${c.y})`,
+      detalhe: `${infoSetor} • ${statusEsp}`
+    }
+  }
+
+  if (c.tipo === 'ESTRADA') {
+    return {
+      cor: '#1e293b',
+      titulo: `Estrada (${c.x},${c.y})`,
+      detalhe: c.nomeSetor ? `Setor ${c.nomeSetor} (${c.prefixoSetor})` : null
+    }
+  }
+
+  if (c.tipo === 'ENTRADA') {
+    return {
+      cor: '#2563eb',
+      titulo: `Entrada (${c.x},${c.y})`,
+      detalhe: `Orientação: ${c.orientacao === 'V' ? 'Vertical' : 'Horizontal'}`
+    }
+  }
+
+  if (c.tipo === 'SAIDA') {
+    return {
+      cor: '#ea580c',
+      titulo: `Saída (${c.x},${c.y})`,
+      detalhe: `Orientação: ${c.orientacao === 'V' ? 'Vertical' : 'Horizontal'}`
+    }
+  }
+
+  if (c.tipo === 'ACESSO') {
+    return {
+      cor: '#16a34a',
+      titulo: `Acesso Interno (${c.x},${c.y})`,
+      detalhe: `Orientação: ${c.orientacao === 'V' ? 'Vertical' : 'Horizontal'}`
+    }
+  }
+
+  if (c.setorId) {
+    return {
+      cor: c.corSetor,
+      titulo: `Setor ${c.nomeSetor} (${c.x},${c.y})`,
+      detalhe: `Prefixo: ${c.prefixoSetor}`
+    }
+  }
+
+  return null
+})
+
+function renumerarVagasDoAndar(andar) {
+  if (!andar) return
+  const contadoresPorSetor = {}
+
+  for (let y = 0; y < andar.grid_y; y++) {
+    for (let x = 0; x < andar.grid_x; x++) {
+      const c = andar.celulas[`${x},${y}`]
+      if (c && c.tipo === 'VAGA') {
+        const sId = c.setorId || 'PADRAO'
+        const pref = c.prefixoSetor || 'A'
+        contadoresPorSetor[sId] = (contadoresPorSetor[sId] || 0) + 1
+        c.identificador = `${pref}${contadoresPorSetor[sId]}`
+      }
+    }
+  }
+}
+
+function registrarSnapshot() {
+  if (!andarEditorAtual.value) return
+  historicoUndo.value.push(
+    JSON.stringify({
+      grid_x: andarEditorAtual.value.grid_x,
+      grid_y: andarEditorAtual.value.grid_y,
+      setores: andarEditorAtual.value.setores,
+      equipamentos: andarEditorAtual.value.equipamentos,
+      celulas: andarEditorAtual.value.celulas
+    })
+  )
+  if (historicoUndo.value.length > 40) historicoUndo.value.shift()
+  historicoRedo.value = []
+}
+
+function desfazer() {
+  if (historicoUndo.value.length === 0 || !andarEditorAtual.value) return
+  historicoRedo.value.push(
+    JSON.stringify({
+      grid_x: andarEditorAtual.value.grid_x,
+      grid_y: andarEditorAtual.value.grid_y,
+      setores: andarEditorAtual.value.setores,
+      equipamentos: andarEditorAtual.value.equipamentos,
+      celulas: andarEditorAtual.value.celulas
+    })
+  )
+  const anterior = JSON.parse(historicoUndo.value.pop())
+  Object.assign(andarEditorAtual.value, anterior)
+}
+
+function refazer() {
+  if (historicoRedo.value.length === 0 || !andarEditorAtual.value) return
+  historicoUndo.value.push(
+    JSON.stringify({
+      grid_x: andarEditorAtual.value.grid_x,
+      grid_y: andarEditorAtual.value.grid_y,
+      setores: andarEditorAtual.value.setores,
+      equipamentos: andarEditorAtual.value.equipamentos,
+      celulas: andarEditorAtual.value.celulas
+    })
+  )
+  const futuro = JSON.parse(historicoRedo.value.pop())
+  Object.assign(andarEditorAtual.value, futuro)
 }
 
 function iniciarSelecaoCelula(x, y, event) {
@@ -422,391 +577,182 @@ function tratarTeclaGlobal(event) {
     dropdownAndarEditorAberto.value = false
   }
 }
-// =========================================================
-// PILHAS DE DESFAZER / REFAZER
-// =========================================================
-const historicoUndo = ref([])
-const historicoRedo = ref([])
 
-function salvarSnapshot() {
+onMounted(() => {
+  window.addEventListener('mouseup', finalizarSelecaoMouse)
+  window.addEventListener('keydown', tratarTeclaGlobal)
+})
+
+onUnmounted(() => {
+  pararLoopAutoScroll()
+  window.removeEventListener('mouseup', finalizarSelecaoMouse)
+  window.removeEventListener('keydown', tratarTeclaGlobal)
+})
+
+function abrirModalTamanhoGrid() {
   if (!andarEditorAtual.value) return
-  historicoUndo.value.push(JSON.stringify({
-    grid_x: andarEditorAtual.value.grid_x,
-    grid_y: andarEditorAtual.value.grid_y,
-    setores: andarEditorAtual.value.setores,
-    equipamentos: andarEditorAtual.value.equipamentos,
-    celulas: andarEditorAtual.value.celulas
-  }))
-  if (historicoUndo.value.length > 30) historicoUndo.value.shift()
-  historicoRedo.value = []
+  tempGridX.value = andarEditorAtual.value.grid_x
+  tempGridY.value = andarEditorAtual.value.grid_y
+  menuTopoMobileAberto.value = false
+  modalTamanhoAberto.value = true
 }
 
-function desfazer() {
-  if (historicoUndo.value.length === 0) return
-  historicoRedo.value.push(JSON.stringify({
-    grid_x: andarEditorAtual.value.grid_x,
-    grid_y: andarEditorAtual.value.grid_y,
-    setores: andarEditorAtual.value.setores,
-    equipamentos: andarEditorAtual.value.equipamentos,
-    celulas: andarEditorAtual.value.celulas
-  }))
-  const estadoAnterior = JSON.parse(historicoUndo.value.pop())
-  Object.assign(andarEditorAtual.value, estadoAnterior)
+function confirmarTamanhoGrid() {
+  const nx = Math.min(100, Math.max(5, Number(tempGridX.value) || 5))
+  const ny = Math.min(100, Math.max(5, Number(tempGridY.value) || 5))
+  registrarSnapshot()
+
+  const novasCelulas = {}
+  for (let y = 0; y < ny; y++) {
+    for (let x = 0; x < nx; x++) {
+      const chave = `${x},${y}`
+      novasCelulas[chave] = andarEditorAtual.value.celulas[chave] || {
+        x,
+        y,
+        tipo: 'VAZIO',
+        orientacao: 'NENHUMA',
+        setorId: null,
+        nomeSetor: null,
+        prefixoSetor: null,
+        corSetor: null,
+        identificador: null,
+        livre: true,
+        inativa: false,
+        macEsp: null
+      }
+    }
+  }
+
+  andarEditorAtual.value.grid_x = nx
+  andarEditorAtual.value.grid_y = ny
+  andarEditorAtual.value.celulas = novasCelulas
+  renumerarVagasDoAndar(andarEditorAtual.value)
   selecionados.value.clear()
-}
-
-function refazer() {
-  if (historicoRedo.value.length === 0) return
-  historicoUndo.value.push(JSON.stringify({
-    grid_x: andarEditorAtual.value.grid_x,
-    grid_y: andarEditorAtual.value.grid_y,
-    setores: andarEditorAtual.value.setores,
-    equipamentos: andarEditorAtual.value.equipamentos,
-    celulas: andarEditorAtual.value.celulas
-  }))
-  const estadoFuturo = JSON.parse(historicoRedo.value.pop())
-  Object.assign(andarEditorAtual.value, estadoFuturo)
-  selecionados.value.clear()
-}
-
-function limparSetoresOrfaosNoAndar(andar) {
-  if (!andar || !andar.celulas || !andar.setores) return
-  const idsPresentesNoGrid = new Set(
-    Object.values(andar.celulas)
-      .map(c => c.setorId)
-      .filter(Boolean)
-  )
-  andar.setores = andar.setores.filter(s => idsPresentesNoGrid.has(s.id_setor))
-}
-
-// =========================================================
-// SISTEMA DE VALIDAÇÃO EM TEMPO REAL
-// =========================================================
-const listaAvisosValidacao = computed(() => {
-  const avisos = []
-  if (!formEstabelecimento.value?.andares) return avisos
-
-  let temEntradaGlobal = false
-  let temSaidaGlobal = false
-
-  formEstabelecimento.value.andares.forEach((andar) => {
-    const celulas = Object.values(andar.celulas || {})
-
-    const vagasAndar = celulas.filter(c => c.tipo === 'VAGA')
-    const semEquip = vagasAndar.some(c => !c.macEsp)
-    const semSetor = vagasAndar.some(c => !c.setorId)
-    const temEntrada = celulas.some(c => c.tipo === 'ENTRADA')
-    const temSaida = celulas.some(c => c.tipo === 'SAIDA')
-    const temAcesso = celulas.some(c => c.tipo === 'ACESSO')
-
-    if (temEntrada) temEntradaGlobal = true
-    if (temSaida) temSaidaGlobal = true
-
-    if (vagasAndar.length === 0) {
-      avisos.push(`[${andar.nome_andar}] Precisa ter ao menos 1 vaga cadastrada.`)
-    }
-    if (semEquip) {
-      avisos.push(`[${andar.nome_andar}] Há vagas amarelas sem equipamento.`)
-    }
-    if (semSetor) {
-      avisos.push(`[${andar.nome_andar}] Há vagas fora de um setor.`)
-    }
-    if (!temEntrada && !temSaida && !temAcesso) {
-      avisos.push(`[${andar.nome_andar}] Precisa ter Entrada, Saída ou Acesso.`)
-    }
-
-    ;(andar.setores || []).forEach((setor) => {
-      const vagasNoSetor = vagasAndar.filter(v => v.setorId === setor.id_setor).length
-      if (vagasNoSetor === 0) {
-        avisos.push(`[${andar.nome_andar}] Setor "${setor.nome_setor}" (${setor.prefixo}) precisa de 1 vaga.`)
-      }
-    })
-  })
-
-  if (!temEntradaGlobal) {
-    avisos.push('[Geral] Obrigatório ter 1 ENTRADA em algum andar.')
-  }
-  if (!temSaidaGlobal) {
-    avisos.push('[Geral] Obrigatório ter 1 SAÍDA em algum andar.')
-  }
-
-  return avisos
-})
-
-const podeSalvarEstacionamento = computed(() => listaAvisosValidacao.value.length === 0)
-
-// =========================================================
-// HUD INFERIOR DE HOVER PARA QUALQUER QUADRADO DO GRID
-// =========================================================
-const hoverCoord = ref(null)
-
-function contarVagasDoSetorNoAndar(setorId) {
-  if (!andarEditorAtual.value?.celulas || !setorId) return 0
-  return Object.values(andarEditorAtual.value.celulas).filter(
-    c => c.setorId === setorId && c.tipo === 'VAGA'
-  ).length
-}
-
-const infoCelulaHover = computed(() => {
-  if (!hoverCoord.value || !andarEditorAtual.value?.celulas) return null
-  const c = andarEditorAtual.value.celulas[`${hoverCoord.value.x},${hoverCoord.value.y}`]
-  if (!c) return null
-
-  const coordTexto = `(${c.x}, ${c.y})`
-
-  let tipoTexto = ''
-  if (c.tipo === 'VAZIO') {
-    tipoTexto = 'vazio'
-  } else if (c.tipo === 'ESTRADA') {
-    tipoTexto = 'estrada'
-  } else if (c.tipo === 'ENTRADA') {
-    tipoTexto = 'entrada'
-  } else if (c.tipo === 'SAIDA') {
-    tipoTexto = 'saída'
-  } else if (c.tipo === 'ACESSO') {
-    tipoTexto = 'acesso'
-  } else if (c.tipo === 'VAGA') {
-    const espInfo = c.macEsp ? c.macEsp : 'não vinculado'
-    const idVaga = c.identificador ? ` ${c.identificador}` : ''
-    tipoTexto = `vaga${idVaga} (${espInfo})`
-  }
-
-  let setorTexto = '[setor não vinculado]'
-  if (c.setorId) {
-    const qtdVagas = contarVagasDoSetorNoAndar(c.setorId)
-    setorTexto = `[${c.nomeSetor} - ${qtdVagas} vaga(s)]`
-  }
-
-  return {
-    cor: c.corSetor || '#64748b',
-    temSetor: Boolean(c.setorId),
-    textoQuadrado: `${coordTexto} - ${tipoTexto}`,
-    textoSetor: setorTexto
-  }
-})
-
-const selecionados = ref(new Set())
-const arrastando = ref(false)
-const pontoInicialArrasto = ref(null)
-const baseSelecionadosCtrl = ref(new Set())
-const mostrarMenuFlutuante = ref(false)
-
-
-// =========================================================
-// AÇÕES DE SETOR, ESTRADAS, VAGAS E BORRACHA
-// =========================================================
-function obterProximoNumeroSetor(celulas, setorId, prefixo) {
-  let maior = 0
-  const regex = new RegExp(`^${prefixo}(\\d+)$`, 'i')
-  Object.values(celulas).forEach((c) => {
-    if (c.setorId === setorId && c.tipo === 'VAGA' && c.identificador) {
-      const match = c.identificador.match(regex)
-      if (match) {
-        const num = parseInt(match[1], 10)
-        if (num > maior) maior = num
-      }
-    }
-  })
-  return maior + 1
-}
-
-function numerarVagasDoSetor(celulas, setorId, prefixo) {
-  const vagasDoSetor = Object.values(celulas)
-    .filter(c => c.setorId === setorId && c.tipo === 'VAGA')
-    .sort((a, b) => (a.y - b.y) || (a.x - b.x))
-
-  vagasDoSetor.forEach((vaga, idx) => {
-    vaga.identificador = `${prefixo}${idx + 1}`
-  })
-}
-
-function aplicarTipoSelecao(novoTipo) {
-  const celulas = andarEditorAtual.value.celulas
-  const chaves = Array.from(selecionados.value)
-
-  const temConflito = chaves.some((k) => {
-    const atual = celulas[k]?.tipo
-    return (novoTipo === 'ESTRADA' && atual === 'VAGA') || (novoTipo === 'VAGA' && atual === 'ESTRADA')
-  })
-
-  if (temConflito) {
-    const msg = novoTipo === 'ESTRADA'
-      ? 'Existem VAGAS na seleção. Deseja substituí-las por ESTRADAS?'
-      : 'Existem ESTRADAS na seleção. Deseja substituí-las por VAGAS?'
-    if (!confirm(msg)) return
-  }
-
-  salvarSnapshot()
-
-  const chavesOrdenadas = chaves.sort((a, b) => {
-    const [ax, ay] = a.split(',').map(Number)
-    const [bx, by] = b.split(',').map(Number)
-    return (ay - by) || (ax - bx)
-  })
-
-  chavesOrdenadas.forEach((k) => {
-    const c = celulas[k]
-    if (!c) return
-    const jaEraVaga = c.tipo === 'VAGA'
-    c.tipo = novoTipo
-    c.orientacao = 'NENHUMA'
-
-    if (novoTipo === 'VAGA') {
-      c.macEsp = null
-      c.livre = true
-      if (c.setorId && c.prefixoSetor) {
-        if (!jaEraVaga || !c.identificador) {
-          const prox = obterProximoNumeroSetor(celulas, c.setorId, c.prefixoSetor)
-          c.identificador = `${c.prefixoSetor}${prox}`
-        }
-      } else {
-        c.identificador = ''
-      }
-    } else {
-      c.macEsp = null
-      c.identificador = ''
-    }
-  })
-
   mostrarMenuFlutuante.value = false
-  selecionados.value.clear()
+  modalTamanhoAberto.value = false
 }
 
-function removerTipoSelecao(tipoAlvo) {
-  salvarSnapshot()
-  const celulas = andarEditorAtual.value.celulas
-  selecionados.value.forEach((k) => {
-    const c = celulas[k]
+function aplicarEstradaNaSelecao(adicionar) {
+  registrarSnapshot()
+  selecionados.value.forEach((chave) => {
+    const c = andarEditorAtual.value.celulas[chave]
     if (!c) return
-    if (tipoAlvo === 'SETOR') {
-      c.setorId = null
-      c.corSetor = null
-      c.nomeSetor = null
-      c.prefixoSetor = null
-      if (c.tipo === 'VAGA') c.identificador = ''
-    } else if (c.tipo === tipoAlvo) {
+    if (adicionar) {
+      c.tipo = 'ESTRADA'
+      c.identificador = null
+      c.macEsp = null
+    } else if (c.tipo === 'ESTRADA') {
       c.tipo = 'VAZIO'
-      c.macEsp = null
-      c.identificador = ''
     }
   })
-  limparSetoresOrfaosNoAndar(andarEditorAtual.value)
-  mostrarMenuFlutuante.value = false
-  selecionados.value.clear()
+  renumerarVagasDoAndar(andarEditorAtual.value)
 }
 
-function limparTudoNaSelecao() {
-  salvarSnapshot()
-  const celulas = andarEditorAtual.value.celulas
-  selecionados.value.forEach((k) => {
-    const c = celulas[k]
-    if (!c) return
-    c.tipo = 'VAZIO'
-    c.orientacao = 'NENHUMA'
-    c.setorId = null
-    c.corSetor = null
-    c.nomeSetor = null
-    c.prefixoSetor = null
-    c.vagaId = null
-    c.identificador = ''
-    c.livre = true
-    c.macEsp = null
-  })
-  limparSetoresOrfaosNoAndar(andarEditorAtual.value)
-  mostrarMenuFlutuante.value = false
-  selecionados.value.clear()
-}
+const coresUsadasNoAndar = computed(() => {
+  if (!andarEditorAtual.value) return new Set()
+  return new Set((andarEditorAtual.value.setores || []).map(s => s.cor_hex))
+})
 
-// =========================================================
-// MODAL DE CRIAR SETOR (NA SELEÇÃO)
-// =========================================================
-const modalSetorAberto = ref(false)
-const novoSetorNome = ref('')
-const novoSetorPrefixo = ref('A')
-const novoSetorCor = ref(paletaSetores[0].hex)
+function sugerirProximoPrefixo() {
+  const usados = new Set((andarEditorAtual.value?.setores || []).map(s => s.prefixo.toUpperCase()))
+  const alfabeto = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
+  for (const letra of alfabeto) {
+    if (!usados.has(letra)) return letra
+  }
+  return 'S1'
+}
 
 function abrirModalSetor() {
-  novoSetorNome.value = ''
-  novoSetorPrefixo.value = 'A'
-  novoSetorCor.value = paletaSetores[0].hex
+  const primeiraCorLivre = paletaSetores.find(p => !coresUsadasNoAndar.value.has(p.hex))
+  if (!primeiraCorLivre) {
+    alert('Todas as 10 cores de setores já foram utilizadas neste andar!')
+    return
+  }
+  corNovoSetor.value = primeiraCorLivre.hex
+  nomeNovoSetor.value = ''
+  prefixoNovoSetor.value = sugerirProximoPrefixo()
   modalSetorAberto.value = true
 }
 
-function sanitizarPrefixoSetor() {
-  novoSetorPrefixo.value = novoSetorPrefixo.value.replace(/[^a-zA-Z]/g, '').slice(0, 3).toUpperCase()
+function formatarInputPrefixo(valor) {
+  return valor.replace(/[^a-zA-Z0-9]/g, '').toUpperCase().slice(0, 3)
 }
 
-function confirmarSetorSelecao() {
-  const nomeLimpo = novoSetorNome.value.trim()
-  const prefixoFinal = novoSetorPrefixo.value.trim().slice(0, 3).toUpperCase()
+function confirmarAdicionarSetor() {
+  const nomeLimpo = nomeNovoSetor.value.trim()
+  const prefixoLimpo = formatarInputPrefixo(prefixoNovoSetor.value)
 
   if (!nomeLimpo) {
-    alert('Digite um nome para o setor!')
+    alert('Informe o nome do setor.')
     return
   }
-  if (!prefixoFinal) {
-    alert('Digite um prefixo (1 a 3 letras) para o setor!')
+  if (!prefixoLimpo) {
+    alert('Informe o prefixo de numeração (1 a 3 letras/números, ex: A, B, VIP).')
     return
   }
 
-  for (const andar of formEstabelecimento.value.andares) {
-    limparSetoresOrfaosNoAndar(andar)
-    for (const s of andar.setores || []) {
-      if (s.nome_setor.toLowerCase() === nomeLimpo.toLowerCase()) {
-        alert(`O nome de setor "${nomeLimpo}" já está em uso no andar "${andar.nome_andar}".`)
-        return
-      }
-      if ((s.prefixo || '').toUpperCase() === prefixoFinal) {
-        alert(`O prefixo "${prefixoFinal}" já está em uso pelo setor "${s.nome_setor}".`)
-        return
-      }
-    }
+  const nomeRepetido = andarEditorAtual.value.setores.some(
+    s => s.nome_setor.trim().toLowerCase() === nomeLimpo.toLowerCase()
+  )
+  if (nomeRepetido) {
+    alert('Já existe um setor com esse nome neste andar!')
+    return
   }
 
-  salvarSnapshot()
-  const idSetor = Date.now()
-  andarEditorAtual.value.setores.push({
-    id_setor: idSetor,
-    nome_setor: nomeLimpo,
-    prefixo: prefixoFinal,
-    cor_hex: novoSetorCor.value,
-    inativo_offline: false
-  })
+  const prefixoRepetido = andarEditorAtual.value.setores.some(
+    s => (s.prefixo || '').toUpperCase() === prefixoLimpo
+  )
+  if (prefixoRepetido) {
+    alert(`O prefixo "${prefixoLimpo}" já está sendo usado por outro setor neste andar!`)
+    return
+  }
 
-  const celulas = andarEditorAtual.value.celulas
-  selecionados.value.forEach((k) => {
-    const c = celulas[k]
-    if (c) {
-      c.setorId = idSetor
-      c.nomeSetor = nomeLimpo
-      c.prefixoSetor = prefixoFinal
-      c.corSetor = novoSetorCor.value
+  registrarSnapshot()
+  let setor = andarEditorAtual.value.setores.find(s => s.cor_hex === corNovoSetor.value)
+  if (!setor) {
+    setor = {
+      id_setor: Date.now(),
+      nome_setor: nomeLimpo,
+      prefixo: prefixoLimpo,
+      cor_hex: corNovoSetor.value
     }
+    andarEditorAtual.value.setores.push(setor)
+  }
+
+  selecionados.value.forEach((chave) => {
+    const c = andarEditorAtual.value.celulas[chave]
+    if (!c) return
+    c.setorId = setor.id_setor
+    c.nomeSetor = setor.nome_setor
+    c.prefixoSetor = setor.prefixo
+    c.corSetor = setor.cor_hex
   })
 
-  limparSetoresOrfaosNoAndar(andarEditorAtual.value)
-  numerarVagasDoSetor(celulas, idSetor, prefixoFinal)
-
+  renumerarVagasDoAndar(andarEditorAtual.value)
   modalSetorAberto.value = false
-  mostrarMenuFlutuante.value = false
-  selecionados.value.clear()
 }
 
-// =========================================================
-// MODAL: ALTERAR SETORES (COM BUSCA/FILTRO E EXCLUSÃO)
-// =========================================================
-const modalAlterarSetoresAberto = ref(false)
-const filtroBuscaSetor = ref('')
-const dropdownSetoresAberto = ref(false)
-const setorSelecionadoParaEditar = ref(null)
+function removerSetorDaSelecao() {
+  registrarSnapshot()
+  selecionados.value.forEach((chave) => {
+    const c = andarEditorAtual.value.celulas[chave]
+    if (!c) return
+    c.setorId = null
+    c.nomeSetor = null
+    c.prefixoSetor = null
+    c.corSetor = null
+    if (c.tipo === 'VAGA') {
+      c.tipo = 'VAZIO'
+      c.identificador = null
+      c.macEsp = null
+    }
+  })
+  renumerarVagasDoAndar(andarEditorAtual.value)
+}
 
-const editSetorNome = ref('')
-const editSetorPrefixo = ref('')
-const editSetorCor = ref(paletaSetores[0].hex)
-
-const setoresFiltradosParaEdicao = computed(() => {
+const setoresFiltradosBusca = computed(() => {
   const lista = andarEditorAtual.value?.setores || []
-  const termo = filtroBuscaSetor.value.trim().toLowerCase()
+  const termo = termoBuscaSetor.value.trim().toLowerCase()
   if (!termo) return lista
   return lista.filter(
     s =>
@@ -815,343 +761,388 @@ const setoresFiltradosParaEdicao = computed(() => {
   )
 })
 
-const dadosEdicaoSetorPreenchidos = computed(() => {
-  if (!setorSelecionadoParaEditar.value) return false
-  return Boolean(
-    editSetorNome.value.trim() &&
-    editSetorPrefixo.value.trim() &&
-    editSetorCor.value
-  )
+const setorSelecionadoParaEdicao = computed(() => {
+  if (!setorEmEdicaoId.value || !andarEditorAtual.value) return null
+  return andarEditorAtual.value.setores.find(s => s.id_setor === setorEmEdicaoId.value) || null
 })
 
 function abrirModalAlterarSetores() {
-  limparSetoresOrfaosNoAndar(andarEditorAtual.value)
-  filtroBuscaSetor.value = ''
+  termoBuscaSetor.value = ''
   dropdownSetoresAberto.value = false
-  setorSelecionadoParaEditar.value = null
-  editSetorNome.value = ''
-  editSetorPrefixo.value = ''
-  editSetorCor.value = paletaSetores[0].hex
+  setorEmEdicaoId.value = null
+  editNomeSetor.value = ''
+  editPrefixoSetor.value = ''
+  editCorSetor.value = paletaSetores[0].hex
   menuAdicionarMobileAberto.value = false
   modalAlterarSetoresAberto.value = true
 }
 
-function escolherSetorParaEditar(setor) {
-  setorSelecionadoParaEditar.value = setor
-  filtroBuscaSetor.value = `${setor.nome_setor} (${setor.prefixo})`
-  dropdownSetoresAberto.value = false
-  editSetorNome.value = setor.nome_setor
-  editSetorPrefixo.value = setor.prefixo
-  editSetorCor.value = setor.cor_hex
-}
-
-function aoDigitarFiltroSetor() {
+function aoDigitarBuscaSetor() {
   dropdownSetoresAberto.value = true
-  if (
-    setorSelecionadoParaEditar.value &&
-    filtroBuscaSetor.value !== `${setorSelecionadoParaEditar.value.nome_setor} (${setorSelecionadoParaEditar.value.prefixo})`
-  ) {
-    setorSelecionadoParaEditar.value = null
-    editSetorNome.value = ''
-    editSetorPrefixo.value = ''
-  }
-}
-
-function sanitizarEditPrefixoSetor() {
-  editSetorPrefixo.value = editSetorPrefixo.value.replace(/[^a-zA-Z]/g, '').slice(0, 3).toUpperCase()
-}
-
-function excluirSetorSelecionado() {
-  if (!setorSelecionadoParaEditar.value) return
-  const idAlvo = setorSelecionadoParaEditar.value.id_setor
-
-  salvarSnapshot()
-  const celulas = andarEditorAtual.value.celulas
-  Object.values(celulas).forEach((c) => {
-    if (c.setorId === idAlvo) {
-      c.setorId = null
-      c.corSetor = null
-      c.nomeSetor = null
-      c.prefixoSetor = null
-      if (c.tipo === 'VAGA') {
-        c.identificador = ''
-      }
-    }
-  })
-
-  andarEditorAtual.value.setores = andarEditorAtual.value.setores.filter(
-    s => s.id_setor !== idAlvo
+  const correspondenciaExata = (andarEditorAtual.value?.setores || []).find(
+    s => s.nome_setor.toLowerCase() === termoBuscaSetor.value.trim().toLowerCase()
   )
-
-  setorSelecionadoParaEditar.value = null
-  filtroBuscaSetor.value = ''
-  editSetorNome.value = ''
-  editSetorPrefixo.value = ''
-}
-
-function confirmarAlteracaoSetor() {
-  if (!setorSelecionadoParaEditar.value || !dadosEdicaoSetorPreenchidos.value) return
-
-  const idAlvo = setorSelecionadoParaEditar.value.id_setor
-  const novoNome = editSetorNome.value.trim()
-  const novoPref = editSetorPrefixo.value.trim().slice(0, 3).toUpperCase()
-  const novaCor = editSetorCor.value
-
-  for (const andar of formEstabelecimento.value.andares) {
-    for (const s of andar.setores || []) {
-      if (s.id_setor === idAlvo) continue
-      if (s.nome_setor.toLowerCase() === novoNome.toLowerCase()) {
-        alert(`O nome de setor "${novoNome}" já está em uso no andar "${andar.nome_andar}".`)
-        return
-      }
-      if ((s.prefixo || '').toUpperCase() === novoPref) {
-        alert(`O prefixo "${novoPref}" já está em uso pelo setor "${s.nome_setor}".`)
-        return
-      }
-    }
-  }
-
-  salvarSnapshot()
-
-  const setorObj = andarEditorAtual.value.setores.find(s => s.id_setor === idAlvo)
-  if (setorObj) {
-    setorObj.nome_setor = novoNome
-    setorObj.prefixo = novoPref
-    setorObj.cor_hex = novaCor
-  }
-
-  const celulas = andarEditorAtual.value.celulas
-  Object.values(celulas).forEach((c) => {
-    if (c.setorId === idAlvo) {
-      c.nomeSetor = novoNome
-      c.prefixoSetor = novoPref
-      c.corSetor = novaCor
-    }
-  })
-
-  numerarVagasDoSetor(celulas, idAlvo, novoPref)
-  modalAlterarSetoresAberto.value = false
-}
-
-// =========================================================
-// TAMANHO DO GRID, ACESSOS E EQUIPAMENTOS
-// =========================================================
-const modalGridAberto = ref(false)
-const inputGridX = ref(30)
-const inputGridY = ref(20)
-
-function clonarLimiteGridX() {
-  const v = parseInt(inputGridX.value, 10)
-  if (!isNaN(v)) {
-    if (v > 100) inputGridX.value = 100
-    if (v < 5) inputGridX.value = 5
+  if (correspondenciaExata) {
+    carregarDadosSetorNoForm(correspondenciaExata)
+  } else {
+    setorEmEdicaoId.value = null
   }
 }
 
-function clonarLimiteGridY() {
-  const v = parseInt(inputGridY.value, 10)
-  if (!isNaN(v)) {
-    if (v > 100) inputGridY.value = 100
-    if (v < 5) inputGridY.value = 5
-  }
+function carregarDadosSetorNoForm(setor) {
+  setorEmEdicaoId.value = setor.id_setor
+  termoBuscaSetor.value = setor.nome_setor
+  editNomeSetor.value = setor.nome_setor
+  editPrefixoSetor.value = setor.prefixo || 'A'
+  editCorSetor.value = setor.cor_hex
+  dropdownSetoresAberto.value = false
 }
 
-function abrirModalTamanhoGrid() {
-  inputGridX.value = andarEditorAtual.value.grid_x
-  inputGridY.value = andarEditorAtual.value.grid_y
-  menuTopoMobileAberto.value = false
-  modalGridAberto.value = true
-}
-
-function confirmarTamanhoGrid() {
-  const nx = Math.min(100, Math.max(5, parseInt(inputGridX.value, 10) || 30))
-  const ny = Math.min(100, Math.max(5, parseInt(inputGridY.value, 10) || 20))
-  inputGridX.value = nx
-  inputGridY.value = ny
-  salvarSnapshot()
-
-  const novasCelulas = criarMatrizVazia(nx, ny)
-  Object.values(andarEditorAtual.value.celulas).forEach((antiga) => {
-    if (antiga.x <= nx && antiga.y <= ny) {
-      novasCelulas[`${antiga.x},${antiga.y}`] = antiga
-    }
-  })
-
-  andarEditorAtual.value.grid_x = nx
-  andarEditorAtual.value.grid_y = ny
-  andarEditorAtual.value.celulas = novasCelulas
-  limparSetoresOrfaosNoAndar(andarEditorAtual.value)
-  modalGridAberto.value = false
-}
-
-const ferramentaCarimbo = ref(null)
-const modalAcessoAberto = ref(false)
-const configAcessoTemp = ref({ tipo: 'ENTRADA', orientacao: 'H', tamanho: 2 })
-
-function prepararAcesso(tipo, orientacao) {
-  selecionados.value.clear()
-  mostrarMenuFlutuante.value = false
-  menuAdicionarMobileAberto.value = false
-  configAcessoTemp.value = { tipo, orientacao, tamanho: 2 }
-  modalAcessoAberto.value = true
-}
-
-function ajustarLimiteAcesso() {
-  const val = parseInt(configAcessoTemp.value.tamanho, 10)
-  if (isNaN(val)) return
-  if (val > 20) configAcessoTemp.value.tamanho = 20
-  if (val < 1) configAcessoTemp.value.tamanho = 1
-}
-
-function ativarCarimboAcesso() {
-  const tam = Math.max(1, Math.min(20, parseInt(configAcessoTemp.value.tamanho, 10) || 1))
-  configAcessoTemp.value.tamanho = tam
-  ferramentaCarimbo.value = {
-    categoria: 'ACESSO',
-    tipo: configAcessoTemp.value.tipo,
-    orientacao: configAcessoTemp.value.orientacao,
-    w: configAcessoTemp.value.orientacao === 'H' ? tam : 1,
-    h: configAcessoTemp.value.orientacao === 'V' ? tam : 1
-  }
-  modalAcessoAberto.value = false
-}
-
-const linhasEquipamentos = [
-  [{ w: 1, h: 2 }, { w: 1, h: 3 }, { w: 1, h: 4 }],
-  [{ w: 2, h: 3 }, { w: 2, h: 4 }],
-  [{ w: 1, h: 1 }, { w: 2, h: 2 }],
-  [{ w: 2, h: 1 }, { w: 3, h: 1 }, { w: 4, h: 1 }],
-  [{ w: 3, h: 2 }, { w: 4, h: 2 }]
-]
-
-function ativarCarimboEquipamento(w, h) {
-  selecionados.value.clear()
-  mostrarMenuFlutuante.value = false
-  menuAdicionarMobileAberto.value = false
-  ferramentaCarimbo.value = { categoria: 'EQUIPAMENTO', tipo: 'ESP32', w, h }
-}
-
-function estaNaSombraCarimbo(x, y) {
-  if (!ferramentaCarimbo.value || !hoverCoord.value) return false
-  const { w, h } = ferramentaCarimbo.value
-  return (
-    x >= hoverCoord.value.x &&
-    x < hoverCoord.value.x + w &&
-    y >= hoverCoord.value.y &&
-    y < hoverCoord.value.y + h
+function corOcupadaPorOutroSetor(hex) {
+  if (!andarEditorAtual.value) return false
+  return andarEditorAtual.value.setores.some(
+    s => s.cor_hex === hex && s.id_setor !== setorEmEdicaoId.value
   )
 }
 
-const modalMacAberto = ref(false)
-const inputMacEsp = ref('AA:BB:CC:DD:EE:01')
-const coordenadasCarimboPendente = ref([])
+function salvarAlteracoesSetor() {
+  if (!setorSelecionadoParaEdicao.value) return
+  const novoNome = editNomeSetor.value.trim()
+  const novoPref = formatarInputPrefixo(editPrefixoSetor.value)
 
-function aplicarCarimboNoGrid(startX, startY) {
-  const carimbo = ferramentaCarimbo.value
-  if (!carimbo) return
-
-  const coordsAfetadas = []
-  for (let cy = startY; cy < startY + carimbo.h; cy++) {
-    for (let cx = startX; cx < startX + carimbo.w; cx++) {
-      if (cx <= andarEditorAtual.value.grid_x && cy <= andarEditorAtual.value.grid_y) {
-        coordsAfetadas.push(`${cx},${cy}`)
-      }
-    }
+  if (!novoNome) {
+    alert('O nome do setor não pode ficar vazio.')
+    return
   }
-
-  const celulas = andarEditorAtual.value.celulas
-
-  if (carimbo.categoria === 'ACESSO') {
-    const temVagaOuEstrada = coordsAfetadas.some(
-      k => celulas[k].tipo === 'VAGA' || celulas[k].tipo === 'ESTRADA'
-    )
-    if (temVagaOuEstrada) {
-      if (!confirm('Ao clicar em Ok, as vagas e as estradas da seleção serão removidas')) {
-        return
-      }
-    }
-    salvarSnapshot()
-    coordsAfetadas.forEach((k) => {
-      celulas[k].tipo = carimbo.tipo
-      celulas[k].orientacao = carimbo.orientacao
-      celulas[k].macEsp = null
-      celulas[k].identificador = ''
-    })
-    ferramentaCarimbo.value = null
+  if (!novoPref) {
+    alert('O prefixo do setor não pode ficar vazio.')
     return
   }
 
-  if (carimbo.categoria === 'EQUIPAMENTO') {
-    const vagasDebaixo = coordsAfetadas.filter(k => celulas[k].tipo === 'VAGA')
-    if (vagasDebaixo.length === 0) {
-      alert('Nenhuma VAGA encontrada sob este carimbo de equipamento! Crie as vagas primeiro.')
+  const nomeDuplicado = andarEditorAtual.value.setores.some(
+    s =>
+      s.id_setor !== setorEmEdicaoId.value &&
+      s.nome_setor.trim().toLowerCase() === novoNome.toLowerCase()
+  )
+  if (nomeDuplicado) {
+    alert('Outro setor neste andar já utiliza esse nome!')
+    return
+  }
+
+  const prefixoDuplicado = andarEditorAtual.value.setores.some(
+    s =>
+      s.id_setor !== setorEmEdicaoId.value &&
+      (s.prefixo || '').toUpperCase() === novoPref
+  )
+  if (prefixoDuplicado) {
+    alert(`Outro setor neste andar já utiliza o prefixo "${novoPref}"!`)
+    return
+  }
+
+  registrarSnapshot()
+  const alvo = setorSelecionadoParaEdicao.value
+  alvo.nome_setor = novoNome
+  alvo.prefixo = novoPref
+  alvo.cor_hex = editCorSetor.value
+
+  Object.values(andarEditorAtual.value.celulas).forEach((c) => {
+    if (c.setorId === alvo.id_setor) {
+      c.nomeSetor = alvo.nome_setor
+      c.prefixoSetor = alvo.prefixo
+      c.corSetor = alvo.cor_hex
+    }
+  })
+
+  renumerarVagasDoAndar(andarEditorAtual.value)
+  modalAlterarSetoresAberto.value = false
+}
+
+function excluirSetorInteiro() {
+  if (!setorSelecionadoParaEdicao.value) return
+  const alvo = setorSelecionadoParaEdicao.value
+
+  registrarSnapshot()
+  andarEditorAtual.value.setores = andarEditorAtual.value.setores.filter(
+    s => s.id_setor !== alvo.id_setor
+  )
+
+  Object.values(andarEditorAtual.value.celulas).forEach((c) => {
+    if (c.setorId === alvo.id_setor) {
+      c.setorId = null
+      c.nomeSetor = null
+      c.prefixoSetor = null
+      c.corSetor = null
+      if (c.tipo === 'VAGA') {
+        c.tipo = 'VAZIO'
+        c.identificador = null
+        c.macEsp = null
+      }
+    }
+  })
+
+  renumerarVagasDoAndar(andarEditorAtual.value)
+  modalAlterarSetoresAberto.value = false
+}
+
+function aplicarVagaNaSelecao(adicionar) {
+  if (adicionar) {
+    const algumaSemSetor = Array.from(selecionados.value).some((chave) => {
+      const c = andarEditorAtual.value.celulas[chave]
+      return !c || !c.setorId
+    })
+    if (algumaSemSetor) {
+      alert('Todas as vagas precisam estar dentro de um Setor! Adicione um Setor à área selecionada primeiro.')
       return
     }
-    coordenadasCarimboPendente.value = vagasDebaixo
+  }
+
+  registrarSnapshot()
+  selecionados.value.forEach((chave) => {
+    const c = andarEditorAtual.value.celulas[chave]
+    if (!c) return
+    if (adicionar) {
+      c.tipo = 'VAGA'
+      c.macEsp = null
+    } else if (c.tipo === 'VAGA') {
+      c.tipo = 'VAZIO'
+      c.identificador = null
+      c.macEsp = null
+    }
+  })
+
+  renumerarVagasDoAndar(andarEditorAtual.value)
+}
+
+function apagarTudoNaSelecao() {
+  registrarSnapshot()
+  const chavesApagadas = new Set(selecionados.value)
+
+  chavesApagadas.forEach((chave) => {
+    const c = andarEditorAtual.value.celulas[chave]
+    if (!c) return
+    c.tipo = 'VAZIO'
+    c.orientacao = 'NENHUMA'
+    c.setorId = null
+    c.nomeSetor = null
+    c.prefixoSetor = null
+    c.corSetor = null
+    c.identificador = null
+    c.macEsp = null
+  })
+
+  andarEditorAtual.value.equipamentos = (andarEditorAtual.value.equipamentos || []).filter(
+    eq => !eq.vagasCoords.some(coord => chavesApagadas.has(coord))
+  )
+
+  const idsSetoresPresentesNoGrid = new Set()
+  Object.values(andarEditorAtual.value.celulas).forEach((c) => {
+    if (c.setorId) idsSetoresPresentesNoGrid.add(c.setorId)
+  })
+  andarEditorAtual.value.setores = (andarEditorAtual.value.setores || []).filter(s =>
+    idsSetoresPresentesNoGrid.has(s.id_setor)
+  )
+
+  renumerarVagasDoAndar(andarEditorAtual.value)
+  selecionados.value.clear()
+  mostrarMenuFlutuante.value = false
+}
+
+function abrirConfigAcesso(tipo, orientacao) {
+  tipoAcessoTemp.value = tipo
+  orientacaoAcessoTemp.value = orientacao
+  tamanhoAcessoTemp.value = 2
+  menuAdicionarMobileAberto.value = false
+  modalAcessoAberto.value = true
+}
+
+function ativarCarimboAcesso() {
+  const tam = Math.max(1, Math.min(10, Number(tamanhoAcessoTemp.value) || 1))
+  ferramentaCarimbo.value = {
+    modo: 'ACESSO',
+    tipo: tipoAcessoTemp.value,
+    orientacao: orientacaoAcessoTemp.value,
+    largura: orientacaoAcessoTemp.value === 'H' ? tam : 1,
+    altura: orientacaoAcessoTemp.value === 'V' ? tam : 1
+  }
+  modoMoverMapa.value = false
+  modalAcessoAberto.value = false
+  selecionados.value.clear()
+  mostrarMenuFlutuante.value = false
+}
+
+function ativarCarimboEquipamento(largura, altura) {
+  ferramentaCarimbo.value = {
+    modo: 'EQUIPAMENTO',
+    largura,
+    altura
+  }
+  modoMoverMapa.value = false
+  menuAdicionarMobileAberto.value = false
+  selecionados.value.clear()
+  mostrarMenuFlutuante.value = false
+}
+
+const coordsSombraCarimbo = computed(() => {
+  const conjunto = new Set()
+  if (!ferramentaCarimbo.value || !hoverCoord.value || !andarEditorAtual.value) return conjunto
+
+  for (let dy = 0; dy < ferramentaCarimbo.value.altura; dy++) {
+    for (let dx = 0; dx < ferramentaCarimbo.value.largura; dx++) {
+      const cx = hoverCoord.value.x + dx
+      const cy = hoverCoord.value.y + dy
+      if (cx < andarEditorAtual.value.grid_x && cy < andarEditorAtual.value.grid_y) {
+        conjunto.add(`${cx},${cy}`)
+      }
+    }
+  }
+  return conjunto
+})
+
+function aplicarCarimboNoGrid(x, y) {
+  const carimbo = ferramentaCarimbo.value
+  if (!carimbo || !andarEditorAtual.value) return
+
+  const coords = []
+  for (let dy = 0; dy < carimbo.altura; dy++) {
+    for (let dx = 0; dx < carimbo.largura; dx++) {
+      const cx = x + dx
+      const cy = y + dy
+      if (cx >= andarEditorAtual.value.grid_x || cy >= andarEditorAtual.value.grid_y) {
+        alert('O elemento ultrapassa a borda do grid!')
+        return
+      }
+      coords.push(`${cx},${cy}`)
+    }
+  }
+
+  if (carimbo.modo === 'ACESSO') {
+    registrarSnapshot()
+    coords.forEach((chave) => {
+      const c = andarEditorAtual.value.celulas[chave]
+      c.tipo = carimbo.tipo
+      c.orientacao = carimbo.orientacao
+      c.identificador = null
+      c.macEsp = null
+    })
+    renumerarVagasDoAndar(andarEditorAtual.value)
+    ferramentaCarimbo.value = null
+  } else if (carimbo.modo === 'EQUIPAMENTO') {
+    const vagasEncontradas = coords.filter(
+      chave => andarEditorAtual.value.celulas[chave]?.tipo === 'VAGA'
+    )
+    if (vagasEncontradas.length === 0) {
+      alert('Nenhuma vaga amarela encontrada nessa área! Posicione sobre as vagas amarelas.')
+      return
+    }
+    coordsParaVincularMac.value = vagasEncontradas
+    macTemp.value = ''
     modalMacAberto.value = true
   }
 }
 
-function confirmarVinculoEquipamento() {
-  if (!inputMacEsp.value.trim()) {
-    alert('Informe o código MAC ou identificador do ESP32.')
+function confirmarVinculoMac() {
+  const macLimpo = macTemp.value.trim().toUpperCase()
+  if (!macLimpo) {
+    alert('Digite o endereço MAC do ESP32.')
     return
   }
-  salvarSnapshot()
-  const celulas = andarEditorAtual.value.celulas
 
-  coordenadasCarimboPendente.value.forEach((k) => {
-    const c = celulas[k]
-    c.macEsp = inputMacEsp.value.trim().toUpperCase()
-    if (c.setorId && c.prefixoSetor && !c.identificador) {
-      const prox = obterProximoNumeroSetor(celulas, c.setorId, c.prefixoSetor)
-      c.identificador = `${c.prefixoSetor}${prox}`
+  const macJaExiste = formEstabelecimento.value.andares.some(andar =>
+    Object.values(andar.celulas || {}).some(c => c.macEsp === macLimpo)
+  )
+  if (macJaExiste) {
+    alert(`O endereço MAC "${macLimpo}" já está vinculado a outro equipamento neste estacionamento!`)
+    return
+  }
+
+  registrarSnapshot()
+  coordsParaVincularMac.value.forEach((chave) => {
+    const c = andarEditorAtual.value.celulas[chave]
+    if (c && c.tipo === 'VAGA') {
+      c.macEsp = macLimpo
     }
+  })
+
+  andarEditorAtual.value.equipamentos.push({
+    id: Date.now(),
+    mac: macLimpo,
+    vagasCoords: [...coordsParaVincularMac.value]
   })
 
   modalMacAberto.value = false
   ferramentaCarimbo.value = null
 }
 
-// =========================================================
-// SALVAR ESTACIONAMENTO NO MYSQL (COM MODAL DE SUCESSO ANIMADO)
-// =========================================================
-async function finalizarSalvarEstacionamento() {
-  if (!podeSalvarEstacionamento.value) {
-    mostrarPainelAvisos.value = true
-    return
-  }
-  if (salvandoNoBanco.value) return
+const listaAvisosValidacao = computed(() => {
+  const avisos = []
+  const andares = formEstabelecimento.value.andares || []
 
+  let totalEntradasEst = 0
+  let totalSaidasEst = 0
+
+  andares.forEach((andar) => {
+    const celulas = Object.values(andar.celulas || {})
+    const entradas = celulas.filter(c => c.tipo === 'ENTRADA').length
+    const saidas = celulas.filter(c => c.tipo === 'SAIDA').length
+    const acessos = celulas.filter(c => c.tipo === 'ACESSO').length
+    const estradas = celulas.filter(c => c.tipo === 'ESTRADA').length
+    const vagas = celulas.filter(c => c.tipo === 'VAGA')
+    const vagasSemEsp = vagas.filter(c => !c.macEsp).length
+
+    totalEntradasEst += entradas
+    totalSaidasEst += saidas
+
+    if (estradas === 0) {
+      avisos.push(`[${andar.nome_andar}] Adicione estradas de circulação.`)
+    }
+    if ((andar.setores || []).length === 0) {
+      avisos.push(`[${andar.nome_andar}] Crie ao menos 1 Setor.`)
+    }
+    if (vagas.length === 0) {
+      avisos.push(`[${andar.nome_andar}] Adicione vagas ao andar.`)
+    }
+    if (vagasSemEsp > 0) {
+      avisos.push(`[${andar.nome_andar}] Há ${vagasSemEsp} vaga(s) amarela(s) sem equipamento ESP32.`)
+    }
+    if (andares.length > 1 && entradas === 0 && saidas === 0 && acessos === 0) {
+      avisos.push(`[${andar.nome_andar}] Andar isolado: adicione um Acesso ou Entrada/Saída.`)
+    }
+  })
+
+  if (totalEntradasEst === 0) {
+    avisos.push('O estacionamento precisa ter ao menos 1 Entrada.')
+  }
+  if (totalSaidasEst === 0) {
+    avisos.push('O estacionamento precisa ter ao menos 1 Saída.')
+  }
+
+  return avisos
+})
+
+const podeSalvarEstacionamento = computed(() => listaAvisosValidacao.value.length === 0)
+
+async function finalizarSalvarEstacionamento() {
+  if (!podeSalvarEstacionamento.value || salvandoNoBanco.value) return
   salvandoNoBanco.value = true
   try {
     await salvarEstacionamentoNoBanco()
     modalSucessoSalvarAberto.value = true
   } catch (err) {
-    alert(`Erro ao salvar: ${err.message}`)
+    alert(err.message)
   } finally {
     salvandoNoBanco.value = false
   }
 }
 
-function confirmarModalSucessoSalvar() {
+function confirmarSucessoEVoltarLista() {
   modalSucessoSalvarAberto.value = false
   router.push({ name: 'admin-lista' })
 }
-
-onMounted(() => {
-  window.addEventListener('mouseup', finalizarSelecaoMouse)
-  window.addEventListener('keydown', tratarTeclaGlobal)
-})
-
-onUnmounted(() => {
-  window.removeEventListener('mouseup', finalizarSelecaoMouse)
-  window.removeEventListener('keydown', tratarTeclaGlobal)
-})
 </script>
 
 <template>
   <div v-if="andarEditorAtual" class="editor-layout">
+    <!-- Botões Flutuantes Mobile/Tablet (Alertas e Modo Mão) -->
     <button
       class="hud-btn-flutuante hud-esquerda-alertas"
       :class="{ 'caution-ok': podeSalvarEstacionamento, 'caution-pendente': !podeSalvarEstacionamento }"
@@ -1184,8 +1175,8 @@ onUnmounted(() => {
       <button
         class="hud-btn-flutuante"
         :class="{ 'hud-ativo': menuTopoMobileAberto }"
-        title="Opções do Editor"
-        @click="alternarMenuEngrenagem"
+        title="Opções do Grid e Andar"
+        @click="alternarMenuTopoMobile"
       >
         <IconSettings :size="20" />
       </button>
@@ -1194,18 +1185,15 @@ onUnmounted(() => {
         class="hud-btn-flutuante hud-btn-add"
         :class="{ 'hud-ativo': menuAdicionarMobileAberto }"
         title="Adicionar Acessos e Equipamentos"
-        @click="alternarMenuAdicionar"
+        @click="alternarMenuAdicionarMobile"
       >
         <IconSquareRoundedPlus :size="20" />
       </button>
     </div>
 
-    <header
-      class="editor-topbar"
-      :class="{ 'topbar-mobile-aberta': menuTopoMobileAberto }"
-    >
+    <!-- Barra Superior do Editor -->
+    <header class="editor-topbar" :class="{ 'topbar-mobile-aberta': menuTopoMobileAberto }">
       <div class="topbar-esquerda">
-        <!-- Botão apenas com ícone e dica "Informações Gerais" no hover -->
         <button
           class="btn-secundario item-icone-texto"
           title="Informações Gerais"
@@ -1214,7 +1202,6 @@ onUnmounted(() => {
           <IconSquareRoundedArrowLeft :size="19" />
         </button>
 
-        <!-- Seletor de Andar estilizado como os demais dropdowns do projeto -->
         <div class="seletor-multi-wrapper">
           <button
             type="button"
@@ -1246,7 +1233,7 @@ onUnmounted(() => {
 
         <button class="btn-secundario btn-duas-linhas item-icone-texto" @click="abrirModalTamanhoGrid">
           <IconLayoutGrid :size="18" />
-          <div>Grid<br /><span>({{ andarEditorAtual.grid_x }}x{{ andarEditorAtual.grid_y }})</span></div>
+          <div>Tamanho do Grid<br /><span>({{ andarEditorAtual.grid_x }}x{{ andarEditorAtual.grid_y }})</span></div>
         </button>
 
         <button
@@ -1320,7 +1307,7 @@ onUnmounted(() => {
             <div class="overlay-header">
               <strong class="item-icone-texto">
                 <IconAlertSquareRounded :size="18" />
-                <span>Validação ({{ listaAvisosValidacao.length }})</span>
+                <span>Requisitos para liberar o salvamento:</span>
               </strong>
               <button class="btn-fechar-mini" @click="mostrarPainelAvisos = false">
                 <IconSquareRoundedX :size="18" />
@@ -1331,8 +1318,19 @@ onUnmounted(() => {
             </ul>
             <p v-else class="aviso-tudo-ok item-icone-texto">
               <IconSquareRoundedCheck :size="18" />
-              <span>Tudo certo! Todos os andares, setores, vagas e acessos estão validados.</span>
+              <span>Tudo pronto! O estacionamento já pode ser salvo.</span>
             </p>
+          </div>
+        </Transition>
+
+        <Transition name="fade-pop">
+          <div v-if="ferramentaCarimbo" class="overlay-flutuante banner-carimbo-overlay">
+            <span>
+              Modo posicionamento ativo (<strong>{{ ferramentaCarimbo.largura }}x{{ ferramentaCarimbo.altura }}</strong>) — Clique no grid ou aperte <strong>ESC</strong>
+            </span>
+            <button class="btn-cancelar-carimbo" @click="ferramentaCarimbo = null">
+              <IconSquareRoundedX :size="16" />
+            </button>
           </div>
         </Transition>
 
@@ -1352,58 +1350,57 @@ onUnmounted(() => {
           </div>
         </Transition>
 
-        <!-- OVERLAY DE SELEÇÃO COM TOOLTIPS NOS ÍCONES E BORRACHA -->
         <Transition name="fade-pop">
           <div v-if="mostrarMenuFlutuante && selecionados.size > 0" class="overlay-flutuante menu-selecao-overlay">
-            <span class="contagem-sel">{{ selecionados.size }} sel.:</span>
+            <span class="contagem-sel">{{ selecionados.size }} cél.</span>
 
             <div class="grupo-acao-item">
-              <span class="icone-com-tooltip" data-tooltip="Estrada" title="Estrada">
+              <span class="icone-com-tooltip" data-tooltip="Estrada">
                 <IconRoad :size="18" />
               </span>
-              <button class="btn-mini add" title="Adicionar Estrada" @click="aplicarTipoSelecao('ESTRADA')">
-                <IconSquareRoundedPlus :size="16" />
+              <button class="btn-mini add" title="Adicionar Estrada" @click="aplicarEstradaNaSelecao(true)">
+                <IconSquareRoundedPlus :size="15" />
               </button>
-              <button class="btn-mini rem" title="Remover Estrada" @click="removerTipoSelecao('ESTRADA')">
-                <IconSquareRoundedMinus :size="16" />
+              <button class="btn-mini rem" title="Remover Estrada" @click="aplicarEstradaNaSelecao(false)">
+                <IconSquareRoundedMinus :size="15" />
               </button>
             </div>
 
             <div class="grupo-acao-item">
-              <span class="icone-com-tooltip" data-tooltip="Setores" title="Setores">
+              <span class="icone-com-tooltip" data-tooltip="Setor">
                 <IconLayoutBoard :size="18" />
               </span>
               <button class="btn-mini add" title="Definir Setor" @click="abrirModalSetor">
-                <IconSquareRoundedPlus :size="16" />
+                <IconSquareRoundedPlus :size="15" />
               </button>
-              <button class="btn-mini rem" title="Remover Setor" @click="removerTipoSelecao('SETOR')">
-                <IconSquareRoundedMinus :size="16" />
+              <button class="btn-mini rem" title="Remover Setor" @click="removerSetorDaSelecao">
+                <IconSquareRoundedMinus :size="15" />
               </button>
             </div>
 
             <div class="grupo-acao-item">
-              <span class="icone-com-tooltip" data-tooltip="Vagas" title="Vagas">
+              <span class="icone-com-tooltip" data-tooltip="Vagas">
                 <IconParking :size="18" />
               </span>
-              <button class="btn-mini add" title="Adicionar Vagas" @click="aplicarTipoSelecao('VAGA')">
-                <IconSquareRoundedPlus :size="16" />
+              <button class="btn-mini add" title="Criar Vagas" @click="aplicarVagaNaSelecao(true)">
+                <IconSquareRoundedPlus :size="15" />
               </button>
-              <button class="btn-mini rem" title="Remover Vagas" @click="removerTipoSelecao('VAGA')">
-                <IconSquareRoundedMinus :size="16" />
+              <button class="btn-mini rem" title="Remover Vagas" @click="aplicarVagaNaSelecao(false)">
+                <IconSquareRoundedMinus :size="15" />
               </button>
             </div>
 
             <button
               class="btn-mini borracha-tudo"
-              title="Borracha: remover tudo na seleção"
-              @click="limparTudoNaSelecao"
+              title="Borracha: Apagar tudo na área selecionada"
+              @click="apagarTudoNaSelecao"
             >
               <IconEraser :size="16" />
             </button>
 
             <button
               class="btn-mini limpar"
-              title="Desselecionar"
+              title="Fechar seleção (ESC)"
               @click="selecionados.clear(); mostrarMenuFlutuante = false"
             >
               <IconSquareRoundedX :size="16" />
@@ -1411,15 +1408,16 @@ onUnmounted(() => {
           </div>
         </Transition>
 
-        <!-- HUD INFERIOR PARA QUALQUER QUADRADO DO GRID -->
         <Transition name="fade-pop">
-          <div v-if="infoCelulaHover" class="overlay-flutuante badge-hover-setor">
+          <div v-if="celulaInspecionadaHover" class="overlay-flutuante badge-hover-setor">
             <span
               class="bolinha-cor-setor"
-              :style="{ backgroundColor: infoCelulaHover.cor }"
+              :style="{ backgroundColor: celulaInspecionadaHover.cor }"
             ></span>
-            <strong>{{ infoCelulaHover.textoQuadrado }}</strong>
-            <span class="texto-colchetes-setor">{{ infoCelulaHover.textoSetor }}</span>
+            <strong>{{ celulaInspecionadaHover.titulo }}</strong>
+            <span v-if="celulaInspecionadaHover.detalhe" class="texto-colchetes-setor">
+              [{{ celulaInspecionadaHover.detalhe }}]
+            </span>
           </div>
         </Transition>
 
@@ -1445,8 +1443,8 @@ onUnmounted(() => {
                 :style="{ gridTemplateColumns: `36px repeat(${andarEditorAtual.grid_x}, 36px)` }"
               >
                 <div class="canto-xy">Y\X</div>
-                <div v-for="x in andarEditorAtual.grid_x" :key="`coord-x-${x}`" class="rotulo-coord">
-                  {{ x }}
+                <div v-for="x in andarEditorAtual.grid_x" :key="`cx-${x}`" class="rotulo-coord">
+                  {{ x - 1 }}
                 </div>
               </div>
 
@@ -1456,45 +1454,65 @@ onUnmounted(() => {
                 class="linha-grid-y"
                 :style="{ gridTemplateColumns: `36px repeat(${andarEditorAtual.grid_x}, 36px)` }"
               >
-                <div class="rotulo-coord">{{ y }}</div>
+                <div class="rotulo-coord">{{ y - 1 }}</div>
 
                 <div
                   v-for="x in andarEditorAtual.grid_x"
-                  :key="`cell-${x}-${y}`"
-                  :data-coord="`${x},${y}`"
+                  :key="`cell-${x - 1}-${y - 1}`"
+                  :data-coord="`${x - 1},${y - 1}`"
                   class="celula-editor-fundo"
                   :style="{
-                    backgroundColor: andarEditorAtual.celulas[`${x},${y}`]?.corSetor || 'transparent'
+                    backgroundColor:
+                      andarEditorAtual.celulas[`${x - 1},${y - 1}`]?.corSetor || 'transparent'
                   }"
-                  @mousedown.prevent="iniciarSelecaoCelula(x, y, $event)"
-                  @mouseenter="moverMouseCelula(x, y, $event)"
+                  @mousedown.prevent="iniciarSelecaoCelula(x - 1, y - 1, $event)"
+                  @mouseenter="moverMouseCelula(x - 1, y - 1, $event)"
                 >
                   <div
                     class="quadrado-editor"
-                    :class="{
-                      'qe-vazio': andarEditorAtual.celulas[`${x},${y}`]?.tipo === 'VAZIO',
-                      'qe-estrada': andarEditorAtual.celulas[`${x},${y}`]?.tipo === 'ESTRADA',
-                      'qe-vaga-amarela': andarEditorAtual.celulas[`${x},${y}`]?.tipo === 'VAGA' && !andarEditorAtual.celulas[`${x},${y}`]?.macEsp,
-                      'qe-entrada': andarEditorAtual.celulas[`${x},${y}`]?.tipo === 'ENTRADA',
-                      'qe-saida': andarEditorAtual.celulas[`${x},${y}`]?.tipo === 'SAIDA',
-                      'qe-acesso': andarEditorAtual.celulas[`${x},${y}`]?.tipo === 'ACESSO',
-                      'qe-selecionado-roxo': selecionados.has(`${x},${y}`),
-                      'qe-sombra-verde': estaNaSombraCarimbo(x, y)
-                    }"
+                    :class="[
+                      andarEditorAtual.celulas[`${x - 1},${y - 1}`]?.tipo === 'VAZIO' ? 'qe-vazio' : '',
+                      andarEditorAtual.celulas[`${x - 1},${y - 1}`]?.tipo === 'ESTRADA' ? 'qe-estrada' : '',
+                      andarEditorAtual.celulas[`${x - 1},${y - 1}`]?.tipo === 'VAGA' &&
+                      !andarEditorAtual.celulas[`${x - 1},${y - 1}`]?.macEsp
+                        ? 'qe-vaga-amarela'
+                        : '',
+                      andarEditorAtual.celulas[`${x - 1},${y - 1}`]?.tipo === 'ENTRADA' ? 'qe-entrada' : '',
+                      andarEditorAtual.celulas[`${x - 1},${y - 1}`]?.tipo === 'SAIDA' ? 'qe-saida' : '',
+                      andarEditorAtual.celulas[`${x - 1},${y - 1}`]?.tipo === 'ACESSO' ? 'qe-acesso' : '',
+                      selecionados.has(`${x - 1},${y - 1}`) ? 'qe-selecionado-roxo' : '',
+                      coordsSombraCarimbo.has(`${x - 1},${y - 1}`) ? 'qe-sombra-verde' : ''
+                    ]"
                     :style="
-                      andarEditorAtual.celulas[`${x},${y}`]?.tipo === 'VAGA' &&
-                      andarEditorAtual.celulas[`${x},${y}`]?.macEsp &&
-                      !selecionados.has(`${x},${y}`)
-                        ? { backgroundColor: escurecerCorHex(andarEditorAtual.celulas[`${x},${y}`]?.corSetor) }
+                      andarEditorAtual.celulas[`${x - 1},${y - 1}`]?.tipo === 'VAGA' &&
+                      andarEditorAtual.celulas[`${x - 1},${y - 1}`]?.macEsp &&
+                      !selecionados.has(`${x - 1},${y - 1}`)
+                        ? {
+                            backgroundColor: escurecerCorHex(
+                              andarEditorAtual.celulas[`${x - 1},${y - 1}`]?.corSetor,
+                              0.55
+                            ),
+                            borderColor: '#0f172a',
+                            color: '#ffffff'
+                          }
                         : {}
                     "
                   >
-                    <span v-if="andarEditorAtual.celulas[`${x},${y}`]?.tipo === 'VAGA'">
-                      {{ andarEditorAtual.celulas[`${x},${y}`]?.identificador || 'V' }}
+                    <span v-if="andarEditorAtual.celulas[`${x - 1},${y - 1}`]?.tipo === 'VAGA'">
+                      {{ andarEditorAtual.celulas[`${x - 1},${y - 1}`]?.identificador }}
                     </span>
-                    <IconDoorEnter v-else-if="andarEditorAtual.celulas[`${x},${y}`]?.tipo === 'ENTRADA'" :size="16" />
-                    <IconDoorExit v-else-if="andarEditorAtual.celulas[`${x},${y}`]?.tipo === 'SAIDA'" :size="16" />
-                    <IconArrowBarRight v-else-if="andarEditorAtual.celulas[`${x},${y}`]?.tipo === 'ACESSO'" :size="16" />
+                    <IconDoorEnter
+                      v-else-if="andarEditorAtual.celulas[`${x - 1},${y - 1}`]?.tipo === 'ENTRADA'"
+                      :size="17"
+                    />
+                    <IconDoorExit
+                      v-else-if="andarEditorAtual.celulas[`${x - 1},${y - 1}`]?.tipo === 'SAIDA'"
+                      :size="17"
+                    />
+                    <IconArrowBarRight
+                      v-else-if="andarEditorAtual.celulas[`${x - 1},${y - 1}`]?.tipo === 'ACESSO'"
+                      :size="17"
+                    />
                   </div>
                 </div>
               </div>
@@ -1503,45 +1521,43 @@ onUnmounted(() => {
         </div>
       </div>
 
-      <aside
-        class="sidebar-direita-editor"
-        :class="{ 'sidebar-mobile-aberta': menuAdicionarMobileAberto }"
-      >
+      <!-- Painel Lateral Direito -->
+      <aside class="sidebar-direita-editor" :class="{ 'sidebar-mobile-aberta': menuAdicionarMobileAberto }">
         <div class="painel-ferramentas">
           <h4 class="item-icone-texto">
             <IconDoorEnter :size="18" />
             <span>Entradas / Saídas / Acessos</span>
           </h4>
-          <p class="dica-painel">Clique para definir o tamanho e posicionar</p>
+          <p class="dica-painel">Escolha a orientação (H = Horizontal, V = Vertical):</p>
 
           <div class="linha-botoes-dupla">
-            <button class="btn-ferramenta cor-entrada item-icone-texto" @click="prepararAcesso('ENTRADA', 'H')">
+            <button class="btn-ferramenta cor-entrada item-icone-texto" @click="abrirConfigAcesso('ENTRADA', 'H')">
               <IconDoorEnter :size="16" />
               <span>Entrada (H)</span>
             </button>
-            <button class="btn-ferramenta cor-entrada item-icone-texto" @click="prepararAcesso('ENTRADA', 'V')">
+            <button class="btn-ferramenta cor-entrada item-icone-texto" @click="abrirConfigAcesso('ENTRADA', 'V')">
               <IconDoorEnter :size="16" />
               <span>Entrada (V)</span>
             </button>
           </div>
 
           <div class="linha-botoes-dupla">
-            <button class="btn-ferramenta cor-saida item-icone-texto" @click="prepararAcesso('SAIDA', 'H')">
+            <button class="btn-ferramenta cor-saida item-icone-texto" @click="abrirConfigAcesso('SAIDA', 'H')">
               <IconDoorExit :size="16" />
               <span>Saída (H)</span>
             </button>
-            <button class="btn-ferramenta cor-saida item-icone-texto" @click="prepararAcesso('SAIDA', 'V')">
+            <button class="btn-ferramenta cor-saida item-icone-texto" @click="abrirConfigAcesso('SAIDA', 'V')">
               <IconDoorExit :size="16" />
               <span>Saída (V)</span>
             </button>
           </div>
 
           <div class="linha-botoes-dupla">
-            <button class="btn-ferramenta cor-acesso item-icone-texto" @click="prepararAcesso('ACESSO', 'H')">
+            <button class="btn-ferramenta cor-acesso item-icone-texto" @click="abrirConfigAcesso('ACESSO', 'H')">
               <IconArrowBarRight :size="16" />
               <span>Acesso (H)</span>
             </button>
-            <button class="btn-ferramenta cor-acesso item-icone-texto" @click="prepararAcesso('ACESSO', 'V')">
+            <button class="btn-ferramenta cor-acesso item-icone-texto" @click="abrirConfigAcesso('ACESSO', 'V')">
               <IconArrowBarRight :size="16" />
               <span>Acesso (V)</span>
             </button>
@@ -1553,109 +1569,182 @@ onUnmounted(() => {
             <IconCpu :size="18" />
             <span>Equipamentos (ESP32)</span>
           </h4>
-          <p class="dica-painel">Escolha o formato (X por Y) e clique nas vagas</p>
+          <p class="dica-painel">Clique num modelo e posicione sobre as vagas amarelas:</p>
 
-          <div
-            v-for="(linha, rIdx) in linhasEquipamentos"
-            :key="`eq-row-${rIdx}`"
-            class="linha-equipamentos"
-          >
-            <button
-              v-for="item in linha"
-              :key="`${item.w}x${item.h}`"
-              class="btn-equipamento item-icone-texto"
-              @click="ativarCarimboEquipamento(item.w, item.h)"
-            >
-              <IconCpu :size="15" />
-              <span>{{ item.w }}x{{ item.h }}</span>
+          <div class="linha-equipamentos">
+            <button class="btn-equipamento item-icone-texto" @click="ativarCarimboEquipamento(1, 2)">
+              <IconCpu :size="16" />
+              <span>1x2</span>
+            </button>
+            <button class="btn-equipamento item-icone-texto" @click="ativarCarimboEquipamento(1, 3)">
+              <IconCpu :size="16" />
+              <span>1x3</span>
+            </button>
+            <button class="btn-equipamento item-icone-texto" @click="ativarCarimboEquipamento(1, 4)">
+              <IconCpu :size="16" />
+              <span>1x4</span>
             </button>
           </div>
 
-          <button class="btn-alterar-setores-menu item-icone-texto" @click="abrirModalAlterarSetores">
+          <div class="linha-equipamentos">
+            <button class="btn-equipamento item-icone-texto" @click="ativarCarimboEquipamento(2, 1)">
+              <IconCpu :size="16" />
+              <span>2x1</span>
+            </button>
+            <button class="btn-equipamento item-icone-texto" @click="ativarCarimboEquipamento(3, 1)">
+              <IconCpu :size="16" />
+              <span>3x1</span>
+            </button>
+            <button class="btn-equipamento item-icone-texto" @click="ativarCarimboEquipamento(4, 1)">
+              <IconCpu :size="16" />
+              <span>4x1</span>
+            </button>
+          </div>
+
+          <div class="linha-equipamentos">
+            <button class="btn-equipamento item-icone-texto" @click="ativarCarimboEquipamento(2, 2)">
+              <IconCpu :size="16" />
+              <span>2x2</span>
+            </button>
+            <button class="btn-equipamento item-icone-texto" @click="ativarCarimboEquipamento(2, 4)">
+              <IconCpu :size="16" />
+              <span>2x4</span>
+            </button>
+            <button class="btn-equipamento item-icone-texto" @click="ativarCarimboEquipamento(4, 2)">
+              <IconCpu :size="16" />
+              <span>4x2</span>
+            </button>
+          </div>
+        </div>
+
+        <div class="painel-ferramentas">
+          <h4 class="item-icone-texto">
             <IconLayoutBoard :size="18" />
-            <span>Alterar Setores</span>
+            <span>Setores do Andar</span>
+          </h4>
+          <p class="dica-painel">Edite nome, prefixo, cor ou exclua setores:</p>
+          <button class="btn-alterar-setores-menu item-icone-texto" @click="abrirModalAlterarSetores">
+            <IconPencil :size="17" />
+            <span>Alterar Setores ({{ andarEditorAtual.setores?.length || 0 }})</span>
           </button>
         </div>
       </aside>
     </div>
 
-    <!-- =======================================================
-         MODAIS POP-UP DO EDITOR GAMIFICADO
-         ======================================================= -->
-    <Transition name="fade-pop">
-      <div v-if="modalSetorAberto" class="modal-backdrop">
-        <div class="modal-box">
+    <!-- Modal: Tamanho do Grid -->
+    <Transition name="fade-backdrop">
+      <div v-if="modalTamanhoAberto" class="modal-backdrop" @click.self="modalTamanhoAberto = false">
+        <div class="modal-box modal-compacto">
           <h3 class="item-icone-texto">
-            <IconLayoutBoard :size="20" />
-            <span>Definir Setor</span>
+            <IconLayoutGrid :size="20" />
+            <span>Tamanho do Grid (5 a 100)</span>
           </h3>
-          <div class="campo-grupo" style="margin-top:10px">
-            <label>Nome do Setor (único)</label>
-            <input v-model="novoSetorNome" type="text" maxlength="25" placeholder="Ex: Setor A" />
-          </div>
-          <div class="campo-grupo">
-            <label>Prefixo das Vagas (máx. 3 letras)</label>
-            <input
-              v-model="novoSetorPrefixo"
-              type="text"
-              maxlength="3"
-              class="input-curto-prefixo"
-              placeholder="A"
-              @input="sanitizarPrefixoSetor"
-            />
-          </div>
-          <div class="campo-grupo">
-            <label>Cor viva do setor:</label>
-            <div class="grade-cores-setor">
-              <button
-                v-for="cor in paletaSetores"
-                :key="cor.hex"
-                class="botao-cor-setor"
-                :class="{ 'cor-selecionada': novoSetorCor === cor.hex }"
-                :style="{ backgroundColor: cor.hex }"
-                @click="novoSetorCor = cor.hex"
-              >
-                {{ cor.nome }}
-              </button>
+          <div class="linha-inputs-compactos">
+            <div class="campo-compacto">
+              <label>Largura (X)</label>
+              <input v-model.number="tempGridX" type="number" min="5" max="100" class="input-numero-compacto" />
+            </div>
+            <span class="separador-x">×</span>
+            <div class="campo-compacto">
+              <label>Altura (Y)</label>
+              <input v-model.number="tempGridY" type="number" min="5" max="100" class="input-numero-compacto" />
             </div>
           </div>
           <div class="modal-acoes">
-            <button class="btn-secundario item-icone-texto" @click="modalSetorAberto = false">
-              <IconSquareRoundedX :size="18" />
+            <button class="btn-secundario item-icone-texto" @click="modalTamanhoAberto = false">
+              <IconSquareRoundedX :size="17" />
               <span>Cancelar</span>
             </button>
-            <button class="btn-primario item-icone-texto" @click="confirmarSetorSelecao">
-              <IconSquareRoundedCheck :size="18" />
-              <span>OK</span>
+            <button class="btn-primario item-icone-texto" @click="confirmarTamanhoGrid">
+              <IconSquareRoundedCheck :size="17" />
+              <span>Aplicar</span>
             </button>
           </div>
         </div>
       </div>
     </Transition>
 
-    <!-- MODAL: ALTERAR SETORES -->
-    <Transition name="fade-pop">
-      <div v-if="modalAlterarSetoresAberto" class="modal-backdrop">
+    <!-- Modal: Definir Setor -->
+    <Transition name="fade-backdrop">
+      <div v-if="modalSetorAberto" class="modal-backdrop" @click.self="modalSetorAberto = false">
+        <div class="modal-box">
+          <h3 class="item-icone-texto">
+            <IconLayoutBoard :size="20" />
+            <span>Definir Setor na Área Selecionada</span>
+          </h3>
+          <div class="campo-grupo" style="margin-top: 12px">
+            <label>Nome do Setor</label>
+            <input v-model="nomeNovoSetor" type="text" maxlength="25" placeholder="Ex: Setor Norte" />
+          </div>
+          <div class="campo-grupo">
+            <label>Prefixo das Vagas (1 a 3 letras/números)</label>
+            <input
+              :value="prefixoNovoSetor"
+              type="text"
+              maxlength="3"
+              placeholder="Ex: A, B, VIP"
+              class="input-curto-prefixo"
+              @input="prefixoNovoSetor = formatarInputPrefixo($event.target.value)"
+            />
+          </div>
+          <div class="campo-grupo">
+            <label>Escolha uma das 10 cores exclusivas do andar</label>
+            <div class="grade-cores-setor">
+              <button
+                v-for="cor in paletaSetores"
+                :key="cor.hex"
+                type="button"
+                class="botao-cor-setor"
+                :class="{ 'cor-selecionada': corNovoSetor === cor.hex }"
+                :disabled="coresUsadasNoAndar.has(cor.hex)"
+                :style="{
+                  backgroundColor: cor.hex,
+                  opacity: coresUsadasNoAndar.has(cor.hex) ? 0.25 : 1,
+                  cursor: coresUsadasNoAndar.has(cor.hex) ? 'not-allowed' : 'pointer'
+                }"
+                @click="corNovoSetor = cor.hex"
+              >
+                {{ cor.nome }} {{ coresUsadasNoAndar.has(cor.hex) ? '(Em uso)' : '' }}
+              </button>
+            </div>
+          </div>
+          <div class="modal-acoes">
+            <button class="btn-secundario item-icone-texto" @click="modalSetorAberto = false">
+              <IconSquareRoundedX :size="17" />
+              <span>Cancelar</span>
+            </button>
+            <button class="btn-primario item-icone-texto" @click="confirmarAdicionarSetor">
+              <IconSquareRoundedCheck :size="17" />
+              <span>Aplicar Setor</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </Transition>
+
+    <!-- Modal: Alterar ou Excluir Setores -->
+    <Transition name="fade-backdrop">
+      <div v-if="modalAlterarSetoresAberto" class="modal-backdrop" @click.self="modalAlterarSetoresAberto = false">
         <div class="modal-box modal-alterar-setor">
           <div class="overlay-header">
             <h3 class="item-icone-texto">
-              <IconLayoutBoard :size="20" />
-              <span>Alterar Setores ({{ andarEditorAtual.nome_andar }})</span>
+              <IconPencil :size="19" />
+              <span>Alterar Setores do Andar</span>
             </h3>
             <button class="btn-fechar-mini" @click="modalAlterarSetoresAberto = false">
-              <IconSquareRoundedX :size="20" />
+              <IconSquareRoundedX :size="18" />
             </button>
           </div>
 
-          <div class="campo-grupo" style="margin-top:8px">
-            <label>Selecionar Setor (digite para filtrar)</label>
+          <div class="campo-grupo" style="margin-top: 10px">
+            <label>Pesquisar ou Selecionar Setor</label>
             <div class="combobox-setor-wrapper">
               <input
-                v-model="filtroBuscaSetor"
+                v-model="termoBuscaSetor"
                 type="text"
-                placeholder="Pesquisar ou selecionar setor..."
+                placeholder="Digite o nome ou clique na seta..."
                 @focus="dropdownSetoresAberto = true"
-                @input="aoDigitarFiltroSetor"
+                @input="aoDigitarBuscaSetor"
               />
               <button
                 type="button"
@@ -1667,15 +1756,16 @@ onUnmounted(() => {
 
               <div v-if="dropdownSetoresAberto" class="lista-dropdown-setores">
                 <div
-                  v-for="s in setoresFiltradosParaEdicao"
+                  v-for="s in setoresFiltradosBusca"
                   :key="s.id_setor"
                   class="item-dropdown-setor"
-                  @click="escolherSetorParaEditar(s)"
+                  @click="carregarDadosSetorNoForm(s)"
                 >
                   <span class="bolinha-cor-setor" :style="{ backgroundColor: s.cor_hex }"></span>
-                  <span>{{ s.nome_setor }} ({{ s.prefixo }})</span>
+                  <strong>{{ s.nome_setor }}</strong>
+                  <span class="texto-colchetes-setor">[Prefixo: {{ s.prefixo }}]</span>
                 </div>
-                <div v-if="setoresFiltradosParaEdicao.length === 0" class="item-dropdown-vazio">
+                <div v-if="setoresFiltradosBusca.length === 0" class="item-dropdown-vazio">
                   Nenhum setor encontrado neste andar.
                 </div>
               </div>
@@ -1684,28 +1774,31 @@ onUnmounted(() => {
 
           <div
             class="area-edicao-setor-campos"
-            :class="{ 'campos-desabilitados': !setorSelecionadoParaEditar }"
+            :class="{ 'campos-desabilitados': !setorSelecionadoParaEdicao }"
           >
+            <p v-if="!setorSelecionadoParaEdicao" class="msg-preencha-setor">
+              Preencha o campo de setor acima para liberar a edição
+            </p>
+
             <div class="campo-grupo">
-              <label>Nome do Setor</label>
+              <label>Novo Nome do Setor</label>
               <input
-                v-model="editSetorNome"
+                v-model="editNomeSetor"
                 type="text"
                 maxlength="25"
-                :disabled="!setorSelecionadoParaEditar"
-                placeholder="Selecione um setor acima"
+                :disabled="!setorSelecionadoParaEdicao"
               />
             </div>
 
             <div class="campo-grupo">
-              <label>Prefixo das Vagas (máx. 3 letras)</label>
+              <label>Prefixo das Vagas (1 a 3 caracteres)</label>
               <input
-                v-model="editSetorPrefixo"
+                :value="editPrefixoSetor"
                 type="text"
                 maxlength="3"
                 class="input-curto-prefixo"
-                :disabled="!setorSelecionadoParaEditar"
-                @input="sanitizarEditPrefixoSetor"
+                :disabled="!setorSelecionadoParaEdicao"
+                @input="editPrefixoSetor = formatarInputPrefixo($event.target.value)"
               />
             </div>
 
@@ -1714,184 +1807,135 @@ onUnmounted(() => {
               <div class="grade-cores-setor">
                 <button
                   v-for="cor in paletaSetores"
-                  :key="cor.hex"
+                  :key="`ed-${cor.hex}`"
                   type="button"
                   class="botao-cor-setor"
-                  :class="{ 'cor-selecionada': setorSelecionadoParaEditar && editSetorCor === cor.hex }"
-                  :style="{ backgroundColor: cor.hex }"
-                  :disabled="!setorSelecionadoParaEditar"
-                  @click="editSetorCor = cor.hex"
+                  :class="{ 'cor-selecionada': editCorSetor === cor.hex }"
+                  :disabled="!setorSelecionadoParaEdicao || corOcupadaPorOutroSetor(cor.hex)"
+                  :style="{
+                    backgroundColor: cor.hex,
+                    opacity: corOcupadaPorOutroSetor(cor.hex) ? 0.22 : 1
+                  }"
+                  @click="editCorSetor = cor.hex"
                 >
                   {{ cor.nome }}
                 </button>
               </div>
             </div>
-          </div>
 
-          <p
-            v-if="setorSelecionadoParaEditar && !dadosEdicaoSetorPreenchidos"
-            class="msg-preencha-setor item-icone-texto"
-            style="justify-content: center"
-          >
-            <IconAlertSquareRounded :size="18" />
-            <span>Preencha os dados antes de confirmar</span>
-          </p>
-
-          <div class="botoes-empilhados-setor">
-            <button
-              type="button"
-              class="btn-excluir-setor item-icone-texto"
-              :disabled="!setorSelecionadoParaEditar"
-              @click="excluirSetorSelecionado"
-            >
-              <IconTrash :size="18" />
-              <span>Excluir Setor</span>
-            </button>
-
-            <button
-              type="button"
-              class="btn-confirmar-setor item-icone-texto"
-              :disabled="!setorSelecionadoParaEditar || !dadosEdicaoSetorPreenchidos"
-              @click="confirmarAlteracaoSetor"
-            >
-              <IconSquareRoundedCheck :size="18" />
-              <span>Confirmar Alterações</span>
-            </button>
+            <div class="botoes-empilhados-setor">
+              <button
+                type="button"
+                class="btn-excluir-setor item-icone-texto"
+                :disabled="!setorSelecionadoParaEdicao"
+                @click="excluirSetorInteiro"
+              >
+                <IconTrash :size="17" />
+                <span>Excluir Setor</span>
+              </button>
+              <button
+                type="button"
+                class="btn-confirmar-setor item-icone-texto"
+                :disabled="!setorSelecionadoParaEdicao"
+                @click="salvarAlteracoesSetor"
+              >
+                <IconSquareRoundedCheck :size="17" />
+                <span>Confirmar Alterações</span>
+              </button>
+            </div>
           </div>
         </div>
       </div>
     </Transition>
 
-    <Transition name="fade-pop">
-      <div v-if="modalGridAberto" class="modal-backdrop">
+    <!-- Modal: Tamanho da Entrada / Saída / Acesso -->
+    <Transition name="fade-backdrop">
+      <div v-if="modalAcessoAberto" class="modal-backdrop" @click.self="modalAcessoAberto = false">
         <div class="modal-box modal-compacto">
           <h3 class="item-icone-texto">
-            <IconLayoutGrid :size="20" />
-            <span>Tamanho do Grid</span>
+            <IconDoorEnter v-if="tipoAcessoTemp === 'ENTRADA'" :size="20" />
+            <IconDoorExit v-else-if="tipoAcessoTemp === 'SAIDA'" :size="20" />
+            <IconArrowBarRight v-else :size="20" />
+            <span>Configurar {{ tipoAcessoTemp }} ({{ orientacaoAcessoTemp }})</span>
           </h3>
-          <p class="subtitulo">Mín. 5 | Máx. 100</p>
           <div class="linha-inputs-compactos">
             <div class="campo-compacto">
-              <label>Largura (X)</label>
+              <label>Largura em células (1 a 10)</label>
               <input
-                v-model="inputGridX"
+                v-model.number="tamanhoAcessoTemp"
                 type="number"
-                min="5"
-                max="100"
+                min="1"
+                max="10"
                 class="input-numero-compacto"
-                @input="clonarLimiteGridX"
-                @change="clonarLimiteGridX"
               />
             </div>
-            <span class="separador-x">×</span>
-            <div class="campo-compacto">
-              <label>Altura (Y)</label>
-              <input
-                v-model="inputGridY"
-                type="number"
-                min="5"
-                max="100"
-                class="input-numero-compacto"
-                @input="clonarLimiteGridY"
-                @change="clonarLimiteGridY"
-              />
-            </div>
-          </div>
-          <div class="modal-acoes">
-            <button class="btn-secundario item-icone-texto" @click="modalGridAberto = false">
-              <IconSquareRoundedX :size="18" />
-              <span>Cancelar</span>
-            </button>
-            <button class="btn-primario item-icone-texto" @click="confirmarTamanhoGrid">
-              <IconSquareRoundedCheck :size="18" />
-              <span>Aplicar</span>
-            </button>
-          </div>
-        </div>
-      </div>
-    </Transition>
-
-    <Transition name="fade-pop">
-      <div v-if="modalAcessoAberto" class="modal-backdrop">
-        <div class="modal-box modal-compacto">
-          <h3 class="item-icone-texto">
-            <IconDoorEnter v-if="configAcessoTemp.tipo === 'ENTRADA'" :size="20" />
-            <IconDoorExit v-else-if="configAcessoTemp.tipo === 'SAIDA'" :size="20" />
-            <IconArrowBarRight v-else :size="20" />
-            <span>
-              {{ configAcessoTemp.tipo }}
-              ({{ configAcessoTemp.orientacao === 'H' ? 'Horiz.' : 'Vert.' }})
-            </span>
-          </h3>
-          <div class="campo-compacto" style="margin-top:10px">
-            <label v-if="configAcessoTemp.orientacao === 'H'">Largura X (1 a 20):</label>
-            <label v-else>Altura Y (1 a 20):</label>
-            <input
-              v-model="configAcessoTemp.tamanho"
-              type="number"
-              min="1"
-              max="20"
-              class="input-numero-compacto"
-              @input="ajustarLimiteAcesso"
-              @change="ajustarLimiteAcesso"
-            />
           </div>
           <div class="modal-acoes">
             <button class="btn-secundario item-icone-texto" @click="modalAcessoAberto = false">
-              <IconSquareRoundedX :size="18" />
+              <IconSquareRoundedX :size="17" />
               <span>Cancelar</span>
             </button>
             <button class="btn-primario item-icone-texto" @click="ativarCarimboAcesso">
-              <IconSquareRoundedCheck :size="18" />
-              <span>OK</span>
+              <IconSquareRoundedCheck :size="17" />
+              <span>Posicionar</span>
             </button>
           </div>
         </div>
       </div>
     </Transition>
 
-    <Transition name="fade-pop">
-      <div v-if="modalMacAberto" class="modal-backdrop">
-        <div class="modal-box modal-compacto">
+    <!-- Modal: Vincular MAC do ESP32 -->
+    <Transition name="fade-backdrop">
+      <div v-if="modalMacAberto" class="modal-backdrop" @click.self="modalMacAberto = false">
+        <div class="modal-box">
           <h3 class="item-icone-texto">
             <IconCpu :size="20" />
-            <span>Vincular ESP32</span>
+            <span>Vincular Equipamento ESP32</span>
           </h3>
           <p class="subtitulo">
-            {{ coordenadasCarimboPendente.length }} vaga(s) selecionada(s)
+            Vinculando {{ coordsParaVincularMac.length }} vaga(s) selecionada(s).
           </p>
-          <div class="campo-grupo" style="margin-top:10px">
-            <label>Código MAC do ESP32</label>
-            <input v-model="inputMacEsp" type="text" maxlength="17" placeholder="AA:BB:CC:DD:EE:FF" />
+          <div class="campo-grupo" style="margin-top: 12px">
+            <label>Código MAC Único do ESP32</label>
+            <input
+              v-model="macTemp"
+              type="text"
+              maxlength="17"
+              placeholder="Ex: AA:BB:CC:DD:EE:01"
+            />
           </div>
           <div class="modal-acoes">
             <button class="btn-secundario item-icone-texto" @click="modalMacAberto = false">
-              <IconSquareRoundedX :size="18" />
+              <IconSquareRoundedX :size="17" />
               <span>Cancelar</span>
             </button>
-            <button class="btn-primario item-icone-texto" @click="confirmarVinculoEquipamento">
-              <IconSquareRoundedCheck :size="18" />
-              <span>Vincular</span>
+            <button class="btn-primario item-icone-texto" @click="confirmarVinculoMac">
+              <IconSquareRoundedCheck :size="17" />
+              <span>Vincular Vagas</span>
             </button>
           </div>
         </div>
       </div>
     </Transition>
 
-    <!-- MODAL PERSONALIZADO DE SUCESSO AO SALVAR -->
-    <Transition name="fade-pop">
+    <!-- Modal: Sucesso ao Salvar -->
+    <Transition name="fade-backdrop">
       <div v-if="modalSucessoSalvarAberto" class="modal-backdrop">
         <div class="modal-box modal-sucesso-salvar">
-          <div class="icone-sucesso-modal" style="color: #16a34a">
+          <div class="icone-sucesso-modal" style="color: #22c55e">
             <IconSquareRoundedCheck :size="48" />
           </div>
-          <h3>Planta 2D Salva com Sucesso!</h3>
-          <p class="subtitulo">
-            Todos os andares, setores, equipamentos e vagas foram gravados no banco de dados.
+          <h3>Estacionamento Salvo!</h3>
+          <p class="subtitulo" style="margin-top: 6px">
+            Todas as configurações de andares, setores, vagas e equipamentos foram gravadas no banco de dados MySQL com sucesso.
           </p>
-          <button class="btn-confirmar-sucesso item-icone-texto" @click="confirmarModalSucessoSalvar">
+          <button
+            type="button"
+            class="btn-confirmar-sucesso item-icone-texto"
+            @click="confirmarSucessoEVoltarLista"
+          >
             <IconSquareRoundedCheck :size="20" />
-            <span>Confirmar</span>
+            <span>Voltar para a Lista de Estacionamentos</span>
           </button>
         </div>
       </div>

@@ -1,123 +1,152 @@
 <script setup>
 import { ref, computed, watch, onMounted, onUnmounted } from 'vue'
-import { useRoute, useRouter } from 'vue-router'
+import { useRouter, useRoute } from 'vue-router'
 import {
-  estabelecimentosDoGerente,
+  estabelecimentosDoGerentePorCidade,
+  cidadesDoGerente,
+  cidadeSelecionadaGerente,
+  selecionarCidadeGerente,
   simulacao1Ativa,
   alternarSimulacao1Frontend,
-  carregarDadosDoBanco,
-  cidadeSelecionadaGerente, 
-  cidadesDoGerente, 
-  estabelecimentosDoGerentePorCidade, 
-  selecionarCidadeGerente
+  carregarDadosDoBanco
 } from '@/stores/estacionamentoStore'
+import { alterarStatusVagasLoteApi } from '@/services/estacionamentoService'
+import { useGridPanZoom } from '@/composables/useGridPanZoom'
 import {
+  IconSquareRoundedArrowLeft,
+  IconStack2,
   IconParking,
   IconSearch,
   IconSquareRoundedChevronDown,
-  IconSquareRoundedArrowLeft,
   IconSquareRoundedCheck,
   IconSquareRoundedX,
   IconBan,
   IconFlame,
   IconQrcode,
-  IconPlayerPlay,
-  IconStack2,
+  IconSettings,
   IconLayoutBoard,
   IconDoorEnter,
   IconDoorExit,
   IconArrowBarRight,
-  IconSettings,
+  IconPlayerPlay,
   IconPin
 } from '@/constants/icons'
 
-const API_URL = 'http://127.0.0.1:8000'
-const route = useRoute()
 const router = useRouter()
+const route = useRoute()
 
-const estSelecionadoId = ref(null)
+const idEstacionamentoAtivo = ref(null)
 const andarIndex = ref(0)
-
-// Dropdown de pesquisa para trocar de estacionamento
 const dropdownEstAberto = ref(false)
 const dropdownCidadeAberto = ref(false)
 const dropdownAndarAberto = ref(false)
 const termoBuscaEst = ref('')
 
-// Modos especiais: 'NENHUM' | 'INATIVAR' | 'REATIVAR'
-const modoAcaoVagas = ref('NENHUM')
+const modoAcaoVagas = ref(null)
+const vagasSelecionadasIds = ref(new Set())
+const arrastandoSelecao = ref(false)
+const pontoInicialSelecao = ref(null)
+const salvandoLote = ref(false)
+
 const modoMapaCalor = ref(false)
-const salvandoStatusLote = ref(false)
-
-// Menus mobile (<= 1024px)
-const menuOpcoesMobileAberto = ref(false)
-const painelLateralMobileAberto = ref(false)
-
-// Modal QR Code da Entrada
 const modalQrAberto = ref(false)
-
-// Seleção arrastável
-const selecionados = ref(new Set())
-const arrastando = ref(false)
-const pontoInicialArrasto = ref(null)
-const baseSelecionadosCtrl = ref(new Set())
 const hoverCoord = ref(null)
 
-// Touch Pan & Pinch-to-Zoom
-const panX = ref(0)
-const panY = ref(0)
-const zoomEscala = ref(1)
-let toqueUnico = null
-let pinchInicial = null
+const menuOpcoesMobileAberto = ref(false)
+const menuSetoresMobileAberto = ref(false)
 
-onMounted(async () => {
-  if (estabelecimentosDoGerente.value.length === 0) {
-    await carregarDadosDoBanco()
-  }
-  inicializarEstacionamentoAtivo()
-  window.addEventListener('mouseup', finalizarArrastoGerente)
-  window.addEventListener('click', fecharDropdownAoClicarFora)
-  window.addEventListener('keydown', tratarEscGerente)
-})
-
-onUnmounted(() => {
-  window.removeEventListener('mouseup', finalizarArrastoGerente)
-  window.removeEventListener('click', fecharDropdownAoClicarFora)
-  window.removeEventListener('keydown', tratarEscGerente)
-})
-
-function tratarEscGerente(e) {
-  if (e.key === 'Escape') {
-    if (modoAcaoVagas.value) cancelarModoSelecao()
-    menuOpcoesMobileAberto.value = false
-    menuSetoresMobileAberto.value = false
-  }
-}
-
-function inicializarEstacionamentoAtivo() {
-  const idQuery = Number(route.query.id)
-  const encontrado = estabelecimentosDoGerente.value.find(e => e.id === idQuery)
-  if (encontrado) {
-    estSelecionadoId.value = encontrado.id
-  } else if (estabelecimentosDoGerente.value.length > 0) {
-    estSelecionadoId.value = estabelecimentosDoGerente.value[0].id
-  }
-}
-
-watch(
-  () => route.query.id,
-  () => inicializarEstacionamentoAtivo()
-)
-
-watch(estabelecimentosDoGerente, () => {
-  if (!estSelecionadoId.value && estabelecimentosDoGerente.value.length > 0) {
-    inicializarEstacionamentoAtivo()
-  }
-})
+const {
+  panX,
+  panY,
+  zoomEscala,
+  iniciarToquePanZoom,
+  moverToquePanZoom,
+  finalizarToquePanZoom,
+  resetarCameraGrid
+} = useGridPanZoom()
 
 const gridGerenteRef = ref(null)
 let autoScrollGerenteFrame = null
 let ponteiroGerenteClient = { x: 0, y: 0 }
+
+const estacionamentoAtual = computed(() => {
+  const lista = estabelecimentosDoGerentePorCidade.value
+  if (lista.length === 0) return null
+  const encontrado = lista.find(e => e.id === Number(idEstacionamentoAtivo.value))
+  return encontrado || lista[0]
+})
+
+function aoTrocarCidadeTelaCheia(novaCid) {
+  selecionarCidadeGerente(novaCid)
+  const primeira = estabelecimentosDoGerentePorCidade.value[0]
+  if (primeira) {
+    idEstacionamentoAtivo.value = primeira.id
+    andarIndex.value = 0
+  }
+}
+
+watch(
+  () => [route.query.id, estabelecimentosDoGerentePorCidade.value.length],
+  () => {
+    if (route.query.id) {
+      idEstacionamentoAtivo.value = Number(route.query.id)
+    } else if (!idEstacionamentoAtivo.value && estabelecimentosDoGerentePorCidade.value.length > 0) {
+      idEstacionamentoAtivo.value = estabelecimentosDoGerentePorCidade.value[0].id
+    }
+  },
+  { immediate: true }
+)
+
+const andarAtual = computed(() => {
+  if (!estacionamentoAtual.value?.andares) return null
+  return (
+    estacionamentoAtual.value.andares[andarIndex.value] ||
+    estacionamentoAtual.value.andares[0] ||
+    null
+  )
+})
+
+const listaEstabelecimentosFiltrados = computed(() => {
+  const termo = termoBuscaEst.value.trim().toLowerCase()
+  if (!termo) return estabelecimentosDoGerentePorCidade.value
+  return estabelecimentosDoGerentePorCidade.value.filter(
+    e =>
+      e.nome.toLowerCase().includes(termo) ||
+      (e.cidade || '').toLowerCase().includes(termo) ||
+      String(e.id) === termo
+  )
+})
+
+function escolherEstacionamento(est) {
+  idEstacionamentoAtivo.value = est.id
+  andarIndex.value = 0
+  dropdownEstAberto.value = false
+  cancelarModoSelecao()
+  resetarCameraGrid()
+}
+
+function alternarModoSelecao(modo) {
+  if (modoAcaoVagas.value === modo) {
+    cancelarModoSelecao()
+  } else {
+    modoAcaoVagas.value = modo
+    vagasSelecionadasIds.value = new Set()
+    menuOpcoesMobileAberto.value = false
+  }
+}
+
+function cancelarModoSelecao() {
+  modoAcaoVagas.value = null
+  vagasSelecionadasIds.value = new Set()
+  arrastandoSelecao.value = false
+}
+
+function vagaElegivelModoAtual(celula) {
+  if (!celula || celula.tipo !== 'VAGA' || !celula.idVagaBanco) return false
+  if (modoAcaoVagas.value === 'INATIVAR') return !celula.inativa
+  if (modoAcaoVagas.value === 'REATIVAR') return Boolean(celula.inativa)
+  return false
+}
 
 function obterCoordElementoToque(clientX, clientY) {
   const el = document.elementFromPoint(clientX, clientY)
@@ -174,6 +203,7 @@ function pararAutoScrollGerente() {
   }
 }
 
+// No Gerente: o swipe do dedo sempre move o grid, exceto quando Inativar/Reativar estiver ativo
 function aoTouchStartGridGerente(e) {
   if (modoAcaoVagas.value && e.touches.length === 1) {
     const t = e.touches[0]
@@ -210,6 +240,193 @@ function aoTouchEndGridGerente(e) {
   finalizarToquePanZoom(e, tratarToqueSimplesCelula)
 }
 
+function iniciarCliqueCelulaGerente(x, y) {
+  hoverCoord.value = { x, y }
+  if (!modoAcaoVagas.value || !andarAtual.value) return
+
+  arrastandoSelecao.value = true
+  pontoInicialSelecao.value = { x, y }
+
+  const c = andarAtual.value.celulas[`${x},${y}`]
+  if (vagaElegivelModoAtual(c)) {
+    const novo = new Set(vagasSelecionadasIds.value)
+    if (novo.has(c.idVagaBanco)) novo.delete(c.idVagaBanco)
+    else novo.add(c.idVagaBanco)
+    vagasSelecionadasIds.value = novo
+  }
+}
+
+function moverArrastoCelulaGerente(x, y) {
+  hoverCoord.value = { x, y }
+  if (!arrastandoSelecao.value || !pontoInicialSelecao.value || !modoAcaoVagas.value) return
+
+  const xMin = Math.min(pontoInicialSelecao.value.x, x)
+  const xMax = Math.max(pontoInicialSelecao.value.x, x)
+  const yMin = Math.min(pontoInicialSelecao.value.y, y)
+  const yMax = Math.max(pontoInicialSelecao.value.y, y)
+
+  const novo = new Set()
+  for (let cy = yMin; cy <= yMax; cy++) {
+    for (let cx = xMin; cx <= xMax; cx++) {
+      const c = andarAtual.value.celulas[`${cx},${cy}`]
+      if (vagaElegivelModoAtual(c)) {
+        novo.add(c.idVagaBanco)
+      }
+    }
+  }
+  vagasSelecionadasIds.value = novo
+}
+
+function finalizarArrastoGerente() {
+  pararAutoScrollGerente()
+  arrastandoSelecao.value = false
+}
+
+function tratarToqueSimplesCelula(x, y) {
+  hoverCoord.value = { x, y }
+  if (!modoAcaoVagas.value || !andarAtual.value) return
+  const c = andarAtual.value.celulas[`${x},${y}`]
+  if (vagaElegivelModoAtual(c)) {
+    const novo = new Set(vagasSelecionadasIds.value)
+    if (novo.has(c.idVagaBanco)) novo.delete(c.idVagaBanco)
+    else novo.add(c.idVagaBanco)
+    vagasSelecionadasIds.value = novo
+  }
+}
+
+async function confirmarAlteracaoLoteVagas() {
+  if (vagasSelecionadasIds.value.size === 0 || salvandoLote.value) return
+  salvandoLote.value = true
+  const inativar = modoAcaoVagas.value === 'INATIVAR'
+  const ids = Array.from(vagasSelecionadasIds.value)
+
+  try {
+    await alterarStatusVagasLoteApi(ids, inativar)
+    await carregarDadosDoBanco()
+    cancelarModoSelecao()
+  } catch (err) {
+    alert(err.message)
+  } finally {
+    salvandoLote.value = false
+  }
+}
+
+function classeCorVagaGerente(celula) {
+  if (!celula || celula.tipo !== 'VAGA') return ''
+  if (celula.inativa) return 'vaga-gerente-inativa'
+  if (!celula.macEsp) return 'qe-vaga-amarela'
+
+  if (modoMapaCalor.value) {
+    const usos = celula.usosNoDia || 0
+    if (usos >= 9) return 'calor-nivel-5'
+    if (usos >= 7) return 'calor-nivel-4'
+    if (usos >= 5) return 'calor-nivel-3'
+    if (usos >= 3) return 'calor-nivel-2'
+    return 'calor-nivel-1'
+  }
+
+  return celula.livre ? 'vaga-gerente-livre' : 'vaga-gerente-ocupada'
+}
+
+const infoHoverCelula = computed(() => {
+  if (!hoverCoord.value || !andarAtual.value) return null
+  const c = andarAtual.value.celulas[`${hoverCoord.value.x},${hoverCoord.value.y}`]
+  if (!c) return null
+
+  if (c.tipo === 'VAGA') {
+    const statusTexto = c.inativa
+      ? 'INATIVA'
+      : c.livre
+        ? 'Livre'
+        : `Ocupada (Chegada: ${c.horaChegada || '14:20'} • Há ${c.duracaoMinutos || 45} min)`
+    const giroTexto = `Rotatividade hoje: ${c.usosNoDia || 0} uso(s)`
+    return {
+      cor: c.inativa ? '#64748b' : c.livre ? '#16a34a' : '#dc2626',
+      titulo: `Vaga ${c.identificador} — (${c.x},${c.y})`,
+      detalhe: `Setor ${c.nomeSetor || 'Geral'} • ${statusTexto} • ${giroTexto}`
+    }
+  }
+
+  if (c.tipo === 'ENTRADA') return { cor: '#2563eb', titulo: `Entrada (${c.x},${c.y})`, detalhe: null }
+  if (c.tipo === 'SAIDA') return { cor: '#ea580c', titulo: `Saída (${c.x},${c.y})`, detalhe: null }
+  if (c.tipo === 'ACESSO') return { cor: '#16a34a', titulo: `Acesso (${c.x},${c.y})`, detalhe: null }
+  if (c.tipo === 'ESTRADA') {
+    return {
+      cor: '#1e293b',
+      titulo: `Estrada (${c.x},${c.y})`,
+      detalhe: c.nomeSetor ? `Setor ${c.nomeSetor}` : null
+    }
+  }
+  return null
+})
+
+const estatisticasAndares = computed(() => {
+  if (!estacionamentoAtual.value?.andares) return []
+  return estacionamentoAtual.value.andares.map((andar, idx) => {
+    const vagas = Object.values(andar.celulas || {}).filter(c => c.tipo === 'VAGA')
+    const ativas = vagas.filter(v => !v.inativa)
+    const ocupadas = ativas.filter(v => !v.livre).length
+    const livres = ativas.filter(v => v.livre).length
+    const inativas = vagas.filter(v => v.inativa).length
+    const pct = ativas.length > 0 ? Math.round((ocupadas / ativas.length) * 100) : 0
+    const variacao = ((andar.id_andar + idx * 7) % 15) - 5
+
+    return {
+      idx,
+      id_andar: andar.id_andar,
+      nome_andar: andar.nome_andar,
+      livres,
+      ocupadas,
+      inativas,
+      pct,
+      variacao
+    }
+  })
+})
+
+const estatisticasSetoresAndarAtual = computed(() => {
+  if (!andarAtual.value) return []
+  const celulas = Object.values(andarAtual.value.celulas || {})
+
+  return (andarAtual.value.setores || []).map((setor, idx) => {
+    const vagasSetor = celulas.filter(c => c.tipo === 'VAGA' && c.setorId === setor.id_setor)
+    const ativas = vagasSetor.filter(v => !v.inativa)
+    const ocupadas = ativas.filter(v => !v.livre).length
+    const livres = ativas.filter(v => v.livre).length
+    const inativas = vagasSetor.filter(v => v.inativa).length
+    const pct = ativas.length > 0 ? Math.round((ocupadas / ativas.length) * 100) : 0
+    const variacao = ((setor.id_setor + idx * 5) % 19) - 6
+
+    return {
+      id_setor: setor.id_setor,
+      nome_setor: setor.nome_setor,
+      prefixo: setor.prefixo,
+      cor_hex: setor.cor_hex,
+      livres,
+      ocupadas,
+      inativas,
+      pct,
+      variacao
+    }
+  })
+})
+
+const urlPublicaMotorista = computed(() => {
+  if (!estacionamentoAtual.value) return ''
+  return `${window.location.origin}/?id=${estacionamentoAtual.value.id}`
+})
+
+const urlImagemQrCode = computed(() => {
+  if (!urlPublicaMotorista.value) return ''
+  return `https://api.qrserver.com/v1/create-qr-code/?size=240x240&data=${encodeURIComponent(
+    urlPublicaMotorista.value
+  )}`
+})
+
+function imprimirQrCode() {
+  window.print()
+}
+
 function fecharDropdownAoClicarFora(e) {
   if (!e.target.closest('.seletor-est-tela-cheia')) {
     dropdownEstAberto.value = false
@@ -222,485 +439,51 @@ function fecharDropdownAoClicarFora(e) {
   }
 }
 
-const estacionamentoAtual = computed(() => {
-  return (
-    estabelecimentosDoGerente.value.find(e => e.id === estSelecionadoId.value) ||
-    estabelecimentosDoGerente.value[0] ||
-    null
-  )
-})
-
-const andarAtual = computed(() => {
-  if (!estacionamentoAtual.value?.andares) return null
-  return (
-    estacionamentoAtual.value.andares[andarIndex.value] ||
-    estacionamentoAtual.value.andares[0] ||
-    null
-  )
-})
-
-const listaEstabelecimentosFiltrados = computed(() => {
-  const termo = termoBuscaEst.value.trim().toLowerCase()
-  const base = estabelecimentosDoGerentePorCidade.value
-  if (!termo) return base
-  return base.filter(
-    e =>
-      e.nome.toLowerCase().includes(termo) ||
-      (e.cidade || '').toLowerCase().includes(termo)
-  )
-})
-
-function aoTrocarCidadeTelaCheia(novaCidade) {
-  selecionarCidadeGerente(novaCidade)
-  if (estabelecimentosDoGerentePorCidade.value.length > 0) {
-    escolherEstacionamento(estabelecimentosDoGerentePorCidade.value[0])
-  }
-}
-
-function escolherEstacionamento(est) {
-  estSelecionadoId.value = est.id
-  andarIndex.value = 0
-  dropdownEstAberto.value = false
-  termoBuscaEst.value = ''
-  cancelarModoSelecao()
-  resetarCameraGrid()
-}
-
-// =========================================================
-// ESTATÍSTICAS DE ANDARES E SETORES AO LADO DO MAPA
-// =========================================================
-const estatisticasAndares = computed(() => {
-  if (!estacionamentoAtual.value?.andares) return []
-  return estacionamentoAtual.value.andares.map((andar, idx) => {
-    const vagas = Object.values(andar.celulas || {}).filter(c => c.tipo === 'VAGA')
-    const total = vagas.length
-    const inativas = vagas.filter(v => v.inativa).length
-    const livres = vagas.filter(v => !v.inativa && v.livre).length
-    const ocupadas = vagas.filter(v => !v.inativa && !v.livre).length
-    const ativas = Math.max(1, total - inativas)
-    const lotacaoPct = total > 0 ? Math.round((ocupadas / ativas) * 100) : 0
-    const variacao = ocupadas === 0 ? 0 : ((idx % 2 === 0 ? 1 : -1) * ((ocupadas * 3) % 14 + 2))
-
-    return {
-      idx,
-      id_andar: andar.id_andar,
-      nome_andar: andar.nome_andar,
-      total,
-      livres,
-      ocupadas,
-      inativas,
-      lotacaoPct,
-      variacao
-    }
-  })
-})
-
-const estatisticasSetoresAndarAtual = computed(() => {
-  if (!andarAtual.value) return []
-  const celulas = Object.values(andarAtual.value.celulas || {})
-
-  return (andarAtual.value.setores || []).map((setor, sIdx) => {
-    const vagasSetor = celulas.filter(c => c.tipo === 'VAGA' && c.setorId === setor.id_setor)
-    const total = vagasSetor.length
-    const inativas = vagasSetor.filter(v => v.inativa).length
-    const livres = vagasSetor.filter(v => !v.inativa && v.livre).length
-    const ocupadas = vagasSetor.filter(v => !v.inativa && !v.livre).length
-    const ativas = Math.max(1, total - inativas)
-    const lotacaoPct = total > 0 ? Math.round((ocupadas / ativas) * 100) : 0
-    const variacao = ocupadas === 0 ? 0 : ((sIdx % 2 === 0 ? 1 : -1) * ((ocupadas * 4) % 15 + 3))
-
-    return {
-      id_setor: setor.id_setor,
-      nome_setor: setor.nome_setor,
-      prefixo: setor.prefixo,
-      cor_hex: setor.cor_hex,
-      total,
-      livres,
-      ocupadas,
-      inativas,
-      lotacaoPct,
-      variacao
-    }
-  })
-})
-
-// =========================================================
-// MAPA DE CALOR (5 VARIAÇÕES EM QUANTIS DE 20%)
-// =========================================================
-const mapaCalorPorCoordenada = computed(() => {
-  const resultado = {}
-  if (!andarAtual.value?.celulas) return resultado
-
-  const vagas = Object.values(andarAtual.value.celulas).filter(c => c.tipo === 'VAGA')
-  if (vagas.length === 0) return resultado
-
-  const valoresOrdenados = vagas.map(v => v.usosNoDia || 0).sort((a, b) => a - b)
-  const total = valoresOrdenados.length
-
-  vagas.forEach((v) => {
-    const chave = `${v.x},${v.y}`
-    const usos = v.usosNoDia || 0
-
-    if (usos === 0) {
-      resultado[chave] = 'calor-nivel-1'
-      return
-    }
-
-    const posPrimeiraOcorrencia = valoresOrdenados.indexOf(usos)
-    const percentil = posPrimeiraOcorrencia / total
-
-    if (percentil < 0.2) {
-      resultado[chave] = 'calor-nivel-1'
-    } else if (percentil < 0.4) {
-      resultado[chave] = 'calor-nivel-2'
-    } else if (percentil < 0.6) {
-      resultado[chave] = 'calor-nivel-3'
-    } else if (percentil < 0.8) {
-      resultado[chave] = 'calor-nivel-4'
-    } else {
-      resultado[chave] = 'calor-nivel-5'
-    }
-  })
-
-  return resultado
-})
-
-// =========================================================
-// HOVER HUD: MODO NORMAL vs. MODO MAPA DE CALOR
-// =========================================================
-function formatarDuracao(minutos) {
-  if (!minutos || minutos <= 0) return '0min'
-  const h = Math.floor(minutos / 60)
-  const m = minutos % 60
-  return h > 0 ? `${h}h ${m}min` : `${m}min`
-}
-
-const infoHoverGerente = computed(() => {
-  if (!hoverCoord.value || !andarAtual.value?.celulas) return null
-  const c = andarAtual.value.celulas[`${hoverCoord.value.x},${hoverCoord.value.y}`]
-  if (!c) return null
-
-  const coord = `(${c.x}, ${c.y})`
-
-  if (c.tipo !== 'VAGA') {
-    const mapaTipos = {
-      VAZIO: 'Vazio',
-      ESTRADA: 'Estrada',
-      ENTRADA: 'Entrada',
-      SAIDA: 'Saída',
-      ACESSO: 'Acesso de Pedestres'
-    }
-    return {
-      cor: c.corSetor || '#64748b',
-      titulo: `${coord} - ${mapaTipos[c.tipo] || c.tipo}`,
-      detalhe: c.nomeSetor ? `[${c.nomeSetor}]` : ''
-    }
-  }
-
-  if (modoMapaCalor.value) {
-    const qtdUsos = c.usosNoDia || 0
-    return {
-      cor: c.corSetor || '#f97316',
-      titulo: `${coord} - Vaga ${c.identificador}`,
-      detalhe: `Usada ${qtdUsos} ${qtdUsos === 1 ? 'vez' : 'vezes'} durante o dia`
-    }
-  }
-
-  if (c.inativa) {
-    return {
-      cor: '#64748b',
-      titulo: `${coord} - Vaga ${c.identificador}: INATIVADA`,
-      detalhe: '[Interditada pelo gerente]'
-    }
-  }
-
-  if (!c.macEsp) {
-    return {
-      cor: '#eab308',
-      titulo: `${coord} - Vaga ${c.identificador}: Sem comunicação com ESP32`,
-      detalhe: '[Verifique o sensor]'
-    }
-  }
-
-  if (c.livre) {
-    return {
-      cor: '#16a34a',
-      titulo: `${coord} - Vaga ${c.identificador}: LIVRE`,
-      detalhe: c.nomeSetor ? `[${c.nomeSetor}]` : ''
-    }
-  }
-
-  const chegada = c.horaChegada || '14:20'
-  const duracao = formatarDuracao(c.duracaoMinutos || 45)
-  return {
-    cor: '#dc2626',
-    titulo: `${coord} - Vaga ${c.identificador}: OCUPADA`,
-    detalhe: `Chegada: ${chegada} | Duração atual: ${duracao}`
-  }
-})
-
-// =========================================================
-// SELEÇÃO EM LOTE PARA INATIVAR / REATIVAR VAGAS
-// =========================================================
-function ativarModoSelecao(modo) {
-  if (modoAcaoVagas.value === modo) {
-    cancelarModoSelecao()
-    return
-  }
-  modoAcaoVagas.value = modo
-  selecionados.value = new Set()
-  menuOpcoesMobileAberto.value = false
-}
-
-function cancelarModoSelecao() {
-  modoAcaoVagas.value = 'NENHUM'
-  selecionados.value = new Set()
-  arrastando.value = false
-}
-
-const vagasValidasNaSelecao = computed(() => {
-  if (!andarAtual.value?.celulas) return []
-  const lista = []
-  selecionados.value.forEach((chave) => {
-    const c = andarAtual.value.celulas[chave]
-    if (c && c.tipo === 'VAGA') {
-      lista.push(c)
-    }
-  })
-  return lista
-})
-
-async function confirmarAcaoInativarReativar() {
-  const vagasAlvo = vagasValidasNaSelecao.value
-  if (vagasAlvo.length === 0) {
-    cancelarModoSelecao()
-    return
-  }
-
-  const novoStatusInativo = modoAcaoVagas.value === 'INATIVAR'
-  salvandoStatusLote.value = true
-
-  try {
-    const idsBanco = []
-    vagasAlvo.forEach((v) => {
-      v.inativa = novoStatusInativo
-      if (v.vagaId) idsBanco.push(v.vagaId)
-    })
-
-    if (idsBanco.length > 0) {
-      await fetch(`${API_URL}/vagas/status-lote`, {
-        method: 'PATCH',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          ids_vagas: idsBanco,
-          inativo: novoStatusInativo
-        })
-      })
-    }
-  } catch (err) {
-    console.error('Aviso ao sincronizar lote de vagas:', err)
-  } finally {
-    salvandoStatusLote.value = false
-    cancelarModoSelecao()
-  }
-}
-
-function iniciarSelecaoCelula(x, y, event) {
-  if (modoAcaoVagas.value === 'NENHUM') return
-
-  arrastando.value = true
-  pontoInicialArrasto.value = { x, y }
-  const chave = `${x},${y}`
-
-  baseSelecionadosCtrl.value = new Set(selecionados.value)
-  if (event.ctrlKey || event.metaKey) {
-    if (baseSelecionadosCtrl.value.has(chave)) {
-      baseSelecionadosCtrl.value.delete(chave)
-    } else {
-      baseSelecionadosCtrl.value.add(chave)
-    }
-    selecionados.value = new Set(baseSelecionadosCtrl.value)
-  } else {
-    if (baseSelecionadosCtrl.value.has(chave) && selecionados.value.size === 1) {
-      baseSelecionadosCtrl.value.delete(chave)
-    } else {
-      baseSelecionadosCtrl.value.add(chave)
-    }
-    selecionados.value = new Set(baseSelecionadosCtrl.value)
-  }
-}
-
-function moverMouseCelula(x, y) {
-  hoverCoord.value = { x, y }
-  if (!arrastando.value || !pontoInicialArrasto.value || modoAcaoVagas.value === 'NENHUM') return
-
-  const xMin = Math.min(pontoInicialArrasto.value.x, x)
-  const xMax = Math.max(pontoInicialArrasto.value.x, x)
-  const yMin = Math.min(pontoInicialArrasto.value.y, y)
-  const yMax = Math.max(pontoInicialArrasto.value.y, y)
-
-  const novaSelecao = new Set(baseSelecionadosCtrl.value)
-  for (let cy = yMin; cy <= yMax; cy++) {
-    for (let cx = xMin; cx <= xMax; cx++) {
-      novaSelecao.add(`${cx},${cy}`)
-    }
-  }
-  selecionados.value = novaSelecao
-}
-
-function finalizarSelecaoMouse() {
-  if (arrastando.value) {
-    arrastando.value = false
-  }
-}
-
-// =========================================================
-// TOUCH PAN & PINCH-TO-ZOOM (TABLETS E CELULARES)
-// =========================================================
-function distanciaEntreToques(t1, t2) {
-  return Math.hypot(t2.clientX - t1.clientX, t2.clientY - t1.clientY)
-}
-
-function pontoMedioToques(t1, t2) {
-  return {
-    x: (t1.clientX + t2.clientX) / 2,
-    y: (t1.clientY + t2.clientY) / 2
-  }
-}
-
-function aoIniciarToqueGrid(e) {
-  if (e.touches.length === 2) {
-    toqueUnico = null
-    const dist = distanciaEntreToques(e.touches[0], e.touches[1])
-    const meio = pontoMedioToques(e.touches[0], e.touches[1])
-    pinchInicial = {
-      dist,
-      escala: zoomEscala.value,
-      panX: panX.value,
-      panY: panY.value,
-      meioX: meio.x,
-      meioY: meio.y
-    }
-  } else if (e.touches.length === 1) {
-    pinchInicial = null
-    const t = e.touches[0]
-    toqueUnico = {
-      startX: t.clientX,
-      startY: t.clientY,
-      lastX: t.clientX,
-      lastY: t.clientY,
-      panXInicial: panX.value,
-      panYInicial: panY.value,
-      moveu: false
-    }
-  }
-}
-
-function aoMoverToqueGrid(e) {
-  if (e.touches.length === 2 && pinchInicial) {
-    const novaDist = distanciaEntreToques(e.touches[0], e.touches[1])
-    const novoMeio = pontoMedioToques(e.touches[0], e.touches[1])
-    const fator = novaDist / pinchInicial.dist
-    zoomEscala.value = Math.min(2.5, Math.max(0.45, pinchInicial.escala * fator))
-    panX.value = pinchInicial.panX + (novoMeio.x - pinchInicial.meioX)
-    panY.value = pinchInicial.panY + (novoMeio.y - pinchInicial.meioY)
-  } else if (e.touches.length === 1 && toqueUnico) {
-    const t = e.touches[0]
-    toqueUnico.lastX = t.clientX
-    toqueUnico.lastY = t.clientY
-    const dx = t.clientX - toqueUnico.startX
-    const dy = t.clientY - toqueUnico.startY
-
-    if (Math.hypot(dx, dy) > 7) {
-      toqueUnico.moveu = true
-      panX.value = toqueUnico.panXInicial + dx
-      panY.value = toqueUnico.panYInicial + dy
-    }
-  }
-}
-
-function aoFinalizarToqueGrid(e) {
-  if (e.touches.length < 2) pinchInicial = null
-  if (e.touches.length === 0 && toqueUnico) {
-    if (!toqueUnico.moveu) {
-      const el = document.elementFromPoint(toqueUnico.lastX, toqueUnico.lastY)
-      const celulaEl = el?.closest('[data-coord]')
-      if (celulaEl) {
-        const [cx, cy] = celulaEl.getAttribute('data-coord').split(',').map(Number)
-        hoverCoord.value = { x: cx, y: cy }
-        if (modoAcaoVagas.value !== 'NENHUM') {
-          const chave = `${cx},${cy}`
-          const nova = new Set(selecionados.value)
-          if (nova.has(chave)) nova.delete(chave)
-          else nova.add(chave)
-          selecionados.value = nova
-        }
-      }
-    }
-    toqueUnico = null
-  }
-}
-
-function resetarCameraGrid() {
-  panX.value = 0
-  panY.value = 0
-  zoomEscala.value = 1
-}
-
-// =========================================================
-// QR CODE OFICIAL DO ESTACIONAMENTO
-// =========================================================
-const urlMotoristaQr = computed(() => {
-  if (!estacionamentoAtual.value) return ''
-  return `${window.location.origin}/vagas/${estacionamentoAtual.value.id}`
-})
-
-const imagemQrCodeUrl = computed(() => {
-  if (!urlMotoristaQr.value) return ''
-  return `https://api.qrserver.com/v1/create-qr-code/?size=240x240&data=${encodeURIComponent(urlMotoristaQr.value)}`
-})
-
-function imprimirQrCode() {
-  window.print()
-}
-
-function tratarTeclaGlobal(event) {
-  if (event.key === 'Escape') {
-    if (modoAcaoVagas.value !== 'NENHUM') {
-      cancelarModoSelecao()
-    }
-    modalQrAberto.value = false
-    dropdownEstAberto.value = false
+function tratarEscGerente(e) {
+  if (e.key === 'Escape') {
+    if (modoAcaoVagas.value) cancelarModoSelecao()
     menuOpcoesMobileAberto.value = false
-    painelLateralMobileAberto.value = false
+    menuSetoresMobileAberto.value = false
   }
 }
+
+onMounted(() => {
+  window.addEventListener('mouseup', finalizarArrastoGerente)
+  window.addEventListener('click', fecharDropdownAoClicarFora)
+  window.addEventListener('keydown', tratarEscGerente)
+})
+
+onUnmounted(() => {
+  pararAutoScrollGerente()
+  window.removeEventListener('mouseup', finalizarArrastoGerente)
+  window.removeEventListener('click', fecharDropdownAoClicarFora)
+  window.removeEventListener('keydown', tratarEscGerente)
+})
 </script>
 
 <template>
   <div v-if="estacionamentoAtual && andarAtual" class="editor-layout">
-    <!-- BOTÕES FLUTUANTES MOBILE/TABLET (<= 1024px) -->
     <div class="hud-coluna-direita-mobile">
       <button
         class="hud-btn-flutuante"
         :class="{ 'hud-ativo': menuOpcoesMobileAberto }"
-        title="Controles e Ferramentas"
-        @click="menuOpcoesMobileAberto = !menuOpcoesMobileAberto; painelLateralMobileAberto = false"
+        title="Opções e Ações do Estacionamento"
+        @click="menuOpcoesMobileAberto = !menuOpcoesMobileAberto; menuSetoresMobileAberto = false"
       >
         <IconSettings :size="20" />
       </button>
 
       <button
         class="hud-btn-flutuante"
-        :class="{ 'hud-ativo': painelLateralMobileAberto }"
-        title="Andares e Setores"
-        @click="painelLateralMobileAberto = !painelLateralMobileAberto; menuOpcoesMobileAberto = false"
+        :class="{ 'hud-ativo': menuSetoresMobileAberto }"
+        title="Métricas por Andar e Setor"
+        @click="menuSetoresMobileAberto = !menuSetoresMobileAberto; menuOpcoesMobileAberto = false"
       >
         <IconLayoutBoard :size="20" />
       </button>
     </div>
 
-    <!-- BARRA SUPERIOR EM TELA CHEIA -->
+    <!-- Barra Superior em Tela Cheia -->
     <header
       class="editor-topbar topbar-gerente-est"
       :class="{ 'topbar-mobile-aberta': menuOpcoesMobileAberto }"
@@ -714,9 +497,8 @@ function tratarTeclaGlobal(event) {
           <span>Dashboard</span>
         </button>
 
-        <!-- Grupo focado no Passo 2 do Tutorial (Cidade, Estacionamento e Andar) -->
+        <!-- Grupo de Navegação e Filtros (Foco do Passo 2 do Tutorial) -->
         <div class="grupo-filtros-navegacao-gerente">
-          <!-- Filtro de Cidade Estilizado -->
           <div v-if="cidadesDoGerente.length >= 1" class="seletor-multi-wrapper seletor-cidade-tela-cheia">
             <button
               type="button"
@@ -754,7 +536,6 @@ function tratarTeclaGlobal(event) {
             </Transition>
           </div>
 
-          <!-- Seletor de Estacionamento com Pesquisa -->
           <div class="seletor-est-tela-cheia">
             <button
               type="button"
@@ -792,7 +573,6 @@ function tratarTeclaGlobal(event) {
             </Transition>
           </div>
 
-          <!-- Seletor de Andar Estilizado -->
           <div class="seletor-multi-wrapper seletor-andar-tela-cheia">
             <button
               type="button"
@@ -823,12 +603,12 @@ function tratarTeclaGlobal(event) {
           </div>
         </div>
 
-        <!-- Grupo focado no Passo 4 do Tutorial (Inativar e Reativar) -->
+        <!-- Grupo Inativar/Reativar (Foco do Passo 4 do Tutorial) -->
         <div class="grupo-inativar-reativar-gerente">
           <button
             class="btn-secundario item-icone-texto"
             :class="{ 'btn-modo-inativar-ativo': modoAcaoVagas === 'INATIVAR' }"
-            @click="ativarModoSelecao('INATIVAR')"
+            @click="alternarModoSelecao('INATIVAR')"
           >
             <IconBan :size="17" />
             <span>Inativar</span>
@@ -837,7 +617,7 @@ function tratarTeclaGlobal(event) {
           <button
             class="btn-secundario item-icone-texto"
             :class="{ 'btn-modo-reativar-ativo': modoAcaoVagas === 'REATIVAR' }"
-            @click="ativarModoSelecao('REATIVAR')"
+            @click="alternarModoSelecao('REATIVAR')"
           >
             <IconSquareRoundedCheck :size="17" />
             <span>Reativar</span>
@@ -846,7 +626,7 @@ function tratarTeclaGlobal(event) {
       </div>
 
       <div class="topbar-direita-gerente">
-        <!-- Grupo focado no Passo 5 do Tutorial (Sem incluir QR Code) -->
+        <!-- Grupo Mapa de Calor + Simulação (Foco do Passo 5 do Tutorial) -->
         <div class="grupo-calor-simulacao-gerente">
           <button
             class="btn-secundario item-icone-texto"
@@ -867,7 +647,7 @@ function tratarTeclaGlobal(event) {
           </button>
         </div>
 
-        <!-- Botão focado exclusivamente no Passo 6 do Tutorial -->
+        <!-- Botão QR Code (Foco do Passo 6 do Tutorial) -->
         <button
           class="btn-primario btn-qrcode-gerente item-icone-texto"
           @click="modalQrAberto = true"
@@ -878,87 +658,62 @@ function tratarTeclaGlobal(event) {
       </div>
     </header>
 
-    <!-- ÁREA CENTRAL: MAPA 2D + PAINEL DIREITO DE ANDARES E SETORES -->
+    <!-- Área Central do Mapa e Barra Lateral -->
     <div class="editor-workspace">
       <div class="area-grid-container">
         <Transition name="fade-pop">
           <div
-            v-if="modoAcaoVagas !== 'NENHUM'"
+            v-if="modoAcaoVagas"
             class="overlay-flutuante banner-instrucao-gerente"
             :class="modoAcaoVagas === 'INATIVAR' ? 'cor-banner-inativar' : 'cor-banner-reativar'"
           >
             <span>
-              Clique ou arraste sobre o mapa para selecionar as vagas que deseja
-              <strong>{{ modoAcaoVagas === 'INATIVAR' ? 'INATIVAR' : 'REATIVAR' }}</strong>
-              (ESC para sair)
+              Modo <strong>{{ modoAcaoVagas === 'INATIVAR' ? 'Inativar Vagas' : 'Reativar Vagas' }}</strong>:
+              clique ou arraste sobre as vagas desejadas ({{ vagasSelecionadasIds.size }} selecionada(s))
             </span>
           </div>
         </Transition>
 
         <Transition name="fade-pop">
           <div v-if="modoMapaCalor" class="overlay-flutuante legenda-calor-overlay">
-            <strong>Uso no dia:</strong>
-            <span class="amostra-calor calor-nivel-1">0–20%</span>
-            <span class="amostra-calor calor-nivel-2">20–40%</span>
-            <span class="amostra-calor calor-nivel-3">40–60%</span>
-            <span class="amostra-calor calor-nivel-4">60–80%</span>
-            <span class="amostra-calor calor-nivel-5">80–100%</span>
+            <strong>Rotatividade:</strong>
+            <span class="amostra-calor calor-nivel-1">Muito Baixa</span>
+            <span class="amostra-calor calor-nivel-2">Baixa</span>
+            <span class="amostra-calor calor-nivel-3">Média</span>
+            <span class="amostra-calor calor-nivel-4">Alta</span>
+            <span class="amostra-calor calor-nivel-5">Intensa</span>
           </div>
         </Transition>
 
         <Transition name="fade-pop">
-          <div
-            v-if="modoAcaoVagas !== 'NENHUM' && selecionados.size > 0"
-            class="overlay-flutuante popup-confirmar-lote-gerente"
-          >
-            <span class="contagem-sel">
-              {{ vagasValidasNaSelecao.length }} vaga(s) na seleção
-            </span>
-
+          <div v-if="modoAcaoVagas && vagasSelecionadasIds.size > 0" class="overlay-flutuante popup-confirmar-lote-gerente">
+            <span><strong>{{ vagasSelecionadasIds.size }}</strong> vaga(s) marcada(s)</span>
             <button
-              type="button"
-              class="btn-secundario btn-popup-lote item-icone-texto"
-              @click="cancelarModoSelecao"
+              class="btn-primario btn-popup-lote item-icone-texto"
+              :class="modoAcaoVagas === 'INATIVAR' ? 'btn-lote-vermelho' : 'btn-lote-verde'"
+              :disabled="salvandoLote"
+              @click="confirmarAlteracaoLoteVagas"
             >
+              <IconSquareRoundedCheck :size="17" />
+              <span>{{ salvandoLote ? 'Salvando...' : `Confirmar ${modoAcaoVagas === 'INATIVAR' ? 'Inativação' : 'Reativação'}` }}</span>
+            </button>
+            <button class="btn-secundario btn-popup-lote item-icone-texto" @click="cancelarModoSelecao">
               <IconSquareRoundedX :size="17" />
               <span>Cancelar</span>
             </button>
-
-            <button
-              type="button"
-              class="btn-primario btn-popup-lote item-icone-texto"
-              :class="modoAcaoVagas === 'INATIVAR' ? 'btn-lote-vermelho' : 'btn-lote-verde'"
-              :disabled="salvandoStatusLote || vagasValidasNaSelecao.length === 0"
-              @click="confirmarAcaoInativarReativar"
-            >
-              <IconSquareRoundedCheck :size="17" />
-              <span>
-                {{
-                  salvandoStatusLote
-                    ? 'Aplicando...'
-                    : modoAcaoVagas === 'INATIVAR'
-                      ? 'Confirmar Inativação'
-                      : 'Confirmar Reativação'
-                }}
-              </span>
-            </button>
           </div>
         </Transition>
 
         <Transition name="fade-pop">
-          <div v-if="infoHoverGerente" class="overlay-flutuante badge-hover-setor">
-            <span
-              class="bolinha-cor-setor"
-              :style="{ backgroundColor: infoHoverGerente.cor }"
-            ></span>
-            <strong>{{ infoHoverGerente.titulo }}</strong>
-            <span v-if="infoHoverGerente.detalhe" class="texto-colchetes-setor">
-              {{ infoHoverGerente.detalhe }}
+          <div v-if="infoHoverCelula" class="overlay-flutuante badge-hover-setor">
+            <span class="bolinha-cor-setor" :style="{ backgroundColor: infoHoverCelula.cor }"></span>
+            <strong>{{ infoHoverCelula.titulo }}</strong>
+            <span v-if="infoHoverCelula.detalhe" class="texto-colchetes-setor">
+              [{{ infoHoverCelula.detalhe }}]
             </span>
           </div>
         </Transition>
 
-        <!-- TABULEIRO 2D EM TELA CHEIA -->
         <div
           ref="gridGerenteRef"
           class="area-grid-principal"
@@ -984,65 +739,59 @@ function tratarTeclaGlobal(event) {
               >
                 <div class="canto-xy">Y\X</div>
                 <div v-for="x in andarAtual.grid_x" :key="`gx-${x}`" class="rotulo-coord">
-                  {{ x }}
+                  {{ x - 1 }}
                 </div>
               </div>
 
               <div
                 v-for="y in andarAtual.grid_y"
-                :key="`gy-${y}`"
+                :key="`grow-${y}`"
                 class="linha-grid-y"
                 :style="{ gridTemplateColumns: `36px repeat(${andarAtual.grid_x}, 36px)` }"
               >
-                <div class="rotulo-coord">{{ y }}</div>
+                <div class="rotulo-coord">{{ y - 1 }}</div>
 
                 <div
                   v-for="x in andarAtual.grid_x"
-                  :key="`gc-${x}-${y}`"
-                  :data-coord="`${x},${y}`"
+                  :key="`gcell-${x - 1}-${y - 1}`"
+                  :data-coord="`${x - 1},${y - 1}`"
                   class="celula-editor-fundo"
                   :style="{
-                    backgroundColor: andarAtual.celulas[`${x},${y}`]?.corSetor || 'transparent'
+                    backgroundColor:
+                      andarAtual.celulas[`${x - 1},${y - 1}`]?.corSetor || 'transparent'
                   }"
-                  @mousedown.prevent="iniciarSelecaoCelula(x, y, $event)"
-                  @mouseenter="moverMouseCelula(x, y)"
+                  @mousedown.prevent="iniciarCliqueCelulaGerente(x - 1, y - 1)"
+                  @mouseenter="moverArrastoCelulaGerente(x - 1, y - 1)"
                 >
                   <div
                     class="quadrado-editor"
                     :class="[
-                      andarAtual.celulas[`${x},${y}`]?.tipo === 'VAZIO' ? 'qe-vazio' : '',
-                      andarAtual.celulas[`${x},${y}`]?.tipo === 'ESTRADA' ? 'qe-estrada' : '',
-                      andarAtual.celulas[`${x},${y}`]?.tipo === 'ENTRADA' ? 'qe-entrada' : '',
-                      andarAtual.celulas[`${x},${y}`]?.tipo === 'SAIDA' ? 'qe-saida' : '',
-                      andarAtual.celulas[`${x},${y}`]?.tipo === 'ACESSO' ? 'qe-acesso' : '',
-                      modoMapaCalor && andarAtual.celulas[`${x},${y}`]?.tipo === 'VAGA'
-                        ? mapaCalorPorCoordenada[`${x},${y}`]
-                        : '',
-                      !modoMapaCalor && andarAtual.celulas[`${x},${y}`]?.tipo === 'VAGA' && andarAtual.celulas[`${x},${y}`]?.inativa
-                        ? 'vaga-gerente-inativa'
-                        : '',
-                      !modoMapaCalor && andarAtual.celulas[`${x},${y}`]?.tipo === 'VAGA' && !andarAtual.celulas[`${x},${y}`]?.inativa && !andarAtual.celulas[`${x},${y}`]?.macEsp
-                        ? 'qe-vaga-amarela'
-                        : '',
-                      !modoMapaCalor && andarAtual.celulas[`${x},${y}`]?.tipo === 'VAGA' && !andarAtual.celulas[`${x},${y}`]?.inativa && andarAtual.celulas[`${x},${y}`]?.macEsp && andarAtual.celulas[`${x},${y}`]?.livre
-                        ? 'vaga-gerente-livre'
-                        : '',
-                      !modoMapaCalor && andarAtual.celulas[`${x},${y}`]?.tipo === 'VAGA' && !andarAtual.celulas[`${x},${y}`]?.inativa && andarAtual.celulas[`${x},${y}`]?.macEsp && !andarAtual.celulas[`${x},${y}`]?.livre
-                        ? 'vaga-gerente-ocupada'
-                        : '',
-                      selecionados.has(`${x},${y}`) ? 'qe-selecionado-roxo' : ''
+                      andarAtual.celulas[`${x - 1},${y - 1}`]?.tipo === 'VAZIO' ? 'qe-vazio' : '',
+                      andarAtual.celulas[`${x - 1},${y - 1}`]?.tipo === 'ESTRADA' ? 'qe-estrada' : '',
+                      andarAtual.celulas[`${x - 1},${y - 1}`]?.tipo === 'ENTRADA' ? 'qe-entrada' : '',
+                      andarAtual.celulas[`${x - 1},${y - 1}`]?.tipo === 'SAIDA' ? 'qe-saida' : '',
+                      andarAtual.celulas[`${x - 1},${y - 1}`]?.tipo === 'ACESSO' ? 'qe-acesso' : '',
+                      classeCorVagaGerente(andarAtual.celulas[`${x - 1},${y - 1}`]),
+                      vagasSelecionadasIds.has(andarAtual.celulas[`${x - 1},${y - 1}`]?.idVagaBanco)
+                        ? 'qe-selecionado-roxo'
+                        : ''
                     ]"
                   >
-                    <span v-if="andarAtual.celulas[`${x},${y}`]?.tipo === 'VAGA'">
-                      {{
-                        modoMapaCalor
-                          ? `${andarAtual.celulas[`${x},${y}`]?.usosNoDia || 0}x`
-                          : andarAtual.celulas[`${x},${y}`]?.identificador
-                      }}
+                    <span v-if="andarAtual.celulas[`${x - 1},${y - 1}`]?.tipo === 'VAGA'">
+                      {{ andarAtual.celulas[`${x - 1},${y - 1}`]?.identificador }}
                     </span>
-                    <IconDoorEnter v-else-if="andarAtual.celulas[`${x},${y}`]?.tipo === 'ENTRADA'" :size="16" />
-                    <IconDoorExit v-else-if="andarAtual.celulas[`${x},${y}`]?.tipo === 'SAIDA'" :size="16" />
-                    <IconArrowBarRight v-else-if="andarAtual.celulas[`${x},${y}`]?.tipo === 'ACESSO'" :size="16" />
+                    <IconDoorEnter
+                      v-else-if="andarAtual.celulas[`${x - 1},${y - 1}`]?.tipo === 'ENTRADA'"
+                      :size="17"
+                    />
+                    <IconDoorExit
+                      v-else-if="andarAtual.celulas[`${x - 1},${y - 1}`]?.tipo === 'SAIDA'"
+                      :size="17"
+                    />
+                    <IconArrowBarRight
+                      v-else-if="andarAtual.celulas[`${x - 1},${y - 1}`]?.tipo === 'ACESSO'"
+                      :size="17"
+                    />
                   </div>
                 </div>
               </div>
@@ -1051,17 +800,17 @@ function tratarTeclaGlobal(event) {
         </div>
       </div>
 
-      <!-- PAINEL LATERAL DIREITO: ANDARES E SETORES EM TEMPO REAL -->
+      <!-- Painel Lateral de Métricas por Andar e Setor -->
       <aside
         class="sidebar-direita-editor sidebar-gerente-metricas"
-        :class="{ 'sidebar-mobile-aberta': painelLateralMobileAberto }"
+        :class="{ 'sidebar-mobile-aberta': menuSetoresMobileAberto }"
       >
         <div class="painel-ferramentas">
           <h4 class="item-icone-texto">
             <IconStack2 :size="18" />
-            <span>Andares ({{ estatisticasAndares.length }})</span>
+            <span>Ocupação por Andar</span>
           </h4>
-          <p class="dica-painel">Clique em um andar para visualizar sua planta</p>
+          <p class="dica-painel">Comparativo em relação à média histórica</p>
 
           <div class="lista-cards-laterais">
             <div
@@ -1069,27 +818,21 @@ function tratarTeclaGlobal(event) {
               :key="a.id_andar"
               class="card-lateral-metrica"
               :class="{ 'card-lateral-ativo': a.idx === andarIndex }"
-              @click="andarIndex = a.idx; cancelarModoSelecao()"
+              @click="andarIndex = a.idx"
             >
               <div class="topo-card-lateral">
                 <strong>{{ a.nome_andar }}</strong>
-                <span
-                  class="badge-variacao"
-                  :class="a.variacao >= 0 ? 'var-alta' : 'var-baixa'"
-                  title="Taxa de variação na última hora"
-                >
-                  {{ a.variacao >= 0 ? `+${a.variacao}%` : `${a.variacao}%` }}
+                <span class="badge-variacao" :class="a.variacao >= 0 ? 'var-alta' : 'var-baixa'">
+                  {{ a.variacao >= 0 ? `+${a.variacao}%` : `${a.variacao}%` }} vs média
                 </span>
               </div>
-
               <div class="numeros-card-lateral">
                 <span class="num-livre">{{ a.livres }} livres</span>
                 <span class="num-ocupada">{{ a.ocupadas }} ocup.</span>
                 <span v-if="a.inativas > 0" class="num-inativa">{{ a.inativas }} inat.</span>
               </div>
-
               <div class="barra-mini-lateral">
-                <div class="preenchimento-mini" :style="{ width: `${a.lotacaoPct}%` }"></div>
+                <div class="preenchimento-mini" :style="{ width: `${a.pct}%` }"></div>
               </div>
             </div>
           </div>
@@ -1100,7 +843,7 @@ function tratarTeclaGlobal(event) {
             <IconLayoutBoard :size="18" />
             <span>Setores — {{ andarAtual.nome_andar }}</span>
           </h4>
-          <p class="dica-painel">Ocupação e variação atual por setor</p>
+          <p class="dica-painel">Disponibilidade instantânea do andar atual</p>
 
           <div class="lista-cards-laterais">
             <div
@@ -1113,58 +856,53 @@ function tratarTeclaGlobal(event) {
                   <span class="bolinha-cor-setor" :style="{ backgroundColor: s.cor_hex }"></span>
                   <strong>{{ s.nome_setor }} ({{ s.prefixo }})</strong>
                 </span>
-                <span
-                  class="badge-variacao"
-                  :class="s.variacao >= 0 ? 'var-alta' : 'var-baixa'"
-                >
+                <span class="badge-variacao" :class="s.variacao >= 0 ? 'var-alta' : 'var-baixa'">
                   {{ s.variacao >= 0 ? `+${s.variacao}%` : `${s.variacao}%` }}
                 </span>
               </div>
-
               <div class="numeros-card-lateral">
                 <span class="num-livre">{{ s.livres }} livres</span>
                 <span class="num-ocupada">{{ s.ocupadas }} ocup.</span>
                 <span v-if="s.inativas > 0" class="num-inativa">{{ s.inativas }} inat.</span>
               </div>
-
               <div class="barra-mini-lateral">
-                <div
-                  class="preenchimento-mini"
-                  :style="{ width: `${s.lotacaoPct}%`, backgroundColor: s.cor_hex }"
-                ></div>
+                <div class="preenchimento-mini" :style="{ width: `${s.pct}%` }"></div>
               </div>
             </div>
-
-            <p v-if="estatisticasSetoresAndarAtual.length === 0" class="dica-painel">
-              Nenhum setor cadastrado neste andar.
-            </p>
           </div>
         </div>
       </aside>
     </div>
 
-    <!-- MODAL DO QR CODE PARA ENTRADA DO ESTACIONAMENTO (SEM A FRASE EXTRA) -->
-    <Transition name="fade-pop">
-      <div v-if="modalQrAberto" class="modal-backdrop">
+    <!-- Modal de QR Code para Motoristas -->
+    <Transition name="fade-backdrop">
+      <div v-if="modalQrAberto" class="modal-backdrop" @click.self="modalQrAberto = false">
         <div class="modal-box modal-qr-gerente">
           <div class="overlay-header">
             <h3 class="item-icone-texto">
               <IconQrcode :size="20" />
-              <span>QR Code — {{ estacionamentoAtual.nome }}</span>
+              <span>QR Code do Estacionamento</span>
             </h3>
             <button class="btn-fechar-mini" @click="modalQrAberto = false">
               <IconSquareRoundedX :size="20" />
             </button>
           </div>
 
+          <p class="subtitulo" style="margin-bottom: 12px">
+            <strong>{{ estacionamentoAtual.nome }}</strong> — Motoristas escaneiam este código para visualizar as vagas livres no celular.
+          </p>
+
           <div class="box-imagem-qr">
-            <img :src="imagemQrCodeUrl" :alt="`QR Code ${estacionamentoAtual.nome}`" width="220" height="220" />
+            <img :src="urlImagemQrCode" :alt="`QR Code ${estacionamentoAtual.nome}`" width="220" height="220" />
           </div>
 
-          <code class="url-qr-codigo">{{ urlMotoristaQr }}</code>
+          <code class="url-qr-codigo">{{ urlPublicaMotorista }}</code>
 
           <div class="modal-acoes" style="justify-content: center; margin-top: 16px">
-            <button class="btn-secundario" @click="modalQrAberto = false">Fechar</button>
+            <button class="btn-secundario item-icone-texto" @click="modalQrAberto = false">
+              <IconSquareRoundedX :size="18" />
+              <span>Fechar</span>
+            </button>
             <button class="btn-primario item-icone-texto" @click="imprimirQrCode">
               <IconQrcode :size="18" />
               <span>Imprimir QR Code</span>

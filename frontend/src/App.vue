@@ -4,6 +4,7 @@ import { carregarDadosDoBanco } from '@/stores/estacionamentoStore'
 import AppSidebarMenu from '@/components/layout/AppSidebarMenu.vue'
 import TutorialGuiaOverlay from '@/components/ui/TutorialGuiaOverlay.vue'
 
+// Sincroniza usuários e estabelecimentos ao iniciar a aplicação
 onMounted(() => {
   carregarDadosDoBanco()
 })

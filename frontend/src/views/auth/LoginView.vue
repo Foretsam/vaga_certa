@@ -1,7 +1,9 @@
 <script setup>
 import { ref } from 'vue'
 import { useRouter } from 'vue-router'
-import { usuarioLogado } from '@/stores/estacionamentoStore'
+import { loginUsuarioApi } from '@/services/authService'
+import { salvarSessaoUsuario } from '@/stores/authStore'
+import { carregarDadosDoBanco } from '@/stores/estacionamentoStore'
 import {
   IconLogin,
   IconMail,
@@ -11,45 +13,28 @@ import {
   IconAlertSquareRounded
 } from '@/constants/icons'
 
-const API_URL = 'http://127.0.0.1:8000'
 const router = useRouter()
 
 const email = ref('')
 const senha = ref('')
 const mostrarSenha = ref(false)
 const carregando = ref(false)
-const erroMensagem = ref('')
+const erroLogin = ref('')
 
 async function realizarLogin() {
-  if (carregando.value) return
-  erroMensagem.value = ''
-
+  erroLogin.value = ''
   if (!email.value.trim() || !senha.value) {
-    erroMensagem.value = 'Preencha seu e-mail e sua senha para entrar.'
+    erroLogin.value = 'Preencha seu e-mail e sua senha.'
     return
   }
 
   carregando.value = true
   try {
-    const resposta = await fetch(`${API_URL}/auth/login`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        email: email.value.trim(),
-        senha: senha.value
-      })
-    })
+    const resposta = await loginUsuarioApi(email.value.trim(), senha.value)
+    salvarSessaoUsuario(resposta.usuario)
+    await carregarDadosDoBanco()
 
-    const dados = await resposta.json().catch(() => ({}))
-    if (!resposta.ok) {
-      throw new Error(dados.detail || 'Não foi possível realizar o login.')
-    }
-
-    if (usuarioLogado) {
-      usuarioLogado.value = dados.usuario
-    }
-    localStorage.setItem('vagacerta_usuario', JSON.stringify(dados.usuario))
-    const nivel = dados.usuario?.nivel_acesso
+    const nivel = resposta.usuario.nivel_acesso
     if (nivel === 'admin_dev') {
       router.push({ name: 'admin-lista' })
     } else if (nivel === 'admin_estabelecimento') {
@@ -58,7 +43,7 @@ async function realizarLogin() {
       router.push({ name: 'motorista-home' })
     }
   } catch (err) {
-    erroMensagem.value = err.message || 'Erro inesperado ao realizar o login.'
+    erroLogin.value = err.message || 'Falha ao autenticar.'
   } finally {
     carregando.value = false
   }
@@ -70,47 +55,43 @@ async function realizarLogin() {
     <div class="auth-card">
       <div class="auth-cabecalho">
         <div class="auth-icone-topo">
-          <IconLogin :size="32" />
+          <IconLogin :size="30" />
         </div>
-        <h1>Bem-vindo de volta</h1>
-        <p class="subtitulo">Acesse sua conta para gerenciar estacionamentos</p>
+        <h1>Entrar no Vaga Certa</h1>
+        <p class="subtitulo">Acesse sua conta para gerenciar ou localizar vagas</p>
       </div>
 
       <Transition name="fade-pop">
-        <div v-if="erroMensagem" class="alerta-auth erro item-icone-texto">
+        <div v-if="erroLogin" class="alerta-auth erro item-icone-texto">
           <IconAlertSquareRounded :size="18" />
-          <span>{{ erroMensagem }}</span>
+          <span>{{ erroLogin }}</span>
         </div>
       </Transition>
 
-      <form class="auth-form" @submit.prevent="realizarLogin">
+      <form @submit.prevent="realizarLogin">
         <div class="campo-grupo">
-          <label for="login-email">E-mail</label>
+          <label>E-mail</label>
           <div class="input-icone-container">
             <IconMail :size="18" class="icone-interno-esquerda" />
             <input
-              id="login-email"
               v-model="email"
               type="email"
               placeholder="seu@email.com"
               autocomplete="email"
-              :disabled="carregando"
               required
             />
           </div>
         </div>
 
         <div class="campo-grupo">
-          <label for="login-senha">Senha</label>
+          <label>Senha</label>
           <div class="input-icone-container">
             <IconLock :size="18" class="icone-interno-esquerda" />
             <input
-              id="login-senha"
               v-model="senha"
               :type="mostrarSenha ? 'text' : 'password'"
               placeholder="Digite sua senha"
               autocomplete="current-password"
-              :disabled="carregando"
               required
             />
             <button
@@ -119,8 +100,8 @@ async function realizarLogin() {
               :title="mostrarSenha ? 'Ocultar senha' : 'Mostrar senha'"
               @click="mostrarSenha = !mostrarSenha"
             >
-              <IconEyeOff v-if="mostrarSenha" :size="19" />
-              <IconEye v-else :size="19" />
+              <IconEyeOff v-if="mostrarSenha" :size="18" />
+              <IconEye v-else :size="18" />
             </button>
           </div>
         </div>
@@ -137,9 +118,9 @@ async function realizarLogin() {
       </form>
 
       <div class="auth-rodape">
-        <span>Ainda não tem uma conta?</span>
+        <span>Ainda não possui uma conta?</span>
         <router-link :to="{ name: 'cadastro' }" class="link-auth">
-          Cadastre-se
+          Criar conta grátis
         </router-link>
       </div>
     </div>

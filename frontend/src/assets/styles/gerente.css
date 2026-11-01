@@ -1,6 +1,6 @@
-/* =========================================================
-   LOGO "VC" ESTILIZADO E DASHBOARD DO GERENTE
-   ========================================================= */
+/* ==========================================================================
+   LOGO "VC", DASHBOARD DO GERENTE, MAPA DE CALOR E RELATÓRIOS BI
+   ========================================================================== */
 .btn-logo-vc {
   position: fixed;
   top: 10px;
@@ -50,7 +50,6 @@
   gap: 16px;
 }
 
-/* Apenas a 1ª linha do cabeçalho tem recuo para os botões fixos; a linha de baixo começa junto com os cards */
 .gerente-header-topo {
   display: flex;
   flex-direction: column;
@@ -62,20 +61,29 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   gap: 12px;
+}
+
+.bloco-texto-boas-vindas {
+  min-width: 0;
+  flex: 1;
 }
 
 .gerente-boas-vindas h1 {
   font-size: 24px;
   font-weight: 700;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .gerente-atalhos-topo {
   display: flex;
   align-items: center;
   gap: 8px;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
+  flex-shrink: 0;
 }
 
 .btn-simulacao-ativa {
@@ -84,7 +92,7 @@
   background: rgba(22, 163, 74, 0.12) !important;
 }
 
-/* Seletor Múltiplo de Estacionamentos (Alinhado à esquerda junto com os cards) */
+/* Seletores Dropdown de Unidades e Cidades */
 .seletor-multi-wrapper {
   position: relative;
   align-self: flex-start;
@@ -142,7 +150,6 @@
   font-size: 13.5px;
 }
 
-/* Até 10 opções visíveis no PC antes do scroll */
 .lista-opcoes-multi {
   max-height: 380px;
   overflow-y: auto;
@@ -175,7 +182,7 @@
   margin-top: 20px;
 }
 
-/* Linha Superior de Relatórios (3 colunas no PC) */
+/* Linha Superior de Indicadores (KPIs) */
 .secao-relatorios-dashboard {
   display: flex;
   flex-direction: column;
@@ -211,7 +218,6 @@
   margin-bottom: 10px;
 }
 
-/* Título dos cards superiores com a cor principal (branco no modo dark) igual aos demais títulos */
 .kpi-titulo {
   font-size: 15.5px;
   font-weight: 700;
@@ -234,7 +240,7 @@
 .ponto-legenda.ent { background: #3b82f6; }
 .ponto-legenda.sai { background: #f97316; }
 
-/* Gráfico de Barras Horárias (Altura explícita para funcionar em qualquer tela/tablet) */
+/* Gráfico de Barras Horárias */
 .grafico-barras-horarias {
   width: 100%;
   display: flex;
@@ -337,7 +343,7 @@
   justify-content: center;
 }
 
-/* Seção Inferior PC: 2 Maiores Estacionamentos Lado a Lado */
+/* Seção Inferior: Prévia dos 2 Maiores Estacionamentos */
 .secao-seletor-mobile-est {
   display: none;
 }
@@ -432,8 +438,18 @@
   padding: 10px;
 }
 
+/* Controles em Tela Cheia, Inativação em Lote e Mapa de Calor */
 .seletor-est-tela-cheia {
   position: relative;
+}
+
+.grupo-filtros-navegacao-gerente,
+.grupo-inativar-reativar-gerente,
+.grupo-calor-simulacao-gerente {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
 }
 
 .btn-modo-inativar-ativo {
@@ -454,7 +470,6 @@
   color: #ffffff !important;
 }
 
-/* Cores das Vagas no Modo Normal do Gerente */
 .vaga-gerente-livre {
   background-color: #16a34a !important;
   border-color: #14532d !important;
@@ -472,7 +487,7 @@
   opacity: 0.48;
 }
 
-/* 5 Variações do Mapa de Calor */
+/* 5 Níveis de Intensidade do Mapa de Calor */
 .calor-nivel-1 {
   background-color: #1d4ed8 !important;
   border-color: #1e3a8a !important;
@@ -499,7 +514,6 @@
   color: #ffffff !important;
 }
 
-/* Overlays de Instrução, Legenda de Calor e Confirmação em Lote */
 .banner-instrucao-gerente {
   top: 10px;
   left: 50%;
@@ -559,7 +573,7 @@
 .btn-lote-vermelho { background: #dc2626 !important; }
 .btn-lote-verde { background: #16a34a !important; }
 
-/* Painel Lateral de Andares e Setores */
+/* Painel Lateral de Métricas por Andar e Setor */
 .sidebar-gerente-metricas {
   width: 320px;
 }
@@ -656,11 +670,7 @@
   word-break: break-all;
 }
 
-
-
-/* =========================================================
-   PÁGINA DE RELATÓRIOS ANALÍTICOS E EXPORTAÇÃO BI
-   ========================================================= */
+/* Página de Relatórios Analíticos e Exportação BI */
 .grade-quatro-kpis-relatorio {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -719,7 +729,6 @@
   width: 14px;
 }
 
-/* Tabelas de Ranking e Histórico (Altura fixa para 8 linhas no Histórico) */
 .tabela-responsiva-wrapper {
   width: 100%;
   overflow-x: auto;
@@ -783,7 +792,7 @@
   border: 1px solid var(--borda-botao-sec) !important;
 }
 
-/* Comparador Lado a Lado de 2 Estacionamentos */
+/* Comparador Lado a Lado entre Estacionamentos */
 .seletores-comparador-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -819,7 +828,7 @@
   gap: 8px;
 }
 
-/* Seção de Exportação Completa e Modal de Exportação */
+/* Exportação Completa BI e Modal Individual */
 .card-exportacao-completa-bi {
   border: 1.5px solid rgba(22, 163, 74, 0.45);
 }

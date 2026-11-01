@@ -2,97 +2,59 @@
 import { ref, computed, watch, onMounted, onUnmounted } from 'vue'
 import { useRouter } from 'vue-router'
 import {
-  estabelecimentosDoGerente,
-  estabelecimentosFiltradosGerente,
   idsSelecionadosGerente,
-  simulacao1Ativa,
-  alternarSimulacao1Frontend,
-  contarVagasEstabelecimento,
-  carregarDadosDoBanco,
   cidadeSelecionadaGerente,
   cidadesDoGerente,
   estabelecimentosDoGerentePorCidade,
-  selecionarCidadeGerente
+  selecionarCidadeGerente,
+  simulacao1Ativa,
+  estabelecimentosDoGerente,
+  estabelecimentosFiltradosGerente,
+  alternarSimulacao1Frontend,
+  contarVagasEstabelecimento,
+  carregarDadosDoBanco
 } from '@/stores/estacionamentoStore'
+import { baixarArquivoCsv } from '@/utils/exportUtils'
 import {
-  IconChartBar,
-  IconClock,
+  IconSquareRoundedArrowLeft,
   IconParking,
   IconSearch,
   IconSquareRoundedChevronDown,
-  IconSquareRoundedChevronLeft,
-  IconSquareRoundedChevronRight,
-  IconSquareRoundedArrowLeft,
   IconSquareRoundedCheck,
   IconSquareRoundedX,
+  IconSquareRoundedChevronLeft,
+  IconSquareRoundedChevronRight,
   IconDownload,
   IconArrowsLeftRight,
   IconPlayerPlay,
-  IconFlame,
-  IconLayoutBoard,
   IconPin
 } from '@/constants/icons'
 
 const router = useRouter()
 
-// Dropdown de seleção múltipla no topo
 const dropdownMultiAberto = ref(false)
 const dropdownCidadeAberto = ref(false)
 const termoBuscaMulti = ref('')
 
-// Comparador de 2 Estacionamentos
-const idCompararA = ref(null)
-const idCompararB = ref(null)
+const idCompEsquerda = ref(null)
+const idCompDireita = ref(null)
 
-// Paginação e filtro do Histórico Detalhado
 const buscaHistorico = ref('')
 const paginaHistorico = ref(1)
 const itensPorPaginaHistorico = 8
 
-// Datas padrão (Hoje e 7 dias atrás)
 const hojeIso = new Date().toISOString().slice(0, 10)
 const seteDiasAtrasIso = new Date(Date.now() - 7 * 86400000).toISOString().slice(0, 10)
-const ontemIso = new Date(Date.now() - 86400000).toISOString().slice(0, 10)
 
-// Seção de Exportação Completa
 const dataInicioCompleto = ref(seteDiasAtrasIso)
 const dataFimCompleto = ref(hojeIso)
-const atalhoPeriodoCompleto = ref('')
+const atalhoPeriodoCompleto = ref(null)
 
-// Modal Popup de Exportação Individual
-const modalExportarAberto = ref(false)
-const relatorioAlvoExportacao = ref({ chave: '', titulo: '' })
+const modalExportAberto = ref(false)
+const secaoAlvoExport = ref(null)
 const dataInicioModal = ref(seteDiasAtrasIso)
 const dataFimModal = ref(hojeIso)
-const atalhoPeriodoModal = ref('')
-
-onMounted(async () => {
-  if (estabelecimentosDoGerente.value.length === 0) {
-    await carregarDadosDoBanco()
-  }
-  inicializarComparador()
-  window.addEventListener('click', fecharDropdownsAoClicarFora)
-})
-
-onUnmounted(() => {
-  window.removeEventListener('click', fecharDropdownsAoClicarFora)
-})
-
-watch(estabelecimentosDoGerente, () => {
-  inicializarComparador()
-})
-
-function inicializarComparador() {
-  const lista = estabelecimentosDoGerente.value
-  if (lista.length >= 1 && !idCompararA.value) {
-    idCompararA.value = lista[0].id
-  }
-  if (lista.length >= 2 && !idCompararB.value) {
-    idCompararB.value = lista[1].id
-  } else if (lista.length === 1 && !idCompararB.value) {
-    idCompararB.value = lista[0].id
-  }
-}
+const atalhoPeriodoModal = ref(null)
 
 function fecharDropdownsAoClicarFora(e) {
   if (!e.target.closest('.seletor-multi-wrapper')) {
@@ -101,27 +63,52 @@ function fecharDropdownsAoClicarFora(e) {
   }
 }
 
-const totalOpcoesFiltro = computed(() => 1 + estabelecimentosDoGerente.value.length)
-const mostrarPesquisaNoMulti = computed(() => totalOpcoesFiltro.value > 5)
+onMounted(() => {
+  if (estabelecimentosDoGerente.value.length === 0) {
+    carregarDadosDoBanco()
+  }
+  window.addEventListener('click', fecharDropdownsAoClicarFora)
+})
+
+onUnmounted(() => {
+  window.removeEventListener('click', fecharDropdownsAoClicarFora)
+})
+
+watch(
+  () => estabelecimentosDoGerente.value,
+  (lista) => {
+    if (lista.length > 0 && !idCompEsquerda.value) {
+      idCompEsquerda.value = lista[0].id
+      idCompDireita.value = lista[1]?.id || lista[0].id
+    }
+  },
+  { immediate: true }
+)
+
+const mostrarPesquisaNoMulti = computed(() => estabelecimentosDoGerentePorCidade.value.length > 5)
 
 const listaEstabelecimentosNoMulti = computed(() => {
   const termo = termoBuscaMulti.value.trim().toLowerCase()
-  const base = estabelecimentosDoGerentePorCidade.value
-  if (!termo) return base
-  return base.filter(e => e.nome.toLowerCase().includes(termo))
+  if (!termo) return estabelecimentosDoGerentePorCidade.value
+  return estabelecimentosDoGerentePorCidade.value.filter(
+    e =>
+      e.nome.toLowerCase().includes(termo) ||
+      (e.cidade || '').toLowerCase().includes(termo) ||
+      String(e.id) === termo
+  )
 })
 
 const textoBotaoSeletorTopo = computed(() => {
-  const qtdSel = idsSelecionadosGerente.value.length
   const total = estabelecimentosDoGerentePorCidade.value.length
-  if (qtdSel === 0 || qtdSel === total) {
-    return `Todos (${total})`
+  const sel = idsSelecionadosGerente.value.length
+  if (sel === 0 || sel === total) return `Todos (${total})`
+  if (sel === 1) {
+    const u = estabelecimentosDoGerentePorCidade.value.find(
+      e => e.id === idsSelecionadosGerente.value[0]
+    )
+    return u ? u.nome : '1 selecionado'
   }
-  if (qtdSel === 1) {
-    const est = estabelecimentosDoGerentePorCidade.value.find(e => e.id === idsSelecionadosGerente.value[0])
-    return est ? est.nome : '1 selecionado'
-  }
-  return `${qtdSel} selecionados`
+  return `${sel} selecionados`
 })
 
 function selecionarDashboardCompleto() {
@@ -129,454 +116,435 @@ function selecionarDashboardCompleto() {
 }
 
 function alternarSelecaoEstacionamento(idEst) {
-  const atual = [...idsSelecionadosGerente.value]
-  const idx = atual.indexOf(idEst)
-  if (idx !== -1) {
-    atual.splice(idx, 1)
-  } else {
-    atual.push(idEst)
-  }
-  if (atual.length === estabelecimentosDoGerente.value.length) {
-    idsSelecionadosGerente.value = []
-  } else {
-    idsSelecionadosGerente.value = atual
-  }
+  const idx = idsSelecionadosGerente.value.indexOf(idEst)
+  if (idx >= 0) idsSelecionadosGerente.value.splice(idx, 1)
+  else idsSelecionadosGerente.value.push(idEst)
 }
 
-// =========================================================
-// DADOS ANALÍTICOS SOMADOS DOS ESTACIONAMENTOS SELECIONADOS
-// =========================================================
-const faixasHorariasPadrao = [
-  { hora: '08h', entBase: 2, saiBase: 1 },
-  { hora: '10h', entBase: 4, saiBase: 2 },
-  { hora: '12h', entBase: 7, saiBase: 5 },
-  { hora: '14h', entBase: 5, saiBase: 4 },
-  { hora: '16h', entBase: 4, saiBase: 6 },
-  { hora: '18h', entBase: 8, saiBase: 7 },
-  { hora: '20h', entBase: 3, saiBase: 6 },
-  { hora: '22h', entBase: 2, saiBase: 4 }
-]
+const metricasConsolidadas = computed(() => {
+  let total = 0
+  let livres = 0
+  let ocupadas = 0
+  let inativas = 0
+  let somaDuracao = 0
+  let qtdDuracao = 0
+  let totalUsos = 0
 
-const dadosRelatorios = computed(() => {
-  const lista = estabelecimentosFiltradosGerente.value
-  if (lista.length === 0) {
-    return {
-      taxaOcupacao: 0,
-      vagasLivres: 0,
-      vagasOcupadas: 0,
-      vagasTotais: 0,
-      totalVeiculosDia: 0,
-      tempoMedioFormatado: '0min',
-      horarioPico: '18h',
-      fluxoPorHora: [],
-      maiorValorFluxo: 10,
-      rankingSetores: [],
-      rankingVagas: [],
-      historicoDetalhado: []
-    }
-  }
-
-  let somaLivres = 0
-  let somaOcupadas = 0
-  let somaTotais = 0
-  let somaInativas = 0
-  let somaTempoMin = 0
-  let somaUsosDia = 0
-
-  const listaSetoresRanking = []
-  const listaVagasRanking = []
-  const historicoGerado = []
-
-  const mapaSomaHoras = faixasHorariasPadrao.map(f => ({
-    hora: f.hora,
-    entradas: 0,
-    saidas: 0,
-    entPct: 50,
-    saiPct: 50
-  }))
-
-  const multSim = simulacao1Ativa.value ? 1.6 : 1
-
-  lista.forEach((est) => {
+  estabelecimentosFiltradosGerente.value.forEach((est) => {
     const m = contarVagasEstabelecimento(est)
-    somaLivres += m.livres
-    somaOcupadas += m.ocupadas
-    somaTotais += m.total
-    somaInativas += m.inativas
-    somaTempoMin += m.tempoMedioMin
-    somaUsosDia += m.somaUsosDia
-
-    const pesoVagas = Math.max(1, Math.round(m.total / 3))
-    const variacaoId = (Number(est.id) % 3) + 1
-
-    faixasHorariasPadrao.forEach((f, idx) => {
-      const ajusteHora = ((Number(est.id) + idx) % 2 === 0) ? 1 : 0
-      mapaSomaHoras[idx].entradas += Math.max(
-        1,
-        Math.round((f.entBase * pesoVagas + variacaoId + ajusteHora) * multSim)
-      )
-      mapaSomaHoras[idx].saidas += Math.max(
-        1,
-        Math.round((f.saiBase * pesoVagas + (variacaoId - 1) + ajusteHora) * multSim)
-      )
-    })
+    total += m.total
+    livres += m.livres
+    ocupadas += m.ocupadas
+    inativas += m.inativas
 
     ;(est.andares || []).forEach((andar) => {
-      const celulas = Object.values(andar.celulas || {})
+      Object.values(andar.celulas || {}).forEach((c) => {
+        if (c.tipo === 'VAGA' && !c.inativa) {
+          totalUsos += c.usosNoDia || 0
+          if (!c.livre && c.duracaoMinutos) {
+            somaDuracao += c.duracaoMinutos
+            qtdDuracao++
+          }
+        }
+      })
+    })
+  })
 
-      ;(andar.setores || []).forEach((setor, sIdx) => {
+  const taxaOcupacao = total > 0 ? Math.round((ocupadas / total) * 100) : 0
+  const mediaMinutos = qtdDuracao > 0 ? Math.round(somaDuracao / qtdDuracao) : ocupadas > 0 ? 74 : 0
+  const horas = Math.floor(mediaMinutos / 60)
+  const mins = mediaMinutos % 60
+  const textoPermanencia =
+    mediaMinutos === 0 ? '0 min' : horas > 0 ? `${horas}h ${mins}min` : `${mins} min`
+
+  return {
+    total,
+    livres,
+    ocupadas,
+    inativas,
+    taxaOcupacao,
+    mediaMinutos,
+    textoPermanencia,
+    giroTotal: totalUsos > 0 ? totalUsos : ocupadas * 2,
+    horarioPico: ocupadas > 0 ? '18h às 19h' : 'Sem pico registrado'
+  }
+})
+
+const serieFluxoHorario = computed(() => {
+  const horas = ['07h', '09h', '11h', '13h', '15h', '17h', '19h', '21h']
+  const base = metricasConsolidadas.value.ocupadas
+  const multEnt = [0.22, 0.54, 0.78, 0.65, 0.71, 0.96, 0.84, 0.35]
+  const multSai = [0.08, 0.25, 0.64, 0.72, 0.58, 0.82, 0.94, 0.62]
+
+  const lista = horas.map((rotulo, i) => ({
+    rotulo,
+    entradas: base === 0 ? 0 : Math.max(1, Math.round(base * multEnt[i])),
+    saidas: base === 0 ? 0 : Math.max(1, Math.round(base * multSai[i]))
+  }))
+
+  const maxVal = Math.max(1, ...lista.flatMap(d => [d.entradas, d.saidas]))
+  return lista.map(d => ({
+    ...d,
+    alturaEntPct: d.entradas === 0 ? 4 : Math.max(10, Math.round((d.entradas / maxVal) * 100)),
+    alturaSaiPct: d.saidas === 0 ? 4 : Math.max(10, Math.round((d.saidas / maxVal) * 100))
+  }))
+})
+
+const rankingSetores = computed(() => {
+  const linhas = []
+  estabelecimentosFiltradosGerente.value.forEach((est) => {
+    ;(est.andares || []).forEach((andar) => {
+      const celulas = Object.values(andar.celulas || {})
+      ;(andar.setores || []).forEach((setor) => {
         const vagasSetor = celulas.filter(c => c.tipo === 'VAGA' && c.setorId === setor.id_setor)
-        const totalS = vagasSetor.length
-        const ocupS = vagasSetor.filter(v => !v.inativa && !v.livre).length
-        const usosSetor = vagasSetor.reduce(
-          (acc, v) => acc + (v.usosNoDia || (simulacao1Ativa.value ? 4 : 2) + (sIdx % 3)),
-          0
-        )
-        listaSetoresRanking.push({
+        const ativas = vagasSetor.filter(v => !v.inativa)
+        const ocupadas = ativas.filter(v => !v.livre).length
+        const livres = ativas.filter(v => v.livre).length
+        const inativas = vagasSetor.filter(v => v.inativa).length
+        const taxa = ativas.length > 0 ? Math.round((ocupadas / ativas.length) * 100) : 0
+        const usos = ativas.reduce((acc, v) => acc + (v.usosNoDia || (v.livre ? 1 : 3)), 0)
+
+        linhas.push({
+          chave: `${est.id}-${andar.id_andar}-${setor.id_setor}`,
           estacionamento: est.nome,
           andar: andar.nome_andar,
           setor: `${setor.nome_setor} (${setor.prefixo})`,
           cor: setor.cor_hex,
-          vagasTotais: totalS,
-          ocupadasAgora: ocupS,
-          giroDiario: usosSetor,
-          taxaOcupacao: totalS > 0 ? Math.round((ocupS / totalS) * 100) : 0
+          totalAtivas: ativas.length,
+          livres,
+          ocupadas,
+          inativas,
+          taxa,
+          usos
         })
       })
-
-      celulas
-        .filter(c => c.tipo === 'VAGA')
-        .forEach((v, vIdx) => {
-          const giros = v.usosNoDia || (simulacao1Ativa.value ? ((vIdx * 3) % 9) + 2 : ((vIdx * 2) % 5) + 1)
-          const duracaoMedia = v.duracaoMinutos || ((vIdx * 17) % 95) + 35
-
-          listaVagasRanking.push({
-            identificador: v.identificador || `V${vIdx + 1}`,
-            setor: v.nomeSetor || 'Geral',
-            andar: andar.nome_andar,
-            estacionamento: est.nome,
-            usosHoje: giros,
-            tempoMedioMin: duracaoMedia,
-            statusAtual: v.inativa ? 'Inativa' : v.livre ? 'Livre' : 'Ocupada'
-          })
-
-          const horaBase = 8 + (vIdx % 11)
-          const minBase = (vIdx * 7) % 60
-          const entradaStr = `${hojeIso} ${String(horaBase).padStart(2, '0')}:${String(minBase).padStart(2, '0')}`
-          const horaSaida = Math.min(23, horaBase + Math.floor(duracaoMedia / 60))
-          const minSaida = (minBase + (duracaoMedia % 60)) % 60
-          const saidaStr = v.livre
-            ? `${hojeIso} ${String(horaSaida).padStart(2, '0')}:${String(minSaida).padStart(2, '0')}`
-            : 'Em andamento'
-
-          historicoGerado.push({
-            id: `${est.id}-${andar.id_andar}-${v.identificador}-${vIdx}`,
-            estacionamento: est.nome,
-            andar: andar.nome_andar,
-            setor: v.nomeSetor || 'Geral',
-            vaga: v.identificador || `V${vIdx + 1}`,
-            dataEntrada: entradaStr,
-            dataSaida: saidaStr,
-            permanenciaMin: duracaoMedia,
-            permanenciaTexto: formatarMinutos(duracaoMedia)
-          })
-        })
     })
   })
-
-  const vagasAtivasSoma = Math.max(1, somaTotais - somaInativas)
-  const taxaOcupacao = somaTotais > 0 ? Math.round((somaOcupadas / vagasAtivasSoma) * 100) : 0
-  const tempoMedioMin = Math.round(somaTempoMin / lista.length) || 68
-
-  const fluxoPorHora = mapaSomaHoras.map((item) => {
-    const somaHora = Math.max(1, item.entradas + item.saidas)
-    const entPct = Math.round((item.entradas / somaHora) * 100)
-    return {
-      hora: item.hora,
-      entradas: item.entradas,
-      saidas: item.saidas,
-      entPct,
-      saiPct: 100 - entPct
-    }
-  })
-
-  const maiorValorFluxo = Math.max(10, ...fluxoPorHora.flatMap(f => [f.entradas, f.saidas]))
-  const picoObj = [...fluxoPorHora].sort((a, b) => (b.entradas + b.saidas) - (a.entradas + a.saidas))[0]
-
-  // Soma real de todos os veículos dos estacionamentos selecionados hoje
-  const totalVeiculosDia =
-    somaUsosDia > 0
-      ? somaUsosDia
-      : fluxoPorHora.reduce((acc, f) => acc + f.entradas, 0)
-
-  listaSetoresRanking.sort((a, b) => b.giroDiario - a.giroDiario)
-  listaVagasRanking.sort((a, b) => b.usosHoje - a.usosHoje)
-
-  return {
-    taxaOcupacao,
-    vagasLivres: somaLivres,
-    vagasOcupadas: somaOcupadas,
-    vagasTotais: somaTotais,
-    totalVeiculosDia,
-    tempoMedioFormatado: formatarMinutos(tempoMedioMin),
-    horarioPico: picoObj ? picoObj.hora : '18h',
-    fluxoPorHora,
-    maiorValorFluxo,
-    rankingSetores: listaSetoresRanking.slice(0, 6),
-    rankingVagas: listaVagasRanking.slice(0, 8),
-    historicoDetalhado: historicoGerado
-  }
+  return linhas.sort((a, b) => b.taxa - a.taxa || b.usos - a.usos)
 })
 
-function formatarMinutos(mins) {
-  if (!mins || mins <= 0) return '0min'
-  const h = Math.floor(mins / 60)
-  const m = mins % 60
-  return h > 0 ? `${h}h ${m}min` : `${m}min`
-}
+const rankingVagas = computed(() => {
+  const todas = []
+  estabelecimentosFiltradosGerente.value.forEach((est) => {
+    ;(est.andares || []).forEach((andar) => {
+      Object.values(andar.celulas || {}).forEach((c) => {
+        if (c.tipo === 'VAGA' && !c.inativa) {
+          const usos = c.usosNoDia || (c.livre ? ((c.x + c.y) % 4) + 1 : ((c.x * 3 + c.y) % 7) + 4)
+          const permMedia = c.duracaoMinutos || ((c.x * 13 + c.y * 7) % 95) + 25
+          todas.push({
+            chave: `${est.id}-${andar.id_andar}-${c.identificador}`,
+            estacionamento: est.nome,
+            andar: andar.nome_andar,
+            setor: c.nomeSetor || 'Geral',
+            identificador: c.identificador,
+            status: c.livre ? 'Livre' : 'Ocupada',
+            usos,
+            permMedia
+          })
+        }
+      })
+    })
+  })
+  return todas.sort((a, b) => b.usos - a.usos).slice(0, 10)
+})
 
-// =========================================================
-// COMPARADOR LADO A LADO DE 2 ESTACIONAMENTOS
-// =========================================================
-function calcularResumoComparativo(idEst) {
+function calcularResumoUnidade(idEst) {
   const est = estabelecimentosDoGerente.value.find(e => e.id === Number(idEst))
   if (!est) return null
   const m = contarVagasEstabelecimento(est)
-  const qtdSetores = (est.andares || []).reduce((acc, a) => acc + (a.setores?.length || 0), 0)
-  const giroEstimado = m.somaUsosDia > 0 ? m.somaUsosDia : Math.max(12, m.total * 3)
+  let somaDur = 0
+  let qtdDur = 0
+  let usos = 0
+
+  ;(est.andares || []).forEach((andar) => {
+    Object.values(andar.celulas || {}).forEach((c) => {
+      if (c.tipo === 'VAGA' && !c.inativa) {
+        usos += c.usosNoDia || (c.livre ? 1 : 4)
+        if (!c.livre && c.duracaoMinutos) {
+          somaDur += c.duracaoMinutos
+          qtdDur++
+        }
+      }
+    })
+  })
+
+  const taxa = m.total > 0 ? Math.round((m.ocupadas / m.total) * 100) : 0
+  const mediaMin = qtdDur > 0 ? Math.round(somaDur / qtdDur) : m.ocupadas > 0 ? 68 : 0
 
   return {
     id: est.id,
     nome: est.nome,
-    andares: est.andares?.length || 0,
-    setores: qtdSetores,
-    totalVagas: m.total,
-    livres: m.livres,
-    ocupadas: m.ocupadas,
-    inativas: m.inativas,
-    taxaOcupacao: m.taxaOcupacao,
-    tempoMedio: formatarMinutos(m.tempoMedioMin || 72),
-    giroDiario: giroEstimado
+    andaresQtd: (est.andares || []).length,
+    ...m,
+    taxa,
+    mediaMin,
+    usos
   }
 }
 
-const comparativoA = computed(() => calcularResumoComparativo(idCompararA.value))
-const comparativoB = computed(() => calcularResumoComparativo(idCompararB.value))
+const resumoCompEsquerda = computed(() => calcularResumoUnidade(idCompEsquerda.value))
+const resumoCompDireita = computed(() => calcularResumoUnidade(idCompDireita.value))
 
-// =========================================================
-// TABELA PAGINADA DO HISTÓRICO DETALHADO
-// =========================================================
-const historicoFiltrado = computed(() => {
+const listaHistoricoOcupacao = computed(() => {
+  const registros = []
+  const hojeStr = new Date().toLocaleDateString('pt-BR')
+
+  estabelecimentosFiltradosGerente.value.forEach((est) => {
+    ;(est.andares || []).forEach((andar) => {
+      Object.values(andar.celulas || {}).forEach((c) => {
+        if (c.tipo === 'VAGA' && !c.inativa) {
+          const semente = (c.idVagaBanco || c.x * 10 + c.y) % 9
+          const hEnt = 8 + semente
+          const mEnt = (c.x * 7 + c.y * 3) % 60
+          const duracao = c.duracaoMinutos || 35 + ((c.x * 11 + c.y * 5) % 110)
+
+          const entradaStr = `${hojeStr} ${String(hEnt).padStart(2, '0')}:${String(mEnt).padStart(2, '0')}`
+          const totalMinSaida = hEnt * 60 + mEnt + duracao
+          const hSai = Math.min(23, Math.floor(totalMinSaida / 60))
+          const mSai = totalMinSaida % 60
+          const saidaStr = c.livre
+            ? `${hojeStr} ${String(hSai).padStart(2, '0')}:${String(mSai).padStart(2, '0')}`
+            : 'Em andamento'
+
+          registros.push({
+            id: `${est.id}-${andar.id_andar}-${c.identificador}`,
+            estacionamento: est.nome,
+            andar: andar.nome_andar,
+            setor: c.nomeSetor || 'Geral',
+            vaga: c.identificador,
+            dataEntrada: entradaStr,
+            dataSaida: saidaStr,
+            permanenciaMin: duracao,
+            permanenciaTexto: `${Math.floor(duracao / 60)}h ${duracao % 60}m`
+          })
+        }
+      })
+    })
+  })
+
   const termo = buscaHistorico.value.trim().toLowerCase()
-  const lista = dadosRelatorios.value.historicoDetalhado
-  if (!termo) return lista
-  return lista.filter(
-    item =>
-      item.vaga.toLowerCase().includes(termo) ||
-      item.setor.toLowerCase().includes(termo) ||
-      item.estacionamento.toLowerCase().includes(termo)
+  if (!termo) return registros
+  return registros.filter(
+    r =>
+      r.vaga.toLowerCase().includes(termo) ||
+      r.estacionamento.toLowerCase().includes(termo) ||
+      r.setor.toLowerCase().includes(termo)
   )
 })
 
 const totalPaginasHistorico = computed(() =>
-  Math.max(1, Math.ceil(historicoFiltrado.value.length / itensPorPaginaHistorico))
+  Math.max(1, Math.ceil(listaHistoricoOcupacao.value.length / itensPorPaginaHistorico))
 )
 
 const historicoPaginado = computed(() => {
-  const inicio = (paginaHistorico.value - 1) * itensPorPaginaHistorico
-  return historicoFiltrado.value.slice(inicio, inicio + itensPorPaginaHistorico)
+  const ini = (paginaHistorico.value - 1) * itensPorPaginaHistorico
+  return listaHistoricoOcupacao.value.slice(ini, ini + itensPorPaginaHistorico)
 })
 
-// =========================================================
-// ATALHOS DE DATA E EXPORTAÇÃO CSV (PADRÃO BRASILEIRO ';')
-// =========================================================
-function selecionarAtalhoCompleto(tipo) {
-  if (atalhoPeriodoCompleto.value === tipo) {
-    atalhoPeriodoCompleto.value = ''
-    return
-  }
-  atalhoPeriodoCompleto.value = tipo
-  if (tipo === 'ULTIMO_DIA') {
-    dataInicioCompleto.value = ontemIso
-    dataFimCompleto.value = hojeIso
-  } else if (tipo === 'ULTIMA_SEMANA') {
-    dataInicioCompleto.value = seteDiasAtrasIso
-    dataFimCompleto.value = hojeIso
-  }
+function abrirModalExportacaoIndividual(secao, titulo) {
+  secaoAlvoExport.value = { codigo: secao, titulo }
+  atalhoPeriodoModal.value = null
+  modalExportAberto.value = true
 }
 
-function selecionarAtalhoModal(tipo) {
-  if (atalhoPeriodoModal.value === tipo) {
-    atalhoPeriodoModal.value = ''
-    return
-  }
-  atalhoPeriodoModal.value = tipo
-  if (tipo === 'ULTIMO_DIA') {
-    dataInicioModal.value = ontemIso
-    dataFimModal.value = hojeIso
-  } else if (tipo === 'ULTIMA_SEMANA') {
-    dataInicioModal.value = seteDiasAtrasIso
-    dataFimModal.value = hojeIso
-  }
+function alternarAtalhoModal(periodo) {
+  atalhoPeriodoModal.value = atalhoPeriodoModal.value === periodo ? null : periodo
 }
 
-function abrirModalExportarIndividual(chave, titulo) {
-  relatorioAlvoExportacao.value = { chave, titulo }
-  atalhoPeriodoModal.value = ''
-  dataInicioModal.value = seteDiasAtrasIso
-  dataFimModal.value = hojeIso
-  modalExportarAberto.value = true
+function alternarAtalhoCompleto(periodo) {
+  atalhoPeriodoCompleto.value = atalhoPeriodoCompleto.value === periodo ? null : periodo
 }
 
-function obterLinhasRelatorioPorChave(chave, dtIni, dtFim) {
-  const d = dadosRelatorios.value
-  const periodoStr = `${dtIni} ate ${dtFim}`
+function obterRotuloPeriodo(atalho, inicio, fim) {
+  if (atalho === 'SEMANA') return 'Ultima_Semana'
+  if (atalho === 'MES') return 'Ultimo_Mes'
+  if (atalho === 'ANO') return 'Ultimo_Ano'
+  if (atalho === 'SEMPRE') return 'Desde_Sempre'
+  return `${inicio}_a_${fim}`
+}
 
-  if (chave === 'FLUXO_BRUTO') {
-    return [
-      ['Periodo', 'Faixa Horaria', 'Entradas (Bruto)', 'Saidas (Bruto)', 'Total Movimentacoes'],
-      ...d.fluxoPorHora.map(f => [periodoStr, f.hora, f.entradas, f.saidas, f.entradas + f.saidas])
-    ]
-  }
-  if (chave === 'FLUXO_PCT') {
-    return [
-      ['Periodo', 'Faixa Horaria', 'Entradas (%)', 'Saidas (%)'],
-      ...d.fluxoPorHora.map(f => [periodoStr, f.hora, `${f.entPct}%`, `${f.saiPct}%`])
-    ]
-  }
-  if (chave === 'RANKING_SETORES') {
-    return [
-      ['Periodo', 'Estacionamento', 'Andar', 'Setor', 'Vagas Totais', 'Ocupadas Agora', 'Taxa Ocupacao (%)', 'Giro Diario'],
-      ...d.rankingSetores.map(s => [
-        periodoStr,
+function confirmarExportacaoIndividual() {
+  if (!secaoAlvoExport.value) return
+  const rotuloPeriodo = obterRotuloPeriodo(
+    atalhoPeriodoModal.value,
+    dataInicioModal.value,
+    dataFimModal.value
+  )
+  const codigo = secaoAlvoExport.value.codigo
+
+  if (codigo === 'FLUXO_HORARIO') {
+    baixarArquivoCsv(
+      `VagaCerta_Fluxo_Horario_${rotuloPeriodo}.csv`,
+      ['Periodo_Filtro', 'Faixa_Horaria', 'Entradas', 'Saidas', 'Saldo_Fluxo'],
+      serieFluxoHorario.value.map(item => [
+        rotuloPeriodo,
+        item.rotulo,
+        item.entradas,
+        item.saidas,
+        item.entradas - item.saidas
+      ])
+    )
+  } else if (codigo === 'DESEMPENHO_SETORES') {
+    baixarArquivoCsv(
+      `VagaCerta_Desempenho_Setores_${rotuloPeriodo}.csv`,
+      ['Periodo_Filtro', 'Estacionamento', 'Andar', 'Setor', 'Vagas_Ativas', 'Livres', 'Ocupadas', 'Inativas', 'Taxa_Ocupacao_Pct', 'Rotatividade_Usos'],
+      rankingSetores.value.map(s => [
+        rotuloPeriodo,
         s.estacionamento,
         s.andar,
         s.setor,
-        s.vagasTotais,
-        s.ocupadasAgora,
-        `${s.taxaOcupacao}%`,
-        s.giroDiario
+        s.totalAtivas,
+        s.livres,
+        s.ocupadas,
+        s.inativas,
+        `${s.taxa}%`,
+        s.usos
       ])
-    ]
-  }
-  if (chave === 'RANKING_VAGAS') {
-    return [
-      ['Periodo', 'Vaga', 'Setor', 'Andar', 'Estacionamento', 'Usos no Dia', 'Tempo Medio (min)', 'Status Atual'],
-      ...d.rankingVagas.map(v => [
-        periodoStr,
+    )
+  } else if (codigo === 'RANKING_VAGAS') {
+    baixarArquivoCsv(
+      `VagaCerta_Ranking_Vagas_${rotuloPeriodo}.csv`,
+      ['Periodo_Filtro', 'Posicao', 'Vaga', 'Estacionamento', 'Andar', 'Setor', 'Status_Atual', 'Usos_No_Dia', 'Permanencia_Media_Min'],
+      rankingVagas.value.map((v, idx) => [
+        rotuloPeriodo,
+        idx + 1,
         v.identificador,
-        v.setor,
-        v.andar,
         v.estacionamento,
-        v.usosHoje,
-        v.tempoMedioMin,
-        v.statusAtual
+        v.andar,
+        v.setor,
+        v.status,
+        v.usos,
+        v.permMedia
       ])
-    ]
-  }
-  if (chave === 'COMPARATIVO') {
-    const a = comparativoA.value
-    const b = comparativoB.value
-    return [
-      ['Indicador', a ? a.nome : 'Unidade A', b ? b.nome : 'Unidade B'],
-      ['Periodo Analisado', periodoStr, periodoStr],
-      ['Total de Vagas', a?.totalVagas ?? 0, b?.totalVagas ?? 0],
-      ['Vagas Livres', a?.livres ?? 0, b?.livres ?? 0],
-      ['Vagas Ocupadas', a?.ocupadas ?? 0, b?.ocupadas ?? 0],
-      ['Taxa de Ocupacao (%)', `${a?.taxaOcupacao ?? 0}%`, `${b?.taxaOcupacao ?? 0}%`],
-      ['Tempo Medio de Permanencia', a?.tempoMedio ?? '0min', b?.tempoMedio ?? '0min'],
-      ['Giro Diario de Veiculos', a?.giroDiario ?? 0, b?.giroDiario ?? 0]
-    ]
-  }
-  if (chave === 'HISTORICO') {
-    return [
-      ['Estacionamento', 'Andar', 'Setor', 'Vaga', 'Data/Hora Entrada', 'Data/Hora Saida', 'Permanencia'],
-      ...d.historicoDetalhado.map(h => [
+    )
+  } else if (codigo === 'COMPARATIVO_UNIDADES') {
+    const u1 = resumoCompEsquerda.value
+    const u2 = resumoCompDireita.value
+    baixarArquivoCsv(
+      `VagaCerta_Comparativo_Unidades_${rotuloPeriodo}.csv`,
+      ['Periodo_Filtro', 'Unidade', 'Andares', 'Total_Vagas_Ativas', 'Vagas_Livres', 'Vagas_Ocupadas', 'Vagas_Inativas', 'Taxa_Ocupacao_Pct', 'Permanencia_Media_Min', 'Rotatividade_Total'],
+      [u1, u2].filter(Boolean).map(u => [
+        rotuloPeriodo,
+        u.nome,
+        u.andaresQtd,
+        u.total,
+        u.livres,
+        u.ocupadas,
+        u.inativas,
+        `${u.taxa}%`,
+        u.mediaMin,
+        u.usos
+      ])
+    )
+  } else if (codigo === 'HISTORICO_OCUPACAO') {
+    baixarArquivoCsv(
+      `VagaCerta_Historico_Ocupacao_${rotuloPeriodo}.csv`,
+      ['Periodo_Filtro', 'Estacionamento', 'Andar', 'Setor', 'Vaga', 'Data_Hora_Entrada', 'Data_Hora_Saida', 'Permanencia_Minutos', 'Permanencia_Formatada'],
+      listaHistoricoOcupacao.value.map(h => [
+        rotuloPeriodo,
         h.estacionamento,
         h.andar,
         h.setor,
         h.vaga,
         h.dataEntrada,
         h.dataSaida,
+        h.permanenciaMin,
         h.permanenciaTexto
       ])
-    ]
+    )
   }
-  return [
-    ['Indicador', 'Valor', 'Periodo'],
-    ['Taxa de Ocupacao Atual', `${d.taxaOcupacao}%`, periodoStr],
-    ['Vagas Livres (Soma)', d.vagasLivres, periodoStr],
-    ['Vagas Ocupadas (Soma)', d.vagasOcupadas, periodoStr],
-    ['Total de Veiculos no Dia (Soma)', d.totalVeiculosDia, periodoStr],
-    ['Tempo Medio de Permanencia', d.tempoMedioFormatado, periodoStr],
-    ['Horario de Maior Pico', d.horarioPico, periodoStr]
-  ]
+
+  modalExportAberto.value = false
 }
 
-function dispararDownloadArquivo(conteudo, nomeArquivo, mimeType) {
-  const blob = new Blob([conteudo], { type: mimeType })
-  const url = URL.createObjectURL(blob)
-  const link = document.createElement('a')
-  link.href = url
-  link.download = nomeArquivo
-  document.body.appendChild(link)
-  link.click()
-  document.body.removeChild(link)
-  URL.revokeObjectURL(url)
-}
-
-function formatarLinhasParaCsvBrasil(linhas) {
-  return linhas
-    .map(row => row.map(val => `"${String(val ?? '').replace(/"/g, '""')}"`).join(';'))
-    .join('\r\n')
-}
-
-function confirmarExportacaoCsvIndividual() {
-  const { chave, titulo } = relatorioAlvoExportacao.value
-  const linhas = obterLinhasRelatorioPorChave(chave, dataInicioModal.value, dataFimModal.value)
-  const csvContent = '\uFEFF' + formatarLinhasParaCsvBrasil(linhas)
-
-  const slug = titulo.toLowerCase().replace(/[^a-z0-9]+/g, '_')
-  dispararDownloadArquivo(
-    csvContent,
-    `vaga_certa_${slug}_${dataInicioModal.value}_${dataFimModal.value}.csv`,
-    'text/csv;charset=utf-8;'
+function exportarRelatorioCompletoBi() {
+  const rotuloPeriodo = obterRotuloPeriodo(
+    atalhoPeriodoCompleto.value,
+    dataInicioCompleto.value,
+    dataFimCompleto.value
   )
-  modalExportarAberto.value = false
-}
 
-// Exporta TODOS os relatórios em um único arquivo .CSV padrão brasileiro (separado por ponto e vírgula ';')
-function exportarRelatorioCompletoCsvPadrao() {
-  const dtIni = dataInicioCompleto.value
-  const dtFim = dataFimCompleto.value
-
-  const secoes = [
-    { titulo: '1. RESUMO DE KPIS', chave: 'RESUMO' },
-    { titulo: '2. FLUXO POR HORA (NUMERO BRUTO)', chave: 'FLUXO_BRUTO' },
-    { titulo: '3. FLUXO POR HORA (PORCENTAGEM)', chave: 'FLUXO_PCT' },
-    { titulo: '4. RANKING DE SETORES', chave: 'RANKING_SETORES' },
-    { titulo: '5. RANKING DE VAGAS', chave: 'RANKING_VAGAS' },
-    { titulo: '6. COMPARATIVO DE UNIDADES', chave: 'COMPARATIVO' },
-    { titulo: '7. HISTORICO DETALHADO DE OCUPACAO', chave: 'HISTORICO' }
+  const cabecalhos = [
+    'Secao_Relatorio',
+    'Periodo_Filtro',
+    'Estacionamento',
+    'Andar',
+    'Setor',
+    'Identificador_Item',
+    'Status_Ou_Detalhe',
+    'Valor_Principal',
+    'Valor_Secundario',
+    'Observacao_Adicional'
   ]
 
-  const blocosCsv = secoes.map((secao) => {
-    const linhas = obterLinhasRelatorioPorChave(secao.chave, dtIni, dtFim)
-    return `"=== ${secao.titulo} ==="\r\n` + formatarLinhasParaCsvBrasil(linhas)
+  const linhas = []
+
+  serieFluxoHorario.value.forEach((f) => {
+    linhas.push([
+      '1_FLUXO_HORARIO',
+      rotuloPeriodo,
+      textoBotaoSeletorTopo.value,
+      'Todos',
+      'Todos',
+      f.rotulo,
+      'Entradas / Saidas',
+      f.entradas,
+      f.saidas,
+      `Saldo: ${f.entradas - f.saidas}`
+    ])
   })
 
-  const conteudoFinal = '\uFEFF' + blocosCsv.join('\r\n\r\n')
-  dispararDownloadArquivo(
-    conteudoFinal,
-    `vaga_certa_relatorio_completo_BI_${dtIni}_a_${dtFim}.csv`,
-    'text/csv;charset=utf-8;'
-  )
+  rankingSetores.value.forEach((s) => {
+    linhas.push([
+      '2_DESEMPENHO_SETORES',
+      rotuloPeriodo,
+      s.estacionamento,
+      s.andar,
+      s.setor,
+      s.setor,
+      `Ocupacao: ${s.taxa}%`,
+      s.ocupadas,
+      s.livres,
+      `Inativas: ${s.inativas} | Giro: ${s.usos}`
+    ])
+  })
+
+  rankingVagas.value.forEach((v, i) => {
+    linhas.push([
+      '3_RANKING_VAGAS',
+      rotuloPeriodo,
+      v.estacionamento,
+      v.andar,
+      v.setor,
+      v.identificador,
+      v.status,
+      v.usos,
+      v.permMedia,
+      `Top #${i + 1}`
+    ])
+  })
+
+  listaHistoricoOcupacao.value.forEach((h) => {
+    linhas.push([
+      '4_HISTORICO_OCUPACAO',
+      rotuloPeriodo,
+      h.estacionamento,
+      h.andar,
+      h.setor,
+      h.vaga,
+      h.dataSaida === 'Em andamento' ? 'Ocupada Agora' : 'Finalizado',
+      h.permanenciaMin,
+      h.dataEntrada,
+      `Saida: ${h.dataSaida}`
+    ])
+  })
+
+  baixarArquivoCsv(`VagaCerta_Relatorio_Completo_BI_${rotuloPeriodo}.csv`, cabecalhos, linhas)
 }
 </script>
 
 <template>
-  <div class="gerente-dashboard-container">
-    <!-- CABEÇALHO DO TOPO + SELETOR MULTI-ESTACIONAMENTOS ALINHADO COM OS CARDS -->
+  <main class="gerente-dashboard-container">
     <header class="gerente-header-topo">
       <div class="gerente-boas-vindas">
         <div>
@@ -614,6 +582,7 @@ function exportarRelatorioCompletoCsvPadrao() {
         </div>
       </div>
 
+      <!-- Barra de Filtros: 1 Seletor de Estacionamentos + 1 Seletor de Cidades -->
       <div v-if="estabelecimentosDoGerente.length >= 1" class="barra-filtros-gerente">
         <div class="seletor-multi-wrapper">
           <button
@@ -711,166 +680,83 @@ function exportarRelatorioCompletoCsvPadrao() {
       </div>
     </header>
 
-    <!-- 1. LINHA DE INDICADORES GERAIS (KPIs) -->
+    <!-- 4 Cards de KPIs Executivos -->
     <section class="grade-quatro-kpis-relatorio">
       <div class="card-kpi-gerente kpi-compacto">
-        <div class="kpi-cabecalho">
-          <span class="kpi-titulo">Taxa de Ocupação Atual</span>
-          <IconParking :size="19" style="color: var(--destaque-azul)" />
-        </div>
-        <div class="kpi-valor-destaque">{{ dadosRelatorios.taxaOcupacao }}%</div>
-        <div class="kpi-rodape-duplo">
-          <span class="tag-kpi livre">{{ dadosRelatorios.vagasLivres }} livres</span>
-          <span class="tag-kpi ocupada">{{ dadosRelatorios.vagasOcupadas }} ocupadas</span>
-        </div>
+        <span class="kpi-titulo">Taxa de Ocupação</span>
+        <div class="kpi-valor-destaque">{{ metricasConsolidadas.taxaOcupacao }}%</div>
+        <span class="kpi-descricao-apoio">
+          {{ metricasConsolidadas.ocupadas }} ocupadas de {{ metricasConsolidadas.total }} vagas ativas
+        </span>
       </div>
 
       <div class="card-kpi-gerente kpi-compacto">
-        <div class="kpi-cabecalho">
-          <span class="kpi-titulo">Total de Veículos Hoje</span>
-          <IconChartBar :size="19" style="color: #22c55e" />
-        </div>
-        <div class="kpi-valor-destaque" style="color: #22c55e">
-          {{ dadosRelatorios.totalVeiculosDia }}
-        </div>
-        <p class="kpi-descricao-apoio">Soma de entradas registradas hoje</p>
+        <span class="kpi-titulo">Permanência Média</span>
+        <div class="kpi-valor-destaque">{{ metricasConsolidadas.textoPermanencia }}</div>
+        <span class="kpi-descricao-apoio">Tempo médio por veículo estacionado</span>
       </div>
 
       <div class="card-kpi-gerente kpi-compacto">
-        <div class="kpi-cabecalho">
-          <span class="kpi-titulo">Tempo Médio de Permanência</span>
-          <IconClock :size="19" style="color: #14b8a6" />
-        </div>
-        <div class="kpi-valor-destaque" style="color: #14b8a6">
-          {{ dadosRelatorios.tempoMedioFormatado }}
-        </div>
-        <p class="kpi-descricao-apoio">Duração média por estadia concluída</p>
+        <span class="kpi-titulo">Rotatividade Acumulada</span>
+        <div class="kpi-valor-destaque">{{ metricasConsolidadas.giroTotal }}</div>
+        <span class="kpi-descricao-apoio">Total de usos registrados no período</span>
       </div>
 
       <div class="card-kpi-gerente kpi-compacto">
-        <div class="kpi-cabecalho">
-          <span class="kpi-titulo">Horário de Maior Pico</span>
-          <IconFlame :size="19" style="color: #f97316" />
-        </div>
-        <div class="kpi-valor-destaque" style="color: #f97316">
-          {{ dadosRelatorios.horarioPico }}
-        </div>
-        <p class="kpi-descricao-apoio">Faixa com maior volume de movimentações</p>
+        <span class="kpi-titulo">Horário de Pico</span>
+        <div class="kpi-valor-destaque" style="font-size: 24px">{{ metricasConsolidadas.horarioPico }}</div>
+        <span class="kpi-descricao-apoio">{{ metricasConsolidadas.inativas }} vaga(s) em manutenção/inativas</span>
       </div>
     </section>
 
-    <!-- 2. FLUXO AO LONGO DAS HORAS DO DIA (NÚMERO BRUTO vs. PORCENTAGEM EM GRÁFICO DE BARRAS) -->
+    <!-- Grade Dupla: Fluxo Horário + Top 10 Vagas -->
     <section class="grade-dupla-relatorios">
-      <!-- Relatório A: Fluxo Horário em Número Bruto -->
       <div class="card-relatorio-bloco">
         <div class="header-relatorio-bloco">
           <div>
-            <h3>Fluxo Total por Hora (Hoje)</h3>
-            <p class="dica-painel">Soma de veículos entrando e saindo por faixa horária</p>
+            <h3>Fluxo Horário de Entradas e Saídas</h3>
+            <p class="subtitulo">Volume consolidado por faixa de horário</p>
           </div>
           <button
             class="btn-secundario btn-exportar-card item-icone-texto"
-            @click="abrirModalExportarIndividual('FLUXO_BRUTO', 'Fluxo Horário Bruto')"
+            @click="abrirModalExportacaoIndividual('FLUXO_HORARIO', 'Fluxo Horário de Entradas e Saídas')"
           >
-            <IconDownload :size="16" />
+            <IconDownload :size="17" />
             <span>Exportar</span>
           </button>
         </div>
 
+        <div class="legenda-fluxo-mini" style="margin-bottom: 6px">
+          <span class="ponto-legenda ent"></span> Entradas
+          <span class="ponto-legenda sai"></span> Saídas
+        </div>
+
         <div class="grafico-barras-horarias grafico-relatorio-maior">
-          <div
-            v-for="item in dadosRelatorios.fluxoPorHora"
-            :key="`bruto-${item.hora}`"
-            class="coluna-hora-item"
-          >
+          <div v-for="item in serieFluxoHorario" :key="item.rotulo" class="coluna-hora-item">
             <div class="par-barras-verticais">
-              <div
-                class="barra-v ent"
-                :style="{ height: `${Math.max(10, (item.entradas / dadosRelatorios.maiorValorFluxo) * 100)}%` }"
-                :title="`${item.hora} - Entradas: ${item.entradas}`"
-              >
+              <div class="barra-v ent" :style="{ height: `${item.alturaEntPct}%` }">
                 <span class="valor-barra-topo">{{ item.entradas }}</span>
               </div>
-              <div
-                class="barra-v sai"
-                :style="{ height: `${Math.max(10, (item.saidas / dadosRelatorios.maiorValorFluxo) * 100)}%` }"
-                :title="`${item.hora} - Saídas: ${item.saidas}`"
-              >
+              <div class="barra-v sai" :style="{ height: `${item.alturaSaiPct}%` }">
                 <span class="valor-barra-topo">{{ item.saidas }}</span>
               </div>
             </div>
-            <span class="rotulo-hora-eixo">{{ item.hora }}</span>
+            <span class="rotulo-hora-eixo">{{ item.rotulo }}</span>
           </div>
-        </div>
-
-        <div class="legenda-fluxo-mini" style="justify-content: center; margin-top: 8px">
-          <span><i class="ponto-legenda ent"></i> Entradas (veículos)</span>
-          <span><i class="ponto-legenda sai"></i> Saídas (veículos)</span>
         </div>
       </div>
 
-      <!-- Relatório B: Fluxo Horário em Porcentagem (%) em Gráfico de Barras Verticais -->
       <div class="card-relatorio-bloco">
         <div class="header-relatorio-bloco">
           <div>
-            <h3>Fluxo em % por Hora (Hoje)</h3>
-            <p class="dica-painel">Gráfico comparativo percentual entre entradas e saídas por hora</p>
+            <h3>Top 10 Vagas com Maior Rotatividade</h3>
+            <p class="subtitulo">Vagas mais demandadas e tempo médio de uso</p>
           </div>
           <button
             class="btn-secundario btn-exportar-card item-icone-texto"
-            @click="abrirModalExportarIndividual('FLUXO_PCT', 'Fluxo Horário Percentual')"
+            @click="abrirModalExportacaoIndividual('RANKING_VAGAS', 'Top 10 Vagas com Maior Rotatividade')"
           >
-            <IconDownload :size="16" />
-            <span>Exportar</span>
-          </button>
-        </div>
-
-        <div class="grafico-barras-horarias grafico-relatorio-maior">
-          <div
-            v-for="item in dadosRelatorios.fluxoPorHora"
-            :key="`pct-rel-${item.hora}`"
-            class="coluna-hora-item"
-          >
-            <div class="par-barras-verticais">
-              <div
-                class="barra-v ent"
-                :style="{ height: `${Math.max(10, item.entPct)}%` }"
-                :title="`${item.hora} - Entradas: ${item.entPct}%`"
-              >
-                <span class="valor-barra-topo">{{ item.entPct }}%</span>
-              </div>
-              <div
-                class="barra-v sai"
-                :style="{ height: `${Math.max(10, item.saiPct)}%` }"
-                :title="`${item.hora} - Saídas: ${item.saiPct}%`"
-              >
-                <span class="valor-barra-topo">{{ item.saiPct }}%</span>
-              </div>
-            </div>
-            <span class="rotulo-hora-eixo">{{ item.hora }}</span>
-          </div>
-        </div>
-
-        <div class="legenda-fluxo-mini" style="justify-content: center; margin-top: 8px">
-          <span><i class="ponto-legenda ent"></i> % de Entradas</span>
-          <span><i class="ponto-legenda sai"></i> % de Saídas</span>
-        </div>
-      </div>
-    </section>
-
-    <!-- 3. RANKING DE SETORES E RANKING DE VAGAS COM MAIOR ROTATIVIDADE -->
-    <section class="grade-dupla-relatorios">
-      <div class="card-relatorio-bloco">
-        <div class="header-relatorio-bloco">
-          <div>
-            <h3>Ranking de Setores com Maior Rotatividade</h3>
-            <p class="dica-painel">Setores ordenados pelo giro total de veículos e taxa de ocupação</p>
-          </div>
-          <button
-            class="btn-secundario btn-exportar-card item-icone-texto"
-            @click="abrirModalExportarIndividual('RANKING_SETORES', 'Ranking de Setores')"
-          >
-            <IconDownload :size="16" />
+            <IconDownload :size="17" />
             <span>Exportar</span>
           </button>
         </div>
@@ -879,60 +765,25 @@ function exportarRelatorioCompletoCsvPadrao() {
           <table class="tabela-relatorio">
             <thead>
               <tr>
-                <th>Setor</th>
-                <th>Unidade / Andar</th>
-                <th>Ocupação</th>
-                <th>Giro Diário</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr v-for="(s, idx) in dadosRelatorios.rankingSetores" :key="`rk-s-${idx}`">
-                <td>
-                  <span class="item-icone-texto" style="justify-content: flex-start">
-                    <span class="bolinha-cor-setor" :style="{ backgroundColor: s.cor }"></span>
-                    <strong>{{ s.setor }}</strong>
-                  </span>
-                </td>
-                <td>{{ s.estacionamento }} ({{ s.andar }})</td>
-                <td>{{ s.ocupadasAgora }}/{{ s.vagasTotais }} ({{ s.taxaOcupacao }}%)</td>
-                <td><strong>{{ s.giroDiario }} veículos</strong></td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-
-      <div class="card-relatorio-bloco">
-        <div class="header-relatorio-bloco">
-          <div>
-            <h3>Vagas Mais Utilizadas do Dia</h3>
-            <p class="dica-painel">Vagas com maior quantidade de estadias e tempo médio</p>
-          </div>
-          <button
-            class="btn-secundario btn-exportar-card item-icone-texto"
-            @click="abrirModalExportarIndividual('RANKING_VAGAS', 'Ranking de Vagas')"
-          >
-            <IconDownload :size="16" />
-            <span>Exportar</span>
-          </button>
-        </div>
-
-        <div class="tabela-responsiva-wrapper">
-          <table class="tabela-relatorio">
-            <thead>
-              <tr>
+                <th>#</th>
                 <th>Vaga</th>
-                <th>Setor / Andar</th>
-                <th>Usos Hoje</th>
-                <th>Permanência Média</th>
+                <th>Unidade / Andar</th>
+                <th>Setor</th>
+                <th>Giro</th>
+                <th>Perm. Média</th>
               </tr>
             </thead>
             <tbody>
-              <tr v-for="(v, idx) in dadosRelatorios.rankingVagas" :key="`rk-v-${idx}`">
+              <tr v-for="(v, idx) in rankingVagas" :key="v.chave">
+                <td><strong>{{ idx + 1 }}º</strong></td>
                 <td><span class="id-badge">{{ v.identificador }}</span></td>
-                <td>{{ v.setor }} ({{ v.andar }})</td>
-                <td><strong>{{ v.usosHoje }}x</strong></td>
-                <td>{{ formatarMinutos(v.tempoMedioMin) }}</td>
+                <td>{{ v.estacionamento }} ({{ v.andar }})</td>
+                <td>{{ v.setor }}</td>
+                <td><strong>{{ v.usos }} usos</strong></td>
+                <td>{{ v.permMedia }} min</td>
+              </tr>
+              <tr v-if="rankingVagas.length === 0">
+                <td colspan="6" class="lista-vazia">Nenhuma vaga ativa encontrada.</td>
               </tr>
             </tbody>
           </table>
@@ -940,110 +791,151 @@ function exportarRelatorioCompletoCsvPadrao() {
       </div>
     </section>
 
-    <!-- 4. COMPARADOR ENTRE 2 ESTACIONAMENTOS SELECIONADOS PELO USUÁRIO -->
+    <!-- Desempenho por Setor e Andar -->
     <section class="card-relatorio-bloco">
       <div class="header-relatorio-bloco">
         <div>
-          <h3 class="item-icone-texto" style="justify-content: flex-start">
-            <IconArrowsLeftRight :size="20" style="color: var(--destaque-azul)" />
-            <span>Comparar Dois Estacionamentos</span>
-          </h3>
-          <p class="dica-painel">Selecione duas unidades para comparar desempenho e capacidade lado a lado</p>
+          <h3>Desempenho por Setor e Andar</h3>
+          <p class="subtitulo">Ocupação, capacidade ativa, bloqueios e giro por setor</p>
         </div>
-
         <button
           class="btn-secundario btn-exportar-card item-icone-texto"
-          @click="abrirModalExportarIndividual('COMPARATIVO', 'Comparativo de Estacionamentos')"
+          @click="abrirModalExportacaoIndividual('DESEMPENHO_SETORES', 'Desempenho por Setor e Andar')"
         >
-          <IconDownload :size="16" />
-          <span>Exportar Comparativo</span>
+          <IconDownload :size="17" />
+          <span>Exportar</span>
+        </button>
+      </div>
+
+      <div class="tabela-responsiva-wrapper">
+        <table class="tabela-relatorio">
+          <thead>
+            <tr>
+              <th>Estacionamento</th>
+              <th>Andar</th>
+              <th>Setor</th>
+              <th>Livres</th>
+              <th>Ocupadas</th>
+              <th>Inativas</th>
+              <th>Ocupação</th>
+              <th>Giro Hoje</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr v-for="s in rankingSetores" :key="s.chave">
+              <td><strong>{{ s.estacionamento }}</strong></td>
+              <td>{{ s.andar }}</td>
+              <td>
+                <span class="item-icone-texto" style="justify-content: flex-start">
+                  <span class="bolinha-cor-setor" :style="{ backgroundColor: s.cor }"></span>
+                  <span>{{ s.setor }}</span>
+                </span>
+              </td>
+              <td class="num-livre">{{ s.livres }}</td>
+              <td class="num-ocupada">{{ s.ocupadas }}</td>
+              <td class="num-inativa">{{ s.inativas }}</td>
+              <td><strong>{{ s.taxa }}%</strong></td>
+              <td>{{ s.usos }} veículos</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- Comparador Direto Entre 2 Estacionamentos -->
+    <section v-if="estabelecimentosDoGerente.length >= 1" class="card-relatorio-bloco">
+      <div class="header-relatorio-bloco">
+        <div>
+          <h3 class="item-icone-texto" style="justify-content: flex-start">
+            <IconArrowsLeftRight :size="20" />
+            <span>Comparativo Direto entre Estacionamentos</span>
+          </h3>
+          <p class="subtitulo">Selecione duas unidades para comparar indicadores lado a lado</p>
+        </div>
+        <button
+          class="btn-secundario btn-exportar-card item-icone-texto"
+          @click="abrirModalExportacaoIndividual('COMPARATIVO_UNIDADES', 'Comparativo entre Estacionamentos')"
+        >
+          <IconDownload :size="17" />
+          <span>Exportar</span>
         </button>
       </div>
 
       <div class="seletores-comparador-grid">
-        <div class="campo-grupo" style="margin-bottom: 0">
-          <label>Estacionamento 1</label>
-          <select v-model="idCompararA" class="select-padrao">
-            <option v-for="e in estabelecimentosDoGerente" :key="`ca-${e.id}`" :value="e.id">
-              {{ e.nome }}
-            </option>
-          </select>
-        </div>
+        <select v-model="idCompEsquerda" class="select-padrao">
+          <option v-for="e in estabelecimentosDoGerente" :key="`ce-${e.id}`" :value="e.id">
+            Unidade A: {{ e.nome }}
+          </option>
+        </select>
 
-        <div class="campo-grupo" style="margin-bottom: 0">
-          <label>Estacionamento 2</label>
-          <select v-model="idCompararB" class="select-padrao">
-            <option v-for="e in estabelecimentosDoGerente" :key="`cb-${e.id}`" :value="e.id">
-              {{ e.nome }}
-            </option>
-          </select>
-        </div>
+        <select v-model="idCompDireita" class="select-padrao">
+          <option v-for="e in estabelecimentosDoGerente" :key="`cd-${e.id}`" :value="e.id">
+            Unidade B: {{ e.nome }}
+          </option>
+        </select>
       </div>
 
-      <div v-if="comparativoA && comparativoB" class="grade-cards-comparador">
-        <div v-for="(comp, cIdx) in [comparativoA, comparativoB]" :key="`comp-card-${cIdx}`" class="card-unidade-comparada">
-          <h4>{{ comp.nome }}</h4>
+      <div v-if="resumoCompEsquerda && resumoCompDireita" class="grade-cards-comparador">
+        <div v-for="(u, i) in [resumoCompEsquerda, resumoCompDireita]" :key="`comp-${i}-${u.id}`" class="card-unidade-comparada">
+          <h4>{{ u.nome }}</h4>
           <div class="linha-metrica-comp">
-            <span>Taxa de Ocupação Atual:</span>
-            <strong style="color: var(--destaque-azul)">{{ comp.taxaOcupacao }}%</strong>
+            <span>Taxa de Ocupação:</span>
+            <strong style="color: var(--destaque-azul)">{{ u.taxa }}%</strong>
           </div>
           <div class="linha-metrica-comp">
-            <span>Capacidade Total:</span>
-            <strong>{{ comp.totalVagas }} vagas ({{ comp.andares }} andar(es) / {{ comp.setores }} setor(es))</strong>
+            <span>Vagas Livres / Total Ativas:</span>
+            <strong class="num-livre">{{ u.livres }} / {{ u.total }}</strong>
           </div>
           <div class="linha-metrica-comp">
-            <span>Livres vs. Ocupadas:</span>
-            <span>
-              <strong style="color: #16a34a">{{ comp.livres }} livres</strong> /
-              <strong style="color: #ef4444">{{ comp.ocupadas }} ocupadas</strong>
-            </span>
+            <span>Vagas Ocupadas / Inativas:</span>
+            <span><strong class="num-ocupada">{{ u.ocupadas }}</strong> / {{ u.inativas }} inat.</span>
           </div>
           <div class="linha-metrica-comp">
-            <span>Tempo Médio de Permanência:</span>
-            <strong>{{ comp.tempoMedio }}</strong>
+            <span>Permanência Média:</span>
+            <strong>{{ u.mediaMin }} min</strong>
           </div>
           <div class="linha-metrica-comp">
-            <span>Giro Diário Estimado:</span>
-            <strong>{{ comp.giroDiario }} veículos/dia</strong>
+            <span>Rotatividade Total:</span>
+            <strong>{{ u.usos }} veículos</strong>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- 5. HISTÓRICO DETALHADO DE OCUPAÇÃO (ALTURA FIXA + ANIMAÇÃO DE TROCA DE PÁGINA) -->
+    <!-- Histórico Detalhado de Ocupação com Colunas Fixas e Transição Suave -->
     <section class="card-relatorio-bloco">
       <div class="header-relatorio-bloco">
         <div>
-          <h3>Histórico Detalhado de Ocupação</h3>
-          <p class="dica-painel">Registro individual de entradas, saídas e tempo total de permanência por vaga</p>
+          <h3>Histórico Detalhado de Ocupação por Vaga</h3>
+          <p class="subtitulo">Registro cronológico de entradas, saídas e tempo de permanência</p>
         </div>
-
         <div class="acoes-topo-historico">
           <div class="input-pesquisa-icone-wrapper" style="min-width: 220px">
             <IconSearch :size="16" class="icone-input-pesquisa" />
             <input
               v-model="buscaHistorico"
               type="text"
-              placeholder="Filtrar por vaga ou setor..."
+              placeholder="Filtrar por vaga, setor ou unidade..."
               class="input-pesquisa-grande com-icone input-historico-compacto"
               @input="paginaHistorico = 1"
             />
           </div>
-
           <button
             class="btn-secundario btn-exportar-card item-icone-texto"
-            @click="abrirModalExportarIndividual('HISTORICO', 'Histórico Detalhado de Ocupação')"
+            @click="abrirModalExportacaoIndividual('HISTORICO_OCUPACAO', 'Histórico de Ocupação por Vaga')"
           >
-            <IconDownload :size="16" />
+            <IconDownload :size="17" />
             <span>Exportar</span>
           </button>
         </div>
       </div>
 
-      <!-- Container com altura fixa para não mudar de tamanho quando a página tiver menos de 8 linhas -->
       <div class="tabela-responsiva-wrapper tabela-historico-altura-fixa">
         <Transition name="fade-tabela" mode="out-in">
-          <table :key="`${paginaHistorico}-${buscaHistorico}`" class="tabela-relatorio tabela-historico-colunas-fixas">
+          <table
+            :key="`${paginaHistorico}-${buscaHistorico}`"
+            class="tabela-relatorio tabela-historico-colunas-fixas"
+          >
             <thead>
               <tr>
                 <th class="col-hist-est">Estacionamento</th>
@@ -1056,8 +948,12 @@ function exportarRelatorioCompletoCsvPadrao() {
             </thead>
             <tbody>
               <tr v-for="reg in historicoPaginado" :key="reg.id">
-                <td class="celula-truncada" :title="reg.estacionamento"><strong>{{ reg.estacionamento }}</strong></td>
-                <td class="celula-truncada" :title="`${reg.andar} — ${reg.setor}`">{{ reg.andar }} — {{ reg.setor }}</td>
+                <td class="celula-truncada" :title="reg.estacionamento">
+                  <strong>{{ reg.estacionamento }}</strong>
+                </td>
+                <td class="celula-truncada" :title="`${reg.andar} — ${reg.setor}`">
+                  {{ reg.andar }} — {{ reg.setor }}
+                </td>
                 <td><span class="id-badge">{{ reg.vaga }}</span></td>
                 <td>{{ reg.dataEntrada }}</td>
                 <td>
@@ -1068,27 +964,27 @@ function exportarRelatorioCompletoCsvPadrao() {
                 <td><strong>{{ reg.permanenciaTexto }}</strong></td>
               </tr>
               <tr v-if="historicoPaginado.length === 0">
-                <td colspan="6" style="text-align: center; padding: 32px; color: var(--texto-secundario)">
-                  Nenhum registro encontrado para este filtro.
-                </td>
+                <td colspan="6" class="lista-vazia">Nenhum registro encontrado.</td>
               </tr>
             </tbody>
           </table>
         </Transition>
       </div>
 
-      <div class="paginacao-admin">
+      <div v-if="totalPaginasHistorico > 1" class="paginacao-rodape">
         <button
-          class="item-icone-texto"
+          class="btn-secundario item-icone-texto"
           :disabled="paginaHistorico <= 1"
           @click="paginaHistorico--"
         >
           <IconSquareRoundedChevronLeft :size="18" />
           <span>Anterior</span>
         </button>
-        <span>Página {{ paginaHistorico }} de {{ totalPaginasHistorico }}</span>
+        <span class="info-paginacao">
+          Página {{ paginaHistorico }} de {{ totalPaginasHistorico }}
+        </span>
         <button
-          class="item-icone-texto"
+          class="btn-secundario item-icone-texto"
           :disabled="paginaHistorico >= totalPaginasHistorico"
           @click="paginaHistorico++"
         >
@@ -1098,65 +994,73 @@ function exportarRelatorioCompletoCsvPadrao() {
       </div>
     </section>
 
-    <!-- 6. SEÇÃO RESERVADA: EXPORTAR RELATÓRIOS COMPLETOS (CSV PADRÃO BRASIL) -->
+    <!-- Seção Inferior: Exportação Completa BI -->
     <section class="card-relatorio-bloco card-exportacao-completa-bi">
       <div class="header-relatorio-bloco">
         <div>
-          <h3 class="item-icone-texto" style="justify-content: flex-start">
-            <IconLayoutBoard :size="20" style="color: #16a34a" />
-            <span>Exportar Relatórios Completos para BI (CSV)</span>
-          </h3>
-          <p class="dica-painel">
-            Exporta todos os relatórios consolidados no formato .csv
+          <h3>Exportação Completa de Relatórios (CSV / Excel / Power BI)</h3>
+          <p class="subtitulo">
+            Gera um arquivo consolidado com Fluxo Horário, Setores, Ranking de Vagas e Histórico completo do período escolhido
           </p>
         </div>
       </div>
 
       <div class="controles-exportacao-completa">
-        <div
-          class="campos-datas-exportacao"
-          :class="{ 'datas-cinzadas': atalhoPeriodoCompleto !== '' }"
-        >
-          <div class="campo-grupo" style="margin-bottom: 0">
-            <label>Data Início</label>
+        <div class="campos-datas-exportacao" :class="{ 'datas-cinzadas': atalhoPeriodoCompleto !== null }">
+          <div class="campo-compacto">
+            <label>Data Inicial</label>
             <input
               v-model="dataInicioCompleto"
               type="date"
-              class="input-data-nativo"
-              :disabled="atalhoPeriodoCompleto !== ''"
+              :disabled="atalhoPeriodoCompleto !== null"
+              class="select-padrao"
             />
           </div>
-
-          <div class="campo-grupo" style="margin-bottom: 0">
-            <label>Data Fim</label>
+          <div class="campo-compacto">
+            <label>Data Final</label>
             <input
               v-model="dataFimCompleto"
               type="date"
-              class="input-data-nativo"
-              :disabled="atalhoPeriodoCompleto !== ''"
+              :disabled="atalhoPeriodoCompleto !== null"
+              class="select-padrao"
             />
           </div>
         </div>
 
         <div class="atalhos-periodo-box">
-          <span class="rotulo-atalho">Seleções Rápidas</span>
+          <span class="rotulo-atalho">Ou selecione um período rápido:</span>
           <div class="botoes-atalhos-periodo">
             <button
               type="button"
               class="btn-secundario"
-              :class="{ 'atalho-periodo-ativo': atalhoPeriodoCompleto === 'ULTIMO_DIA' }"
-              @click="selecionarAtalhoCompleto('ULTIMO_DIA')"
+              :class="{ 'atalho-periodo-ativo': atalhoPeriodoCompleto === 'SEMANA' }"
+              @click="alternarAtalhoCompleto('SEMANA')"
             >
-              Último dia
+              Última Semana
             </button>
-
             <button
               type="button"
               class="btn-secundario"
-              :class="{ 'atalho-periodo-ativo': atalhoPeriodoCompleto === 'ULTIMA_SEMANA' }"
-              @click="selecionarAtalhoCompleto('ULTIMA_SEMANA')"
+              :class="{ 'atalho-periodo-ativo': atalhoPeriodoCompleto === 'MES' }"
+              @click="alternarAtalhoCompleto('MES')"
             >
-              Última semana
+              Último Mês
+            </button>
+            <button
+              type="button"
+              class="btn-secundario"
+              :class="{ 'atalho-periodo-ativo': atalhoPeriodoCompleto === 'ANO' }"
+              @click="alternarAtalhoCompleto('ANO')"
+            >
+              Último Ano
+            </button>
+            <button
+              type="button"
+              class="btn-secundario"
+              :class="{ 'atalho-periodo-ativo': atalhoPeriodoCompleto === 'SEMPRE' }"
+              @click="alternarAtalhoCompleto('SEMPRE')"
+            >
+              Desde Sempre
             </button>
           </div>
         </div>
@@ -1164,7 +1068,7 @@ function exportarRelatorioCompletoCsvPadrao() {
         <button
           type="button"
           class="btn-primario btn-baixar-completo-bi item-icone-texto"
-          @click="exportarRelatorioCompletoCsvPadrao"
+          @click="exportarRelatorioCompletoBi"
         >
           <IconDownload :size="20" />
           <span>Baixar Relatório Completo (.CSV)</span>
@@ -1172,79 +1076,85 @@ function exportarRelatorioCompletoCsvPadrao() {
       </div>
     </section>
 
-    <!-- MODAL POPUP DE EXPORTAÇÃO INDIVIDUAL DE CADA RELATÓRIO -->
-    <Transition name="fade-pop">
-      <div v-if="modalExportarAberto" class="modal-backdrop">
+    <!-- Modal de Exportação Individual -->
+    <Transition name="fade-backdrop">
+      <div v-if="modalExportAberto" class="modal-backdrop" @click.self="modalExportAberto = false">
         <div class="modal-box modal-exportar-relatorio">
           <div class="overlay-header">
             <h3 class="item-icone-texto">
               <IconDownload :size="20" />
-              <span>Exportar — {{ relatorioAlvoExportacao.titulo }}</span>
+              <span>Exportar Relatório</span>
             </h3>
-            <button class="btn-fechar-mini" @click="modalExportarAberto = false">
+            <button class="btn-fechar-mini" @click="modalExportAberto = false">
               <IconSquareRoundedX :size="20" />
             </button>
           </div>
 
           <p class="subtitulo" style="margin-bottom: 12px">
-            Escolha o intervalo de datas ou selecione uma opção rápida abaixo:
+            Seção: <strong>{{ secaoAlvoExport?.titulo }}</strong>
           </p>
 
-          <div
-            class="campos-datas-modal"
-            :class="{ 'datas-cinzadas': atalhoPeriodoModal !== '' }"
-          >
-            <div class="campo-grupo">
-              <label>Data Início</label>
-              <input
-                v-model="dataInicioModal"
-                type="date"
-                class="input-data-nativo"
-                :disabled="atalhoPeriodoModal !== ''"
-              />
+          <div class="campos-datas-modal" :class="{ 'datas-cinzadas': atalhoPeriodoModal !== null }">
+            <div class="campo-grupo" style="margin-bottom: 10px">
+              <label>Data Inicial</label>
+              <input v-model="dataInicioModal" type="date" :disabled="atalhoPeriodoModal !== null" />
             </div>
-
-            <div class="campo-grupo">
-              <label>Data Fim</label>
-              <input
-                v-model="dataFimModal"
-                type="date"
-                class="input-data-nativo"
-                :disabled="atalhoPeriodoModal !== ''"
-              />
+            <div class="campo-grupo" style="margin-bottom: 10px">
+              <label>Data Final</label>
+              <input v-model="dataFimModal" type="date" :disabled="atalhoPeriodoModal !== null" />
             </div>
           </div>
 
-          <div class="botoes-atalhos-modal">
-            <button
-              type="button"
-              class="btn-secundario"
-              :class="{ 'atalho-periodo-ativo': atalhoPeriodoModal === 'ULTIMO_DIA' }"
-              @click="selecionarAtalhoModal('ULTIMO_DIA')"
-            >
-              Último dia
-            </button>
-
-            <button
-              type="button"
-              class="btn-secundario"
-              :class="{ 'atalho-periodo-ativo': atalhoPeriodoModal === 'ULTIMA_SEMANA' }"
-              @click="selecionarAtalhoModal('ULTIMA_SEMANA')"
-            >
-              Última semana
-            </button>
+          <div class="campo-grupo">
+            <label>Ou escolha um período rápido (desabilita as datas acima):</label>
+            <div class="botoes-atalhos-modal">
+              <button
+                type="button"
+                class="btn-secundario"
+                :class="{ 'atalho-periodo-ativo': atalhoPeriodoModal === 'SEMANA' }"
+                @click="alternarAtalhoModal('SEMANA')"
+              >
+                Última Semana
+              </button>
+              <button
+                type="button"
+                class="btn-secundario"
+                :class="{ 'atalho-periodo-ativo': atalhoPeriodoModal === 'MES' }"
+                @click="alternarAtalhoModal('MES')"
+              >
+                Último Mês
+              </button>
+              <button
+                type="button"
+                class="btn-secundario"
+                :class="{ 'atalho-periodo-ativo': atalhoPeriodoModal === 'ANO' }"
+                @click="alternarAtalhoModal('ANO')"
+              >
+                Último Ano
+              </button>
+              <button
+                type="button"
+                class="btn-secundario"
+                :class="{ 'atalho-periodo-ativo': atalhoPeriodoModal === 'SEMPRE' }"
+                @click="alternarAtalhoModal('SEMPRE')"
+              >
+                Desde Sempre
+              </button>
+            </div>
           </div>
 
-          <button
-            type="button"
-            class="btn-primario btn-confirmar-sucesso item-icone-texto"
-            @click="confirmarExportacaoCsvIndividual"
-          >
-            <IconDownload :size="19" />
-            <span>Exportar / Baixar CSV</span>
-          </button>
+          <div class="modal-acoes">
+            <button class="btn-secundario item-icone-texto" @click="modalExportAberto = false">
+              <IconSquareRoundedX :size="17" />
+              <span>Cancelar</span>
+            </button>
+            <button class="btn-primario item-icone-texto" @click="confirmarExportacaoIndividual">
+              <IconDownload :size="17" />
+              <span>Baixar .CSV</span>
+            </button>
+          </div>
         </div>
       </div>
     </Transition>
-  </div>
+  </main>
 </template>

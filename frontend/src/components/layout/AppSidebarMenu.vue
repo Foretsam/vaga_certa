@@ -27,16 +27,18 @@ import {
   IconChevronUp
 } from '@/constants/icons'
 
-const menuAberto = ref(false)
-const router = useRouter()
-const route = useRoute()
+const CHAVE_STORAGE_TEMA = 'vagacerta_tema'
 
+const menuAberto = ref(false)
 const temaEscuro = ref(true)
 const animandoTrocaTema = ref(false)
 const mostrarVoltarTopo = ref(false)
 
+const router = useRouter()
+const route = useRoute()
+
 onMounted(() => {
-  const salvo = localStorage.getItem('vagacerta_tema')
+  const salvo = localStorage.getItem(CHAVE_STORAGE_TEMA)
   if (salvo === 'light' || salvo === 'dark') {
     temaEscuro.value = salvo === 'dark'
   } else {
@@ -50,6 +52,7 @@ onUnmounted(() => {
   window.removeEventListener('scroll', verificarScrollPagina)
 })
 
+// Exibe o botão de voltar ao topo apenas após rolar a página
 function verificarScrollPagina() {
   mostrarVoltarTopo.value = window.scrollY > 180
 }
@@ -62,6 +65,7 @@ function aplicarTemaDom() {
   document.documentElement.setAttribute('data-theme', temaEscuro.value ? 'dark' : 'light')
 }
 
+// Alterna entre Light e Dark Mode com efeito circular expansivo
 function alternarTema(event) {
   const x = event?.clientX ?? 140
   const y = event?.clientY ?? 32
@@ -77,7 +81,7 @@ function alternarTema(event) {
 
   const executarTroca = () => {
     temaEscuro.value = !temaEscuro.value
-    localStorage.setItem('vagacerta_tema', temaEscuro.value ? 'dark' : 'light')
+    localStorage.setItem(CHAVE_STORAGE_TEMA, temaEscuro.value ? 'dark' : 'light')
     aplicarTemaDom()
   }
 
@@ -85,21 +89,23 @@ function alternarTema(event) {
     const transicao = document.startViewTransition(() => {
       executarTroca()
     })
-    transicao.ready.then(() => {
-      document.documentElement.animate(
-        {
-          clipPath: [
-            `circle(0px at ${x}px ${y}px)`,
-            `circle(${raioMaximo}px at ${x}px ${y}px)`
-          ]
-        },
-        {
-          duration: 480,
-          easing: 'cubic-bezier(0.22, 1, 0.36, 1)',
-          pseudoElement: '::view-transition-new(root)'
-        }
-      )
-    }).catch(() => {})
+    transicao.ready
+      .then(() => {
+        document.documentElement.animate(
+          {
+            clipPath: [
+              `circle(0px at ${x}px ${y}px)`,
+              `circle(${raioMaximo}px at ${x}px ${y}px)`
+            ]
+          },
+          {
+            duration: 480,
+            easing: 'cubic-bezier(0.22, 1, 0.36, 1)',
+            pseudoElement: '::view-transition-new(root)'
+          }
+        )
+      })
+      .catch(() => {})
   } else {
     document.documentElement.classList.add('transicao-tema-global')
     executarTroca()
@@ -114,6 +120,7 @@ function irPara(rota) {
   router.push(rota)
 }
 
+// Redireciona o botão "VC" para a tela principal correspondente ao perfil logado
 function irParaHomePorNivel() {
   menuAberto.value = false
   const nivel = usuarioLogado.value?.nivel_acesso
@@ -142,15 +149,17 @@ function sairDaConta() {
 </script>
 
 <template>
+  <!-- Botão Hambúrguer Fixo -->
   <button class="btn-hamburguer" title="Abrir Menu" @click="menuAberto = !menuAberto">
     <IconMenu2 :size="22" />
   </button>
 
+  <!-- Atalho de Logótipo VC -->
   <button class="btn-logo-vc" title="Ir para a página inicial" @click="irParaHomePorNivel">
     <span class="vc-letra-v">V</span><span class="vc-letra-c">C</span>
   </button>
 
-  <!-- Toggle Light / Dark Mode com animação elaborada -->
+  <!-- Alternador Light / Dark Mode -->
   <button
     type="button"
     class="btn-toggle-tema"
@@ -167,7 +176,7 @@ function sairDaConta() {
     </Transition>
   </button>
 
-  <!-- Botão sem bordas no formato de "V" apontado para cima ao usar scroll -->
+  <!-- Botão Flutuante Voltar ao Topo -->
   <Transition name="fade-pop">
     <button
       v-if="mostrarVoltarTopo"
@@ -180,10 +189,12 @@ function sairDaConta() {
     </button>
   </Transition>
 
+  <!-- Fundo Escurecido do Menu -->
   <Transition name="fade-backdrop">
     <div v-if="menuAberto" class="menu-backdrop" @click="menuAberto = false"></div>
   </Transition>
 
+  <!-- Gaveta de Navegação Lateral -->
   <Transition name="slide-menu">
     <aside v-if="menuAberto" class="menu-lateral">
       <div class="menu-header">
@@ -191,12 +202,13 @@ function sairDaConta() {
           <span class="badge-logo-menu">VC</span>
           <h2>Vaga Certa</h2>
         </div>
-        <button class="btn-fechar" @click="menuAberto = false">
+        <button class="btn-fechar" title="Fechar Menu" @click="menuAberto = false">
           <IconSquareRoundedX :size="22" />
         </button>
       </div>
 
       <nav class="menu-links">
+        <!-- Ações exclusivas do Administrador Desenvolvedor -->
         <template v-if="usuarioLogado?.nivel_acesso === 'admin_dev'">
           <a href="#" class="item-icone-texto" @click.prevent="irParaNovoEstacionamento">
             <IconSquareRoundedPlus :size="19" />
@@ -209,6 +221,7 @@ function sairDaConta() {
           <div class="menu-divisor"></div>
         </template>
 
+        <!-- Ações exclusivas do Gerente de Estabelecimento -->
         <template v-if="usuarioLogado?.nivel_acesso === 'admin_estabelecimento'">
           <a href="#" class="item-icone-texto" @click.prevent="irPara({ name: 'gerente' })">
             <IconLayoutBoard :size="19" />
@@ -225,6 +238,7 @@ function sairDaConta() {
           <div class="menu-divisor"></div>
         </template>
 
+        <!-- Acesso do Motorista / Visitante -->
         <a
           v-if="usuarioLogado?.nivel_acesso !== 'admin_dev' && usuarioLogado?.nivel_acesso !== 'admin_estabelecimento'"
           href="#"
@@ -235,6 +249,7 @@ function sairDaConta() {
           <span>Escanear Estacionamento</span>
         </a>
 
+        <!-- Autenticação para Visitantes -->
         <template v-if="!usuarioLogado">
           <a href="#" class="item-icone-texto" @click.prevent="irPara({ name: 'login' })">
             <IconLogin :size="19" />

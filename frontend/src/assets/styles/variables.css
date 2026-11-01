@@ -1,81 +1,73 @@
+/* ==========================================================================
+   VARIÁVEIS DE TEMA (DARK / LIGHT), RESET GLOBAL E TIPOGRAFIA BASE
+   ========================================================================== */
 :root,
-:root[data-theme="light"] {
-  --bg-painel: #f1f5f9;
+:root[data-theme='dark'] {
+  --bg-pagina: #0b0f19;
+  --bg-card: #111827;
+  --bg-painel: #1e293b;
+  --texto-principal: #f8fafc;
+  --texto-secundario: #94a3b8;
+  --borda: #1f2937;
+  --destaque-azul: #3b82f6;
+  --bg-botao-sec: #1e293b;
+  --borda-botao-sec: #334155;
+}
+
+:root[data-theme='light'] {
+  --bg-pagina: #f1f5f9;
   --bg-card: #ffffff;
-  --bg-botao-sec: #e2e8f0;
-  --borda-botao-sec: #94a3b8;
+  --bg-painel: #f8fafc;
   --texto-principal: #0f172a;
   --texto-secundario: #475569;
   --borda: #cbd5e1;
   --destaque-azul: #2563eb;
-  --cor-asfalto: #1e293b;
-  --borda-asfalto: #475569;
-  --filtro-icone-calendario: invert(18%) sepia(24%) saturate(1100%) hue-rotate(185deg) brightness(92%) contrast(95%);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) {
-    --bg-painel: #0b1120;
-    --bg-card: #1e293b;
-    --bg-botao-sec: #0f172a;
-    --borda-botao-sec: #475569;
-    --texto-principal: #f8fafc;
-    --texto-secundario: #94a3b8;
-    --borda: #334155;
-    --destaque-azul: #3b82f6;
-    --cor-asfalto: #090d16;
-    --borda-asfalto: #64748b;
-    --filtro-icone-calendario: invert(95%) sepia(5%) saturate(200%) hue-rotate(180deg) brightness(105%) contrast(100%);
-  }
-}
-
-:root[data-theme="dark"] {
-  --bg-painel: #0b1120;
-  --bg-card: #1e293b;
-  --bg-botao-sec: #0f172a;
-  --borda-botao-sec: #475569;
-  --texto-principal: #f8fafc;
-  --texto-secundario: #94a3b8;
-  --borda: #334155;
-  --destaque-azul: #3b82f6;
-  --cor-asfalto: #090d16;
-  --borda-asfalto: #64748b;
-  --filtro-icone-calendario: invert(95%) sepia(5%) saturate(200%) hue-rotate(180deg) brightness(105%) contrast(100%);
+  --bg-botao-sec: #f8fafc;
+  --borda-botao-sec: #cbd5e1;
 }
 
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, sans-serif;
 }
 
-html {
-  scrollbar-gutter: stable;
-}
-
-html, body, #app {
-  width: 100% !important;
-  max-width: 100% !important;
-  margin: 0 !important;
-  padding: 0 !important;
-  display: block !important;
-  overflow-x: hidden;
-  text-align: left;
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  background-color: var(--bg-pagina);
+  color: var(--texto-principal);
   font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
 }
 
 .app-container {
-  width: 100%;
   min-height: 100vh;
-  background: var(--bg-painel);
-  color: var(--texto-principal);
-  transition: background-color 0.2s ease, color 0.2s ease;
+  width: 100%;
 }
 
+/* Alinhamento padrão entre ícones SVG Tabler e textos */
 .item-icone-texto {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 6px;
+  gap: 7px;
+}
+
+/* Suporte ao efeito circular na alternância entre modo claro e escuro */
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation: none;
+  mix-blend-mode: normal;
+}
+
+html.transicao-tema-global,
+html.transicao-tema-global *,
+html.transicao-tema-global *::before,
+html.transicao-tema-global *::after {
+  transition:
+    background-color 0.38s ease,
+    color 0.38s ease,
+    border-color 0.38s ease,
+    box-shadow 0.38s ease !important;
 }

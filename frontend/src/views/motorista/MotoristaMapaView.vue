@@ -21,9 +21,10 @@ import {
   IconDoorExit,
   IconArrowBarRight,
   IconAlertSquareRounded,
-  IconArrowDown,
-  IconArrowUp
+  IconArrowDown
 } from '@/constants/icons'
+
+const TAMANHO_CELULA = 30
 
 const route = useRoute()
 const router = useRouter()
@@ -37,8 +38,6 @@ const containerMapaRef = ref(null)
 const mostrarIndicadoresAcesso = ref(true)
 let timerIndicadores = null
 
-const TAMANHO_CELULA = 30
-
 const {
   panX,
   panY,
@@ -49,6 +48,7 @@ const {
   resetarCameraGrid
 } = useGridPanZoom()
 
+// Exibe os indicadores animados de Entrada e Saída por 4,5 segundos ao abrir/trocar andar
 function dispararIndicadoresTemporarios() {
   mostrarIndicadoresAcesso.value = true
   if (timerIndicadores) clearTimeout(timerIndicadores)
@@ -94,6 +94,7 @@ const andarAtual = computed(() => {
   )
 })
 
+// Recorta extremidades vazias e rotaciona a matriz para que a ENTRADA fique sempre na borda inferior
 const mapaProcessadoMotorista = computed(() => {
   const andar = andarAtual.value
   if (!andar?.celulas) return null
@@ -179,19 +180,21 @@ const mapaProcessadoMotorista = computed(() => {
     })
   })
 
-  const pontoEntrada = coordsEntrada.length > 0
-    ? {
-        col: coordsEntrada.reduce((a, b) => a + b.col, 0) / coordsEntrada.length,
-        row: coordsEntrada.reduce((a, b) => a + b.row, 0) / coordsEntrada.length
-      }
-    : null
+  const pontoEntrada =
+    coordsEntrada.length > 0
+      ? {
+          col: coordsEntrada.reduce((a, b) => a + b.col, 0) / coordsEntrada.length,
+          row: coordsEntrada.reduce((a, b) => a + b.row, 0) / coordsEntrada.length
+        }
+      : null
 
-  const pontoSaida = coordsSaida.length > 0
-    ? {
-        col: coordsSaida.reduce((a, b) => a + b.col, 0) / coordsSaida.length,
-        row: coordsSaida.reduce((a, b) => a + b.row, 0) / coordsSaida.length
-      }
-    : null
+  const pontoSaida =
+    coordsSaida.length > 0
+      ? {
+          col: coordsSaida.reduce((a, b) => a + b.col, 0) / coordsSaida.length,
+          row: coordsSaida.reduce((a, b) => a + b.row, 0) / coordsSaida.length
+        }
+      : null
 
   return {
     largura: matriz[0]?.length || 1,
@@ -216,25 +219,22 @@ const estiloCaixaEscalada = computed(() => {
 const estiloIndicadorEntrada = computed(() => {
   const pt = mapaProcessadoMotorista.value?.pontoEntrada
   if (!pt) return null
-  const leftPx = 6 + (pt.col + 0.5) * TAMANHO_CELULA
-  const topPx = 6 + pt.row * TAMANHO_CELULA
   return {
-    left: `${leftPx}px`,
-    top: `${topPx}px`
+    left: `${6 + (pt.col + 0.5) * TAMANHO_CELULA}px`,
+    top: `${6 + pt.row * TAMANHO_CELULA}px`
   }
 })
 
 const estiloIndicadorSaida = computed(() => {
   const pt = mapaProcessadoMotorista.value?.pontoSaida
   if (!pt) return null
-  const leftPx = 6 + (pt.col + 0.5) * TAMANHO_CELULA
-  const topPx = 6 + pt.row * TAMANHO_CELULA
   return {
-    left: `${leftPx}px`,
-    top: `${topPx}px`
+    left: `${6 + (pt.col + 0.5) * TAMANHO_CELULA}px`,
+    top: `${6 + pt.row * TAMANHO_CELULA}px`
   }
 })
 
+// Aplica zoom automático se o estacionamento for menor que a tela e foca a barra de rolagem na Entrada
 function ajustarZoomERolagemParaEntrada() {
   const container = containerMapaRef.value
   const dados = mapaProcessadoMotorista.value
@@ -275,15 +275,13 @@ function ajustarZoomERolagemParaEntrada() {
 }
 
 function alterarZoomBotao(delta) {
-  const novo = Math.min(2.6, Math.max(0.5, Number((zoomEscala.value + delta).toFixed(2))))
-  zoomEscala.value = novo
+  zoomEscala.value = Math.min(2.6, Math.max(0.5, Number((zoomEscala.value + delta).toFixed(2))))
 }
 
 function aoRolarMouseMapa(e) {
   if (e.ctrlKey || e.metaKey) {
     e.preventDefault()
-    const delta = e.deltaY < 0 ? 0.12 : -0.12
-    alterarZoomBotao(delta)
+    alterarZoomBotao(e.deltaY < 0 ? 0.12 : -0.12)
   }
 }
 
@@ -423,6 +421,7 @@ const infoBadgeMotorista = computed(() => {
   </main>
 
   <div v-else-if="andarAtual && mapaProcessadoMotorista" class="editor-layout">
+    <!-- Botão Flutuante de Setores/Andares no Tablet e Mobile -->
     <div class="hud-coluna-direita-mobile">
       <button
         class="hud-btn-flutuante"
@@ -434,6 +433,7 @@ const infoBadgeMotorista = computed(() => {
       </button>
     </div>
 
+    <!-- Barra Superior do Motorista -->
     <header class="editor-topbar topbar-motorista-mapa">
       <div class="topbar-esquerda">
         <button
@@ -532,6 +532,7 @@ const infoBadgeMotorista = computed(() => {
       </div>
     </header>
 
+    <!-- Área Principal da Planta Recortada e Rotacionada -->
     <div class="editor-workspace">
       <div class="area-grid-container">
         <Transition name="fade-pop">
@@ -565,7 +566,7 @@ const infoBadgeMotorista = computed(() => {
               }"
             >
               <div class="matriz-motorista-sem-coordenadas">
-                <!-- Indicadores animados de Entrada e Saída (saem após poucos segundos) -->
+                <!-- Indicadores temporários de Entrada e Saída -->
                 <Transition name="fade-pop">
                   <div
                     v-if="mostrarIndicadoresAcesso && estiloIndicadorEntrada"
@@ -647,6 +648,7 @@ const infoBadgeMotorista = computed(() => {
         </div>
       </div>
 
+      <!-- Barra Lateral: Andares e Setores -->
       <aside
         class="sidebar-direita-editor sidebar-gerente-metricas"
         :class="{ 'sidebar-mobile-aberta': painelSetoresMobileAberto }"

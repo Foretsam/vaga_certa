@@ -1,6 +1,6 @@
-/* =========================================================
-   EDITOR GAMIFICADO 2D E VISÃO EM TELA CHEIA (DESKTOP)
-   ========================================================= */
+/* ==========================================================================
+   EDITOR GAMIFICADO 2D E VISÃO OPERACIONAL EM TELA CHEIA
+   ========================================================================== */
 .editor-layout {
   position: relative;
   padding: 8px 12px 12px 12px;
@@ -58,59 +58,6 @@
   margin-left: 4px;
 }
 
-.seletor-andar-box {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  background: var(--bg-botao-sec);
-  color: var(--texto-secundario);
-  padding: 6px 12px;
-  border-radius: 9px;
-  border: 1px solid var(--borda-botao-sec);
-  font-size: 13.5px;
-  font-weight: 600;
-  white-space: nowrap;
-  transition: border-color 0.15s ease, box-shadow 0.15s ease;
-}
-
-.seletor-andar-box:hover,
-.seletor-andar-box:focus-within {
-  border-color: var(--destaque-azul);
-}
-
-.seletor-andar-box svg {
-  color: var(--destaque-azul);
-  flex-shrink: 0;
-}
-
-.seletor-andar-box strong {
-  color: var(--texto-principal);
-  font-weight: 700;
-}
-
-.select-andar-editor {
-  appearance: none;
-  -webkit-appearance: none;
-  background-color: transparent;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%2364748b' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
-  background-repeat: no-repeat;
-  background-position: right 2px center;
-  color: var(--texto-principal);
-  border: none;
-  font-weight: 700;
-  font-size: 13.5px;
-  padding: 2px 20px 2px 2px;
-  border-radius: 4px;
-  cursor: pointer;
-  outline: none;
-}
-
-.select-andar-editor option {
-  background-color: var(--bg-card);
-  color: var(--texto-principal);
-  font-weight: 600;
-}
-
 .btn-caution-avisos {
   background: var(--bg-botao-sec);
   color: var(--texto-principal);
@@ -131,7 +78,15 @@
   border-color: #f59e0b;
   background: rgba(245, 158, 11, 0.15);
 }
-.btn-caution-avisos.caution-ok { border-color: #16a34a; }
+.btn-caution-avisos.caution-ok {
+  border-color: #16a34a;
+}
+
+.btn-mao-ativa {
+  border-color: var(--destaque-azul) !important;
+  background: rgba(59, 130, 246, 0.18) !important;
+  color: var(--destaque-azul) !important;
+}
 
 .caution-badge {
   background: #dc2626;
@@ -141,7 +96,9 @@
   padding: 2px 7px;
   border-radius: 999px;
 }
-.caution-ok .caution-badge { background: #16a34a; }
+.caution-ok .caution-badge {
+  background: #16a34a;
+}
 
 .btn-salvar-final {
   background: #16a34a;
@@ -166,7 +123,7 @@
   cursor: not-allowed;
 }
 
-/* Ajuste responsivo entre 1025px e 1360px para o menu superior nunca quebrar */
+/* Compactação intermediária entre 1025px e 1360px */
 @media (min-width: 1025px) and (max-width: 1360px) {
   .btn-duas-linhas {
     line-height: 1.15;
@@ -188,8 +145,7 @@
   }
   .editor-topbar .btn-secundario,
   .editor-topbar .btn-primario,
-  .editor-topbar .btn-seletor-multi,
-  .seletor-andar-box {
+  .editor-topbar .btn-seletor-multi {
     font-size: 12.5px !important;
     padding: 6px 10px !important;
   }
@@ -214,7 +170,7 @@
   display: flex;
 }
 
-/* Overlays Flutuantes do Grid */
+/* Overlays Flutuantes sobre o Grid */
 .overlay-flutuante {
   position: absolute;
   z-index: 60;
@@ -284,6 +240,15 @@
   gap: 10px;
   font-size: 13.5px;
   white-space: nowrap;
+}
+
+.banner-mao-ativa {
+  background: #1e3a8a !important;
+  border-color: #38bdf8 !important;
+}
+
+.texto-mao-mobile {
+  display: none !important;
 }
 
 .btn-cancelar-carimbo {
@@ -404,7 +369,7 @@
   font-weight: 600;
 }
 
-/* Tabuleiro 2D */
+/* Tabuleiro 2D com Coordenadas */
 .area-grid-principal {
   flex: 1;
   width: 100%;
@@ -423,9 +388,13 @@
   will-change: transform;
 }
 
-.matriz-com-coordenadas { display: inline-block; }
+.matriz-com-coordenadas {
+  display: inline-block;
+}
 .linha-coordenadas-x,
-.linha-grid-y { display: grid; }
+.linha-grid-y {
+  display: grid;
+}
 
 .canto-xy,
 .rotulo-coord {

@@ -26,6 +26,7 @@ const termoPesquisaAdmin = ref('')
 const paginaAtualAdmin = ref(1)
 const itensPorPagina = ref(6)
 
+// Ajusta a quantidade de itens exibidos por página conforme a altura da janela
 function calcularItensPorAlturaTela() {
   const alturaTela = window.innerHeight
   const larguraTela = window.innerWidth
@@ -99,7 +100,10 @@ async function alternarInativoEstabelecimento(est) {
 }
 
 async function removerEstabelecimento(est) {
-  if (confirm(`Tem certeza que deseja REMOVER permanentemente "${est.nome}" e todos os seus andares e vagas do banco de dados?`)) {
+  const confirmou = confirm(
+    `Tem certeza que deseja REMOVER permanentemente "${est.nome}" e todos os seus andares e vagas do banco de dados?`
+  )
+  if (confirmou) {
     try {
       await removerEstabelecimentoNoBanco(est)
     } catch (err) {
@@ -114,7 +118,9 @@ async function removerEstabelecimento(est) {
     <header class="topbar-titulo-central">
       <div class="bloco-titulo-centro">
         <h1>Gerenciamento de Estacionamentos</h1>
-        <p class="subtitulo ocultar-subtitulo-mobile">Pesquise, adicione, edite, inative ou remova estabelecimentos</p>
+        <p class="subtitulo ocultar-subtitulo-mobile">
+          Pesquise, adicione, edite, inative ou remova estabelecimentos
+        </p>
       </div>
     </header>
 
@@ -157,7 +163,11 @@ async function removerEstabelecimento(est) {
         </div>
 
         <div class="acoes-direita">
-          <button class="btn-icone editar" title="Editar Estacionamento" @click="editarEstabelecimento(est)">
+          <button
+            class="btn-icone editar"
+            title="Editar Estacionamento"
+            @click="editarEstabelecimento(est)"
+          >
             <IconPencil :size="18" />
           </button>
           <button
@@ -168,7 +178,11 @@ async function removerEstabelecimento(est) {
             <IconSquareRoundedCheck v-if="est.inativo" :size="18" />
             <IconBan v-else :size="18" />
           </button>
-          <button class="btn-icone remover" title="Remover Permanentemente" @click="removerEstabelecimento(est)">
+          <button
+            class="btn-icone remover"
+            title="Remover Permanentemente"
+            @click="removerEstabelecimento(est)"
+          >
             <IconTrash :size="18" />
           </button>
         </div>

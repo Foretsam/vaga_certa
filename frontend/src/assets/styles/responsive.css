@@ -1,326 +1,49 @@
-/* =========================================================
-   RESPONSIVIDADE: TABLETS E CELULARES (<= 1024px E <= 768px)
-   ========================================================= */
+/* ==========================================================================
+   RESPONSIVIDADE UNIFICADA (TABLET <= 1024px, MOBILE <= 768px E IMPRESSÃO)
+   ========================================================================== */
+
+/* 1. TABLETS E TELAS MÉDIAS (iPad 768x1024 e similares) */
 @media (max-width: 1024px) {
-  .btn-hamburguer {
-    width: 38px;
-    height: 38px;
-    font-size: 18px;
-    border-radius: 9px;
-  }
-
-  .btn-logo-vc {
-    left: 54px;
-    width: 38px;
-    height: 38px;
-    font-size: 15px;
-    border-radius: 9px;
-  }
-
-  .btn-tutorial-info {
-    left: 98px;
-    width: 38px;
-    height: 38px;
-    border-radius: 9px;
-  }
-
-  .btn-toggle-tema {
-    left: 98px;
-    width: 38px;
-    height: 38px;
-    border-radius: 9px;
-  }
-  .btn-toggle-tema.com-botao-tutorial {
-    left: 142px;
-  }
-
   .ocultar-subtitulo-tablet-mobile {
     display: none !important;
   }
 
-  .editor-layout {
-    padding: 0;
-    width: 100vw;
-    height: 100vh;
-    overflow: hidden;
-  }
-
-  .editor-workspace {
-    width: 100%;
-    height: 100%;
-    gap: 0;
-  }
-
-  .area-grid-principal {
-    border: none;
-    border-radius: 0;
-    padding: 56px 12px 48px 12px;
-    overflow: hidden;
-  }
-
-  .hud-btn-flutuante {
-    display: flex !important;
-    justify-content: center;
-    align-items: center;
-    width: 38px;
-    height: 38px;
-    border-radius: 9px;
-    background: var(--bg-card);
-    color: var(--texto-principal);
-    border: 1px solid var(--borda-botao-sec);
-    font-size: 16px;
-    cursor: pointer;
-    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.28);
-    position: relative;
-    transition: transform 0.22s cubic-bezier(0.16, 1, 0.3, 1),
-                background-color 0.22s ease,
-                border-color 0.22s ease,
-                color 0.22s ease,
-                box-shadow 0.22s ease !important;
-  }
-
-  .hud-btn-flutuante:active {
-    transform: scale(0.92);
-  }
-
-  .hud-btn-flutuante.hud-ativo {
-    border-color: var(--destaque-azul);
-    background: var(--destaque-azul);
-    color: #fff;
-    transform: scale(1.05);
-  }
-
-  .hud-esquerda-alertas {
-    position: fixed !important;
-    top: 56px;
-    left: 10px;
-    z-index: 950;
-  }
-  .hud-esquerda-alertas.caution-pendente { border-color: #f59e0b; }
-  .hud-esquerda-alertas.caution-ok { border-color: #16a34a; }
-
-  .hud-esquerda-mao {
-    position: fixed !important;
-    top: 56px;
-    left: 54px;
-    z-index: 950;
-  }
-
-  .hud-mini-badge {
-    position: absolute;
-    top: -4px;
-    right: -4px;
-    background: #dc2626;
-    color: #fff;
-    font-size: 9px;
-    font-weight: 800;
-    min-width: 16px;
-    height: 16px;
-    padding: 0 3px;
-    border-radius: 999px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  .caution-ok .hud-mini-badge { background: #16a34a; }
-
-  .hud-coluna-direita-mobile {
-    display: flex !important;
-    flex-direction: column;
-    gap: 8px;
-    position: fixed;
-    top: 10px;
-    right: 10px;
-    z-index: 950;
-  }
-
-  .hud-btn-salvar {
-    background: #16a34a;
-    border-color: #15803d;
-    color: #fff;
-  }
-  .hud-btn-salvar:disabled {
-    background: #475569;
-    border-color: #334155;
-    opacity: 0.5;
-  }
-
-  .hud-btn-add {
-    background: var(--destaque-azul);
-    border-color: var(--destaque-azul);
-    color: #fff;
-  }
-
-  .editor-topbar:not(.topbar-motorista-mapa) {
-    display: flex !important;
-    position: fixed;
-    top: 56px;
-    right: 54px;
-    left: auto;
-    width: 255px;
-    margin-left: 0 !important;
-    z-index: 960;
-    flex-direction: column;
-    align-items: stretch;
-    padding: 10px;
-    box-shadow: 0 10px 28px rgba(0, 0, 0, 0.45);
-    opacity: 0;
-    visibility: hidden;
-    pointer-events: none;
-    transform: translateY(-8px) scale(0.96);
-    transform-origin: top right;
-    transition: opacity 0.24s cubic-bezier(0.16, 1, 0.3, 1),
-                transform 0.24s cubic-bezier(0.16, 1, 0.3, 1),
-                visibility 0.24s ease;
-  }
-  .editor-topbar.topbar-mobile-aberta,
-  .editor-topbar.tutorial-forcar-painel-mobile {
-    opacity: 1 !important;
-    visibility: visible !important;
-    pointer-events: auto !important;
-    transform: translateY(0) scale(1) !important;
-  }
-
-  .topbar-esquerda {
-    flex-direction: column;
-    align-items: stretch;
-  }
-  .topbar-direita {
-    display: none;
-  }
-  .topbar-direita-gerente {
-    flex-direction: column;
-    align-items: stretch;
-    margin-top: 6px;
-  }
-
-  /* No iPad e Celular: Topbar do Motorista sempre ao lado do botão de tema */
-  .topbar-motorista-mapa {
-    display: flex !important;
-    position: static !important;
-    width: calc(100% - 202px) !important;
-    margin-top: 10px !important;
-    margin-left: 146px !important;
-    margin-right: 56px !important;
-    min-height: 38px;
-    padding: 4px 10px !important;
+  /* Mantém os títulos de página centralizados entre os botões fixos */
+  .topbar-titulo-central {
     flex-direction: row !important;
-    justify-content: space-between !important;
+    justify-content: center !important;
     align-items: center !important;
-    box-shadow: none !important;
+    text-align: center !important;
+    padding-left: 224px !important;
+    padding-right: 130px !important;
+    min-height: 46px;
   }
 
-  .topbar-motorista-mapa .topbar-esquerda {
-    flex-direction: row !important;
-    align-items: center !important;
-    flex-wrap: nowrap !important;
-    gap: 6px !important;
-  }
-
-  .legenda-motorista-inline {
-    display: none !important;
-  }
-
-  .sidebar-direita-editor {
-    display: flex !important;
-    position: fixed;
-    top: 56px;
-    right: 54px;
-    width: 255px;
-    max-height: calc(100vh - 70px);
-    z-index: 960;
-    background: var(--bg-painel);
-    padding: 8px;
-    border-radius: 12px;
-    border: 1px solid var(--borda);
-    box-shadow: 0 10px 28px rgba(0, 0, 0, 0.45);
-    opacity: 0;
-    visibility: hidden;
-    pointer-events: none;
-    transform: translateX(12px) scale(0.96);
-    transform-origin: top right;
-    transition: opacity 0.24s cubic-bezier(0.16, 1, 0.3, 1),
-                transform 0.24s cubic-bezier(0.16, 1, 0.3, 1),
-                visibility 0.24s ease;
-  }
-  .sidebar-direita-editor.sidebar-mobile-aberta,
-  .sidebar-direita-editor.tutorial-forcar-painel-mobile {
-    opacity: 1 !important;
-    visibility: visible !important;
-    pointer-events: auto !important;
-    transform: translateX(0) scale(1) !important;
-  }
-
-  .admin-container {
-    padding: 18px 16px 24px 16px;
-  }
-
-  /* Centralização simétrica em porcentagem da tela (iPad 768x1024) */
-  .topbar-titulo-central,
-  .topbar-titulo-central.com-botao-direita {
-    min-height: 38px;
-    padding: 4px 20vw !important;
-  }
-  .topbar-titulo-central h1 {
-    font-size: 22px;
-  }
-  .subtitulo {
-    font-size: 12.5px;
-  }
-
-  /* Remove o translateY(-50%) herdado para o botão Voltar nunca cortar no topo */
-  .btn-voltar-topo,
-  .topbar-titulo-central .btn-voltar-topo {
-    position: fixed !important;
-    top: 10px !important;
-    right: 12px !important;
-    z-index: 1000;
-    height: 38px !important;
-    padding: 0 12px !important;
-    font-size: 13px !important;
-    transform: none !important;
-  }
-  .btn-voltar-topo:hover:not(:disabled),
-  .topbar-titulo-central .btn-voltar-topo:hover:not(:disabled) {
-    transform: translateY(-1px) !important;
-  }
-  .btn-voltar-topo:active:not(:disabled),
-  .topbar-titulo-central .btn-voltar-topo:active:not(:disabled) {
-    transform: none !important;
-  }
-
-  .sidebar-direita-editor .painel-ferramentas { padding: 10px; }
-  .sidebar-direita-editor .painel-ferramentas h4 { font-size: 12.5px; }
-  .sidebar-direita-editor .dica-painel { font-size: 11px; }
-  .sidebar-direita-editor .btn-ferramenta { font-size: 11px; padding: 6px 4px; }
-  .sidebar-direita-editor .btn-equipamento { font-size: 11px; padding: 6px 4px; }
-
-  .painel-avisos-overlay {
-    top: 56px;
-    left: 98px;
-    right: auto;
-    width: 270px;
+  .topbar-titulo-central .bloco-titulo-centro h1 {
+    font-size: 20px;
+    line-height: 1.2;
   }
 
   .gerente-boas-vindas {
-    padding-left: 180px;
-  }
-  .gerente-boas-vindas h1 {
-    font-size: 18.5px;
-  }
-  .gerente-boas-vindas .subtitulo {
-    font-size: 12px;
-  }
-  .gerente-atalhos-topo .btn-secundario,
-  .gerente-atalhos-topo .btn-primario,
-  .btn-seletor-multi {
-    padding: 7px 11px !important;
-    font-size: 12.5px !important;
+    padding-left: 220px;
+    flex-wrap: nowrap;
   }
 
+  .gerente-boas-vindas h1 {
+    font-size: 20px;
+  }
+
+  .gerente-atalhos-topo .btn-secundario,
+  .gerente-atalhos-topo .btn-primario {
+    padding: 8px 11px;
+    font-size: 13px;
+  }
+
+  /* Grade 2x2 de KPIs no Tablet e botão seletor de estacionamentos */
   .grade-kpis-gerente {
     grid-template-columns: repeat(2, 1fr);
   }
+
   .card-kpi-gerente.kpi-apenas-tablet {
     display: flex;
   }
@@ -328,261 +51,486 @@
   .secao-estacionamentos-dupla-pc {
     display: none;
   }
+
   .secao-seletor-mobile-est {
     display: block;
-  }
-  .seletor-mobile-est-wrapper {
-    min-height: auto;
   }
 
   .grade-quatro-kpis-relatorio {
     grid-template-columns: repeat(2, 1fr);
   }
+
   .grade-dupla-relatorios {
     grid-template-columns: 1fr;
   }
 
-  .grupo-filtros-navegacao-gerente,
-  .grupo-inativar-reativar-gerente,
-  .grupo-calor-simulacao-gerente {
+  /* Editor 2D e Visão em Tela Cheia com HUD Flutuante no Tablet/Mobile */
+  .editor-layout {
+    padding: 0;
+    gap: 0;
+  }
+
+  .area-grid-principal {
+    border-radius: 0;
+    border: none;
+    padding: 64px 10px 70px 10px;
+  }
+
+  .hud-btn-flutuante {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 4px;
+    min-width: 46px;
+    height: 46px;
+    padding: 0 11px;
+    border-radius: 11px;
+    background: var(--bg-card);
+    color: var(--texto-principal);
+    border: 1px solid var(--borda-botao-sec);
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.28);
+    z-index: 1000;
+  }
+
+  .hud-btn-flutuante.hud-ativo {
+    border-color: var(--destaque-azul);
+    background: var(--destaque-azul);
+    color: #fff;
+  }
+
+  .hud-esquerda-alertas {
+    position: fixed;
+    top: 10px;
+    left: 226px;
+  }
+
+  .hud-esquerda-mao {
+    position: fixed;
+    top: 10px;
+    left: 294px;
+  }
+
+  .hud-mini-badge {
+    font-size: 12px;
+    background: #dc2626;
+    color: #fff;
+    padding: 1px 6px;
+    border-radius: 999px;
+  }
+
+  .caution-ok .hud-mini-badge {
+    background: #16a34a;
+  }
+
+  .hud-coluna-direita-mobile {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 8px;
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    z-index: 1000;
+  }
+
+  .hud-btn-salvar {
+    background: #16a34a;
+    color: #fff;
+    border-color: #15803d;
+  }
+  .hud-btn-salvar:disabled {
+    background: #64748b;
+    opacity: 0.45;
+  }
+
+  .hud-btn-add {
+    background: var(--destaque-azul);
+    color: #fff;
+  }
+
+  .editor-topbar {
+    display: none;
+    position: fixed;
+    top: 64px;
+    right: 10px;
+    left: 10px;
+    margin-left: 0 !important;
+    z-index: 950;
     flex-direction: column;
     align-items: stretch;
-    width: 100%;
-  }
-}
-
-@media (max-width: 768px) {
-  .admin-container {
-    padding: 16px 12px 20px 12px;
+    box-shadow: 0 10px 28px rgba(0, 0, 0, 0.45);
   }
 
-  .ocultar-info-mobile,
-  .ocultar-subtitulo-mobile,
+  .editor-topbar.topbar-mobile-aberta {
+    display: flex;
+  }
+
+  /* Mantém a barra superior do motorista visível e compacta */
+  .editor-topbar.topbar-motorista-mapa {
+    display: flex !important;
+    position: relative !important;
+    top: auto !important;
+    right: auto !important;
+    left: auto !important;
+    margin: 62px 8px 0 8px !important;
+    padding: 6px 8px !important;
+    flex-direction: row !important;
+    flex-wrap: nowrap !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    box-shadow: none !important;
+  }
+
+  .topbar-motorista-mapa .topbar-esquerda {
+    display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: nowrap !important;
+    align-items: center !important;
+    gap: 6px !important;
+    width: auto !important;
+  }
+
+  .topbar-motorista-mapa .btn-secundario,
+  .topbar-motorista-mapa .btn-seletor-multi {
+    width: auto !important;
+    padding: 7px 10px !important;
+  }
+
   .ocultar-texto-topbar-mobile {
     display: none !important;
   }
 
-  /* Em celulares (iPhone 12 Pro): Título centralizado e abaixo da linha dos botões superiores */
-  .topbar-titulo-central,
-  .topbar-titulo-central.com-botao-direita {
-    margin-top: 44px;
-    padding: 4px 6vw !important;
-    margin-bottom: 14px;
-    min-height: auto;
+  .topbar-direita {
+    display: none;
   }
 
-  .btn-voltar-topo,
-  .topbar-titulo-central .btn-voltar-topo {
-    position: fixed !important;
-    top: 10px !important;
-    right: 10px !important;
-    z-index: 1000;
-    height: 38px !important;
-    padding: 0 12px !important;
-    font-size: 12px !important;
-    transform: none !important;
-  }
-
-  .topbar-titulo-central h1 {
-    font-size: 18px;
-    text-align: center;
-  }
-
-  .subtitulo {
-    font-size: 11.5px;
-  }
-
-  .campo-grupo label { font-size: 13px; }
-  .campo-grupo input,
-  .select-padrao {
-    padding: 8px 10px;
-    font-size: 13.5px;
-  }
-  .btn-primario {
-    padding: 9px 14px;
-    font-size: 13.5px;
-  }
-
-  .barra-pesquisa-admin {
+  .topbar-esquerda,
+  .topbar-direita-gerente {
     flex-direction: column;
-    gap: 8px;
-  }
-  .input-pesquisa-grande {
-    padding: 8px 11px;
-    font-size: 13px;
-  }
-  .btn-add-est {
-    padding: 8px 12px;
-    font-size: 13px;
+    align-items: stretch;
   }
 
-  .lista-card {
-    padding: 4px 8px;
+  .topbar-esquerda .btn-secundario,
+  .topbar-direita-gerente .btn-secundario,
+  .topbar-direita-gerente .btn-primario,
+  .seletor-est-tela-cheia .btn-seletor-multi {
+    width: 100%;
+    justify-content: center;
   }
-  .linha-estabelecimento {
-    padding: 7px 2px;
-    gap: 6px;
+
+  .sidebar-direita-editor {
+    display: none;
+    position: fixed;
+    top: 64px;
+    right: 10px;
+    width: 300px;
+    max-width: calc(100vw - 20px);
+    max-height: calc(100vh - 80px);
+    z-index: 950;
+    background: var(--bg-pagina);
+    padding: 10px;
+    border-radius: 12px;
+    border: 1px solid var(--borda);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.5);
   }
-  .info-est {
-    gap: 7px;
+
+  .sidebar-direita-editor.sidebar-mobile-aberta {
+    display: flex;
   }
-  .id-badge {
-    padding: 3px 6px;
-    font-size: 11px;
+
+  .tutorial-forcar-painel-mobile {
+    display: flex !important;
   }
-  .textos-est h3 {
-    font-size: 13px;
+
+  .painel-avisos-overlay {
+    position: fixed;
+    top: 64px;
+    left: 10px;
+    right: 10px;
+    width: auto;
+    z-index: 960;
   }
-  .meta-est {
-    font-size: 10.5px;
+
+  /* Texto de dois toques seguidos no Modo Mão para Tablet e Mobile */
+  .texto-mao-desktop {
+    display: none !important;
   }
-  .acoes-direita {
-    gap: 4px;
-  }
-  .btn-icone {
-    width: 28px;
-    height: 28px;
+  .texto-mao-mobile {
+    display: inline-flex !important;
     font-size: 12px;
-    border-radius: 6px;
+  }
+  .banner-mao-ativa {
+    max-width: calc(100vw - 24px);
+    white-space: normal !important;
+    text-align: center;
+    padding: 7px 11px !important;
+  }
+}
+
+/* 2. SMARTPHONES (iPhone 12 390x844 e similares) */
+@media (max-width: 768px) {
+  /* Compacta botões fixos superiores para caberem lado a lado sem sobreposição */
+  .btn-hamburguer {
+    width: 38px;
+    height: 38px;
+    top: 10px;
+    left: 8px;
+    border-radius: 9px;
+  }
+
+  .btn-logo-vc {
+    width: 38px;
+    height: 38px;
+    top: 10px;
+    left: 50px;
+    font-size: 15px;
+    border-radius: 9px;
+  }
+
+  .btn-tutorial-info {
+    width: 38px;
+    height: 38px;
+    top: 10px;
+    left: 92px;
+    border-radius: 9px;
+  }
+
+  .btn-toggle-tema {
+    width: 38px;
+    height: 38px;
+    top: 10px;
+    left: 92px;
+    border-radius: 9px;
+  }
+
+  .btn-toggle-tema.com-botao-tutorial {
+    left: 134px;
+  }
+
+  .hud-btn-flutuante {
+    min-width: 38px;
+    height: 38px;
+    padding: 0 8px;
+    border-radius: 9px;
+  }
+
+  .hud-esquerda-alertas {
+    top: 10px;
+    left: 176px;
+  }
+
+  .hud-esquerda-mao {
+    top: 10px;
+    left: 230px;
+  }
+
+  .hud-coluna-direita-mobile {
+    top: 10px;
+    right: 8px;
+    gap: 5px;
+  }
+
+  .admin-container {
+    padding: 60px 14px 20px 14px;
+  }
+
+  .ocultar-subtitulo-mobile,
+  .ocultar-info-mobile {
+    display: none !important;
+  }
+
+  .topbar-titulo-central {
+    padding: 0 8px !important;
+    min-height: 40px;
+    margin-bottom: 14px;
+  }
+
+  .topbar-titulo-central .bloco-titulo-centro h1 {
+    font-size: 18px;
+  }
+
+  .topbar-titulo-central.com-botao-direita {
+    padding: 0 78px !important;
+  }
+
+  .topbar-titulo-central.com-botao-direita .btn-voltar-topo {
+    position: absolute !important;
+    right: 0 !important;
+    top: 50% !important;
+    transform: translateY(-50%) !important;
+    width: auto !important;
+    padding: 6px 10px !important;
+    font-size: 12px !important;
   }
 
   .gerente-dashboard-container {
-    padding: 14px 12px 24px 12px;
+    padding: 12px 14px 24px 14px;
   }
 
-  .gerente-boas-vindas h1 {
-    font-size: 16px;
+  .gerente-boas-vindas {
+    padding-left: 0;
+    padding-top: 46px;
+    flex-direction: column;
+    align-items: stretch;
   }
 
   .gerente-atalhos-topo {
-    margin-left: -180px;
-    width: calc(100% + 180px);
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
     gap: 6px;
-    flex-wrap: nowrap;
-    margin-top: 4px;
   }
 
-  .gerente-atalhos-topo .btn-secundario,
-  .gerente-atalhos-topo .btn-primario {
+  .gerente-atalhos-topo button {
+    width: 100%;
     padding: 8px 4px !important;
     font-size: 11.5px !important;
-    flex: 1;
-    min-width: 0;
   }
 
-  .gerente-atalhos-topo .item-icone-texto {
-    gap: 4px;
-  }
-
-  .gerente-atalhos-topo span {
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-  }
-
-  .gerente-atalhos-topo svg {
-    width: 15px;
-    height: 15px;
-    flex-shrink: 0;
-  }
-
-  /* Seletores de Estacionamentos e Cidades lado a lado na mesma linha no iPhone */
   .barra-filtros-gerente {
     display: grid !important;
-    grid-template-columns: 1fr 1fr;
-    gap: 6px;
+    grid-template-columns: 1fr 1fr !important;
+    gap: 8px !important;
     width: 100%;
   }
 
-  .barra-filtros-gerente .seletor-multi-wrapper {
-    width: 100%;
-    min-width: 0;
-  }
-
+  .barra-filtros-gerente .seletor-multi-wrapper,
   .barra-filtros-gerente .btn-seletor-multi {
     width: 100%;
-    padding: 7px 8px !important;
-    font-size: 11.5px !important;
     justify-content: space-between;
-  }
-
-  .lista-opcoes-multi {
-    max-height: 195px;
-  }
-
-  .card-kpi-gerente.kpi-apenas-tablet {
-    display: none;
+    padding: 8px 10px;
+    font-size: 12.5px;
   }
 
   .grade-kpis-gerente,
   .grade-quatro-kpis-relatorio,
   .seletores-comparador-grid,
   .grade-cards-comparador,
-  .campos-datas-modal {
+  .campos-datas-modal,
+  .botoes-atalhos-modal,
+  .filtros-motorista-grid,
+  .grade-campos-dupla,
+  .grade-planos-futuros {
     grid-template-columns: 1fr;
   }
+
+  .card-kpi-gerente.kpi-apenas-tablet {
+    display: none;
+  }
+
   .controles-exportacao-completa {
     flex-direction: column;
     align-items: stretch;
   }
 
-  .filtros-motorista-grid,
-  .grade-campos-dupla {
-    grid-template-columns: 1fr;
+  .botoes-atalhos-periodo {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
   }
 
-  .motorista-home-layout {
-    padding: 60px 12px 24px 12px;
+  .btn-baixar-completo-bi {
+    width: 100%;
   }
 
-  .motorista-home-card {
-    padding: 20px 14px;
-    gap: 16px;
+  .barra-pesquisa-admin {
+    flex-direction: column;
+    align-items: stretch;
   }
 
-  .item-est-motorista {
-    padding: 11px 12px;
+  .btn-add-est {
+    width: 100%;
   }
 
-  .textos-est-motorista h3 {
-    font-size: 14.5px;
+  /* Mantém botões de ação na mesma linha do estacionamento no celular */
+  .linha-estabelecimento {
+    flex-direction: row !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    gap: 8px !important;
+    padding: 10px 12px !important;
+  }
+
+  .linha-estabelecimento .info-est {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .linha-estabelecimento .textos-est h3 {
+    font-size: 14px;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    max-width: 210px;
   }
 
-  /* Topbar do Motorista no iPhone: ao lado do toggle de tema e apenas com ícones */
-  .topbar-motorista-mapa {
-    width: calc(100% - 196px) !important;
-    margin-top: 10px !important;
-    margin-left: 142px !important;
-    margin-right: 54px !important;
-    height: 38px;
-    padding: 3px 6px !important;
-  }
-
-  .topbar-motorista-mapa .btn-secundario,
-  .topbar-motorista-mapa .btn-seletor-multi {
-    padding: 5px 7px !important;
-    height: 30px;
-  }
-
-  .topbar-direita-motorista {
+  .linha-estabelecimento .badge-cidade-inline,
+  .linha-estabelecimento .meta-est {
     display: none !important;
   }
+
+  .linha-estabelecimento .acoes-direita {
+    width: auto !important;
+    flex-shrink: 0;
+    gap: 5px;
+  }
+
+  .paginacao-rodape {
+    gap: 8px;
+    padding: 6px 10px;
+    margin: 14px auto 20px auto;
+  }
+
+  .paginacao-rodape .btn-secundario {
+    min-width: 92px;
+    height: 34px;
+    padding: 0 10px;
+    font-size: 12.5px;
+  }
+
+  .paginacao-rodape .info-paginacao {
+    font-size: 12px;
+    padding: 0 4px;
+  }
+
+  .menu-selecao-overlay,
+  .popup-confirmar-lote-gerente {
+    width: calc(100% - 16px);
+    justify-content: space-between;
+    padding: 8px 10px;
+    gap: 6px;
+    overflow-x: auto;
+  }
+
+  .banner-carimbo-overlay,
+  .banner-instrucao-gerente {
+    width: calc(100% - 20px);
+    white-space: normal;
+    text-align: center;
+    font-size: 12px;
+  }
+
+  .legenda-calor-overlay {
+    top: auto;
+    bottom: 64px;
+    left: 10px;
+    right: 10px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .item-legenda-mot {
+    font-size: 11px;
+  }
+
+  .tutorial-popup-card {
+    padding: 14px 16px;
+    gap: 8px;
+  }
 }
 
-@media (max-width: 480px) {
-  .auth-card {
-    padding: 22px 16px;
-  }
-  .auth-cabecalho h1 {
-    font-size: 20px;
-  }
-}
-
-/* Na impressão do QR Code, exibe apenas o QR Code centralizado */
+/* 3. IMPRESSÃO EXCLUSIVA DO QR CODE DO ESTACIONAMENTO */
 @media print {
   body * {
     visibility: hidden;
@@ -594,10 +542,10 @@
   .modal-qr-gerente {
     position: fixed;
     left: 50%;
-    top: 50%;
+    top: 40%;
     transform: translate(-50%, -50%);
-    box-shadow: none !important;
-    border: none !important;
+    box-shadow: none;
+    border: 2px solid #000;
   }
   .modal-qr-gerente .modal-acoes,
   .modal-qr-gerente .btn-fechar-mini {

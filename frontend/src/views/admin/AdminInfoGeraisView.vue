@@ -16,7 +16,7 @@ import {
 
 const router = useRouter()
 
-// Filtra para exibir apenas motoristas ('usuario') e gerentes ('admin_estabelecimento')
+// Exibe apenas motoristas ('usuario') e gerentes ('admin_estabelecimento'), ocultando devs
 const usuariosResponsaveisDisponiveis = computed(() => {
   return usuariosCadastrados.value.filter(u => u.nivel_acesso !== 'admin_dev')
 })
@@ -51,6 +51,7 @@ function removerAndarForm(index) {
   formEstabelecimento.value.andares.splice(index, 1)
 }
 
+// Valida os campos obrigatórios e inicializa a matriz 2D de novos andares antes de abrir o editor
 function avancarParaEditorP2() {
   if (!formEstabelecimento.value.nome.trim()) {
     alert('Digite o nome do estabelecimento antes de continuar.')
@@ -94,7 +95,10 @@ function avancarParaEditorP2() {
       <div class="bloco-titulo-centro">
         <h1>Informações Gerais</h1>
       </div>
-      <button class="btn-secundario btn-voltar-topo item-icone-texto" @click="router.push({ name: 'admin-lista' })">
+      <button
+        class="btn-secundario btn-voltar-topo item-icone-texto"
+        @click="router.push({ name: 'admin-lista' })"
+      >
         <IconSquareRoundedArrowLeft :size="18" />
         <span>Voltar</span>
       </button>

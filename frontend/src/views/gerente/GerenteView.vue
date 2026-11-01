@@ -38,7 +38,7 @@ const termoBuscaMulti = ref('')
 const modalEstMobileAberto = ref(false)
 const termoBuscaModalMobile = ref('')
 
-// Extrai o primeiro nome do gerente com segurança (com fallback para a lista do banco)
+// Extrai o primeiro nome do gerente com fallback para a lista de usuários cadastrados
 const primeiroNomeGerente = computed(() => {
   const nomeSessao = usuarioLogado.value?.nome?.trim()
   if (nomeSessao) {
@@ -254,7 +254,7 @@ function abrirEstacionamentoTelaCheia(idEst) {
         </div>
       </div>
 
-      <!-- Barra Única com 1 Filtro de Estacionamentos + 1 Filtro de Cidades -->
+      <!-- Barra de Filtros: 1 Seletor de Estacionamentos + 1 Seletor de Cidades -->
       <div v-if="estabelecimentosDoGerente.length >= 1" class="barra-filtros-gerente">
         <div class="seletor-multi-wrapper">
           <button
