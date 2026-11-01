@@ -8,7 +8,8 @@ router = APIRouter()
 
 async def gravar_andares_e_mapa(
     cursor, id_estabelecimento: int, andares: List[AndarPayload]
-):
+) -> None:
+    """Insere em cascata os andares, setores, equipamentos ESP32, vagas e elementos 2D."""
     for andar in andares:
         await cursor.execute(
             """
@@ -48,6 +49,7 @@ async def gravar_andares_e_mapa(
                         status_code=400,
                         detail=f"A vaga na coordenada ({cel.x},{cel.y}) está sem setor ou sem MAC de equipamento.",
                     )
+
                 chave_eq = (id_setor_real, cel.mac_esp.strip().upper())
                 if chave_eq not in mapa_equipamentos_id:
                     await cursor.execute(
@@ -55,7 +57,7 @@ async def gravar_andares_e_mapa(
                         INSERT INTO equipamentos (id_setor, codigo_mac)
                         VALUES (%s, %s)
                         """,
-                        (id_setor_real, cel.mac_esp.strip().upper()),
+                        chave_eq,
                     )
                     mapa_equipamentos_id[chave_eq] = cursor.lastrowid
 
@@ -89,8 +91,34 @@ async def gravar_andares_e_mapa(
                 )
 
 
+async def vincular_e_promover_responsavel(
+    cursor, id_estabelecimento: int, id_usuario: int
+) -> None:
+    """Vincula o usuário ao estabelecimento e promove motoristas para o perfil de gerente."""
+    await cursor.execute(
+        "DELETE FROM usuario_estabelecimento WHERE id_estabelecimento = %s",
+        (id_estabelecimento,),
+    )
+    await cursor.execute(
+        """
+        INSERT INTO usuario_estabelecimento (id_usuario, id_estabelecimento)
+        VALUES (%s, %s)
+        """,
+        (id_usuario, id_estabelecimento),
+    )
+    await cursor.execute(
+        """
+        UPDATE usuarios
+        SET nivel_acesso = 'admin_estabelecimento'
+        WHERE id_usuario = %s AND nivel_acesso = 'usuario'
+        """,
+        (id_usuario,),
+    )
+
+
 @router.get("/estabelecimentos")
 async def listar_estabelecimentos_completos():
+    """Retorna todos os estabelecimentos com sua árvore completa de andares, setores e células."""
     estabelecimentos_rows = await db.fetch("""
         SELECT e.id_estabelecimento AS id, e.nome, e.cidade, e.inativo,
                COALESCE(ue.id_usuario, 1) AS id_usuario
@@ -201,6 +229,7 @@ async def listar_estabelecimentos_completos():
 
 @router.post("/estabelecimentos", status_code=status.HTTP_201_CREATED)
 async def criar_estabelecimento(payload: EstabelecimentoSavePayload):
+    """Cria um novo estabelecimento e persiste planta 2D em transação única."""
     cidade_limpa = (payload.cidade or "Sorocaba").strip()
     async with db.pool.acquire() as conn:
         async with conn.cursor() as cursor:
@@ -212,24 +241,16 @@ async def criar_estabelecimento(payload: EstabelecimentoSavePayload):
                 )
                 id_est = cursor.lastrowid
 
-                await cursor.execute(
-                    "INSERT INTO usuario_estabelecimento (id_usuario, id_estabelecimento) VALUES (%s, %s)",
-                    (payload.id_usuario, id_est),
+                await vincular_e_promover_responsavel(
+                    cursor, id_est, payload.id_usuario
                 )
-
-                # Se o usuário vinculado era 'usuario' (motorista), promove para 'admin_estabelecimento' (gerente)
-                await cursor.execute(
-                    """
-                    UPDATE usuarios
-                    SET nivel_acesso = 'admin_estabelecimento'
-                    WHERE id_usuario = %s AND nivel_acesso = 'usuario'
-                    """,
-                    (payload.id_usuario,),
-                )
-
                 await gravar_andares_e_mapa(cursor, id_est, payload.andares)
+
                 await conn.commit()
                 return {"status": "sucesso", "id_estabelecimento": id_est}
+            except HTTPException:
+                await conn.rollback()
+                raise
             except Exception as e:
                 await conn.rollback()
                 raise HTTPException(
@@ -241,33 +262,23 @@ async def criar_estabelecimento(payload: EstabelecimentoSavePayload):
 async def atualizar_estabelecimento(
     id_estabelecimento: int, payload: EstabelecimentoSavePayload
 ):
+    """Atualiza os dados gerais e recria a estrutura de andares e mapa 2D da unidade."""
     cidade_limpa = (payload.cidade or "Sorocaba").strip()
     async with db.pool.acquire() as conn:
         async with conn.cursor() as cursor:
             try:
                 await conn.begin()
                 await cursor.execute(
-                    "UPDATE estabelecimentos SET nome = %s, cidade = %s WHERE id_estabelecimento = %s",
+                    """
+                    UPDATE estabelecimentos
+                    SET nome = %s, cidade = %s
+                    WHERE id_estabelecimento = %s
+                    """,
                     (payload.nome.strip(), cidade_limpa, id_estabelecimento),
                 )
 
-                await cursor.execute(
-                    "DELETE FROM usuario_estabelecimento WHERE id_estabelecimento = %s",
-                    (id_estabelecimento,),
-                )
-                await cursor.execute(
-                    "INSERT INTO usuario_estabelecimento (id_usuario, id_estabelecimento) VALUES (%s, %s)",
-                    (payload.id_usuario, id_estabelecimento),
-                )
-
-                # Se o usuário vinculado era 'usuario' (motorista), promove para 'admin_estabelecimento' (gerente)
-                await cursor.execute(
-                    """
-                    UPDATE usuarios
-                    SET nivel_acesso = 'admin_estabelecimento'
-                    WHERE id_usuario = %s AND nivel_acesso = 'usuario'
-                    """,
-                    (payload.id_usuario,),
+                await vincular_e_promover_responsavel(
+                    cursor, id_estabelecimento, payload.id_usuario
                 )
 
                 await cursor.execute(
@@ -278,6 +289,9 @@ async def atualizar_estabelecimento(
                 await gravar_andares_e_mapa(cursor, id_estabelecimento, payload.andares)
                 await conn.commit()
                 return {"status": "sucesso", "id_estabelecimento": id_estabelecimento}
+            except HTTPException:
+                await conn.rollback()
+                raise
             except Exception as e:
                 await conn.rollback()
                 raise HTTPException(
@@ -287,6 +301,7 @@ async def atualizar_estabelecimento(
 
 @router.patch("/estabelecimentos/{id_estabelecimento}/status")
 async def alternar_inativo_estabelecimento(id_estabelecimento: int):
+    """Alterna o estado ativo/inativo de um estabelecimento."""
     est = await db.fetch(
         "SELECT inativo FROM estabelecimentos WHERE id_estabelecimento = %s",
         (id_estabelecimento,),
@@ -310,6 +325,7 @@ async def alternar_inativo_estabelecimento(id_estabelecimento: int):
 
 @router.delete("/estabelecimentos/{id_estabelecimento}")
 async def deletar_estabelecimento(id_estabelecimento: int):
+    """Remove permanentemente um estabelecimento e seus registros dependentes em cascata."""
     linhas = await db.execute(
         "DELETE FROM estabelecimentos WHERE id_estabelecimento = %s",
         (id_estabelecimento,),

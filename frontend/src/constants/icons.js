@@ -1,3 +1,4 @@
+// Exportação centralizada dos ícones Tabler utilizados no projeto
 export {
   IconSquareRoundedPlus,
   IconSquareRoundedMinus,

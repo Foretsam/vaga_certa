@@ -2,6 +2,9 @@ from typing import List, Optional
 from pydantic import BaseModel
 
 
+# ============================================================================
+# SCHEMAS DE MAPA 2D E ESTABELECIMENTOS
+# ============================================================================
 class SetorPayload(BaseModel):
     id_temp: int
     nome_setor: str
@@ -35,6 +38,9 @@ class EstabelecimentoSavePayload(BaseModel):
     andares: List[AndarPayload]
 
 
+# ============================================================================
+# SCHEMAS DE AUTENTICAÇÃO E USUÁRIOS
+# ============================================================================
 class CadastroUsuarioPayload(BaseModel):
     nome: str
     email: str
@@ -46,10 +52,13 @@ class LoginUsuarioPayload(BaseModel):
     senha: str
 
 
+class TutorialVistoPayload(BaseModel):
+    rota: str
+
+
+# ============================================================================
+# SCHEMAS DE OPERAÇÃO DE VAGAS
+# ============================================================================
 class LoteStatusVagasPayload(BaseModel):
     ids_vagas: List[int]
     inativo: bool
-
-
-class TutorialVistoPayload(BaseModel):
-    rota: str

@@ -4,31 +4,44 @@ import re
 import secrets
 from fastapi import HTTPException
 
+ITERACOES_PBKDF2 = 100_000
+
 
 def gerar_hash_senha(senha: str) -> str:
+    """Gera um hash seguro PBKDF2-SHA256 com salt aleatório."""
     salt = secrets.token_hex(16)
     derivado = hashlib.pbkdf2_hmac(
-        "sha256", senha.encode("utf-8"), salt.encode("utf-8"), 100_000
+        "sha256",
+        senha.encode("utf-8"),
+        salt.encode("utf-8"),
+        ITERACOES_PBKDF2,
     ).hex()
     return f"pbkdf2_sha256${salt}${derivado}"
 
 
 def verificar_hash_senha(senha_digitada: str, hash_salvo: str) -> bool:
+    """Compara de forma segura (tempo constante) a senha informada com o hash salvo."""
     if not hash_salvo or "$" not in hash_salvo:
         return False
+
     try:
         algoritmo, salt, derivado_salvo = hash_salvo.split("$", 2)
         if algoritmo != "pbkdf2_sha256":
             return False
+
         derivado_teste = hashlib.pbkdf2_hmac(
-            "sha256", senha_digitada.encode("utf-8"), salt.encode("utf-8"), 100_000
+            "sha256",
+            senha_digitada.encode("utf-8"),
+            salt.encode("utf-8"),
+            ITERACOES_PBKDF2,
         ).hex()
         return hmac.compare_digest(derivado_teste, derivado_salvo)
     except Exception:
         return False
 
 
-def validar_regras_senha(senha: str, email: str):
+def validar_regras_senha(senha: str, email: str) -> None:
+    """Valida os requisitos de complexidade da senha e impede semelhança com o e-mail."""
     if len(senha) < 8:
         raise HTTPException(
             status_code=400, detail="A senha deve ter ao menos 8 caracteres."

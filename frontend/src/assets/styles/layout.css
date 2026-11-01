@@ -1309,6 +1309,72 @@
   }
 }
 
+.bloco-texto-boas-vindas {
+  min-width: 0;
+  flex: 1;
+}
+
+.bloco-texto-boas-vindas h1 {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.paginacao-rodape {
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  gap: 12px !important;
+  width: fit-content !important;
+  max-width: 100% !important;
+  margin: 18px auto 24px auto !important;
+  padding: 8px 14px !important;
+  background: var(--bg-card) !important;
+  border: 1px solid var(--borda) !important;
+  border-radius: 12px !important;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08) !important;
+}
+
+.paginacao-rodape .btn-secundario {
+  min-width: 112px !important;
+  height: 38px !important;
+  padding: 0 14px !important;
+  font-size: 13.5px !important;
+  font-weight: 700 !important;
+  border-radius: 9px !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+.paginacao-rodape .info-paginacao {
+  font-size: 13.5px !important;
+  font-weight: 700 !important;
+  color: var(--texto-secundario) !important;
+  padding: 0 8px !important;
+  white-space: nowrap !important;
+}
+
+.texto-mao-mobile {
+  display: none !important;
+}
+
+@media (max-width: 1024px) {
+  .texto-mao-desktop {
+    display: none !important;
+  }
+  .texto-mao-mobile {
+    display: inline-flex !important;
+    font-size: 12px;
+  }
+  .banner-mao-ativa {
+    max-width: calc(100vw - 24px);
+    white-space: normal !important;
+    text-align: center;
+    padding: 7px 11px !important;
+  }
+}
+
 @media (max-width: 768px) {
   .card-sobre-bloco {
     padding: 18px 16px;
@@ -1318,5 +1384,22 @@
   }
   .grade-planos-futuros {
     grid-template-columns: 1fr;
+  }
+  .paginacao-rodape {
+    gap: 8px !important;
+    padding: 6px 10px !important;
+    margin: 14px auto 20px auto !important;
+  }
+
+  .paginacao-rodape .btn-secundario {
+    min-width: 92px !important;
+    height: 34px !important;
+    padding: 0 10px !important;
+    font-size: 12.5px !important;
+  }
+
+  .paginacao-rodape .info-paginacao {
+    font-size: 12px !important;
+    padding: 0 4px !important;
   }
 }

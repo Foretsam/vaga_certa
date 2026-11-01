@@ -1,5 +1,8 @@
 import { usuarioLogado } from '@/stores/authStore'
 
+/**
+ * Intercepta navegações para redirecionar links de QR Code (/?id=X) e proteger rotas por nível de acesso.
+ */
 export function configurarGuardsRouter(router) {
   router.beforeEach((to, from, next) => {
     if (to.path === '/' && to.query.id) {

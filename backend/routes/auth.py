@@ -9,6 +9,7 @@ router = APIRouter()
 
 
 def extrair_lista_tutoriais(valor_banco) -> list:
+    """Converte o JSON salvo no banco em uma lista Python segura."""
     if not valor_banco:
         return []
     try:
@@ -20,13 +21,18 @@ def extrair_lista_tutoriais(valor_banco) -> list:
 
 @router.get("/usuarios")
 async def listar_usuarios():
-    return await db.fetch(
-        "SELECT id_usuario, nome, email, nivel_acesso FROM usuarios WHERE inativo = 0 ORDER BY id_usuario"
-    )
+    """Retorna todos os usuários ativos para vínculo administrativo."""
+    return await db.fetch("""
+        SELECT id_usuario, nome, email, nivel_acesso
+        FROM usuarios
+        WHERE inativo = 0
+        ORDER BY id_usuario
+        """)
 
 
 @router.post("/auth/cadastro", status_code=status.HTTP_201_CREATED)
 async def cadastrar_usuario(payload: CadastroUsuarioPayload):
+    """Registra uma nova conta de usuário com perfil inicial de motorista ('usuario')."""
     nome = payload.nome.strip()
     email = payload.email.strip().lower()
     senha = payload.senha
@@ -75,6 +81,7 @@ async def cadastrar_usuario(payload: CadastroUsuarioPayload):
 
 @router.post("/auth/login")
 async def login_usuario(payload: LoginUsuarioPayload):
+    """Autentica um usuário e retorna seus dados de sessão e tutoriais concluídos."""
     email = payload.email.strip().lower()
     usuario = await db.fetch(
         """
@@ -110,6 +117,7 @@ async def login_usuario(payload: LoginUsuarioPayload):
 
 @router.patch("/usuarios/{id_usuario}/tutorial")
 async def registrar_tutorial_visto(id_usuario: int, payload: TutorialVistoPayload):
+    """Adiciona uma rota à lista de tutoriais já visualizados pelo usuário."""
     usuario = await db.fetch(
         "SELECT tutoriais_vistos FROM usuarios WHERE id_usuario = %s",
         (id_usuario,),
@@ -120,6 +128,7 @@ async def registrar_tutorial_visto(id_usuario: int, payload: TutorialVistoPayloa
 
     lista_atual = extrair_lista_tutoriais(usuario.get("tutoriais_vistos"))
     rota_limpa = payload.rota.strip()
+
     if rota_limpa and rota_limpa not in lista_atual:
         lista_atual.append(rota_limpa)
         await db.execute(

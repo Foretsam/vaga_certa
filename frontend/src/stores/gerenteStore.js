@@ -6,6 +6,7 @@ export const idsSelecionadosGerente = ref([])
 export const cidadeSelecionadaGerente = ref('TODAS')
 export const simulacao1Ativa = ref(false)
 
+// Estacionamentos ativos vinculados ao gerente autenticado
 export const estabelecimentosDoGerente = computed(() => {
   if (!usuarioLogado.value) return []
   return estabelecimentos.value.filter(
@@ -13,6 +14,7 @@ export const estabelecimentosDoGerente = computed(() => {
   )
 })
 
+// Lista ordenada de cidades onde o gerente possui unidades
 export const cidadesDoGerente = computed(() => {
   const setCidades = new Set(
     estabelecimentosDoGerente.value
@@ -22,6 +24,7 @@ export const cidadesDoGerente = computed(() => {
   return Array.from(setCidades).sort((a, b) => a.localeCompare(b, 'pt-BR'))
 })
 
+// Estacionamentos do gerente filtrados pela cidade selecionada
 export const estabelecimentosDoGerentePorCidade = computed(() => {
   const todos = estabelecimentosDoGerente.value
   if (!cidadeSelecionadaGerente.value || cidadeSelecionadaGerente.value === 'TODAS') {
@@ -32,6 +35,7 @@ export const estabelecimentosDoGerentePorCidade = computed(() => {
   )
 })
 
+// Estacionamentos resultantes após aplicar tanto o filtro de cidade quanto a seleção múltipla
 export const estabelecimentosFiltradosGerente = computed(() => {
   const baseCidade = estabelecimentosDoGerentePorCidade.value
   if (idsSelecionadosGerente.value.length === 0) return baseCidade
@@ -44,6 +48,9 @@ export function selecionarCidadeGerente(novaCidade) {
   idsSelecionadosGerente.value = []
 }
 
+/**
+ * Simula ocupação de ~60% das vagas ativas no frontend para demonstração de gráficos e mapas de calor.
+ */
 export function alternarSimulacao1Frontend() {
   simulacao1Ativa.value = !simulacao1Ativa.value
 

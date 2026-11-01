@@ -27,6 +27,7 @@ import {
   alternarSimulacao1Frontend
 } from './gerenteStore'
 
+// Re-exportações centralizadas para manter compatibilidade limpa com todas as views
 export {
   paletaSetores,
   escurecerCorHex,
@@ -57,6 +58,9 @@ export const formEstabelecimento = ref({
   andares: [{ id_andar: Date.now(), nome_andar: 'Subsolo 1', grid_x: 30, grid_y: 20 }]
 })
 
+/**
+ * Busca usuários e estabelecimentos do backend e hidrata as matrizes 2D.
+ */
 export async function carregarDadosDoBanco() {
   carregandoDados.value = true
   try {
@@ -73,12 +77,15 @@ export async function carregarDadosDoBanco() {
       alternarSimulacao1Frontend()
     }
   } catch (err) {
-    console.error('Erro ao conectar com a API FastAPI:', err)
+    console.error('Erro ao sincronizar dados com a API FastAPI:', err)
   } finally {
     carregandoDados.value = false
   }
 }
 
+/**
+ * Serializa a planta 2D de todos os andares e envia para criação ou atualização no MySQL.
+ */
 export async function salvarEstacionamentoNoBanco() {
   const payload = {
     nome: formEstabelecimento.value.nome,
@@ -132,7 +139,9 @@ export async function removerEstabelecimentoNoBanco(est) {
 
 export function iniciarNovoFormulario() {
   modoEdicaoId.value = null
-  const idPadrao = usuariosCadastrados.value[0]?.id_usuario || 1
+  const usuarioElegivel = usuariosCadastrados.value.find(u => u.nivel_acesso !== 'admin_dev')
+  const idPadrao = usuarioElegivel?.id_usuario || usuariosCadastrados.value[0]?.id_usuario || 1
+
   formEstabelecimento.value = {
     nome: '',
     cidade: 'Sorocaba',

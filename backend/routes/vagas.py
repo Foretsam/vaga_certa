@@ -7,6 +7,7 @@ router = APIRouter()
 
 @router.patch("/vagas/status-lote")
 async def alterar_status_vagas_em_lote(payload: LoteStatusVagasPayload):
+    """Inativa ou reativa múltiplas vagas de uma só vez."""
     if not payload.ids_vagas:
         return {"status": "sucesso", "afetadas": 0}
 

@@ -40,6 +40,7 @@
                 📄 b78fc95c1e76f18b2319c282577c386452c25d
             📂 01/
                 📄 49a5e6de2992b939b2607779b7145d233306fe
+                📄 77dd79ebdd7b50b8db8931c4bda69d08fe0ce5
                 📄 a93c2903eaeada4330c6478a59392af3bf9489
             📂 02/
                 📄 251f4b956c55af2d76fd0788124d7eee2b45eb
@@ -66,7 +67,9 @@
                 📄 e5707f73de070f965f6607cdaa8d5b6738b11c
             📂 0a/
                 📄 0e9c468eb3d070db112f0933919df7e9a40acf
+                📄 7424c276cdcecf8e98e28327178d37c3e6798e
             📂 0b/
+                📄 47c692df62e553ffdfe33b6f7b53ac85bd5bdb
                 📄 6cc631d8807752b63ca2526c0184eb16b8240a
                 📄 b1ec67d77287053bb179fa70e095d0b130cfdd
                 📄 df490efe94449c1403e5232f6c2e03fa99c337
@@ -97,8 +100,10 @@
                 📄 192dc85d99e97969d044c67626a5fe7e592041
                 📄 a1041253d5de22bd3e5a2c97ed72da149509df
                 📄 b1b53ba0d6c39f89cb7222a2121e7f41ce2d3e
+                📄 d6fc12e300f17c4c52169c8e78d3d7ef3514b4
             📂 15/
                 📄 11959c22b74118c06679739cf9abe2ceeea48c
+                📄 917bb549ce458846dd0f7b3e625d77baba262c
             📂 16/
                 📄 dac69471111bfe404b261566318163356a3cf7
             📂 17/
@@ -110,6 +115,7 @@
                 📄 d66685b1032dd3fe149e257589bd9ba49a159e
             📂 1c/
                 📄 8c5701f81a8f3a27545658bb6f8b9508db11f0
+                📄 c856ab92e7abdfe972632040fd20b32492985d
                 📄 cd320b5a1fef89cb362758d16c4d00aa610983
                 📄 d3dce331ed297aa5844968417c0480889df175
             📂 1d/
@@ -141,6 +147,8 @@
                 📄 640ec99045a9a5b700312ab45f1b5e2d807a98
             📂 25/
                 📄 efa844d71e33659c7c204e9cc3d97d77364b7c
+            📂 26/
+                📄 040d0cf1304ed20d295bab3051327f03a21e9f
             📂 27/
                 📄 10f6d3376b0cc7930fb1b2e0c0cd9b30d80e27
                 📄 7b95c931dc579a181a6c3749a06e2ef8533691
@@ -149,9 +157,12 @@
                 📄 e2deadde2f2bceb629be4aaff9a1ad45276c77
             📂 29/
                 📄 0d3b37475cb36d05324b6dc035794880f70c6a
+                📄 789c77a45cb9dfe9b2bd4c3ca4f683f2005a38
                 📄 b0020ebf22ee193a7ab2146efdc3020c46f3f6
                 📄 c71e22a5839849e86a7f46208b431bb299d730
                 📄 ca34a6722c603d6a4af081a23ecde71d3bf6ae
+            📂 2a/
+                📄 99d5a848779fb6a1d3e7af6cdc4f31316be812
             📂 2b/
                 📄 89906d8c627b7e5eb23cfe858b5ff5931810b5
             📂 2c/
@@ -160,11 +171,13 @@
                 📄 0978de55e6d7a268d3e509da8bf82f3f043de3
             📂 2f/
                 📄 65c84c5af3780e12de512deb7edb5e30b82400
+                📄 95ae5443c094b509fcf1513ba8d135f2f799c6
                 📄 f539989bfab317bc031a103842739623ba7d83
             📂 30/
                 📄 12fe842747bbbefd5a0d1499cd444ae6854bd0
                 📄 f568991924825ef8a2039b87681356c547f03b
             📂 31/
+                📄 640716651d185ad8e76361e7c551367b12f61d
                 📄 d938528fbbe876e356e5b1cd20b76539e58845
             📂 32/
                 📄 0a54fff5dc63148db31ab2ebc2b7b4a4538e17
@@ -178,6 +191,7 @@
                 📄 138f1dfe7ff25807d9ca5b714fd1babe9810e4
             📂 39/
                 📄 34ccc3dcec47b58637b30f92ffa2270b471b22
+                📄 58bece2bcb64c153b035550606b0a562fda3c6
                 📄 a3c4cfb4c9bb9b6928d30a39693c1ba39b6bf2
                 📄 c88ae72454001978f80ac65aa7aa043f31e9a9
                 📄 d569353ad5f4b39d3caa9a092febf7566952e4
@@ -195,6 +209,7 @@
             📂 40/
                 📄 f20bbd2365f46611e181feb9e670f5605c220b
             📂 41/
+                📄 32c913f8feeea21bf28857ad60822423a2f7cc
                 📄 3ee08af5482774c19b1ac740c2248a96b568b8
             📂 43/
                 📄 18a5fe40b0e0d887fce6906bbd10b90494d4fb
@@ -234,12 +249,14 @@
                 📄 7d4fba5579d5e4e9d260051974927071f2b4a1
             📂 53/
                 📄 3f3844723ab8694c64850a0cdf36ceb15c3174
+                📄 849cb757d4be7a8e3348fe3cb4d14693d23b06
                 📄 8b1f5d80cd93fae19d8d1c0952d9f685a5bf7a
                 📄 bbf0b67866e4d5fb86b1e1f1fbf7505e9fa066
             📂 54/
                 📄 0eceb1fdff0fc34e44d506b402a1c21862a494
                 📄 3ce0e84207988ccea992ee2d0e4c19375d9128
                 📄 75860a8fba21b68be5485478d2c7ac68c94565
+                📄 d856362ce165b89e6ab65da90228d20fd8b34d
             📂 55/
                 📄 0e8b7818b8a6b59a7d3b02d718cd55961e47bd
             📂 56/
@@ -251,6 +268,7 @@
             📂 58/
                 📄 35c01cf2636e0f03c1e0a011ff00464bf41d13
                 📄 cf19fda1a53c0143568030e521dd0b3c6a20ea
+                📄 f3d9091b9f3a49e9ca71722a66326332ab1358
             📂 59/
                 📄 b8a46923b6de7f30b83f6e29f0e92911f207ae
             📂 5a/
@@ -277,10 +295,14 @@
                 📄 66db4f1e5d2f0357b2c88c969982e368fa2118
                 📄 8657cf01ca80ab9297f146b5ea732aa37b918a
                 📄 95c46d64cc1f9b3e1daaa2d2cd3033e9d9597a
+                📄 b5f397ca8a91d41ae5b91f19b1fe652efc6a21
             📂 65/
                 📄 a7f976853ef2138443d0c7c80cf46d947e9ba5
                 📄 eec32460a588a40809591502531f2bce997e56
+            📂 66/
+                📄 efa1ae3199e2195f8917bf823205f75cac03a7
             📂 67/
+                📄 390325ec26be2a3ba9c8d591934bfd256f7914
                 📄 d6ab8beadb3976786a9d56c873727941352583
             📂 68/
                 📄 55b384abb00b96465334bcf038f3b485a2eaa2
@@ -288,6 +310,7 @@
             📂 69/
                 📄 a0db877adbc8192dd3c8a7416c698a45bd59a4
             📂 6d/
+                📄 4f8d271a11f44c5f0261b372f317fdc005c9a3
                 📄 73e6df219c966058c427e06d70afd95af76e0b
             📂 6e/
                 📄 2c99187877a2767037f287bbd24c2e497834b8
@@ -300,6 +323,7 @@
                 📄 c81b1a4b5326ef26ad35205dc9b16f3ba67bc5
             📂 72/
                 📄 48de7e0454e0ca23ada4f84b1788b97e97d650
+                📄 4cd87d09ef90b124a729a12ba8044571b224df
                 📄 d06bbf9719869e139866bbc325aa4cc3051439
             📂 73/
                 📄 773baa760717ae1e2571aac9473c2ec79c48ba
@@ -314,6 +338,7 @@
                 📄 059df18f77c8be268332e9b55771dd07f8830b
             📂 79/
                 📄 2bc9ee4c09709bc38ee1c7123211d9ab52a86a
+                📄 648530ecf0beb5739461c94d3c00575615aa4c
             📂 7b/
                 📄 409f68d8503b7d22e83abe669dc1d1adc5e394
                 📄 5a0224a47d194b3fe9d768e7a1123924e9c4c0
@@ -324,7 +349,10 @@
             📂 7d/
                 📄 64cc40847fc415969a83df21140bf79ce90488
                 📄 b50ea09208cd6e8e37293baf51bd540406c444
+            📂 7e/
+                📄 61ab7984be03e374fa59f96944a772a4631ffd
             📂 7f/
+                📄 0cd5f58a1b53b710b114d8a1c5141e259c623b
                 📄 6df57bc71a7c9b73eb2d464582e082333a82db
             📂 80/
                 📄 2a72eebf2a92805122eca302ed50f176e81fd4
@@ -332,11 +360,14 @@
                 📄 03bc9f494264183a30b30a8fc90b16740835d7
                 📄 98ab9d4d4711cfcdad090e39ad6af9c0fefa5e
             📂 82/
+                📄 0001f376706957e3816ed8a9c3b503cb42b219
                 📄 50e7a9f3ad09afc0bcdacda0415bf8c16af397
+                📄 e4898cf0fe08b0ac65b80bec321c91c98c7729
             📂 83/
                 📄 4198db60a6ec29a85a76c17e138f58ee2563de
             📂 84/
                 📄 4afa402683a9843c90b56cf7606ae116fe2131
+                📄 651d58e7b5af85641b5db61caf9783db90f522
                 📄 b05aee7111d96224c276b6ccfdd20471cbe9a2
             📂 85/
                 📄 005aa2449ac4845e7f81bbf6da5c3744927e59
@@ -350,7 +381,12 @@
             📂 8a/
                 📄 34915632bc1fdd87fa250048c230ccad4852a1
             📂 8b/
+                📄 45eb721fb3d2cf11eb53fd5dcfaeb6f5004f46
                 📄 bb5ee6c07004e372ddd3fd49ee75964c2c9e75
+            📂 8c/
+                📄 ad5707efe45995499b536fa5ca7198faf8fdc4
+            📂 8d/
+                📄 52855df4ebfc8fcb9731d593215577a8eecc31
             📂 8f/
                 📄 e3499015179d3bb1b2d005efbec7e10771f9e2
             📂 90/
@@ -373,6 +409,8 @@
                 📄 383b7f7b863cf621e8c6e1a8a251e515fd029c
                 📄 46779f3a18ca4528271c81c948bb129e649ba7
                 📄 8c3af753997b18d1670ef1bf68892be61b8bbe
+            📂 98/
+                📄 2731ec1ebbe90c80251bc78386533fe48ddd69
             📂 9a/
                 📄 b35451c7112bab8c54e0062df3796d2d080fc6
             📂 9b/
@@ -381,6 +419,7 @@
                 📄 ad59d43de259dd2cef06cb1e635e566ff4937a
             📂 9c/
                 📄 342b0da2115997d027cdc9a85d2b13c7578845
+                📄 f3261efcfe9f9a0723804fbd9ecbc5e6794abd
             📂 9d/
                 📄 ad541c09356313f9fe02dac787d9e6748869e6
                 📄 b273656326dd1179cf97f7c16960da6bb61027
@@ -398,6 +437,8 @@
             📂 a2/
                 📄 47da3b2137e20d8798224282a037e4e712197b
                 📄 47ef39961a345b9effbe65c907828dc9e16a96
+            📂 a3/
+                📄 f13ea789e84edd506f003cb2c409b3db017db0
             📂 a4/
                 📄 17a1c66ca2653bf76e3afa8479c426b3c891c3
                 📄 1cb16f718dbb2c82b1dbb89c08dd4df61493b6
@@ -416,6 +457,7 @@
             📂 a7/
                 📄 cea0b0678120a1b590d1b6592c7318039b9179
                 📄 e3d4d51dc6ddd4fd362a2478b0145eb7e7d877
+                📄 f01e37e10e7f8289cae36cd45144064070e6a3
             📂 a8/
                 📄 2df1f6e65643f6f8ae9c14d3a87980478ea296
             📂 a9/
@@ -425,6 +467,7 @@
                 📄 7afda73578cc60bf975b4d6b500ebbf9a65e84
             📂 ab/
                 📄 2b2b8e494d3bd116d69a8a4f2095330cff1b03
+                📄 c9cc262cac9f22d042a799f11878fd152a67e6
             📂 ac/
                 📄 3e1e0f431c43e670c44186ca4b977fbce726d0
             📂 ad/
@@ -442,6 +485,7 @@
                 📄 aae86cbd6797226f3487d18b67e668782efbbf
             📂 b2/
                 📄 259e5d54488208f00f514aec8329184535bd4b
+                📄 2d81eaf1a2e744fab59d450673cc73d9a4f0d8
                 📄 30c82a572dc1e639e458304bcf55c2b48a6668
                 📄 9e339b0b60cf70dd7163098f447049f4ec9f59
             📂 b3/
@@ -455,6 +499,7 @@
                 📄 e1dedd3f48b3e3df778b44dfaaf7a60d975ff5
             📂 b9/
                 📄 2506f1b05d97bd102d4c789764d796309f8ec0
+                📄 5ba05209cba121895ba6b4760fe66700796151
                 📄 eefd4f60110b08400a649f5ea61532df11b5e0
             📂 bb/
                 📄 f3125b6e0b8f887e207fc0269cde17533b4178
@@ -471,6 +516,7 @@
             📂 c2/
                 📄 21fdaf0b89fa2e302370719ebd116256d0605d
                 📄 883482be77fbf37d1cd840f13e6b89bd6d93a2
+                📄 f8a1195c8461b02c03bb20545dbb625f7e6986
             📂 c3/
                 📄 08cb6b7c48b092f3376003ecf8b2580c223c7e
             📂 c4/
@@ -485,6 +531,8 @@
                 📄 159ad4a5c4e571eb75970a17e2bb53a94aa80d
                 📄 2ccf3f8be741a4d8412ea1260be954b8a9f94d
                 📄 d7b9dbb22a7a44818cc756032d9172168d42b0
+                📄 f92fd368aacb1b983c3e3907394f02fb621d7e
+                📄 fd131fa14f6792a81e639456640ffc884f3603
             📂 c8/
                 📄 af732d098ca575d0a2dc2066f7755e131d4e65
                 📄 d03b0e228ff48a9b8ce094ad95a15e2331bfd2
@@ -505,8 +553,11 @@
                 📄 9c48d9c1876034a21000926a121d232c1a7b75
                 📄 de3a81ee82cdac921cb54b6134f4249c244001
             📂 cf/
+                📄 2769ee3635c60136017a559806f41bd6d0665a
                 📄 46f00b864ee2b3f98525c5dacab3ccdf6de3c6
                 📄 53c3567b1714146e15d53b7f074978c66e95a2
+            📂 d0/
+                📄 a6fa26559a45b0d9b5fa3b126c5847f90907b6
             📂 d1/
                 📄 5c1653d372bdc1ce078bb7ac75cc34cb9b4e9f
                 📄 658f43b90c017ad466e519bfe4028893f69cec
@@ -515,12 +566,18 @@
                 📄 e4703307ee1b9ff8395a707e58b3b092f6261e
             📂 d2/
                 📄 a1c7b375d7c7ea7abee475eacd13660dcfc973
+            📂 d3/
+                📄 7a52303e74d26c4cdba233d0f5cc7a13f010ee
             📂 d5/
                 📄 2b3a519ebc7200ed085f93a6cf01ae2924f517
                 📄 4eac1cd3faf3f70c4deb0d70c4b5d740b0c645
+                📄 5473e4a2828319edfb4565e8bd73cdce530f01
                 📄 fa83d71db3e5cd0f06ba425789aa72f8f9f2d4
             📂 d7/
                 📄 88781656149e24f453c0c1375597aa6510751e
+            📂 d8/
+                📄 1ef9eec1a57a3e09a15b0a1bbd75c0f5e75c82
+                📄 f17fb5bb67382d183c2a3109eada7db1641c53
             📂 d9/
                 📄 1dbdbabe1a3c47eb20d9ea23aa488faf2e6bff
                 📄 83b88e53d22199f9bd96709104afe229b99d98
@@ -543,6 +600,9 @@
                 📄 e0770424b2a19faf507a501ebfc23be8f54e7b
             📂 e0/
                 📄 9cf6ea85b817e60238a186162a088dd879bc6e
+                📄 b6405ad732d30faa9cb0c603da1ca304ebee1b
+            📂 e1/
+                📄 8c909e21bfe895827d6e8a4c3c126272555bec
             📂 e2/
                 📄 cfd9f96ed69438e1929a5e05f6fc9c897b7568
             📂 e3/
@@ -558,6 +618,7 @@
             📂 e6/
                 📄 9de29bb2d1d6434b8b29ae775ad8c2e48c5391
             📂 e7/
+                📄 0ed9e21774e8e8030543d372dce702c0f247f5
                 📄 48d96eb7227a56a68a1be32c844862123311b5
                 📄 70ce191495395b7ffb47939c6d1f0fd1c2435e
             📂 e9/
@@ -566,6 +627,7 @@
                 📄 522193d9f796a9748e9ad8c952a5df73c87db9
                 📄 b8c71e31bf35aeff7bb87891d90a4da6329687
                 📄 d10c475e62dce9706781d4da7915b5d19b9c2e
+                📄 f057143234ee6d9649b55b35fe27f107f4a4cb
             📂 ea/
                 📄 1f0c4e798c57c5e933bff91d23f4912caff688
                 📄 27a156e576856d9a93e52d6d0a92823ec4a7c1
@@ -584,6 +646,7 @@
                 📄 e75070eea43382b9342c6224e3e6ac3dbbb945
             📂 f0/
                 📄 a2483fb9f531f5cdbef870c76c6e0321080046
+                📄 cf64dce0b6cca29a355498b9d36e42030c20b7
             📂 f1/
                 📄 d7e85233043586bf611d721b4a49d5db342e12
             📂 f2/
@@ -601,6 +664,7 @@
                 📄 3483e675f7b2ae08f1379e23aca9077369a0ac
                 📄 3a57bca719d82ee92f5712f1a4e8d02a0c5778
             📂 f8/
+                📄 37cce001b512601bc5f82ed8049c600f9dc9be
                 📄 55a06394919cbc9a9e310829400fd985736cdb
                 📄 56cca4a6623495f0204b51ccceef4958e99fc1
                 📄 71b4f3568eafd9c4962a2d4d87398700171778
@@ -611,6 +675,7 @@
                 📄 14d5f2c6c6d6361a84472ee076c50cb96ac2a4
                 📄 bc7adf919638c0c7a5b0151021da9a894805fb
             📂 fb/
+                📄 25128f90050b26adc2e4083f5866273ee6dab7
                 📄 3b757ba4c0ce3a552a8a3dc6cafc3f3ad9087b
                 📄 3e62c3fc3c4b371396519a1e7edfcde869d54a
                 📄 7bd527d8cfa206ce25debd5c134530001d18d3
@@ -921,7 +986,7 @@ COMMIT;
 // 🚀 INÍCIO DO ARQUIVO: .git\COMMIT_EDITMSG
 // ==================================================================
 
-correção de erros geral
+correções e aperfeiçoamentos
 
 
 // 🏁 FIM DO ARQUIVO: .git\COMMIT_EDITMSG
@@ -932,7 +997,7 @@ correção de erros geral
 // 🚀 INÍCIO DO ARQUIVO: .git\FETCH_HEAD
 // ==================================================================
 
-6395c46d64cc1f9b3e1daaa2d2cd3033e9d9597a		branch 'main' of https://github.com/Foretsam/vaga_certa
+c7f92fd368aacb1b983c3e3907394f02fb621d7e		branch 'main' of https://github.com/Foretsam/vaga_certa
 
 
 // 🏁 FIM DO ARQUIVO: .git\FETCH_HEAD
@@ -2045,6 +2110,8 @@ fb3b757ba4c0ce3a552a8a3dc6cafc3f3ad9087b c97745c22983195babbca97e8828847bad4d716
 c97745c22983195babbca97e8828847bad4d7163 ecdff1e45e0cbfebbd57cac20abe6420e4eaefcb Lucas Schuab <lucaschuab2015@outlook.com> 1793366891 -0300	commit: implementação de tutoriais e view sobre
 ecdff1e45e0cbfebbd57cac20abe6420e4eaefcb ae5ff4a061c7914982771d16788a53ffc9b6f77b Lucas Schuab <lucaschuab2015@outlook.com> 1793369101 -0300	commit: melhorias na view sobre
 ae5ff4a061c7914982771d16788a53ffc9b6f77b 6395c46d64cc1f9b3e1daaa2d2cd3033e9d9597a Lucas Schuab <lucaschuab2015@outlook.com> 1793396879 -0300	commit: correção de erros geral
+6395c46d64cc1f9b3e1daaa2d2cd3033e9d9597a a3f13ea789e84edd506f003cb2c409b3db017db0 Lucas Schuab <lucaschuab2015@outlook.com> 1793461992 -0300	commit: correção de erros e aperfeiçoamentos
+a3f13ea789e84edd506f003cb2c409b3db017db0 c7f92fd368aacb1b983c3e3907394f02fb621d7e Lucas Schuab <lucaschuab2015@outlook.com> 1793559375 -0300	commit: correções e aperfeiçoamentos
 
 
 // 🏁 FIM DO ARQUIVO: .git\logs\HEAD
@@ -2074,6 +2141,8 @@ fb3b757ba4c0ce3a552a8a3dc6cafc3f3ad9087b c97745c22983195babbca97e8828847bad4d716
 c97745c22983195babbca97e8828847bad4d7163 ecdff1e45e0cbfebbd57cac20abe6420e4eaefcb Lucas Schuab <lucaschuab2015@outlook.com> 1793366891 -0300	commit: implementação de tutoriais e view sobre
 ecdff1e45e0cbfebbd57cac20abe6420e4eaefcb ae5ff4a061c7914982771d16788a53ffc9b6f77b Lucas Schuab <lucaschuab2015@outlook.com> 1793369101 -0300	commit: melhorias na view sobre
 ae5ff4a061c7914982771d16788a53ffc9b6f77b 6395c46d64cc1f9b3e1daaa2d2cd3033e9d9597a Lucas Schuab <lucaschuab2015@outlook.com> 1793396879 -0300	commit: correção de erros geral
+6395c46d64cc1f9b3e1daaa2d2cd3033e9d9597a a3f13ea789e84edd506f003cb2c409b3db017db0 Lucas Schuab <lucaschuab2015@outlook.com> 1793461992 -0300	commit: correção de erros e aperfeiçoamentos
+a3f13ea789e84edd506f003cb2c409b3db017db0 c7f92fd368aacb1b983c3e3907394f02fb621d7e Lucas Schuab <lucaschuab2015@outlook.com> 1793559375 -0300	commit: correções e aperfeiçoamentos
 
 
 // 🏁 FIM DO ARQUIVO: .git\logs\refs\heads\main
@@ -2126,6 +2195,8 @@ ae5ff4a061c7914982771d16788a53ffc9b6f77b ae5ff4a061c7914982771d16788a53ffc9b6f77
 ae5ff4a061c7914982771d16788a53ffc9b6f77b ae5ff4a061c7914982771d16788a53ffc9b6f77b Lucas Oliveira Schuab <lucas@LAPTOP-SKE6HI0S.(none)> 1793380327 -0300	remote set-head
 ae5ff4a061c7914982771d16788a53ffc9b6f77b ae5ff4a061c7914982771d16788a53ffc9b6f77b Lucas Oliveira Schuab <lucas@LAPTOP-SKE6HI0S.(none)> 1793396874 -0300	remote set-head
 6395c46d64cc1f9b3e1daaa2d2cd3033e9d9597a 6395c46d64cc1f9b3e1daaa2d2cd3033e9d9597a Lucas Oliveira Schuab <lucas@LAPTOP-SKE6HI0S.(none)> 1793396889 -0300	remote set-head
+a3f13ea789e84edd506f003cb2c409b3db017db0 a3f13ea789e84edd506f003cb2c409b3db017db0 Lucas Oliveira Schuab <lucas@LAPTOP-SKE6HI0S.(none)> 1793462004 -0300	remote set-head
+c7f92fd368aacb1b983c3e3907394f02fb621d7e c7f92fd368aacb1b983c3e3907394f02fb621d7e Lucas Oliveira Schuab <lucas@LAPTOP-SKE6HI0S.(none)> 1793559380 -0300	remote set-head
 
 
 // 🏁 FIM DO ARQUIVO: .git\logs\refs\remotes\origin\HEAD
@@ -2155,6 +2226,8 @@ fb3b757ba4c0ce3a552a8a3dc6cafc3f3ad9087b c97745c22983195babbca97e8828847bad4d716
 c97745c22983195babbca97e8828847bad4d7163 ecdff1e45e0cbfebbd57cac20abe6420e4eaefcb Lucas Schuab <lucaschuab2015@outlook.com> 1793366895 -0300	update by push
 ecdff1e45e0cbfebbd57cac20abe6420e4eaefcb ae5ff4a061c7914982771d16788a53ffc9b6f77b Lucas Schuab <lucaschuab2015@outlook.com> 1793369108 -0300	update by push
 ae5ff4a061c7914982771d16788a53ffc9b6f77b 6395c46d64cc1f9b3e1daaa2d2cd3033e9d9597a Lucas Schuab <lucaschuab2015@outlook.com> 1793396887 -0300	update by push
+6395c46d64cc1f9b3e1daaa2d2cd3033e9d9597a a3f13ea789e84edd506f003cb2c409b3db017db0 Lucas Schuab <lucaschuab2015@outlook.com> 1793462001 -0300	update by push
+a3f13ea789e84edd506f003cb2c409b3db017db0 c7f92fd368aacb1b983c3e3907394f02fb621d7e Lucas Schuab <lucaschuab2015@outlook.com> 1793559379 -0300	update by push
 
 
 // 🏁 FIM DO ARQUIVO: .git\logs\refs\remotes\origin\main
@@ -2180,6 +2253,17 @@ ae5ff4a061c7914982771d16788a53ffc9b6f77b 6395c46d64cc1f9b3e1daaa2d2cd3033e9d9597
 
 
 // 🏁 FIM DO ARQUIVO: .git\objects\01\49a5e6de2992b939b2607779b7145d233306fe
+// ------------------------------------------------------------------
+
+
+// ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: .git\objects\01\77dd79ebdd7b50b8db8931c4bda69d08fe0ce5
+// ==================================================================
+
+// [Arquivo binário ignorado pelo leitor de segurança]
+
+
+// 🏁 FIM DO ARQUIVO: .git\objects\01\77dd79ebdd7b50b8db8931c4bda69d08fe0ce5
 // ------------------------------------------------------------------
 
 
@@ -2366,6 +2450,29 @@ x+)JMU06f01 ��������p�R�V�!a��r��  
 
 
 // 🏁 FIM DO ARQUIVO: .git\objects\0a\0e9c468eb3d070db112f0933919df7e9a40acf
+// ------------------------------------------------------------------
+
+
+// ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: .git\objects\0a\7424c276cdcecf8e98e28327178d37c3e6798e
+// ==================================================================
+
+x+)JMU045a040031QpO-J�+Iu-.IL���K����2S���JS��~�~�k���;�%7�K������3(5'�$�(IS����g>�����d��=f
+�rTMp�
+S��Re%�n<ON|~4ЬZ�, �f>�
+
+// 🏁 FIM DO ARQUIVO: .git\objects\0a\7424c276cdcecf8e98e28327178d37c3e6798e
+// ------------------------------------------------------------------
+
+
+// ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: .git\objects\0b\47c692df62e553ffdfe33b6f7b53ac85bd5bdb
+// ==================================================================
+
+// [Arquivo binário ignorado pelo leitor de segurança]
+
+
+// 🏁 FIM DO ARQUIVO: .git\objects\0b\47c692df62e553ffdfe33b6f7b53ac85bd5bdb
 // ------------------------------------------------------------------
 
 
@@ -2631,6 +2738,17 @@ x+)JMU05d040031Q)-�/�L�q/�L�/K-�I��++Me���85Y��`��
 
 
 // ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: .git\objects\13\d6fc12e300f17c4c52169c8e78d3d7ef3514b4
+// ==================================================================
+
+// [Arquivo binário ignorado pelo leitor de segurança]
+
+
+// 🏁 FIM DO ARQUIVO: .git\objects\13\d6fc12e300f17c4c52169c8e78d3d7ef3514b4
+// ------------------------------------------------------------------
+
+
+// ==================================================================
 // 🚀 INÍCIO DO ARQUIVO: .git\objects\15\11959c22b74118c06679739cf9abe2ceeea48c
 // ==================================================================
 
@@ -2638,6 +2756,17 @@ x+)JMU05d040031Q)-�/�L�q/�L�/K-�I��++Me���85Y��`��
 
 
 // 🏁 FIM DO ARQUIVO: .git\objects\15\11959c22b74118c06679739cf9abe2ceeea48c
+// ------------------------------------------------------------------
+
+
+// ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: .git\objects\15\917bb549ce458846dd0f7b3e625d77baba262c
+// ==================================================================
+
+// [Arquivo binário ignorado pelo leitor de segurança]
+
+
+// 🏁 FIM DO ARQUIVO: .git\objects\15\917bb549ce458846dd0f7b3e625d77baba262c
 // ------------------------------------------------------------------
 
 
@@ -2714,6 +2843,17 @@ x+)JMU05d040031Q)-�/�L�q/�L�/K-�I��++Me���85Y��`��
 x+)JMU01c040031Qp,(�LIMJ,�M�+�++Me8�q:��cä��	�o~l��Q�� ��
 
 // 🏁 FIM DO ARQUIVO: .git\objects\1c\8c5701f81a8f3a27545658bb6f8b9508db11f0
+// ------------------------------------------------------------------
+
+
+// ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: .git\objects\1c\c856ab92e7abdfe972632040fd20b32492985d
+// ==================================================================
+
+// [Arquivo binário ignorado pelo leitor de segurança]
+
+
+// 🏁 FIM DO ARQUIVO: .git\objects\1c\c856ab92e7abdfe972632040fd20b32492985d
 // ------------------------------------------------------------------
 
 
@@ -2959,6 +3099,17 @@ x+)JMU05d040031Q)-�/�L�q/�L�/K-�I��++Me�����ÿ��
 
 
 // ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: .git\objects\26\040d0cf1304ed20d295bab3051327f03a21e9f
+// ==================================================================
+
+// [Arquivo binário ignorado pelo leitor de segurança]
+
+
+// 🏁 FIM DO ARQUIVO: .git\objects\26\040d0cf1304ed20d295bab3051327f03a21e9f
+// ------------------------------------------------------------------
+
+
+// ==================================================================
 // 🚀 INÍCIO DO ARQUIVO: .git\objects\27\10f6d3376b0cc7930fb1b2e0c0cd9b30d80e27
 // ==================================================================
 
@@ -3014,6 +3165,17 @@ x+)JMU07f040031QH/M,J)��*f8�07���o�XX":j"R�d�|�*��KI�
 
 
 // ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: .git\objects\29\789c77a45cb9dfe9b2bd4c3ca4f683f2005a38
+// ==================================================================
+
+// [Arquivo binário ignorado pelo leitor de segurança]
+
+
+// 🏁 FIM DO ARQUIVO: .git\objects\29\789c77a45cb9dfe9b2bd4c3ca4f683f2005a38
+// ------------------------------------------------------------------
+
+
+// ==================================================================
 // 🚀 INÍCIO DO ARQUIVO: .git\objects\29\b0020ebf22ee193a7ab2146efdc3020c46f3f6
 // ==================================================================
 
@@ -3043,6 +3205,17 @@ x+)JMU07f040031QH/M,J)��*f8�07���o�XX":j"R�d�|�*��KI�
 
 
 // 🏁 FIM DO ARQUIVO: .git\objects\29\ca34a6722c603d6a4af081a23ecde71d3bf6ae
+// ------------------------------------------------------------------
+
+
+// ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: .git\objects\2a\99d5a848779fb6a1d3e7af6cdc4f31316be812
+// ==================================================================
+
+// [Arquivo binário ignorado pelo leitor de segurança]
+
+
+// 🏁 FIM DO ARQUIVO: .git\objects\2a\99d5a848779fb6a1d3e7af6cdc4f31316be812
 // ------------------------------------------------------------------
 
 
@@ -3091,6 +3264,17 @@ x+)JMU07f040031QH/M,J)��*f8�07���o�XX":j"R�d�|�*��KI�
 
 
 // ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: .git\objects\2f\95ae5443c094b509fcf1513ba8d135f2f799c6
+// ==================================================================
+
+x+)JMU��`040031Q��/�/�,.I���M
+�L-�++Me��V�r)��ƀ'7o�c�_���'��ĂD���o�v��iP�>��l���n& =j*
+
+// 🏁 FIM DO ARQUIVO: .git\objects\2f\95ae5443c094b509fcf1513ba8d135f2f799c6
+// ------------------------------------------------------------------
+
+
+// ==================================================================
 // 🚀 INÍCIO DO ARQUIVO: .git\objects\2f\f539989bfab317bc031a103842739623ba7d83
 // ==================================================================
 
@@ -3120,6 +3304,17 @@ x+)JMU07f040031QH/M,J)��*f8�07���o�XX":j"R�d�|�*��KI�
 
 
 // 🏁 FIM DO ARQUIVO: .git\objects\30\f568991924825ef8a2039b87681356c547f03b
+// ------------------------------------------------------------------
+
+
+// ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: .git\objects\31\640716651d185ad8e76361e7c551367b12f61d
+// ==================================================================
+
+// [Arquivo binário ignorado pelo leitor de segurança]
+
+
+// 🏁 FIM DO ARQUIVO: .git\objects\31\640716651d185ad8e76361e7c551367b12f61d
 // ------------------------------------------------------------------
 
 
@@ -3208,6 +3403,17 @@ x+)JMU07f040031QH/M,J)��*f8�07���o�XX":j"R�d�|�*��KI�
 
 
 // 🏁 FIM DO ARQUIVO: .git\objects\39\34ccc3dcec47b58637b30f92ffa2270b471b22
+// ------------------------------------------------------------------
+
+
+// ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: .git\objects\39\58bece2bcb64c153b035550606b0a562fda3c6
+// ==================================================================
+
+// [Arquivo binário ignorado pelo leitor de segurança]
+
+
+// 🏁 FIM DO ARQUIVO: .git\objects\39\58bece2bcb64c153b035550606b0a562fda3c6
 // ------------------------------------------------------------------
 
 
@@ -3329,6 +3535,16 @@ x+)JMU07f040031QH/M,J)��*f8�07���o�XX":j"R�d�|�*��KI�
 
 
 // 🏁 FIM DO ARQUIVO: .git\objects\40\f20bbd2365f46611e181feb9e670f5605c220b
+// ------------------------------------------------------------------
+
+
+// ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: .git\objects\41\32c913f8feeea21bf28857ad60822423a2f7cc
+// ==================================================================
+
+x+)JMU01c040031Qp,(�LIMJ,�M�+�++Me�a~��V��?�n��I��{r �$�
+
+// 🏁 FIM DO ARQUIVO: .git\objects\41\32c913f8feeea21bf28857ad60822423a2f7cc
 // ------------------------------------------------------------------
 
 
@@ -3608,6 +3824,17 @@ x+)JMU07f040031QH/M,J)��*f8�07���o�XX":j"R�d�|�*��KI�
 
 
 // ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: .git\objects\53\849cb757d4be7a8e3348fe3cb4d14693d23b06
+// ==================================================================
+
+// [Arquivo binário ignorado pelo leitor de segurança]
+
+
+// 🏁 FIM DO ARQUIVO: .git\objects\53\849cb757d4be7a8e3348fe3cb4d14693d23b06
+// ------------------------------------------------------------------
+
+
+// ==================================================================
 // 🚀 INÍCIO DO ARQUIVO: .git\objects\53\8b1f5d80cd93fae19d8d1c0952d9f685a5bf7a
 // ==================================================================
 
@@ -3658,6 +3885,17 @@ x+)JMU05`040031QH-.IL���K�M�+�.�/J��*fxt��ϼkS,N��
 
 
 // 🏁 FIM DO ARQUIVO: .git\objects\54\75860a8fba21b68be5485478d2c7ac68c94565
+// ------------------------------------------------------------------
+
+
+// ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: .git\objects\54\d856362ce165b89e6ab65da90228d20fd8b34d
+// ==================================================================
+
+// [Arquivo binário ignorado pelo leitor de segurança]
+
+
+// 🏁 FIM DO ARQUIVO: .git\objects\54\d856362ce165b89e6ab65da90228d20fd8b34d
 // ------------------------------------------------------------------
 
 
@@ -3735,6 +3973,17 @@ x+)JMU05`040031QH-.IL���K�M�+�.�/J��*fxt��ϼkS,N��
 
 
 // 🏁 FIM DO ARQUIVO: .git\objects\58\cf19fda1a53c0143568030e521dd0b3c6a20ea
+// ------------------------------------------------------------------
+
+
+// ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: .git\objects\58\f3d9091b9f3a49e9ca71722a66326332ab1358
+// ==================================================================
+
+x+)JMU043c01 �Ĕ��<������7u�z�s%Ѕ͡��b�|iI��7�׋�Y�7V�*x0��F��w!��E�y%�ݮ���7_:/�:�o��u۾2��AT���e�$2�W�|gfz�ь�*t��kҢ j
+J�r2��n�~/���;Q�ĤW��-�ZZ +]I)
+
+// 🏁 FIM DO ARQUIVO: .git\objects\58\f3d9091b9f3a49e9ca71722a66326332ab1358
 // ------------------------------------------------------------------
 
 
@@ -3937,6 +4186,17 @@ x+)JMU05`040031QH-.IL���K�M�+�.�/J��*fxt��ϼkS,N��
 
 
 // ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: .git\objects\63\b5f397ca8a91d41ae5b91f19b1fe652efc6a21
+// ==================================================================
+
+// [Arquivo binário ignorado pelo leitor de segurança]
+
+
+// 🏁 FIM DO ARQUIVO: .git\objects\63\b5f397ca8a91d41ae5b91f19b1fe652efc6a21
+// ------------------------------------------------------------------
+
+
+// ==================================================================
 // 🚀 INÍCIO DO ARQUIVO: .git\objects\65\a7f976853ef2138443d0c7c80cf46d947e9ba5
 // ==================================================================
 
@@ -3955,6 +4215,28 @@ x+)JMU05`040031QH-.IL���K�M�+�.�/J��*fxt��ϼkS,N��
 
 
 // 🏁 FIM DO ARQUIVO: .git\objects\65\eec32460a588a40809591502531f2bce997e56
+// ------------------------------------------------------------------
+
+
+// ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: .git\objects\66\efa1ae3199e2195f8917bf823205f75cac03a7
+// ==================================================================
+
+// [Arquivo binário ignorado pelo leitor de segurança]
+
+
+// 🏁 FIM DO ARQUIVO: .git\objects\66\efa1ae3199e2195f8917bf823205f75cac03a7
+// ------------------------------------------------------------------
+
+
+// ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: .git\objects\67\390325ec26be2a3ba9c8d591934bfd256f7914
+// ==================================================================
+
+// [Arquivo binário ignorado pelo leitor de segurança]
+
+
+// 🏁 FIM DO ARQUIVO: .git\objects\67\390325ec26be2a3ba9c8d591934bfd256f7914
 // ------------------------------------------------------------------
 
 
@@ -3999,6 +4281,17 @@ x+)JMU05`040031QH-.IL���K�M�+�.�/J��*fxt��ϼkS,N��
 
 
 // 🏁 FIM DO ARQUIVO: .git\objects\69\a0db877adbc8192dd3c8a7416c698a45bd59a4
+// ------------------------------------------------------------------
+
+
+// ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: .git\objects\6d\4f8d271a11f44c5f0261b372f317fdc005c9a3
+// ==================================================================
+
+// [Arquivo binário ignorado pelo leitor de segurança]
+
+
+// 🏁 FIM DO ARQUIVO: .git\objects\6d\4f8d271a11f44c5f0261b372f317fdc005c9a3
 // ------------------------------------------------------------------
 
 
@@ -4075,6 +4368,17 @@ x+)JMU01b040031Q�K�,I,))�L*-I-f����Ee��������~
 
 
 // 🏁 FIM DO ARQUIVO: .git\objects\72\48de7e0454e0ca23ada4f84b1788b97e97d650
+// ------------------------------------------------------------------
+
+
+// ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: .git\objects\72\4cd87d09ef90b124a729a12ba8044571b224df
+// ==================================================================
+
+// [Arquivo binário ignorado pelo leitor de segurança]
+
+
+// 🏁 FIM DO ARQUIVO: .git\objects\72\4cd87d09ef90b124a729a12ba8044571b224df
 // ------------------------------------------------------------------
 
 
@@ -4178,6 +4482,17 @@ x+)JMU01b040031Q�K�,I,))�L*-I-f����Ee��������~
 
 
 // ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: .git\objects\79\648530ecf0beb5739461c94d3c00575615aa4c
+// ==================================================================
+
+// [Arquivo binário ignorado pelo leitor de segurança]
+
+
+// 🏁 FIM DO ARQUIVO: .git\objects\79\648530ecf0beb5739461c94d3c00575615aa4c
+// ------------------------------------------------------------------
+
+
+// ==================================================================
 // 🚀 INÍCIO DO ARQUIVO: .git\objects\7b\409f68d8503b7d22e83abe669dc1d1adc5e394
 // ==================================================================
 
@@ -4254,6 +4569,28 @@ xK��OR045e��-�/*Q(+MUH+��UPw(�,I�*�/�)M���J�sAU
 
 
 // ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: .git\objects\7e\61ab7984be03e374fa59f96944a772a4631ffd
+// ==================================================================
+
+// [Arquivo binário ignorado pelo leitor de segurança]
+
+
+// 🏁 FIM DO ARQUIVO: .git\objects\7e\61ab7984be03e374fa59f96944a772a4631ffd
+// ------------------------------------------------------------------
+
+
+// ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: .git\objects\7f\0cd5f58a1b53b710b114d8a1c5141e259c623b
+// ==================================================================
+
+// [Arquivo binário ignorado pelo leitor de segurança]
+
+
+// 🏁 FIM DO ARQUIVO: .git\objects\7f\0cd5f58a1b53b710b114d8a1c5141e259c623b
+// ------------------------------------------------------------------
+
+
+// ==================================================================
 // 🚀 INÍCIO DO ARQUIVO: .git\objects\7f\6df57bc71a7c9b73eb2d464582e082333a82db
 // ==================================================================
 
@@ -4298,6 +4635,17 @@ xK��OR045e��-�/*Q(+MUH+��UPw(�,I�*�/�)M���J�sAU
 
 
 // ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: .git\objects\82\0001f376706957e3816ed8a9c3b503cb42b219
+// ==================================================================
+
+// [Arquivo binário ignorado pelo leitor de segurança]
+
+
+// 🏁 FIM DO ARQUIVO: .git\objects\82\0001f376706957e3816ed8a9c3b503cb42b219
+// ------------------------------------------------------------------
+
+
+// ==================================================================
 // 🚀 INÍCIO DO ARQUIVO: .git\objects\82\50e7a9f3ad09afc0bcdacda0415bf8c16af397
 // ==================================================================
 
@@ -4305,6 +4653,17 @@ xK��OR045e��-�/*Q(+MUH+��UPw(�,I�*�/�)M���J�sAU
 
 
 // 🏁 FIM DO ARQUIVO: .git\objects\82\50e7a9f3ad09afc0bcdacda0415bf8c16af397
+// ------------------------------------------------------------------
+
+
+// ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: .git\objects\82\e4898cf0fe08b0ac65b80bec321c91c98c7729
+// ==================================================================
+
+// [Arquivo binário ignorado pelo leitor de segurança]
+
+
+// 🏁 FIM DO ARQUIVO: .git\objects\82\e4898cf0fe08b0ac65b80bec321c91c98c7729
 // ------------------------------------------------------------------
 
 
@@ -4327,6 +4686,17 @@ xK��OR045e��-�/*Q(+MUH+��UPw(�,I�*�/�)M���J�sAU
 
 
 // 🏁 FIM DO ARQUIVO: .git\objects\84\4afa402683a9843c90b56cf7606ae116fe2131
+// ------------------------------------------------------------------
+
+
+// ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: .git\objects\84\651d58e7b5af85641b5db61caf9783db90f522
+// ==================================================================
+
+// [Arquivo binário ignorado pelo leitor de segurança]
+
+
+// 🏁 FIM DO ARQUIVO: .git\objects\84\651d58e7b5af85641b5db61caf9783db90f522
 // ------------------------------------------------------------------
 
 
@@ -4408,6 +4778,16 @@ x+)JMU04�`01 ����������x���.�>�k�~h~\�
 
 
 // ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: .git\objects\8b\45eb721fb3d2cf11eb53fd5dcfaeb6f5004f46
+// ==================================================================
+
+x+)JMU045a040031QpO-J�+Iu-.IL���K����2S���JS.Wؕ\������3U�ޡ�J�I,�/�D�$s"l����,JVp���YeҌXTMp�?�d�?n̻���V��N�$�NA\
+
+// 🏁 FIM DO ARQUIVO: .git\objects\8b\45eb721fb3d2cf11eb53fd5dcfaeb6f5004f46
+// ------------------------------------------------------------------
+
+
+// ==================================================================
 // 🚀 INÍCIO DO ARQUIVO: .git\objects\8b\bb5ee6c07004e372ddd3fd49ee75964c2c9e75
 // ==================================================================
 
@@ -4415,6 +4795,27 @@ x+)JMU04�`01 ����������x���.�>�k�~h~\�
 
 
 // 🏁 FIM DO ARQUIVO: .git\objects\8b\bb5ee6c07004e372ddd3fd49ee75964c2c9e75
+// ------------------------------------------------------------------
+
+
+// ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: .git\objects\8c\ad5707efe45995499b536fa5ca7198faf8fdc4
+// ==================================================================
+
+// [Arquivo binário ignorado pelo leitor de segurança]
+
+
+// 🏁 FIM DO ARQUIVO: .git\objects\8c\ad5707efe45995499b536fa5ca7198faf8fdc4
+// ------------------------------------------------------------------
+
+
+// ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: .git\objects\8d\52855df4ebfc8fcb9731d593215577a8eecc31
+// ==================================================================
+
+x+)JMU042c040031Q�L��+��*f�v?6�~�����[�W�i�}�� 1'�$18�$�(�60�N��Cq��&�~��W9���AՖ�Ue&f;��e��L�49s����m��'�_���.� �4O
+
+// 🏁 FIM DO ARQUIVO: .git\objects\8d\52855df4ebfc8fcb9731d593215577a8eecc31
 // ------------------------------------------------------------------
 
 
@@ -4572,6 +4973,17 @@ x+)JMU046f040031QH,-�.�/J��*f��a[Eړ���6>���{@��
 
 
 // ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: .git\objects\98\2731ec1ebbe90c80251bc78386533fe48ddd69
+// ==================================================================
+
+// [Arquivo binário ignorado pelo leitor de segurança]
+
+
+// 🏁 FIM DO ARQUIVO: .git\objects\98\2731ec1ebbe90c80251bc78386533fe48ddd69
+// ------------------------------------------------------------------
+
+
+// ==================================================================
 // 🚀 INÍCIO DO ARQUIVO: .git\objects\9a\b35451c7112bab8c54e0062df3796d2d080fc6
 // ==================================================================
 
@@ -4623,6 +5035,17 @@ x+)JMU046f040031QH,-�.�/J��*f��a[Eړ���6>���{@��
 
 
 // 🏁 FIM DO ARQUIVO: .git\objects\9c\342b0da2115997d027cdc9a85d2b13c7578845
+// ------------------------------------------------------------------
+
+
+// ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: .git\objects\9c\f3261efcfe9f9a0723804fbd9ecbc5e6794abd
+// ==================================================================
+
+// [Arquivo binário ignorado pelo leitor de segurança]
+
+
+// 🏁 FIM DO ARQUIVO: .git\objects\9c\f3261efcfe9f9a0723804fbd9ecbc5e6794abd
 // ------------------------------------------------------------------
 
 
@@ -4742,6 +5165,17 @@ x+)JMU01d040031Q�O*J
 �L-�++Mex�k�Z�"�����;��g�+  ���
 
 // 🏁 FIM DO ARQUIVO: .git\objects\a2\47ef39961a345b9effbe65c907828dc9e16a96
+// ------------------------------------------------------------------
+
+
+// ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: .git\objects\a3\f13ea789e84edd506f003cb2c409b3db017db0
+// ==================================================================
+
+// [Arquivo binário ignorado pelo leitor de segurança]
+
+
+// 🏁 FIM DO ARQUIVO: .git\objects\a3\f13ea789e84edd506f003cb2c409b3db017db0
 // ------------------------------------------------------------------
 
 
@@ -4900,6 +5334,16 @@ xK��OR0�d��RPP*JM���M�KI,���+V�R�V
 
 
 // ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: .git\objects\a7\f01e37e10e7f8289cae36cd45144064070e6a3
+// ==================================================================
+
+x+)JMU041c040031QpL���sM�,�/2r	�L-�++Me��G�1��� �9}���7ق��3/-�=�(1��e�g5�?���bWn��;���g�^{���d�$�U?�0Oq���M�y]>6BIE��o ��=�
+
+// 🏁 FIM DO ARQUIVO: .git\objects\a7\f01e37e10e7f8289cae36cd45144064070e6a3
+// ------------------------------------------------------------------
+
+
+// ==================================================================
 // 🚀 INÍCIO DO ARQUIVO: .git\objects\a8\2df1f6e65643f6f8ae9c14d3a87980478ea296
 // ==================================================================
 
@@ -4951,6 +5395,17 @@ xK��OR0�d��RPP*JM���M�KI,���+V�R�V
 
 
 // 🏁 FIM DO ARQUIVO: .git\objects\ab\2b2b8e494d3bd116d69a8a4f2095330cff1b03
+// ------------------------------------------------------------------
+
+
+// ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: .git\objects\ab\c9cc262cac9f22d042a799f11878fd152a67e6
+// ==================================================================
+
+// [Arquivo binário ignorado pelo leitor de segurança]
+
+
+// 🏁 FIM DO ARQUIVO: .git\objects\ab\c9cc262cac9f22d042a799f11878fd152a67e6
 // ------------------------------------------------------------------
 
 
@@ -5065,6 +5520,17 @@ xK��OR0�d��RPP*JM���M�KI,���+V�R�V
 
 
 // ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: .git\objects\b2\2d81eaf1a2e744fab59d450673cc73d9a4f0d8
+// ==================================================================
+
+// [Arquivo binário ignorado pelo leitor de segurança]
+
+
+// 🏁 FIM DO ARQUIVO: .git\objects\b2\2d81eaf1a2e744fab59d450673cc73d9a4f0d8
+// ------------------------------------------------------------------
+
+
+// ==================================================================
 // 🚀 INÍCIO DO ARQUIVO: .git\objects\b2\30c82a572dc1e639e458304bcf55c2b48a6668
 // ==================================================================
 
@@ -5148,6 +5614,17 @@ xK��OR02cPVHL�/IUHIU(�/I,VpK,.q�� ��
 �
 
 // 🏁 FIM DO ARQUIVO: .git\objects\b9\2506f1b05d97bd102d4c789764d796309f8ec0
+// ------------------------------------------------------------------
+
+
+// ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: .git\objects\b9\5ba05209cba121895ba6b4760fe66700796151
+// ==================================================================
+
+// [Arquivo binário ignorado pelo leitor de segurança]
+
+
+// 🏁 FIM DO ARQUIVO: .git\objects\b9\5ba05209cba121895ba6b4760fe66700796151
 // ------------------------------------------------------------------
 
 
@@ -5274,6 +5751,17 @@ x+)JMU01d040031Q�O*J
 
 
 // ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: .git\objects\c2\f8a1195c8461b02c03bb20545dbb625f7e6986
+// ==================================================================
+
+// [Arquivo binário ignorado pelo leitor de segurança]
+
+
+// 🏁 FIM DO ARQUIVO: .git\objects\c2\f8a1195c8461b02c03bb20545dbb625f7e6986
+// ------------------------------------------------------------------
+
+
+// ==================================================================
 // 🚀 INÍCIO DO ARQUIVO: .git\objects\c3\08cb6b7c48b092f3376003ecf8b2580c223c7e
 // ==================================================================
 
@@ -5371,6 +5859,28 @@ xm�1
 
 
 // 🏁 FIM DO ARQUIVO: .git\objects\c7\d7b9dbb22a7a44818cc756032d9172168d42b0
+// ------------------------------------------------------------------
+
+
+// ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: .git\objects\c7\f92fd368aacb1b983c3e3907394f02fb621d7e
+// ==================================================================
+
+// [Arquivo binário ignorado pelo leitor de segurança]
+
+
+// 🏁 FIM DO ARQUIVO: .git\objects\c7\f92fd368aacb1b983c3e3907394f02fb621d7e
+// ------------------------------------------------------------------
+
+
+// ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: .git\objects\c7\fd131fa14f6792a81e639456640ffc884f3603
+// ==================================================================
+
+// [Arquivo binário ignorado pelo leitor de segurança]
+
+
+// 🏁 FIM DO ARQUIVO: .git\objects\c7\fd131fa14f6792a81e639456640ffc884f3603
 // ------------------------------------------------------------------
 
 
@@ -5518,6 +6028,17 @@ xm�1
 
 
 // ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: .git\objects\cf\2769ee3635c60136017a559806f41bd6d0665a
+// ==================================================================
+
+// [Arquivo binário ignorado pelo leitor de segurança]
+
+
+// 🏁 FIM DO ARQUIVO: .git\objects\cf\2769ee3635c60136017a559806f41bd6d0665a
+// ------------------------------------------------------------------
+
+
+// ==================================================================
 // 🚀 INÍCIO DO ARQUIVO: .git\objects\cf\46f00b864ee2b3f98525c5dacab3ccdf6de3c6
 // ==================================================================
 
@@ -5535,6 +6056,17 @@ xm�1
 x+)JMU06c040031Q��KI���*f`\i�����-g�c�]��Z��O� 1�
 
 // 🏁 FIM DO ARQUIVO: .git\objects\cf\53c3567b1714146e15d53b7f074978c66e95a2
+// ------------------------------------------------------------------
+
+
+// ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: .git\objects\d0\a6fa26559a45b0d9b5fa3b126c5847f90907b6
+// ==================================================================
+
+// [Arquivo binário ignorado pelo leitor de segurança]
+
+
+// 🏁 FIM DO ARQUIVO: .git\objects\d0\a6fa26559a45b0d9b5fa3b126c5847f90907b6
 // ------------------------------------------------------------------
 
 
@@ -5605,6 +6137,17 @@ x+)JMU06c040031Q��KI���*f`\i�����-g�c�]��Z��O�
 
 
 // ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: .git\objects\d3\7a52303e74d26c4cdba233d0f5cc7a13f010ee
+// ==================================================================
+
+// [Arquivo binário ignorado pelo leitor de segurança]
+
+
+// 🏁 FIM DO ARQUIVO: .git\objects\d3\7a52303e74d26c4cdba233d0f5cc7a13f010ee
+// ------------------------------------------------------------------
+
+
+// ==================================================================
 // 🚀 INÍCIO DO ARQUIVO: .git\objects\d5\2b3a519ebc7200ed085f93a6cf01ae2924f517
 // ==================================================================
 
@@ -5627,6 +6170,17 @@ x+)JMU06c040031Q��KI���*f`\i�����-g�c�]��Z��O�
 
 
 // ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: .git\objects\d5\5473e4a2828319edfb4565e8bd73cdce530f01
+// ==================================================================
+
+// [Arquivo binário ignorado pelo leitor de segurança]
+
+
+// 🏁 FIM DO ARQUIVO: .git\objects\d5\5473e4a2828319edfb4565e8bd73cdce530f01
+// ------------------------------------------------------------------
+
+
+// ==================================================================
 // 🚀 INÍCIO DO ARQUIVO: .git\objects\d5\fa83d71db3e5cd0f06ba425789aa72f8f9f2d4
 // ==================================================================
 
@@ -5645,6 +6199,27 @@ x+)JMU06c040031Q��KI���*f`\i�����-g�c�]��Z��O�
 
 
 // 🏁 FIM DO ARQUIVO: .git\objects\d7\88781656149e24f453c0c1375597aa6510751e
+// ------------------------------------------------------------------
+
+
+// ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: .git\objects\d8\1ef9eec1a57a3e09a15b0a1bbd75c0f5e75c82
+// ==================================================================
+
+x+)JMU041c040031QpL���sM�,�/2r	�L-�++MePc���h�w�W3z�A�Q=�"���<����S�3��Z�|V���o�,v����N}V�Y�OfqI"\5c����w�v��4<�w�\�<O�=;-
+
+// 🏁 FIM DO ARQUIVO: .git\objects\d8\1ef9eec1a57a3e09a15b0a1bbd75c0f5e75c82
+// ------------------------------------------------------------------
+
+
+// ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: .git\objects\d8\f17fb5bb67382d183c2a3109eada7db1641c53
+// ==================================================================
+
+// [Arquivo binário ignorado pelo leitor de segurança]
+
+
+// 🏁 FIM DO ARQUIVO: .git\objects\d8\f17fb5bb67382d183c2a3109eada7db1641c53
 // ------------------------------------------------------------------
 
 
@@ -5813,6 +6388,28 @@ xK��OR03cPVp,-�WHI-IM.Q(I�(QH��I-VH�KQ(H-J�/�U�qS�҉9�
 
 
 // ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: .git\objects\e0\b6405ad732d30faa9cb0c603da1ca304ebee1b
+// ==================================================================
+
+// [Arquivo binário ignorado pelo leitor de segurança]
+
+
+// 🏁 FIM DO ARQUIVO: .git\objects\e0\b6405ad732d30faa9cb0c603da1ca304ebee1b
+// ------------------------------------------------------------------
+
+
+// ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: .git\objects\e1\8c909e21bfe895827d6e8a4c3c126272555bec
+// ==================================================================
+
+// [Arquivo binário ignorado pelo leitor de segurança]
+
+
+// 🏁 FIM DO ARQUIVO: .git\objects\e1\8c909e21bfe895827d6e8a4c3c126272555bec
+// ------------------------------------------------------------------
+
+
+// ==================================================================
 // 🚀 INÍCIO DO ARQUIVO: .git\objects\e2\cfd9f96ed69438e1929a5e05f6fc9c897b7568
 // ==================================================================
 
@@ -5911,6 +6508,17 @@ xK��OR0`  	��
 
 
 // ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: .git\objects\e7\0ed9e21774e8e8030543d372dce702c0f247f5
+// ==================================================================
+
+// [Arquivo binário ignorado pelo leitor de segurança]
+
+
+// 🏁 FIM DO ARQUIVO: .git\objects\e7\0ed9e21774e8e8030543d372dce702c0f247f5
+// ------------------------------------------------------------------
+
+
+// ==================================================================
 // 🚀 INÍCIO DO ARQUIVO: .git\objects\e7\48d96eb7227a56a68a1be32c844862123311b5
 // ==================================================================
 
@@ -5984,6 +6592,17 @@ x+)JMU042c040031Q�L��+��*f0�����ܯ���������
 
 
 // 🏁 FIM DO ARQUIVO: .git\objects\e9\d10c475e62dce9706781d4da7915b5d19b9c2e
+// ------------------------------------------------------------------
+
+
+// ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: .git\objects\e9\f057143234ee6d9649b55b35fe27f107f4a4cb
+// ==================================================================
+
+// [Arquivo binário ignorado pelo leitor de segurança]
+
+
+// 🏁 FIM DO ARQUIVO: .git\objects\e9\f057143234ee6d9649b55b35fe27f107f4a4cb
 // ------------------------------------------------------------------
 
 
@@ -6121,6 +6740,17 @@ x+)JMU042f040031QH���/
 
 
 // ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: .git\objects\f0\cf64dce0b6cca29a355498b9d36e42030c20b7
+// ==================================================================
+
+x+)JMU03b01 ������G���?��[$��#|mB����g 
+J3�oe�Z�g>Y���Y�}�� �C(
+
+// 🏁 FIM DO ARQUIVO: .git\objects\f0\cf64dce0b6cca29a355498b9d36e42030c20b7
+// ------------------------------------------------------------------
+
+
+// ==================================================================
 // 🚀 INÍCIO DO ARQUIVO: .git\objects\f1\d7e85233043586bf611d721b4a49d5db342e12
 // ==================================================================
 
@@ -6231,6 +6861,17 @@ x+)JMU042f040031QH���/
 
 
 // ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: .git\objects\f8\37cce001b512601bc5f82ed8049c600f9dc9be
+// ==================================================================
+
+// [Arquivo binário ignorado pelo leitor de segurança]
+
+
+// 🏁 FIM DO ARQUIVO: .git\objects\f8\37cce001b512601bc5f82ed8049c600f9dc9be
+// ------------------------------------------------------------------
+
+
+// ==================================================================
 // 🚀 INÍCIO DO ARQUIVO: .git\objects\f8\55a06394919cbc9a9e310829400fd985736cdb
 // ==================================================================
 
@@ -6304,6 +6945,17 @@ x+)JMU042f040031QH���/
 
 
 // 🏁 FIM DO ARQUIVO: .git\objects\fa\bc7adf919638c0c7a5b0151021da9a894805fb
+// ------------------------------------------------------------------
+
+
+// ==================================================================
+// 🚀 INÍCIO DO ARQUIVO: .git\objects\fb\25128f90050b26adc2e4083f5866273ee6dab7
+// ==================================================================
+
+// [Arquivo binário ignorado pelo leitor de segurança]
+
+
+// 🏁 FIM DO ARQUIVO: .git\objects\fb\25128f90050b26adc2e4083f5866273ee6dab7
 // ------------------------------------------------------------------
 
 
@@ -6442,7 +7094,7 @@ x+)JMU045a040031QpO-J�+Iu-.IL���K����2S���JS�>;�^F
 // 🚀 INÍCIO DO ARQUIVO: .git\refs\heads\main
 // ==================================================================
 
-6395c46d64cc1f9b3e1daaa2d2cd3033e9d9597a
+c7f92fd368aacb1b983c3e3907394f02fb621d7e
 
 
 // 🏁 FIM DO ARQUIVO: .git\refs\heads\main
@@ -6464,7 +7116,7 @@ ref: refs/remotes/origin/main
 // 🚀 INÍCIO DO ARQUIVO: .git\refs\remotes\origin\main
 // ==================================================================
 
-6395c46d64cc1f9b3e1daaa2d2cd3033e9d9597a
+c7f92fd368aacb1b983c3e3907394f02fb621d7e
 
 
 // 🏁 FIM DO ARQUIVO: .git\refs\remotes\origin\main
@@ -10386,6 +11038,145 @@ app.mount('#app')
   flex-shrink: 0;
 }
 
+.btn-caution-avisos.btn-mao-ativa {
+  border-color: var(--destaque-azul);
+  background: var(--destaque-azul);
+  color: #ffffff;
+}
+
+.banner-mao-ativa {
+  background: #1e3a8a !important;
+  border-color: #38bdf8 !important;
+}
+
+.matriz-motorista-sem-coordenadas {
+  position: relative;
+  display: inline-block;
+  padding: 6px;
+  border-radius: 10px;
+}
+
+.caixa-escalada-motorista {
+  position: relative;
+  flex-shrink: 0;
+  margin: 0 auto;
+}
+
+.indicador-acesso-animado {
+  position: absolute;
+  z-index: 80;
+  transform: translate(-50%, -105%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  pointer-events: none;
+  animation: pulo-indicador-acesso 0.85s ease-in-out infinite alternate;
+}
+
+.badge-indicador-acesso {
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 900;
+  letter-spacing: 0.4px;
+  color: #ffffff;
+  white-space: nowrap;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.45);
+}
+
+.indicador-acesso-animado.entrada .badge-indicador-acesso {
+  background: #2563eb;
+  border: 1.5px solid #93c5fd;
+}
+.indicador-acesso-animado.entrada .seta-indicador-acesso {
+  color: #2563eb;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.5));
+}
+
+.indicador-acesso-animado.saida .badge-indicador-acesso {
+  background: #ea580c;
+  border: 1.5px solid #fdba74;
+}
+.indicador-acesso-animado.saida .seta-indicador-acesso {
+  color: #ea580c;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.5));
+}
+
+@keyframes pulo-indicador-acesso {
+  0% {
+    transform: translate(-50%, -102%);
+  }
+  100% {
+    transform: translate(-50%, -128%);
+  }
+}
+
+.bloco-texto-boas-vindas {
+  min-width: 0;
+  flex: 1;
+}
+
+.bloco-texto-boas-vindas h1 {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.paginacao-rodape {
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  gap: 12px !important;
+  width: fit-content !important;
+  max-width: 100% !important;
+  margin: 18px auto 24px auto !important;
+  padding: 8px 14px !important;
+  background: var(--bg-card) !important;
+  border: 1px solid var(--borda) !important;
+  border-radius: 12px !important;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08) !important;
+}
+
+.paginacao-rodape .btn-secundario {
+  min-width: 112px !important;
+  height: 38px !important;
+  padding: 0 14px !important;
+  font-size: 13.5px !important;
+  font-weight: 700 !important;
+  border-radius: 9px !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+.paginacao-rodape .info-paginacao {
+  font-size: 13.5px !important;
+  font-weight: 700 !important;
+  color: var(--texto-secundario) !important;
+  padding: 0 8px !important;
+  white-space: nowrap !important;
+}
+
+.texto-mao-mobile {
+  display: none !important;
+}
+
+@media (max-width: 1024px) {
+  .texto-mao-desktop {
+    display: none !important;
+  }
+  .texto-mao-mobile {
+    display: inline-flex !important;
+    font-size: 12px;
+  }
+  .banner-mao-ativa {
+    max-width: calc(100vw - 24px);
+    white-space: normal !important;
+    text-align: center;
+    padding: 7px 11px !important;
+  }
+}
+
 @media (max-width: 768px) {
   .card-sobre-bloco {
     padding: 18px 16px;
@@ -10395,6 +11186,23 @@ app.mount('#app')
   }
   .grade-planos-futuros {
     grid-template-columns: 1fr;
+  }
+  .paginacao-rodape {
+    gap: 8px !important;
+    padding: 6px 10px !important;
+    margin: 14px auto 20px auto !important;
+  }
+
+  .paginacao-rodape .btn-secundario {
+    min-width: 92px !important;
+    height: 34px !important;
+    padding: 0 10px !important;
+    font-size: 12.5px !important;
+  }
+
+  .paginacao-rodape .info-paginacao {
+    font-size: 12px !important;
+    padding: 0 4px !important;
   }
 }
 
@@ -10460,6 +11268,10 @@ app.mount('#app')
     left: 142px;
   }
 
+  .ocultar-subtitulo-tablet-mobile {
+    display: none !important;
+  }
+
   .editor-layout {
     padding: 0;
     width: 100vw;
@@ -10494,12 +11306,22 @@ app.mount('#app')
     cursor: pointer;
     box-shadow: 0 3px 10px rgba(0, 0, 0, 0.28);
     position: relative;
+    transition: transform 0.22s cubic-bezier(0.16, 1, 0.3, 1),
+                background-color 0.22s ease,
+                border-color 0.22s ease,
+                color 0.22s ease,
+                box-shadow 0.22s ease !important;
+  }
+
+  .hud-btn-flutuante:active {
+    transform: scale(0.92);
   }
 
   .hud-btn-flutuante.hud-ativo {
     border-color: var(--destaque-azul);
     background: var(--destaque-azul);
     color: #fff;
+    transform: scale(1.05);
   }
 
   .hud-esquerda-alertas {
@@ -10510,6 +11332,13 @@ app.mount('#app')
   }
   .hud-esquerda-alertas.caution-pendente { border-color: #f59e0b; }
   .hud-esquerda-alertas.caution-ok { border-color: #16a34a; }
+
+  .hud-esquerda-mao {
+    position: fixed !important;
+    top: 56px;
+    left: 54px;
+    z-index: 950;
+  }
 
   .hud-mini-badge {
     position: absolute;
@@ -10556,8 +11385,8 @@ app.mount('#app')
     color: #fff;
   }
 
-  .editor-topbar {
-    display: none;
+  .editor-topbar:not(.topbar-motorista-mapa) {
+    display: flex !important;
     position: fixed;
     top: 56px;
     right: 54px;
@@ -10569,10 +11398,23 @@ app.mount('#app')
     align-items: stretch;
     padding: 10px;
     box-shadow: 0 10px 28px rgba(0, 0, 0, 0.45);
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transform: translateY(-8px) scale(0.96);
+    transform-origin: top right;
+    transition: opacity 0.24s cubic-bezier(0.16, 1, 0.3, 1),
+                transform 0.24s cubic-bezier(0.16, 1, 0.3, 1),
+                visibility 0.24s ease;
   }
-  .editor-topbar.topbar-mobile-aberta {
-    display: flex !important;
+  .editor-topbar.topbar-mobile-aberta,
+  .editor-topbar.tutorial-forcar-painel-mobile {
+    opacity: 1 !important;
+    visibility: visible !important;
+    pointer-events: auto !important;
+    transform: translateY(0) scale(1) !important;
   }
+
   .topbar-esquerda {
     flex-direction: column;
     align-items: stretch;
@@ -10614,7 +11456,7 @@ app.mount('#app')
   }
 
   .sidebar-direita-editor {
-    display: none;
+    display: flex !important;
     position: fixed;
     top: 56px;
     right: 54px;
@@ -10626,35 +11468,59 @@ app.mount('#app')
     border-radius: 12px;
     border: 1px solid var(--borda);
     box-shadow: 0 10px 28px rgba(0, 0, 0, 0.45);
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transform: translateX(12px) scale(0.96);
+    transform-origin: top right;
+    transition: opacity 0.24s cubic-bezier(0.16, 1, 0.3, 1),
+                transform 0.24s cubic-bezier(0.16, 1, 0.3, 1),
+                visibility 0.24s ease;
   }
-  .sidebar-direita-editor.sidebar-mobile-aberta {
-    display: flex !important;
+  .sidebar-direita-editor.sidebar-mobile-aberta,
+  .sidebar-direita-editor.tutorial-forcar-painel-mobile {
+    opacity: 1 !important;
+    visibility: visible !important;
+    pointer-events: auto !important;
+    transform: translateX(0) scale(1) !important;
   }
 
   .admin-container {
     padding: 18px 16px 24px 16px;
   }
 
-  /* Centralização simétrica perfeita em Tablets (iPad 768x1024) */
-  .topbar-titulo-central {
-    min-height: 38px;
-    padding-top: 4px;
-    padding-left: 186px;
-    padding-right: 186px;
-  }
+  /* Centralização simétrica em porcentagem da tela (iPad 768x1024) */
+  .topbar-titulo-central,
   .topbar-titulo-central.com-botao-direita {
-    padding-left: 186px;
-    padding-right: 186px;
+    min-height: 38px;
+    padding: 4px 20vw !important;
   }
   .topbar-titulo-central h1 {
-    font-size: 19px;
+    font-size: 22px;
   }
   .subtitulo {
     font-size: 12.5px;
   }
-  .btn-voltar-topo {
-    padding: 7px 12px !important;
+
+  /* Remove o translateY(-50%) herdado para o botão Voltar nunca cortar no topo */
+  .btn-voltar-topo,
+  .topbar-titulo-central .btn-voltar-topo {
+    position: fixed !important;
+    top: 10px !important;
+    right: 12px !important;
+    z-index: 1000;
+    height: 38px !important;
+    padding: 0 12px !important;
     font-size: 13px !important;
+    transform: none !important;
+  }
+  .btn-voltar-topo:hover:not(:disabled),
+  .topbar-titulo-central .btn-voltar-topo:hover:not(:disabled) {
+    transform: translateY(-1px) !important;
+  }
+  .btn-voltar-topo:active:not(:disabled),
+  .topbar-titulo-central .btn-voltar-topo:active:not(:disabled) {
+    transform: none !important;
   }
 
   .sidebar-direita-editor .painel-ferramentas { padding: 10px; }
@@ -10665,7 +11531,7 @@ app.mount('#app')
 
   .painel-avisos-overlay {
     top: 56px;
-    left: 54px;
+    left: 98px;
     right: auto;
     width: 270px;
   }
@@ -10710,11 +11576,6 @@ app.mount('#app')
     grid-template-columns: 1fr;
   }
 
-  .editor-topbar.tutorial-forcar-painel-mobile,
-  .sidebar-direita-editor.tutorial-forcar-painel-mobile {
-    display: flex !important;
-  }
-
   .grupo-filtros-navegacao-gerente,
   .grupo-inativar-reativar-gerente,
   .grupo-calor-simulacao-gerente {
@@ -10739,21 +11600,21 @@ app.mount('#app')
   .topbar-titulo-central,
   .topbar-titulo-central.com-botao-direita {
     margin-top: 44px;
-    padding-top: 4px;
-    padding-left: 8px !important;
-    padding-right: 8px !important;
+    padding: 4px 6vw !important;
     margin-bottom: 14px;
     min-height: auto;
   }
 
+  .btn-voltar-topo,
   .topbar-titulo-central .btn-voltar-topo {
-    position: fixed;
-    top: 10px;
-    right: 10px;
+    position: fixed !important;
+    top: 10px !important;
+    right: 10px !important;
     z-index: 1000;
-    height: 38px;
+    height: 38px !important;
     padding: 0 12px !important;
     font-size: 12px !important;
+    transform: none !important;
   }
 
   .topbar-titulo-central h1 {
@@ -10955,37 +11816,6 @@ app.mount('#app')
   }
 }
 
-@media print {
-  body * {
-    visibility: hidden;
-  }
-  .modal-qr-gerente,
-  .modal-qr-gerente * {
-    visibility: visible;
-  }
-  .modal-qr-gerente {
-    position: fixed;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    box-shadow: none !important;
-    border: none !important;
-  }
-  .modal-qr-gerente .modal-acoes,
-  .modal-qr-gerente .btn-fechar-mini {
-    display: none !important;
-  }
-}
-
-@media (max-width: 480px) {
-  .auth-card {
-    padding: 22px 16px;
-  }
-  .auth-cabecalho h1 {
-    font-size: 20px;
-  }
-}
-
 /* Na impressão do QR Code, exibe apenas o QR Code centralizado */
 @media print {
   body * {
@@ -11008,7 +11838,6 @@ app.mount('#app')
     display: none !important;
   }
 }
-
 
 // 🏁 FIM DO ARQUIVO: frontend\src\assets\styles\responsive.css
 // ------------------------------------------------------------------
@@ -11818,7 +12647,10 @@ export {
   IconPlayerPlay,
   IconSun,
   IconMoon,
-  IconChevronUp
+  IconChevronUp,
+  IconHandMove,
+  IconArrowUp,
+  IconArrowDown
 } from '@tabler/icons-vue'
 
 // 🏁 FIM DO ARQUIVO: frontend\src\constants\icons.js
@@ -12698,7 +13530,8 @@ import {
   IconSettings,
   IconRoad,
   IconParking,
-  IconSquareRoundedChevronDown
+  IconSquareRoundedChevronDown,
+  IconHandMove
 } from '@/constants/icons'
 
 const router = useRouter()
@@ -12746,6 +13579,7 @@ function alternarPainelAvisos() {
 // =========================================================
 const dropdownAndarEditorAberto = ref(false)
 const gridPrincipalRef = ref(null)
+const modoMoverMapa = ref(false)
 
 const panX = ref(0)
 const panY = ref(0)
@@ -12753,8 +13587,23 @@ const zoomEscala = ref(1)
 
 let toqueUnico = null
 let pinchInicial = null
+let arrastandoMapaMouse = null
 let autoScrollFrame = null
 let ponteiroAtualClient = { x: 0, y: 0 }
+
+// Controle de dois toques seguidos (double-tap) para sair do modo mão no iPad/iPhone
+let ultimoToqueMaoTimestamp = 0
+let ultimoToqueMaoPos = { x: 0, y: 0 }
+
+function alternarModoMoverMapa() {
+  modoMoverMapa.value = !modoMoverMapa.value
+  ultimoToqueMaoTimestamp = 0
+  if (modoMoverMapa.value) {
+    ferramentaCarimbo.value = null
+    arrastando.value = false
+    pararLoopAutoScroll()
+  }
+}
 
 function distanciaEntreToques(t1, t2) {
   return Math.hypot(t2.clientX - t1.clientX, t2.clientY - t1.clientY)
@@ -12838,7 +13687,6 @@ function pararLoopAutoScroll() {
     autoScrollFrame = null
   }
 }
-
 // No tablet/celular: 2 dedos movem/dão zoom no mapa; 1 dedo seleciona quadrados com swipe
 function aoIniciarToqueGrid(e) {
   if (e.touches.length === 2) {
@@ -12855,13 +13703,46 @@ function aoIniciarToqueGrid(e) {
       meioX: meio.x,
       meioY: meio.y
     }
-  } else if (e.touches.length === 1) {
+    return
+  }
+
+  if (e.touches.length === 1) {
     pinchInicial = null
     const t = e.touches[0]
+
+    if (modoMoverMapa.value) {
+      const agora = Date.now()
+      const distUltimoToque = Math.hypot(
+        t.clientX - ultimoToqueMaoPos.x,
+        t.clientY - ultimoToqueMaoPos.y
+      )
+
+      // Se deu dois toques em sequência (< 350ms e próximos), sai do modo mover tela
+      if (agora - ultimoToqueMaoTimestamp < 350 && distUltimoToque < 45) {
+        modoMoverMapa.value = false
+        ultimoToqueMaoTimestamp = 0
+        toqueUnico = null
+        return
+      }
+
+      ultimoToqueMaoTimestamp = agora
+      ultimoToqueMaoPos = { x: t.clientX, y: t.clientY }
+
+      toqueUnico = {
+        modo: 'PAN',
+        startX: t.clientX,
+        startY: t.clientY,
+        panXInicial: panX.value,
+        panYInicial: panY.value
+      }
+      return
+    }
+
     ponteiroAtualClient = { x: t.clientX, y: t.clientY }
     const coord = obterCoordenadaPorPontoTela(t.clientX, t.clientY)
 
     toqueUnico = {
+      modo: 'SELECT',
       startX: t.clientX,
       startY: t.clientY,
       lastX: t.clientX,
@@ -12874,7 +13755,8 @@ function aoIniciarToqueGrid(e) {
       arrastando.value = true
       mostrarMenuFlutuante.value = false
       pontoInicialArrasto.value = coord
-      baseSelecionadosCtrl.value = new Set(selecionados.value)
+      baseSelecionadosCtrl.value = new Set()
+      selecionados.value = new Set([`${coord.x},${coord.y}`])
       iniciarLoopAutoScroll()
     }
   }
@@ -12888,15 +13770,28 @@ function aoMoverToqueGrid(e) {
     zoomEscala.value = Math.min(2.5, Math.max(0.45, pinchInicial.escala * fator))
     panX.value = pinchInicial.panX + (novoMeio.x - pinchInicial.meioX)
     panY.value = pinchInicial.panY + (novoMeio.y - pinchInicial.meioY)
-  } else if (e.touches.length === 1 && toqueUnico) {
+    return
+  }
+
+  if (e.touches.length === 1 && toqueUnico) {
     const t = e.touches[0]
+    if (toqueUnico.modo === 'PAN') {
+      const dx = t.clientX - toqueUnico.startX
+      const dy = t.clientY - toqueUnico.startY
+      if (Math.hypot(dx, dy) > 10) {
+        // Se arrastou a tela, não conta como primeiro toque de um duplo toque
+        ultimoToqueMaoTimestamp = 0
+      }
+      panX.value = toqueUnico.panXInicial + dx
+      panY.value = toqueUnico.panYInicial + dy
+      return
+    }
+
     toqueUnico.lastX = t.clientX
     toqueUnico.lastY = t.clientY
     ponteiroAtualClient = { x: t.clientX, y: t.clientY }
 
-    const dx = t.clientX - toqueUnico.startX
-    const dy = t.clientY - toqueUnico.startY
-    if (Math.hypot(dx, dy) > 6) {
+    if (Math.hypot(t.clientX - toqueUnico.startX, t.clientY - toqueUnico.startY) > 6) {
       toqueUnico.moveu = true
     }
 
@@ -12917,24 +13812,112 @@ function aoFinalizarToqueGrid(e) {
     arrastando.value = false
 
     if (toqueUnico) {
-      if (!toqueUnico.moveu && toqueUnico.coordInicial) {
-        const { x: cx, y: cy } = toqueUnico.coordInicial
-        if (ferramentaCarimbo.value) {
-          aplicarCarimboNoGrid(cx, cy)
-        } else {
-          const chave = `${cx},${cy}`
-          const nova = new Set(baseSelecionadosCtrl.value)
-          if (nova.has(chave)) {
-            nova.delete(chave)
-          } else {
-            nova.add(chave)
-          }
-          selecionados.value = nova
+      if (toqueUnico.modo === 'SELECT') {
+        if (!toqueUnico.moveu && toqueUnico.coordInicial && ferramentaCarimbo.value) {
+          aplicarCarimboNoGrid(toqueUnico.coordInicial.x, toqueUnico.coordInicial.y)
         }
+        mostrarMenuFlutuante.value = selecionados.value.size > 0
       }
-      mostrarMenuFlutuante.value = selecionados.value.size > 0
       toqueUnico = null
     }
+  }
+}
+
+function iniciarSelecaoCelula(x, y, event) {
+  if (modoMoverMapa.value) {
+    arrastandoMapaMouse = {
+      startX: event.clientX,
+      startY: event.clientY,
+      panXInicial: panX.value,
+      panYInicial: panY.value
+    }
+    return
+  }
+
+  if (ferramentaCarimbo.value) {
+    aplicarCarimboNoGrid(x, y)
+    return
+  }
+
+  arrastando.value = true
+  mostrarMenuFlutuante.value = false
+  pontoInicialArrasto.value = { x, y }
+  ponteiroAtualClient = { x: event.clientX, y: event.clientY }
+  const chave = `${x},${y}`
+
+  if (event.ctrlKey || event.metaKey) {
+    baseSelecionadosCtrl.value = new Set(selecionados.value)
+    if (baseSelecionadosCtrl.value.has(chave)) {
+      baseSelecionadosCtrl.value.delete(chave)
+    } else {
+      baseSelecionadosCtrl.value.add(chave)
+    }
+    selecionados.value = new Set(baseSelecionadosCtrl.value)
+  } else {
+    baseSelecionadosCtrl.value = new Set()
+    selecionados.value = new Set([chave])
+  }
+  iniciarLoopAutoScroll()
+}
+
+function moverMouseCelula(x, y, event) {
+  hoverCoord.value = { x, y }
+  if (arrastandoMapaMouse && event) {
+    panX.value = arrastandoMapaMouse.panXInicial + (event.clientX - arrastandoMapaMouse.startX)
+    panY.value = arrastandoMapaMouse.panYInicial + (event.clientY - arrastandoMapaMouse.startY)
+    return
+  }
+  if (event) {
+    ponteiroAtualClient = { x: event.clientX, y: event.clientY }
+  }
+  if (!arrastando.value || !pontoInicialArrasto.value) return
+  atualizarRetanguloSelecao(x, y)
+}
+
+function finalizarSelecaoMouse() {
+  arrastandoMapaMouse = null
+  pararLoopAutoScroll()
+  if (arrastando.value) {
+    arrastando.value = false
+    if (selecionados.value.size > 0) {
+      mostrarMenuFlutuante.value = true
+    }
+  }
+}
+
+function tratarTeclaGlobal(event) {
+  const tagAtiva = document.activeElement?.tagName
+  const digitandoEmInput = tagAtiva === 'INPUT' || tagAtiva === 'TEXTAREA' || tagAtiva === 'SELECT'
+
+  if (!digitandoEmInput && (event.ctrlKey || event.metaKey)) {
+    const tecla = event.key.toLowerCase()
+    if (tecla === 'z' && !event.shiftKey) {
+      event.preventDefault()
+      desfazer()
+      return
+    }
+    if (tecla === 'y' || (tecla === 'z' && event.shiftKey)) {
+      event.preventDefault()
+      refazer()
+      return
+    }
+  }
+
+  if (event.key === 'Escape') {
+    if (modoMoverMapa.value) {
+      modoMoverMapa.value = false
+      return
+    }
+    if (ferramentaCarimbo.value) ferramentaCarimbo.value = null
+    if (mostrarMenuFlutuante.value) {
+      mostrarMenuFlutuante.value = false
+      selecionados.value.clear()
+    }
+    mostrarPainelAvisos.value = false
+    menuTopoMobileAberto.value = false
+    menuAdicionarMobileAberto.value = false
+    dropdownSetoresAberto.value = false
+    dropdownAndarEditorAberto.value = false
   }
 }
 // =========================================================
@@ -13106,51 +14089,6 @@ const pontoInicialArrasto = ref(null)
 const baseSelecionadosCtrl = ref(new Set())
 const mostrarMenuFlutuante = ref(false)
 
-function iniciarSelecaoCelula(x, y, event) {
-  if (ferramentaCarimbo.value) {
-    aplicarCarimboNoGrid(x, y)
-    return
-  }
-
-  arrastando.value = true
-  mostrarMenuFlutuante.value = false
-  pontoInicialArrasto.value = { x, y }
-  ponteiroAtualClient = { x: event.clientX, y: event.clientY }
-  const chave = `${x},${y}`
-
-  if (event.ctrlKey || event.metaKey) {
-    baseSelecionadosCtrl.value = new Set(selecionados.value)
-    if (baseSelecionadosCtrl.value.has(chave)) {
-      baseSelecionadosCtrl.value.delete(chave)
-    } else {
-      baseSelecionadosCtrl.value.add(chave)
-    }
-    selecionados.value = new Set(baseSelecionadosCtrl.value)
-  } else {
-    baseSelecionadosCtrl.value = new Set()
-    selecionados.value = new Set([chave])
-  }
-  iniciarLoopAutoScroll()
-}
-
-function moverMouseCelula(x, y, event) {
-  hoverCoord.value = { x, y }
-  if (event) {
-    ponteiroAtualClient = { x: event.clientX, y: event.clientY }
-  }
-  if (!arrastando.value || !pontoInicialArrasto.value) return
-  atualizarRetanguloSelecao(x, y)
-}
-
-function finalizarSelecaoMouse() {
-  pararLoopAutoScroll()
-  if (arrastando.value) {
-    arrastando.value = false
-    if (selecionados.value.size > 0) {
-      mostrarMenuFlutuante.value = true
-    }
-  }
-}
 
 // =========================================================
 // AÇÕES DE SETOR, ESTRADAS, VAGAS E BORRACHA
@@ -13699,38 +14637,6 @@ function confirmarModalSucessoSalvar() {
   router.push({ name: 'admin-lista' })
 }
 
-function tratarTeclaGlobal(event) {
-  const tagAtiva = document.activeElement?.tagName
-  const digitandoEmInput = tagAtiva === 'INPUT' || tagAtiva === 'TEXTAREA' || tagAtiva === 'SELECT'
-
-  if (!digitandoEmInput && (event.ctrlKey || event.metaKey)) {
-    const tecla = event.key.toLowerCase()
-    if (tecla === 'z' && !event.shiftKey) {
-      event.preventDefault()
-      desfazer()
-      return
-    }
-    if (tecla === 'y' || (tecla === 'z' && event.shiftKey)) {
-      event.preventDefault()
-      refazer()
-      return
-    }
-  }
-
-  if (event.key === 'Escape') {
-    if (ferramentaCarimbo.value) ferramentaCarimbo.value = null
-    if (mostrarMenuFlutuante.value) {
-      mostrarMenuFlutuante.value = false
-      selecionados.value.clear()
-    }
-    mostrarPainelAvisos.value = false
-    menuTopoMobileAberto.value = false
-    menuAdicionarMobileAberto.value = false
-    dropdownSetoresAberto.value = false
-    dropdownAndarEditorAberto.value = false
-  }
-}
-
 onMounted(() => {
   window.addEventListener('mouseup', finalizarSelecaoMouse)
   window.addEventListener('keydown', tratarTeclaGlobal)
@@ -13752,6 +14658,15 @@ onUnmounted(() => {
     >
       <IconAlertSquareRounded :size="20" />
       <span class="hud-mini-badge">{{ listaAvisosValidacao.length }}</span>
+    </button>
+
+    <button
+      class="hud-btn-flutuante hud-esquerda-mao"
+      :class="{ 'hud-ativo': modoMoverMapa }"
+      title="Mover Mapa (Arrastar Tela)"
+      @click="alternarModoMoverMapa"
+    >
+      <IconHandMove :size="20" />
     </button>
 
     <div class="hud-coluna-direita-mobile">
@@ -13829,7 +14744,7 @@ onUnmounted(() => {
 
         <button class="btn-secundario btn-duas-linhas item-icone-texto" @click="abrirModalTamanhoGrid">
           <IconLayoutGrid :size="18" />
-          <div>Tamanho do Grid<br /><span>({{ andarEditorAtual.grid_x }}x{{ andarEditorAtual.grid_y }})</span></div>
+          <div>Grid<br /><span>({{ andarEditorAtual.grid_x }}x{{ andarEditorAtual.grid_y }})</span></div>
         </button>
 
         <button
@@ -13862,6 +14777,16 @@ onUnmounted(() => {
       </div>
 
       <div class="topbar-direita">
+        <button
+          type="button"
+          class="btn-caution-avisos"
+          :class="{ 'btn-mao-ativa': modoMoverMapa }"
+          title="Alternar modo Mover Mapa (ESC para sair)"
+          @click="alternarModoMoverMapa"
+        >
+          <IconHandMove :size="20" />
+        </button>
+
         <button
           class="btn-caution-avisos"
           :class="{ 'caution-ok': podeSalvarEstacionamento, 'caution-pendente': !podeSalvarEstacionamento }"
@@ -13910,12 +14835,16 @@ onUnmounted(() => {
         </Transition>
 
         <Transition name="fade-pop">
-          <div v-if="ferramentaCarimbo" class="overlay-flutuante banner-carimbo-overlay">
-            <span class="item-icone-texto">
-              <IconPin :size="18" />
-              <strong>{{ ferramentaCarimbo.tipo }} ({{ ferramentaCarimbo.w }}x{{ ferramentaCarimbo.h }})</strong> — Toque no Grid
+          <div v-if="modoMoverMapa" class="overlay-flutuante banner-carimbo-overlay banner-mao-ativa">
+            <span class="item-icone-texto texto-mao-desktop">
+              <IconHandMove :size="18" />
+              <strong>Modo mover tela ativo</strong> — Pressione <strong>ESC</strong> ou clique na mão para sair
             </span>
-            <button class="btn-cancelar-carimbo" @click="ferramentaCarimbo = null">
+            <span class="item-icone-texto texto-mao-mobile">
+              <IconHandMove :size="17" />
+              <span><strong>Modo mover ativo</strong> — Dê <strong>2 toques seguidos</strong> para sair</span>
+            </span>
+            <button class="btn-cancelar-carimbo" @click="modoMoverMapa = false">
               <IconSquareRoundedX :size="16" />
             </button>
           </div>
@@ -13996,6 +14925,7 @@ onUnmounted(() => {
           ref="gridPrincipalRef"
           class="area-grid-principal"
           @mouseleave="hoverCoord = null"
+          @dblclick="modoMoverMapa = false"
           @touchstart.passive="aoIniciarToqueGrid"
           @touchmove.prevent="aoMoverToqueGrid"
           @touchend="aoFinalizarToqueGrid"
@@ -14668,7 +15598,7 @@ function avancarParaEditorP2() {
 // ==================================================================
 
 <script setup>
-import { ref, computed, onMounted } from 'vue'
+import { ref, computed, watch, onMounted, onUnmounted } from 'vue'
 import { useRouter } from 'vue-router'
 import {
   estabelecimentos,
@@ -14693,10 +15623,26 @@ import {
 const router = useRouter()
 const termoPesquisaAdmin = ref('')
 const paginaAtualAdmin = ref(1)
-const itensPorPagina = 5
+const itensPorPagina = ref(6)
+
+function calcularItensPorAlturaTela() {
+  const alturaTela = window.innerHeight
+  const larguraTela = window.innerWidth
+  const espacoReservadoSeguranca = larguraTela <= 768 ? 320 : larguraTela <= 1024 ? 330 : 345
+  const alturaPorLinha = larguraTela <= 768 ? 60 : 70
+  const disponivel = Math.max(200, alturaTela - espacoReservadoSeguranca)
+  const calculado = Math.floor(disponivel / alturaPorLinha)
+  itensPorPagina.value = Math.max(3, Math.min(11, calculado))
+}
 
 onMounted(() => {
   carregarDadosDoBanco()
+  calcularItensPorAlturaTela()
+  window.addEventListener('resize', calcularItensPorAlturaTela)
+})
+
+onUnmounted(() => {
+  window.removeEventListener('resize', calcularItensPorAlturaTela)
 })
 
 function obterNomeEmailUsuario(idUsuario) {
@@ -14719,12 +15665,18 @@ const estabelecimentosFiltrados = computed(() => {
 })
 
 const totalPaginasAdmin = computed(() =>
-  Math.max(1, Math.ceil(estabelecimentosFiltrados.value.length / itensPorPagina))
+  Math.max(1, Math.ceil(estabelecimentosFiltrados.value.length / itensPorPagina.value))
 )
 
+watch(totalPaginasAdmin, (novoTotal) => {
+  if (paginaAtualAdmin.value > novoTotal) {
+    paginaAtualAdmin.value = novoTotal
+  }
+})
+
 const estabelecimentosPaginados = computed(() => {
-  const inicio = (paginaAtualAdmin.value - 1) * itensPorPagina
-  return estabelecimentosFiltrados.value.slice(inicio, inicio + itensPorPagina)
+  const inicio = (paginaAtualAdmin.value - 1) * itensPorPagina.value
+  return estabelecimentosFiltrados.value.slice(inicio, inicio + itensPorPagina.value)
 })
 
 function criarNovo() {
@@ -14771,7 +15723,7 @@ async function removerEstabelecimento(est) {
         <input
           v-model="termoPesquisaAdmin"
           type="text"
-          placeholder="Pesquisar por nome ou ID..."
+          placeholder="Pesquisar por nome, cidade ou ID..."
           class="input-pesquisa-grande com-icone"
           @input="paginaAtualAdmin = 1"
         />
@@ -14809,11 +15761,11 @@ async function removerEstabelecimento(est) {
           </button>
           <button
             class="btn-icone inativar"
-            :title="est.inativo ? 'Reativar' : 'Inativar'"
+            :title="est.inativo ? 'Reativar Estacionamento' : 'Inativar Estacionamento'"
             @click="alternarInativoEstabelecimento(est)"
           >
-            <IconSquareRoundedCheck v-if="est.inativo" :size="18" style="color: #16a34a" />
-            <IconBan v-else :size="18" style="color: #dc2626" />
+            <IconSquareRoundedCheck v-if="est.inativo" :size="18" />
+            <IconBan v-else :size="18" />
           </button>
           <button class="btn-icone remover" title="Remover Permanentemente" @click="removerEstabelecimento(est)">
             <IconTrash :size="18" />
@@ -14821,25 +15773,34 @@ async function removerEstabelecimento(est) {
         </div>
       </div>
 
-      <div v-if="estabelecimentosPaginados.length === 0" class="lista-vazia">
+      <div v-if="estabelecimentosFiltrados.length === 0" class="lista-vazia">
         Nenhum estacionamento encontrado.
       </div>
     </div>
 
-    <div class="paginacao-admin">
-      <button class="item-icone-texto" :disabled="paginaAtualAdmin <= 1" @click="paginaAtualAdmin--">
+    <div v-if="totalPaginasAdmin > 1" class="paginacao-rodape">
+      <button
+        class="btn-secundario item-icone-texto"
+        :disabled="paginaAtualAdmin <= 1"
+        @click="paginaAtualAdmin--"
+      >
         <IconSquareRoundedChevronLeft :size="18" />
         <span>Anterior</span>
       </button>
-      <span>Página {{ paginaAtualAdmin }} de {{ totalPaginasAdmin }}</span>
-      <button class="item-icone-texto" :disabled="paginaAtualAdmin >= totalPaginasAdmin" @click="paginaAtualAdmin++">
+      <span class="info-paginacao">
+        Página {{ paginaAtualAdmin }} de {{ totalPaginasAdmin }}
+      </span>
+      <button
+        class="btn-secundario item-icone-texto"
+        :disabled="paginaAtualAdmin >= totalPaginasAdmin"
+        @click="paginaAtualAdmin++"
+      >
         <span>Próxima</span>
         <IconSquareRoundedChevronRight :size="18" />
       </button>
     </div>
   </div>
 </template>
-
 
 // 🏁 FIM DO ARQUIVO: frontend\src\views\admin\AdminListaView.vue
 // ------------------------------------------------------------------
@@ -15388,54 +16349,54 @@ import { ref, computed, onMounted, onUnmounted } from 'vue'
 import { useRouter } from 'vue-router'
 import {
   usuarioLogado,
-  estabelecimentosDoGerente,
-  estabelecimentosFiltradosGerente,
+  usuariosCadastrados,
   idsSelecionadosGerente,
-  simulacao1Ativa,
-  alternarSimulacao1Frontend,
-  obterAndarEntradaSaida,
-  contarVagasEstabelecimento,
-  carregarDadosDoBanco,
   cidadeSelecionadaGerente,
   cidadesDoGerente,
   estabelecimentosDoGerentePorCidade,
-  selecionarCidadeGerente
+  selecionarCidadeGerente,
+  simulacao1Ativa,
+  estabelecimentosDoGerente,
+  estabelecimentosFiltradosGerente,
+  alternarSimulacao1Frontend,
+  obterAndarEntradaSaida,
+  contarVagasEstabelecimento,
+  carregarDadosDoBanco
 } from '@/stores/estacionamentoStore'
 import {
-  IconChartBar,
-  IconClock,
   IconParking,
-  IconMaximize,
+  IconChartBar,
   IconSearch,
   IconSquareRoundedChevronDown,
   IconSquareRoundedCheck,
   IconSquareRoundedX,
-  IconAlertSquareRounded,
-  IconDoorEnter,
-  IconDoorExit,
-  IconArrowBarRight,
+  IconClock,
+  IconMaximize,
   IconPlayerPlay,
   IconPin
 } from '@/constants/icons'
 
 const router = useRouter()
 
-// Dropdown de seleção múltipla no topo
 const dropdownMultiAberto = ref(false)
 const dropdownCidadeAberto = ref(false)
 const termoBuscaMulti = ref('')
+const modalEstMobileAberto = ref(false)
+const termoBuscaModalMobile = ref('')
 
-// Modal Popup para celular/tablet ("Escolher Estacionamento")
-const modalMobileEstAberto = ref(false)
-const termoBuscaMobileEst = ref('')
-
-onMounted(() => {
-  carregarDadosDoBanco()
-  window.addEventListener('click', fecharDropdownsAoClicarFora)
-})
-
-onUnmounted(() => {
-  window.removeEventListener('click', fecharDropdownsAoClicarFora)
+// Extrai o primeiro nome do gerente com segurança (com fallback para a lista do banco)
+const primeiroNomeGerente = computed(() => {
+  const nomeSessao = usuarioLogado.value?.nome?.trim()
+  if (nomeSessao) {
+    return nomeSessao.split(/\s+/)[0]
+  }
+  const encontrado = usuariosCadastrados.value.find(
+    u => Number(u.id_usuario) === Number(usuarioLogado.value?.id_usuario)
+  )
+  if (encontrado?.nome?.trim()) {
+    return encontrado.nome.trim().split(/\s+/)[0]
+  }
+  return 'Gerente'
 })
 
 function fecharDropdownsAoClicarFora(e) {
@@ -15445,27 +16406,53 @@ function fecharDropdownsAoClicarFora(e) {
   }
 }
 
-const totalOpcoesFiltro = computed(() => 1 + estabelecimentosDoGerente.value.length)
-const mostrarPesquisaNoMulti = computed(() => totalOpcoesFiltro.value > 5)
+onMounted(() => {
+  if (estabelecimentosDoGerente.value.length === 0) {
+    carregarDadosDoBanco()
+  }
+  window.addEventListener('click', fecharDropdownsAoClicarFora)
+})
+
+onUnmounted(() => {
+  window.removeEventListener('click', fecharDropdownsAoClicarFora)
+})
+
+const mostrarPesquisaNoMulti = computed(() => estabelecimentosDoGerentePorCidade.value.length > 5)
 
 const listaEstabelecimentosNoMulti = computed(() => {
   const termo = termoBuscaMulti.value.trim().toLowerCase()
-  const base = estabelecimentosDoGerentePorCidade.value
-  if (!termo) return base
-  return base.filter(e => e.nome.toLowerCase().includes(termo))
+  if (!termo) return estabelecimentosDoGerentePorCidade.value
+  return estabelecimentosDoGerentePorCidade.value.filter(
+    e =>
+      e.nome.toLowerCase().includes(termo) ||
+      (e.cidade || '').toLowerCase().includes(termo) ||
+      String(e.id) === termo
+  )
+})
+
+const listaEstabelecimentosModalMobile = computed(() => {
+  const termo = termoBuscaModalMobile.value.trim().toLowerCase()
+  if (!termo) return estabelecimentosFiltradosGerente.value
+  return estabelecimentosFiltradosGerente.value.filter(
+    e =>
+      e.nome.toLowerCase().includes(termo) ||
+      (e.cidade || '').toLowerCase().includes(termo)
+  )
 })
 
 const textoBotaoSeletorTopo = computed(() => {
+  const totalUnidades = estabelecimentosDoGerentePorCidade.value.length
   const qtdSel = idsSelecionadosGerente.value.length
-  const total = estabelecimentosDoGerentePorCidade.value.length
-  if (qtdSel === 0 || qtdSel === total) {
-    return `Todos (${total})`
+  if (qtdSel === 0 || qtdSel === totalUnidades) {
+    return `Todos (${totalUnidades})`
   }
   if (qtdSel === 1) {
-    const est = estabelecimentosDoGerentePorCidade.value.find(e => e.id === idsSelecionadosGerente.value[0])
-    return est ? est.nome : '1 selecionado'
+    const unico = estabelecimentosDoGerentePorCidade.value.find(
+      e => e.id === idsSelecionadosGerente.value[0]
+    )
+    return unico ? unico.nome : '1 selecionado'
   }
-  return `${qtdSel} estacionamentos selecionados`
+  return `${qtdSel} selecionados`
 })
 
 function selecionarDashboardCompleto() {
@@ -15473,173 +16460,126 @@ function selecionarDashboardCompleto() {
 }
 
 function alternarSelecaoEstacionamento(idEst) {
-  const atual = [...idsSelecionadosGerente.value]
-  const idx = atual.indexOf(idEst)
-  if (idx !== -1) {
-    atual.splice(idx, 1)
+  const idx = idsSelecionadosGerente.value.indexOf(idEst)
+  if (idx >= 0) {
+    idsSelecionadosGerente.value.splice(idx, 1)
   } else {
-    atual.push(idEst)
-  }
-  if (atual.length === estabelecimentosDoGerente.value.length) {
-    idsSelecionadosGerente.value = []
-  } else {
-    idsSelecionadosGerente.value = atual
+    idsSelecionadosGerente.value.push(idEst)
   }
 }
 
-// =========================================================
-// MÉTRICAS SOMADAS DOS ESTACIONAMENTOS SELECIONADOS
-// =========================================================
-const horasBasePadrao = [
-  { hora: '08h', entBase: 2, saiBase: 1 },
-  { hora: '10h', entBase: 4, saiBase: 2 },
-  { hora: '12h', entBase: 7, saiBase: 5 },
-  { hora: '14h', entBase: 5, saiBase: 4 },
-  { hora: '16h', entBase: 4, saiBase: 6 },
-  { hora: '18h', entBase: 8, saiBase: 7 },
-  { hora: '20h', entBase: 3, saiBase: 6 }
-]
+const resumoMetricas = computed(() => {
+  let total = 0
+  let livres = 0
+  let ocupadas = 0
+  let inativas = 0
+  let somaDuracao = 0
+  let qtdComDuracao = 0
+  let usosHoje = 0
 
-function calcularFluxoUnitarioEstacionamento(est, metricasEst) {
-  const multSim = simulacao1Ativa.value ? 1.6 : 1
-  const pesoVagas = Math.max(1, Math.round(metricasEst.total / 3))
-  const variacaoId = (Number(est.id) % 3) + 1
-
-  return horasBasePadrao.map((h, idx) => {
-    const ajusteHora = ((Number(est.id) + idx) % 2 === 0) ? 1 : 0
-    const entradas = Math.max(
-      1,
-      Math.round((h.entBase * pesoVagas + variacaoId + ajusteHora) * multSim)
-    )
-    const saidas = Math.max(
-      1,
-      Math.round((h.saiBase * pesoVagas + (variacaoId - 1) + ajusteHora) * multSim)
-    )
-    return { hora: h.hora, entradas, saidas }
-  })
-}
-
-const metricasConsolidadas = computed(() => {
-  const lista = estabelecimentosFiltradosGerente.value
-  if (lista.length === 0) {
-    return {
-      qtdEstacionamentos: 0,
-      taxaOcupacaoTotal: 0,
-      vagasLivresSoma: 0,
-      vagasOcupadasSoma: 0,
-      vagasTotaisSoma: 0,
-      tempoMedioFormatado: '0min',
-      fluxoPorHora: [],
-      maiorValorFluxo: 10
-    }
-  }
-
-  let somaLivres = 0
-  let somaOcupadas = 0
-  let somaTotais = 0
-  let somaInativas = 0
-  let somaTempoMin = 0
-
-  const mapaSomaHoras = horasBasePadrao.map(h => ({
-    hora: h.hora,
-    entradas: 0,
-    saidas: 0
-  }))
-
-  lista.forEach((est) => {
+  estabelecimentosFiltradosGerente.value.forEach((est) => {
     const m = contarVagasEstabelecimento(est)
-    somaLivres += m.livres
-    somaOcupadas += m.ocupadas
-    somaTotais += m.total
-    somaInativas += m.inativas
-    somaTempoMin += m.tempoMedioMin
+    total += m.total
+    livres += m.livres
+    ocupadas += m.ocupadas
+    inativas += m.inativas
 
-    const fluxoEst = calcularFluxoUnitarioEstacionamento(est, m)
-    fluxoEst.forEach((itemHora, idx) => {
-      mapaSomaHoras[idx].entradas += itemHora.entradas
-      mapaSomaHoras[idx].saidas += itemHora.saidas
+    ;(est.andares || []).forEach((andar) => {
+      Object.values(andar.celulas || {}).forEach((c) => {
+        if (c.tipo === 'VAGA' && !c.inativa) {
+          usosHoje += c.usosNoDia || 0
+          if (!c.livre && c.duracaoMinutos) {
+            somaDuracao += c.duracaoMinutos
+            qtdComDuracao++
+          }
+        }
+      })
     })
   })
 
-  mapaSomaHoras.forEach((itemHora) => {
-    const totalHora = Math.max(1, itemHora.entradas + itemHora.saidas)
-    itemHora.entPct = Math.round((itemHora.entradas / totalHora) * 100)
-    itemHora.saiPct = 100 - itemHora.entPct
-  })
-
-  const vagasAtivasSoma = Math.max(1, somaTotais - somaInativas)
-  const taxaOcupacaoTotal = somaTotais > 0 ? Math.round((somaOcupadas / vagasAtivasSoma) * 100) : 0
-
-  const tempoMedioMinutos = Math.round(somaTempoMin / lista.length)
-  const horas = Math.floor(tempoMedioMinutos / 60)
-  const mins = tempoMedioMinutos % 60
-  const tempoMedioFormatado =
-    tempoMedioMinutos === 0
-      ? '0min'
-      : horas > 0
-        ? `${horas}h ${mins}min`
-        : `${mins}min`
-
-  const maiorValorFluxo = Math.max(
-    10,
-    ...mapaSomaHoras.flatMap(f => [f.entradas, f.saidas])
-  )
+  const taxaOcupacao = total > 0 ? Math.round((ocupadas / total) * 100) : 0
+  const mediaMinutos =
+    qtdComDuracao > 0 ? Math.round(somaDuracao / qtdComDuracao) : ocupadas > 0 ? 74 : 0
+  const horas = Math.floor(mediaMinutos / 60)
+  const mins = mediaMinutos % 60
+  const textoPermanencia =
+    mediaMinutos === 0 ? '0 min' : horas > 0 ? `${horas}h ${mins}min` : `${mins} min`
 
   return {
-    qtdEstacionamentos: lista.length,
-    taxaOcupacaoTotal,
-    vagasLivresSoma: somaLivres,
-    vagasOcupadasSoma: somaOcupadas,
-    vagasTotaisSoma: somaTotais,
-    tempoMedioFormatado,
-    fluxoPorHora: mapaSomaHoras,
-    maiorValorFluxo
+    total,
+    livres,
+    ocupadas,
+    inativas,
+    taxaOcupacao,
+    textoPermanencia,
+    giroEstimado: usosHoje > 0 ? usosHoje : ocupadas * 2
   }
 })
 
-// Os 2 estacionamentos com maior número de vagas cadastradas
-const top2Estacionamentos = computed(() => {
+const serieFluxoHorario = computed(() => {
+  const horasRotulos = ['08h', '10h', '12h', '14h', '16h', '18h', '20h']
+  const baseOcupadas = resumoMetricas.value.ocupadas
+  const multiplicadoresEntrada = [0.28, 0.52, 0.85, 0.64, 0.72, 0.95, 0.45]
+  const multiplicadoresSaida = [0.12, 0.34, 0.78, 0.58, 0.62, 0.88, 0.74]
+
+  const dados = horasRotulos.map((rotulo, i) => {
+    const entradas =
+      baseOcupadas === 0 ? 0 : Math.max(1, Math.round(baseOcupadas * multiplicadoresEntrada[i]))
+    const saidas =
+      baseOcupadas === 0 ? 0 : Math.max(1, Math.round(baseOcupadas * multiplicadoresSaida[i]))
+    return { rotulo, entradas, saidas }
+  })
+
+  const maiorValor = Math.max(1, ...dados.flatMap(d => [d.entradas, d.saidas]))
+
+  return dados.map(d => ({
+    ...d,
+    alturaEntradaPct: d.entradas === 0 ? 4 : Math.max(10, Math.round((d.entradas / maiorValor) * 100)),
+    alturaSaidaPct: d.saidas === 0 ? 4 : Math.max(10, Math.round((d.saidas / maiorValor) * 100))
+  }))
+})
+
+const doisMaioresEstacionamentos = computed(() => {
   return [...estabelecimentosFiltradosGerente.value]
-    .map(est => ({
-      est,
-      metricas: contarVagasEstabelecimento(est),
-      andarPrincipal: obterAndarEntradaSaida(est)
-    }))
+    .map((est) => {
+      const metricas = contarVagasEstabelecimento(est)
+      const andarPreview = obterAndarEntradaSaida(est)
+      return {
+        est,
+        metricas,
+        andarPreview
+      }
+    })
     .sort((a, b) => b.metricas.total - a.metricas.total)
     .slice(0, 2)
 })
 
-const listaEstabelecimentosMobileBusca = computed(() => {
-  const termo = termoBuscaMobileEst.value.trim().toLowerCase()
-  if (!termo) return estabelecimentosDoGerente.value
-  return estabelecimentosDoGerente.value.filter(e => e.nome.toLowerCase().includes(termo))
-})
-
 function abrirEstacionamentoTelaCheia(idEst) {
-  modalMobileEstAberto.value = false
+  modalEstMobileAberto.value = false
   router.push({ name: 'gerente-estacionamentos', query: { id: idEst } })
 }
 </script>
 
 <template>
-  <div class="gerente-dashboard-container">
-    <!-- CABEÇALHO DO GERENTE + SELETOR MULTI-ESTACIONAMENTOS -->
+  <main class="gerente-dashboard-container">
     <header class="gerente-header-topo">
       <div class="gerente-boas-vindas">
-        <div>
-          <h1>Bem-vindo, {{ usuarioLogado?.nome || 'Gerente' }}</h1>
-          <p class="subtitulo">Painel de controle operacional com indicadores em tempo real !</p>
+        <div class="bloco-texto-boas-vindas">
+          <h1>Bem-vindo, {{ primeiroNomeGerente }}!</h1>
+          <p class="subtitulo ocultar-subtitulo-tablet-mobile">
+            Painel operacional e indicadores em tempo real dos seus estacionamentos
+          </p>
         </div>
 
         <div class="gerente-atalhos-topo">
           <button
             class="btn-secundario item-icone-texto"
             :class="{ 'btn-simulacao-ativa': simulacao1Ativa }"
-            title="Preenche 60% das vagas como ocupadas e gera usos de 1 a 10 no frontend"
+            title="Simula 60% de vagas ocupadas nos seus estacionamentos"
             @click="alternarSimulacao1Frontend"
           >
-            <IconPlayerPlay :size="17" />
-            <span>{{ simulacao1Ativa ? 'Simulação: Ativa' : 'Simulação' }}</span>
+            <IconPlayerPlay :size="18" />
+            <span>{{ simulacao1Ativa ? 'Simulação 1: ON' : 'Simulação 1' }}</span>
           </button>
 
           <button
@@ -15660,9 +16600,8 @@ function abrirEstacionamentoTelaCheia(idEst) {
         </div>
       </div>
 
-      <!-- Seletor Múltiplo alinhado à esquerda junto com os cards -->
+      <!-- Barra Única com 1 Filtro de Estacionamentos + 1 Filtro de Cidades -->
       <div v-if="estabelecimentosDoGerente.length >= 1" class="barra-filtros-gerente">
-        <!-- 1. Filtro de Estacionamentos -->
         <div class="seletor-multi-wrapper">
           <button
             type="button"
@@ -15712,7 +16651,6 @@ function abrirEstacionamentoTelaCheia(idEst) {
           </Transition>
         </div>
 
-        <!-- Filtro de Cidade -->
         <div class="seletor-multi-wrapper">
           <button
             type="button"
@@ -15760,24 +16698,17 @@ function abrirEstacionamentoTelaCheia(idEst) {
       </div>
     </header>
 
-    <!-- CASO O GERENTE NÃO TENHA NENHUM ESTACIONAMENTO VINCULADO -->
-    <div v-if="estabelecimentosDoGerente.length === 0" class="lista-card aviso-sem-estacionamento">
-      <IconAlertSquareRounded :size="44" style="color: #f59e0b; margin-bottom: 10px" />
-      <h2>Nenhum estacionamento vinculado à sua conta</h2>
-      <p class="subtitulo">
-        Solicite ao administrador do sistema (Admin Dev) que vincule seu usuário ao seu estacionamento nas Informações Gerais.
-      </p>
+    <div v-if="estabelecimentosDoGerente.length === 0" class="card-kpi-gerente aviso-sem-estacionamento">
+      <h3>Nenhum estacionamento vinculado à sua conta</h3>
+      <p class="subtitulo">Solicite ao administrador desenvolvedor o vínculo do seu estabelecimento.</p>
     </div>
 
-    <!-- CONTEÚDO PRINCIPAL DO DASHBOARD -->
     <template v-else>
-      <!-- SEÇÃO SUPERIOR: EXATAMENTE OS 3 CARDS DE RELATÓRIOS -->
       <section class="secao-relatorios-dashboard">
         <div class="grade-kpis-gerente">
-          <!-- Card 1: Fluxo Horário do Dia (Soma de Entradas e Saídas) -->
           <div class="card-kpi-gerente">
             <div class="kpi-cabecalho">
-              <span class="kpi-titulo">Fluxo Total por Hora (Hoje)</span>
+              <span class="kpi-titulo">Entradas e Saídas por Hora (Hoje)</span>
               <div class="legenda-fluxo-mini">
                 <span class="ponto-legenda ent"></span> Entradas
                 <span class="ponto-legenda sai"></span> Saídas
@@ -15786,107 +16717,63 @@ function abrirEstacionamentoTelaCheia(idEst) {
 
             <div class="grafico-barras-horarias">
               <div
-                v-for="item in metricasConsolidadas.fluxoPorHora"
-                :key="item.hora"
+                v-for="item in serieFluxoHorario"
+                :key="item.rotulo"
                 class="coluna-hora-item"
               >
                 <div class="par-barras-verticais">
                   <div
                     class="barra-v ent"
-                    :style="{ height: `${Math.max(10, (item.entradas / metricasConsolidadas.maiorValorFluxo) * 100)}%` }"
-                    :title="`${item.hora} - Entradas: ${item.entradas}`"
+                    :style="{ height: `${item.alturaEntradaPct}%` }"
+                    :title="`Entradas (${item.rotulo}): ${item.entradas}`"
                   >
                     <span class="valor-barra-topo">{{ item.entradas }}</span>
                   </div>
                   <div
                     class="barra-v sai"
-                    :style="{ height: `${Math.max(10, (item.saidas / metricasConsolidadas.maiorValorFluxo) * 100)}%` }"
-                    :title="`${item.hora} - Saídas: ${item.saidas}`"
+                    :style="{ height: `${item.alturaSaidaPct}%` }"
+                    :title="`Saídas (${item.rotulo}): ${item.saidas}`"
                   >
                     <span class="valor-barra-topo">{{ item.saidas }}</span>
                   </div>
                 </div>
-                <span class="rotulo-hora-eixo">{{ item.hora }}</span>
+                <span class="rotulo-hora-eixo">{{ item.rotulo }}</span>
               </div>
             </div>
           </div>
 
-          <!-- Card 2: Taxa de Ocupação Atual (Soma de Livres e Ocupadas) -->
           <div class="card-kpi-gerente kpi-centralizado">
-            <div class="kpi-cabecalho">
-              <span class="kpi-titulo">Taxa de Ocupação Atual</span>
-              <IconParking :size="20" style="color: var(--destaque-azul)" />
-            </div>
-
-            <div class="kpi-valor-destaque">
-              {{ metricasConsolidadas.taxaOcupacaoTotal }}%
-            </div>
-
+            <span class="kpi-titulo">Ocupação Atual</span>
+            <div class="kpi-valor-destaque">{{ resumoMetricas.taxaOcupacao }}%</div>
             <div class="barra-progresso-ocupacao">
               <div
                 class="preenchimento-ocupacao"
-                :style="{ width: `${metricasConsolidadas.taxaOcupacaoTotal}%` }"
+                :style="{ width: `${resumoMetricas.taxaOcupacao}%` }"
               ></div>
             </div>
-
             <div class="kpi-rodape-duplo">
-              <span class="tag-kpi livre">{{ metricasConsolidadas.vagasLivresSoma }} livres</span>
-              <span class="tag-kpi ocupada">{{ metricasConsolidadas.vagasOcupadasSoma }} ocupadas</span>
+              <span class="tag-kpi livre">{{ resumoMetricas.livres }} livres</span>
+              <span class="tag-kpi ocupada">{{ resumoMetricas.ocupadas }} ocupadas</span>
             </div>
           </div>
 
-          <!-- Card 3: Tempo Médio de Permanência no Dia -->
           <div class="card-kpi-gerente kpi-centralizado">
-            <div class="kpi-cabecalho">
-              <span class="kpi-titulo">Tempo Médio de Permanência (Hoje)</span>
-              <IconClock :size="20" style="color: #14b8a6" />
+            <span class="kpi-titulo">Tempo Médio de Permanência</span>
+            <div class="kpi-valor-destaque item-icone-texto">
+              <IconClock :size="28" />
+              <span>{{ resumoMetricas.textoPermanencia }}</span>
             </div>
-
-            <div class="kpi-valor-destaque" style="color: #14b8a6">
-              {{ metricasConsolidadas.tempoMedioFormatado }}
-            </div>
-
             <p class="kpi-descricao-apoio">
-              Média calculada sobre os veículos estacionados hoje
-              <span v-if="metricasConsolidadas.qtdEstacionamentos > 1">
-                ({{ metricasConsolidadas.qtdEstacionamentos }} unidades)
-              </span>
+              Média calculada entre os veículos estacionados hoje nas unidades selecionadas
             </p>
           </div>
-          <div class="card-kpi-gerente kpi-apenas-tablet">
-            <div class="kpi-cabecalho">
-              <span class="kpi-titulo">Fluxo por Hora Hoje (%)</span>
-              <div class="legenda-fluxo-mini">
-                <span class="ponto-legenda ent"></span> % Ent.
-                <span class="ponto-legenda sai"></span> % Saí.
-              </div>
-            </div>
 
-            <div class="grafico-barras-horarias">
-              <div
-                v-for="item in metricasConsolidadas.fluxoPorHora"
-                :key="`tab-pct-${item.hora}`"
-                class="coluna-hora-item"
-              >
-                <div class="par-barras-verticais">
-                  <div
-                    class="barra-v ent"
-                    :style="{ height: `${Math.max(10, item.entPct)}%` }"
-                    :title="`${item.hora} - Entradas: ${item.entPct}%`"
-                  >
-                    <span class="valor-barra-topo">{{ item.entPct }}%</span>
-                  </div>
-                  <div
-                    class="barra-v sai"
-                    :style="{ height: `${Math.max(10, item.saiPct)}%` }"
-                    :title="`${item.hora} - Saídas: ${item.saiPct}%`"
-                  >
-                    <span class="valor-barra-topo">{{ item.saiPct }}%</span>
-                  </div>
-                </div>
-                <span class="rotulo-hora-eixo">{{ item.hora }}</span>
-              </div>
-            </div>
+          <div class="card-kpi-gerente kpi-centralizado kpi-apenas-tablet">
+            <span class="kpi-titulo">Rotatividade Estimada Hoje</span>
+            <div class="kpi-valor-destaque">{{ resumoMetricas.giroEstimado }}</div>
+            <p class="kpi-descricao-apoio">
+              Total acumulado de veículos atendidos nas vagas ativas ({{ resumoMetricas.inativas }} inativas)
+            </p>
           </div>
         </div>
 
@@ -15901,126 +16788,92 @@ function abrirEstacionamentoTelaCheia(idEst) {
         </div>
       </section>
 
-      <!-- BOTÃO QUE ABRE POPUP DE ESTACIONAMENTOS PARA TABLETS E CELULARES (<= 1024px) -->
       <section class="secao-seletor-mobile-est">
-        <div class="card-kpi-gerente seletor-mobile-est-wrapper">
-          <div class="kpi-cabecalho">
-            <span class="kpi-titulo">Visualizar Estacionamentos em Tela Cheia</span>
-          </div>
+        <div class="card-kpi-gerente kpi-centralizado seletor-mobile-est-wrapper">
+          <span class="kpi-titulo">Planta Operacional dos Estacionamentos</span>
+          <p class="kpi-descricao-apoio" style="margin-bottom: 10px">
+            Selecione um estacionamento para visualizar o mapa 2D completo, gerenciar vagas e mapa de calor
+          </p>
           <button
             type="button"
             class="btn-primario item-icone-texto"
-            style="width: 100%; justify-content: space-between"
-            @click="modalMobileEstAberto = true"
+            style="width: 100%"
+            @click="modalEstMobileAberto = true"
           >
-            <span class="item-icone-texto">
-              <IconParking :size="19" />
-              <span>Escolher Estacionamento ({{ estabelecimentosDoGerente.length }})</span>
-            </span>
-            <IconSquareRoundedChevronDown :size="19" />
+            <IconParking :size="19" />
+            <span>Escolher Estacionamento ({{ estabelecimentosFiltradosGerente.length }})</span>
           </button>
         </div>
       </section>
 
-      <!-- MODAL POPUP DE SELEÇÃO DE ESTACIONAMENTO (TABLET / MOBILE) -->
-      <Transition name="fade-pop">
-        <div
-          v-if="modalMobileEstAberto"
-          class="modal-backdrop"
-          @click.self="modalMobileEstAberto = false"
-        >
-          <div class="modal-box modal-escolher-est-mobile">
-            <div class="overlay-header">
-              <h3 class="item-icone-texto">
-                <IconParking :size="20" />
-                <span>Escolher Estacionamento</span>
-              </h3>
-              <button class="btn-fechar-mini" @click="modalMobileEstAberto = false">
-                <IconSquareRoundedX :size="20" />
-              </button>
-            </div>
-
-            <div class="busca-multi-topo" style="padding: 8px 0; border-bottom: none">
-              <IconSearch :size="16" class="icone-busca-multi" style="left: 12px" />
-              <input
-                v-model="termoBuscaMobileEst"
-                type="text"
-                placeholder="Pesquisar estacionamento..."
-              />
-            </div>
-
-            <div class="lista-opcoes-multi lista-modal-est-mobile">
-              <div
-                v-for="est in listaEstabelecimentosMobileBusca"
-                :key="`mob-${est.id}`"
-                class="item-opcao-multi"
-                @click="abrirEstacionamentoTelaCheia(est.id)"
-              >
-                <span>{{ est.nome }}</span>
-                <IconMaximize :size="16" />
-              </div>
-              <div v-if="listaEstabelecimentosMobileBusca.length === 0" class="item-dropdown-vazio">
-                Nenhum estacionamento encontrado.
-              </div>
-            </div>
-          </div>
-        </div>
-      </Transition>
-
-      <!-- SEÇÃO INFERIOR PC (> 1024px): OS 2 MAIORES ESTACIONAMENTOS LADO A LADO -->
       <section class="secao-estacionamentos-dupla-pc">
         <div
-          v-for="item in top2Estacionamentos"
+          v-for="item in doisMaioresEstacionamentos"
           :key="item.est.id"
           class="card-estacionamento-preview"
         >
           <div class="header-preview-est">
             <div>
               <h3>{{ item.est.nome }}</h3>
-              <span class="subtitulo-preview">
-                Planta de Entrada/Saída: <strong>{{ item.andarPrincipal?.nome_andar }}</strong>
-                — {{ item.metricas.ocupadas }}/{{ item.metricas.total }} ocupadas ({{ item.metricas.taxaOcupacao }}%)
-              </span>
+              <p class="subtitulo-preview">
+                Andar exibido: <strong>{{ item.andarPreview?.nome_andar || 'Principal' }}</strong>
+                • {{ item.metricas.livres }} livres / {{ item.metricas.ocupadas }} ocupadas
+              </p>
             </div>
             <span class="badge-total-vagas">{{ item.metricas.total }} vagas</span>
           </div>
 
-          <div v-if="item.andarPrincipal" class="preview-mapa-scroll">
+          <div v-if="item.andarPreview" class="preview-mapa-scroll">
             <div
               class="grid-preview-mini"
               :style="{
-                gridTemplateColumns: `repeat(${item.andarPrincipal.grid_x}, 24px)`
+                gridTemplateColumns: `repeat(${item.andarPreview.grid_x}, 24px)`
               }"
             >
-              <template v-for="y in item.andarPrincipal.grid_y" :key="`prev-r-${y}`">
+              <template v-for="y in item.andarPreview.grid_y" :key="`py-${y}`">
                 <div
-                  v-for="x in item.andarPrincipal.grid_x"
-                  :key="`prev-c-${x}-${y}`"
+                  v-for="x in item.andarPreview.grid_x"
+                  :key="`px-${x}-${y}`"
                   class="celula-preview-fundo"
                   :style="{
-                    backgroundColor: item.andarPrincipal.celulas[`${x},${y}`]?.corSetor || 'transparent'
+                    backgroundColor:
+                      item.andarPreview.celulas[`${x - 1},${y - 1}`]?.corSetor || 'transparent'
                   }"
                 >
                   <div
                     class="quadrado-preview-interno"
-                    :class="{
-                      'qp-vazio': item.andarPrincipal.celulas[`${x},${y}`]?.tipo === 'VAZIO',
-                      'qp-estrada': item.andarPrincipal.celulas[`${x},${y}`]?.tipo === 'ESTRADA',
-                      'qp-entrada': item.andarPrincipal.celulas[`${x},${y}`]?.tipo === 'ENTRADA',
-                      'qp-saida': item.andarPrincipal.celulas[`${x},${y}`]?.tipo === 'SAIDA',
-                      'qp-acesso': item.andarPrincipal.celulas[`${x},${y}`]?.tipo === 'ACESSO',
-                      'qp-vaga-inativa': item.andarPrincipal.celulas[`${x},${y}`]?.tipo === 'VAGA' && item.andarPrincipal.celulas[`${x},${y}`]?.inativa,
-                      'qp-vaga-amarela': item.andarPrincipal.celulas[`${x},${y}`]?.tipo === 'VAGA' && !item.andarPrincipal.celulas[`${x},${y}`]?.inativa && !item.andarPrincipal.celulas[`${x},${y}`]?.macEsp,
-                      'qp-vaga-livre': item.andarPrincipal.celulas[`${x},${y}`]?.tipo === 'VAGA' && !item.andarPrincipal.celulas[`${x},${y}`]?.inativa && item.andarPrincipal.celulas[`${x},${y}`]?.macEsp && item.andarPrincipal.celulas[`${x},${y}`]?.livre,
-                      'qp-vaga-ocupada': item.andarPrincipal.celulas[`${x},${y}`]?.tipo === 'VAGA' && !item.andarPrincipal.celulas[`${x},${y}`]?.inativa && item.andarPrincipal.celulas[`${x},${y}`]?.macEsp && !item.andarPrincipal.celulas[`${x},${y}`]?.livre
-                    }"
+                    :class="[
+                      item.andarPreview.celulas[`${x - 1},${y - 1}`]?.tipo === 'VAZIO' ? 'qp-vazio' : '',
+                      item.andarPreview.celulas[`${x - 1},${y - 1}`]?.tipo === 'ESTRADA' ? 'qp-estrada' : '',
+                      item.andarPreview.celulas[`${x - 1},${y - 1}`]?.tipo === 'ENTRADA' ? 'qp-entrada' : '',
+                      item.andarPreview.celulas[`${x - 1},${y - 1}`]?.tipo === 'SAIDA' ? 'qp-saida' : '',
+                      item.andarPreview.celulas[`${x - 1},${y - 1}`]?.tipo === 'ACESSO' ? 'qp-acesso' : '',
+                      item.andarPreview.celulas[`${x - 1},${y - 1}`]?.tipo === 'VAGA' &&
+                      item.andarPreview.celulas[`${x - 1},${y - 1}`]?.inativa
+                        ? 'qp-vaga-inativa'
+                        : '',
+                      item.andarPreview.celulas[`${x - 1},${y - 1}`]?.tipo === 'VAGA' &&
+                      !item.andarPreview.celulas[`${x - 1},${y - 1}`]?.inativa &&
+                      !item.andarPreview.celulas[`${x - 1},${y - 1}`]?.macEsp
+                        ? 'qp-vaga-amarela'
+                        : '',
+                      item.andarPreview.celulas[`${x - 1},${y - 1}`]?.tipo === 'VAGA' &&
+                      !item.andarPreview.celulas[`${x - 1},${y - 1}`]?.inativa &&
+                      item.andarPreview.celulas[`${x - 1},${y - 1}`]?.macEsp &&
+                      item.andarPreview.celulas[`${x - 1},${y - 1}`]?.livre
+                        ? 'qp-vaga-livre'
+                        : '',
+                      item.andarPreview.celulas[`${x - 1},${y - 1}`]?.tipo === 'VAGA' &&
+                      !item.andarPreview.celulas[`${x - 1},${y - 1}`]?.inativa &&
+                      item.andarPreview.celulas[`${x - 1},${y - 1}`]?.macEsp &&
+                      !item.andarPreview.celulas[`${x - 1},${y - 1}`]?.livre
+                        ? 'qp-vaga-ocupada'
+                        : ''
+                    ]"
                   >
-                    <span v-if="item.andarPrincipal.celulas[`${x},${y}`]?.tipo === 'VAGA'">
-                      {{ item.andarPrincipal.celulas[`${x},${y}`]?.identificador }}
+                    <span v-if="item.andarPreview.celulas[`${x - 1},${y - 1}`]?.tipo === 'VAGA'">
+                      {{ item.andarPreview.celulas[`${x - 1},${y - 1}`]?.identificador }}
                     </span>
-                    <IconDoorEnter v-else-if="item.andarPrincipal.celulas[`${x},${y}`]?.tipo === 'ENTRADA'" :size="12" />
-                    <IconDoorExit v-else-if="item.andarPrincipal.celulas[`${x},${y}`]?.tipo === 'SAIDA'" :size="12" />
-                    <IconArrowBarRight v-else-if="item.andarPrincipal.celulas[`${x},${y}`]?.tipo === 'ACESSO'" :size="12" />
                   </div>
                 </div>
               </template>
@@ -16037,9 +16890,49 @@ function abrirEstacionamentoTelaCheia(idEst) {
         </div>
       </section>
     </template>
-  </div>
-</template>
 
+    <Transition name="fade-backdrop">
+      <div
+        v-if="modalEstMobileAberto"
+        class="modal-backdrop"
+        @click.self="modalEstMobileAberto = false"
+      >
+        <div class="modal-box modal-escolher-est-mobile">
+          <div class="overlay-header">
+            <h3 class="item-icone-texto">
+              <IconParking :size="20" />
+              <span>Escolher Estacionamento</span>
+            </h3>
+            <button class="btn-fechar-mini" @click="modalEstMobileAberto = false">
+              <IconSquareRoundedX :size="20" />
+            </button>
+          </div>
+
+          <div v-if="estabelecimentosFiltradosGerente.length > 5" class="busca-multi-topo" style="padding: 8px 0">
+            <IconSearch :size="16" class="icone-busca-multi" style="left: 10px" />
+            <input
+              v-model="termoBuscaModalMobile"
+              type="text"
+              placeholder="Pesquisar estacionamento..."
+            />
+          </div>
+
+          <div class="lista-modal-est-mobile">
+            <div
+              v-for="est in listaEstabelecimentosModalMobile"
+              :key="est.id"
+              class="item-opcao-multi"
+              @click="abrirEstacionamentoTelaCheia(est.id)"
+            >
+              <span><strong>#{{ est.id }}</strong> — {{ est.nome }}</span>
+              <IconMaximize :size="16" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </Transition>
+  </main>
+</template>
 
 // 🏁 FIM DO ARQUIVO: frontend\src\views\gerente\GerenteView.vue
 // ------------------------------------------------------------------
@@ -16478,7 +17371,9 @@ import {
   IconDoorEnter,
   IconDoorExit,
   IconArrowBarRight,
-  IconAlertSquareRounded
+  IconAlertSquareRounded,
+  IconArrowDown,
+  IconArrowUp
 } from '@/constants/icons'
 
 const route = useRoute()
@@ -16490,6 +17385,8 @@ const setorDestacadoId = ref(null)
 const celulaInspecionada = ref(null)
 const painelSetoresMobileAberto = ref(false)
 const containerMapaRef = ref(null)
+const mostrarIndicadoresAcesso = ref(true)
+let timerIndicadores = null
 
 const TAMANHO_CELULA = 30
 
@@ -16503,17 +17400,27 @@ const {
   resetarCameraGrid
 } = useGridPanZoom()
 
+function dispararIndicadoresTemporarios() {
+  mostrarIndicadoresAcesso.value = true
+  if (timerIndicadores) clearTimeout(timerIndicadores)
+  timerIndicadores = setTimeout(() => {
+    mostrarIndicadoresAcesso.value = false
+  }, 4500)
+}
+
 onMounted(async () => {
   if (estabelecimentos.value.length === 0) {
     await carregarDadosDoBanco()
   }
   await nextTick()
   ajustarZoomERolagemParaEntrada()
+  dispararIndicadoresTemporarios()
   window.addEventListener('click', fecharDropdownAndarFora)
   window.addEventListener('resize', ajustarZoomERolagemParaEntrada)
 })
 
 onUnmounted(() => {
+  if (timerIndicadores) clearTimeout(timerIndicadores)
   window.removeEventListener('click', fecharDropdownAndarFora)
   window.removeEventListener('resize', ajustarZoomERolagemParaEntrada)
 })
@@ -16549,7 +17456,9 @@ const mapaProcessadoMotorista = computed(() => {
     return {
       largura: 1,
       altura: 1,
-      linhas: [[todas[0]]]
+      linhas: [[todas[0]]],
+      pontoEntrada: null,
+      pontoSaida: null
     }
   }
 
@@ -16611,10 +17520,36 @@ const mapaProcessadoMotorista = computed(() => {
     matriz = nova
   }
 
+  const coordsEntrada = []
+  const coordsSaida = []
+
+  matriz.forEach((linha, rIdx) => {
+    linha.forEach((cel, cIdx) => {
+      if (cel?.tipo === 'ENTRADA') coordsEntrada.push({ col: cIdx, row: rIdx })
+      if (cel?.tipo === 'SAIDA') coordsSaida.push({ col: cIdx, row: rIdx })
+    })
+  })
+
+  const pontoEntrada = coordsEntrada.length > 0
+    ? {
+        col: coordsEntrada.reduce((a, b) => a + b.col, 0) / coordsEntrada.length,
+        row: coordsEntrada.reduce((a, b) => a + b.row, 0) / coordsEntrada.length
+      }
+    : null
+
+  const pontoSaida = coordsSaida.length > 0
+    ? {
+        col: coordsSaida.reduce((a, b) => a + b.col, 0) / coordsSaida.length,
+        row: coordsSaida.reduce((a, b) => a + b.row, 0) / coordsSaida.length
+      }
+    : null
+
   return {
     largura: matriz[0]?.length || 1,
     altura: matriz.length || 1,
-    linhas: matriz
+    linhas: matriz,
+    pontoEntrada,
+    pontoSaida
   }
 })
 
@@ -16629,6 +17564,28 @@ const estiloCaixaEscalada = computed(() => {
   }
 })
 
+const estiloIndicadorEntrada = computed(() => {
+  const pt = mapaProcessadoMotorista.value?.pontoEntrada
+  if (!pt) return null
+  const leftPx = 6 + (pt.col + 0.5) * TAMANHO_CELULA
+  const topPx = 6 + pt.row * TAMANHO_CELULA
+  return {
+    left: `${leftPx}px`,
+    top: `${topPx}px`
+  }
+})
+
+const estiloIndicadorSaida = computed(() => {
+  const pt = mapaProcessadoMotorista.value?.pontoSaida
+  if (!pt) return null
+  const leftPx = 6 + (pt.col + 0.5) * TAMANHO_CELULA
+  const topPx = 6 + pt.row * TAMANHO_CELULA
+  return {
+    left: `${leftPx}px`,
+    top: `${topPx}px`
+  }
+})
+
 function ajustarZoomERolagemParaEntrada() {
   const container = containerMapaRef.value
   const dados = mapaProcessadoMotorista.value
@@ -16639,8 +17596,8 @@ function ajustarZoomERolagemParaEntrada() {
   const larguraMapaPx = dados.largura * TAMANHO_CELULA + 12
   const alturaMapaPx = dados.altura * TAMANHO_CELULA + 12
 
-  const largDisp = Math.max(120, container.clientWidth - 48)
-  const altDisp = Math.max(120, container.clientHeight - 48)
+  const largDisp = Math.max(120, container.clientWidth - 32)
+  const altDisp = Math.max(120, container.clientHeight - 32)
 
   if (larguraMapaPx < largDisp && alturaMapaPx < altDisp) {
     const escalaIdeal = Math.min(largDisp / larguraMapaPx, altDisp / alturaMapaPx, 1.95)
@@ -16650,11 +17607,22 @@ function ajustarZoomERolagemParaEntrada() {
   }
 
   setTimeout(() => {
-    if (!containerMapaRef.value) return
-    containerMapaRef.value.scrollTop = containerMapaRef.value.scrollHeight
-    const sobraH = containerMapaRef.value.scrollWidth - containerMapaRef.value.clientWidth
-    containerMapaRef.value.scrollLeft = sobraH > 0 ? Math.floor(sobraH / 2) : 0
-  }, 60)
+    const el = containerMapaRef.value
+    if (!el) return
+    const escala = zoomEscala.value
+    const foco = dados.pontoEntrada || dados.pontoSaida
+
+    if (foco) {
+      const focoXPx = (6 + (foco.col + 0.5) * TAMANHO_CELULA) * escala
+      const focoYPx = (6 + (foco.row + 1) * TAMANHO_CELULA) * escala
+      el.scrollLeft = Math.max(0, Math.round(focoXPx - el.clientWidth / 2 + 16))
+      el.scrollTop = Math.max(0, Math.round(focoYPx - el.clientHeight + 80))
+    } else {
+      el.scrollTop = el.scrollHeight
+      const sobraH = el.scrollWidth - el.clientWidth
+      el.scrollLeft = sobraH > 0 ? Math.floor(sobraH / 2) : 0
+    }
+  }, 80)
 }
 
 function alterarZoomBotao(delta) {
@@ -16677,6 +17645,7 @@ watch(
     celulaInspecionada.value = null
     await nextTick()
     ajustarZoomERolagemParaEntrada()
+    dispararIndicadoresTemporarios()
   }
 )
 
@@ -16816,7 +17785,6 @@ const infoBadgeMotorista = computed(() => {
       </button>
     </div>
 
-    <!-- BARRA SUPERIOR DO MOTORISTA -->
     <header class="editor-topbar topbar-motorista-mapa">
       <div class="topbar-esquerda">
         <button
@@ -16836,7 +17804,6 @@ const infoBadgeMotorista = computed(() => {
           </span>
         </div>
 
-        <!-- Seletor de Andar Estilizado -->
         <div class="seletor-multi-wrapper seletor-andar-custom">
           <button
             type="button"
@@ -16870,7 +17837,6 @@ const infoBadgeMotorista = computed(() => {
           </Transition>
         </div>
 
-        <!-- Controles de Zoom -->
         <div class="controles-zoom-motorista">
           <button
             type="button"
@@ -16917,7 +17883,6 @@ const infoBadgeMotorista = computed(() => {
       </div>
     </header>
 
-    <!-- ÁREA DO MAPA -->
     <div class="editor-workspace">
       <div class="area-grid-container">
         <Transition name="fade-pop">
@@ -16951,6 +17916,29 @@ const infoBadgeMotorista = computed(() => {
               }"
             >
               <div class="matriz-motorista-sem-coordenadas">
+                <!-- Indicadores animados de Entrada e Saída (saem após poucos segundos) -->
+                <Transition name="fade-pop">
+                  <div
+                    v-if="mostrarIndicadoresAcesso && estiloIndicadorEntrada"
+                    class="indicador-acesso-animado entrada"
+                    :style="estiloIndicadorEntrada"
+                  >
+                    <span class="badge-indicador-acesso">ENTRADA AQUI</span>
+                    <IconArrowDown :size="22" stroke-width="3" class="seta-indicador-acesso" />
+                  </div>
+                </Transition>
+
+                <Transition name="fade-pop">
+                  <div
+                    v-if="mostrarIndicadoresAcesso && estiloIndicadorSaida"
+                    class="indicador-acesso-animado saida"
+                    :style="estiloIndicadorSaida"
+                  >
+                    <span class="badge-indicador-acesso">SAÍDA</span>
+                    <IconArrowDown :size="22" stroke-width="3" class="seta-indicador-acesso" />
+                  </div>
+                </Transition>
+
                 <div
                   v-for="(linha, rIdx) in mapaProcessadoMotorista.linhas"
                   :key="`m-row-${rIdx}`"

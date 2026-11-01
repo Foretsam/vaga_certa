@@ -68,14 +68,14 @@ export async function concluirTutorialAtual() {
   const idUsuario = usuarioLogado.value.id_usuario
   const atualizados = Array.from(new Set([...obterTutoriaisVistosUsuario(), rotaConcluida]))
 
-  // Salva imediatamente na sessão local para não reabrir
+  // Atualiza sessão local imediatamente
   localStorage.setItem(chaveLocalStorageUsuario(idUsuario), JSON.stringify(atualizados))
   salvarSessaoUsuario({
     ...usuarioLogado.value,
     tutoriais_vistos: atualizados
   })
 
-  // Persiste no banco de dados MySQL
+  // Sincroniza com o banco de dados MySQL
   try {
     const resp = await registrarTutorialVistoApi(idUsuario, rotaConcluida)
     if (resp?.tutoriais_vistos) {
@@ -85,6 +85,6 @@ export async function concluirTutorialAtual() {
       })
     }
   } catch (err) {
-    console.warn('Tutorial salvo localmente (sincronização com banco pendente):', err)
+    console.warn('Tutorial salvo localmente (sincronização pendente):', err)
   }
 }

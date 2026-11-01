@@ -1,151 +1,151 @@
+/**
+ * Gera um mapa indexado por coordenadas "x,y" com células vazias para inicializar um andar.
+ */
 export function criarMatrizVazia(largura, altura) {
   const celulas = {}
-  for (let y = 1; y <= altura; y++) {
-    for (let x = 1; x <= largura; x++) {
+  for (let y = 0; y < altura; y++) {
+    for (let x = 0; x < largura; x++) {
       celulas[`${x},${y}`] = {
         x,
         y,
-        setorId: null,
-        corSetor: null,
-        nomeSetor: null,
-        prefixoSetor: null,
         tipo: 'VAZIO',
         orientacao: 'NENHUMA',
-        vagaId: null,
-        identificador: '',
+        setorId: null,
+        nomeSetor: null,
+        prefixoSetor: null,
+        corSetor: null,
+        identificador: null,
         livre: true,
         inativa: false,
-        semEsp: false,
-        usosNoDia: 0,
-        horaChegada: null,
-        duracaoMinutos: 0,
-        macEsp: null
+        macEsp: null,
+        idVagaBanco: null,
+        usosNoDia: 0
       }
     }
   }
   return celulas
 }
 
-export function hidratarEstabelecimentoDoBanco(estBanco) {
-  const andaresHidratados = (estBanco.andares || []).map((andar) => {
-    const celulas = criarMatrizVazia(andar.grid_x, andar.grid_y)
+/**
+ * Converte a estrutura relacional vinda da API FastAPI para a matriz reativa usada no Editor 2D e nos Mapas.
+ */
+export function hidratarEstabelecimentoDoBanco(estCru) {
+  const andaresHidratados = (estCru.andares || []).map((andar) => {
+    const gx = Number(andar.grid_x) || 30
+    const gy = Number(andar.grid_y) || 20
+    const celulas = criarMatrizVazia(gx, gy)
+
     const mapaSetores = {}
     ;(andar.setores || []).forEach((s) => {
       mapaSetores[s.id_setor] = s
     })
 
+    // Hidrata estradas, entradas, saídas, acessos e fundos de setor
     ;(andar.elementos_mapa || []).forEach((el) => {
       const chave = `${el.coord_x},${el.coord_y}`
-      const c = celulas[chave]
-      if (!c) return
+      const cel = celulas[chave]
+      if (!cel) return
 
-      if (el.id_setor && mapaSetores[el.id_setor]) {
-        const s = mapaSetores[el.id_setor]
-        c.setorId = s.id_setor
-        c.nomeSetor = s.nome_setor
-        c.prefixoSetor = s.prefixo
-        c.corSetor = s.cor_hex
+      const setor = el.id_setor ? mapaSetores[el.id_setor] : null
+      if (setor) {
+        cel.setorId = setor.id_setor
+        cel.nomeSetor = setor.nome_setor
+        cel.prefixoSetor = setor.prefixo
+        cel.corSetor = setor.cor_hex
       }
 
       if (el.tipo !== 'FUNDO_SETOR') {
-        c.tipo = el.tipo
-        c.orientacao = el.orientacao || 'NENHUMA'
+        cel.tipo = el.tipo
+        cel.orientacao = el.orientacao || 'NENHUMA'
       }
     })
 
+    // Hidrata vagas e vincula seus respectivos equipamentos ESP32
+    const equipamentosMap = new Map()
     ;(andar.vagas || []).forEach((v) => {
       const chave = `${v.coord_x},${v.coord_y}`
-      const c = celulas[chave]
-      if (!c) return
+      const cel = celulas[chave]
+      if (!cel) return
 
-      c.tipo = 'VAGA'
-      c.vagaId = v.id_vaga
-      c.identificador = v.identificador
-      c.livre = Boolean(v.livre)
-      c.inativa = Boolean(v.inativo)
-      c.macEsp = v.mac_esp
-      c.semEsp = !v.mac_esp
-      c.setorId = v.id_setor
-      c.nomeSetor = v.nome_setor
-      c.prefixoSetor = v.prefixo
-      c.corSetor = v.cor_hex
+      cel.tipo = 'VAGA'
+      cel.idVagaBanco = v.id_vaga
+      cel.identificador = v.identificador
+      cel.livre = Boolean(v.livre)
+      cel.inativa = Boolean(v.inativo)
+      cel.macEsp = v.mac_esp
+      cel.setorId = v.id_setor
+      cel.nomeSetor = v.nome_setor
+      cel.prefixoSetor = v.prefixo
+      cel.corSetor = v.cor_hex
+
+      if (v.mac_esp) {
+        if (!equipamentosMap.has(v.mac_esp)) {
+          equipamentosMap.set(v.mac_esp, [])
+        }
+        equipamentosMap.get(v.mac_esp).push(chave)
+      }
     })
+
+    const equipamentos = Array.from(equipamentosMap.entries()).map(([mac, coords], idx) => ({
+      id: Date.now() + idx,
+      mac,
+      vagasCoords: coords
+    }))
 
     return {
       id_andar: andar.id_andar,
       nome_andar: andar.nome_andar,
-      grid_x: andar.grid_x,
-      grid_y: andar.grid_y,
+      grid_x: gx,
+      grid_y: gy,
       setores: andar.setores || [],
-      equipamentos: [],
+      equipamentos,
       celulas
     }
   })
 
   return {
-    id: estBanco.id,
-    nome: estBanco.nome,
-    cidade: estBanco.cidade || 'Sorocaba',
-    id_usuario: estBanco.id_usuario,
-    inativo: Boolean(estBanco.inativo),
+    id: estCru.id,
+    nome: estCru.nome,
+    cidade: estCru.cidade || 'Sorocaba',
+    id_usuario: estCru.id_usuario,
+    inativo: Boolean(estCru.inativo),
     andares: andaresHidratados
   }
 }
 
+/**
+ * Retorna preferencialmente o andar que contém a Entrada/Saída principal do estacionamento.
+ */
 export function obterAndarEntradaSaida(est) {
-  if (!est?.andares || est.andares.length === 0) return null
-  const andarAmbos = est.andares.find((a) => {
-    const cels = Object.values(a.celulas || {})
-    return cels.some(c => c.tipo === 'ENTRADA') && cels.some(c => c.tipo === 'SAIDA')
-  })
-  if (andarAmbos) return andarAmbos
-
-  const andarEntrada = est.andares.find((a) =>
-    Object.values(a.celulas || {}).some(c => c.tipo === 'ENTRADA' || c.tipo === 'SAIDA')
+  if (!est?.andares?.length) return null
+  const comEntrada = est.andares.find(andar =>
+    Object.values(andar.celulas || {}).some(c => c.tipo === 'ENTRADA' || c.tipo === 'SAIDA')
   )
-  return andarEntrada || est.andares[0]
+  return comEntrada || est.andares[0]
 }
 
+/**
+ * Contabiliza o total de vagas ativas, livres, ocupadas e inativas de um estabelecimento.
+ */
 export function contarVagasEstabelecimento(est) {
   let total = 0
-  let ocupadas = 0
   let livres = 0
+  let ocupadas = 0
   let inativas = 0
-  let somaDuracao = 0
-  let qtdComDuracao = 0
-  let somaUsosDia = 0
 
-  ;(est.andares || []).forEach((andar) => {
+  ;(est?.andares || []).forEach((andar) => {
     Object.values(andar.celulas || {}).forEach((c) => {
       if (c.tipo === 'VAGA') {
-        total++
-        somaUsosDia += c.usosNoDia || 0
         if (c.inativa) {
           inativas++
-        } else if (c.livre) {
-          livres++
         } else {
-          ocupadas++
-          if (c.duracaoMinutos > 0) {
-            somaDuracao += c.duracaoMinutos
-            qtdComDuracao++
-          }
+          total++
+          if (c.livre) livres++
+          else ocupadas++
         }
       }
     })
   })
 
-  const ativas = Math.max(1, total - inativas)
-  const taxaOcupacao = total > 0 ? Math.round((ocupadas / ativas) * 100) : 0
-  const tempoMedioMin = qtdComDuracao > 0 ? Math.round(somaDuracao / qtdComDuracao) : (ocupadas > 0 ? 78 : 0)
-
-  return {
-    total,
-    ocupadas,
-    livres,
-    inativas,
-    taxaOcupacao,
-    tempoMedioMin,
-    somaUsosDia
-  }
+  return { total, livres, ocupadas, inativas }
 }

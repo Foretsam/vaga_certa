@@ -1,5 +1,6 @@
+// Configuração das etapas do tutorial interativo (Spotlight) por rota
 export const TUTORIAIS_POR_ROTA = {
-  // 1. Dashboard Principal — Gerente (GerenteView.vue)
+  // 1. Dashboard Principal — Gerente
   gerente: [
     {
       seletor: null,
@@ -7,7 +8,7 @@ export const TUTORIAIS_POR_ROTA = {
       texto: 'Aqui você acompanha em tempo real os principais indicadores e o resumo operacional das suas unidades.'
     },
     {
-      seletor: '.barra-filtros-gerente, .seletor-multi-wrapper',
+      seletor: '.barra-filtros-gerente',
       titulo: 'Filtros por Unidade e Cidade',
       texto: 'Use estes seletores para filtrar os dados do painel por cidade ou escolher estacionamentos específicos para analisar.'
     },
@@ -30,7 +31,7 @@ export const TUTORIAIS_POR_ROTA = {
     }
   ],
 
-  // 2. Relatórios e Exportação — Gerente (GerenteRelatoriosView.vue)
+  // 2. Relatórios e Exportação — Gerente
   'gerente-relatorios': [
     {
       seletor: null,
@@ -61,7 +62,7 @@ export const TUTORIAIS_POR_ROTA = {
     }
   ],
 
-  // 3. Estacionamentos em Tela Cheia — Gerente (GerenteEstacionamentosView.vue)
+  // 3. Estacionamentos em Tela Cheia — Gerente
   'gerente-estacionamentos': [
     {
       seletor: null,
@@ -99,7 +100,7 @@ export const TUTORIAIS_POR_ROTA = {
     }
   ],
 
-  // 4. Lista de Estacionamentos — Admin Dev (AdminListaView.vue)
+  // 4. Lista de Estacionamentos — Admin Dev
   'admin-lista': [
     {
       seletor: null,
@@ -123,7 +124,7 @@ export const TUTORIAIS_POR_ROTA = {
     }
   ],
 
-  // 5. Informações Gerais — Admin Dev (AdminInfoGeraisView.vue)
+  // 5. Informações Gerais — Admin Dev
   'admin-info-gerais': [
     {
       seletor: '.form-card',
@@ -137,7 +138,7 @@ export const TUTORIAIS_POR_ROTA = {
     }
   ],
 
-  // 6. Editor de Mapa 2D — Admin Dev (AdminEditor2DView.vue) — Etapas 2 e 5 invertidas
+  // 6. Editor de Mapa 2D — Admin Dev
   'admin-editor-2d': [
     {
       seletor: '.editor-topbar .topbar-esquerda',
@@ -146,15 +147,15 @@ export const TUTORIAIS_POR_ROTA = {
       texto: 'No menu do topo, você pode voltar para as Informações Gerais, escolher qual Andar está desenhando no momento, alterar o Tamanho do Grid (de 5x5 até 100x100) e usar Desfazer/Refazer a qualquer instante.'
     },
     {
-      seletor: '.area-grid-principal',
-      titulo: 'Criando Estradas, Setores e Vagas',
-      texto: 'Clique e arraste o mouse sobre os quadrados do grid para criar uma seleção. Uma barra flutuante aparecerá na parte inferior permitindo adicionar/remover Estradas, definir Setores, criar Vagas ou limpar tudo com a borracha.'
-    },
-    {
       seletor: '.sidebar-direita-editor .painel-ferramentas:nth-child(2)',
       abrirSidebarMobile: true,
       titulo: 'Vinculando Equipamentos (ESP32) às Vagas',
       texto: 'Toda vaga criada fica amarela até receber um equipamento. Escolha um formato de cobertura (ex: 1x2, 2x4), clique sobre as vagas amarelas no grid e informe o código MAC do ESP32 para ativá-las.'
+    },
+    {
+      seletor: '.area-grid-principal',
+      titulo: 'Criando Estradas, Setores e Vagas',
+      texto: 'Clique e arraste o mouse sobre os quadrados do grid para criar uma seleção. Uma barra flutuante aparecerá na parte inferior permitindo adicionar/remover Estradas, definir Setores, criar Vagas ou limpar tudo com a borracha.'
     },
     {
       seletor: '.sidebar-direita-editor .painel-ferramentas:nth-child(1)',

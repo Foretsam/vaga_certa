@@ -29,11 +29,11 @@ const itensPorPagina = ref(6)
 function calcularItensPorAlturaTela() {
   const alturaTela = window.innerHeight
   const larguraTela = window.innerWidth
-  const espacoReservadoSeguranca = larguraTela <= 768 ? 285 : 310
-  const alturaPorLinha = larguraTela <= 768 ? 58 : 68
-  const disponivel = Math.max(220, alturaTela - espacoReservadoSeguranca)
+  const espacoReservadoSeguranca = larguraTela <= 768 ? 320 : larguraTela <= 1024 ? 330 : 345
+  const alturaPorLinha = larguraTela <= 768 ? 60 : 70
+  const disponivel = Math.max(200, alturaTela - espacoReservadoSeguranca)
   const calculado = Math.floor(disponivel / alturaPorLinha)
-  itensPorPagina.value = Math.max(4, Math.min(14, calculado))
+  itensPorPagina.value = Math.max(3, Math.min(11, calculado))
 }
 
 onMounted(() => {

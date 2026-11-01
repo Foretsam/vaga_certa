@@ -1,15 +1,14 @@
+-- ============================================================================
+-- VAGA CERTA - SCHEMA OFICIAL DO BANCO DE DADOS (MySQL / MariaDB)
+-- ============================================================================
+
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
 SET time_zone = "+00:00";
 
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
-
-
+-- Tabela de pavimentos/andares vinculados a um estabelecimento
 CREATE TABLE `andares` (
-  `id_andar` int(11) NOT NULL,
+  `id_andar` int(11) NOT NULL AUTO_INCREMENT,
   `id_estabelecimento` int(11) NOT NULL,
   `nome_andar` varchar(25) NOT NULL,
   `grid_x` int(11) NOT NULL DEFAULT 30,
@@ -17,48 +16,65 @@ CREATE TABLE `andares` (
   `inativo` tinyint(1) DEFAULT 0,
   `data_cadastro` datetime DEFAULT current_timestamp(),
   `data_ultima_modificacao` datetime DEFAULT current_timestamp() ON UPDATE current_timestamp(),
-  `data_inativacao` datetime DEFAULT NULL
+  `data_inativacao` datetime DEFAULT NULL,
+  PRIMARY KEY (`id_andar`),
+  KEY `id_estabelecimento` (`id_estabelecimento`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+-- Elementos estruturais da planta 2D (estradas, entradas, saídas, acessos e fundo de setor)
 CREATE TABLE `elementos_mapa` (
-  `id_elemento` int(11) NOT NULL,
+  `id_elemento` int(11) NOT NULL AUTO_INCREMENT,
   `id_andar` int(11) NOT NULL,
   `id_setor` int(11) DEFAULT NULL,
   `tipo` enum('ESTRADA','ENTRADA','SAIDA','ACESSO','FUNDO_SETOR') NOT NULL,
   `orientacao` enum('H','V','NENHUMA') NOT NULL DEFAULT 'NENHUMA',
   `coord_x` int(11) NOT NULL,
   `coord_y` int(11) NOT NULL,
-  `data_cadastro` datetime DEFAULT current_timestamp()
+  `data_cadastro` datetime DEFAULT current_timestamp(),
+  PRIMARY KEY (`id_elemento`),
+  UNIQUE KEY `uk_andar_coordenada_elemento` (`id_andar`,`coord_x`,`coord_y`),
+  KEY `fk_elementos_setor` (`id_setor`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+-- Microcontroladores ESP32 vinculados aos setores
 CREATE TABLE `equipamentos` (
-  `id_equipamento` int(11) NOT NULL,
+  `id_equipamento` int(11) NOT NULL AUTO_INCREMENT,
   `id_setor` int(11) NOT NULL,
   `codigo_mac` varchar(17) NOT NULL,
   `inativo` tinyint(1) DEFAULT 0,
   `data_cadastro` datetime DEFAULT current_timestamp(),
   `data_ultima_modificacao` datetime DEFAULT current_timestamp() ON UPDATE current_timestamp(),
-  `data_inativacao` datetime DEFAULT NULL
+  `data_inativacao` datetime DEFAULT NULL,
+  PRIMARY KEY (`id_equipamento`),
+  UNIQUE KEY `uk_setor_mac` (`id_setor`,`codigo_mac`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+-- Unidades de estacionamento cadastradas
 CREATE TABLE `estabelecimentos` (
-  `id_estabelecimento` int(11) NOT NULL,
+  `id_estabelecimento` int(11) NOT NULL AUTO_INCREMENT,
   `nome` varchar(50) NOT NULL,
+  `cidade` varchar(60) NOT NULL DEFAULT 'Sorocaba',
   `inativo` tinyint(1) DEFAULT 0,
   `data_cadastro` datetime DEFAULT current_timestamp(),
   `data_ultima_modificacao` datetime DEFAULT current_timestamp() ON UPDATE current_timestamp(),
-  `data_inativacao` datetime DEFAULT NULL
+  `data_inativacao` datetime DEFAULT NULL,
+  PRIMARY KEY (`id_estabelecimento`),
+  UNIQUE KEY `nome` (`nome`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+-- Registro histórico de entradas e saídas por vaga
 CREATE TABLE `historico_ocupacao` (
-  `id_historico` int(11) NOT NULL,
+  `id_historico` int(11) NOT NULL AUTO_INCREMENT,
   `id_vaga` int(11) NOT NULL,
   `data_entrada` datetime NOT NULL DEFAULT current_timestamp(),
-  `data_saida` datetime DEFAULT NULL
+  `data_saida` datetime DEFAULT NULL,
+  PRIMARY KEY (`id_historico`),
+  KEY `id_vaga` (`id_vaga`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+-- Setores de cada andar (com prefixo e cor de identificação)
 CREATE TABLE `setores` (
-  `id_setor` int(11) NOT NULL,
+  `id_setor` int(11) NOT NULL AUTO_INCREMENT,
   `id_andar` int(11) NOT NULL,
   `nome_setor` varchar(25) NOT NULL,
   `prefixo` varchar(3) NOT NULL DEFAULT 'A',
@@ -66,28 +82,38 @@ CREATE TABLE `setores` (
   `inativo` tinyint(1) DEFAULT 0,
   `data_cadastro` datetime DEFAULT current_timestamp(),
   `data_ultima_modificacao` datetime DEFAULT current_timestamp() ON UPDATE current_timestamp(),
-  `data_inativacao` datetime DEFAULT NULL
+  `data_inativacao` datetime DEFAULT NULL,
+  PRIMARY KEY (`id_setor`),
+  KEY `fk_setores_andares` (`id_andar`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+-- Usuários do sistema (Desenvolvedor, Gerente de Estabelecimento e Motorista)
 CREATE TABLE `usuarios` (
-  `id_usuario` int(11) NOT NULL,
+  `id_usuario` int(11) NOT NULL AUTO_INCREMENT,
   `nome` varchar(100) NOT NULL,
   `email` varchar(150) NOT NULL,
   `senha_hash` varchar(255) NOT NULL,
-  `nivel_acesso` enum('admin_dev','admin_estabelecimento') NOT NULL,
+  `nivel_acesso` enum('admin_dev','admin_estabelecimento','usuario') NOT NULL DEFAULT 'usuario',
+  `tutoriais_vistos` text DEFAULT NULL,
   `inativo` tinyint(1) DEFAULT 0,
   `data_cadastro` datetime DEFAULT current_timestamp(),
   `data_ultima_modificacao` datetime DEFAULT current_timestamp() ON UPDATE current_timestamp(),
-  `data_inativacao` datetime DEFAULT NULL
+  `data_inativacao` datetime DEFAULT NULL,
+  PRIMARY KEY (`id_usuario`),
+  UNIQUE KEY `email` (`email`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+-- Relação N:N entre usuários responsáveis e estabelecimentos
 CREATE TABLE `usuario_estabelecimento` (
   `id_usuario` int(11) NOT NULL,
-  `id_estabelecimento` int(11) NOT NULL
+  `id_estabelecimento` int(11) NOT NULL,
+  PRIMARY KEY (`id_usuario`,`id_estabelecimento`),
+  KEY `id_estabelecimento` (`id_estabelecimento`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+-- Vagas monitoradas pelos equipamentos ESP32
 CREATE TABLE `vagas` (
-  `id_vaga` int(11) NOT NULL,
+  `id_vaga` int(11) NOT NULL AUTO_INCREMENT,
   `id_equipamento` int(11) NOT NULL,
   `identificador` varchar(10) NOT NULL,
   `coord_x` int(11) NOT NULL,
@@ -96,73 +122,12 @@ CREATE TABLE `vagas` (
   `inativo` tinyint(1) DEFAULT 0,
   `data_cadastro` datetime DEFAULT current_timestamp(),
   `data_ultima_modificacao` datetime DEFAULT current_timestamp() ON UPDATE current_timestamp(),
-  `data_inativacao` datetime DEFAULT NULL
+  `data_inativacao` datetime DEFAULT NULL,
+  PRIMARY KEY (`id_vaga`),
+  KEY `id_equipamento` (`id_equipamento`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
-
-ALTER TABLE `andares`
-  ADD PRIMARY KEY (`id_andar`),
-  ADD KEY `id_estabelecimento` (`id_estabelecimento`);
-
-ALTER TABLE `elementos_mapa`
-  ADD PRIMARY KEY (`id_elemento`),
-  ADD UNIQUE KEY `uk_andar_coordenada_elemento` (`id_andar`,`coord_x`,`coord_y`),
-  ADD KEY `fk_elementos_setor` (`id_setor`);
-
-ALTER TABLE `equipamentos`
-  ADD PRIMARY KEY (`id_equipamento`),
-  ADD UNIQUE KEY `uk_setor_mac` (`id_setor`,`codigo_mac`);
-
-ALTER TABLE `estabelecimentos`
-  ADD PRIMARY KEY (`id_estabelecimento`),
-  ADD UNIQUE KEY `nome` (`nome`);
-
-ALTER TABLE `historico_ocupacao`
-  ADD PRIMARY KEY (`id_historico`),
-  ADD KEY `id_vaga` (`id_vaga`);
-
-ALTER TABLE `setores`
-  ADD PRIMARY KEY (`id_setor`),
-  ADD KEY `fk_setores_andares` (`id_andar`);
-
-ALTER TABLE `usuarios`
-  ADD PRIMARY KEY (`id_usuario`),
-  ADD UNIQUE KEY `email` (`email`);
-
-ALTER TABLE `usuario_estabelecimento`
-  ADD PRIMARY KEY (`id_usuario`,`id_estabelecimento`),
-  ADD KEY `id_estabelecimento` (`id_estabelecimento`);
-
-ALTER TABLE `vagas`
-  ADD PRIMARY KEY (`id_vaga`),
-  ADD KEY `id_equipamento` (`id_equipamento`);
-
-
-ALTER TABLE `andares`
-  MODIFY `id_andar` int(11) NOT NULL AUTO_INCREMENT;
-
-ALTER TABLE `elementos_mapa`
-  MODIFY `id_elemento` int(11) NOT NULL AUTO_INCREMENT;
-
-ALTER TABLE `equipamentos`
-  MODIFY `id_equipamento` int(11) NOT NULL AUTO_INCREMENT;
-
-ALTER TABLE `estabelecimentos`
-  MODIFY `id_estabelecimento` int(11) NOT NULL AUTO_INCREMENT;
-
-ALTER TABLE `historico_ocupacao`
-  MODIFY `id_historico` int(11) NOT NULL AUTO_INCREMENT;
-
-ALTER TABLE `setores`
-  MODIFY `id_setor` int(11) NOT NULL AUTO_INCREMENT;
-
-ALTER TABLE `usuarios`
-  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT;
-
-ALTER TABLE `vagas`
-  MODIFY `id_vaga` int(11) NOT NULL AUTO_INCREMENT;
-
-
+-- Chaves Estrangeiras com deleção em cascata
 ALTER TABLE `andares`
   ADD CONSTRAINT `andares_ibfk_1` FOREIGN KEY (`id_estabelecimento`) REFERENCES `estabelecimentos` (`id_estabelecimento`) ON DELETE CASCADE;
 
@@ -185,8 +150,5 @@ ALTER TABLE `usuario_estabelecimento`
 
 ALTER TABLE `vagas`
   ADD CONSTRAINT `vagas_ibfk_1` FOREIGN KEY (`id_equipamento`) REFERENCES `equipamentos` (`id_equipamento`) ON DELETE CASCADE;
-COMMIT;
 
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+COMMIT;

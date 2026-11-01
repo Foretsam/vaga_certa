@@ -93,8 +93,13 @@ let arrastandoMapaMouse = null
 let autoScrollFrame = null
 let ponteiroAtualClient = { x: 0, y: 0 }
 
+// Controle de dois toques seguidos (double-tap) para sair do modo mão no iPad/iPhone
+let ultimoToqueMaoTimestamp = 0
+let ultimoToqueMaoPos = { x: 0, y: 0 }
+
 function alternarModoMoverMapa() {
   modoMoverMapa.value = !modoMoverMapa.value
+  ultimoToqueMaoTimestamp = 0
   if (modoMoverMapa.value) {
     ferramentaCarimbo.value = null
     arrastando.value = false
@@ -208,6 +213,23 @@ function aoIniciarToqueGrid(e) {
     const t = e.touches[0]
 
     if (modoMoverMapa.value) {
+      const agora = Date.now()
+      const distUltimoToque = Math.hypot(
+        t.clientX - ultimoToqueMaoPos.x,
+        t.clientY - ultimoToqueMaoPos.y
+      )
+
+      // Se deu dois toques em sequência (< 350ms e próximos), sai do modo mover tela
+      if (agora - ultimoToqueMaoTimestamp < 350 && distUltimoToque < 45) {
+        modoMoverMapa.value = false
+        ultimoToqueMaoTimestamp = 0
+        toqueUnico = null
+        return
+      }
+
+      ultimoToqueMaoTimestamp = agora
+      ultimoToqueMaoPos = { x: t.clientX, y: t.clientY }
+
       toqueUnico = {
         modo: 'PAN',
         startX: t.clientX,
@@ -258,6 +280,10 @@ function aoMoverToqueGrid(e) {
     if (toqueUnico.modo === 'PAN') {
       const dx = t.clientX - toqueUnico.startX
       const dy = t.clientY - toqueUnico.startY
+      if (Math.hypot(dx, dy) > 10) {
+        // Se arrastou a tela, não conta como primeiro toque de um duplo toque
+        ultimoToqueMaoTimestamp = 0
+      }
       panX.value = toqueUnico.panXInicial + dx
       panY.value = toqueUnico.panYInicial + dy
       return
@@ -1220,7 +1246,7 @@ onUnmounted(() => {
 
         <button class="btn-secundario btn-duas-linhas item-icone-texto" @click="abrirModalTamanhoGrid">
           <IconLayoutGrid :size="18" />
-          <div>Tamanho do Grid<br /><span>({{ andarEditorAtual.grid_x }}x{{ andarEditorAtual.grid_y }})</span></div>
+          <div>Grid<br /><span>({{ andarEditorAtual.grid_x }}x{{ andarEditorAtual.grid_y }})</span></div>
         </button>
 
         <button
@@ -1312,9 +1338,13 @@ onUnmounted(() => {
 
         <Transition name="fade-pop">
           <div v-if="modoMoverMapa" class="overlay-flutuante banner-carimbo-overlay banner-mao-ativa">
-            <span class="item-icone-texto">
+            <span class="item-icone-texto texto-mao-desktop">
               <IconHandMove :size="18" />
-              <strong>Modo mover tela ativo</strong> — Pressione <strong>ESC</strong> ou toque na mão para sair
+              <strong>Modo mover tela ativo</strong> — Pressione <strong>ESC</strong> ou clique na mão para sair
+            </span>
+            <span class="item-icone-texto texto-mao-mobile">
+              <IconHandMove :size="17" />
+              <span><strong>Modo mover ativo</strong> — Dê <strong>2 toques seguidos</strong> para sair</span>
             </span>
             <button class="btn-cancelar-carimbo" @click="modoMoverMapa = false">
               <IconSquareRoundedX :size="16" />
@@ -1397,6 +1427,7 @@ onUnmounted(() => {
           ref="gridPrincipalRef"
           class="area-grid-principal"
           @mouseleave="hoverCoord = null"
+          @dblclick="modoMoverMapa = false"
           @touchstart.passive="aoIniciarToqueGrid"
           @touchmove.prevent="aoMoverToqueGrid"
           @touchend="aoFinalizarToqueGrid"

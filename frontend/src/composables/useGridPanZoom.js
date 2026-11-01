@@ -1,5 +1,8 @@
 import { ref } from 'vue'
 
+/**
+ * Composable reutilizável para controle de Pan (arrasto) e Zoom (pinça/escala) nos mapas 2D.
+ */
 export function useGridPanZoom() {
   const panX = ref(0)
   const panY = ref(0)
