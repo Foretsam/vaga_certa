@@ -13,10 +13,11 @@ EXTENSOES_INVALIDAS = {
     ".png",
     ".svg",
     ".env",
+    ".git",
 }
 
 # Estas pastas (e tudo dentro delas) serão IGNORADAS
-PASTAS_INVALIDAS = {".vscode", "node_modules", "public", "__pycache__"}
+PASTAS_INVALIDAS = {".vscode", "node_modules", "public", "__pycache__", ".git"}
 # ==========================================================
 
 
@@ -133,7 +134,7 @@ def mapear_e_consolidar(caminho_base, arquivo_saida):
             file_out.write(
                 f"// ==================================================================\n"
             )
-            file_out.write(f"// 🚀 INÍCIO DO ARQUIVO: {caminho_relativo}\n")
+            file_out.write(f"// INÍCIO DO ARQUIVO: {caminho_relativo}\n")
             file_out.write(
                 f"// ==================================================================\n\n"
             )
@@ -155,7 +156,7 @@ def mapear_e_consolidar(caminho_base, arquivo_saida):
             except Exception as e:
                 file_out.write(f"// [Erro ao tentar ler o arquivo: {e}]\n")
 
-            file_out.write(f"\n\n// 🏁 FIM DO ARQUIVO: {caminho_relativo}\n")
+            file_out.write(f"\n\n// FIM DO ARQUIVO: {caminho_relativo}\n")
             file_out.write(
                 f"// ------------------------------------------------------------------\n\n\n"
             )

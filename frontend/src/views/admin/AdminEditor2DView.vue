@@ -64,6 +64,7 @@ let autoScrollFrame = null
 let ponteiroAtualClient = { x: 0, y: 0 }
 let ultimoToqueMaoTimestamp = 0
 let ultimoToqueMaoPos = { x: 0, y: 0 }
+let bloqueioSelecaoAte = 0
 
 function resetarCameraGrid() {
   panX.value = 0
@@ -77,8 +78,22 @@ function alternarModoMoverMapa() {
   if (modoMoverMapa.value) {
     ferramentaCarimbo.value = null
     arrastando.value = false
+    selecionados.value.clear()
+    mostrarMenuFlutuante.value = false
     pararLoopAutoScroll()
   }
+}
+
+// Sai do modo mão com duplo toque/clique sem selecionar o quadrado abaixo
+function sairModoMoverComDuploClique() {
+  if (!modoMoverMapa.value) return
+  modoMoverMapa.value = false
+  bloqueioSelecaoAte = Date.now() + 400
+  ultimoToqueMaoTimestamp = 0
+  toqueUnico = null
+  arrastando.value = false
+  selecionados.value.clear()
+  mostrarMenuFlutuante.value = false
 }
 
 function distanciaEntreToques(t1, t2) {
@@ -116,7 +131,6 @@ function atualizarRetanguloSelecao(x, y) {
   selecionados.value = novaSelecao
 }
 
-// Faz rolagem automática contínua caso o ponteiro se aproxime das bordas durante a seleção
 function iniciarLoopAutoScroll() {
   if (autoScrollFrame) return
   const step = () => {
@@ -166,6 +180,8 @@ function pararLoopAutoScroll() {
 }
 
 function aoIniciarToqueGrid(e) {
+  if (Date.now() < bloqueioSelecaoAte) return
+
   if (e.touches.length === 2) {
     arrastando.value = false
     pararLoopAutoScroll()
@@ -194,11 +210,9 @@ function aoIniciarToqueGrid(e) {
         t.clientY - ultimoToqueMaoPos.y
       )
 
-      // Dois toques em sequência desativam o modo de mover tela em tablets e celulares
-      if (agora - ultimoToqueMaoTimestamp < 350 && distUltimoToque < 45) {
-        modoMoverMapa.value = false
-        ultimoToqueMaoTimestamp = 0
-        toqueUnico = null
+      // Dois toques em sequência desativam o modo de mover tela sem selecionar células
+      if (agora - ultimoToqueMaoTimestamp < 360 && distUltimoToque < 48) {
+        sairModoMoverComDuploClique()
         return
       }
 
@@ -288,7 +302,7 @@ function aoFinalizarToqueGrid(e) {
     arrastando.value = false
 
     if (toqueUnico) {
-      if (toqueUnico.modo === 'SELECT') {
+      if (toqueUnico.modo === 'SELECT' && Date.now() >= bloqueioSelecaoAte) {
         if (!toqueUnico.moveu && toqueUnico.coordInicial && ferramentaCarimbo.value) {
           aplicarCarimboNoGrid(toqueUnico.coordInicial.x, toqueUnico.coordInicial.y)
         }
@@ -481,7 +495,21 @@ function refazer() {
 }
 
 function iniciarSelecaoCelula(x, y, event) {
+  if (Date.now() < bloqueioSelecaoAte) return
+
   if (modoMoverMapa.value) {
+    const agora = Date.now()
+    const dist = Math.hypot(
+      event.clientX - ultimoToqueMaoPos.x,
+      event.clientY - ultimoToqueMaoPos.y
+    )
+    if (agora - ultimoToqueMaoTimestamp < 360 && dist < 48) {
+      sairModoMoverComDuploClique()
+      return
+    }
+    ultimoToqueMaoTimestamp = agora
+    ultimoToqueMaoPos = { x: event.clientX, y: event.clientY }
+
     arrastandoMapaMouse = {
       startX: event.clientX,
       startY: event.clientY,
@@ -520,8 +548,13 @@ function iniciarSelecaoCelula(x, y, event) {
 function moverMouseCelula(x, y, event) {
   hoverCoord.value = { x, y }
   if (arrastandoMapaMouse && event) {
-    panX.value = arrastandoMapaMouse.panXInicial + (event.clientX - arrastandoMapaMouse.startX)
-    panY.value = arrastandoMapaMouse.panYInicial + (event.clientY - arrastandoMapaMouse.startY)
+    const dx = event.clientX - arrastandoMapaMouse.startX
+    const dy = event.clientY - arrastandoMapaMouse.startY
+    if (Math.hypot(dx, dy) > 8) {
+      ultimoToqueMaoTimestamp = 0
+    }
+    panX.value = arrastandoMapaMouse.panXInicial + dx
+    panY.value = arrastandoMapaMouse.panYInicial + dy
     return
   }
   if (event) {
@@ -536,7 +569,7 @@ function finalizarSelecaoMouse() {
   pararLoopAutoScroll()
   if (arrastando.value) {
     arrastando.value = false
-    if (selecionados.value.size > 0) {
+    if (selecionados.value.size > 0 && Date.now() >= bloqueioSelecaoAte) {
       mostrarMenuFlutuante.value = true
     }
   }
@@ -1142,25 +1175,27 @@ function confirmarSucessoEVoltarLista() {
 
 <template>
   <div v-if="andarEditorAtual" class="editor-layout">
-    <!-- Botões Flutuantes Mobile/Tablet (Alertas e Modo Mão) -->
-    <button
-      class="hud-btn-flutuante hud-esquerda-alertas"
-      :class="{ 'caution-ok': podeSalvarEstacionamento, 'caution-pendente': !podeSalvarEstacionamento }"
-      title="Avisos de validação"
-      @click="alternarPainelAvisos"
-    >
-      <IconAlertSquareRounded :size="20" />
-      <span class="hud-mini-badge">{{ listaAvisosValidacao.length }}</span>
-    </button>
+    <!-- Grupo Esquerdo de Botões Flutuantes Mobile/Tablet (Alertas + Mão sem sobreposição) -->
+    <div class="hud-coluna-esquerda-mobile">
+      <button
+        class="hud-btn-flutuante hud-esquerda-alertas"
+        :class="{ 'caution-ok': podeSalvarEstacionamento, 'caution-pendente': !podeSalvarEstacionamento }"
+        title="Avisos de validação"
+        @click="alternarPainelAvisos"
+      >
+        <IconAlertSquareRounded :size="20" />
+        <span class="hud-mini-badge">{{ listaAvisosValidacao.length }}</span>
+      </button>
 
-    <button
-      class="hud-btn-flutuante hud-esquerda-mao"
-      :class="{ 'hud-ativo': modoMoverMapa }"
-      title="Mover Mapa (Arrastar Tela)"
-      @click="alternarModoMoverMapa"
-    >
-      <IconHandMove :size="20" />
-    </button>
+      <button
+        class="hud-btn-flutuante hud-esquerda-mao"
+        :class="{ 'hud-ativo': modoMoverMapa }"
+        title="Mover Mapa (Arrastar Tela)"
+        @click="alternarModoMoverMapa"
+      >
+        <IconHandMove :size="20" />
+      </button>
+    </div>
 
     <div class="hud-coluna-direita-mobile">
       <button
@@ -1200,9 +1235,10 @@ function confirmarSucessoEVoltarLista() {
           @click="router.push({ name: 'admin-info-gerais' })"
         >
           <IconSquareRoundedArrowLeft :size="19" />
+          <span class="texto-voltar-menu-engrenagem">Informações Gerais</span>
         </button>
 
-        <div class="seletor-multi-wrapper">
+        <div class="seletor-multi-wrapper wrapper-andar-editor">
           <button
             type="button"
             class="btn-seletor-multi item-icone-texto"
@@ -1344,7 +1380,7 @@ function confirmarSucessoEVoltarLista() {
               <IconHandMove :size="17" />
               <span><strong>Modo mover ativo</strong> — Dê <strong>2 toques seguidos</strong> para sair</span>
             </span>
-            <button class="btn-cancelar-carimbo" @click="modoMoverMapa = false">
+            <button class="btn-cancelar-carimbo" @click="sairModoMoverComDuploClique">
               <IconSquareRoundedX :size="16" />
             </button>
           </div>
@@ -1425,7 +1461,7 @@ function confirmarSucessoEVoltarLista() {
           ref="gridPrincipalRef"
           class="area-grid-principal"
           @mouseleave="hoverCoord = null"
-          @dblclick="modoMoverMapa = false"
+          @dblclick.stop.prevent="sairModoMoverComDuploClique"
           @touchstart.passive="aoIniciarToqueGrid"
           @touchmove.prevent="aoMoverToqueGrid"
           @touchend="aoFinalizarToqueGrid"
@@ -1437,86 +1473,89 @@ function confirmarSucessoEVoltarLista() {
               transformOrigin: '0 0'
             }"
           >
-            <div class="matriz-com-coordenadas">
-              <div
-                class="linha-coordenadas-x"
-                :style="{ gridTemplateColumns: `36px repeat(${andarEditorAtual.grid_x}, 36px)` }"
-              >
-                <div class="canto-xy">Y\X</div>
-                <div v-for="x in andarEditorAtual.grid_x" :key="`cx-${x}`" class="rotulo-coord">
-                  {{ x - 1 }}
+            <!-- Transição sutil na troca de andares -->
+            <Transition name="fade-andar" mode="out-in">
+              <div :key="andarEditorAtual.id_andar" class="matriz-com-coordenadas">
+                <div
+                  class="linha-coordenadas-x"
+                  :style="{ gridTemplateColumns: `36px repeat(${andarEditorAtual.grid_x}, 36px)` }"
+                >
+                  <div class="canto-xy">Y\X</div>
+                  <div v-for="x in andarEditorAtual.grid_x" :key="`cx-${x}`" class="rotulo-coord">
+                    {{ x - 1 }}
+                  </div>
                 </div>
-              </div>
-
-              <div
-                v-for="y in andarEditorAtual.grid_y"
-                :key="`row-${y}`"
-                class="linha-grid-y"
-                :style="{ gridTemplateColumns: `36px repeat(${andarEditorAtual.grid_x}, 36px)` }"
-              >
-                <div class="rotulo-coord">{{ y - 1 }}</div>
 
                 <div
-                  v-for="x in andarEditorAtual.grid_x"
-                  :key="`cell-${x - 1}-${y - 1}`"
-                  :data-coord="`${x - 1},${y - 1}`"
-                  class="celula-editor-fundo"
-                  :style="{
-                    backgroundColor:
-                      andarEditorAtual.celulas[`${x - 1},${y - 1}`]?.corSetor || 'transparent'
-                  }"
-                  @mousedown.prevent="iniciarSelecaoCelula(x - 1, y - 1, $event)"
-                  @mouseenter="moverMouseCelula(x - 1, y - 1, $event)"
+                  v-for="y in andarEditorAtual.grid_y"
+                  :key="`row-${y}`"
+                  class="linha-grid-y"
+                  :style="{ gridTemplateColumns: `36px repeat(${andarEditorAtual.grid_x}, 36px)` }"
                 >
+                  <div class="rotulo-coord">{{ y - 1 }}</div>
+
                   <div
-                    class="quadrado-editor"
-                    :class="[
-                      andarEditorAtual.celulas[`${x - 1},${y - 1}`]?.tipo === 'VAZIO' ? 'qe-vazio' : '',
-                      andarEditorAtual.celulas[`${x - 1},${y - 1}`]?.tipo === 'ESTRADA' ? 'qe-estrada' : '',
-                      andarEditorAtual.celulas[`${x - 1},${y - 1}`]?.tipo === 'VAGA' &&
-                      !andarEditorAtual.celulas[`${x - 1},${y - 1}`]?.macEsp
-                        ? 'qe-vaga-amarela'
-                        : '',
-                      andarEditorAtual.celulas[`${x - 1},${y - 1}`]?.tipo === 'ENTRADA' ? 'qe-entrada' : '',
-                      andarEditorAtual.celulas[`${x - 1},${y - 1}`]?.tipo === 'SAIDA' ? 'qe-saida' : '',
-                      andarEditorAtual.celulas[`${x - 1},${y - 1}`]?.tipo === 'ACESSO' ? 'qe-acesso' : '',
-                      selecionados.has(`${x - 1},${y - 1}`) ? 'qe-selecionado-roxo' : '',
-                      coordsSombraCarimbo.has(`${x - 1},${y - 1}`) ? 'qe-sombra-verde' : ''
-                    ]"
-                    :style="
-                      andarEditorAtual.celulas[`${x - 1},${y - 1}`]?.tipo === 'VAGA' &&
-                      andarEditorAtual.celulas[`${x - 1},${y - 1}`]?.macEsp &&
-                      !selecionados.has(`${x - 1},${y - 1}`)
-                        ? {
-                            backgroundColor: escurecerCorHex(
-                              andarEditorAtual.celulas[`${x - 1},${y - 1}`]?.corSetor,
-                              0.55
-                            ),
-                            borderColor: '#0f172a',
-                            color: '#ffffff'
-                          }
-                        : {}
-                    "
+                    v-for="x in andarEditorAtual.grid_x"
+                    :key="`cell-${x - 1}-${y - 1}`"
+                    :data-coord="`${x - 1},${y - 1}`"
+                    class="celula-editor-fundo"
+                    :style="{
+                      backgroundColor:
+                        andarEditorAtual.celulas[`${x - 1},${y - 1}`]?.corSetor || 'transparent'
+                    }"
+                    @mousedown.prevent="iniciarSelecaoCelula(x - 1, y - 1, $event)"
+                    @mouseenter="moverMouseCelula(x - 1, y - 1, $event)"
                   >
-                    <span v-if="andarEditorAtual.celulas[`${x - 1},${y - 1}`]?.tipo === 'VAGA'">
-                      {{ andarEditorAtual.celulas[`${x - 1},${y - 1}`]?.identificador }}
-                    </span>
-                    <IconDoorEnter
-                      v-else-if="andarEditorAtual.celulas[`${x - 1},${y - 1}`]?.tipo === 'ENTRADA'"
-                      :size="17"
-                    />
-                    <IconDoorExit
-                      v-else-if="andarEditorAtual.celulas[`${x - 1},${y - 1}`]?.tipo === 'SAIDA'"
-                      :size="17"
-                    />
-                    <IconArrowBarRight
-                      v-else-if="andarEditorAtual.celulas[`${x - 1},${y - 1}`]?.tipo === 'ACESSO'"
-                      :size="17"
-                    />
+                    <div
+                      class="quadrado-editor"
+                      :class="[
+                        andarEditorAtual.celulas[`${x - 1},${y - 1}`]?.tipo === 'VAZIO' ? 'qe-vazio' : '',
+                        andarEditorAtual.celulas[`${x - 1},${y - 1}`]?.tipo === 'ESTRADA' ? 'qe-estrada' : '',
+                        andarEditorAtual.celulas[`${x - 1},${y - 1}`]?.tipo === 'VAGA' &&
+                        !andarEditorAtual.celulas[`${x - 1},${y - 1}`]?.macEsp
+                          ? 'qe-vaga-amarela'
+                          : '',
+                        andarEditorAtual.celulas[`${x - 1},${y - 1}`]?.tipo === 'ENTRADA' ? 'qe-entrada' : '',
+                        andarEditorAtual.celulas[`${x - 1},${y - 1}`]?.tipo === 'SAIDA' ? 'qe-saida' : '',
+                        andarEditorAtual.celulas[`${x - 1},${y - 1}`]?.tipo === 'ACESSO' ? 'qe-acesso' : '',
+                        selecionados.has(`${x - 1},${y - 1}`) ? 'qe-selecionado-roxo' : '',
+                        coordsSombraCarimbo.has(`${x - 1},${y - 1}`) ? 'qe-sombra-verde' : ''
+                      ]"
+                      :style="
+                        andarEditorAtual.celulas[`${x - 1},${y - 1}`]?.tipo === 'VAGA' &&
+                        andarEditorAtual.celulas[`${x - 1},${y - 1}`]?.macEsp &&
+                        !selecionados.has(`${x - 1},${y - 1}`)
+                          ? {
+                              backgroundColor: escurecerCorHex(
+                                andarEditorAtual.celulas[`${x - 1},${y - 1}`]?.corSetor,
+                                0.55
+                              ),
+                              borderColor: '#0f172a',
+                              color: '#ffffff'
+                            }
+                          : {}
+                      "
+                    >
+                      <span v-if="andarEditorAtual.celulas[`${x - 1},${y - 1}`]?.tipo === 'VAGA'">
+                        {{ andarEditorAtual.celulas[`${x - 1},${y - 1}`]?.identificador }}
+                      </span>
+                      <IconDoorEnter
+                        v-else-if="andarEditorAtual.celulas[`${x - 1},${y - 1}`]?.tipo === 'ENTRADA'"
+                        :size="17"
+                      />
+                      <IconDoorExit
+                        v-else-if="andarEditorAtual.celulas[`${x - 1},${y - 1}`]?.tipo === 'SAIDA'"
+                        :size="17"
+                      />
+                      <IconArrowBarRight
+                        v-else-if="andarEditorAtual.celulas[`${x - 1},${y - 1}`]?.tipo === 'ACESSO'"
+                        :size="17"
+                      />
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
+            </Transition>
           </div>
         </div>
       </div>
@@ -1650,7 +1689,7 @@ function confirmarSucessoEVoltarLista() {
               <input v-model.number="tempGridY" type="number" min="5" max="100" class="input-numero-compacto" />
             </div>
           </div>
-          <div class="modal-acoes">
+          <div class="modal-acoes modal-acoes-centralizadas">
             <button class="btn-secundario item-icone-texto" @click="modalTamanhoAberto = false">
               <IconSquareRoundedX :size="17" />
               <span>Cancelar</span>
@@ -1708,7 +1747,7 @@ function confirmarSucessoEVoltarLista() {
               </button>
             </div>
           </div>
-          <div class="modal-acoes">
+          <div class="modal-acoes modal-acoes-centralizadas">
             <button class="btn-secundario item-icone-texto" @click="modalSetorAberto = false">
               <IconSquareRoundedX :size="17" />
               <span>Cancelar</span>
@@ -1848,7 +1887,7 @@ function confirmarSucessoEVoltarLista() {
       </div>
     </Transition>
 
-    <!-- Modal: Tamanho da Entrada / Saída / Acesso -->
+    <!-- Modal: Tamanho da Entrada / Saída / Acesso (Botões Cancelar/Posicionar Centralizados) -->
     <Transition name="fade-backdrop">
       <div v-if="modalAcessoAberto" class="modal-backdrop" @click.self="modalAcessoAberto = false">
         <div class="modal-box modal-compacto">
@@ -1870,7 +1909,7 @@ function confirmarSucessoEVoltarLista() {
               />
             </div>
           </div>
-          <div class="modal-acoes">
+          <div class="modal-acoes modal-acoes-centralizadas">
             <button class="btn-secundario item-icone-texto" @click="modalAcessoAberto = false">
               <IconSquareRoundedX :size="17" />
               <span>Cancelar</span>
@@ -1904,7 +1943,7 @@ function confirmarSucessoEVoltarLista() {
               placeholder="Ex: AA:BB:CC:DD:EE:01"
             />
           </div>
-          <div class="modal-acoes">
+          <div class="modal-acoes modal-acoes-centralizadas">
             <button class="btn-secundario item-icone-texto" @click="modalMacAberto = false">
               <IconSquareRoundedX :size="17" />
               <span>Cancelar</span>

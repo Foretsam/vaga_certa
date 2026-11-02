@@ -91,17 +91,18 @@ function avancarParaEditorP2() {
 
 <template>
   <div class="admin-container">
-    <header class="topbar-titulo-central com-botao-direita">
+    <button
+      class="btn-secundario btn-voltar-fixo-topo item-icone-texto"
+      @click="router.push({ name: 'admin-lista' })"
+    >
+      <IconSquareRoundedArrowLeft :size="18" />
+      <span>Voltar</span>
+    </button>
+
+    <header class="topbar-titulo-central topbar-abaixo-tablet-mobile">
       <div class="bloco-titulo-centro">
         <h1>Informações Gerais</h1>
       </div>
-      <button
-        class="btn-secundario btn-voltar-topo item-icone-texto"
-        @click="router.push({ name: 'admin-lista' })"
-      >
-        <IconSquareRoundedArrowLeft :size="18" />
-        <span>Voltar</span>
-      </button>
     </header>
 
     <div class="form-card">

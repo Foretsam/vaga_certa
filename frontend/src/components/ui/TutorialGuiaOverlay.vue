@@ -26,7 +26,14 @@ const alturaTela = ref(window.innerHeight)
 const rectDestaque = ref(null)
 
 const mostrarBotaoInfoTopo = computed(() => Boolean(route.name && TUTORIAIS_POR_ROTA[route.name]))
-const ehTabletOuMobile = computed(() => larguraTela.value <= 1024)
+
+// O Editor 2D e a Visão de Estacionamentos entram no modo Tablet a partir de 1124px
+const ehTabletOuMobile = computed(() => {
+  if (route.name === 'admin-editor-2d' || route.name === 'gerente-estacionamentos') {
+    return larguraTela.value <= 1124
+  }
+  return larguraTela.value <= 1024
+})
 
 const textoExibidoEtapa = computed(() => {
   if (!etapaTutorialAtual.value) return ''

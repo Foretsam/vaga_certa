@@ -546,8 +546,8 @@ function exportarRelatorioCompletoBi() {
 <template>
   <main class="gerente-dashboard-container">
     <header class="gerente-header-topo">
-      <div class="gerente-boas-vindas">
-        <div>
+      <div class="gerente-boas-vindas gerente-boas-vindas-relatorios">
+        <div class="bloco-texto-boas-vindas">
           <h1>Relatórios Detalhados e Exportação BI</h1>
           <p class="subtitulo ocultar-subtitulo-mobile">
             Análise de fluxo horário, permanência, rotatividade de vagas e comparativo entre unidades
@@ -556,12 +556,12 @@ function exportarRelatorioCompletoBi() {
 
         <div class="gerente-atalhos-topo">
           <button
-            class="btn-secundario item-icone-texto"
+            class="btn-secundario btn-simulacao-topo item-icone-texto"
             :class="{ 'btn-simulacao-ativa': simulacao1Ativa }"
             @click="alternarSimulacao1Frontend"
           >
             <IconPlayerPlay :size="18" />
-            <span>{{ simulacao1Ativa ? 'Simulação 1: ON' : 'Simulação 1' }}</span>
+            <span class="texto-btn-simulacao">{{ simulacao1Ativa ? 'Simulação 1: ON' : 'Simulação 1' }}</span>
           </button>
 
           <button
@@ -1143,7 +1143,7 @@ function exportarRelatorioCompletoBi() {
             </div>
           </div>
 
-          <div class="modal-acoes">
+          <div class="modal-acoes modal-acoes-centralizadas">
             <button class="btn-secundario item-icone-texto" @click="modalExportAberto = false">
               <IconSquareRoundedX :size="17" />
               <span>Cancelar</span>

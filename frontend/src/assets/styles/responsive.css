@@ -1,70 +1,56 @@
 /* ==========================================================================
-   RESPONSIVIDADE UNIFICADA (TABLET <= 1024px, MOBILE <= 768px E IMPRESSÃO)
+   RESPONSIVIDADE UNIFICADA POR PONTOS DE CORTE E IMPRESSÃO DE QR CODE
    ========================================================================== */
 
-/* 1. TABLETS E TELAS MÉDIAS (iPad 768x1024 e similares) */
-@media (max-width: 1024px) {
-  .ocultar-subtitulo-tablet-mobile {
-    display: none !important;
+/* --------------------------------------------------------------------------
+   1. GERENTE RELATÓRIOS (<= 1207px):
+      Evita que o botão Dashboard desapareça na direita e garante que os cards
+      ocupem 100% até ao canto direito da tela.
+   -------------------------------------------------------------------------- */
+@media (max-width: 1207px) {
+  .gerente-boas-vindas-relatorios {
+    padding-left: 0 !important;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
   }
 
-  /* Mantém os títulos de página centralizados entre os botões fixos */
-  .topbar-titulo-central {
-    flex-direction: row !important;
-    justify-content: center !important;
-    align-items: center !important;
-    text-align: center !important;
-    padding-left: 224px !important;
-    padding-right: 130px !important;
+  .gerente-boas-vindas-relatorios .gerente-atalhos-topo {
+    order: -1;
+    padding-left: 224px;
+    justify-content: flex-end;
     min-height: 46px;
   }
 
-  .topbar-titulo-central .bloco-titulo-centro h1 {
-    font-size: 20px;
-    line-height: 1.2;
-  }
-
-  .gerente-boas-vindas {
-    padding-left: 220px;
-    flex-wrap: nowrap;
-  }
-
-  .gerente-boas-vindas h1 {
-    font-size: 20px;
-  }
-
-  .gerente-atalhos-topo .btn-secundario,
-  .gerente-atalhos-topo .btn-primario {
-    padding: 8px 11px;
-    font-size: 13px;
-  }
-
-  /* Grade 2x2 de KPIs no Tablet e botão seletor de estacionamentos */
-  .grade-kpis-gerente {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  .card-kpi-gerente.kpi-apenas-tablet {
-    display: flex;
-  }
-
-  .secao-estacionamentos-dupla-pc {
-    display: none;
-  }
-
-  .secao-seletor-mobile-est {
-    display: block;
+  .gerente-boas-vindas-relatorios .bloco-texto-boas-vindas {
+    width: 100%;
   }
 
   .grade-quatro-kpis-relatorio {
     grid-template-columns: repeat(2, 1fr);
+    width: 100%;
   }
 
   .grade-dupla-relatorios {
     grid-template-columns: 1fr;
+    width: 100%;
   }
 
-  /* Editor 2D e Visão em Tela Cheia com HUD Flutuante no Tablet/Mobile */
+  .card-relatorio-bloco {
+    width: 100%;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   2. EDITOR 2D E VISÃO TELA CHEIA DO GERENTE (<= 1124px):
+      - Entra em modo Tablet a partir de 1124px para evitar 2 linhas no topo;
+      - Agrupa Alertas + Mão com espaçamento limpo sem sobreposição;
+      - Reduz o tamanho do popup da engrenagem e dos seus botões no Tablet,
+        centralizando também o botão de andares;
+      - Posiciona o aviso de 2 toques abaixo dos botões superiores;
+      - Mantém o popup de alertas ajustado à largura do texto até 473px.
+   -------------------------------------------------------------------------- */
+@media (max-width: 1124px) {
   .editor-layout {
     padding: 0;
     gap: 0;
@@ -73,56 +59,18 @@
   .area-grid-principal {
     border-radius: 0;
     border: none;
-    padding: 64px 10px 70px 10px;
+    padding: 66px 10px 70px 10px;
   }
 
-  .hud-btn-flutuante {
+  .hud-coluna-esquerda-mobile {
     display: flex;
-    justify-content: center;
+    flex-direction: row;
     align-items: center;
-    gap: 4px;
-    min-width: 46px;
-    height: 46px;
-    padding: 0 11px;
-    border-radius: 11px;
-    background: var(--bg-card);
-    color: var(--texto-principal);
-    border: 1px solid var(--borda-botao-sec);
-    font-size: 18px;
-    font-weight: bold;
-    cursor: pointer;
-    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.28);
-    z-index: 1000;
-  }
-
-  .hud-btn-flutuante.hud-ativo {
-    border-color: var(--destaque-azul);
-    background: var(--destaque-azul);
-    color: #fff;
-  }
-
-  .hud-esquerda-alertas {
+    gap: 8px;
     position: fixed;
     top: 10px;
     left: 226px;
-  }
-
-  .hud-esquerda-mao {
-    position: fixed;
-    top: 10px;
-    left: 294px;
-  }
-
-  .hud-mini-badge {
-    font-size: 12px;
-    background: #dc2626;
-    color: #fff;
-    padding: 1px 6px;
-    border-radius: 999px;
-  }
-
-  .caution-ok .hud-mini-badge {
-    background: #16a34a;
+    z-index: 1000;
   }
 
   .hud-coluna-direita-mobile {
@@ -134,6 +82,48 @@
     top: 10px;
     right: 10px;
     z-index: 1000;
+  }
+
+  .hud-btn-flutuante {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    min-width: 46px;
+    height: 46px;
+    padding: 0 11px;
+    border-radius: 11px;
+    background: var(--bg-card);
+    color: var(--texto-principal);
+    border: 1px solid var(--borda-botao-sec);
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.28);
+  }
+
+  .hud-btn-flutuante.hud-ativo {
+    border-color: var(--destaque-azul);
+    background: var(--destaque-azul);
+    color: #fff;
+  }
+
+  .hud-btn-flutuante.caution-pendente {
+    border-color: #f59e0b;
+  }
+  .hud-btn-flutuante.caution-ok {
+    border-color: #16a34a;
+  }
+
+  .hud-mini-badge {
+    font-size: 12px;
+    background: #dc2626;
+    color: #fff;
+    padding: 1px 6px;
+    border-radius: 999px;
+  }
+  .caution-ok .hud-mini-badge {
+    background: #16a34a;
   }
 
   .hud-btn-salvar {
@@ -151,32 +141,87 @@
     color: #fff;
   }
 
-  .editor-topbar {
+  /* Barra Superior oculta por padrão e exibida como menu compacto na engrenagem */
+  .editor-topbar:not(.topbar-motorista-mapa) {
     display: none;
     position: fixed;
     top: 64px;
-    right: 10px;
-    left: 10px;
+    right: 12px;
+    left: auto;
+    width: min(430px, calc(100vw - 24px));
     margin-left: 0 !important;
     z-index: 950;
     flex-direction: column;
     align-items: stretch;
-    box-shadow: 0 10px 28px rgba(0, 0, 0, 0.45);
+    padding: 12px;
+    gap: 8px;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.45);
   }
 
-  .editor-topbar.topbar-mobile-aberta {
-    display: flex;
+  .editor-topbar.topbar-mobile-aberta,
+  .editor-topbar.tutorial-forcar-painel-mobile {
+    display: flex !important;
   }
 
-  /* Mantém a barra superior do motorista visível e compacta */
+  .texto-voltar-menu-engrenagem {
+    display: inline;
+  }
+
+  .editor-topbar:not(.topbar-motorista-mapa) .topbar-direita {
+    display: none;
+  }
+
+  /* Botões menores e centralizados em grade 2x2 no menu engrenagem (Tablet) */
+  .editor-topbar:not(.topbar-motorista-mapa) .topbar-esquerda,
+  .editor-topbar:not(.topbar-motorista-mapa) .topbar-direita-gerente {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    width: 100%;
+  }
+
+  .editor-topbar:not(.topbar-motorista-mapa) .grupo-filtros-navegacao-gerente,
+  .editor-topbar:not(.topbar-motorista-mapa) .grupo-inativar-reativar-gerente,
+  .editor-topbar:not(.topbar-motorista-mapa) .grupo-calor-simulacao-gerente {
+    grid-column: 1 / -1;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    width: 100%;
+  }
+
+  .editor-topbar:not(.topbar-motorista-mapa) .wrapper-andar-editor,
+  .editor-topbar:not(.topbar-motorista-mapa) .seletor-andar-tela-cheia,
+  .editor-topbar:not(.topbar-motorista-mapa) .seletor-est-tela-cheia,
+  .editor-topbar:not(.topbar-motorista-mapa) .seletor-cidade-tela-cheia {
+    width: 100%;
+  }
+
+  .editor-topbar:not(.topbar-motorista-mapa) .wrapper-andar-editor,
+  .editor-topbar:not(.topbar-motorista-mapa) .seletor-andar-tela-cheia:last-child {
+    grid-column: 1 / -1;
+  }
+
+  .editor-topbar:not(.topbar-motorista-mapa) .btn-secundario,
+  .editor-topbar:not(.topbar-motorista-mapa) .btn-primario,
+  .editor-topbar:not(.topbar-motorista-mapa) .btn-seletor-multi {
+    width: 100%;
+    padding: 8px 10px !important;
+    font-size: 13px !important;
+    justify-content: center !important;
+    text-align: center;
+  }
+
+  /* Mantém a barra superior do motorista visível e compacta no Tablet */
   .editor-topbar.topbar-motorista-mapa {
     display: flex !important;
     position: relative !important;
     top: auto !important;
     right: auto !important;
     left: auto !important;
+    width: auto !important;
     margin: 62px 8px 0 8px !important;
-    padding: 6px 8px !important;
+    padding: 6px 10px !important;
     flex-direction: row !important;
     flex-wrap: nowrap !important;
     align-items: center !important;
@@ -203,31 +248,14 @@
     display: none !important;
   }
 
-  .topbar-direita {
-    display: none;
-  }
-
-  .topbar-esquerda,
-  .topbar-direita-gerente {
-    flex-direction: column;
-    align-items: stretch;
-  }
-
-  .topbar-esquerda .btn-secundario,
-  .topbar-direita-gerente .btn-secundario,
-  .topbar-direita-gerente .btn-primario,
-  .seletor-est-tela-cheia .btn-seletor-multi {
-    width: 100%;
-    justify-content: center;
-  }
-
+  /* Painel Lateral Direito em popup flutuante no Tablet/Mobile */
   .sidebar-direita-editor {
     display: none;
     position: fixed;
     top: 64px;
-    right: 10px;
+    right: 12px;
     width: 300px;
-    max-width: calc(100vw - 20px);
+    max-width: calc(100vw - 24px);
     max-height: calc(100vh - 80px);
     z-index: 950;
     background: var(--bg-pagina);
@@ -237,42 +265,141 @@
     box-shadow: 0 12px 30px rgba(0, 0, 0, 0.5);
   }
 
-  .sidebar-direita-editor.sidebar-mobile-aberta {
-    display: flex;
-  }
-
-  .tutorial-forcar-painel-mobile {
+  .sidebar-direita-editor.sidebar-mobile-aberta,
+  .sidebar-direita-editor.tutorial-forcar-painel-mobile {
     display: flex !important;
   }
 
+  /* Popup de alertas dimensionado pelo texto no Tablet */
   .painel-avisos-overlay {
     position: fixed;
-    top: 64px;
-    left: 10px;
-    right: 10px;
-    width: auto;
+    top: 66px;
+    right: 12px;
+    left: auto;
+    width: max-content;
+    max-width: calc(100vw - 24px);
     z-index: 960;
   }
 
-  /* Texto de dois toques seguidos no Modo Mão para Tablet e Mobile */
+  /* Aviso de 2 toques visível abaixo dos botões superiores */
   .texto-mao-desktop {
     display: none !important;
   }
   .texto-mao-mobile {
     display: inline-flex !important;
-    font-size: 12px;
+    font-size: 12.5px;
   }
-  .banner-mao-ativa {
+  .banner-carimbo-overlay,
+  .banner-mao-ativa,
+  .banner-instrucao-gerente {
+    top: 66px;
+    z-index: 90;
     max-width: calc(100vw - 24px);
     white-space: normal !important;
     text-align: center;
-    padding: 7px 11px !important;
+    padding: 7px 12px !important;
   }
 }
 
-/* 2. SMARTPHONES (iPhone 12 390x844 e similares) */
+/* --------------------------------------------------------------------------
+   3. TABLETS EM GERAL (<= 1024px):
+      - Títulos de Dev Gerenciamento e Informações Gerais abaixo do menu superior
+        com fonte ampliada;
+      - Grade 2x2 de KPIs no Dashboard do Gerente e botão Escolher Estacionamento
+        proporcional.
+   -------------------------------------------------------------------------- */
+@media (max-width: 1024px) {
+  .ocultar-subtitulo-tablet-mobile {
+    display: none !important;
+  }
+
+  .topbar-abaixo-tablet-mobile {
+    margin-top: 52px !important;
+    padding-left: 12px !important;
+    padding-right: 12px !important;
+    flex-direction: column !important;
+    justify-content: center !important;
+    align-items: center !important;
+    text-align: center !important;
+  }
+
+  .topbar-abaixo-tablet-mobile .bloco-titulo-centro h1 {
+    font-size: 26px !important;
+    line-height: 1.25;
+  }
+
+  .topbar-sobre-abaixo-sempre .bloco-titulo-centro h1 {
+    font-size: 27px;
+  }
+
+  .gerente-boas-vindas {
+    padding-left: 220px;
+    flex-wrap: nowrap;
+  }
+
+  .gerente-boas-vindas h1 {
+    font-size: 20px;
+  }
+
+  .gerente-atalhos-topo .btn-secundario,
+  .gerente-atalhos-topo .btn-primario {
+    padding: 8px 11px;
+    font-size: 13px;
+  }
+
+  .grade-kpis-gerente {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .card-kpi-gerente.kpi-apenas-tablet {
+    display: flex;
+  }
+
+  .secao-estacionamentos-dupla-pc {
+    display: none;
+  }
+
+  .secao-seletor-mobile-est {
+    display: block;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   4. GERENTE DASHBOARD (<= 872px):
+      Coloca os atalhos no menu superior em estilo compacto e desce o título de
+      boas-vindas para não ficar espremido, mantendo o restante igual.
+   -------------------------------------------------------------------------- */
+@media (max-width: 872px) {
+  .gerente-boas-vindas {
+    padding-left: 0 !important;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+  }
+
+  .gerente-boas-vindas .gerente-atalhos-topo {
+    order: -1;
+    padding-left: 180px;
+    justify-content: flex-end;
+    min-height: 46px;
+  }
+
+  .gerente-boas-vindas .bloco-texto-boas-vindas {
+    width: 100%;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   5. SMARTPHONES (<= 768px):
+      - Duas linhas de botões superiores no Editor 2D (Linha 1: Menu/VC/Info/Tema;
+        Linha 2: Botões do Editor);
+      - Duas linhas centralizadas na barra superior do Motorista (botões em cima,
+        legendas embaixo);
+      - Cards de estacionamento no Dev Gerenciamento com altura igual para 1 ou
+        2 linhas e reticências antes dos botões;
+      - Menu popup de seleção no Editor ocupando apenas a largura necessária.
+   -------------------------------------------------------------------------- */
 @media (max-width: 768px) {
-  /* Compacta botões fixos superiores para caberem lado a lado sem sobreposição */
   .btn-hamburguer {
     width: 38px;
     height: 38px;
@@ -310,31 +437,100 @@
     left: 134px;
   }
 
-  .hud-btn-flutuante {
-    min-width: 38px;
+  .btn-voltar-fixo-topo {
+    top: 10px;
+    right: 8px;
     height: 38px;
-    padding: 0 8px;
+    padding: 0 12px;
+    font-size: 12.5px;
     border-radius: 9px;
   }
 
-  .hud-esquerda-alertas {
-    top: 10px;
-    left: 176px;
+  /* 2ª Linha de botões exclusiva para os controles do Editor 2D no celular */
+  .hud-btn-flutuante {
+    min-width: 38px;
+    height: 38px;
+    padding: 0 9px;
+    border-radius: 9px;
   }
 
-  .hud-esquerda-mao {
-    top: 10px;
-    left: 230px;
+  .hud-coluna-esquerda-mobile {
+    top: 56px;
+    left: 8px;
+    gap: 6px;
   }
 
   .hud-coluna-direita-mobile {
-    top: 10px;
+    top: 56px;
     right: 8px;
-    gap: 5px;
+    gap: 6px;
+  }
+
+  .hud-coluna-direita-mobile.hud-motorista-topo {
+    top: 10px;
+  }
+
+  .area-grid-principal {
+    padding: 104px 8px 70px 8px;
+  }
+
+  .area-grid-principal.area-grid-motorista-limpa {
+    padding: 16px 8px 60px 8px !important;
+  }
+
+  .editor-topbar:not(.topbar-motorista-mapa),
+  .sidebar-direita-editor {
+    top: 102px;
+    left: 10px;
+    right: 10px;
+    width: auto;
+  }
+
+  .painel-avisos-overlay {
+    top: 102px;
+  }
+
+  .banner-carimbo-overlay,
+  .banner-mao-ativa,
+  .banner-instrucao-gerente {
+    top: 104px;
+    width: max-content;
+    max-width: calc(100vw - 20px);
+    font-size: 12px;
+  }
+
+  /* Barra superior do Motorista em 2 linhas centralizadas (botões em cima, legendas embaixo) */
+  .editor-topbar.topbar-motorista-mapa {
+    margin: 56px 8px 0 8px !important;
+    padding: 8px 10px !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 8px !important;
+  }
+
+  .topbar-motorista-mapa .topbar-esquerda {
+    width: 100% !important;
+    justify-content: center !important;
+    flex-wrap: wrap !important;
+  }
+
+  .topbar-motorista-mapa .topbar-direita-motorista {
+    width: 100% !important;
+    justify-content: center !important;
+    border-top: 1px solid var(--borda);
+    padding-top: 6px;
+  }
+
+  .topbar-motorista-mapa .legenda-motorista-inline {
+    width: 100%;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 8px;
   }
 
   .admin-container {
-    padding: 60px 14px 20px 14px;
+    padding: 58px 14px 20px 14px;
   }
 
   .ocultar-subtitulo-mobile,
@@ -343,50 +539,49 @@
   }
 
   .topbar-titulo-central {
+    margin-top: 0 !important;
     padding: 0 8px !important;
     min-height: 40px;
     margin-bottom: 14px;
   }
 
-  .topbar-titulo-central .bloco-titulo-centro h1 {
-    font-size: 18px;
+  .topbar-abaixo-tablet-mobile .bloco-titulo-centro h1 {
+    font-size: 22px !important;
   }
 
-  .topbar-titulo-central.com-botao-direita {
-    padding: 0 78px !important;
+  .topbar-sobre-abaixo-sempre {
+    margin-top: 4px !important;
   }
 
-  .topbar-titulo-central.com-botao-direita .btn-voltar-topo {
-    position: absolute !important;
-    right: 0 !important;
-    top: 50% !important;
-    transform: translateY(-50%) !important;
-    width: auto !important;
-    padding: 6px 10px !important;
-    font-size: 12px !important;
+  .topbar-sobre-abaixo-sempre .bloco-titulo-centro h1 {
+    font-size: 24px !important;
   }
 
   .gerente-dashboard-container {
     padding: 12px 14px 24px 14px;
   }
 
-  .gerente-boas-vindas {
-    padding-left: 0;
-    padding-top: 46px;
+  .gerente-boas-vindas,
+  .gerente-boas-vindas-relatorios {
+    padding-left: 0 !important;
+    padding-top: 44px;
     flex-direction: column;
     align-items: stretch;
   }
 
-  .gerente-atalhos-topo {
+  .gerente-boas-vindas .gerente-atalhos-topo,
+  .gerente-boas-vindas-relatorios .gerente-atalhos-topo {
+    order: 0;
+    padding-left: 0;
+    min-height: auto;
     width: 100%;
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    display: flex;
     gap: 6px;
   }
 
   .gerente-atalhos-topo button {
-    width: 100%;
-    padding: 8px 4px !important;
+    flex: 1;
+    padding: 8px 6px !important;
     font-size: 11.5px !important;
   }
 
@@ -421,6 +616,11 @@
     display: none;
   }
 
+  .btn-escolher-est-responsivo {
+    width: 100%;
+    max-width: 100%;
+  }
+
   .controles-exportacao-completa {
     flex-direction: column;
     align-items: stretch;
@@ -444,13 +644,16 @@
     width: 100%;
   }
 
-  /* Mantém botões de ação na mesma linha do estacionamento no celular */
+  /* Cards de estacionamento no Dev Gerenciamento com altura uniforme (1 ou 2 linhas) */
   .linha-estabelecimento {
     flex-direction: row !important;
     align-items: center !important;
     justify-content: space-between !important;
-    gap: 8px !important;
-    padding: 10px 12px !important;
+    height: 68px !important;
+    min-height: 68px !important;
+    max-height: 68px !important;
+    gap: 10px !important;
+    padding: 8px 12px !important;
   }
 
   .linha-estabelecimento .info-est {
@@ -460,9 +663,24 @@
 
   .linha-estabelecimento .textos-est h3 {
     font-size: 14px;
-    white-space: nowrap;
+    flex-wrap: nowrap;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .nome-est-lista {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+    -webkit-box-orient: vertical;
+    white-space: normal;
+    word-break: break-word;
     overflow: hidden;
     text-overflow: ellipsis;
+    line-height: 1.22;
+    max-height: 2.44em;
+    flex: 1;
+    min-width: 0;
   }
 
   .linha-estabelecimento .badge-cidade-inline,
@@ -494,21 +712,15 @@
     padding: 0 4px;
   }
 
+  /* Menu popup de seleção do Editor ocupa apenas o espaço necessário */
   .menu-selecao-overlay,
   .popup-confirmar-lote-gerente {
-    width: calc(100% - 16px);
-    justify-content: space-between;
-    padding: 8px 10px;
+    width: max-content;
+    max-width: calc(100vw - 16px);
+    justify-content: center;
+    padding: 7px 10px;
     gap: 6px;
     overflow-x: auto;
-  }
-
-  .banner-carimbo-overlay,
-  .banner-instrucao-gerente {
-    width: calc(100% - 20px);
-    white-space: normal;
-    text-align: center;
-    font-size: 12px;
   }
 
   .legenda-calor-overlay {
@@ -521,7 +733,7 @@
   }
 
   .item-legenda-mot {
-    font-size: 11px;
+    font-size: 11.5px;
   }
 
   .tutorial-popup-card {
@@ -530,7 +742,41 @@
   }
 }
 
-/* 3. IMPRESSÃO EXCLUSIVA DO QR CODE DO ESTACIONAMENTO */
+/* --------------------------------------------------------------------------
+   6. POPUP DE ALERTAS EM TELAS <= 473px:
+      Passa a ocupar a tela inteira quando o texto não cabe numa única linha.
+   -------------------------------------------------------------------------- */
+@media (max-width: 473px) {
+  .painel-avisos-overlay {
+    left: 10px;
+    right: 10px;
+    width: auto;
+  }
+
+  .lista-avisos-ul {
+    white-space: normal;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   7. BOTÃO DE SIMULAÇÃO EM TELAS <= 427px:
+      Retira o texto do botão de simulação deixando apenas o ícone centralizado.
+   -------------------------------------------------------------------------- */
+@media (max-width: 427px) {
+  .btn-simulacao-topo {
+    flex: 0 0 42px !important;
+    width: 42px !important;
+    padding: 8px 0 !important;
+  }
+
+  .btn-simulacao-topo .texto-btn-simulacao {
+    display: none !important;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   8. IMPRESSÃO EXCLUSIVA DO QR CODE DO ESTACIONAMENTO
+   -------------------------------------------------------------------------- */
 @media print {
   body * {
     visibility: hidden;

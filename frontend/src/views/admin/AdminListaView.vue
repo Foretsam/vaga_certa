@@ -31,7 +31,7 @@ function calcularItensPorAlturaTela() {
   const alturaTela = window.innerHeight
   const larguraTela = window.innerWidth
   const espacoReservadoSeguranca = larguraTela <= 768 ? 320 : larguraTela <= 1024 ? 330 : 345
-  const alturaPorLinha = larguraTela <= 768 ? 60 : 70
+  const alturaPorLinha = larguraTela <= 768 ? 64 : 70
   const disponivel = Math.max(200, alturaTela - espacoReservadoSeguranca)
   const calculado = Math.floor(disponivel / alturaPorLinha)
   itensPorPagina.value = Math.max(3, Math.min(11, calculado))
@@ -115,7 +115,7 @@ async function removerEstabelecimento(est) {
 
 <template>
   <div class="admin-container">
-    <header class="topbar-titulo-central">
+    <header class="topbar-titulo-central topbar-abaixo-tablet-mobile">
       <div class="bloco-titulo-centro">
         <h1>Gerenciamento de Estacionamentos</h1>
         <p class="subtitulo ocultar-subtitulo-mobile">
@@ -151,8 +151,8 @@ async function removerEstabelecimento(est) {
         <div class="info-est">
           <span class="id-badge">#{{ est.id }}</span>
           <div class="textos-est">
-            <h3>
-              {{ est.nome }}
+            <h3 :title="est.nome">
+              <span class="nome-est-lista">{{ est.nome }}</span>
               <span class="badge-cidade-inline">{{ est.cidade || 'Sorocaba' }}</span>
               <span v-if="est.inativo" class="tag-inativo">INATIVO</span>
             </h3>

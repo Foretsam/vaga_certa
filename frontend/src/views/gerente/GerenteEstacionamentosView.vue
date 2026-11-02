@@ -497,7 +497,7 @@ onUnmounted(() => {
           <span>Dashboard</span>
         </button>
 
-        <!-- Grupo de Navegação e Filtros (Foco do Passo 2 do Tutorial) -->
+        <!-- Grupo de Navegação e Filtros -->
         <div class="grupo-filtros-navegacao-gerente">
           <div v-if="cidadesDoGerente.length >= 1" class="seletor-multi-wrapper seletor-cidade-tela-cheia">
             <button
@@ -603,7 +603,7 @@ onUnmounted(() => {
           </div>
         </div>
 
-        <!-- Grupo Inativar/Reativar (Foco do Passo 4 do Tutorial) -->
+        <!-- Grupo Inativar/Reativar -->
         <div class="grupo-inativar-reativar-gerente">
           <button
             class="btn-secundario item-icone-texto"
@@ -626,15 +626,18 @@ onUnmounted(() => {
       </div>
 
       <div class="topbar-direita-gerente">
-        <!-- Grupo Mapa de Calor + Simulação (Foco do Passo 5 do Tutorial) -->
+        <!-- Grupo Mapa de Calor (Com Toggle Switch de Tamanho Fixo) + Simulação -->
         <div class="grupo-calor-simulacao-gerente">
           <button
-            class="btn-secundario item-icone-texto"
+            class="btn-secundario btn-toggle-calor item-icone-texto"
             :class="{ 'btn-calor-ativo': modoMapaCalor }"
             @click="modoMapaCalor = !modoMapaCalor"
           >
             <IconFlame :size="18" />
-            <span>{{ modoMapaCalor ? 'Mapa de Calor: ON' : 'Mapa de Calor' }}</span>
+            <span>Mapa de Calor</span>
+            <span class="switch-calor-track" :class="{ ativo: modoMapaCalor }">
+              <span class="switch-calor-thumb"></span>
+            </span>
           </button>
 
           <button
@@ -647,7 +650,6 @@ onUnmounted(() => {
           </button>
         </div>
 
-        <!-- Botão QR Code (Foco do Passo 6 do Tutorial) -->
         <button
           class="btn-primario btn-qrcode-gerente item-icone-texto"
           @click="modalQrAberto = true"
@@ -685,21 +687,25 @@ onUnmounted(() => {
           </div>
         </Transition>
 
+        <!-- Popup de confirmação em lote com botão de confirmar apenas com ícone centralizado -->
         <Transition name="fade-pop">
           <div v-if="modoAcaoVagas && vagasSelecionadasIds.size > 0" class="overlay-flutuante popup-confirmar-lote-gerente">
             <span><strong>{{ vagasSelecionadasIds.size }}</strong> vaga(s) marcada(s)</span>
             <button
-              class="btn-primario btn-popup-lote item-icone-texto"
+              class="btn-primario btn-popup-lote btn-icone-confirmar-lote item-icone-texto"
               :class="modoAcaoVagas === 'INATIVAR' ? 'btn-lote-vermelho' : 'btn-lote-verde'"
               :disabled="salvandoLote"
+              :title="modoAcaoVagas === 'INATIVAR' ? 'Confirmar Inativação' : 'Confirmar Reativação'"
               @click="confirmarAlteracaoLoteVagas"
             >
-              <IconSquareRoundedCheck :size="17" />
-              <span>{{ salvandoLote ? 'Salvando...' : `Confirmar ${modoAcaoVagas === 'INATIVAR' ? 'Inativação' : 'Reativação'}` }}</span>
+              <IconSquareRoundedCheck :size="19" />
             </button>
-            <button class="btn-secundario btn-popup-lote item-icone-texto" @click="cancelarModoSelecao">
-              <IconSquareRoundedX :size="17" />
-              <span>Cancelar</span>
+            <button
+              class="btn-secundario btn-popup-lote btn-icone-confirmar-lote item-icone-texto"
+              title="Cancelar seleção"
+              @click="cancelarModoSelecao"
+            >
+              <IconSquareRoundedX :size="19" />
             </button>
           </div>
         </Transition>
@@ -732,70 +738,78 @@ onUnmounted(() => {
               transformOrigin: '0 0'
             }"
           >
-            <div class="matriz-com-coordenadas">
+            <!-- Transição sutil na troca de andares -->
+            <Transition name="fade-andar" mode="out-in">
               <div
-                class="linha-coordenadas-x"
-                :style="{ gridTemplateColumns: `36px repeat(${andarAtual.grid_x}, 36px)` }"
+                :key="`${estacionamentoAtual.id}-${andarAtual.id_andar}`"
+                class="matriz-com-coordenadas"
               >
-                <div class="canto-xy">Y\X</div>
-                <div v-for="x in andarAtual.grid_x" :key="`gx-${x}`" class="rotulo-coord">
-                  {{ x - 1 }}
+                <div
+                  class="linha-coordenadas-x"
+                  :style="{ gridTemplateColumns: `36px repeat(${andarAtual.grid_x}, 36px)` }"
+                >
+                  <div class="canto-xy">Y\X</div>
+                  <div v-for="x in andarAtual.grid_x" :key="`gx-${x}`" class="rotulo-coord">
+                    {{ x - 1 }}
+                  </div>
                 </div>
-              </div>
-
-              <div
-                v-for="y in andarAtual.grid_y"
-                :key="`grow-${y}`"
-                class="linha-grid-y"
-                :style="{ gridTemplateColumns: `36px repeat(${andarAtual.grid_x}, 36px)` }"
-              >
-                <div class="rotulo-coord">{{ y - 1 }}</div>
 
                 <div
-                  v-for="x in andarAtual.grid_x"
-                  :key="`gcell-${x - 1}-${y - 1}`"
-                  :data-coord="`${x - 1},${y - 1}`"
-                  class="celula-editor-fundo"
-                  :style="{
-                    backgroundColor:
-                      andarAtual.celulas[`${x - 1},${y - 1}`]?.corSetor || 'transparent'
-                  }"
-                  @mousedown.prevent="iniciarCliqueCelulaGerente(x - 1, y - 1)"
-                  @mouseenter="moverArrastoCelulaGerente(x - 1, y - 1)"
+                  v-for="y in andarAtual.grid_y"
+                  :key="`grow-${y}`"
+                  class="linha-grid-y"
+                  :style="{ gridTemplateColumns: `36px repeat(${andarAtual.grid_x}, 36px)` }"
                 >
+                  <div class="rotulo-coord">{{ y - 1 }}</div>
+
                   <div
-                    class="quadrado-editor"
-                    :class="[
-                      andarAtual.celulas[`${x - 1},${y - 1}`]?.tipo === 'VAZIO' ? 'qe-vazio' : '',
-                      andarAtual.celulas[`${x - 1},${y - 1}`]?.tipo === 'ESTRADA' ? 'qe-estrada' : '',
-                      andarAtual.celulas[`${x - 1},${y - 1}`]?.tipo === 'ENTRADA' ? 'qe-entrada' : '',
-                      andarAtual.celulas[`${x - 1},${y - 1}`]?.tipo === 'SAIDA' ? 'qe-saida' : '',
-                      andarAtual.celulas[`${x - 1},${y - 1}`]?.tipo === 'ACESSO' ? 'qe-acesso' : '',
-                      classeCorVagaGerente(andarAtual.celulas[`${x - 1},${y - 1}`]),
-                      vagasSelecionadasIds.has(andarAtual.celulas[`${x - 1},${y - 1}`]?.idVagaBanco)
-                        ? 'qe-selecionado-roxo'
-                        : ''
-                    ]"
+                    v-for="x in andarAtual.grid_x"
+                    :key="`gcell-${x - 1}-${y - 1}`"
+                    :data-coord="`${x - 1},${y - 1}`"
+                    class="celula-editor-fundo"
+                    :style="{
+                      backgroundColor:
+                        andarAtual.celulas[`${x - 1},${y - 1}`]?.corSetor || 'transparent'
+                    }"
+                    @mousedown.prevent="iniciarCliqueCelulaGerente(x - 1, y - 1)"
+                    @mouseenter="moverArrastoCelulaGerente(x - 1, y - 1)"
                   >
-                    <span v-if="andarAtual.celulas[`${x - 1},${y - 1}`]?.tipo === 'VAGA'">
-                      {{ andarAtual.celulas[`${x - 1},${y - 1}`]?.identificador }}
-                    </span>
-                    <IconDoorEnter
-                      v-else-if="andarAtual.celulas[`${x - 1},${y - 1}`]?.tipo === 'ENTRADA'"
-                      :size="17"
-                    />
-                    <IconDoorExit
-                      v-else-if="andarAtual.celulas[`${x - 1},${y - 1}`]?.tipo === 'SAIDA'"
-                      :size="17"
-                    />
-                    <IconArrowBarRight
-                      v-else-if="andarAtual.celulas[`${x - 1},${y - 1}`]?.tipo === 'ACESSO'"
-                      :size="17"
-                    />
+                    <div
+                      class="quadrado-editor"
+                      :class="[
+                        andarAtual.celulas[`${x - 1},${y - 1}`]?.tipo === 'VAZIO' ? 'qe-vazio' : '',
+                        andarAtual.celulas[`${x - 1},${y - 1}`]?.tipo === 'ESTRADA' ? 'qe-estrada' : '',
+                        andarAtual.celulas[`${x - 1},${y - 1}`]?.tipo === 'ENTRADA' ? 'qe-entrada' : '',
+                        andarAtual.celulas[`${x - 1},${y - 1}`]?.tipo === 'SAIDA' ? 'qe-saida' : '',
+                        andarAtual.celulas[`${x - 1},${y - 1}`]?.tipo === 'ACESSO' ? 'qe-acesso' : '',
+                        classeCorVagaGerente(andarAtual.celulas[`${x - 1},${y - 1}`]),
+                        vagasSelecionadasIds.has(andarAtual.celulas[`${x - 1},${y - 1}`]?.idVagaBanco)
+                          ? modoAcaoVagas === 'INATIVAR'
+                            ? 'qe-selecionado-inativar-amarelo'
+                            : 'qe-selecionado-reativar-azul'
+                          : ''
+                      ]"
+                    >
+                      <span v-if="andarAtual.celulas[`${x - 1},${y - 1}`]?.tipo === 'VAGA'">
+                        {{ andarAtual.celulas[`${x - 1},${y - 1}`]?.identificador }}
+                      </span>
+                      <IconDoorEnter
+                        v-else-if="andarAtual.celulas[`${x - 1},${y - 1}`]?.tipo === 'ENTRADA'"
+                        :size="17"
+                      />
+                      <IconDoorExit
+                        v-else-if="andarAtual.celulas[`${x - 1},${y - 1}`]?.tipo === 'SAIDA'"
+                        :size="17"
+                      />
+                      <IconArrowBarRight
+                        v-else-if="andarAtual.celulas[`${x - 1},${y - 1}`]?.tipo === 'ACESSO'"
+                        :size="17"
+                      />
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
+            </Transition>
           </div>
         </div>
       </div>
@@ -898,7 +912,7 @@ onUnmounted(() => {
 
           <code class="url-qr-codigo">{{ urlPublicaMotorista }}</code>
 
-          <div class="modal-acoes" style="justify-content: center; margin-top: 16px">
+          <div class="modal-acoes modal-acoes-centralizadas" style="margin-top: 16px">
             <button class="btn-secundario item-icone-texto" @click="modalQrAberto = false">
               <IconSquareRoundedX :size="18" />
               <span>Fechar</span>

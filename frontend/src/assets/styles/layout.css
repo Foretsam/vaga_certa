@@ -249,6 +249,7 @@
 }
 .modal-box.modal-compacto {
   max-width: 280px;
+  text-align: center;
 }
 .modal-box.modal-alterar-setor {
   max-width: 400px;
@@ -341,6 +342,10 @@
   justify-content: flex-end;
   gap: 8px;
   margin-top: 16px;
+}
+
+.modal-acoes-centralizadas {
+  justify-content: center !important;
 }
 
 .combobox-setor-wrapper {
@@ -994,6 +999,7 @@
 .cor-mot.ocupada { background: #dc2626; }
 .cor-mot.entrada { background: #2563eb; }
 .cor-mot.saida { background: #ea580c; }
+.cor-mot.acesso { background: #16a34a; border: 1px solid #86efac; }
 
 .controles-zoom-motorista {
   display: inline-flex;
@@ -1104,6 +1110,15 @@
 }
 .indicador-acesso-animado.saida .seta-indicador-acesso {
   color: #f97316;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.5));
+}
+
+.indicador-acesso-animado.acesso .badge-indicador-acesso {
+  background: #16a34a;
+  border: 1.5px solid #86efac;
+}
+.indicador-acesso-animado.acesso .seta-indicador-acesso {
+  color: #22c55e;
   filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.5));
 }
 

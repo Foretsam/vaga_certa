@@ -48,13 +48,47 @@ const {
   resetarCameraGrid
 } = useGridPanZoom()
 
-// Exibe os indicadores animados de Entrada e Saída por 4,5 segundos ao abrir/trocar andar
+// Exibe os indicadores animados de Entrada, Saída e Acessos por 4,5 segundos ao abrir/trocar andar
 function dispararIndicadoresTemporarios() {
   mostrarIndicadoresAcesso.value = true
   if (timerIndicadores) clearTimeout(timerIndicadores)
   timerIndicadores = setTimeout(() => {
     mostrarIndicadoresAcesso.value = false
   }, 4500)
+}
+
+// Agrupa células adjacentes de Acesso para gerar um único indicador centralizado por bloco
+function agruparPontosAdjacentes(listaCoords) {
+  const visitados = new Set()
+  const grupos = []
+
+  listaCoords.forEach((pt, idx) => {
+    if (visitados.has(idx)) return
+    const fila = [pt]
+    visitados.add(idx)
+    const cluster = []
+
+    while (fila.length > 0) {
+      const atual = fila.shift()
+      cluster.push(atual)
+      listaCoords.forEach((outro, oIdx) => {
+        if (!visitados.has(oIdx)) {
+          const dist = Math.abs(atual.col - outro.col) + Math.abs(atual.row - outro.row)
+          if (dist <= 2) {
+            visitados.add(oIdx)
+            fila.push(outro)
+          }
+        }
+      })
+    }
+
+    grupos.push({
+      col: cluster.reduce((a, b) => a + b.col, 0) / cluster.length,
+      row: cluster.reduce((a, b) => a + b.row, 0) / cluster.length
+    })
+  })
+
+  return grupos
 }
 
 onMounted(async () => {
@@ -108,7 +142,8 @@ const mapaProcessadoMotorista = computed(() => {
       altura: 1,
       linhas: [[todas[0]]],
       pontoEntrada: null,
-      pontoSaida: null
+      pontoSaida: null,
+      pontosAcesso: []
     }
   }
 
@@ -134,7 +169,10 @@ const mapaProcessadoMotorista = computed(() => {
   }
 
   const entradas = preenchidas.filter(c => c.tipo === 'ENTRADA')
-  const alvosRef = entradas.length > 0 ? entradas : preenchidas.filter(c => c.tipo === 'SAIDA')
+  const alvosRef =
+    entradas.length > 0
+      ? entradas
+      : preenchidas.filter(c => c.tipo === 'SAIDA' || c.tipo === 'ACESSO')
 
   let rotacoes90Horario = 0
   if (alvosRef.length > 0) {
@@ -172,11 +210,13 @@ const mapaProcessadoMotorista = computed(() => {
 
   const coordsEntrada = []
   const coordsSaida = []
+  const coordsAcesso = []
 
   matriz.forEach((linha, rIdx) => {
     linha.forEach((cel, cIdx) => {
       if (cel?.tipo === 'ENTRADA') coordsEntrada.push({ col: cIdx, row: rIdx })
       if (cel?.tipo === 'SAIDA') coordsSaida.push({ col: cIdx, row: rIdx })
+      if (cel?.tipo === 'ACESSO') coordsAcesso.push({ col: cIdx, row: rIdx })
     })
   })
 
@@ -196,12 +236,15 @@ const mapaProcessadoMotorista = computed(() => {
         }
       : null
 
+  const pontosAcesso = agruparPontosAdjacentes(coordsAcesso)
+
   return {
     largura: matriz[0]?.length || 1,
     altura: matriz.length || 1,
     linhas: matriz,
     pontoEntrada,
-    pontoSaida
+    pontoSaida,
+    pontosAcesso
   }
 })
 
@@ -234,6 +277,17 @@ const estiloIndicadorSaida = computed(() => {
   }
 })
 
+const estilosIndicadoresAcesso = computed(() => {
+  const lista = mapaProcessadoMotorista.value?.pontosAcesso || []
+  return lista.map((pt, idx) => ({
+    id: `acesso-ind-${idx}`,
+    style: {
+      left: `${6 + (pt.col + 0.5) * TAMANHO_CELULA}px`,
+      top: `${6 + pt.row * TAMANHO_CELULA}px`
+    }
+  }))
+})
+
 // Aplica zoom automático se o estacionamento for menor que a tela e foca a barra de rolagem na Entrada
 function ajustarZoomERolagemParaEntrada() {
   const container = containerMapaRef.value
@@ -259,7 +313,7 @@ function ajustarZoomERolagemParaEntrada() {
     const el = containerMapaRef.value
     if (!el) return
     const escala = zoomEscala.value
-    const foco = dados.pontoEntrada || dados.pontoSaida
+    const foco = dados.pontoEntrada || dados.pontoSaida || dados.pontosAcesso?.[0]
 
     if (foco) {
       const focoXPx = (6 + (foco.col + 0.5) * TAMANHO_CELULA) * escala
@@ -422,7 +476,7 @@ const infoBadgeMotorista = computed(() => {
 
   <div v-else-if="andarAtual && mapaProcessadoMotorista" class="editor-layout">
     <!-- Botão Flutuante de Setores/Andares no Tablet e Mobile -->
-    <div class="hud-coluna-direita-mobile">
+    <div class="hud-coluna-direita-mobile hud-motorista-topo">
       <button
         class="hud-btn-flutuante"
         :class="{ 'hud-ativo': painelSetoresMobileAberto }"
@@ -433,7 +487,7 @@ const infoBadgeMotorista = computed(() => {
       </button>
     </div>
 
-    <!-- Barra Superior do Motorista -->
+    <!-- Barra Superior do Motorista (2 linhas centralizadas no celular) -->
     <header class="editor-topbar topbar-motorista-mapa">
       <div class="topbar-esquerda">
         <button
@@ -461,9 +515,11 @@ const infoBadgeMotorista = computed(() => {
             @click="dropdownAndarAberto = !dropdownAndarAberto"
           >
             <IconStack2 :size="18" style="color: var(--destaque-azul)" />
-            <span class="ocultar-texto-topbar-mobile">
+            <span class="texto-andar-motorista">
               {{ andarAtual.nome_andar }}
-              ({{ estatisticasAndaresMotorista[andarIndex]?.livres ?? 0 }} livres)
+              <span class="ocultar-texto-topbar-mobile">
+                ({{ estatisticasAndaresMotorista[andarIndex]?.livres ?? 0 }} livres)
+              </span>
             </span>
             <IconSquareRoundedChevronDown :size="16" />
           </button>
@@ -520,6 +576,7 @@ const infoBadgeMotorista = computed(() => {
           <span class="item-legenda-mot"><i class="cor-mot ocupada"></i> Ocupada</span>
           <span class="item-legenda-mot"><i class="cor-mot entrada"></i> Entrada</span>
           <span class="item-legenda-mot"><i class="cor-mot saida"></i> Saída</span>
+          <span class="item-legenda-mot"><i class="cor-mot acesso"></i> Acesso</span>
         </div>
 
         <span
@@ -565,84 +622,99 @@ const infoBadgeMotorista = computed(() => {
                 transformOrigin: '0 0'
               }"
             >
-              <div class="matriz-motorista-sem-coordenadas">
-                <!-- Indicadores temporários de Entrada e Saída -->
-                <Transition name="fade-pop">
-                  <div
-                    v-if="mostrarIndicadoresAcesso && estiloIndicadorEntrada"
-                    class="indicador-acesso-animado entrada"
-                    :style="estiloIndicadorEntrada"
-                  >
-                    <span class="badge-indicador-acesso">ENTRADA AQUI</span>
-                    <IconArrowDown :size="22" stroke-width="3" class="seta-indicador-acesso" />
-                  </div>
-                </Transition>
+              <!-- Transição sutil na troca de andares -->
+              <Transition name="fade-andar" mode="out-in">
+                <div :key="andarAtual.id_andar" class="matriz-motorista-sem-coordenadas">
+                  <!-- Indicadores animados de Entrada, Saída e Acessos -->
+                  <Transition name="fade-pop">
+                    <div
+                      v-if="mostrarIndicadoresAcesso && estiloIndicadorEntrada"
+                      class="indicador-acesso-animado entrada"
+                      :style="estiloIndicadorEntrada"
+                    >
+                      <span class="badge-indicador-acesso">ENTRADA AQUI</span>
+                      <IconArrowDown :size="22" stroke-width="3" class="seta-indicador-acesso" />
+                    </div>
+                  </Transition>
 
-                <Transition name="fade-pop">
-                  <div
-                    v-if="mostrarIndicadoresAcesso && estiloIndicadorSaida"
-                    class="indicador-acesso-animado saida"
-                    :style="estiloIndicadorSaida"
-                  >
-                    <span class="badge-indicador-acesso">SAÍDA</span>
-                    <IconArrowDown :size="22" stroke-width="3" class="seta-indicador-acesso" />
-                  </div>
-                </Transition>
+                  <Transition name="fade-pop">
+                    <div
+                      v-if="mostrarIndicadoresAcesso && estiloIndicadorSaida"
+                      class="indicador-acesso-animado saida"
+                      :style="estiloIndicadorSaida"
+                    >
+                      <span class="badge-indicador-acesso">SAÍDA</span>
+                      <IconArrowDown :size="22" stroke-width="3" class="seta-indicador-acesso" />
+                    </div>
+                  </Transition>
 
-                <div
-                  v-for="(linha, rIdx) in mapaProcessadoMotorista.linhas"
-                  :key="`m-row-${rIdx}`"
-                  class="linha-grid-y"
-                  :style="{
-                    gridTemplateColumns: `repeat(${mapaProcessadoMotorista.largura}, 30px)`
-                  }"
-                >
+                  <TransitionGroup name="fade-pop">
+                    <div
+                      v-for="ac in mostrarIndicadoresAcesso ? estilosIndicadoresAcesso : []"
+                      :key="ac.id"
+                      class="indicador-acesso-animado acesso"
+                      :style="ac.style"
+                    >
+                      <span class="badge-indicador-acesso">ACESSO</span>
+                      <IconArrowDown :size="22" stroke-width="3" class="seta-indicador-acesso" />
+                    </div>
+                  </TransitionGroup>
+
                   <div
-                    v-for="(cel, cIdx) in linha"
-                    :key="`m-cel-${rIdx}-${cIdx}`"
-                    :data-coord="cel ? `${cel.x},${cel.y}` : ''"
-                    class="celula-motorista-compacta"
-                    :class="{
-                      'celula-esmaecida-setor':
-                        setorDestacadoId &&
-                        cel?.setorId !== setorDestacadoId &&
-                        cel?.tipo === 'VAGA'
-                    }"
+                    v-for="(linha, rIdx) in mapaProcessadoMotorista.linhas"
+                    :key="`m-row-${rIdx}`"
+                    class="linha-grid-y"
                     :style="{
-                      backgroundColor: cel?.corSetor || 'transparent'
+                      gridTemplateColumns: `repeat(${mapaProcessadoMotorista.largura}, 30px)`
                     }"
-                    @mouseenter="inspecionarCelula(cel)"
-                    @click="inspecionarCelula(cel)"
                   >
                     <div
-                      v-if="cel && cel.tipo !== 'VAZIO'"
-                      class="quadrado-editor quadrado-motorista"
-                      :class="[
-                        cel.tipo === 'ESTRADA' ? 'qe-estrada' : '',
-                        cel.tipo === 'ENTRADA' ? 'qe-entrada' : '',
-                        cel.tipo === 'SAIDA' ? 'qe-saida' : '',
-                        cel.tipo === 'ACESSO' ? 'qe-acesso' : '',
-                        cel.tipo === 'VAGA' && (cel.inativa || !cel.macEsp)
-                          ? 'vaga-gerente-inativa'
-                          : '',
-                        cel.tipo === 'VAGA' && !cel.inativa && cel.macEsp && cel.livre
-                          ? 'vaga-gerente-livre'
-                          : '',
-                        cel.tipo === 'VAGA' && !cel.inativa && cel.macEsp && !cel.livre
-                          ? 'vaga-gerente-ocupada'
-                          : ''
-                      ]"
+                      v-for="(cel, cIdx) in linha"
+                      :key="`m-cel-${rIdx}-${cIdx}`"
+                      :data-coord="cel ? `${cel.x},${cel.y}` : ''"
+                      class="celula-motorista-compacta"
+                      :class="{
+                        'celula-esmaecida-setor':
+                          setorDestacadoId &&
+                          cel?.setorId !== setorDestacadoId &&
+                          cel?.tipo === 'VAGA'
+                      }"
+                      :style="{
+                        backgroundColor: cel?.corSetor || 'transparent'
+                      }"
+                      @mouseenter="inspecionarCelula(cel)"
+                      @click="inspecionarCelula(cel)"
                     >
-                      <span v-if="cel.tipo === 'VAGA'">
-                        {{ cel.identificador }}
-                      </span>
-                      <IconDoorEnter v-else-if="cel.tipo === 'ENTRADA'" :size="15" />
-                      <IconDoorExit v-else-if="cel.tipo === 'SAIDA'" :size="15" />
-                      <IconArrowBarRight v-else-if="cel.tipo === 'ACESSO'" :size="15" />
+                      <div
+                        v-if="cel && cel.tipo !== 'VAZIO'"
+                        class="quadrado-editor quadrado-motorista"
+                        :class="[
+                          cel.tipo === 'ESTRADA' ? 'qe-estrada' : '',
+                          cel.tipo === 'ENTRADA' ? 'qe-entrada' : '',
+                          cel.tipo === 'SAIDA' ? 'qe-saida' : '',
+                          cel.tipo === 'ACESSO' ? 'qe-acesso' : '',
+                          cel.tipo === 'VAGA' && (cel.inativa || !cel.macEsp)
+                            ? 'vaga-gerente-inativa'
+                            : '',
+                          cel.tipo === 'VAGA' && !cel.inativa && cel.macEsp && cel.livre
+                            ? 'vaga-gerente-livre'
+                            : '',
+                          cel.tipo === 'VAGA' && !cel.inativa && cel.macEsp && !cel.livre
+                            ? 'vaga-gerente-ocupada'
+                            : ''
+                        ]"
+                      >
+                        <span v-if="cel.tipo === 'VAGA'">
+                          {{ cel.identificador }}
+                        </span>
+                        <IconDoorEnter v-else-if="cel.tipo === 'ENTRADA'" :size="15" />
+                        <IconDoorExit v-else-if="cel.tipo === 'SAIDA'" :size="15" />
+                        <IconArrowBarRight v-else-if="cel.tipo === 'ACESSO'" :size="15" />
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
+              </Transition>
             </div>
           </div>
         </div>

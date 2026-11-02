@@ -227,13 +227,13 @@ function abrirEstacionamentoTelaCheia(idEst) {
 
         <div class="gerente-atalhos-topo">
           <button
-            class="btn-secundario item-icone-texto"
+            class="btn-secundario btn-simulacao-topo item-icone-texto"
             :class="{ 'btn-simulacao-ativa': simulacao1Ativa }"
             title="Simula 60% de vagas ocupadas nos seus estacionamentos"
             @click="alternarSimulacao1Frontend"
           >
             <IconPlayerPlay :size="18" />
-            <span>{{ simulacao1Ativa ? 'Simulação 1: ON' : 'Simulação 1' }}</span>
+            <span class="texto-btn-simulacao">{{ simulacao1Ativa ? 'Simulação 1: ON' : 'Simulação 1' }}</span>
           </button>
 
           <button
@@ -450,8 +450,7 @@ function abrirEstacionamentoTelaCheia(idEst) {
           </p>
           <button
             type="button"
-            class="btn-primario item-icone-texto"
-            style="width: 100%"
+            class="btn-primario btn-escolher-est-responsivo item-icone-texto"
             @click="modalEstMobileAberto = true"
           >
             <IconParking :size="19" />

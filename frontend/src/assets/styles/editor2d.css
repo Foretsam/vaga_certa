@@ -13,7 +13,9 @@
 }
 
 .hud-btn-flutuante,
-.hud-coluna-direita-mobile {
+.hud-coluna-esquerda-mobile,
+.hud-coluna-direita-mobile,
+.texto-voltar-menu-engrenagem {
   display: none;
 }
 
@@ -123,13 +125,35 @@
   cursor: not-allowed;
 }
 
-/* Compactação intermediária entre 1025px e 1360px */
-@media (min-width: 1025px) and (max-width: 1360px) {
+/* Responsividade Notebook (1125px a 1360px): Botões superiores com altura uniforme para 1 ou 2 linhas */
+@media (min-width: 1125px) and (max-width: 1360px) {
+  .editor-topbar {
+    padding: 6px 10px;
+    gap: 6px;
+    flex-wrap: nowrap;
+  }
+  .topbar-esquerda,
+  .topbar-direita,
+  .topbar-direita-gerente {
+    flex-wrap: nowrap;
+    gap: 6px;
+  }
+  .editor-topbar .btn-secundario,
+  .editor-topbar .btn-primario,
+  .editor-topbar .btn-seletor-multi,
+  .editor-topbar .btn-caution-avisos,
+  .editor-topbar .btn-salvar-final {
+    min-height: 44px;
+    height: 44px;
+    font-size: 12.5px !important;
+    padding: 4px 11px !important;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
   .btn-duas-linhas {
     line-height: 1.15;
     text-align: center;
-    padding: 5px 9px !important;
-    font-size: 12px !important;
   }
   .btn-duas-linhas br {
     display: inline;
@@ -139,18 +163,8 @@
     font-size: 11px;
     opacity: 0.92;
   }
-  .editor-topbar {
-    padding: 6px 10px;
-    gap: 6px;
-  }
-  .editor-topbar .btn-secundario,
-  .editor-topbar .btn-primario,
-  .editor-topbar .btn-seletor-multi {
-    font-size: 12.5px !important;
-    padding: 6px 10px !important;
-  }
   .texto-truncado-est {
-    max-width: 145px;
+    max-width: 140px;
   }
 }
 
@@ -180,19 +194,20 @@
 .painel-avisos-overlay {
   top: 10px;
   right: 10px;
-  width: 360px;
-  max-width: calc(100% - 20px);
+  width: max-content;
+  max-width: calc(100vw - 24px);
   background: var(--bg-card);
   color: var(--texto-principal);
   border: 2px solid #f59e0b;
   border-radius: 10px;
-  padding: 14px;
+  padding: 14px 16px;
 }
 
 .overlay-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  gap: 12px;
   margin-bottom: 8px;
   font-size: 14.5px;
 }
@@ -218,6 +233,7 @@
   display: flex;
   flex-direction: column;
   gap: 5px;
+  white-space: nowrap;
 }
 
 .aviso-tudo-ok {
@@ -266,6 +282,8 @@
   bottom: 14px;
   left: 50%;
   transform: translateX(-50%);
+  width: max-content;
+  max-width: calc(100vw - 16px);
   background: #1e1b4b;
   color: #fff;
   padding: 8px 14px;

@@ -43,11 +43,13 @@
 .gerente-dashboard-container {
   padding: 16px 24px 24px 24px;
   max-width: 1440px;
+  width: 100%;
   margin: 0 auto;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   gap: 16px;
+  box-sizing: border-box;
 }
 
 .gerente-header-topo {
@@ -343,9 +345,17 @@
   justify-content: center;
 }
 
-/* Seção Inferior: Prévia dos 2 Maiores Estacionamentos */
+/* Seção Inferior: Seletor Tablet/Mobile e Prévia dos 2 Maiores Estacionamentos */
 .secao-seletor-mobile-est {
   display: none;
+}
+
+.btn-escolher-est-responsivo {
+  width: auto;
+  min-width: 260px;
+  max-width: 360px;
+  margin: 0 auto;
+  padding: 11px 24px;
 }
 
 .secao-estacionamentos-dupla-pc {
@@ -453,21 +463,72 @@
 }
 
 .btn-modo-inativar-ativo {
-  background: #dc2626 !important;
-  border-color: #fca5a5 !important;
-  color: #ffffff !important;
+  background: #eab308 !important;
+  border-color: #fef08a !important;
+  color: #0f172a !important;
 }
 
 .btn-modo-reativar-ativo {
-  background: #16a34a !important;
-  border-color: #86efac !important;
+  background: #2563eb !important;
+  border-color: #bfdbfe !important;
   color: #ffffff !important;
 }
 
-.btn-calor-ativo {
-  background: linear-gradient(135deg, #1d4ed8 0%, #ea580c 50%, #dc2626 100%) !important;
-  border-color: #fdba74 !important;
+/* Cores de seleção em lote com alto contraste: Amarelo Médio Forte (Inativar) e Azul Médio Forte (Reativar) */
+.qe-selecionado-inativar-amarelo {
+  background-color: #eab308 !important;
+  color: #0f172a !important;
+  border: 2px solid #fef08a !important;
+  box-shadow: 0 0 0 2px rgba(234, 179, 8, 0.55);
+  transform: scale(0.92);
+  font-weight: 900 !important;
+}
+
+.qe-selecionado-reativar-azul {
+  background-color: #2563eb !important;
   color: #ffffff !important;
+  border: 2px solid #bfdbfe !important;
+  box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.55);
+  transform: scale(0.92);
+  font-weight: 900 !important;
+}
+
+/* Toggle Switch Animado no Botão de Mapa de Calor (mesma largura ON e OFF) */
+.btn-toggle-calor {
+  gap: 8px;
+}
+
+.btn-calor-ativo {
+  border-color: #f97316 !important;
+  background: rgba(249, 115, 22, 0.14) !important;
+  color: var(--texto-principal) !important;
+}
+
+.switch-calor-track {
+  width: 32px;
+  height: 18px;
+  border-radius: 999px;
+  background: rgba(148, 163, 184, 0.38);
+  padding: 2px;
+  display: inline-flex;
+  align-items: center;
+  transition: background-color 0.22s ease;
+  flex-shrink: 0;
+}
+.switch-calor-track.ativo {
+  background: #f97316;
+}
+
+.switch-calor-thumb {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: #ffffff;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+  transition: transform 0.22s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+.switch-calor-track.ativo .switch-calor-thumb {
+  transform: translateX(14px);
 }
 
 .vaga-gerente-livre {
@@ -525,12 +586,12 @@
   white-space: nowrap;
 }
 .cor-banner-inativar {
-  background: rgba(185, 28, 28, 0.95);
-  border: 1px solid #fca5a5;
+  background: rgba(15, 23, 42, 0.95);
+  border: 2px solid #eab308;
 }
 .cor-banner-reativar {
-  background: rgba(21, 128, 61, 0.95);
-  border: 1px solid #86efac;
+  background: rgba(15, 23, 42, 0.95);
+  border: 2px solid #3b82f6;
 }
 
 .legenda-calor-overlay {
@@ -557,9 +618,11 @@
   bottom: 14px;
   left: 50%;
   transform: translateX(-50%);
+  width: max-content;
+  max-width: calc(100vw - 16px);
   background: #0f172a;
   color: #ffffff;
-  padding: 9px 14px;
+  padding: 8px 14px;
   border-radius: 12px;
   display: flex;
   align-items: center;
@@ -570,8 +633,19 @@
   padding: 7px 12px !important;
   font-size: 13px !important;
 }
-.btn-lote-vermelho { background: #dc2626 !important; }
-.btn-lote-verde { background: #16a34a !important; }
+.btn-icone-confirmar-lote {
+  width: 38px;
+  height: 34px;
+  padding: 0 !important;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+}
+.btn-lote-vermelho { background: #dc2626 !important; color: #fff !important; }
+.btn-lote-vermelho:hover { background: #b91c1c !important; }
+.btn-lote-verde { background: #16a34a !important; color: #fff !important; }
+.btn-lote-verde:hover { background: #15803d !important; }
 
 /* Painel Lateral de Métricas por Andar e Setor */
 .sidebar-gerente-metricas {
@@ -675,6 +749,7 @@
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 14px;
+  width: 100%;
 }
 
 .card-kpi-gerente.kpi-compacto {
@@ -686,6 +761,7 @@
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 16px;
+  width: 100%;
 }
 
 .card-relatorio-bloco {
@@ -696,7 +772,9 @@
   display: flex;
   flex-direction: column;
   gap: 14px;
+  width: 100%;
   min-width: 0;
+  box-sizing: border-box;
 }
 
 .header-relatorio-bloco {
