@@ -136,6 +136,15 @@
     opacity: 0.45;
   }
 
+  @media (min-width: 769px) {
+    .hud-btn-salvar {
+      position: fixed;
+      top: 10px;
+      right: 118px;
+      z-index: 1000;
+    }
+  }
+
   .hud-btn-add {
     background: var(--destaque-azul);
     color: #fff;
@@ -148,7 +157,7 @@
     top: 64px;
     right: 12px;
     left: auto;
-    width: min(430px, calc(100vw - 24px));
+    width: min(350px, calc(100vw - 24px));
     margin-left: 0 !important;
     z-index: 950;
     flex-direction: column;
@@ -171,18 +180,65 @@
     display: none;
   }
 
-  /* Botões menores e centralizados em grade 2x2 no menu engrenagem (Tablet) */
-  .editor-topbar:not(.topbar-motorista-mapa) .topbar-esquerda,
-  .editor-topbar:not(.topbar-motorista-mapa) .topbar-direita-gerente {
+  /* Editor 2D (Engrenagem):
+     Linha 1: Informações Gerais
+     Linha 2: Tamanho do Grid
+     Linha 3: Andares
+     Linha 4: Desfazer e Refazer */
+  .editor-topbar:not(.topbar-motorista-mapa):not(.topbar-gerente-est) .topbar-esquerda {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 8px;
     width: 100%;
   }
 
-  .editor-topbar:not(.topbar-motorista-mapa) .grupo-filtros-navegacao-gerente,
-  .editor-topbar:not(.topbar-motorista-mapa) .grupo-inativar-reativar-gerente,
-  .editor-topbar:not(.topbar-motorista-mapa) .grupo-calor-simulacao-gerente {
+  .editor-topbar .btn-editor-info {
+    grid-column: 1 / -1;
+    order: 1;
+  }
+
+  .editor-topbar .btn-editor-grid {
+    grid-column: 1 / -1;
+    order: 2;
+  }
+  .editor-topbar .btn-editor-grid br {
+    display: none;
+  }
+  .editor-topbar .btn-editor-grid span {
+    margin-left: 4px;
+  }
+
+  .editor-topbar .wrapper-andar-editor {
+    grid-column: 1 / -1;
+    order: 3;
+    width: 100%;
+  }
+  .editor-topbar .wrapper-andar-editor .dropdown-multi-box {
+    width: 100% !important;
+  }
+
+  .editor-topbar .btn-editor-undo {
+    grid-column: 1 / 2;
+    order: 4;
+  }
+
+  .editor-topbar .btn-editor-redo {
+    grid-column: 2 / 3;
+    order: 5;
+  }
+
+  /* Gerente Estacionamentos (Engrenagem no Tablet) */
+  .editor-topbar.topbar-gerente-est .topbar-esquerda,
+  .editor-topbar.topbar-gerente-est .topbar-direita-gerente {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    width: 100%;
+  }
+
+  .editor-topbar.topbar-gerente-est .grupo-filtros-navegacao-gerente,
+  .editor-topbar.topbar-gerente-est .grupo-inativar-reativar-gerente,
+  .editor-topbar.topbar-gerente-est .grupo-calor-simulacao-gerente {
     grid-column: 1 / -1;
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -190,15 +246,14 @@
     width: 100%;
   }
 
-  .editor-topbar:not(.topbar-motorista-mapa) .wrapper-andar-editor,
-  .editor-topbar:not(.topbar-motorista-mapa) .seletor-andar-tela-cheia,
-  .editor-topbar:not(.topbar-motorista-mapa) .seletor-est-tela-cheia,
-  .editor-topbar:not(.topbar-motorista-mapa) .seletor-cidade-tela-cheia {
+  .editor-topbar.topbar-gerente-est .seletor-andar-tela-cheia,
+  .editor-topbar.topbar-gerente-est .seletor-est-tela-cheia,
+  .editor-topbar.topbar-gerente-est .seletor-cidade-tela-cheia {
     width: 100%;
   }
 
-  .editor-topbar:not(.topbar-motorista-mapa) .wrapper-andar-editor,
-  .editor-topbar:not(.topbar-motorista-mapa) .seletor-andar-tela-cheia:last-child {
+  .editor-topbar.topbar-gerente-est .seletor-andar-tela-cheia:last-child,
+  .editor-topbar.topbar-gerente-est .btn-qrcode-gerente {
     grid-column: 1 / -1;
   }
 
@@ -206,13 +261,14 @@
   .editor-topbar:not(.topbar-motorista-mapa) .btn-primario,
   .editor-topbar:not(.topbar-motorista-mapa) .btn-seletor-multi {
     width: 100%;
+    min-height: 38px;
     padding: 8px 10px !important;
     font-size: 13px !important;
     justify-content: center !important;
     text-align: center;
   }
 
-  /* Mantém a barra superior do motorista visível e compacta no Tablet */
+  /* Mantém a barra superior do motorista visível em 2 linhas no Tablet */
   .editor-topbar.topbar-motorista-mapa {
     display: flex !important;
     position: relative !important;
@@ -220,12 +276,12 @@
     right: auto !important;
     left: auto !important;
     width: auto !important;
-    margin: 62px 8px 0 8px !important;
+    margin: 10px 10px 0 10px !important;
     padding: 6px 10px !important;
-    flex-direction: row !important;
-    flex-wrap: nowrap !important;
+    flex-direction: column !important;
     align-items: center !important;
-    justify-content: space-between !important;
+    justify-content: center !important;
+    gap: 6px !important;
     box-shadow: none !important;
   }
 
@@ -234,8 +290,19 @@
     flex-direction: row !important;
     flex-wrap: nowrap !important;
     align-items: center !important;
+    justify-content: center !important;
     gap: 6px !important;
-    width: auto !important;
+    width: 100% !important;
+    min-height: 34px;
+    padding-left: 164px !important;
+    padding-right: 52px !important;
+  }
+
+  .topbar-motorista-mapa .topbar-direita-motorista {
+    width: 100% !important;
+    justify-content: center !important;
+    border-top: 1px solid var(--borda);
+    padding-top: 6px;
   }
 
   .topbar-motorista-mapa .btn-secundario,
@@ -446,7 +513,6 @@
     border-radius: 9px;
   }
 
-  /* 2ª Linha de botões exclusiva para os controles do Editor 2D no celular */
   .hud-btn-flutuante {
     min-width: 38px;
     height: 38px;
@@ -454,20 +520,25 @@
     border-radius: 9px;
   }
 
+  /* Linha 2 esquerda do Editor 2D (Alertas + Mão + Salvar) */
   .hud-coluna-esquerda-mobile {
     top: 56px;
     left: 8px;
     gap: 6px;
   }
 
+  /* Padrão (Gerente Estacionamento e Motorista): mesma linha do menu hambúrguer (top: 10px) */
   .hud-coluna-direita-mobile {
-    top: 56px;
+    top: 10px;
     right: 8px;
     gap: 6px;
   }
 
-  .hud-coluna-direita-mobile.hud-motorista-topo {
-    top: 10px;
+  /* Admin Editor no celular: Engrenagem e Adicionar centralizados entre Linha 1 (10px) e Linha 2 (56px) */
+  .hud-coluna-direita-mobile.hud-direita-editor-mobile {
+    top: 33px;
+    right: 8px;
+    gap: 6px;
   }
 
   .area-grid-principal {
@@ -478,7 +549,17 @@
     padding: 16px 8px 60px 8px !important;
   }
 
-  .editor-topbar:not(.topbar-motorista-mapa),
+  .editor-topbar:not(.topbar-motorista-mapa) {
+    top: 102px;
+    right: 8px;
+    left: auto;
+    width: min(390px, calc(100vw - 16px));
+  }
+
+  .editor-topbar.topbar-gerente-est {
+    top: 58px;
+  }
+
   .sidebar-direita-editor {
     top: 102px;
     left: 10px;
@@ -486,33 +567,71 @@
     width: auto;
   }
 
+  .sidebar-direita-editor.sidebar-gerente-metricas {
+    top: 58px;
+  }
+
   .painel-avisos-overlay {
     top: 102px;
   }
 
   .banner-carimbo-overlay,
-  .banner-mao-ativa,
-  .banner-instrucao-gerente {
+  .banner-mao-ativa {
     top: 104px;
     width: max-content;
     max-width: calc(100vw - 20px);
     font-size: 12px;
   }
 
-  /* Barra superior do Motorista em 2 linhas centralizadas (botões em cima, legendas embaixo) */
+  .banner-instrucao-gerente {
+    top: 58px;
+    width: max-content;
+    max-width: calc(100vw - 20px);
+    font-size: 12px;
+  }
+
+  /* Barra superior do Motorista no Celular:
+     1ª Linha na mesma altura do menu hambúrguer (top: 10px) e 2ª Linha abaixo com legendas */
   .editor-topbar.topbar-motorista-mapa {
-    margin: 56px 8px 0 8px !important;
-    padding: 8px 10px !important;
+    margin: 10px 8px 0 8px !important;
+    padding: 4px 8px 6px 8px !important;
     flex-direction: column !important;
     align-items: center !important;
     justify-content: center !important;
-    gap: 8px !important;
+    gap: 6px !important;
   }
 
   .topbar-motorista-mapa .topbar-esquerda {
     width: 100% !important;
+    min-height: 30px;
+    padding-left: 126px !important;
+    padding-right: 42px !important;
     justify-content: center !important;
-    flex-wrap: wrap !important;
+    flex-wrap: nowrap !important;
+    gap: 4px !important;
+  }
+
+  .topbar-motorista-mapa .topbar-esquerda .btn-secundario,
+  .topbar-motorista-mapa .topbar-esquerda .btn-seletor-multi {
+    height: 30px !important;
+    min-height: 30px !important;
+    padding: 0 7px !important;
+    font-size: 12px !important;
+  }
+
+  .topbar-motorista-mapa .texto-andar-motorista {
+    max-width: 76px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .topbar-motorista-mapa .controles-zoom-motorista {
+    height: 30px;
+  }
+
+  .topbar-motorista-mapa .btn-zoom-acao {
+    padding: 4px 6px;
   }
 
   .topbar-motorista-mapa .topbar-direita-motorista {
@@ -559,14 +678,31 @@
 
   .gerente-dashboard-container {
     padding: 12px 14px 24px 14px;
+    width: 100%;
+    max-width: 100vw;
+    overflow-x: hidden;
   }
 
+  .gerente-header-topo,
   .gerente-boas-vindas,
   .gerente-boas-vindas-relatorios {
+    width: 100%;
+    min-width: 0;
     padding-left: 0 !important;
     padding-top: 44px;
     flex-direction: column;
     align-items: stretch;
+  }
+
+  .gerente-header-topo {
+    padding-top: 0;
+  }
+
+  .gerente-boas-vindas h1,
+  .gerente-boas-vindas-relatorios h1 {
+    font-size: 20px;
+    white-space: normal;
+    line-height: 1.25;
   }
 
   .gerente-boas-vindas .gerente-atalhos-topo,
@@ -575,26 +711,34 @@
     padding-left: 0;
     min-height: auto;
     width: 100%;
+    min-width: 0;
     display: flex;
     gap: 6px;
   }
 
   .gerente-atalhos-topo button {
-    flex: 1;
-    padding: 8px 6px !important;
+    flex: 1 1 0%;
+    min-width: 0;
+    padding: 8px 4px !important;
     font-size: 11.5px !important;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
   }
 
   .barra-filtros-gerente {
     display: grid !important;
-    grid-template-columns: 1fr 1fr !important;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) !important;
     gap: 8px !important;
     width: 100%;
+    min-width: 0;
   }
 
   .barra-filtros-gerente .seletor-multi-wrapper,
   .barra-filtros-gerente .btn-seletor-multi {
     width: 100%;
+    min-width: 0;
+    max-width: 100%;
     justify-content: space-between;
     padding: 8px 10px;
     font-size: 12.5px;
@@ -609,7 +753,26 @@
   .filtros-motorista-grid,
   .grade-campos-dupla,
   .grade-planos-futuros {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
+    width: 100%;
+    min-width: 0;
+  }
+
+  .card-relatorio-bloco,
+  .card-kpi-gerente {
+    padding: 14px;
+    width: 100%;
+    min-width: 0;
+  }
+
+  .acoes-topo-historico {
+    width: 100%;
+    min-width: 0;
+  }
+
+  .acoes-topo-historico .input-pesquisa-icone-wrapper {
+    min-width: 0 !important;
+    flex: 1 1 140px;
   }
 
   .card-kpi-gerente.kpi-apenas-tablet {
@@ -618,17 +781,34 @@
 
   .btn-escolher-est-responsivo {
     width: 100%;
+    min-width: 0;
     max-width: 100%;
   }
 
   .controles-exportacao-completa {
     flex-direction: column;
     align-items: stretch;
+    width: 100%;
+    min-width: 0;
+  }
+
+  .campos-datas-exportacao {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: 8px;
+    width: 100%;
+  }
+
+  .campos-datas-exportacao .campo-compacto,
+  .campos-datas-exportacao .select-padrao {
+    width: 100%;
+    min-width: 0;
   }
 
   .botoes-atalhos-periodo {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    width: 100%;
   }
 
   .btn-baixar-completo-bi {
@@ -644,28 +824,34 @@
     width: 100%;
   }
 
-  /* Cards de estacionamento no Dev Gerenciamento com altura uniforme (1 ou 2 linhas) */
+  /* Cards de estacionamento no Dev Gerenciamento com ícones menores para dar mais espaço ao nome */
   .linha-estabelecimento {
     flex-direction: row !important;
     align-items: center !important;
     justify-content: space-between !important;
-    height: 68px !important;
-    min-height: 68px !important;
-    max-height: 68px !important;
-    gap: 10px !important;
-    padding: 8px 12px !important;
+    height: 66px !important;
+    min-height: 66px !important;
+    max-height: 66px !important;
+    gap: 8px !important;
+    padding: 8px 10px !important;
   }
 
   .linha-estabelecimento .info-est {
     flex: 1;
     min-width: 0;
+    gap: 8px;
+  }
+
+  .linha-estabelecimento .id-badge {
+    font-size: 11px;
+    padding: 3px 6px;
   }
 
   .linha-estabelecimento .textos-est h3 {
-    font-size: 14px;
+    font-size: 13.5px;
     flex-wrap: nowrap;
     align-items: center;
-    gap: 6px;
+    gap: 5px;
   }
 
   .nome-est-lista {
@@ -691,7 +877,18 @@
   .linha-estabelecimento .acoes-direita {
     width: auto !important;
     flex-shrink: 0;
-    gap: 5px;
+    gap: 4px;
+  }
+
+  .linha-estabelecimento .btn-icone {
+    width: 28px;
+    height: 28px;
+    border-radius: 6px;
+  }
+
+  .linha-estabelecimento .btn-icone svg {
+    width: 15px;
+    height: 15px;
   }
 
   .paginacao-rodape {
@@ -712,15 +909,69 @@
     padding: 0 4px;
   }
 
-  /* Menu popup de seleção do Editor ocupa apenas o espaço necessário */
-  .menu-selecao-overlay,
+  /* Menu popup de seleção no celular em 2 linhas */
+  .menu-selecao-overlay {
+    width: max-content;
+    max-width: calc(100vw - 16px);
+    padding: 8px 11px;
+    gap: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .menu-selecao-overlay .contagem-sel {
+    align-self: center;
+    font-size: 12.5px;
+    padding-right: 6px;
+    border-right: 1px solid rgba(196, 181, 253, 0.28);
+  }
+
+  .menu-selecao-overlay .grupos-centrais-selecao {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .menu-selecao-overlay .grupo-acao-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+  }
+
+  .menu-selecao-overlay .botoes-acao-par {
+    display: flex;
+    align-items: center;
+    gap: 3px;
+  }
+
+  .menu-selecao-overlay .acoes-finais-selecao {
+    align-self: center;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    padding-left: 6px;
+    border-left: 1px solid rgba(196, 181, 253, 0.28);
+  }
+
+  .menu-selecao-overlay .btn-mini {
+    width: 23px;
+    height: 23px;
+    border-radius: 4px;
+  }
+
+  .menu-selecao-overlay .btn-mini svg {
+    width: 13px;
+    height: 13px;
+  }
+
   .popup-confirmar-lote-gerente {
     width: max-content;
     max-width: calc(100vw - 16px);
     justify-content: center;
     padding: 7px 10px;
     gap: 6px;
-    overflow-x: auto;
   }
 
   .legenda-calor-overlay {
@@ -741,7 +992,6 @@
     gap: 8px;
   }
 }
-
 /* --------------------------------------------------------------------------
    6. POPUP DE ALERTAS EM TELAS <= 473px:
       Passa a ocupar a tela inteira quando o texto não cabe numa única linha.
@@ -771,6 +1021,23 @@
 
   .btn-simulacao-topo .texto-btn-simulacao {
     display: none !important;
+  }
+
+  .editor-topbar.topbar-motorista-mapa {
+    margin: 56px 8px 0 8px !important;
+    padding: 7px 8px !important;
+  }
+
+  .topbar-motorista-mapa .topbar-esquerda {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    justify-content: center !important;
+    flex-wrap: wrap !important;
+    gap: 6px !important;
+  }
+
+  .topbar-motorista-mapa .texto-andar-motorista {
+    max-width: 110px;
   }
 }
 

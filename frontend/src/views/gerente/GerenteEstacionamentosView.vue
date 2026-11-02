@@ -129,6 +129,7 @@ function alternarModoSelecao(modo) {
   if (modoAcaoVagas.value === modo) {
     cancelarModoSelecao()
   } else {
+    hoverCoord.value = null
     modoAcaoVagas.value = modo
     vagasSelecionadasIds.value = new Set()
     menuOpcoesMobileAberto.value = false
@@ -139,6 +140,7 @@ function cancelarModoSelecao() {
   modoAcaoVagas.value = null
   vagasSelecionadasIds.value = new Set()
   arrastandoSelecao.value = false
+  hoverCoord.value = null
 }
 
 function vagaElegivelModoAtual(celula) {
@@ -329,7 +331,7 @@ function classeCorVagaGerente(celula) {
 }
 
 const infoHoverCelula = computed(() => {
-  if (!hoverCoord.value || !andarAtual.value) return null
+  if (modoAcaoVagas.value || !hoverCoord.value || !andarAtual.value) return null
   const c = andarAtual.value.celulas[`${hoverCoord.value.x},${hoverCoord.value.y}`]
   if (!c) return null
 
@@ -602,7 +604,9 @@ onUnmounted(() => {
             </Transition>
           </div>
         </div>
+      </div>
 
+      <div class="topbar-direita-gerente">
         <!-- Grupo Inativar/Reativar -->
         <div class="grupo-inativar-reativar-gerente">
           <button
@@ -623,9 +627,7 @@ onUnmounted(() => {
             <span>Reativar</span>
           </button>
         </div>
-      </div>
 
-      <div class="topbar-direita-gerente">
         <!-- Grupo Mapa de Calor (Com Toggle Switch de Tamanho Fixo) + Simulação -->
         <div class="grupo-calor-simulacao-gerente">
           <button

@@ -1175,7 +1175,7 @@ function confirmarSucessoEVoltarLista() {
 
 <template>
   <div v-if="andarEditorAtual" class="editor-layout">
-    <!-- Grupo Esquerdo de Botões Flutuantes Mobile/Tablet (Alertas + Mão sem sobreposição) -->
+    <!-- Grupo Esquerdo de Botões Flutuantes Mobile/Tablet -->
     <div class="hud-coluna-esquerda-mobile">
       <button
         class="hud-btn-flutuante hud-esquerda-alertas"
@@ -1195,9 +1195,7 @@ function confirmarSucessoEVoltarLista() {
       >
         <IconHandMove :size="20" />
       </button>
-    </div>
 
-    <div class="hud-coluna-direita-mobile">
       <button
         class="hud-btn-flutuante hud-btn-salvar"
         :disabled="!podeSalvarEstacionamento || salvandoNoBanco"
@@ -1206,7 +1204,10 @@ function confirmarSucessoEVoltarLista() {
       >
         <IconDeviceFloppy :size="20" />
       </button>
+    </div>
 
+    <!-- Grupo Direito de Botões Flutuantes Mobile/Tablet (Engrenagem + Adicionar) -->
+    <div class="hud-coluna-direita-mobile hud-direita-editor-mobile">
       <button
         class="hud-btn-flutuante"
         :class="{ 'hud-ativo': menuTopoMobileAberto }"
@@ -1230,7 +1231,7 @@ function confirmarSucessoEVoltarLista() {
     <header class="editor-topbar" :class="{ 'topbar-mobile-aberta': menuTopoMobileAberto }">
       <div class="topbar-esquerda">
         <button
-          class="btn-secundario item-icone-texto"
+          class="btn-secundario btn-editor-info item-icone-texto"
           title="Informações Gerais"
           @click="router.push({ name: 'admin-info-gerais' })"
         >
@@ -1267,13 +1268,13 @@ function confirmarSucessoEVoltarLista() {
           </Transition>
         </div>
 
-        <button class="btn-secundario btn-duas-linhas item-icone-texto" @click="abrirModalTamanhoGrid">
+        <button class="btn-secundario btn-duas-linhas btn-editor-grid item-icone-texto" @click="abrirModalTamanhoGrid">
           <IconLayoutGrid :size="18" />
           <div>Tamanho do Grid<br /><span>({{ andarEditorAtual.grid_x }}x{{ andarEditorAtual.grid_y }})</span></div>
         </button>
 
         <button
-          class="btn-secundario item-icone-texto"
+          class="btn-secundario btn-editor-undo item-icone-texto"
           :disabled="historicoUndo.length === 0"
           title="Desfazer (Ctrl + Z)"
           @click="desfazer"
@@ -1281,23 +1282,15 @@ function confirmarSucessoEVoltarLista() {
           <IconArrowBackUp :size="18" />
           <span>Desfazer</span>
         </button>
+
         <button
-          class="btn-secundario item-icone-texto"
+          class="btn-secundario btn-editor-redo item-icone-texto"
           :disabled="historicoRedo.length === 0"
           title="Refazer (Ctrl + Y)"
           @click="refazer"
         >
           <IconArrowForwardUp :size="18" />
           <span>Refazer</span>
-        </button>
-        <button
-          v-if="panX !== 0 || panY !== 0 || zoomEscala !== 1"
-          class="btn-secundario item-icone-texto"
-          title="Centralizar Zoom"
-          @click="resetarCameraGrid"
-        >
-          <IconSearch :size="16" />
-          <span>{{ Math.round(zoomEscala * 100) }}%</span>
         </button>
       </div>
 
@@ -1390,57 +1383,67 @@ function confirmarSucessoEVoltarLista() {
           <div v-if="mostrarMenuFlutuante && selecionados.size > 0" class="overlay-flutuante menu-selecao-overlay">
             <span class="contagem-sel">{{ selecionados.size }} cél.</span>
 
-            <div class="grupo-acao-item">
-              <span class="icone-com-tooltip" data-tooltip="Estrada">
-                <IconRoad :size="18" />
-              </span>
-              <button class="btn-mini add" title="Adicionar Estrada" @click="aplicarEstradaNaSelecao(true)">
-                <IconSquareRoundedPlus :size="15" />
-              </button>
-              <button class="btn-mini rem" title="Remover Estrada" @click="aplicarEstradaNaSelecao(false)">
-                <IconSquareRoundedMinus :size="15" />
-              </button>
+            <div class="grupos-centrais-selecao">
+              <div class="grupo-acao-item">
+                <span class="icone-com-tooltip" data-tooltip="Estrada">
+                  <IconRoad :size="18" />
+                </span>
+                <div class="botoes-acao-par">
+                  <button class="btn-mini add" title="Adicionar Estrada" @click="aplicarEstradaNaSelecao(true)">
+                    <IconSquareRoundedPlus :size="15" />
+                  </button>
+                  <button class="btn-mini rem" title="Remover Estrada" @click="aplicarEstradaNaSelecao(false)">
+                    <IconSquareRoundedMinus :size="15" />
+                  </button>
+                </div>
+              </div>
+
+              <div class="grupo-acao-item">
+                <span class="icone-com-tooltip" data-tooltip="Setor">
+                  <IconLayoutBoard :size="18" />
+                </span>
+                <div class="botoes-acao-par">
+                  <button class="btn-mini add" title="Definir Setor" @click="abrirModalSetor">
+                    <IconSquareRoundedPlus :size="15" />
+                  </button>
+                  <button class="btn-mini rem" title="Remover Setor" @click="removerSetorDaSelecao">
+                    <IconSquareRoundedMinus :size="15" />
+                  </button>
+                </div>
+              </div>
+
+              <div class="grupo-acao-item">
+                <span class="icone-com-tooltip" data-tooltip="Vagas">
+                  <IconParking :size="18" />
+                </span>
+                <div class="botoes-acao-par">
+                  <button class="btn-mini add" title="Criar Vagas" @click="aplicarVagaNaSelecao(true)">
+                    <IconSquareRoundedPlus :size="15" />
+                  </button>
+                  <button class="btn-mini rem" title="Remover Vagas" @click="aplicarVagaNaSelecao(false)">
+                    <IconSquareRoundedMinus :size="15" />
+                  </button>
+                </div>
+              </div>
             </div>
 
-            <div class="grupo-acao-item">
-              <span class="icone-com-tooltip" data-tooltip="Setor">
-                <IconLayoutBoard :size="18" />
-              </span>
-              <button class="btn-mini add" title="Definir Setor" @click="abrirModalSetor">
-                <IconSquareRoundedPlus :size="15" />
+            <div class="acoes-finais-selecao">
+              <button
+                class="btn-mini borracha-tudo"
+                title="Borracha: Apagar tudo na área selecionada"
+                @click="apagarTudoNaSelecao"
+              >
+                <IconEraser :size="16" />
               </button>
-              <button class="btn-mini rem" title="Remover Setor" @click="removerSetorDaSelecao">
-                <IconSquareRoundedMinus :size="15" />
+
+              <button
+                class="btn-mini limpar"
+                title="Fechar seleção (ESC)"
+                @click="selecionados.clear(); mostrarMenuFlutuante = false"
+              >
+                <IconSquareRoundedX :size="16" />
               </button>
             </div>
-
-            <div class="grupo-acao-item">
-              <span class="icone-com-tooltip" data-tooltip="Vagas">
-                <IconParking :size="18" />
-              </span>
-              <button class="btn-mini add" title="Criar Vagas" @click="aplicarVagaNaSelecao(true)">
-                <IconSquareRoundedPlus :size="15" />
-              </button>
-              <button class="btn-mini rem" title="Remover Vagas" @click="aplicarVagaNaSelecao(false)">
-                <IconSquareRoundedMinus :size="15" />
-              </button>
-            </div>
-
-            <button
-              class="btn-mini borracha-tudo"
-              title="Borracha: Apagar tudo na área selecionada"
-              @click="apagarTudoNaSelecao"
-            >
-              <IconEraser :size="16" />
-            </button>
-
-            <button
-              class="btn-mini limpar"
-              title="Fechar seleção (ESC)"
-              @click="selecionados.clear(); mostrarMenuFlutuante = false"
-            >
-              <IconSquareRoundedX :size="16" />
-            </button>
           </div>
         </Transition>
 
